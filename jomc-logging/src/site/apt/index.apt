@@ -1,0 +1,27 @@
+  -----
+JOMC Logging
+  -----
+Christian Schulte
+  -----
+July 2005
+  -----
+
+JOMC Logging
+
+  The {{{jomc-logging-api/project-summary.html}JOMC Logging API}} artifact
+  provides an {{{jomc-logging-api/apidocs}application programming interface}} to
+  logging systems. Whenever that API is used at compile time, an application
+  assembler needs to provide a corresponding logging system implementation at
+  runtime as shown below.
+
+*-------------------+--------------+-------------------------------------------+
+|| <<Artifact>>     || <<License>> || <<Description>>                                        ||
+*-------------------+--------------+-------------------------------------------+
+| {{{jomc-logging-commons-logging/project-summary.html} JOMC Logging Commons Logging}} | LGPL | Commons logging system implementation.|
+*-------------------+--------------+-------------------------------------------+
+| {{{jomc-logging-jdk-logging/project-summary.html} JOMC Logging JDK Logging}} | LGPL | JDK logging system implementation.|
+*-------------------+--------------+-------------------------------------------+
+| {{{jomc-logging-log4j-logging/project-summary.html} JOMC Logging Log4J Logging}} | LGPL | Log4J logging system implementation.|
+*-------------------+--------------+-------------------------------------------+
+| {{{jomc-logging-slf4j-logging/project-summary.html} JOMC Logging Slf4J Logging}} | LGPL | Slf4J logging system implementation.|
+*-------------------+--------------+-------------------------------------------+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.DefaultObjectManager"
+                    class="org.jomc.ri.DefaultObjectManager"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[${pom.description}]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ObjectManager"
+                   version="1.0"/>
+
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.util.JndiLookup"
+                    class="org.jomc.ri.util.JndiLookup"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Naming system lookup support class.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <properties>
+        <property name="objectName" type="java.lang.String">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The JNDI name of the object to lookup.]]></text>
+          </documentation>
+        </property>
+        <property name="remoteObject" type="boolean" value="false">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating the remote status of the JNDI object. True to narrow any JNDI objects. False to return JNDI objects unchanged.]]></text>
+          </documentation>
+        </property>
+      </properties>
+    </implementation>
+  </implementations>
+</module>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  JOMC SDK Model
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+  $Id jdtaus-container-1.0.xsd 141 2009-02-08 13:47:51Z schulte $
+
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:sdk="http://jomc.org/sdk/model"
+            xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+            jaxb:version="2.0"
+            targetNamespace="http://jomc.org/sdk/model"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+  <xsd:annotation>
+    <xsd:documentation xml:lang="en"><![CDATA[
+  JOMC SDK Model
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+  $Id$]]>
+    </xsd:documentation>
+  </xsd:annotation>
+  <!--                                                                       -->
+  <!-- XmlFrameworkConfiguration                                             -->
+  <!--                                                                       -->
+  <xsd:element name="xml-framework-configuration"
+               type="sdk:XmlFrameworkConfigurationType"/>
+  <xsd:complexType name="XmlFrameworkConfigurationType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <jaxb:class>
+          <jaxb:javadoc><![CDATA[XML framework configuration.]]></jaxb:javadoc>
+        </jaxb:class>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="sdk:schemas" minOccurs="1" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:appinfo>
+            <jaxb:property>
+              <jaxb:javadoc><![CDATA[The schemas backing an implementation.]]></jaxb:javadoc>
+            </jaxb:property>
+          </xsd:appinfo>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="formatted-output" type="xsd:boolean" default="true" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[{@code true} for an implementation to format output; {@code false} for an implementation to not perform any output formatting.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="validating" type="xsd:boolean" default="true" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[{@code true} for an implementation to perform schema validation; {@code false} for an implementation to not perform any additional schema validation.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="encoding" type="xsd:string" default="UTF-8" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The encoding of an implementation for encoding data.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="schema-language" type="xsd:string" default="http://www.w3.org/2001/XMLSchema" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The schema language of the schemas backing an implementation.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  <!--                                                                       -->
+  <!-- Schemas                                                               -->
+  <!--                                                                       -->
+  <xsd:element name="schemas" type="sdk:SchemasType">
+    <xsd:key name="schema-key">
+      <xsd:annotation>
+        <xsd:documentation xml:lang="en"><![CDATA[Key of a schema.]]></xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath=".//sdk:schema"/>
+      <xsd:field xpath="@sdk:public-id"/>
+    </xsd:key>
+  </xsd:element>
+  <xsd:complexType name="SchemasType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <jaxb:class>
+          <jaxb:javadoc><![CDATA[List of schemas.]]></jaxb:javadoc>
+        </jaxb:class>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element ref="sdk:schema" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--                                                                       -->
+  <!-- Schema                                                                -->
+  <!--                                                                       -->
+  <xsd:element name="schema" type="sdk:SchemaType"/>
+  <xsd:complexType name="SchemaType">
+    <xsd:annotation>
+      <xsd:appinfo>
+        <jaxb:class>
+          <jaxb:javadoc><![CDATA[Schema.]]></jaxb:javadoc>
+        </jaxb:class>
+      </xsd:appinfo>
+    </xsd:annotation>
+    <xsd:attribute name="public-id" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The public id of the schema.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="system-id" type="xsd:string" use="required">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The system id of the schema.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="context-id" type="xsd:string" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The context id of the schema.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="classpath-id" type="xsd:string" use="optional">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <jaxb:property>
+            <jaxb:javadoc><![CDATA[The classpath id of the schema.]]></jaxb:javadoc>
+          </jaxb:property>
+        </xsd:appinfo>
+      </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+</xsd:schema>

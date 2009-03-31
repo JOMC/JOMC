@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>jomc-logging</artifactId>
+    <groupId>org.jomc.logging</groupId>
+    <version>1.0-alpha-1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jomc.logging</groupId>
+  <artifactId>jomc-logging-commons-logging</artifactId>
+  <name>JOMC Logging Commons Logging</name>
+  <description><![CDATA[Commons logging system implementation.]]></description>
+  <build>
+    <resources>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+    <testResources>
+      <testResource>
+        <filtering>true</filtering>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-test-classes</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.jomc.logging</groupId>
+                  <artifactId>jomc-logging-it</artifactId>
+                  <version>${jomcLoggingVersion}</version>
+                  <type>jar</type>
+                </artifactItem>
+              </artifactItems>
+              <excludes>**/META-INF/**</excludes>
+              <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-pmd-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkMode>once</forkMode>
+          <skip>false</skip>
+          <systemProperties>
+            <property>
+              <name>java.util.logging.config.file</name>
+              <value>${project.build.testOutputDirectory}/logging.properties</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+
+    <dependency>
+      <groupId>org.jomc</groupId>
+      <artifactId>jomc-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jomc</groupId>
+      <artifactId>jomc-ri</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jomc.logging</groupId>
+      <artifactId>jomc-logging-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging</artifactId>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jomc.logging</groupId>
+      <artifactId>jomc-logging-it</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>jsr250-api</artifactId>
+      <scope>compile</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+</project>

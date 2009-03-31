@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>jomc-parent</artifactId>
+    <groupId>org.jomc</groupId>
+    <version>1.0-alpha-1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.jomc.logging</groupId>
+  <artifactId>jomc-logging</artifactId>
+  <version>1.0-alpha-1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>JOMC Logging</name>
+  <description><![CDATA[Logging system parent module.]]></description>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>process</id>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <configuration>
+              <resourceBundles>
+                <resourceBundle>org.jomc:jomc-resources:${jomcVersion}</resourceBundle>
+               </resourceBundles>
+               <properties>
+                <buildNumber>${buildNumber}</buildNumber>
+              </properties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jomc</groupId>
+        <artifactId>maven-jomc-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+  <modules>
+    <module>jomc-logging-api</module>
+    <module>jomc-logging-it</module>
+    <module>jomc-logging-jdk-logging</module>
+    <module>jomc-logging-log4j-logging</module>
+    <module>jomc-logging-commons-logging</module>
+    <module>jomc-logging-slf4j-logging</module>
+  </modules>
+</project>

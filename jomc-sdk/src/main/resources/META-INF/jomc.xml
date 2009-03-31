@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sdk.Environment"
+                    class="org.jomc.sdk.Environment"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[SDK environment.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <properties>
+        <property name="defaultEntityManagerFactoryJndiName"
+                  type="java.lang.String"
+                  value="java:comp/env/persistence/EntityManagerFactory">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The default JNDI name of the {@code EntityManagerFactory} backing the SDK.]]></text>
+          </documentation>
+        </property>
+        <property name="defaultEntityManagerJndiName"
+                  type="java.lang.String"
+                  value="java:comp/env/persistence/EntityManager">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The default JNDI name of the {@code EntityManager} backing the SDK.]]></text>
+          </documentation>
+        </property>
+        <property name="defaultTransactionManagerJndiName"
+                  type="java.lang.String"
+                  value="java:comp/TransactionManager">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The default JNDI name of the {@code TransactionManager} backing the SDK.]]></text>
+          </documentation>
+        </property>
+        <property name="defaultUserTransactionJndiName"
+                  type="java.lang.String"
+                  value="java:comp/UserTransaction">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The default JNDI name of the {@code UserTransaction} backing the SDK.]]></text>
+          </documentation>
+        </property>
+        <property name="defaultTransactionSynchronizationRegistryJndiName"
+                  type="java.lang.String"
+                  value="java:comp/TransactionSynchronizationRegistry">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The default JNDI name of the {@code TransactionSynchronizationRegistry} backing the SDK.]]></text>
+          </documentation>
+        </property>
+      </properties>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sdk.xml.XmlFramework"
+                    class="org.jomc.sdk.xml.XmlFramework"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[XML framework.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="javax.xml.bind.JAXBContext"/>
+        <reference identifier="javax.xml.bind.Marshaller"/>
+        <reference identifier="javax.xml.bind.Unmarshaller"/>
+        <reference identifier="javax.xml.validation.Schema"/>
+        <reference identifier="org.xml.sax.EntityResolver"/>
+        <reference identifier="org.w3c.dom.ls.LSResourceResolver"/>
+      </specifications>
+      <properties>
+        <property name="configuration" type="java.lang.Object">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The configuration of an XML framework implementation. Object from XML namespace http://jomc.eu/sdk/model.]]></text>
+          </documentation>
+        </property>
+      </properties>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sdk.naming.NamingFramework"
+                    class="org.jomc.sdk.naming.NamingFramework"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Naming framework.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="javax.naming.Context"/>
+      </specifications>
+      <properties>
+        <property name="jndiName" type="java.lang.String">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[The JNDI name of the object returned by method {@code getObject}.]]></text>
+          </documentation>
+        </property>
+      </properties>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sdk.persistence.PersistenceFramework"
+                    class="org.jomc.sdk.persistence.PersistenceFramework"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Persistence framework.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="javax.persistence.EntityManagerFactory"/>
+        <reference identifier="javax.persistence.EntityManager"/>
+      </specifications>
+      <dependencies>
+        <dependency name="InitialContext" identifier="javax.naming.Context"
+                    bound="false" implementationName="${pom.name}"/>
+
+      </dependencies>
+      <properties>
+        <property name="containerManaged" type="boolean" value="false">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[{@code true} if the {@code EntityManager} looked up from the JNDI context is provided by an EJB container; {@code false} to perform a call to the {@code EntityManager.joinTransaction} method on each JNDI lookup.]]></text>
+          </documentation>
+        </property>
+      </properties>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sdk.transaction.TransactionFramework"
+                    class="org.jomc.sdk.transaction.TransactionFramework"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Transaction framework.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="javax.transaction.TransactionManager"/>
+        <reference identifier="javax.transaction.UserTransaction"/>
+        <reference identifier="javax.transaction.TransactionSynchronizationRegistry"/>
+      </specifications>
+      <dependencies>
+        <dependency name="InitialContext" identifier="javax.naming.Context"
+                    bound="false" implementationName="${pom.name}"/>
+
+      </dependencies>
+    </implementation>
+  </implementations>
+</module>

@@ -1,0 +1,28 @@
+
+  ${project.description}
+  Version ${project.version} Build ${buildNumber}
+#foreach ( $organization in $projectsSortedByOrganization.keySet() )
+
+  Dependencies provided by $organization.name#if($organization.url) ($organization.url)#end
+
+#foreach ( $project in $projectsSortedByOrganization.get( $organization ) )
+
+    - $project.name
+      $project.artifact
+#if ($project.url)
+      $project.url
+#end
+#if($project.licenses && !$project.licenses.empty)
+#foreach ( $license in $project.licenses)
+      License: $license.name
+#if ($license.url)
+               $license.url
+#end
+#end
+#end
+#if(!$project.licenses || $project.licenses.empty)
+      No license information available.#if($project.url) Please see the project's website.#end
+
+#end
+#end
+#end

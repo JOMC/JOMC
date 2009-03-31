@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JOMC">
+  <bannerLeft>
+    <name>JOMC</name>
+    <href>http://www.jomc.org</href>
+  </bannerLeft>
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-default-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+  <body>
+    <head>
+      <meta name="keywords" lang="de" content="objekt, container, java, quellcode, generator, quellcodegenerator"/>
+      <meta name="keywords" lang="en" content="object, container, java, source, code, sourcecode, generator, sourcecodegenerator"/>
+    </head>
+
+    <links>
+      <item name="English version" href="http://www.jomc.org/index.html"/>
+    </links>
+
+    <menu name="Sourceforge">
+      <item name="Übersicht" href="http://sourceforge.net/projects/jomc/"/>
+      <item name="Downloads" href="http://sourceforge.net/project/showfiles.php?group_id=257507"/>
+    </menu>
+
+    <menu ref="modules" />
+    <menu ref="reports" />
+
+  </body>
+</project>

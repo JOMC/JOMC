@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name} Tests"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+
+  <specifications>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.tests.SingletonSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="Singleton"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@schulte.it" createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+    <specification identifier="org.jomc.ri.tests.MultitonSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@schulte.it" createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+    <specification identifier="org.jomc.ri.tests.TestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+  </specifications>
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.tests.TestImplementation"
+                    class="org.jomc.ri.tests.TestImplementation"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.tests.SingletonSpecification"
+                   version="${pom.version}"/>
+        <reference identifier="org.jomc.ri.tests.MultitonSpecification"
+                   version="${pom.version}"/>
+        <reference identifier="org.jomc.ri.tests.TestSpecification"
+                   version="${pom.version}"/>
+
+      </specifications>
+      <dependencies>
+        <dependency name="TestBoundSingleton"
+                    identifier="org.jomc.ri.tests.SingletonSpecification"
+                    version="${pom.version}"
+                    bound="true"/>
+        <dependency name="TestSingleton"
+                    identifier="org.jomc.ri.tests.SingletonSpecification"
+                    version="${pom.version}"
+                    bound="false"/>
+        <dependency name="TestMultiton"
+                    identifier="org.jomc.ri.tests.MultitonSpecification"
+                    version="${pom.version}"
+                    bound="false"/>
+        <dependency name="TestSpecification"
+                    identifier="org.jomc.ri.tests.TestSpecification"
+                    version="${pom.version}"
+                    bound="false"/>
+        <dependency name="SelectedTestSpecification"
+                    identifier="org.jomc.ri.tests.TestSpecification"
+                    version="${pom.version}"
+                    bound="false"
+                    implementationName="${pom.name}"/>
+      </dependencies>
+      <properties>
+        <property name="testProperty" type="java.lang.String" value="TEST"/>
+      </properties>
+      <messages>
+        <message name="testMessage">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Test message with {0} argument.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="testArgument" type="text"/>
+          </arguments>
+        </message>
+      </messages>
+    </implementation>
+  </implementations>
+</module>
