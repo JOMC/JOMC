@@ -400,8 +400,8 @@
           <version>1.2</version>
           <configuration>
             <message>[maven-scm-plugin] Build ${buildNumber}</message>
-            <username>${scm.checkin.username}</username>
-            <password>${scm.checkin.password}</password>
+            <username>${jomc.scm.username}</username>
+            <password>${jomc.scm.password}</password>
             <tag>${pom.artifactId}-${pom.version}-${buildNumber}</tag>
             <tagBase>http://svn.jomc.org/svnroot/jomc/builds</tagBase>
           </configuration>
