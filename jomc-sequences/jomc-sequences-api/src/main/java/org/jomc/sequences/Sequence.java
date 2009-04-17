@@ -41,19 +41,19 @@ public class Sequence implements Comparable, Cloneable, Serializable
     // SECTION-START[Sequence]
 
     /** Constant for the name of property {@code name}. */
-    public static final String PROP_NAME = "org.jdtaus.sequences.Sequence.PROP_NAME";
+    public static final String PROP_NAME = "org.jomc.sequences.Sequence.PROP_NAME";
 
     /** Constant for the name of property {@code minimum}. */
-    public static final String PROP_MINIMUM = "org.jdtaus.sequences.Sequence.PROP_MINIMUM";
+    public static final String PROP_MINIMUM = "org.jomc.sequences.Sequence.PROP_MINIMUM";
 
     /** Constant for the name of property {@code maximum}. */
-    public static final String PROP_MAXIMUM = "org.jdtaus.sequences.Sequence.PROP_MAXIMUM";
+    public static final String PROP_MAXIMUM = "org.jomc.sequences.Sequence.PROP_MAXIMUM";
 
     /** Constant for the name of property {@code increment}. */
-    public static final String PROP_INCREMENT = "org.jdtaus.sequences.Sequence.PROP_INCREMENT";
+    public static final String PROP_INCREMENT = "org.jomc.sequences.Sequence.PROP_INCREMENT";
 
     /** Constant for the name of property {@code value}. */
-    public static final String PROP_VALUE = "org.jdtaus.sequences.Sequence.PROP_VALUE";
+    public static final String PROP_VALUE = "org.jomc.sequences.Sequence.PROP_VALUE";
 
     /** Serial version UID for backwards compatibility with 1.0.x classes. */
     private static final long serialVersionUID = -5986954258127229601L;

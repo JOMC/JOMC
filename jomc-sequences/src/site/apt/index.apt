@@ -1,15 +1,15 @@
   -----
-jDTAUS Sequences
+JOMC Sequences
   -----
 Christian Schulte
   -----
 July 2005
   -----
 
-jDTAUS Sequences
+JOMC Sequences
 
-  The {{{jdtaus-sequences-api/project-summary.html}jDTAUS Sequences API}}
-  artifact provides {{{jdtaus-sequences-api/apidocs}application programming
+  The {{{jomc-sequences-api/project-summary.html}JOMC Sequences API}}
+  artifact provides {{{jomc-sequences-api/apidocs}application programming
   interfaces}} to a directory of sequences. Whenever that API is used at compile
   time, an application assembler needs to provide a corresponding implementation
   at runtime as shown below.
@@ -17,13 +17,13 @@ jDTAUS Sequences
 *-------------------+--------------+-------------------------------------------+
 || <<Artifact>>     || <<License>> || <<Description>>                         ||
 *-------------------+--------------+-------------------------------------------+
-| {{{jdtaus-sequences-ri/index.html} jDTAUS Sequences RI}} | LGPL | Sequences reference implementation based on JTA 1.1 and JPA 1.0. {{{jdtaus-sequences-ri/apidocs/}See Javadoc}}|
+| {{{jomc-sequences-ri/index.html} JOMC Sequences RI}} | LGPL | Sequences reference implementation based on JTA 1.1 and JPA 1.0. {{{jomc-sequences-ri/apidocs/}See Javadoc}}|
 *-------------------+--------------+-------------------------------------------+
 
-  The {{{jdtaus-sequences-spi/project-summary.html}jDTAUS Sequences SPI}}
-  artifact provides {{{jdtaus-sequences-spi/apidocs}programming interfaces}}
+  The {{{jomc-sequences-spi/project-summary.html}JOMC Sequences SPI}}
+  artifact provides {{{jomc-sequences-spi/apidocs}programming interfaces}}
   for Sequences integration.
 
-  The {{{jdtaus-sequences-it/project-summary.html}jDTAUS Sequences Test Suite}}
-  artifact provides {{{jdtaus-sequences-it/apidocs}test classes}} Sequences
+  The {{{jomc-sequences-it/project-summary.html}JOMC Sequences Test Suite}}
+  artifact provides {{{jomc-sequences-it/apidocs}test classes}} Sequences
   implementations are tested with.
