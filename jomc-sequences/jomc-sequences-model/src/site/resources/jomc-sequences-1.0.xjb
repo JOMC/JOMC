@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  JOMC - Java Object Management and Configuration
+  Copyright (C) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+
+-->
+<jaxb:bindings xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+               xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               xmlns:sequences="http://jomc.org/sequences/model"
+               xmlns:ci="http://jaxb.dev.java.net/plugin/code-injector"
+               xmlns:persistence="http://java.sun.com/xml/ns/persistence"
+               xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+               jaxb:version="2.0">
+
+  <jaxb:bindings schemaLocation="jomc-sequences-1.0.xsd">
+    <!-- *********************************************************************************************************** -->
+    <jaxb:bindings>
+      <persistence:jta-data-source>jta/jomc-sequences-model</persistence:jta-data-source>
+    </jaxb:bindings>
+
+    <!-- *********************************************************************************************************** -->
+    <jaxb:bindings node="xs:complexType[@name='SequencesType']">
+      <orm:named-query name="jomc-sequences-model-find-sequences-by-name">
+        <orm:query><![CDATA[SELECT l FROM SequencesType l WHERE l.name = ?1]]></orm:query>
+      </orm:named-query>
+      <orm:named-query name="jomc-sequences-model-find-sequence-by-name">
+        <orm:query><![CDATA[SELECT s FROM SequenceType s, SequencesType l JOIN l.sequence j WHERE l.name = ?1 AND s.name = ?2 AND j.name = s.name]]></orm:query>
+      </orm:named-query>
+      <orm:named-query name="jomc-sequences-model-find-all-sequences">
+        <orm:query><![CDATA[SELECT s FROM SequenceType s, SequencesType l JOIN l.sequence j WHERE l.name = ?1 AND j.name = s.name]]></orm:query>
+      </orm:named-query>
+      <orm:named-query name="jomc-sequences-model-search-sequences">
+        <orm:query><![CDATA[SELECT s FROM SequenceType s, SequencesType l JOIN l.sequence j WHERE l.name = ?1 AND s.name LIKE ?2 AND j.name = s.name]]></orm:query>
+      </orm:named-query>
+      <orm:named-query name="jomc-sequences-model-count-sequences">
+        <orm:query><![CDATA[SELECT COUNT(s) FROM SequenceType s, SequencesType l JOIN l.sequence j WHERE l.name = ?1 AND j.name = s.name]]></orm:query>
+      </orm:named-query>
+    </jaxb:bindings>
+
+    <!-- *********************************************************************************************************** -->
+    <jaxb:bindings node="xs:complexType[@name='SequencesType']">
+      <ci:code><![CDATA[
+    /**
+     * Gets a sequence for a given name.
+     *
+     * @param name The name of the sequence to return.
+     *
+     * @return The sequence with name {@code name} or {@code null} if no
+     * sequence matching {@code name} is found.
+     *
+     * @throws NullPointerException if {@code name} is {@code null}.
+     */
+    public SequenceType getSequence( final String name )
+    {
+        if ( name == null )
+        {
+            throw new NullPointerException( "name" );
+        }
+
+        for ( SequenceType s : this.getSequence() )
+        {
+            if ( s.getName().equals( name ) )
+            {
+                return s;
+            }
+        }
+
+        return null;
+    }
+]]></ci:code>
+    </jaxb:bindings>
+
+    <!-- *********************************************************************************************************** -->
+    <jaxb:bindings node="xs:complexType[@name='SequencesType']/xs:sequence/xs:element[@ref='sequences:sequence']">
+      <orm:many-to-many fetch="LAZY">
+        <orm:cascade>
+          <orm:cascade-persist/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </jaxb:bindings>
+
+  </jaxb:bindings>
+</jaxb:bindings>

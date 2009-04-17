@@ -120,7 +120,7 @@
         <xsd:documentation xml:lang="en"><![CDATA[Key of a schema.]]></xsd:documentation>
       </xsd:annotation>
       <xsd:selector xpath=".//sdk:schema"/>
-      <xsd:field xpath="@sdk:public-id"/>
+      <xsd:field xpath="@public-id"/>
     </xsd:key>
   </xsd:element>
   <xsd:complexType name="SchemasType">

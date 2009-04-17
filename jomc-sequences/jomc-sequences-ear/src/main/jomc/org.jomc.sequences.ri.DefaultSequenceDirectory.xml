@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation xmlns="http://jomc.org/model"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+                modelVersion="1.0"
+                identifier="org.jomc.sequences.ri.DefaultSequenceDirectory">
+
+  <properties>
+    <property name="containerManaged" type="boolean" value="true"/>
+  </properties>
+</implementation>

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+  
+  <specifications>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.ri.SequenceMapper"
+                   version="1.0"
+                   vendor="${pom.organization.name}"
+                   scope="Singleton"
+                   stateless="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Maps model classes.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+  </specifications>
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ri.DefaultSequenceDirectory"
+                    class="org.jomc.sequences.ri.DefaultSequenceDirectory"
+                    name="${pom.name}"
+                    vendor="${pom.organization.name}"
+                    version="${pom.version}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[SequenceDirectory reference implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.sequences.SequenceOperations"
+                   version="1.0"/>
+        <reference identifier="org.jomc.sequences.SequenceDirectory"
+                   version="1.0"/>
+      </specifications>
+
+      <dependencies>
+        <dependency identifier="org.jomc.sequences.SequenceObserver"
+                    version="1.0"
+                    name="SequenceObserver"
+                    bound="true"/>
+
+        <dependency identifier="org.jomc.sequences.spi.SequenceValidator"
+                    version="1.0"
+                    name="SequenceValidator"
+                    bound="true"/>
+
+        <dependency identifier="org.jomc.sequences.ri.SequenceMapper"
+                    version="1.0"
+                    name="SequenceMapper"
+                    bound="true"
+                    implementationName="${pom.name}"/>
+
+        <dependency identifier="javax.persistence.EntityManager"
+                    name="EntityManager"
+                    implementationName="JOMC SDK"/>
+
+        <dependency identifier="javax.transaction.UserTransaction"
+                    name="UserTransaction"
+                    implementationName="JOMC SDK"/>
+
+        <dependency identifier="org.jomc.logging.Logger"
+                    version="1.0"
+                    name="Logger"
+                    bound="true">
+
+          <properties>
+            <property name="name" type="java.lang.String"
+                      value="org.jomc.sequences.ri.DefaultSequenceDirectory"/>
+
+          </properties>
+        </dependency>
+
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    implementationName="default"
+                    bound="true"/>
+
+      </dependencies>
+      <properties>
+        <property name="directoryName" type="java.lang.String" value="${pom.name}">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Name uniquely identifying the directory in a set of directories.]]></text>
+          </documentation>
+        </property>
+        <property name="containerManaged" type="boolean" value="false">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating container managed transaction demarcation. Set to true when using in an EJB environment.]]></text>
+          </documentation>
+        </property>
+      </properties>
+      <messages>
+        <message name="implementationInfo">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[DefaultSequenceDirectory ${pom.version}
+{0}]]></text>
+            <text language="de"><![CDATA[DefaultSequenceDirectory ${pom.version}
+{0}]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="configurationPrintout"/>
+          </arguments>
+        </message>
+        <message name="couldNotJoinTransaction">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Could not join transaction with status ''{0,number}''.]]></text>
+            <text language="de"><![CDATA[Konnte Transaktion mit Status ''{0,number}'' nicht beitreten.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="status" type="Number"/>
+          </arguments>
+        </message>
+        <message name="successfullyStartedTransaction">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Started new transaction with status ''{0}''.]]></text>
+            <text language="de"><![CDATA[Neue Transaktion mit Status ''{0}'' gestartet.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="status" type="Number"/>
+          </arguments>
+        </message>
+        <message name="successfullyJoinedTransaction">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Joined active transaction with status ''{0,number}''.]]></text>
+            <text language="de"><![CDATA[Aktueller Transaktion mit Status ''{0}'' beigetreten.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="status" type="Number"/>
+          </arguments>
+        </message>
+        <message name="successfullyCommittedTransaction">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Committed active transaction with status ''{0}''.]]></text>
+            <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' festgeschrieben.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="status" type="Number"/>
+          </arguments>
+        </message>
+        <message name="successfullyRolledBackTransaction">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Rolled back active transaction with status ''{0}''.]]></text>
+            <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' zurückgenommen.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="status" type="Number"/>
+          </arguments>
+        </message>
+        <message name="createdSequenceDirectory">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Sequence directory ''{0}'' created.]]></text>
+            <text language="de"><![CDATA[Sequenzverzeichnis ''{0}'' erstellt.]]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="name"/>
+          </arguments>
+        </message>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ri.DefaultSequenceValidator"
+                    class="org.jomc.sequences.ri.DefaultSequenceValidator"
+                    name="${pom.name}"
+                    vendor="${pom.organization.name}"
+                    version="${pom.version}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[SequenceValidator implementation validating sequence instances for use with the reference implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.sequences.spi.SequenceValidator"
+                   version="1.0"/>
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ri.DefaultSequenceMapper"
+                    class="org.jomc.sequences.ri.DefaultSequenceMapper"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code SequenceMapper} reference implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.sequences.ri.SequenceMapper"
+                   version="1.0"/>
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ri.DefaultSequenceObserver"
+                    class="org.jomc.sequences.ri.DefaultSequenceObserver"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code SequenceObserver} reference implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.sequences.SequenceObserver" version="1.0"/>
+      </specifications>
+      <dependencies>
+        <dependency identifier="org.jomc.logging.Logger"
+                    version="1.0"
+                    name="Logger"
+                    bound="true">
+
+          <properties>
+            <property name="name" type="java.lang.String"
+                      value="org.jomc.sequences.ri.DefaultSequenceObserver"/>
+
+          </properties>
+        </dependency>
+
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    implementationName="default"
+                    bound="true"/>
+
+      </dependencies>
+      <messages>
+        <message name="operationInfo">
+          <template defaultLanguage="en">
+            <text language="en"><![CDATA[Directory update
+    --''{0}''
+    ++''{1}'']]></text>
+            <text language="de"><![CDATA[Verzeichnisänderung
+    --''{0}''
+    ++''{1}'']]></text>
+          </template>
+          <arguments>
+            <argument index="0" name="oldSequenceInfo"/>
+            <argument index="1" name="newSequenceInfo"/>
+          </arguments>
+        </message>
+      </messages>
+    </implementation>
+  </implementations>
+</module>

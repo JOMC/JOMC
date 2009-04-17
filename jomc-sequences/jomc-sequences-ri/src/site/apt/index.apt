@@ -1,0 +1,22 @@
+  -----
+jDTAUS Sequences RI JAXB
+  -----
+Christian Schulte
+  -----
+July 2005
+  -----
+
+jDTAUS Sequences RI
+
+  This artifact provides the jDTAUS Sequences reference implementation.
+  Persistence is implemented using JTA 1.1 and JPA 1.0 interfaces.
+  This artifact may be used in any environment providing JTA 1.1
+  compatible transaction management and JPA 1.0 compatible entity
+  management.
+
+  See the {{{jdtaus-sequences-ear/index.html}jDTAUS Sequences Enterprise Application}}
+  artifact containing this implementation prepared for use in an EJB 3 compatible
+  container. The {{{jdtaus-sequences-it/index.html}jDTAUS Sequences Test Suite}}
+  artifact provides a command line test client for testing the implementation
+  from outside the container which can be downloaded from the central Maven 2
+  repository at {{{http://repo1.maven.org/maven2/org/jdtaus/sequences/jdtaus-sequences-it/}jdtaus-sequences-it-<version>-bin.zip}}.

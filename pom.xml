@@ -56,6 +56,22 @@
     <system>MantisBT</system>
     <url>https://apps.sourceforge.net/mantisbt/jomc/</url>
   </issueManagement>
+  <ciManagement>
+    <system>continuum</system>
+    <url>http://continuum.jomc.org/continuum/</url>
+    <notifiers>
+      <notifier>
+        <type>mail</type>
+        <sendOnError>true</sendOnError>
+        <sendOnFailure>true</sendOnFailure>
+        <sendOnSuccess>false</sendOnSuccess>
+        <sendOnWarning>false</sendOnWarning>
+        <configuration>
+          <address>jomc-svn@lists.sourceforge.net</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
   <mailingLists>
     <mailingList>
       <name>jomc-users</name>
@@ -129,6 +145,11 @@
               <artifactId>jaxb-xjc</artifactId>
               <version>${jaxbImplVersion}</version>
             </dependency>
+            <dependency>
+              <groupId>net.sourceforge.jpaxjc</groupId>
+              <artifactId>jpa-xjc-plugin</artifactId>
+              <version>1.0-alpha-1</version>
+            </dependency>
           </dependencies>
           <executions>
             <execution>
@@ -190,23 +211,14 @@
         <plugin>
           <artifactId>maven-gpg-plugin</artifactId>
           <version>1.0-alpha-4</version>
-          <executions>
-            <execution>
-              <id>sign</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>sign</goal>
-              </goals>
-              <configuration>
-                <keyname>${gpg.keyname}</keyname>
-                <passphrase>${gpg.passphrase}</passphrase>
-              </configuration>
-            </execution>
-          </executions>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jarsigner-plugin</artifactId>
+          <version>1.0-SNAPSHOT</version>
         </plugin>
         <plugin>
           <artifactId>maven-remote-resources-plugin</artifactId>
-          <version>1.0</version>
+          <version>1.1-SNAPSHOT</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -301,15 +313,6 @@
         <plugin>
           <artifactId>maven-pmd-plugin</artifactId>
           <version>${mavenPmdPluginVersion}</version>
-          <inherited>true</inherited>
-          <executions>
-            <execution>
-              <id>pmd-check</id>
-              <goals>
-                <goal>check</goal>
-              </goals>
-            </execution>
-          </executions>
           <configuration>
             <sourceEncoding>UTF-8</sourceEncoding>
             <targetJdk>1.5</targetJdk>
@@ -416,8 +419,39 @@
         </plugin>
         <plugin>
           <artifactId>maven-source-plugin</artifactId>
-          <version>2.0.4</version>
+          <version>2.2-SNAPSHOT</version>
           <configuration>
+            <archive>
+              <index>true</index>
+              <addMavenDescriptor>false</addMavenDescriptor>
+              <compress>true</compress>
+              <manifestEntries>
+                <Build-Date>${buildNumber}</Build-Date>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ejb-plugin</artifactId>
+          <version>2.1</version>
+          <configuration>
+            <ejbVersion>3.0</ejbVersion>
+            <archive>
+              <index>true</index>
+              <addMavenDescriptor>false</addMavenDescriptor>
+              <compress>true</compress>
+              <manifestEntries>
+                <Build-Date>${buildNumber}</Build-Date>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <version>5</version>
+            <defaultLibBundleDir>lib</defaultLibBundleDir>
             <archive>
               <index>true</index>
               <addMavenDescriptor>false</addMavenDescriptor>
@@ -448,6 +482,8 @@
     <module>jomc-logging</module>
     <module>jomc-standalone</module>
     <module>jomc-sdk</module>
+    <module>jomc-sequences</module>
+    <module>jomc</module>
   </modules>
   <reporting>
     <plugins>
@@ -524,31 +560,31 @@
               <groups>
                 <group>
                   <title>Application Programming Interface</title>
-                  <packages>eu.jomc</packages>
+                  <packages>org.jomc</packages>
                 </group>
                 <group>
                   <title>Implementation Programming Interface</title>
-                  <packages>eu.jomc.spi*</packages>
+                  <packages>org.jomc.spi*</packages>
                 </group>
                 <group>
                   <title>Model</title>
-                  <packages>eu.jomc.model*</packages>
+                  <packages>org.jomc.model*</packages>
                 </group>
                 <group>
                   <title>Tools</title>
-                  <packages>eu.jomc.tools*</packages>
+                  <packages>org.jomc.tools*</packages>
                 </group>
                 <group>
                   <title>Maven Plugin</title>
-                  <packages>eu.jomc.tools.mojo*</packages>
+                  <packages>org.jomc.tools.mojo*</packages>
                 </group>
                 <group>
                   <title>Tests</title>
-                  <packages>eu.jomc.it*</packages>
+                  <packages>org.jomc.it*</packages>
                 </group>
                 <group>
                   <title>Reference Implementation</title>
-                  <packages>eu.jomc.ri*</packages>
+                  <packages>org.jomc.ri*</packages>
                 </group>
               </groups>
             </configuration>
@@ -561,8 +597,8 @@
               <additionalparam>
                  -inferrel -inferdep
                  -hide java.*
-                 -hide eu.jomc.tools.*
-                 -hide eu.jomc.ri.*
+                 -hide org.jomc.tools.*
+                 -hide org.jomc.ri.*
                  -collpackages java.util.* -qualify
                  -postfixpackage -nodefontsize 9
                  -nodefontpackagesize 7
@@ -622,7 +658,8 @@
   </reporting>
   <dependencyManagement>
     <dependencies>
-      <!-- Compile -->
+
+      <!-- Commons -->
       <dependency>
         <groupId>commons-cli</groupId>
         <artifactId>commons-cli</artifactId>
@@ -636,12 +673,12 @@
         <scope>compile</scope>
       </dependency>
       <dependency>
-        <groupId>org.apache.velocity</groupId>
-        <artifactId>velocity</artifactId>
-        <version>1.6.1</version>
-        <scope>compile</scope>
+        <groupId>commons-logging</groupId>
+        <artifactId>commons-logging</artifactId>
+        <version>1.1.1</version>
       </dependency>
-      <!-- Provided -->
+
+      <!-- Maven -->
       <dependency>
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-plugin-api</artifactId>
@@ -666,7 +703,8 @@
         <version>2.0</version>
         <scope>provided</scope>
       </dependency>
-      <!-- JOMC                                                              -->
+
+      <!-- JOMC -->
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
@@ -694,9 +732,41 @@
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
+        <artifactId>jomc-tools</artifactId>
+        <classifier>bin</classifier>
+        <type>zip</type>
+        <version>${jomcVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-tools</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.gz</type>
+        <version>${jomcVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-tools</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.bz2</type>
+        <version>${jomcVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-sdk</artifactId>
+        <version>${jomcVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-standalone</artifactId>
+        <version>${jomcVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <version>${jomcVersion}</version>
       </dependency>
+
       <!-- JOMC Logging -->
       <dependency>
         <groupId>org.jomc.logging</groupId>
@@ -706,6 +776,27 @@
       <dependency>
         <groupId>org.jomc.logging</groupId>
         <artifactId>jomc-logging-it</artifactId>
+        <version>${jomcLoggingVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.logging</groupId>
+        <artifactId>jomc-logging-it</artifactId>
+        <classifier>bin</classifier>
+        <type>zip</type>
+        <version>${jomcLoggingVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.logging</groupId>
+        <artifactId>jomc-logging-it</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.gz</type>
+        <version>${jomcLoggingVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.logging</groupId>
+        <artifactId>jomc-logging-it</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.bz2</type>
         <version>${jomcLoggingVersion}</version>
       </dependency>
       <dependency>
@@ -724,15 +815,87 @@
         <version>${jomcLoggingVersion}</version>
       </dependency>
       <dependency>
-        <groupId>commons-logging</groupId>
-        <artifactId>commons-logging</artifactId>
-        <version>1.1.1</version>
+        <groupId>org.jomc.logging</groupId>
+        <artifactId>jomc-logging-slf4j-logging</artifactId>
+        <version>${jomcLoggingVersion}</version>
       </dependency>
+
+      <!-- JOMC Sequences -->
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-api</artifactId>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-spi</artifactId>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-model</artifactId>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-it</artifactId>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-it</artifactId>
+        <classifier>bin</classifier>
+        <type>zip</type>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-it</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.gz</type>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-it</artifactId>
+        <classifier>bin</classifier>
+        <type>tar.bz2</type>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-utilities</artifactId>
+        <version>${jomcSequencesVersion}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-ri</artifactId>
+        <version>${jomcSequencesVersion}</version>
+        <type>ejb</type>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc.sequences</groupId>
+        <artifactId>jomc-sequences-ear</artifactId>
+        <version>${jomcSequencesVersion}</version>
+        <type>ear</type>
+      </dependency>
+
+      <!-- Apache Misc -->
+      <dependency>
+        <groupId>org.apache.velocity</groupId>
+        <artifactId>velocity</artifactId>
+        <version>1.6.1</version>
+        <scope>compile</scope>
+      </dependency>
+
+      <!-- Log4j -->
       <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
         <version>1.2.14</version>
       </dependency>
+
+      <!-- Slf4j -->
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -743,6 +906,7 @@
         <artifactId>slf4j-log4j12</artifactId>
         <version>1.5.6</version>
       </dependency>
+
       <!-- JAXB -->
       <dependency>
         <groupId>javax.xml.bind</groupId>
@@ -759,6 +923,7 @@
         <artifactId>jaxb-xjc</artifactId>
         <version>${jaxbImplVersion}</version>
       </dependency>
+
       <!-- EE -->
       <dependency>
         <groupId>javax.persistence</groupId>
@@ -780,6 +945,7 @@
         <artifactId>connector-api</artifactId>
         <version>1.5</version>
       </dependency>
+
       <!-- Hibernate -->
       <dependency>
         <groupId>org.hibernate</groupId>
@@ -793,6 +959,7 @@
           </exclusion>
         </exclusions>
       </dependency>
+
       <!-- Open JPA -->
       <dependency>
         <groupId>org.apache.openjpa</groupId>
@@ -814,6 +981,7 @@
           </exclusion>
         </exclusions>
       </dependency>
+
       <!-- Toplink -->
       <dependency>
         <groupId>toplink.essentials</groupId>
@@ -827,6 +995,7 @@
           </exclusion>
         </exclusions>
       </dependency>
+
       <!-- JBoss JTA -->
       <dependency>
         <groupId>org.jboss.transaction</groupId>
@@ -834,6 +1003,7 @@
         <version>4.2.3.SP5</version>
         <optional>true</optional>
       </dependency>
+
       <!-- Geronimo JTA -->
       <dependency>
         <groupId>org.apache.geronimo.components</groupId>
@@ -851,6 +1021,7 @@
           </exclusion>
         </exclusions>
       </dependency>
+
       <!-- Jonas JTA -->
       <dependency>
         <groupId>jotm</groupId>
@@ -868,6 +1039,29 @@
           </exclusion>
         </exclusions>
       </dependency>
+
+      <!-- Databases -->
+      <dependency>
+        <groupId>org.apache.derby</groupId>
+        <artifactId>derby</artifactId>
+        <version>10.4.2.0</version>
+        <optional>true</optional>
+      </dependency>
+
+      <!-- JDBC Drivers -->
+      <dependency>
+        <groupId>postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>8.3-603.jdbc3</version>
+        <optional>true</optional>
+      </dependency>
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.6</version>
+        <optional>true</optional>
+      </dependency>
+
       <!-- Misc -->
       <dependency>
         <groupId>javax.annotation</groupId>
@@ -915,6 +1109,16 @@
       </snapshots>
     </repository>
     <repository>
+      <id>jpaxjcplugin.sourceforge.net</id>
+      <url>http://jpaxjcplugin.sourceforge.net/maven2/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>jomc-snapshots</id>
       <url>http://www.jomc.org/maven2/snapshots</url>
       <layout>default</layout>
@@ -953,6 +1157,16 @@
     <pluginRepository>
       <id>repository.jboss.org</id>
       <url>http://repository.jboss.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>jpaxjcplugin.sourceforge.net</id>
+      <url>http://jpaxjcplugin.sourceforge.net/maven2/releases</url>
       <releases>
         <enabled>true</enabled>
       </releases>
@@ -1043,29 +1257,6 @@
         <plugins>
           <plugin>
             <inherited>true</inherited>
-            <artifactId>maven-jar-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>sign</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>sign</goal>
-                </goals>
-                <configuration>
-                  <storepass>${jarsign.storepass}</storepass>
-                  <keypass>${jarsign.keypass}</keypass>
-                  <alias>${jarsign.alias}</alias>
-                  <jarPath>${project.build.directory}/${project.build.finalName}.jar</jarPath>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <inherited>true</inherited>
-            <artifactId>maven-gpg-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <inherited>true</inherited>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
             <executions>
@@ -1093,10 +1284,33 @@
           <plugin>
             <inherited>true</inherited>
             <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-              <updateReleaseInfo>true</updateReleaseInfo>
-            </configuration>
+            <artifactId>maven-jarsigner-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>verify</id>
+                <goals>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <inherited>true</inherited>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>sign</id>
+                <goals>
+                  <goal>sign</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
@@ -1112,6 +1326,7 @@
     <mavenChangesPluginVersion>2.1</mavenChangesPluginVersion>
     <jomcVersion>1.0-alpha-1-SNAPSHOT</jomcVersion>
     <jomcLoggingVersion>1.0-alpha-1-SNAPSHOT</jomcLoggingVersion>
+    <jomcSequencesVersion>1.0-alpha-1-SNAPSHOT</jomcSequencesVersion>
     <javaccMavenPluginVersion>2.5</javaccMavenPluginVersion>
     <jaxbApiVersion>2.1</jaxbApiVersion>
     <jaxbImplVersion>2.1.10</jaxbImplVersion>

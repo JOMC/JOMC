@@ -1,0 +1,7 @@
+
+  ${pom.description}
+  Version ${pom.version} Build ${buildNumber}
+
+  Tests
+
+  bin/testsuite org.jomc.logging.it.LoggerTest

@@ -1,0 +1,29 @@
+  -----
+jDTAUS Sequences
+  -----
+Christian Schulte
+  -----
+July 2005
+  -----
+
+jDTAUS Sequences
+
+  The {{{jdtaus-sequences-api/project-summary.html}jDTAUS Sequences API}}
+  artifact provides {{{jdtaus-sequences-api/apidocs}application programming
+  interfaces}} to a directory of sequences. Whenever that API is used at compile
+  time, an application assembler needs to provide a corresponding implementation
+  at runtime as shown below.
+
+*-------------------+--------------+-------------------------------------------+
+|| <<Artifact>>     || <<License>> || <<Description>>                         ||
+*-------------------+--------------+-------------------------------------------+
+| {{{jdtaus-sequences-ri/index.html} jDTAUS Sequences RI}} | LGPL | Sequences reference implementation based on JTA 1.1 and JPA 1.0. {{{jdtaus-sequences-ri/apidocs/}See Javadoc}}|
+*-------------------+--------------+-------------------------------------------+
+
+  The {{{jdtaus-sequences-spi/project-summary.html}jDTAUS Sequences SPI}}
+  artifact provides {{{jdtaus-sequences-spi/apidocs}programming interfaces}}
+  for Sequences integration.
+
+  The {{{jdtaus-sequences-it/project-summary.html}jDTAUS Sequences Test Suite}}
+  artifact provides {{{jdtaus-sequences-it/apidocs}test classes}} Sequences
+  implementations are tested with.

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+  
+  <specifications>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.SequenceDirectory"
+                   vendor="${pom.organization.name}"
+                   version="1.0"
+                   scope="Singleton"
+                   multiplicity="One"
+                   stateless="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Directory of sequences.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.SequenceOperations"
+                   vendor="${pom.organization.name}"
+                   version="1.0"
+                   scope="Singleton"
+                   multiplicity="One"
+                   stateless="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Provides operations performed with sequences.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.SequenceObserver"
+                   vendor="${pom.organization.name}"
+                   version="1.0">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Interface to observe operations performed by a system's sequence directory.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+  </specifications>
+
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.CapacityLimitException"
+                    class="org.jomc.sequences.CapacityLimitException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets thrown whenever the directories capacity limit has been reached.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="capacityLimit"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.IllegalSequenceException"
+                    class="org.jomc.sequences.IllegalSequenceException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[
+Gets thrown whenever illegal sequence information is passed to a method
+expecting legal sequence data.
+<p>Throwing an {@code IllegalSequenceException}<blockquote><pre>
+IllegalSequenceException e = new IllegalSequenceException();
+e.getDetails(Sequence.PROP_<i>XYZ</i>).add(IllegalSequenceException.MANDATORY_PROPERTY_MISSING);
+e.getDetails().add(IllegalSequenceException.<i>XYZ</i>);
+throw e;</pre></blockquote></p>
+<p>Catching an {@code IllegalSequenceException}<blockquote><pre>
+catch(IllegalSequenceException e)
+{
+        <i>Fetch details bound to properties.</i>
+        e.getDetails(Sequence.PROP_<i>XYZ</i>);
+        ...
+        <i>Fetch details not bound to any property.</i>
+        e.getDetails();
+        ...
+}</blockquote></pre></p>]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="illegalSequence"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.SequenceLimitException"
+                    class="org.jomc.sequences.SequenceLimitException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[
+Gets thrown whenever the next value of a sequence is requested although its
+maximum value has already been reached.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="sequenceLimit"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.SequenceNotFoundException"
+                    class="org.jomc.sequences.SequenceNotFoundException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets thrown when a sequence is not found for a given name.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="sequenceNotFound"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ConcurrentModificationException"
+                    class="org.jomc.sequences.ConcurrentModificationException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets thrown whenever a sequence is edited or removed using outdated data.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="concurrentlyModified"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.DuplicateSequenceException"
+                    class="org.jomc.sequences.DuplicateSequenceException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets thrown when a sequence is about to be added to a directory although a sequence with the same name already exists.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="duplicateSequence"/>
+      </messages>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.SequencesSystemException"
+                    class="org.jomc.sequences.SequencesSystemException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets thrown whenever an unexpected error condition is detected.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.Sequence"
+                    class="org.jomc.sequences.Sequence"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Sequence of numbers.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+  </implementations>
+  <messages>
+
+    <!-- ******************************************************************* -->
+    <message name="capacityLimit">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[The capacity limit {0,number} of the sequence directory has been reached.]]></text>
+        <text language="de"><![CDATA[Kapazitätsgrenze {0,number} des Sequenz-Verzeichnisses erreicht.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="capacityLimit" type="Number"/>
+      </arguments>
+    </message>
+
+    <!-- ******************************************************************* -->
+    <message name="illegalSequence">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Illegal sequence data.]]></text>
+        <text language="de"><![CDATA[Ungültige Sequenzdaten.]]></text>
+      </template>
+    </message>
+
+    <!-- ******************************************************************* -->
+    <message name="sequenceLimit">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[The maximum sequence value {0,number} has been reached. No more sequence values available.]]></text>
+        <text language="de"><![CDATA[Der Maximalwert {0,number} der Sequenz wurde erreicht. Keine weiteren Sequenz-Werte verfügbar.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="sequenceLimit" type="Number"/>
+      </arguments>
+    </message>
+
+    <!-- ******************************************************************* -->
+    <message name="sequenceNotFound">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[No sequence found matching name {0}.]]></text>
+        <text language="de"><![CDATA[Keine Sequenz mit Namen {0} vorhanden.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="sequenceName"/>
+      </arguments>
+    </message>
+
+    <!-- ******************************************************************* -->
+    <message name="concurrentlyModified">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[The sequence got concurrently modified.]]></text>
+        <text language="de"><![CDATA[Die Sequenz wurde zwischenzeitlich geändert.]]></text>
+      </template>
+    </message>
+
+    <!-- ******************************************************************* -->
+    <message name="duplicateSequence">
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Message stating that a sequence already exists in the directory.]]></text>
+      </documentation>
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[A sequence with the name {0} already exists.]]></text>
+        <text language="de"><![CDATA[Eine Sequenz mit Namen {0} existiert bereits.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="sequenceName"/>
+      </arguments>
+    </message>
+  </messages>
+</module>

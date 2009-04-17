@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd
+                            http://jomc.org/sdk/model http://www.jomc.org/jomc-sdk/jomc-sdk-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+  
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.model.XmlFramework"
+                    class="org.jomc.sdk.xml.XmlFramework"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true"
+                    parent="org.jomc.sdk.xml.XmlFramework">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Sequences XML framework implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <properties>
+        <property name="configuration" type="java.lang.Object">
+          <xml-framework-configuration xmlns="http://jomc.org/sdk/model">
+            <schemas>
+              <schema public-id="http://jomc.org/sequences/model"
+                      system-id="http://www.jomc.org/jomc-sequences/jomc-sequences-model/jomc-sequences-1.0.xsd"
+                      context-id="org.jomc.sequences.model"
+                      classpath-id="org/jomc/sequences/model/jomc-sequences-1.0.xsd"/>
+
+            </schemas>
+          </xml-framework-configuration>
+        </property>
+      </properties>
+    </implementation>
+  </implementations>
+</module>

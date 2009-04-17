@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+  ${pom.name}
+  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+
+  This library is free software; you can redistribute it and/or
+  modify it under the terms of the GNU Lesser General Public
+  License as published by the Free Software Foundation; either
+  version 2.1 of the License, or any later version.
+
+  This library is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+  Lesser General Public License for more details.
+
+  You should have received a copy of the GNU Lesser General Public
+  License along with this library; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+-->
+<module xmlns="http://jomc.org/model"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
+        name="${pom.name}"
+        version="${pom.version}"
+        vendor="${pom.organization.name}"
+        modelVersion="1.0">
+
+  <documentation defaultLanguage="en">
+    <text language="en"><![CDATA[${pom.description}]]></text>
+  </documentation>
+  
+  <specifications>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.util.SequencesTableModel"
+                   version="1.0"
+                   vendor="${pom.organization.name}"
+                   scope="Context">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Swing {@code TableModel} Java Bean for displaying and editing a system's {@code SequenceDirectory}.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+  </specifications>
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.util.SequencesTableModel"
+                    class="org.jomc.sequences.util.SequencesTableModel"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="false">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Swing {@code TableModel} Java Bean for displaying and editing a system's {@code SequenceDirectory}.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.sequences.util.SequencesTableModel"
+                   version="1.0"/>
+
+      </specifications>
+      <dependencies>
+        <dependency identifier="org.jomc.sequences.SequenceDirectory"
+                    version="1.0"
+                    name="SequenceDirectory"
+                    bound="true"/>
+
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    bound="false"
+                    implementationName="default"/>
+
+        <dependency identifier="org.jomc.logging.Logger"
+                    version="1.0"
+                    name="Logger"
+                    bound="true">
+
+          <properties>
+            <property name="name" type="java.lang.String"
+                      value="org.jomc.sequences.util.SequencesTableModel"/>
+
+          </properties>
+        </dependency>
+      </dependencies>
+      <properties>
+        <property name="nameColumnEditableByDefault" type="java.lang.Boolean"
+                  value="true">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating that the "name" column is editable by default.]]></text>
+          </documentation>
+        </property>
+        <property name="minimumColumnEditableByDefault" type="java.lang.Boolean"
+                  value="true">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating that the "minimum" column is editable by default.]]></text>
+          </documentation>
+        </property>
+        <property name="maximumColumnEditableByDefault" type="java.lang.Boolean"
+                  value="true">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating that the "maximum" column is editable by default.]]></text>
+          </documentation>
+        </property>
+        <property name="incrementColumnEditableByDefault" type="java.lang.Boolean"
+                  value="true">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating that the "increment" column is editable by default.]]></text>
+          </documentation>
+        </property>
+        <property name="valueColumnEditableByDefault" type="java.lang.Boolean"
+                  value="true">
+
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Flag indicating that the "value" column is editable by default.]]></text>
+          </documentation>
+        </property>
+      </properties>
+      <messages>
+        <reference name="nameColumnTitle"/>
+        <reference name="minimumColumnTitle"/>
+        <reference name="maximumColumnTitle"/>
+        <reference name="incrementColumnTitle"/>
+        <reference name="valueColumnTitle"/>
+        <reference name="illegalRowIndex"/>
+        <reference name="illegalColumnIndex"/>
+        <reference name="processCancelled"/>
+      </messages>
+    </implementation>
+  </implementations>
+  <messages>
+    <message name="nameColumnTitle">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Name]]></text>
+        <text language="de"><![CDATA[Name]]></text>
+      </template>
+    </message>
+    <message name="minimumColumnTitle">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Minimum]]></text>
+        <text language="de"><![CDATA[Minimum]]></text>
+      </template>
+    </message>
+    <message name="maximumColumnTitle">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Maximum]]></text>
+        <text language="de"><![CDATA[Maximum]]></text>
+      </template>
+    </message>
+    <message name="incrementColumnTitle">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Increment]]></text>
+        <text language="de"><![CDATA[Inkrement]]></text>
+      </template>
+    </message>
+    <message name="valueColumnTitle">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Value]]></text>
+        <text language="de"><![CDATA[Wert]]></text>
+      </template>
+    </message>
+    <message name="illegalRowIndex">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Illegal row index {0}. {1}]]></text>
+        <text language="de"><![CDATA[Ungültiger Zeilen-Index {0}. {1}]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="rowIndex" type="Number"/>
+        <argument index="1" name="message"/>
+      </arguments>
+    </message>
+    <message name="illegalColumnIndex">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Illegal column index {0}. {1}]]></text>
+        <text language="de"><![CDATA[Ungültiger Spalten-Index {0}. {1}]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="columnIndex" type="Number"/>
+      </arguments>
+    </message>
+    <message name="processCancelled">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Process cancelled]]></text>
+        <text language="de"><![CDATA[Vorgang abgebrochen]]></text>
+      </template>
+    </message>
+  </messages>
+</module>
