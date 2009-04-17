@@ -222,7 +222,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.4.3</version>
+          <version>${surefireVersion}</version>
           <configuration>
             <forkMode>once</forkMode>
             <skip>false</skip>
@@ -320,7 +320,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-surefire-report-plugin</artifactId>
-          <version>${mavenSurefireReportPluginVersion}</version>
+          <version>${surefireVersion}</version>
         </plugin>
         <plugin>
           <artifactId>maven-checkstyle-plugin</artifactId>
@@ -396,7 +396,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>1.2</version>
+          <version>1.2.1</version>
         </plugin>
         <plugin>
           <artifactId>maven-scm-plugin</artifactId>
@@ -626,7 +626,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${mavenSurefireReportPluginVersion}</version>
+        <version>${surefireVersion}</version>
         <inherited>true</inherited>
       </plugin>
       <plugin>
@@ -1321,7 +1321,6 @@
     <mavenJavadocPluginVersion>2.5</mavenJavadocPluginVersion>
     <mavenJxrPluginVersion>2.1</mavenJxrPluginVersion>
     <mavenPmdPluginVersion>2.4</mavenPmdPluginVersion>
-    <mavenSurefireReportPluginVersion>2.4.3</mavenSurefireReportPluginVersion>
     <mavenCheckstylePluginVersion>2.2</mavenCheckstylePluginVersion>
     <mavenChangesPluginVersion>2.1</mavenChangesPluginVersion>
     <jomcVersion>1.0-alpha-1-SNAPSHOT</jomcVersion>
@@ -1331,6 +1330,7 @@
     <jaxbApiVersion>2.1</jaxbApiVersion>
     <jaxbImplVersion>2.1.10</jaxbImplVersion>
     <umlgraphVersion>4.6</umlgraphVersion>
+    <surefireVersion>2.4.3</surefireVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>
