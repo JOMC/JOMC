@@ -77,7 +77,11 @@ import org.xml.sax.SAXException;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class XmlFramework
 {
@@ -319,7 +323,7 @@ public class XmlFramework
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public XmlFramework()
     {
@@ -338,7 +342,7 @@ public class XmlFramework
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Object getConfiguration() throws org.jomc.ObjectManagementException
     {

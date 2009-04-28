@@ -44,7 +44,11 @@ import org.jomc.sequences.SequenceOperations;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class SequenceOperationsTest extends TestCase
 {
@@ -215,7 +219,7 @@ public class SequenceOperationsTest extends TestCase
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public SequenceOperationsTest()
     {
@@ -228,14 +232,14 @@ public class SequenceOperationsTest extends TestCase
 
     /**
      * Gets the {@code SequenceDirectory} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceDirectory} specification at specification level 1.0.</p>
      * @return The {@code SequenceDirectory} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {
@@ -244,14 +248,14 @@ public class SequenceOperationsTest extends TestCase
 
     /**
      * Gets the {@code SequenceOperations} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceOperations} specification at specification level 1.0.</p>
      * @return The {@code SequenceOperations} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceOperations getSequenceOperations() throws org.jomc.ObjectManagementException
     {

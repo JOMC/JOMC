@@ -51,5 +51,34 @@
         <reference identifier="org.jomc.logging.Logger" version="1.0"/>
       </specifications>
     </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.logging.ri.jdk.JdkObjectManagementListener"
+                    class="org.jomc.logging.ri.jdk.JdkObjectManagementListener"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code ObjectManagementLister} backed by JDK logging.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Listener" version="1.0"/>
+      </specifications>
+      <dependencies>
+        <dependency name="Logger" identifier="org.jomc.logging.Logger"
+                    version="1.0" bound="true"
+                    implementationName="${pom.name}">
+
+          <properties>
+            <property name="name" value="org.jomc.ObjectManager"/>
+          </properties>
+        </dependency>
+      </dependencies>
+    </implementation>
   </implementations>
 </module>

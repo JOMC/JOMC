@@ -30,7 +30,7 @@
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${pom.description}]]></text>
   </documentation>
-  
+
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.sequences.spi.SequenceValidator"

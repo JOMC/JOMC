@@ -55,12 +55,10 @@ import org.jomc.sequences.spi.SequenceValidator;
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.SequenceOperations} {@code 1.0}<blockquote>
  * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as
- * specified.</blockquote></li>
+ * State does not need to be retained across operations to operate as specified.</blockquote></li>
  * <li>{@code org.jomc.sequences.SequenceDirectory} {@code 1.0}<blockquote>
  * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as
- * specified.</blockquote></li>
+ * State does not need to be retained across operations to operate as specified.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getDirectoryName directoryName}"<blockquote>
@@ -86,10 +84,8 @@ import org.jomc.sequences.spi.SequenceValidator;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getImplementationInfoMessage implementationInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultSequenceDirectory 1.0-alpha-1-SNAPSHOT
-     * {0}</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultSequenceDirectory 1.0-alpha-1-SNAPSHOT
-     * {0}</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
  * </table>
  * <li>"{@link #getCouldNotJoinTransactionMessage couldNotJoinTransaction}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Could not join transaction with status ''{0,number}''.</pre></td></tr>
@@ -122,7 +118,11 @@ import org.jomc.sequences.spi.SequenceValidator;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class DefaultSequenceDirectory
     implements SequenceDirectory, SequenceOperations
@@ -1056,19 +1056,17 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public DefaultSequenceDirectory()
     {
         // SECTION-START[Default Constructor]
         super();
-
         if ( this.getLogger().isDebugEnabled() )
         {
-            final StringBuffer printout = new StringBuffer( 1024 ).append( '{' );
-            printout.append( "containerManaged=" ).append( this.isContainerManaged() ).append( ", " );
-            printout.append( "directoryName=" ).append( this.getDirectoryName() ).append( '}' );
-            this.getLogger().debug( this.getImplementationInfoMessage( this.getLocale(), printout.toString() ) );
+            this.getLogger().debug( this.getImplementationInfoMessage( this.getLocale() ) );
+            this.getLogger().debug( "\tcontainerManaged=" + this.isContainerManaged() );
+            this.getLogger().debug( "\tdirectoryName=" + this.getDirectoryName() );
         }
         // SECTION-END
     }
@@ -1077,14 +1075,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code EntityManager} dependency.
-     * </p>
+     * <p>This method returns the "{@code JOMC SDK}" object of the {@code javax.persistence.EntityManager} specification.</p>
      * @return The {@code EntityManager} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private javax.persistence.EntityManager getEntityManager() throws org.jomc.ObjectManagementException
     {
@@ -1093,14 +1091,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -1109,7 +1107,7 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code Logger} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code name}"</dt>
      * <dd>Property of type {@code java.lang.String} with value "org.jomc.sequences.ri.DefaultSequenceDirectory".
@@ -1121,7 +1119,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
@@ -1130,14 +1128,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code SequenceMapper} dependency.
-     * </p>
+     * <p>This method returns the "{@code JOMC Sequences RI}" object of the {@code org.jomc.sequences.ri.SequenceMapper} specification at specification level 1.0.</p>
      * @return The {@code SequenceMapper} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.ri.SequenceMapper getSequenceMapper() throws org.jomc.ObjectManagementException
     {
@@ -1146,14 +1144,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code SequenceObserver} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceObserver} specification at specification level 1.0.</p>
      * @return The {@code SequenceObserver} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceObserver[] getSequenceObserver() throws org.jomc.ObjectManagementException
     {
@@ -1162,14 +1160,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code SequenceValidator} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.spi.SequenceValidator} specification at specification level 1.0.</p>
      * @return The {@code SequenceValidator} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.spi.SequenceValidator[] getSequenceValidator() throws org.jomc.ObjectManagementException
     {
@@ -1178,14 +1176,14 @@ public class DefaultSequenceDirectory
 
     /**
      * Gets the {@code UserTransaction} dependency.
-     * </p>
+     * <p>This method returns the "{@code JOMC SDK}" object of the {@code javax.transaction.UserTransaction} specification.</p>
      * @return The {@code UserTransaction} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private javax.transaction.UserTransaction getUserTransaction() throws org.jomc.ObjectManagementException
     {
@@ -1202,7 +1200,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private boolean isContainerManaged() throws org.jomc.ObjectManagementException
     {
@@ -1217,7 +1215,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDirectoryName() throws org.jomc.ObjectManagementException
     {
@@ -1241,7 +1239,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getCouldNotJoinTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
@@ -1263,7 +1261,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getCreatedSequenceDirectoryMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
     {
@@ -1273,13 +1271,10 @@ public class DefaultSequenceDirectory
     /**
      * Gets the text of the {@code implementationInfo} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultSequenceDirectory 1.0-alpha-1-SNAPSHOT
-     * {0}</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultSequenceDirectory 1.0-alpha-1-SNAPSHOT
-     * {0}</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param configurationPrintout Format argument.
      * @return The text of the {@code implementationInfo} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -1287,11 +1282,11 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
-    private String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.String configurationPrintout ) throws org.jomc.ObjectManagementException
+    private String getImplementationInfoMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "implementationInfo", locale, new Object[] { configurationPrintout, null } );
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "implementationInfo", locale,  null );
     }
 
     /**
@@ -1309,7 +1304,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getSuccessfullyCommittedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
@@ -1331,7 +1326,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getSuccessfullyJoinedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
@@ -1353,7 +1348,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getSuccessfullyRolledBackTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
@@ -1375,7 +1370,7 @@ public class DefaultSequenceDirectory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getSuccessfullyStartedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {

@@ -42,7 +42,11 @@ package org.jomc.sequences;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class SequenceNotFoundException extends IllegalArgumentException
 {
@@ -97,14 +101,14 @@ public class SequenceNotFoundException extends IllegalArgumentException
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -128,7 +132,7 @@ public class SequenceNotFoundException extends IllegalArgumentException
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getSequenceNotFoundMessage( final java.util.Locale locale, final java.lang.String sequenceName ) throws org.jomc.ObjectManagementException
     {

@@ -173,6 +173,21 @@
               <artifactId>jsr250-api</artifactId>
               <excluded>true</excluded>
             </jarModule>
+            <jarModule>
+              <groupId>javax.ejb</groupId>
+              <artifactId>ejb-api</artifactId>
+              <excluded>true</excluded>
+            </jarModule>
+            <jarModule>
+              <groupId>javax.xml</groupId>
+              <artifactId>jaxrpc-api</artifactId>
+              <excluded>true</excluded>
+            </jarModule>
+            <jarModule>
+              <groupId>javax.xml.soap</groupId>
+              <artifactId>saaj-api</artifactId>
+              <excluded>true</excluded>
+            </jarModule>
           </modules>
           <earSourceDirectory>${project.build.directory}/jomc-ear</earSourceDirectory>
         </configuration>

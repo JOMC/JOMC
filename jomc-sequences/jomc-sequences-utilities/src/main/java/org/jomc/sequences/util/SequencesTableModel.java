@@ -112,7 +112,11 @@ import org.jomc.sequences.Sequence;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class SequencesTableModel extends AbstractTableModel
     implements Serializable
@@ -803,7 +807,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public SequencesTableModel()
     {
@@ -816,14 +820,14 @@ public class SequencesTableModel extends AbstractTableModel
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -832,7 +836,7 @@ public class SequencesTableModel extends AbstractTableModel
 
     /**
      * Gets the {@code Logger} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code name}"</dt>
      * <dd>Property of type {@code java.lang.String} with value "org.jomc.sequences.util.SequencesTableModel".
@@ -844,7 +848,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
@@ -853,14 +857,14 @@ public class SequencesTableModel extends AbstractTableModel
 
     /**
      * Gets the {@code SequenceDirectory} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceDirectory} specification at specification level 1.0.</p>
      * @return The {@code SequenceDirectory} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {
@@ -877,7 +881,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Boolean isIncrementColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
@@ -892,7 +896,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Boolean isMaximumColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
@@ -907,7 +911,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Boolean isMinimumColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
@@ -922,7 +926,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Boolean isNameColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
@@ -937,7 +941,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.Boolean isValueColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
@@ -961,7 +965,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getIllegalColumnIndexMessage( final java.util.Locale locale, final java.lang.Number columnIndex ) throws org.jomc.ObjectManagementException
     {
@@ -984,7 +988,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getIllegalRowIndexMessage( final java.util.Locale locale, final java.lang.Number rowIndex, final java.lang.String message ) throws org.jomc.ObjectManagementException
     {
@@ -1005,7 +1009,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getIncrementColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
@@ -1026,7 +1030,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getMaximumColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
@@ -1047,7 +1051,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getMinimumColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
@@ -1068,7 +1072,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getNameColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
@@ -1089,7 +1093,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getProcessCancelledMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
@@ -1110,7 +1114,7 @@ public class SequencesTableModel extends AbstractTableModel
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getValueColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {

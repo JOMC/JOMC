@@ -31,7 +31,11 @@ package org.jomc.sequences;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class SequencesSystemException extends RuntimeException
 {
@@ -75,7 +79,7 @@ public class SequencesSystemException extends RuntimeException
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public SequencesSystemException()
     {

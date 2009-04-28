@@ -29,13 +29,21 @@ import java.util.Set;
 /**
  * Directory of sequences.
  * <p>This specification applies to Singleton scope.
+ * An application assembler is required to provide exactly one implementation of this specification. Use of class
+ * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * SequenceDirectory object = (SequenceDirectory) ObjectManager.getInstance().getObject( SequenceDirectory.class );
+ * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public interface SequenceDirectory
 {

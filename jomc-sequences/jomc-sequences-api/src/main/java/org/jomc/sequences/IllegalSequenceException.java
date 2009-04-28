@@ -67,7 +67,11 @@ import java.util.Map;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class IllegalSequenceException extends IllegalArgumentException
 {
@@ -327,7 +331,7 @@ public class IllegalSequenceException extends IllegalArgumentException
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public IllegalSequenceException()
     {
@@ -342,14 +346,14 @@ public class IllegalSequenceException extends IllegalArgumentException
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -372,7 +376,7 @@ public class IllegalSequenceException extends IllegalArgumentException
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getIllegalSequenceMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {

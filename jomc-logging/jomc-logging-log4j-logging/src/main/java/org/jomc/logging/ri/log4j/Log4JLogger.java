@@ -38,7 +38,11 @@ import org.jomc.logging.Logger;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class Log4JLogger implements Logger
 {
@@ -48,13 +52,13 @@ public class Log4JLogger implements Logger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public Log4JLogger()
     {
         // SECTION-START[Default Constructor]
         super();
-    // SECTION-END
+        // SECTION-END
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -67,7 +71,7 @@ public class Log4JLogger implements Logger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public java.lang.String getName() throws org.jomc.ObjectManagementException
     {
@@ -75,6 +79,7 @@ public class Log4JLogger implements Logger
     }
     // SECTION-END
     // SECTION-START[Log4JLogger]
+
     public boolean isDebugEnabled()
     {
         return this.getLogger().isEnabledFor( org.apache.log4j.Level.DEBUG );

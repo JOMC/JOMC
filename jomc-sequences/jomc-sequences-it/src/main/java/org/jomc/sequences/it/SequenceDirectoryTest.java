@@ -48,7 +48,11 @@ import org.jomc.sequences.SequenceNotFoundException;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class SequenceDirectoryTest extends TestCase
 {
@@ -354,7 +358,7 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        final int count = 50;
+        final int count = 15;
         final List<Sequence> added = new ArrayList<Sequence>( count );
         final List<Sequence> updated = new ArrayList<Sequence>( count );
         for ( int i = 0; i < count; i++ )
@@ -414,7 +418,7 @@ public class SequenceDirectoryTest extends TestCase
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public SequenceDirectoryTest()
     {
@@ -427,14 +431,14 @@ public class SequenceDirectoryTest extends TestCase
 
     /**
      * Gets the {@code SequenceDirectory} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceDirectory} specification at specification level 1.0.</p>
      * @return The {@code SequenceDirectory} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {

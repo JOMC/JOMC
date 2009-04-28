@@ -78,14 +78,18 @@
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
-      <artifactId>jomc-ri</artifactId>
-      <scope>runtime</scope>
+      <artifactId>jomc-spi</artifactId>
+      <scope>compile</scope>
     </dependency>
-
     <dependency>
       <groupId>org.jomc.logging</groupId>
       <artifactId>jomc-logging-api</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jomc</groupId>
+      <artifactId>jomc-ri</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>

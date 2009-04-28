@@ -30,7 +30,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-standalone</artifactId>
   <name>JOMC Standalone</name>
-  <description><![CDATA[Object management and configuration standalone container.]]></description>
+  <description><![CDATA[Object management and configuration standalone environment.]]></description>
   <build>
     <resources>
       <resource>
@@ -38,6 +38,12 @@
         <directory>src/main/resources</directory>
       </resource>
     </resources>
+    <testResources>
+      <testResource>
+        <filtering>true</filtering>
+        <directory>src/test/resources</directory>
+      </testResource>
+    </testResources>
     <plugins>
       <plugin>
         <artifactId>maven-remote-resources-plugin</artifactId>
@@ -112,42 +118,30 @@
       <artifactId>jboss-jta</artifactId>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <scope>provided</scope>
-    </dependency>
     <!-- Geronimo JTA -->
     <dependency>
       <groupId>org.apache.geronimo.components</groupId>
       <artifactId>geronimo-transaction</artifactId>
       <scope>provided</scope>
     </dependency>
+    
     <!-- Jonas JTA -->
     <dependency>
-      <groupId>jotm</groupId>
-      <artifactId>jotm</artifactId>
+      <groupId>org.ow2.jotm</groupId>
+      <artifactId>jotm-core</artifactId>
       <scope>provided</scope>
     </dependency>
+    <!--  XAPool -->
+    <dependency>
+      <groupId>com.experlog</groupId>
+      <artifactId>xapool</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
     <!-- Hibernate -->
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
       <scope>provided</scope>
     </dependency>
     <!-- Open JPA -->

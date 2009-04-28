@@ -54,7 +54,11 @@ import java.util.Properties;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class Environment
 {
@@ -293,7 +297,7 @@ public class Environment
      */
     public String getDataSourceClassName()
     {
-        return System.getProperty( DATA_SOURCE_CLASS_NAME );
+        return System.getProperty( DATA_SOURCE_CLASS_NAME, "org.enhydra.jdbc.standard.StandardXADataSource" );
     }
 
     /**
@@ -343,7 +347,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public Environment()
     {
@@ -364,7 +368,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultDataSourceContextFactoryName() throws org.jomc.ObjectManagementException
     {
@@ -379,7 +383,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
@@ -394,7 +398,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultEntityManagerFactoryJndiName() throws org.jomc.ObjectManagementException
     {
@@ -409,7 +413,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultEntityManagerJndiName() throws org.jomc.ObjectManagementException
     {
@@ -424,7 +428,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultJtaDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
@@ -439,7 +443,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultTransactionManagerJndiName() throws org.jomc.ObjectManagementException
     {
@@ -454,7 +458,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultTransactionSynchronizationRegistryJndiName() throws org.jomc.ObjectManagementException
     {
@@ -469,7 +473,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultUserTransactionJndiName() throws org.jomc.ObjectManagementException
     {

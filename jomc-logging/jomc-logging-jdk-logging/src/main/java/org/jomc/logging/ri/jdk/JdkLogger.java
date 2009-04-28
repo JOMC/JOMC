@@ -38,7 +38,11 @@ import java.util.logging.Level;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class JdkLogger
     implements
@@ -50,13 +54,13 @@ public class JdkLogger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public JdkLogger()
     {
         // SECTION-START[Default Constructor]
         super();
-    // SECTION-END
+        // SECTION-END
     }
     // SECTION-END
     // SECTION-START[JdkLogger]
@@ -233,7 +237,7 @@ public class JdkLogger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public java.lang.String getName() throws org.jomc.ObjectManagementException
     {

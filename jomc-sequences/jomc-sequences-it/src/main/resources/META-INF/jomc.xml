@@ -30,7 +30,7 @@
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${pom.description}]]></text>
   </documentation>
-  
+
   <implementations>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.sequences.it.SequenceDirectoryTest"

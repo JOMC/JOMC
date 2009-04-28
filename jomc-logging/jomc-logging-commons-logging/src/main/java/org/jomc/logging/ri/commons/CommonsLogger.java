@@ -39,7 +39,11 @@ import org.apache.commons.logging.LogFactory;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class CommonsLogger
     implements
@@ -51,13 +55,13 @@ public class CommonsLogger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public CommonsLogger()
     {
         // SECTION-START[Default Constructor]
         super();
-    // SECTION-END
+        // SECTION-END
     }
     // SECTION-END
     // SECTION-START[CommonsLogger]
@@ -207,7 +211,7 @@ public class CommonsLogger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public java.lang.String getName() throws org.jomc.ObjectManagementException
     {

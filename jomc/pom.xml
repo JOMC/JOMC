@@ -47,8 +47,8 @@
             <configuration>
               <resourceBundles>
                 <resourceBundle>org.jomc:jomc-resources:${jomcVersion}</resourceBundle>
-               </resourceBundles>
-               <properties>
+              </resourceBundles>
+              <properties>
                 <buildNumber>${buildNumber}</buildNumber>
               </properties>
             </configuration>

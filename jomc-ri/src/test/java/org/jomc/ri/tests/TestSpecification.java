@@ -25,13 +25,23 @@ package org.jomc.ri.tests;
 // SECTION-START[Specification Comment]
 /**
  * <p>This specification applies to Multiton scope.
+ * An application assembler may provide multiple implementations of this specification (including none). Use of class
+ * {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for selecting a
+ * single implementation.<pre>
+ * TestSpecification[] objects = (TestSpecification[]) ObjectManager.getInstance().getObject( TestSpecification.class );
+ * TestSpecification object = (TestSpecification) ObjectManager.getInstance().getObject( TestSpecification.class, "<i>implementation name</i>" );
+ * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public interface TestSpecification
 {

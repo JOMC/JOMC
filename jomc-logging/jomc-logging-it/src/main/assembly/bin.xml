@@ -12,9 +12,7 @@
       <lineEnding>dos</lineEnding>
       <filtered>false</filtered>
       <includes>
-        <include>README.txt</include>
-        <include>LICENSE.txt</include>
-        <include>DEPENDENCIES.txt</include>
+        <include>*.txt</include>
       </includes>
     </fileSet>
     <fileSet>

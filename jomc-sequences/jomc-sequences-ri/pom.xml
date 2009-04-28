@@ -32,7 +32,16 @@
   <artifactId>jomc-sequences-ri</artifactId>
   <packaging>ejb</packaging>
   <name>JOMC Sequences RI</name>
-  <description><![CDATA[Sequences reference implementation.]]></description>
+  <description><![CDATA[
+  This artifact provides the 'JOMC Sequences' reference implementation.
+  It is implemented using JTA 1.1 and JPA 1.0 interfaces.
+  As such, this artifact may be used in any environment providing JTA 1.1
+  compatible transaction management and JPA 1.0 compatible entity management.
+  See the 'JOMC Sequences Enterprise Application' artifact containing this
+  implementation prepared for use in an EJB 3 compatible container.
+  The 'JOMC Sequences Test Suite' artifact provides a command line test client
+  for testing from outside the container.]]>
+  </description>
   <build>
     <resources>
       <resource>
@@ -156,27 +165,6 @@
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Logging -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.jomc.logging</groupId>
-      <artifactId>jomc-logging-log4j-logging</artifactId>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
   <profiles>
     <profile>
@@ -217,6 +205,21 @@
           <artifactId>commons-logging</artifactId>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -251,10 +254,26 @@
           <artifactId>mysql-connector-java</artifactId>
           <scope>test</scope>
         </dependency>
+
         <!-- Logging -->
         <dependency>
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -297,6 +316,21 @@
           <artifactId>commons-logging</artifactId>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -335,6 +369,16 @@
         <dependency>
           <groupId>commons-logging</groupId>
           <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -377,6 +421,16 @@
           <artifactId>commons-logging</artifactId>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -417,6 +471,16 @@
           <artifactId>commons-logging</artifactId>
           <scope>test</scope>
         </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -449,6 +513,22 @@
         <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -485,6 +565,22 @@
           <artifactId>mysql-connector-java</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -517,6 +613,22 @@
         <dependency>
           <groupId>postgresql</groupId>
           <artifactId>postgresql</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>log4j</groupId>
+          <artifactId>log4j</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-log4j-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -553,6 +665,22 @@
           <artifactId>derby</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -585,6 +713,22 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -621,6 +765,22 @@
           <artifactId>postgresql</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -653,6 +813,22 @@
         <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -689,6 +865,22 @@
           <artifactId>mysql-connector-java</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -721,6 +913,22 @@
         <dependency>
           <groupId>postgresql</groupId>
           <artifactId>postgresql</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -757,6 +965,22 @@
           <artifactId>derby</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -789,6 +1013,22 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -825,6 +1065,22 @@
           <artifactId>postgresql</artifactId>
           <scope>test</scope>
         </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
+          <scope>test</scope>
+        </dependency>
       </dependencies>
     </profile>
     <profile>
@@ -849,8 +1105,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Hibernate -->
@@ -863,6 +1125,22 @@
         <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -889,8 +1167,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Hibernate -->
@@ -903,6 +1187,22 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -929,8 +1229,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Hibernate -->
@@ -943,6 +1249,22 @@
         <dependency>
           <groupId>postgresql</groupId>
           <artifactId>postgresql</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-jdk14</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -969,8 +1291,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Toplink -->
@@ -983,6 +1311,17 @@
         <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -1009,8 +1348,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Toplink -->
@@ -1023,6 +1368,17 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -1049,8 +1405,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- Toplink -->
@@ -1063,6 +1425,17 @@
         <dependency>
           <groupId>postgresql</groupId>
           <artifactId>postgresql</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -1089,8 +1462,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- OpenJPA -->
@@ -1103,6 +1482,17 @@
         <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -1129,8 +1519,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- OpenJPA -->
@@ -1143,6 +1539,17 @@
         <dependency>
           <groupId>mysql</groupId>
           <artifactId>mysql-connector-java</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>
@@ -1169,8 +1576,14 @@
         </dependency>
         <!-- Jonas JTA -->
         <dependency>
-          <groupId>jotm</groupId>
-          <artifactId>jotm</artifactId>
+          <groupId>org.ow2.jotm</groupId>
+          <artifactId>jotm-core</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!--  XAPool -->
+        <dependency>
+          <groupId>com.experlog</groupId>
+          <artifactId>xapool</artifactId>
           <scope>test</scope>
         </dependency>
         <!-- OpenJPA -->
@@ -1183,6 +1596,17 @@
         <dependency>
           <groupId>postgresql</groupId>
           <artifactId>postgresql</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <!-- Logging -->
+        <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <scope>test</scope>
+        </dependency>
+        <dependency>
+          <groupId>org.jomc.logging</groupId>
+          <artifactId>jomc-logging-jdk-logging</artifactId>
           <scope>test</scope>
         </dependency>
       </dependencies>

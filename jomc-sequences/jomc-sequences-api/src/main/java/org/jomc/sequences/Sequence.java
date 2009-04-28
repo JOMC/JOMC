@@ -34,7 +34,11 @@ import java.util.Date;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class Sequence implements Comparable, Cloneable, Serializable
 {
@@ -368,7 +372,7 @@ public class Sequence implements Comparable, Cloneable, Serializable
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public Sequence()
     {

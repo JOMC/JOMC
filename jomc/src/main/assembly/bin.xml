@@ -13,14 +13,12 @@
   <fileSets>
     <fileSet>
       <directory>target/maven-shared-archive-resources/META-INF</directory>
-      <outputDirectory>/</outputDirectory>
       <directoryMode>0755</directoryMode>
       <fileMode>0644</fileMode>
+      <outputDirectory>/${pom.build.finalName}</outputDirectory>
       <lineEnding>dos</lineEnding>
       <includes>
-        <include>README.txt</include>
-        <include>LICENSE.txt</include>
-        <include>DEPENDENCIES.txt</include>
+        <include>*.txt</include>
       </includes>
     </fileSet>
   </fileSets>
@@ -28,7 +26,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>lib</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/lib</outputDirectory>
       <scope>runtime</scope>
       <includes>
         <include>org.jomc:jomc-api</include>
@@ -42,7 +40,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>lib/logging</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/lib/logging</outputDirectory>
       <scope>runtime</scope>
       <includes>
         <include>org.jomc.logging:jomc-logging-api</include>
@@ -55,7 +53,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>lib/sequences</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/lib/sequences</outputDirectory>
       <scope>runtime</scope>
       <includes>
         <include>org.jomc.sequences:jomc-sequences-api</include>
@@ -68,6 +66,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
+      <outputDirectory>/${pom.build.finalName}</outputDirectory>
       <scope>runtime</scope>
       <unpack>true</unpack>
       <includes>
@@ -80,7 +79,7 @@
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
       <scope>runtime</scope>
-      <outputDirectory>jomc-sequences-it-${jomcSequencesVersion}</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/jomc-sequences-it-${jomcSequencesVersion}</outputDirectory>
       <includes>
         <include>org.jomc.sequences:jomc-sequences-ear</include>
       </includes>

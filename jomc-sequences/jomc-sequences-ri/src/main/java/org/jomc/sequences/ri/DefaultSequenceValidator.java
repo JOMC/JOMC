@@ -32,8 +32,7 @@ import org.jomc.sequences.spi.SequenceValidator;
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.spi.SequenceValidator} {@code 1.0}<blockquote>
  * Object applies to Multiton scope.
- * State does not need to be retained across operations to operate as
- * specified.</blockquote></li>
+ * State does not need to be retained across operations to operate as specified.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -41,14 +40,17 @@ import org.jomc.sequences.spi.SequenceValidator;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class DefaultSequenceValidator implements SequenceValidator
 {
     // SECTION-START[SequenceValidator]
 
-    public IllegalSequenceException assertOperationValid(
-        final Sequence oldValue, final Sequence newValue )
+    public IllegalSequenceException assertOperationValid( final Sequence oldValue, final Sequence newValue )
     {
         boolean valid = true;
         IllegalSequenceException result = null;
@@ -60,35 +62,23 @@ public class DefaultSequenceValidator implements SequenceValidator
             if ( newValue.getName() == null )
             {
                 valid = false;
-                result.getDetails( Sequence.PROP_NAME ).
-                    add( IllegalSequenceException.MANDATORY_PROPERTY_MISSING );
-
+                result.getDetails( Sequence.PROP_NAME ).add( IllegalSequenceException.MANDATORY_PROPERTY_MISSING );
             }
-            if ( newValue.getMaximum() < newValue.getMinimum() ||
-                 newValue.getMinimum() > newValue.getMaximum() )
+            if ( newValue.getMaximum() < newValue.getMinimum() || newValue.getMinimum() > newValue.getMaximum() )
             {
                 valid = false;
-                result.getDetails( Sequence.PROP_MINIMUM ).
-                    add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
-
-                result.getDetails( Sequence.PROP_MAXIMUM ).
-                    add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
-
+                result.getDetails( Sequence.PROP_MINIMUM ).add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
+                result.getDetails( Sequence.PROP_MAXIMUM ).add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
             }
-            if ( newValue.getValue() > newValue.getMaximum() ||
-                 newValue.getValue() < newValue.getMinimum() )
+            if ( newValue.getValue() > newValue.getMaximum() || newValue.getValue() < newValue.getMinimum() )
             {
                 valid = false;
-                result.getDetails( Sequence.PROP_VALUE ).
-                    add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
-
+                result.getDetails( Sequence.PROP_VALUE ).add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
             }
             if ( newValue.getIncrement() <= 0L )
             {
                 valid = false;
-                result.getDetails( Sequence.PROP_INCREMENT ).
-                    add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
-
+                result.getDetails( Sequence.PROP_INCREMENT ).add( IllegalSequenceException.ILLEGAL_PROPERTY_VALUE );
             }
         }
 
@@ -102,7 +92,7 @@ public class DefaultSequenceValidator implements SequenceValidator
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public DefaultSequenceValidator()
     {

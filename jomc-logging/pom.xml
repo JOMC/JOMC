@@ -33,7 +33,12 @@
   <version>1.0-alpha-1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>JOMC Logging</name>
-  <description><![CDATA[Logging system parent module.]]></description>
+  <description><![CDATA[
+  This is the 'JOMC Logging' parent project. The 'JOMC Logging API' artifact
+  provides an application programming interface to logging systems. Whenever
+  that API is used at compile time, an application assembler needs to provide a
+  corresponding logging system implementation at runtime.]]>
+  </description>
   <build>
     <plugins>
       <plugin>

@@ -30,22 +30,30 @@ import java.util.Locale;
 /**
  * Manages objects.
  * <p>This specification applies to Singleton scope.
+ * An application assembler is required to provide exactly one implementation of this specification. Use of class
+ * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * ObjectManager object = (ObjectManager) ObjectManager.getInstance().getObject( ObjectManager.class );
+ * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public abstract class ObjectManager
 {
     // SECTION-START[Object Manager]
 
-    /** Default {@code Container} implementation. */
+    /** Constant for the default classname providing the {@code getInstance()} and {@code newInstance()} methods. */
     private static final String DEFAULT_FACTORY_CLASS = "org.jomc.ri.DefaultObjectManager";
 
-    /** Default {@code Container} implementation. */
+    /** Constant for the classname of the default {@code ObjectManager} implementation. */
     private static final String DEFAULT_IMPLEMENTATION = "org.jomc.ri.DefaultObjectManager";
 
     private static final Class[] EMPTY = new Class[]
@@ -60,14 +68,13 @@ public abstract class ObjectManager
      *
      * @param specification The specification class to return an implementation object of.
      *
-     * @return An object of an implementation of the specification class {@code specification}.
+     * @return An object of an implementation of the specification class {@code specification} or {@code null} if
+     * nothing could be resolved.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
-     * @throws IllegalArgumentException if {@code specification} is not a valid specification class.
      * @throws ObjectManagementException if getting the object fails.
      */
-    public abstract Object getObject( Class specification )
-        throws NullPointerException, IllegalArgumentException, ObjectManagementException;
+    public abstract Object getObject( Class specification ) throws ObjectManagementException;
 
     /**
      * Gets an object of an implementation of a specification.
@@ -79,15 +86,12 @@ public abstract class ObjectManager
      * @param implementationName The name of the implementation to return an object of.
      *
      * @return An object of the implementation named {@code implementationName} of the specification class
-     * {@code specification}.
+     * {@code specification} or {@code null} if nothing could be resolved.
      *
      * @throws NullPointerException if {@code specification} or {@code implementationName} is {@code null}.
-     * @throws IllegalArgumentException if {@code specification} is not a valid specification class or no implementation
-     * is available matching {@code implementationName}.
      * @throws ObjectManagementException if getting the object fails.
      */
-    public abstract Object getObject( Class specification, String implementationName )
-        throws NullPointerException, IllegalArgumentException, ObjectManagementException;
+    public abstract Object getObject( Class specification, String implementationName ) throws ObjectManagementException;
 
     /**
      * Gets an instance of a dependency of an object.
@@ -98,16 +102,13 @@ public abstract class ObjectManager
      * @param object The object to return a dependency instance of.
      * @param dependencyName The name of the dependency of {@code object} to return an instance of.
      *
-     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null} if an
-     * optional dependency is not available.
+     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null} if nothing
+     * could be resolved.
      *
      * @throws NullPointerException if {@code object} or {@code dependencyName} is {@code null}.
-     * @throws IllegalArgumentException if {@code object} is no valid implementation, or no dependency named
-     * {@code dependencyName} is available for {@code object}.
      * @throws ObjectManagementException if getting the dependency instance fails.
      */
-    public abstract Object getDependency( Object object, String dependencyName )
-        throws NullPointerException, IllegalArgumentException, ObjectManagementException;
+    public abstract Object getDependency( Object object, String dependencyName ) throws ObjectManagementException;
 
     /**
      * Gets an instance of a property of an object.
@@ -115,18 +116,16 @@ public abstract class ObjectManager
      * method {@link Class#getClassLoader()}, is recommended. Only if that method returns {@code null}, indicating the
      * class has been loaded by the bootstrap classloader, use of the bootstrap classloader is recommended.</p>
      *
-     * @param object The instance to return a property object of.
-     * @param propertyName The name of the property to return an instance of.
+     * @param object The object to return a property instance of.
+     * @param propertyName The name of the property of {@code object} to return an instance of.
      *
-     * @return An instance of the property named {@code propertyName} of {@code object}.
+     * @return An instance of the property named {@code propertyName} of {@code object} or {@code null} if nothing
+     * could be resolved.
      *
      * @throws NullPointerException if {@code object} or {@code propertyName} is {@code null}.
-     * @throws IllegalArgumentException if {@code object} is no valid implementation, or no property named
-     * {@code propertyName} is available for {@code object}.
      * @throws ObjectManagementException if getting the property instance fails.
      */
-    public abstract Object getProperty( Object object, String propertyName )
-        throws NullPointerException, IllegalArgumentException, ObjectManagementException;
+    public abstract Object getProperty( Object object, String propertyName ) throws ObjectManagementException;
 
     /**
      * Gets an instance of a message of an object for a given locale.
@@ -135,20 +134,18 @@ public abstract class ObjectManager
      * class has been loaded by the bootstrap classloader, use of the bootstrap classloader is recommended.</p>
      *
      * @param object The object to return a message instance of.
-     * @param messageName The name of the message to return an instance of.
+     * @param messageName The name of the message of {@code object} to return an instance of.
      * @param locale The locale of the message instance to return.
      * @param arguments Arguments to format the message instance with or {@code null}.
      *
      * @return An instance of the message named {@code messageName} of {@code object} formatted with {@code arguments}
-     * for {@code locale}.
+     * for {@code locale} or {@code null} if nothing could be resolved.
      *
-     * @throws NullPointerException if {@code object}, {@code locale} or {@code messageName} is {@code null}.
-     * @throws IllegalArgumentException if {@code object} is no valid implementation, or no message named
-     * {@code messageName} is available for {@code object}.
+     * @throws NullPointerException if {@code object}, {@code messageName} or {@code locale} is {@code null}.
      * @throws ObjectManagementException if getting the message instance fails.
      */
     public abstract String getMessage( Object object, String messageName, Locale locale, Object arguments )
-        throws NullPointerException, IllegalArgumentException, ObjectManagementException;
+        throws ObjectManagementException;
 
     /**
      * Gets the singleton instance of this class.
@@ -175,7 +172,7 @@ public abstract class ObjectManager
             final Method factoryMethod = factoryClass.getMethod( "getInstance", EMPTY );
             return (ObjectManager) factoryMethod.invoke( null, (Object[]) EMPTY );
         }
-        catch ( Throwable e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -198,11 +195,9 @@ public abstract class ObjectManager
 
         try
         {
-            final Class implClass = Class.forName( impl );
-            final Constructor ctor = implClass.getConstructor( EMPTY );
-            return (ObjectManager) ctor.newInstance( (Object[]) EMPTY );
+            return (ObjectManager) Class.forName( impl ).newInstance();
         }
-        catch ( Throwable e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }

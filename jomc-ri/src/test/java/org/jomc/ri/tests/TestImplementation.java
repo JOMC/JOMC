@@ -64,7 +64,11 @@ import java.util.Locale;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class TestImplementation
 implements
@@ -159,7 +163,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public TestImplementation()
     {
@@ -172,14 +176,14 @@ implements
 
     /**
      * Gets the {@code SelectedTestSpecification} dependency.
-     * </p>
+     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.tests.TestSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code SelectedTestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.ri.tests.TestSpecification getSelectedTestSpecification() throws org.jomc.ObjectManagementException
     {
@@ -188,14 +192,14 @@ implements
 
     /**
      * Gets the {@code TestBoundSingleton} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.tests.SingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code TestBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.ri.tests.SingletonSpecification getTestBoundSingleton() throws org.jomc.ObjectManagementException
     {
@@ -204,14 +208,14 @@ implements
 
     /**
      * Gets the {@code TestMultiton} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.tests.MultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code TestMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.ri.tests.MultitonSpecification getTestMultiton() throws org.jomc.ObjectManagementException
     {
@@ -220,14 +224,14 @@ implements
 
     /**
      * Gets the {@code TestSingleton} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.tests.SingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code TestSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.ri.tests.SingletonSpecification getTestSingleton() throws org.jomc.ObjectManagementException
     {
@@ -236,14 +240,14 @@ implements
 
     /**
      * Gets the {@code TestSpecification} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.tests.TestSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code TestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.ri.tests.TestSpecification[] getTestSpecification() throws org.jomc.ObjectManagementException
     {
@@ -260,7 +264,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getTestProperty() throws org.jomc.ObjectManagementException
     {
@@ -283,7 +287,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument ) throws org.jomc.ObjectManagementException
     {

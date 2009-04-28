@@ -46,5 +46,20 @@
 
       </authors>
     </specification>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.spi.Listener"
+                   vendor="${pom.organization.name}"
+                   version="1.0"
+                   scope="Singleton">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Object management and configuration listener interface.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
 </module>

@@ -22,6 +22,7 @@
 // SECTION-END
 package org.jomc.standalone.naming;
 
+import java.lang.reflect.Method;
 import java.util.Hashtable;
 import javax.naming.Context;
 import javax.naming.NamingException;
@@ -53,7 +54,11 @@ import org.jomc.standalone.Environment;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class StandaloneContextFactory implements InitialContextFactory
 {
@@ -96,6 +101,19 @@ public class StandaloneContextFactory implements InitialContextFactory
                             this.getEnvironment().getJpaContextFactoryName() ).newInstance();
 
                         jpaContextFactory.getInitialContext( environment );
+                    }
+
+                    try
+                    {
+                        Class.forName( "org.enhydra.jdbc.standard.StandardXADataSource" );
+                        final Class helperClass = Class.forName( "org.jomc.standalone.naming.support.XAPoolHelper" );
+                        final Method helperMethod =
+                            helperClass.getDeclaredMethod( "initializeXAPool", Environment.class, Context.class );
+
+                        helperMethod.invoke( null, this.getEnvironment(), instance );
+                    }
+                    catch ( Exception e )
+                    {
                     }
                 }
 
@@ -145,7 +163,7 @@ public class StandaloneContextFactory implements InitialContextFactory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public StandaloneContextFactory()
     {
@@ -158,14 +176,14 @@ public class StandaloneContextFactory implements InitialContextFactory
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -174,7 +192,7 @@ public class StandaloneContextFactory implements InitialContextFactory
 
     /**
      * Gets the {@code Logger} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code name}"</dt>
      * <dd>Property of type {@code java.lang.String} with value "org.jomc.standalone.naming.StandaloneContextFactory".
@@ -186,7 +204,7 @@ public class StandaloneContextFactory implements InitialContextFactory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
@@ -212,7 +230,7 @@ public class StandaloneContextFactory implements InitialContextFactory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getCompletedInitializationMessage( final java.util.Locale locale, final java.lang.Number startMillis ) throws org.jomc.ObjectManagementException
     {
@@ -233,7 +251,7 @@ public class StandaloneContextFactory implements InitialContextFactory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getImplementationInfoMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {

@@ -33,7 +33,15 @@
   <packaging>pom</packaging>
   <name>JOMC Sequences</name>
   <version>1.0-alpha-1-SNAPSHOT</version>
-  <description><![CDATA[Sequences parent module.]]></description>
+  <description><![CDATA[
+  This is the 'JOMC Sequences' parent project. The 'JOMC Sequences API' artifact
+  provides application programming interfaces to a directory of sequences.
+  Whenever that API is used at compile time, an application assembler needs to
+  provide a corresponding implementation artifact at runtime.
+  The 'JOMC Sequences SPI' artifact provides programming interfaces for
+  JOMC Sequences integration. The 'JOMC Sequences Test Suite' artifact provides
+  test classes implementations are tested with.]]>
+  </description>
   <build>
     <plugins>
       <plugin>

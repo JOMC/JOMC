@@ -31,7 +31,11 @@ package org.jomc;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class ObjectManagementException extends RuntimeException
 {
@@ -58,7 +62,8 @@ public class ObjectManagementException extends RuntimeException
     }
 
     /**
-     * Creates a new {@code ObjectManagementException} taking a message describing the exception a causing exception.
+     * Creates a new {@code ObjectManagementException} taking a message describing the exception and a causing
+     * exception.
      *
      * @param msg The message describing the exception.
      * @param t The cause of the exception.
@@ -75,7 +80,7 @@ public class ObjectManagementException extends RuntimeException
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public ObjectManagementException()
     {

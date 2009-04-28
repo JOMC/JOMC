@@ -30,7 +30,7 @@
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${pom.description}]]></text>
   </documentation>
-  
+
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.sequences.ri.SequenceMapper"
@@ -131,14 +131,9 @@
       <messages>
         <message name="implementationInfo">
           <template defaultLanguage="en">
-            <text language="en"><![CDATA[DefaultSequenceDirectory ${pom.version}
-{0}]]></text>
-            <text language="de"><![CDATA[DefaultSequenceDirectory ${pom.version}
-{0}]]></text>
+            <text language="en"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
+            <text language="de"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
           </template>
-          <arguments>
-            <argument index="0" name="configurationPrintout"/>
-          </arguments>
         </message>
         <message name="couldNotJoinTransaction">
           <template defaultLanguage="en">

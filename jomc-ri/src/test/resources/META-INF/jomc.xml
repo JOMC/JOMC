@@ -126,5 +126,24 @@
         </message>
       </messages>
     </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.tests.TestObjectManagementListener"
+                    class="org.jomc.ri.tests.TestObjectManagementListener"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code ObjectManagementLister} logging to the console.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Listener" version="1.0"/>
+      </specifications>
+    </implementation>
   </implementations>
 </module>

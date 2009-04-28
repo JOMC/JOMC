@@ -37,8 +37,7 @@ import org.jomc.sequences.model.SequenceType;
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.ri.SequenceMapper} {@code 1.0}<blockquote>
  * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as
- * specified.</blockquote></li>
+ * State does not need to be retained across operations to operate as specified.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -46,7 +45,11 @@ import org.jomc.sequences.model.SequenceType;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class DefaultSequenceMapper implements SequenceMapper
 {
@@ -175,7 +178,7 @@ public class DefaultSequenceMapper implements SequenceMapper
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public DefaultSequenceMapper()
     {

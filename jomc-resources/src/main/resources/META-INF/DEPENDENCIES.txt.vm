@@ -1,5 +1,5 @@
 
-  ${project.description}
+  ${project.name}
   Version ${project.version} Build ${buildNumber}
 #foreach ( $organization in $projectsSortedByOrganization.keySet() )
 

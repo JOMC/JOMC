@@ -41,7 +41,11 @@ import org.jomc.standalone.Environment;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public abstract class AbstractContextFactory
     implements
@@ -73,7 +77,7 @@ public abstract class AbstractContextFactory
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public AbstractContextFactory()
     {

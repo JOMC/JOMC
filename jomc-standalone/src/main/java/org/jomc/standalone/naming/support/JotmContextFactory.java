@@ -54,7 +54,11 @@ import org.objectweb.jotm.Jotm;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class JotmContextFactory extends AbstractContextFactory implements InitialContextFactory
 {
@@ -65,6 +69,9 @@ public class JotmContextFactory extends AbstractContextFactory implements Initia
         final Jotm jotm = new Jotm( true, false );
         this.getContext().bind( this.getEnvironment().getTransactionManagerJndiName(), jotm.getTransactionManager() );
         this.getContext().bind( this.getEnvironment().getUserTransactionJndiName(), jotm.getUserTransaction() );
+        this.getContext().bind( this.getEnvironment().getTransactionSynchronizationRegistryJndiName(),
+                                jotm.getTransactionSynchronizationRegistry() );
+
         return null;
     }
 
@@ -75,28 +82,28 @@ public class JotmContextFactory extends AbstractContextFactory implements Initia
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public JotmContextFactory()
     {
         // SECTION-START[Default Constructor]
         super();
         this.getLogger().info( this.getImplementationInfoMessage( this.getLocale() ) );
-        // SECTION-END
+    // SECTION-END
     }
     // SECTION-END
     // SECTION-START[Dependencies]
 
     /**
      * Gets the {@code Locale} dependency.
-     * </p>
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -105,7 +112,7 @@ public class JotmContextFactory extends AbstractContextFactory implements Initia
 
     /**
      * Gets the {@code Logger} dependency.
-     * </p>
+     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code name}"</dt>
      * <dd>Property of type {@code java.lang.String} with value "org.jomc.standalone.naming.support.JotmContextFactory".
@@ -117,7 +124,7 @@ public class JotmContextFactory extends AbstractContextFactory implements Initia
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
@@ -142,7 +149,7 @@ public class JotmContextFactory extends AbstractContextFactory implements Initia
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getImplementationInfoMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {

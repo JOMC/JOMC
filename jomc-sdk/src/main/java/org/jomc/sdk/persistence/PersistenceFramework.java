@@ -45,6 +45,20 @@ import org.jomc.sdk.Environment;
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getInitialContext InitialContext}"<blockquote>
  * Dependency on {@code javax.naming.Context} applying to Multiton scope.</blockquote></li>
+ * <li>"{@link #getLocale Locale}"<blockquote>
+ * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getLogger Logger}"<blockquote>
+ * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
+ * </ul></p>
+ * <p><b>Messages</b><ul>
+ * <li>"{@link #getMissingEntityManagerFactoryMessage missingEntityManagerFactory}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Entity manager factory ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Entity manager factory ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingEntityManagerMessage missingEntityManager}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Entity manager ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Entity manager ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -52,7 +66,11 @@ import org.jomc.sdk.Environment;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public class PersistenceFramework
 {
@@ -60,9 +78,17 @@ public class PersistenceFramework
 
     public EntityManagerFactory getEntityManagerFactory() throws NamingException
     {
-        return (EntityManagerFactory) this.getInitialContext().lookup(
+        final EntityManagerFactory entityManagerFactory = (EntityManagerFactory) this.getInitialContext().lookup(
             this.getSdkEnvironment().getEntityManagerFactoryJndiName() );
 
+        if ( entityManagerFactory == null )
+        {
+            this.getLogger().warn( this.getMissingEntityManagerFactoryMessage(
+                this.getLocale(), this.getSdkEnvironment().getEntityManagerFactoryJndiName() ) );
+
+        }
+
+        return entityManagerFactory;
     }
 
     public EntityManager getEntityManager() throws NamingException
@@ -70,9 +96,18 @@ public class PersistenceFramework
         final EntityManager entityManager =
             (EntityManager) this.getInitialContext().lookup( this.getSdkEnvironment().getEntityManagerJndiName() );
 
-        if ( !this.isContainerManaged() )
+        if ( entityManager != null )
         {
-            entityManager.joinTransaction();
+            if ( !this.isContainerManaged() )
+            {
+                entityManager.joinTransaction();
+            }
+        }
+        else
+        {
+            this.getLogger().warn( this.getMissingEntityManagerMessage(
+                this.getLocale(), this.getSdkEnvironment().getEntityManagerJndiName() ) );
+
         }
 
         return entityManager;
@@ -100,7 +135,7 @@ public class PersistenceFramework
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public PersistenceFramework()
     {
@@ -113,18 +148,55 @@ public class PersistenceFramework
 
     /**
      * Gets the {@code InitialContext} dependency.
-     * </p>
+     * <p>This method returns the "{@code JOMC SDK}" object of the {@code javax.naming.Context} specification.</p>
      * @return The {@code InitialContext} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private javax.naming.Context getInitialContext() throws org.jomc.ObjectManagementException
     {
         return (javax.naming.Context) org.jomc.ObjectManager.getInstance().getDependency( this, "InitialContext" );
+    }
+
+    /**
+     * Gets the {@code Locale} dependency.
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
+     * @return The {@code Locale} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
+    )
+    private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
+    {
+        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+    }
+
+    /**
+     * Gets the {@code Logger} dependency.
+     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
+     * <p><b>Properties</b><dl>
+     * <dt>"{@code name}"</dt>
+     * <dd>Property of type {@code java.lang.String} with value "org.jomc.sdk.persistence.PersistenceFramework".
+     * </dd>
+     * </dl>
+     * @return The {@code Logger} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
+    )
+    private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
+    {
+        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -137,7 +209,7 @@ public class PersistenceFramework
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private boolean isContainerManaged() throws org.jomc.ObjectManagementException
     {
@@ -145,5 +217,49 @@ public class PersistenceFramework
     }
     // SECTION-END
     // SECTION-START[Messages]
+
+    /**
+     * Gets the text of the {@code missingEntityManager} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Entity manager ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Entity manager ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param jndiName Format argument.
+     * @return The text of the {@code missingEntityManager} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
+    )
+    private String getMissingEntityManagerMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
+    {
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingEntityManager", locale, new Object[] { jndiName, null } );
+    }
+
+    /**
+     * Gets the text of the {@code missingEntityManagerFactory} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Entity manager factory ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Entity manager factory ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param jndiName Format argument.
+     * @return The text of the {@code missingEntityManagerFactory} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
+    )
+    private String getMissingEntityManagerFactoryMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
+    {
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingEntityManagerFactory", locale, new Object[] { jndiName, null } );
+    }
     // SECTION-END
 }

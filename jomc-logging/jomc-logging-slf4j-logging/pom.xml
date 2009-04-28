@@ -53,6 +53,20 @@
       <plugin>
         <artifactId>maven-pmd-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkMode>once</forkMode>
+          <skip>false</skip>
+          <systemProperties>
+            <property>
+              <name>java.util.logging.config.file</name>
+              <value>${project.build.testOutputDirectory}/logging.properties</value>
+            </property>
+          </systemProperties>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -64,14 +78,18 @@
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
-      <artifactId>jomc-ri</artifactId>
-      <scope>runtime</scope>
+      <artifactId>jomc-spi</artifactId>
+      <scope>compile</scope>
     </dependency>
-
     <dependency>
       <groupId>org.jomc.logging</groupId>
       <artifactId>jomc-logging-api</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.jomc</groupId>
+      <artifactId>jomc-ri</artifactId>
+      <scope>runtime</scope>
     </dependency>
 
     <dependency>
@@ -81,7 +99,7 @@
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
+      <artifactId>slf4j-jdk14</artifactId>
       <scope>test</scope>
     </dependency>
 

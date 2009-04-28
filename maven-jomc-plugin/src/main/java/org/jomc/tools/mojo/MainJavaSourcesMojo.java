@@ -34,6 +34,7 @@ import java.io.File;
 public final class MainJavaSourcesMojo extends AbstractJomcMojo
 {
 
+    @Override
     public void executeTool() throws Exception
     {
         File sourceDirectory = new File( this.getMavenProject().getBuild().getSourceDirectory() );

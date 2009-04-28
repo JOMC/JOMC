@@ -464,6 +464,7 @@ public final class WeakIdentityHashMap implements Map
      * Removes all of the mappings from this map so that the map will be empty
      * after this call returns.
      */
+    @SuppressWarnings( "empty-statement" )
     public void clear()
     {
         this.purge();
@@ -500,6 +501,7 @@ public final class WeakIdentityHashMap implements Map
                     return new EntryIterator()
                     {
 
+                        @Override
                         public Object next()
                         {
                             return ( (Entry) super.next() ).getKey();
@@ -547,6 +549,7 @@ public final class WeakIdentityHashMap implements Map
                     return new EntryIterator()
                     {
 
+                        @Override
                         public Object next()
                         {
                             return ( (Entry) super.next() ).getValue();
@@ -609,6 +612,7 @@ public final class WeakIdentityHashMap implements Map
      *
      * @return a string representation of the object.
      */
+    @Override
     public String toString()
     {
         return super.toString() + this.internalString();
@@ -626,6 +630,7 @@ public final class WeakIdentityHashMap implements Map
      * @return {@code true} if {@code o} is equal to this map; {@code false}
      * if {@code o} is not equal to this map.
      */
+    @Override
     public boolean equals( final Object o )
     {
         boolean equal = this == o;
@@ -646,6 +651,7 @@ public final class WeakIdentityHashMap implements Map
      *
      * @return the hash code value for this map.
      */
+    @Override
     public int hashCode()
     {
         return this.entrySet().hashCode();
@@ -947,6 +953,7 @@ public final class WeakIdentityHashMap implements Map
          *
          * @return a string representation of the object.
          */
+        @Override
         public String toString()
         {
             return super.toString() + this.internalString();
@@ -967,6 +974,7 @@ public final class WeakIdentityHashMap implements Map
          * @return {@code true} if {@code o} is equal to this map entry;
          * {@code false} if {@code o} is not equal to this map entry.
          */
+        @Override
         public boolean equals( final Object o )
         {
             boolean equal = this == o;
@@ -992,6 +1000,7 @@ public final class WeakIdentityHashMap implements Map
          *
          * @return the hash code value for this map entry.
          */
+        @Override
         public int hashCode()
         {
             return ( this.hashCode ) ^ ( this.getValue().hashCode() );

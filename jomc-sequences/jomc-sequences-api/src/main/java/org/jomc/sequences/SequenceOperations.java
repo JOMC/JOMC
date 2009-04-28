@@ -26,13 +26,21 @@ package org.jomc.sequences;
 /**
  * Provides operations performed with sequences.
  * <p>This specification applies to Singleton scope.
+ * An application assembler is required to provide exactly one implementation of this specification. Use of class
+ * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * SequenceOperations object = (SequenceOperations) ObjectManager.getInstance().getObject( SequenceOperations.class );
+ * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
 // SECTION-START[Annotations]
-
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
+)
 // SECTION-END
 public interface SequenceOperations
 {
