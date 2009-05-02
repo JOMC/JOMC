@@ -149,7 +149,12 @@
             <dependency>
               <groupId>net.sourceforge.jpaxjc</groupId>
               <artifactId>jpa-xjc-plugin</artifactId>
-              <version>1.0-alpha-1</version>
+              <version>1.0-beta-2</version>
+            </dependency>
+            <dependency>
+              <groupId>net.sourceforge.ccxjc</groupId>
+              <artifactId>cc-xjc-plugin</artifactId>
+              <version>1.0-beta-2</version>
             </dependency>
           </dependencies>
           <executions>
@@ -161,7 +166,7 @@
               </goals>
               <configuration>
                 <schemaDirectory>src/site/resources</schemaDirectory>
-                <args>-Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
+                <args>-copy-constructor -Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
                 <extension>true</extension>
               </configuration>
             </execution>
@@ -1198,6 +1203,16 @@
       </snapshots>
     </repository>
     <repository>
+      <id>ccxjc.sourceforge.net</id>
+      <url>http://ccxjc.sourceforge.net/maven2/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
       <id>maven.objectweb.org</id>
       <url>http://maven.objectweb.org/maven2</url>
       <releases>
@@ -1285,6 +1300,16 @@
       </snapshots>
     </pluginRepository>
     <pluginRepository>
+      <id>ccxjc.sourceforge.net</id>
+      <url>http://ccxjc.sourceforge.net/maven2/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
       <id>jomc-releases</id>
       <url>http://jomc.sourceforge.net/maven2/releases</url>
       <layout>default</layout>
@@ -1327,7 +1352,7 @@
   </distributionManagement>
   <profiles>
     <profile>
-      <id>create-sourceforge-shell</id>
+      <id>sourceforge-shell</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
@@ -1357,6 +1382,57 @@
                              username="${jomc.ssh.username},jomc"
                              password="${jomc.ssh.password}"
                              command="create"
+                             timeout="300000"/>
+
+                  </tasks>
+                </configuration>
+              </execution>
+              <execution>
+                <id>create-sourceforge-shell-site</id>
+                <phase>pre-site</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <sshexec host="shell.sourceforge.net"
+                             username="${jomc.ssh.username},jomc"
+                             password="${jomc.ssh.password}"
+                             command="create"
+                             timeout="300000"/>
+
+                  </tasks>
+                </configuration>
+              </execution>
+              <execution>
+                <id>shutdown-sourceforge-shell</id>
+                <phase>deploy</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <sshexec host="shell.sourceforge.net"
+                             username="${jomc.ssh.username},jomc"
+                             password="${jomc.ssh.password}"
+                             command="shutdown"
+                             timeout="300000"/>
+
+                  </tasks>
+                </configuration>
+              </execution>
+              <execution>
+                <id>shutdown-sourceforge-shell-site</id>
+                <phase>site-deploy</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                  <tasks>
+                    <sshexec host="shell.sourceforge.net"
+                             username="${jomc.ssh.username},jomc"
+                             password="${jomc.ssh.password}"
+                             command="shutdown"
                              timeout="300000"/>
 
                   </tasks>

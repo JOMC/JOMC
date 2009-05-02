@@ -64,7 +64,7 @@
               <goal>generate</goal>
             </goals>
             <configuration>
-              <args>-jpa "${pom.artifactId}" "${project.build.outputDirectory}" -Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
+              <args>-jpa "${pom.artifactId}" "${project.build.outputDirectory}" -copy-constructor -Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
               <extension>true</extension>
               <schemaDirectory>src/site/resources</schemaDirectory>
             </configuration>

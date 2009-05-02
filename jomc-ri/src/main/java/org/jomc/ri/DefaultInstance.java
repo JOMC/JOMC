@@ -21,6 +21,7 @@ package org.jomc.ri;
 
 import java.util.HashMap;
 import java.util.Map;
+import org.jomc.model.Instance;
 
 /**
  * Extended instance data.
@@ -47,28 +48,19 @@ public class DefaultInstance extends org.jomc.model.Instance
      */
     public DefaultInstance( final ClassLoader classLoader )
     {
-        super();
-        this.classLoader = classLoader;
+        this( classLoader, null );
     }
 
     /**
-     * Creates a new {@code DefaultInstance} instance taking an
-     * {@code Instance} to initialize the new instance with and a classloader.
+     * Creates a new {@code DefaultInstance} instance taking a classloader and an {@code Instance} to copy.
      *
      * @param classLoader The classloader of the instance.
-     * @param instance The {@code Instance} to initialize the new instance with.
+     * @param instance The instance to copy or {@code null}.
      */
-    public DefaultInstance( final ClassLoader classLoader, final org.jomc.model.Instance instance )
+    public DefaultInstance( final ClassLoader classLoader, final Instance instance )
     {
-        this( classLoader );
-        this.setIdentifier( instance.getIdentifier() );
-        this.setClazz( instance.getClazz() );
-        this.setDependencies( instance.getDependencies() );
-        this.setDocumentation( instance.getDocumentation() );
-        this.setMessages( instance.getMessages() );
-        this.setModelVersion( instance.getModelVersion() );
-        this.setProperties( instance.getProperties() );
-        this.setScope( instance.getScope() );
+        super( instance );
+        this.classLoader = classLoader;
     }
 
     /**
