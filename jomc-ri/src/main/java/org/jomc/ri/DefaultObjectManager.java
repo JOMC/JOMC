@@ -1,23 +1,35 @@
 // SECTION-START[License Header]
 /*
- *  JOMC RI
- *  Copyright (C) 2005 Christian Schulte <cs@schulte.it>
+ *   Copyright (c) 2009 The JOMC Project
+ *   Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+ *   All rights reserved.
  *
- *  This library is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU Lesser General Public
- *  License as published by the Free Software Foundation; either
- *  version 2.1 of the License, or any later version.
+ *   Redistribution and use in source and binary forms, with or without
+ *   modification, are permitted provided that the following conditions
+ *   are met:
  *
- *  This library is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- *  Lesser General Public License for more details.
+ *     o Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
  *
- *  You should have received a copy of the GNU Lesser General Public
- *  License along with this library; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
+ *     o Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in
+ *       the documentation and/or other materials provided with the
+ *       distribution.
  *
- *  $Id$
+ *   THIS SOFTWARE IS PROVIDED BY THE JOMC PROJECT AND CONTRIBUTORS "AS IS"
+ *   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE JOMC PROJECT OR
+ *   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ *   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ *   $Id$
+ *
  */
 // SECTION-END
 package org.jomc.ri;
@@ -51,6 +63,7 @@ import org.jomc.model.Multiplicity;
 import org.jomc.model.Property;
 import org.jomc.model.Scope;
 import org.jomc.model.Specification;
+import org.jomc.model.SpecificationReference;
 import org.jomc.ri.util.WeakIdentityHashMap;
 import org.jomc.spi.Listener;
 
@@ -71,7 +84,7 @@ import org.jomc.spi.Listener;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc-tools"
+    comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
 public class DefaultObjectManager extends ObjectManager
@@ -82,13 +95,13 @@ public class DefaultObjectManager extends ObjectManager
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://www.jomc.org/jomc-tools"
     )
     public DefaultObjectManager()
     {
         // SECTION-START[Default Constructor]
         super();
-    // SECTION-END
+        // SECTION-END
     }
     // SECTION-END
     // SECTION-START[ObjectManager]
@@ -1061,6 +1074,7 @@ public class DefaultObjectManager extends ObjectManager
                     this.bootstrapLogRecords.clear();
                 }
 
+                this.log( Level.FINE, this.getModulesReport( this.getModules() ), null );
                 this.log( Level.FINE, this.getImplementationInfoMessage(
                     new Date( System.currentTimeMillis() - start ) ), null );
 
@@ -1239,6 +1253,146 @@ public class DefaultObjectManager extends ObjectManager
             {
                 multiplicity
             } );
+    }
+
+    private String getModulesReport( final Modules modules )
+    {
+        final StringBuffer modulesInfo = new StringBuffer();
+        if ( modules.getDocumentation() != null )
+        {
+            modulesInfo.append( modules.getDocumentation().getText( Locale.getDefault().getLanguage() ).getValue() ).
+                append( '\n' );
+
+        }
+        else
+        {
+            modulesInfo.append( '\n' );
+        }
+
+        for ( Module m : modules.getModule() )
+        {
+            modulesInfo.append( "\tM:" ).append( m.getName() ).append( ':' ).append( m.getVersion() ).append( '\n' );
+
+            if ( m.getSpecifications() != null )
+            {
+                for ( Specification s : m.getSpecifications().getSpecification() )
+                {
+                    modulesInfo.append( "\t\t" );
+                    this.appendSpecificationInfo( s, modulesInfo ).append( '\n' );
+
+                    final Implementations available = modules.getImplementations( s.getIdentifier() );
+
+                    if ( available != null )
+                    {
+                        for ( Implementation i : available.getImplementation() )
+                        {
+                            modulesInfo.append( "\t\t\t" );
+                            this.appendImplementationInfo( i, modulesInfo ).append( "@" ).
+                                append( modules.getModuleOfImplementation( i.getIdentifier() ).getName() ).
+                                append( '\n' );
+
+                        }
+                    }
+                }
+            }
+
+            if ( m.getImplementations() != null )
+            {
+                for ( Implementation i : m.getImplementations().getImplementation() )
+                {
+                    modulesInfo.append( "\t\t" );
+                    this.appendImplementationInfo( i, modulesInfo ).append( '\n' );
+
+                    if ( i.getParent() != null )
+                    {
+                        modulesInfo.append( "\t\t\t" );
+                        this.appendImplementationInfo( modules.getImplementation( i.getParent() ), modulesInfo ).
+                            append( '@' ).append( modules.getModuleOfImplementation( i.getParent() ).getName() ).
+                            append( '\n' );
+
+                    }
+                    if ( i.getSpecifications() != null )
+                    {
+                        for ( SpecificationReference s : i.getSpecifications().getReference() )
+                        {
+                            modulesInfo.append( "\t\t\tS:" ).append( s.getIdentifier() ).append( ':' ).
+                                append( s.getVersion() ).append( '@' ).append( modules.getModuleOfSpecification(
+                                s.getIdentifier() ).getName() ).append( '\n' );
+
+                        }
+                    }
+
+                    if ( i.getDependencies() != null )
+                    {
+                        for ( Dependency d : i.getDependencies().getDependency() )
+                        {
+                            modulesInfo.append( "\t\t\tD:" ).append( d.getName() ).append( ':' ).
+                                append( d.getIdentifier() );
+
+                            if ( d.getImplementationName() != null )
+                            {
+                                modulesInfo.append( ":" ).append( d.getImplementationName() );
+                            }
+
+                            modulesInfo.append( '@' ).append( modules.getModuleOfSpecification(
+                                d.getIdentifier() ).getName() ).append( '\n' );
+
+                            final Implementations available =
+                                modules.getImplementations( i.getIdentifier(), d.getName() );
+
+                            if ( available != null )
+                            {
+                                for ( Implementation di : available.getImplementation() )
+                                {
+                                    modulesInfo.append( "\t\t\t\t" );
+                                    this.appendImplementationInfo( di, modulesInfo ).append( "@" ).
+                                        append( modules.getModuleOfImplementation( di.getIdentifier() ).getName() ).
+                                        append( '\n' );
+
+                                }
+                            }
+                        }
+                    }
+
+                    if ( i.getMessages() != null )
+                    {
+                        for ( Message msg : i.getMessages().getMessage() )
+                        {
+                            modulesInfo.append( "\t\t\tM:" ).append( msg.getName() ).append( ':' ).
+                                append( msg.getTemplate().getText( Locale.getDefault().getLanguage() ).getValue() ).
+                                append( '\n' );
+
+                        }
+                    }
+
+                    if ( i.getProperties() != null )
+                    {
+                        for ( Property p : i.getProperties().getProperty() )
+                        {
+                            modulesInfo.append( "\t\t\tP:" ).append( p.getName() ).append( ':' ).append( p.getType() ).
+                                append( ':' ).append( p.getValue() ).append( '\n' );
+
+                        }
+                    }
+                }
+            }
+        }
+
+        return modulesInfo.toString();
+    }
+
+    private StringBuffer appendSpecificationInfo( final Specification s, final StringBuffer b )
+    {
+        return b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
+            append( s.getScope() ).append( ':' ).append( s.getMultiplicity() );
+
+    }
+
+    private StringBuffer appendImplementationInfo( final Implementation i, final StringBuffer b )
+    {
+        return b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
+            append( i.getVersion() );
+
     }
 
     // SECTION-END

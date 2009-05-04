@@ -1,17 +1,21 @@
 
-  ${project.name}
+#if($project.getOrganization())
+  $project.getOrganization().getName() - ${project.name} - PROJECT.txt
+#else
+  ${project.name} - PROJECT.txt
+#end
   Version ${project.version} Build ${buildNumber}
+#if($project.url)
+  ${project.url}
+#end
 #if($project.description)
 
   ${project.description}
 #end
-#if($project.url)
-
-  Project Website ...... : ${project.url}
-#end
 #if($project.developers && !$project.developers.empty)
 
   Developers
+
 #foreach($developer in $project.developers)
 
 #if($developer.id)
@@ -102,6 +106,44 @@
     Developer access ... : ${project.scm.developerConnection}
 #end
 #if($project.scm.url)
-    URL ................ : ${project.scm.url}
+    SCM URL ............ : ${project.scm.url}
+#end
+#end
+#if($projectsSortedByOrganization && !$projectsSortedByOrganization.isEmpty())
+
+  Dependencies
+#foreach ( $organization in $projectsSortedByOrganization.keySet() )
+#foreach ( $dependency in $projectsSortedByOrganization.get( $organization ) )
+
+    Name ............... : $dependency.name
+    Artifact ........... : $dependency.artifact
+#if($dependency.url)
+    URL ................ : $dependency.url
+#else
+    URL ................ : Not available.
+#end
+#if(!$organization.getName().equals("an unknown organization"))
+    Organization ....... : $organization.name
+#else
+    Organization ....... : Not available.
+#end
+#if($organization.url)
+    Organization URL ... : $organization.url
+#else
+    Organization URL ... : Not available.
+#end
+#if($dependency.licenses && !$dependency.licenses.empty)
+#foreach($license in $dependency.licenses)
+    License ............ : $license.name
+#if($license.url)
+    License URL ........ : $license.url
+#else
+    License URL ........ : Not available.
+#end
+#end
+#else
+    License ............ : Not available.
+#end
+#end
 #end
 #end

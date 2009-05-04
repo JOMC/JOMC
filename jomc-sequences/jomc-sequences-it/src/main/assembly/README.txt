@@ -1,6 +1,9 @@
 
-  ${pom.description}
+  ${pom.organization.name} - ${pom.name} - README.txt
   Version ${pom.version} Build ${buildNumber}
+  ${pom.url}
+
+  ${pom.description}
 
   Environment
 
@@ -38,5 +41,5 @@
 
   Tests
 
-  bin/testsuite org.jomc.sequences.it.SequenceOperationsTest
-  bin/testsuite org.jomc.sequences.it.SequenceDirectoryTest
+    org.jomc.sequences.it.SequenceOperationsTest
+    org.jomc.sequences.it.SequenceDirectoryTest
