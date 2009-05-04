@@ -45,8 +45,8 @@
   <artifactId>jomc</artifactId>
   <version>1.0-alpha-1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>JOMC Distribution</name>
-  <description><![CDATA[JOMC distribution.]]></description>
+  <name>JOMC Binary Distribution</name>
+  <description><![CDATA[JOMC binary distribution.]]></description>
   <build>
     <plugins>
       <plugin>
