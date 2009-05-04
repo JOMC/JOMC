@@ -15,7 +15,6 @@
 #if($project.developers && !$project.developers.empty)
 
   Developers
-
 #foreach($developer in $project.developers)
 
 #if($developer.id)
