@@ -76,8 +76,7 @@ public class SequenceLimitException extends RuntimeException
     private long currentValue;
 
     /**
-     * Creates a new {@code SequenceLimitException} taking the current
-     * value of the sequence.
+     * Creates a new {@code SequenceLimitException} taking the current value of the sequence.
      *
      * @param currentValue The current value of the sequence reaching its limit.
      */

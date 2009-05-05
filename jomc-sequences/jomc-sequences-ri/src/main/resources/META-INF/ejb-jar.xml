@@ -117,14 +117,6 @@
             <trans-attribute>Required</trans-attribute>
         </container-transaction>
         <application-exception>
-            <exception-class>java.lang.NullPointerException</exception-class>
-            <rollback>true</rollback>
-        </application-exception>
-        <application-exception>
-            <exception-class>java.lang.IllegalArgumentException</exception-class>
-            <rollback>true</rollback>
-        </application-exception>
-        <application-exception>
             <exception-class>org.jomc.sequences.CapacityLimitException</exception-class>
             <rollback>true</rollback>
         </application-exception>

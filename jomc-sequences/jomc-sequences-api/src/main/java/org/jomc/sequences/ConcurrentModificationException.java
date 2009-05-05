@@ -74,8 +74,8 @@ public class ConcurrentModificationException extends RuntimeException
     private Sequence mostRecentRevision;
 
     /**
-     * Creates a new {@code ConcurrentModificationException} instance taking the
-     * most recent revision of the sequence to report.
+     * Creates a new {@code ConcurrentModificationException} instance taking the most recent revision of the sequence to
+     * report.
      *
      * @param sequence The most recent revision of the sequence to report.
      */

@@ -142,66 +142,13 @@
         </property>
       </properties>
       <messages>
-        <message name="implementationInfo">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
-            <text language="de"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
-          </template>
-        </message>
-        <message name="couldNotJoinTransaction">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Could not join transaction with status ''{0,number}''.]]></text>
-            <text language="de"><![CDATA[Konnte Transaktion mit Status ''{0,number}'' nicht beitreten.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="status" type="Number"/>
-          </arguments>
-        </message>
-        <message name="successfullyStartedTransaction">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Started new transaction with status ''{0}''.]]></text>
-            <text language="de"><![CDATA[Neue Transaktion mit Status ''{0}'' gestartet.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="status" type="Number"/>
-          </arguments>
-        </message>
-        <message name="successfullyJoinedTransaction">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Joined active transaction with status ''{0,number}''.]]></text>
-            <text language="de"><![CDATA[Aktueller Transaktion mit Status ''{0}'' beigetreten.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="status" type="Number"/>
-          </arguments>
-        </message>
-        <message name="successfullyCommittedTransaction">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Committed active transaction with status ''{0}''.]]></text>
-            <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' festgeschrieben.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="status" type="Number"/>
-          </arguments>
-        </message>
-        <message name="successfullyRolledBackTransaction">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Rolled back active transaction with status ''{0}''.]]></text>
-            <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' zurückgenommen.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="status" type="Number"/>
-          </arguments>
-        </message>
-        <message name="createdSequenceDirectory">
-          <template defaultLanguage="en">
-            <text language="en"><![CDATA[Sequence directory ''{0}'' created.]]></text>
-            <text language="de"><![CDATA[Sequenzverzeichnis ''{0}'' erstellt.]]></text>
-          </template>
-          <arguments>
-            <argument index="0" name="name"/>
-          </arguments>
-        </message>
+        <reference name="systemError"/>
+        <reference name="illegalArgument"/>
+        <reference name="implementationInfo"/>
+        <reference name="successfullyStartedTransaction"/>
+        <reference name="successfullyCommittedTransaction"/>
+        <reference name="successfullyRolledBackTransaction"/>
+        <reference name="successfullyCreatedSequenceDirectory"/>
       </messages>
     </implementation>
 
@@ -245,6 +192,18 @@
         <reference identifier="org.jomc.sequences.ri.SequenceMapper"
                    version="1.0"/>
       </specifications>
+      <dependencies>
+        <dependency identifier="java.util.Locale"
+                    version="1.1"
+                    name="Locale"
+                    implementationName="default"
+                    bound="true"/>
+
+      </dependencies>
+      <messages>
+        <reference name="systemError"/>
+        <reference name="illegalArgument"/>
+      </messages>
     </implementation>
 
     <!-- ******************************************************************* -->
@@ -303,4 +262,64 @@
       </messages>
     </implementation>
   </implementations>
+  <messages>
+    <message name="systemError">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[A system error occured.]]></text>
+        <text language="de"><![CDATA[Es ist ein System-Fehler aufgetreten.]]></text>
+      </template>
+    </message>
+    <message name="illegalArgument">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Illegal value ''{1}'' for argument ''{0}''.]]></text>
+        <text language="de"><![CDATA[Ungültiger Wert ''{1}'' für Parameter ''{0}''.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="argumentName"/>
+        <argument index="1" name="argumentValue"/>
+      </arguments>
+    </message>
+    <message name="implementationInfo">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
+        <text language="de"><![CDATA[DefaultSequenceDirectory Version ${pom.version}]]></text>
+      </template>
+    </message>
+    <message name="successfullyStartedTransaction">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Started new transaction with status ''{0}''.]]></text>
+        <text language="de"><![CDATA[Neue Transaktion mit Status ''{0}'' gestartet.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="status" type="Number"/>
+      </arguments>
+    </message>
+    <message name="successfullyCommittedTransaction">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Committed active transaction with status ''{0}''.]]></text>
+        <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' festgeschrieben.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="status" type="Number"/>
+      </arguments>
+    </message>
+    <message name="successfullyRolledBackTransaction">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Rolled back active transaction with status ''{0}''.]]></text>
+        <text language="de"><![CDATA[Aktuelle Transaktion mit Status ''{0}'' zurückgenommen.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="status" type="Number"/>
+      </arguments>
+    </message>
+    <message name="successfullyCreatedSequenceDirectory">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Sequence directory ''{0}'' created.]]></text>
+        <text language="de"><![CDATA[Sequenzverzeichnis ''{0}'' erstellt.]]></text>
+      </template>
+      <arguments>
+        <argument index="0" name="name"/>
+      </arguments>
+    </message>
+  </messages>
 </module>

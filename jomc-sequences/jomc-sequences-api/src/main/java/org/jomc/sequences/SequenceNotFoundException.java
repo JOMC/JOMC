@@ -74,8 +74,7 @@ public class SequenceNotFoundException extends IllegalArgumentException
     private String sequenceName;
 
     /**
-     * Creates a new {@code SequenceNotFoundException} instance taking the
-     * name of the sequence which does not exist.
+     * Creates a new {@code SequenceNotFoundException} instance taking the name of the sequence which does not exist.
      *
      * @param sequenceName Name of the sequence which does not exist.
      *

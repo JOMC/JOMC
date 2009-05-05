@@ -72,10 +72,9 @@ public interface SequenceMapper
      *
      * @return {@code source} mapped to {@code target}.
      *
-     * @throws NullPointerException if {@code source} or {@code target} is {@code null}.
      * @throws SequencesSystemException if mapping fails unexpectedly.
      */
-    Sequence map( SequenceType source, Sequence target ) throws NullPointerException, SequencesSystemException;
+    Sequence map( SequenceType source, Sequence target ) throws SequencesSystemException;
 
     /**
      * Maps a {@code Sequence} instance to an implementation model instance.
@@ -85,10 +84,9 @@ public interface SequenceMapper
      *
      * @return {@code source} mapped to {@code target}.
      *
-     * @throws NullPointerException if {@code source} or {@code target} is {@code null}.
      * @throws SequencesSystemException if mapping fails unexpectedly.
      */
-    SequenceType map( Sequence source, SequenceType target ) throws NullPointerException, SequencesSystemException;
+    SequenceType map( Sequence source, SequenceType target ) throws SequencesSystemException;
 
     // SECTION-END
 }

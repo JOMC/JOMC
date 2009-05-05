@@ -100,8 +100,7 @@ public class IllegalSequenceException extends IllegalArgumentException
         private String identifier;
 
         /**
-         * Creates a new {@code Detail} instance taking the identifier of the
-         * instance.
+         * Creates a new {@code Detail} instance taking the identifier of the instance.
          *
          * @param identifier The identifier of the instance.
          */
@@ -132,12 +131,11 @@ public class IllegalSequenceException extends IllegalArgumentException
         }
 
         /**
-         * Indicates whether some other object is "equal to" this one by
-         * comparing the value of property {@code identifier}.
+         * Indicates whether some other object is "equal to" this one by comparing the value of property
+         * {@code identifier}.
          *
          * @param o The reference object with which to compare.
-         * @return {@code true} if this object is the same as the obj argument;
-         * {@code false} otherwise.
+         * @return {@code true} if this object is the same as the obj argument; {@code false} otherwise.
          */
         @Override
         public boolean equals( final Object o )

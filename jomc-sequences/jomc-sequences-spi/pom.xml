@@ -76,6 +76,16 @@
       <artifactId>jomc-sequences-api</artifactId>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>persistence-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>transaction-api</artifactId>
+      <scope>compile</scope>
+    </dependency>
     <!-- Runtime -->
     <dependency>
       <groupId>org.jomc</groupId>

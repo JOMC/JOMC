@@ -46,6 +46,7 @@ import org.jomc.sequences.IllegalSequenceException;
 import org.jomc.sequences.Sequence;
 import org.jomc.sequences.SequenceDirectory;
 import org.jomc.sequences.SequenceNotFoundException;
+import org.jomc.sequences.SequencesSystemException;
 
 // SECTION-START[Implementation Comment]
 /**
@@ -75,7 +76,7 @@ public class SequenceDirectoryTest extends TestCase
      *
      * @return A sequence with valid data.
      */
-    static Sequence getLegalSequence()
+    public static Sequence getTestSequence()
     {
         final Sequence legal = new Sequence();
         legal.setIncrement( 1L );
@@ -88,10 +89,10 @@ public class SequenceDirectoryTest extends TestCase
     }
 
     /**
-     * Tests all {@link SequenceDirectory} methods to handle null arguments
-     * correctly by throwing a corresponding {@code NullPointerException}.
+     * Tests all {@link SequenceDirectory} methods to handle illegal arguments correctly by throwing a
+     * {@code SequencesSystemException} with non-null message.
      */
-    public void testNullArguments() throws Exception
+    public void testIllegalArguments() throws Exception
     {
         assert this.getSequenceDirectory() != null;
 
@@ -100,7 +101,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().addSequence( null );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -111,7 +112,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().deleteSequence( null, 0L );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -122,7 +123,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().editSequence( null, 0L, null );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -133,7 +134,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().editSequence( "TEST", 0L, null );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -144,7 +145,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().editSequence( null, 0L, new Sequence() );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -155,7 +156,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().getSequence( null );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -164,7 +165,7 @@ public class SequenceDirectoryTest extends TestCase
     }
 
     /**
-     * Tests that a valid sequence can be added, edited, searched and removed.
+     * Tests that a valid sequence can get added, edited, searched and removed.
      */
     public void testAddEditSearchDeleteLegalSequence() throws Exception
     {
@@ -172,7 +173,7 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        Sequence legal = getLegalSequence();
+        Sequence legal = getTestSequence();
 
         legal = this.getSequenceDirectory().addSequence( legal );
 
@@ -180,34 +181,25 @@ public class SequenceDirectoryTest extends TestCase
 
         legal.setName( "TEST2" );
 
-        legal = this.getSequenceDirectory().editSequence(
-            "TEST", legal.getRevision(), legal );
+        legal = this.getSequenceDirectory().editSequence( "TEST", legal.getRevision(), legal );
 
         System.out.println( legal );
 
-        Assert.assertEquals( legal, this.getSequenceDirectory().
-            getSequence( "TEST2" ) );
+        Assert.assertEquals( legal, this.getSequenceDirectory().getSequence( "TEST2" ) );
 
-        final Set<Sequence> result = this.getSequenceDirectory().
-            searchSequences( "TEST" );
+        final Set<Sequence> result = this.getSequenceDirectory().searchSequences( "TEST" );
 
         Assert.assertEquals( 1, result.size() );
         Assert.assertEquals( legal, result.toArray()[0] );
 
-        this.getSequenceDirectory().deleteSequence( "TEST2",
-                                                    legal.getRevision() );
+        this.getSequenceDirectory().deleteSequence( "TEST2", legal.getRevision() );
 
-        Assert.assertEquals( 0, this.getSequenceDirectory().
-            searchSequences( null ).size() );
-
-        Assert.assertEquals( BigInteger.ZERO, this.getSequenceDirectory().
-            getSequenceCount() );
-
+        Assert.assertEquals( 0, this.getSequenceDirectory().searchSequences( null ).size() );
+        Assert.assertEquals( BigInteger.ZERO, this.getSequenceDirectory().getSequenceCount() );
     }
 
     /**
-     * Tests that a sequence cannot be edited or removed when it got
-     * changed concurrently.
+     * Tests that a sequence cannot get edited or removed when it got changed concurrently.
      */
     public void testConcurrentModificationException() throws Exception
     {
@@ -215,15 +207,13 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        final Sequence legal = getLegalSequence();
+        final Sequence legal = getTestSequence();
 
         Sequence sequence = this.getSequenceDirectory().addSequence( legal );
 
         try
         {
-            this.getSequenceDirectory().editSequence(
-                "TEST", sequence.getRevision() + 1L, sequence );
-
+            this.getSequenceDirectory().editSequence( "TEST", sequence.getRevision() + 1L, sequence );
             throw new AssertionError();
         }
         catch ( ConcurrentModificationException e )
@@ -234,9 +224,7 @@ public class SequenceDirectoryTest extends TestCase
 
         try
         {
-            this.getSequenceDirectory().deleteSequence(
-                "TEST", sequence.getRevision() + 1L );
-
+            this.getSequenceDirectory().deleteSequence( "TEST", sequence.getRevision() + 1L );
             throw new AssertionError();
         }
         catch ( ConcurrentModificationException e )
@@ -247,9 +235,8 @@ public class SequenceDirectoryTest extends TestCase
     }
 
     /**
-     * Tests that adding an illegal sequence or updating an existing sequence
-     * with illegal data is prevented by throwing a corresponding
-     * {@code IllegalSequenceException}.
+     * Tests that adding an illegal sequence or updating an existing sequence with illegal data is prevented by throwing
+     * a corresponding {@code IllegalSequenceException}.
      */
     public void testIllegalSequenceException() throws Exception
     {
@@ -257,7 +244,7 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        Sequence legal = getLegalSequence();
+        Sequence legal = getTestSequence();
 
         final Sequence illegal = new Sequence();
         illegal.setName( "TEST" );
@@ -292,14 +279,11 @@ public class SequenceDirectoryTest extends TestCase
             System.out.println( e.toString() );
         }
 
-        this.getSequenceDirectory().deleteSequence(
-            legal.getName(), legal.getRevision() );
-
+        this.getSequenceDirectory().deleteSequence( legal.getName(), legal.getRevision() );
     }
 
     /**
-     * Tests that adding a sequence twice is prevented by throwing a
-     * corresponding {@code DuplicateSequenceException}.
+     * Tests that adding a sequence twice is prevented by throwing a corresponding {@code DuplicateSequenceException}.
      */
     public void testDuplicateSequenceException() throws Exception
     {
@@ -307,7 +291,7 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        Sequence legal = getLegalSequence();
+        Sequence legal = getTestSequence();
 
         legal = this.getSequenceDirectory().addSequence( legal );
 
@@ -324,8 +308,8 @@ public class SequenceDirectoryTest extends TestCase
     }
 
     /**
-     * Tests that updating or deleting an unknown sequence is prevented by
-     * throwing a corresponding {@code SequenceNotFoundException}.
+     * Tests that updating or deleting an unknown sequence is prevented by throwing a corresponding
+     * {@code SequenceNotFoundException}.
      */
     public void testSequenceNotFoundException() throws Exception
     {
@@ -333,7 +317,7 @@ public class SequenceDirectoryTest extends TestCase
 
         this.clearDirectory();
 
-        final Sequence legal = getLegalSequence();
+        final Sequence legal = getTestSequence();
 
         try
         {
@@ -361,8 +345,7 @@ public class SequenceDirectoryTest extends TestCase
     }
 
     /**
-     * Tests that adding, editing and removing multiple sequences leaves
-     * an empty directory.
+     * Tests that adding, editing and then removing multiple sequences leaves an empty directory.
      */
     public void testAddEditDeleteMany() throws Exception
     {
@@ -375,7 +358,7 @@ public class SequenceDirectoryTest extends TestCase
         final List<Sequence> updated = new ArrayList<Sequence>( count );
         for ( int i = 0; i < count; i++ )
         {
-            final Sequence legal = getLegalSequence();
+            final Sequence legal = getTestSequence();
             legal.setName( legal.getName() + ' ' + i );
             final Sequence a = this.getSequenceDirectory().addSequence( legal );
             added.add( a );
@@ -401,26 +384,21 @@ public class SequenceDirectoryTest extends TestCase
             System.out.println( "DELETE: " + d );
         }
 
-        Assert.assertEquals( BigInteger.ZERO,
-                             this.getSequenceDirectory().getSequenceCount() );
-
+        Assert.assertEquals( BigInteger.ZERO, this.getSequenceDirectory().getSequenceCount() );
     }
 
     /** Removes all sequences from the directory. */
     protected void clearDirectory() throws Exception
     {
         // Remove any test entries.
-        for ( Sequence sequence : this.getSequenceDirectory().
-            searchSequences( null ) )
+        for ( Sequence sequence : this.getSequenceDirectory().searchSequences( null ) )
         {
             System.out.println( this.getSequenceDirectory().deleteSequence(
                 sequence.getName(), sequence.getRevision() ) );
 
         }
 
-        Assert.assertEquals( BigInteger.ZERO, this.getSequenceDirectory().
-            getSequenceCount() );
-
+        Assert.assertEquals( BigInteger.ZERO, this.getSequenceDirectory().getSequenceCount() );
     }
 
     // SECTION-END

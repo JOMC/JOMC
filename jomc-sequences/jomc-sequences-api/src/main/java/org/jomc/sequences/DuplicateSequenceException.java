@@ -74,8 +74,7 @@ public class DuplicateSequenceException extends IllegalArgumentException
     private final Sequence sequence;
 
     /**
-     * Creates a new {@code DuplicateSequenceException} taking the sequence
-     * already known.
+     * Creates a new {@code DuplicateSequenceException} taking the sequence already known.
      *
      * @param sequence The sequence already known.
      */

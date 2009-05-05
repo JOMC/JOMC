@@ -65,31 +65,27 @@ public interface SequenceOperations
      *
      * @return The next value of the sequence with name {@code name}.
      *
-     * @throws NullPointerException if {@code name} is {@code null}.
      * @throws SequenceNotFoundException if no sequence exists for {@code sequenceName}.
      * @throws SequenceLimitException if the sequence with name {@code sequenceName} reached its maximum value.
      * @throws SequencesSystemException if getting the value fails.
      */
     long getNextSequenceValue( String sequenceName )
-        throws NullPointerException, SequenceNotFoundException, SequenceLimitException, SequencesSystemException;
+        throws SequenceNotFoundException, SequenceLimitException, SequencesSystemException;
 
     /**
      * Gets multiple next values for a named sequence.
      *
-     * @param sequenceName the name of the sequence to get values of.
-     * @param numValues the number of values to get from the sequence with name {@code sequenceName}.
+     * @param sequenceName The name of the sequence to get values of.
+     * @param numValues The number of values to get from the sequence with name {@code sequenceName} - must be positive.
      *
      * @return An array of next values of the sequence with name {@code name} with a length equal to {@code numValues}.
      *
-     * @throws NullPointerException if {@code name} is {@code null}.
-     * @throws IllegalArgumentException if {@code numValues} is negative.
      * @throws SequenceNotFoundException if no sequence exists for {@code sequenceName}.
      * @throws SequenceLimitException if the sequence with name {@code sequenceName} reached its maximum value.
      * @throws SequencesSystemException if getting values fails.
      */
     long[] getNextSequenceValues( String sequenceName, int numValues )
-        throws NullPointerException, IllegalArgumentException, SequenceNotFoundException, SequenceLimitException,
-               SequencesSystemException;
+        throws SequenceNotFoundException, SequenceLimitException, SequencesSystemException;
 
     // SECTION-END
 }

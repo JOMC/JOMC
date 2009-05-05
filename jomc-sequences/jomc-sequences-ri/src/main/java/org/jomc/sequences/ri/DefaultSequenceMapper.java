@@ -51,6 +51,22 @@ import org.jomc.sequences.model.SequenceType;
  * Object applies to Singleton scope.
  * State does not need to be retained across operations to operate as specified.</blockquote></li>
  * </ul></p>
+ * <p><b>Dependencies</b><ul>
+ * <li>"{@link #getLocale Locale}"<blockquote>
+ * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
+ * </ul></p>
+ * <p><b>Messages</b><ul>
+ * <li>"{@link #getSystemErrorMessage systemError}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+ * </table>
+ * </li>
+ * <li>"{@link #getIllegalArgumentMessage illegalArgument}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal value ''{1}'' for argument ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Wert ''{1}'' für Parameter ''{0}''.</pre></td></tr>
+ * </table>
+ * </li>
+ * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
@@ -67,16 +83,15 @@ public class DefaultSequenceMapper implements SequenceMapper
 {
     // SECTION-START[SequenceMapper]
 
-    public Sequence map( final SequenceType source, final Sequence target )
-        throws NullPointerException, SequencesSystemException
+    public Sequence map( final SequenceType source, final Sequence target ) throws SequencesSystemException
     {
         if ( source == null )
         {
-            throw new NullPointerException( "source" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "source", null ) );
         }
         if ( target == null )
         {
-            throw new NullPointerException( "target" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "target", null ) );
         }
 
         target.setIncrement( source.getIncrement() );
@@ -90,16 +105,15 @@ public class DefaultSequenceMapper implements SequenceMapper
         return target;
     }
 
-    public SequenceType map( final Sequence source, final SequenceType target )
-        throws NullPointerException, SequencesSystemException
+    public SequenceType map( final Sequence source, final SequenceType target ) throws SequencesSystemException
     {
         if ( source == null )
         {
-            throw new NullPointerException( "source" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "source", null ) );
         }
         if ( target == null )
         {
-            throw new NullPointerException( "target" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "target", null ) );
         }
 
         target.setIncrement( source.getIncrement() );
@@ -176,7 +190,9 @@ public class DefaultSequenceMapper implements SequenceMapper
                 }
                 catch ( Exception e )
                 {
-                    throw new SequencesSystemException( e );
+                    throw new SequencesSystemException(
+                        e.getMessage() != null ? e.getMessage() : getSystemErrorMessage( getLocale() ), e );
+
                 }
             }
 
@@ -200,9 +216,69 @@ public class DefaultSequenceMapper implements SequenceMapper
     }
     // SECTION-END
     // SECTION-START[Dependencies]
+
+    /**
+     * Gets the {@code Locale} dependency.
+     * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
+     * @return The {@code Locale} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
+    {
+        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+    }
     // SECTION-END
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
+
+    /**
+     * Gets the text of the {@code illegalArgument} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal value ''{1}'' for argument ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Wert ''{1}'' für Parameter ''{0}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param argumentName Format argument.
+     * @param argumentValue Format argument.
+     * @return The text of the {@code illegalArgument} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private String getIllegalArgumentMessage( final java.util.Locale locale, final java.lang.String argumentName, final java.lang.String argumentValue ) throws org.jomc.ObjectManagementException
+    {
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
+    }
+
+    /**
+     * Gets the text of the {@code systemError} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @return The text of the {@code systemError} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private String getSystemErrorMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
+    {
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "systemError", locale,  null );
+    }
     // SECTION-END
 }

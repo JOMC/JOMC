@@ -87,10 +87,9 @@ public interface SequenceDirectory
      * @return The sequence with name {@code name} or {@code null} if no sequence matching {@code name} exists in the
      * directory.
      *
-     * @throws NullPointerException if {@code name} is {@code null}.
      * @throws SequencesSystemException if getting the sequence fails.
      */
-    Sequence getSequence( String name ) throws NullPointerException, SequencesSystemException;
+    Sequence getSequence( String name ) throws SequencesSystemException;
 
     /**
      * Adds a sequence to the directory.
@@ -99,15 +98,13 @@ public interface SequenceDirectory
      *
      * @return The data of the sequence from the directory.
      *
-     * @throws NullPointerException if {@code sequence} is {@code null}.
      * @throws IllegalSequenceException if {@code sequence} holds illegal values.
      * @throws DuplicateSequenceException if a sequence with the same name already exists.
      * @throws CapacityLimitException if the directory's capacity limit has been reached.
      * @throws SequencesSystemException if adding the sequence fails.
      */
     Sequence addSequence( Sequence sequence )
-        throws NullPointerException, IllegalSequenceException, DuplicateSequenceException, CapacityLimitException,
-               SequencesSystemException;
+        throws IllegalSequenceException, DuplicateSequenceException, CapacityLimitException, SequencesSystemException;
 
     /**
      * Updates a sequence in the directory.
@@ -118,7 +115,6 @@ public interface SequenceDirectory
      *
      * @return The data of the sequence from the directory.
      *
-     * @throws NullPointerException if {@code name} or {@code sequence} is {@code null}.
      * @throws SequenceNotFoundException if no sequence matching {@code name} exists in the directory.
      * @throws IllegalSequenceException if {@code sequence} holds illegal values.
      * @throws ConcurrentModificationException if the same sequence got concurrently modified in the directory, that is,
@@ -126,8 +122,8 @@ public interface SequenceDirectory
      * @throws SequencesSystemException if editing the sequence fails.
      */
     Sequence editSequence( String name, long revision, Sequence sequence )
-        throws NullPointerException, SequenceNotFoundException, IllegalSequenceException,
-               ConcurrentModificationException, SequencesSystemException;
+        throws SequenceNotFoundException, IllegalSequenceException, ConcurrentModificationException,
+               SequencesSystemException;
 
     /**
      * Removes a sequence from the directory.
@@ -137,15 +133,13 @@ public interface SequenceDirectory
      *
      * @return The data of the removed sequence from the directory.
      *
-     * @throws NullPointerException if {@code name} is {@code null}.
      * @throws SequenceNotFoundException if no sequence matching {@code name} exists in the directory.
      * @throws ConcurrentModificationException if the same sequence got concurrently modified in the directory, that is,
      * {@code revision} denotes outdated data.
      * @throws SequencesSystemException if deleting the sequence fails.
      */
     Sequence deleteSequence( String name, long revision )
-        throws NullPointerException, SequenceNotFoundException, ConcurrentModificationException,
-               SequencesSystemException;
+        throws SequenceNotFoundException, ConcurrentModificationException, SequencesSystemException;
 
     /**
      * Searches the directory for sequences matching the given arguments.
@@ -155,10 +149,9 @@ public interface SequenceDirectory
      *
      * @return All sequences matching the given criteria.
      *
-     * @throws IllegalArgumentException if {@code name} cannot be used for searching the directory.
      * @throws SequencesSystemException if seqrching the directory fails.
      */
-    Set<Sequence> searchSequences( String name ) throws IllegalArgumentException, SequencesSystemException;
+    Set<Sequence> searchSequences( String name ) throws SequencesSystemException;
 
     // SECTION-END
 }

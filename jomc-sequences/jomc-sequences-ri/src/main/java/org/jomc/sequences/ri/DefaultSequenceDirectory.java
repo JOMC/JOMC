@@ -44,7 +44,12 @@ import java.util.List;
 import java.util.Set;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.RollbackException;
 import javax.transaction.Status;
+import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import org.jomc.sequences.CapacityLimitException;
 import org.jomc.sequences.ConcurrentModificationException;
@@ -95,34 +100,41 @@ import org.jomc.sequences.spi.SequenceValidator;
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
+ * <li>"{@link #getSystemErrorMessage systemError}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+ * </table>
+ * </li>
+ * <li>"{@link #getIllegalArgumentMessage illegalArgument}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal value ''{1}'' for argument ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Wert ''{1}'' für Parameter ''{0}''.</pre></td></tr>
+ * </table>
+ * </li>
  * <li>"{@link #getImplementationInfoMessage implementationInfo}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultSequenceDirectory Version 1.0-alpha-1-SNAPSHOT</pre></td></tr>
  * </table>
- * <li>"{@link #getCouldNotJoinTransactionMessage couldNotJoinTransaction}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Could not join transaction with status ''{0,number}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Konnte Transaktion mit Status ''{0,number}'' nicht beitreten.</pre></td></tr>
- * </table>
+ * </li>
  * <li>"{@link #getSuccessfullyStartedTransactionMessage successfullyStartedTransaction}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Started new transaction with status ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Neue Transaktion mit Status ''{0}'' gestartet.</pre></td></tr>
  * </table>
- * <li>"{@link #getSuccessfullyJoinedTransactionMessage successfullyJoinedTransaction}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Joined active transaction with status ''{0,number}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Aktueller Transaktion mit Status ''{0}'' beigetreten.</pre></td></tr>
- * </table>
+ * </li>
  * <li>"{@link #getSuccessfullyCommittedTransactionMessage successfullyCommittedTransaction}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Committed active transaction with status ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Aktuelle Transaktion mit Status ''{0}'' festgeschrieben.</pre></td></tr>
  * </table>
+ * </li>
  * <li>"{@link #getSuccessfullyRolledBackTransactionMessage successfullyRolledBackTransaction}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Rolled back active transaction with status ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Aktuelle Transaktion mit Status ''{0}'' zurückgenommen.</pre></td></tr>
  * </table>
- * <li>"{@link #getCreatedSequenceDirectoryMessage createdSequenceDirectory}"<table>
+ * </li>
+ * <li>"{@link #getSuccessfullyCreatedSequenceDirectoryMessage successfullyCreatedSequenceDirectory}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Sequence directory ''{0}'' created.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Sequenzverzeichnis ''{0}'' erstellt.</pre></td></tr>
  * </table>
+ * </li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -176,13 +188,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -196,7 +219,7 @@ public class DefaultSequenceDirectory
     {
         if ( name == null )
         {
-            throw new NullPointerException( "name" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "name", null ) );
         }
 
         boolean commit = false;
@@ -230,13 +253,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -245,7 +279,7 @@ public class DefaultSequenceDirectory
     {
         if ( sequence == null )
         {
-            throw new NullPointerException( "sequence" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "sequence", null ) );
         }
 
         boolean commit = false;
@@ -315,13 +349,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -331,11 +376,11 @@ public class DefaultSequenceDirectory
     {
         if ( name == null )
         {
-            throw new NullPointerException( "name" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "name", null ) );
         }
         if ( sequence == null )
         {
-            throw new NullPointerException( "sequence" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "sequence", null ) );
         }
 
         boolean commit = false;
@@ -408,13 +453,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -424,7 +480,7 @@ public class DefaultSequenceDirectory
     {
         if ( name == null )
         {
-            throw new NullPointerException( "name" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage( this.getLocale(), "name", null ) );
         }
 
         boolean commit = false;
@@ -504,13 +560,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -562,13 +629,24 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
@@ -580,7 +658,9 @@ public class DefaultSequenceDirectory
     {
         if ( sequenceName == null )
         {
-            throw new NullPointerException( "sequenceName" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage(
+                this.getLocale(), "sequenceName", null ) );
+
         }
 
         boolean commit = false;
@@ -646,27 +726,41 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
 
-    public long[] getNextSequenceValues( final String sequenceName, final int numValues )
-        throws SequenceLimitException
+    public long[] getNextSequenceValues( final String sequenceName, final int numValues ) throws SequenceLimitException
     {
         if ( sequenceName == null )
         {
-            throw new NullPointerException( "sequenceName" );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage(
+                this.getLocale(), "sequenceName", null ) );
+
         }
         if ( numValues < 0 )
         {
-            throw new IllegalArgumentException( Integer.toString( numValues ) );
+            throw new SequencesSystemException( this.getIllegalArgumentMessage(
+                this.getLocale(), "numValues", Integer.toString( numValues ) ) );
+
         }
 
         boolean commit = false;
@@ -740,19 +834,30 @@ public class DefaultSequenceDirectory
         {
             this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException( e );
+            throw new SequencesSystemException(
+                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
         }
         finally
         {
             if ( !this.isContainerManaged() && rollback )
             {
-                this.rollbackTransaction();
+                try
+                {
+                    this.rollbackTransaction();
+                }
+                catch ( SystemException e )
+                {
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
+
+                }
             }
         }
     }
 
     // SECTION-END
-    // SECTION-START[JaxbSequenceDirectory]
+    // SECTION-START[DefaultSequenceDirectory]
 
     /** Constant for the name of the query for counting sequences. */
     private static final String COUNT_SEQUENCES_QUERY = "jomc-sequences-model-count-sequences";
@@ -830,7 +935,7 @@ public class DefaultSequenceDirectory
 
             if ( this.getLogger().isDebugEnabled() )
             {
-                this.getLogger().debug( this.getCreatedSequenceDirectoryMessage(
+                this.getLogger().debug( this.getSuccessfullyCreatedSequenceDirectoryMessage(
                     this.getLocale(), this.getDirectoryName() ) );
 
             }
@@ -845,100 +950,68 @@ public class DefaultSequenceDirectory
      * @return {@code true} if a new transaction was associated with the current context. {@code false} if the current
      * context already had a transaction associated.
      *
-     * @throws SequencesSystemException if beginning a transaction fails.
+     * @throws SystemException if transaction management fails to operate.
+     * @throws NotSupportedException if transaction management does not support the operation.
      */
-    protected boolean beginTransaction()
+    protected boolean beginTransaction() throws SystemException, NotSupportedException
     {
-        try
+        final UserTransaction tx = this.getUserTransaction();
+        final int status = tx.getStatus();
+
+        if ( status == Status.STATUS_NO_TRANSACTION )
         {
-            final UserTransaction tx = this.getUserTransaction();
-            final int status = tx.getStatus();
-
-            if ( status == Status.STATUS_NO_TRANSACTION )
-            {
-                tx.begin();
-
-                if ( this.getLogger().isDebugEnabled() )
-                {
-                    this.getLogger().debug( this.getSuccessfullyStartedTransactionMessage(
-                        this.getLocale(), tx.getStatus() ) );
-
-                }
-
-                return true;
-            }
-
-            if ( tx.getStatus() != Status.STATUS_ACTIVE )
-            {
-                throw new SequencesSystemException( this.getCouldNotJoinTransactionMessage(
-                    this.getLocale(), tx.getStatus() ) );
-
-            }
+            tx.begin();
 
             if ( this.getLogger().isDebugEnabled() )
             {
-                this.getLogger().debug( this.getSuccessfullyJoinedTransactionMessage(
+                this.getLogger().debug( this.getSuccessfullyStartedTransactionMessage(
                     this.getLocale(), tx.getStatus() ) );
 
             }
 
-            return false;
+            return true;
         }
-        catch ( SequencesSystemException e )
-        {
-            throw e;
-        }
-        catch ( Exception e )
-        {
-            throw new SequencesSystemException( e );
-        }
+
+        return false;
     }
 
     /**
      * Commits the current transaction.
      *
-     * @throws SequencesSystemException if committing the current transaction fails.
+     * @throws SystemException if transaction management fails to operate.
+     * @throws RollbackException if the current transaction is rolled back.
+     * @throws HeuristicMixedException if a heuristic decision was made so that some relevant updates have been
+     * committed and others have been rolled back.
+     * @throws HeuristicRollbackException if a heuristic decision was made so that all relevant updates have been
+     * rolled back.
      */
-    protected void commitTransaction()
+    protected void commitTransaction() throws SystemException, RollbackException, HeuristicMixedException,
+                                              HeuristicRollbackException
     {
-        try
-        {
-            this.getUserTransaction().commit();
+        this.getUserTransaction().commit();
 
-            if ( this.getLogger().isDebugEnabled() )
-            {
-                this.getLogger().debug( this.getSuccessfullyCommittedTransactionMessage(
-                    this.getLocale(), this.getUserTransaction().getStatus() ) );
-
-            }
-        }
-        catch ( Exception e )
+        if ( this.getLogger().isDebugEnabled() )
         {
-            throw new SequencesSystemException( e );
+            this.getLogger().debug( this.getSuccessfullyCommittedTransactionMessage(
+                this.getLocale(), this.getUserTransaction().getStatus() ) );
+
         }
     }
 
     /**
      * Marks the current transaction for rollback.
      *
-     * @throws SequencesSystemException if marking the current transaction for rollback fails.
+     * @throws SystemException if transaction management fails to operate.
      */
-    protected void rollbackTransaction()
+    protected void rollbackTransaction() throws SystemException
     {
-        try
-        {
-            this.getUserTransaction().rollback();
+        this.getUserTransaction().rollback();
 
-            if ( this.getLogger().isDebugEnabled() )
-            {
-                this.getLogger().debug( this.getSuccessfullyRolledBackTransactionMessage(
-                    this.getLocale(), this.getUserTransaction().getStatus() ) );
-
-            }
-        }
-        catch ( Exception e )
+        if ( this.getLogger().isDebugEnabled() )
         {
-            throw new SequencesSystemException( e );
+            this.getLogger().debug( this.getSuccessfullyRolledBackTransactionMessage(
+                this.getLocale(), this.getUserTransaction().getStatus() ) );
+
         }
     }
 
@@ -1054,7 +1127,9 @@ public class DefaultSequenceDirectory
                 }
                 catch ( Exception e )
                 {
-                    throw new SequencesSystemException( e );
+                    throw new SequencesSystemException(
+                        e.getMessage() == null ? getSystemErrorMessage( getLocale() ) : e.getMessage(), e );
+
                 }
             }
 
@@ -1237,14 +1312,15 @@ public class DefaultSequenceDirectory
     // SECTION-START[Messages]
 
     /**
-     * Gets the text of the {@code couldNotJoinTransaction} message.
+     * Gets the text of the {@code illegalArgument} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Could not join transaction with status ''{0,number}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Konnte Transaktion mit Status ''{0,number}'' nicht beitreten.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal value ''{1}'' for argument ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Wert ''{1}'' für Parameter ''{0}''.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param status Format argument.
-     * @return The text of the {@code couldNotJoinTransaction} message.
+     * @param argumentName Format argument.
+     * @param argumentValue Format argument.
+     * @return The text of the {@code illegalArgument} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -1253,31 +1329,9 @@ public class DefaultSequenceDirectory
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private String getCouldNotJoinTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
+    private String getIllegalArgumentMessage( final java.util.Locale locale, final java.lang.String argumentName, final java.lang.String argumentValue ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "couldNotJoinTransaction", locale, new Object[] { status, null } );
-    }
-
-    /**
-     * Gets the text of the {@code createdSequenceDirectory} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Sequence directory ''{0}'' created.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Sequenzverzeichnis ''{0}'' erstellt.</pre></td></tr>
-     * </table></p>
-     * @param locale The locale of the message to return.
-     * @param name Format argument.
-     * @return The text of the {@code createdSequenceDirectory} message.
-     *
-     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    private String getCreatedSequenceDirectoryMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
-    {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "createdSequenceDirectory", locale, new Object[] { name, null } );
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
     }
 
     /**
@@ -1324,14 +1378,14 @@ public class DefaultSequenceDirectory
     }
 
     /**
-     * Gets the text of the {@code successfullyJoinedTransaction} message.
+     * Gets the text of the {@code successfullyCreatedSequenceDirectory} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Joined active transaction with status ''{0,number}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Aktueller Transaktion mit Status ''{0}'' beigetreten.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Sequence directory ''{0}'' created.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Sequenzverzeichnis ''{0}'' erstellt.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param status Format argument.
-     * @return The text of the {@code successfullyJoinedTransaction} message.
+     * @param name Format argument.
+     * @return The text of the {@code successfullyCreatedSequenceDirectory} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -1340,9 +1394,9 @@ public class DefaultSequenceDirectory
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private String getSuccessfullyJoinedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
+    private String getSuccessfullyCreatedSequenceDirectoryMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyJoinedTransaction", locale, new Object[] { status, null } );
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyCreatedSequenceDirectory", locale, new Object[] { name, null } );
     }
 
     /**
@@ -1387,6 +1441,27 @@ public class DefaultSequenceDirectory
     private String getSuccessfullyStartedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
         return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyStartedTransaction", locale, new Object[] { status, null } );
+    }
+
+    /**
+     * Gets the text of the {@code systemError} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @return The text of the {@code systemError} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private String getSystemErrorMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
+    {
+        return org.jomc.ObjectManager.getInstance().getMessage( this, "systemError", locale,  null );
     }
     // SECTION-END
 }

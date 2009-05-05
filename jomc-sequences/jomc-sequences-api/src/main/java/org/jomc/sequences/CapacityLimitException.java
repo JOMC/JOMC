@@ -76,8 +76,7 @@ public class CapacityLimitException extends RuntimeException
     private BigInteger capacityLimit;
 
     /**
-     * Creates a new {@code CapacityLimitException} taking the capacity limit
-     * value.
+     * Creates a new {@code CapacityLimitException} taking the capacity limit value.
      *
      * @param capacityLimit The capacity limit to report.
      */

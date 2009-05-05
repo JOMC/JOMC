@@ -40,6 +40,7 @@ import org.jomc.sequences.Sequence;
 import org.jomc.sequences.SequenceLimitException;
 import org.jomc.sequences.SequenceNotFoundException;
 import org.jomc.sequences.SequenceOperations;
+import org.jomc.sequences.SequencesSystemException;
 
 // SECTION-START[Implementation Comment]
 /**
@@ -71,11 +72,10 @@ public class SequenceOperationsTest extends TestCase
 
     /**
      * Tetst the {@link SequenceOperations#getNextSequenceValue(String)} and
-     * {@link SequenceOperations#getNextSequenceValues(String,int)} methods to
-     * handle {@code null} arguments correctly by throwing a corresponding
-     * {@code NullPointerException}.
+     * {@link SequenceOperations#getNextSequenceValues(String,int)} methods to handle illegal arguments correctly
+     * by throwing a {@code SequencesSystemException} with non-null message.
      */
-    public void testNullArguments() throws Exception
+    public void testIllegalArguments() throws Exception
     {
         assert this.getSequenceOperations() != null;
 
@@ -84,7 +84,7 @@ public class SequenceOperationsTest extends TestCase
             this.getSequenceOperations().getNextSequenceValue( null );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             System.out.println( e.toString() );
             Assert.assertNotNull( e.getMessage() );
@@ -95,7 +95,7 @@ public class SequenceOperationsTest extends TestCase
             this.getSequenceOperations().getNextSequenceValues( null, 0 );
             throw new AssertionError();
         }
-        catch ( NullPointerException e )
+        catch ( SequencesSystemException e )
         {
             System.out.println( e.toString() );
             Assert.assertNotNull( e.getMessage() );
@@ -106,7 +106,7 @@ public class SequenceOperationsTest extends TestCase
             this.getSequenceOperations().getNextSequenceValues( "TEST", -1 );
             throw new AssertionError();
         }
-        catch ( IllegalArgumentException e )
+        catch ( SequencesSystemException e )
         {
             System.out.println( e.toString() );
             Assert.assertNotNull( e.getMessage() );
@@ -115,8 +115,8 @@ public class SequenceOperationsTest extends TestCase
     }
 
     /**
-     * Tests that requesting sequence values for unknown sequences is prevented
-     * by throwing a corresponding {@code SequenceNotFoundException}.
+     * Tests that requesting sequence values for unknown sequences is prevented by throwing a corresponding
+     * {@code SequenceNotFoundException}.
      */
     public void testSequenceNotFoundException() throws Exception
     {
@@ -135,9 +135,7 @@ public class SequenceOperationsTest extends TestCase
 
         try
         {
-            this.getSequenceOperations().
-                getNextSequenceValues( "UNKNOWN", 100 );
-
+            this.getSequenceOperations().getNextSequenceValues( "UNKNOWN", 100 );
             throw new AssertionError();
         }
         catch ( SequenceNotFoundException e )
@@ -150,24 +148,20 @@ public class SequenceOperationsTest extends TestCase
     /**
      * Tests the
      * {@link SequenceOperations#getNextSequenceValue(java.lang.String) }
-     * and {@link SequenceOperations#getNextSequenceValues(java.lang.String, int) }
-     * methods to throw a {@code SequenceLimitException} when a maximum value is
-     * reached.
+     * and {@link SequenceOperations#getNextSequenceValues(java.lang.String, int) } methods to throw a
+     * {@code SequenceLimitException} when a maximum value is reached.
      */
     public void testSequenceLimitException() throws Exception
     {
         this.setupTestSequence();
 
-        final long nextValue = this.getSequenceOperations().
-            getNextSequenceValue( this.getClass().getName() );
+        final long nextValue = this.getSequenceOperations().getNextSequenceValue( this.getClass().getName() );
 
         Assert.assertEquals( 10, nextValue );
 
         try
         {
-            this.getSequenceOperations().
-                getNextSequenceValue( this.getClass().getName() );
-
+            this.getSequenceOperations().getNextSequenceValue( this.getClass().getName() );
             throw new AssertionError();
         }
         catch ( SequenceLimitException e )
@@ -178,17 +172,13 @@ public class SequenceOperationsTest extends TestCase
 
         this.setupTestSequence();
 
-        final long[] nextValues = this.getSequenceOperations().
-            getNextSequenceValues( this.getClass().getName(), 1 );
-
+        final long[] nextValues = this.getSequenceOperations().getNextSequenceValues( this.getClass().getName(), 1 );
         Assert.assertEquals( 1, nextValues.length );
         Assert.assertEquals( 10, nextValues[0] );
 
         try
         {
-            this.getSequenceOperations().
-                getNextSequenceValues( this.getClass().getName(), 1 );
-
+            this.getSequenceOperations().getNextSequenceValues( this.getClass().getName(), 1 );
         }
         catch ( SequenceLimitException e )
         {
@@ -201,8 +191,7 @@ public class SequenceOperationsTest extends TestCase
     {
         assert this.getSequenceDirectory() != null;
 
-        Sequence s = this.getSequenceDirectory().getSequence(
-            this.getClass().getName() );
+        Sequence s = this.getSequenceDirectory().getSequence( this.getClass().getName() );
 
         if ( s == null )
         {
@@ -218,9 +207,7 @@ public class SequenceOperationsTest extends TestCase
         else
         {
             s.setValue( 0 );
-            this.getSequenceDirectory().editSequence(
-                s.getName(), s.getRevision(), s );
-
+            this.getSequenceDirectory().editSequence( s.getName(), s.getRevision(), s );
         }
     }
 

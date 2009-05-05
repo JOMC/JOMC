@@ -66,10 +66,10 @@ public interface SequenceValidator
     /**
      * Gets called whenever the state of a sequence is about to change in a sequence directory.
      *
-     * @param oldValue The entity getting changed or {@code null} if {@code newValue} is about to be added to the
+     * @param oldValue The entity getting changed or {@code null} if {@code newValue} is about to be added to a
      * directory.
      * @param newValue The value {@code oldValue} will be changed to or {@code null} if {@code oldValue} is about to be
-     * removed from the directory.
+     * removed from a directory.
      *
      * @return The result describing the reason for preventing the requested operation or {@code null} if the
      * implementation does not choose to prevent the operation from being performed.

@@ -61,13 +61,11 @@ public interface SequenceObserver
     // SECTION-START[SequenceObserver]
 
     /**
-     * Gets called whenever the state of a sequence changed in the sequence
-     * directory.
+     * Gets called whenever the state of a sequence changed in a sequence directory.
      *
-     * @param oldValue The entity having been changed or {@code null} if
-     * {@code newValue} got added to the directory.
-     * @param newValue The value {@code oldValue} got changed to or {@code null}
-     * if {@code oldValue} got removed from the directory.
+     * @param oldValue The changed entity or {@code null} if {@code newValue} got added to a directory.
+     * @param newValue The value {@code oldValue} got changed to or {@code null} if {@code oldValue} got removed from
+     * a directory.
      */
     void onSequenceChange( Sequence oldValue, Sequence newValue );
 

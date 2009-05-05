@@ -105,8 +105,7 @@ public class Sequence implements Comparable, Cloneable, Serializable
     private long maximum;
 
     /**
-     * Delta to add to the value of property {@code value} for the next
-     * value in the sequence.
+     * Delta to add to the value of property {@code value} for the next value in the sequence.
      * @serial
      */
     private long increment;
@@ -198,11 +197,9 @@ public class Sequence implements Comparable, Cloneable, Serializable
     }
 
     /**
-     * Gets the delta to add to the value of property {@code value} for the next
-     * value in the sequence.
+     * Gets the delta to add to the value of property {@code value} for the next value in the sequence.
      *
-     * @return The the delta to add to the value of property {@code value} for
-     * the next value in the sequence.
+     * @return The the delta to add to the value of property {@code value} for the next value in the sequence.
      */
     public long getIncrement()
     {
@@ -210,11 +207,9 @@ public class Sequence implements Comparable, Cloneable, Serializable
     }
 
     /**
-     * Sets the delta to add to the value of property {@code value} for the next
-     * value in the sequence.
+     * Sets the delta to add to the value of property {@code value} for the next value in the sequence.
      *
-     * @param value The new delta to add to the value of property
-     * {@code value} for the next value in the sequence.
+     * @param value The new delta to add to the value of property {@code value} for the next value in the sequence.
      */
     public void setIncrement( final long value )
     {
@@ -265,18 +260,16 @@ public class Sequence implements Comparable, Cloneable, Serializable
 
     /**
      * Compares this object with the specified object for order.
-     * <p>Returns a negative integer, zero, or a positive integer as this object
-     * is less than, equal to, or greater than the specified object.</p>
-     * <p><b>Note:</b><br/>This class has a natural ordering that is
-     * inconsistent with equals.</p>
+     * <p>Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than
+     * the specified object.</p>
+     * <p><b>Note:</b><br/>This class has a natural ordering that is inconsistent with equals.</p>
      *
      * @param o The Object to be compared.
      *
-     * @return A negative integer, zero, or a positive integer as this object
-     * is less than, equal to, or greater than the specified object.
+     * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than
+     * the specified object.
      *
-     * @throws ClassCastException if the specified object's type prevents it
-     * from being compared to this Object.
+     * @throws ClassCastException if the specified object's type prevents it from being compared to this object.
      */
     public int compareTo( final Object o )
     {
@@ -328,13 +321,12 @@ public class Sequence implements Comparable, Cloneable, Serializable
     // SECTION-START[Object]
 
     /**
-     * Indicates whether some other object is equal to this one by comparing
-     * the values of properties {@code name} and {@code revision}.
+     * Indicates whether some other object is equal to this one by comparing the values of properties {@code name} and
+     * {@code revision}.
      *
      * @param o The reference object with which to compare.
      *
-     * @return {@code true} if this object is the same as {@code o};
-     * {@code false} otherwise.
+     * @return {@code true} if this object is the same as {@code o}; {@code false} otherwise.
      */
     @Override
     public boolean equals( final Object o )
