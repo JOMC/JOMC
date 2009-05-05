@@ -86,34 +86,32 @@
       </specifications>
 
       <dependencies>
-        <dependency identifier="org.jomc.sequences.SequenceObserver"
-                    version="1.0"
-                    name="SequenceObserver"
-                    bound="true"/>
+        <dependency name="SequenceObserver"
+                    identifier="org.jomc.sequences.SequenceObserver"
+                    version="1.0" />
 
-        <dependency identifier="org.jomc.sequences.spi.SequenceValidator"
-                    version="1.0"
-                    name="SequenceValidator"
-                    bound="true"/>
+        <dependency name="SequenceValidator"
+                    identifier="org.jomc.sequences.spi.SequenceValidator"
+                    version="1.0"/>
 
-        <dependency identifier="org.jomc.sequences.ri.SequenceMapper"
+        <dependency name="SequenceMapper"
+                    identifier="org.jomc.sequences.ri.SequenceMapper"
                     version="1.0"
-                    name="SequenceMapper"
-                    bound="true"
                     implementationName="${pom.name}"/>
 
-        <dependency identifier="javax.persistence.EntityManager"
-                    name="EntityManager"
-                    implementationName="JOMC SDK"/>
+        <dependency name="EntityManager"
+                    identifier="javax.persistence.EntityManager"
+                    implementationName="JOMC SDK"
+                    bound="false"/>
 
-        <dependency identifier="javax.transaction.UserTransaction"
-                    name="UserTransaction"
-                    implementationName="JOMC SDK"/>
+        <dependency name="UserTransaction"
+                    identifier="javax.transaction.UserTransaction"
+                    implementationName="JOMC SDK"
+                    bound="false"/>
 
-        <dependency identifier="org.jomc.logging.Logger"
-                    version="1.0"
-                    name="Logger"
-                    bound="true">
+        <dependency name="Logger"
+                    identifier="org.jomc.logging.Logger"
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -122,11 +120,10 @@
           </properties>
         </dependency>
 
-        <dependency identifier="java.util.Locale"
+        <dependency name="Locale"
+                    identifier="java.util.Locale"
                     version="1.1"
-                    name="Locale"
-                    implementationName="default"
-                    bound="true"/>
+                    implementationName="default"/>
 
       </dependencies>
       <properties>
@@ -193,11 +190,10 @@
                    version="1.0"/>
       </specifications>
       <dependencies>
-        <dependency identifier="java.util.Locale"
+        <dependency name="Locale"
+                    identifier="java.util.Locale"
                     version="1.1"
-                    name="Locale"
-                    implementationName="default"
-                    bound="true"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -225,10 +221,9 @@
         <reference identifier="org.jomc.sequences.SequenceObserver" version="1.0"/>
       </specifications>
       <dependencies>
-        <dependency identifier="org.jomc.logging.Logger"
-                    version="1.0"
-                    name="Logger"
-                    bound="true">
+        <dependency name="Logger"
+                    identifier="org.jomc.logging.Logger"
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -237,11 +232,10 @@
           </properties>
         </dependency>
 
-        <dependency identifier="java.util.Locale"
+        <dependency name="Locale"
+                    identifier="java.util.Locale"
                     version="1.1"
-                    name="Locale"
-                    implementationName="default"
-                    bound="true"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>

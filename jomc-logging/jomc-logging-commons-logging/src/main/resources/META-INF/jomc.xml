@@ -83,8 +83,7 @@
       </specifications>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true"
-                    implementationName="${pom.name}">
+                    version="1.0" implementationName="${pom.name}">
 
           <properties>
             <property name="name" value="org.jomc.ObjectManager"/>

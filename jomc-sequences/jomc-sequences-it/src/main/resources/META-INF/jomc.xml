@@ -62,10 +62,9 @@
 
       </authors>
       <dependencies>
-        <dependency identifier="org.jomc.sequences.SequenceDirectory"
-                    version="1.0"
-                    name="SequenceDirectory"
-                    bound="true">
+        <dependency name="SequenceDirectory"
+                    identifier="org.jomc.sequences.SequenceDirectory"
+                    version="1.0">
 
         </dependency>
       </dependencies>
@@ -88,15 +87,13 @@
 
       </authors>
       <dependencies>
-        <dependency identifier="org.jomc.sequences.SequenceDirectory"
-                    version="1.0"
-                    name="SequenceDirectory"
-                    bound="true"/>
+        <dependency name="SequenceDirectory"
+                    identifier="org.jomc.sequences.SequenceDirectory"
+                    version="1.0"/>
 
-        <dependency identifier="org.jomc.sequences.SequenceOperations"
-                    version="1.0"
-                    name="SequenceOperations"
-                    bound="true"/>
+        <dependency name="SequenceOperations"
+                    identifier="org.jomc.sequences.SequenceOperations"
+                    version="1.0"/>
 
       </dependencies>
     </implementation>

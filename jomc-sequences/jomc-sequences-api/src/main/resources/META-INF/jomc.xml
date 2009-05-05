@@ -115,10 +115,7 @@
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
+        <dependency identifier="java.util.Locale" version="1.1" name="Locale"
                     implementationName="default"/>
 
       </dependencies>
@@ -161,11 +158,8 @@ catch(IllegalSequenceException e)
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
-                    implementationName="default"/>
+        <dependency identifier="java.util.Locale" version="1.1"
+                    name="Locale" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -192,11 +186,8 @@ maximum value has already been reached.]]></text>
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
-                    implementationName="default"/>
+        <dependency identifier="java.util.Locale" version="1.1"
+                    name="Locale" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -221,11 +212,8 @@ maximum value has already been reached.]]></text>
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
-                    implementationName="default"/>
+        <dependency identifier="java.util.Locale" version="1.1"
+                    name="Locale" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -250,11 +238,8 @@ maximum value has already been reached.]]></text>
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
-                    implementationName="default"/>
+        <dependency identifier="java.util.Locale" version="1.1"
+                    name="Locale" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -279,11 +264,8 @@ maximum value has already been reached.]]></text>
 
       </authors>
       <dependencies>
-        <dependency identifier="java.util.Locale"
-                    version="1.1"
-                    name="Locale"
-                    bound="false"
-                    implementationName="default"/>
+        <dependency identifier="java.util.Locale" version="1.1"
+                    name="Locale" implementationName="default"/>
 
       </dependencies>
       <messages>

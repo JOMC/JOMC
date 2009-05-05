@@ -72,7 +72,7 @@ import org.jomc.sequences.Sequence;
  * <li>"{@link #getSequenceDirectory SequenceDirectory}"<blockquote>
  * Dependency on {@code org.jomc.sequences.SequenceDirectory} at specification level 1.0 applying to Singleton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLocale Locale}"<blockquote>
- * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope.</blockquote></li>
+ * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLogger Logger}"<blockquote>
  * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>

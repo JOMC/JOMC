@@ -191,10 +191,10 @@
                     bound="false" implementationName="${pom.name}"/>
 
         <dependency name="Locale" identifier="java.util.Locale"
-                    bound="true" version="1.1" implementationName="default"/>
+                    version="1.1" implementationName="default"/>
 
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    bound="true" version="1.0">
+                    version="1.0">
 
           <properties>
             <property name="name" value="org.jomc.sdk.persistence.PersistenceFramework"/>
@@ -256,10 +256,10 @@
                     bound="false" implementationName="${pom.name}"/>
 
         <dependency name="Locale" identifier="java.util.Locale"
-                    bound="true" version="1.1" implementationName="default"/>
+                    version="1.1" implementationName="default"/>
 
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    bound="true" version="1.0">
+                    version="1.0">
 
           <properties>
             <property name="name" value="org.jomc.sdk.transaction.TransactionFramework"/>

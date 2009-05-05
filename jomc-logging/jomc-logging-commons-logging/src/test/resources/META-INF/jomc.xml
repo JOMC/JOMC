@@ -35,7 +35,7 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd"
-        name="${pom.name}"
+        name="${pom.name} Tests"
         version="${pom.version}"
         vendor="${pom.organization.name}"
         modelVersion="1.0">
@@ -43,37 +43,4 @@
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${pom.description}]]></text>
   </documentation>
-
-  <implementations>
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.logging.it.LoggerTest"
-                    class="org.jomc.logging.it.LoggerTest"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
-
-      <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[${pom.description}]]></text>
-      </documentation>
-      <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-      <dependencies>
-        <dependency identifier="org.jomc.logging.Logger"
-                    version="1.0" name="Logger">
-
-          <documentation defaultLanguage="en">
-            <text language="en"><![CDATA[Implementation tests are performed with.]]></text>
-          </documentation>
-          <properties>
-            <property name="name" type="java.lang.String"
-                      value="org.jomc.logging.it.LoggerTest"/>
-
-          </properties>
-        </dependency>
-      </dependencies>
-    </implementation>
-  </implementations>
 </module>

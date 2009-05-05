@@ -105,24 +105,19 @@
       <dependencies>
         <dependency name="TestBoundSingleton"
                     identifier="org.jomc.ri.tests.SingletonSpecification"
-                    version="${pom.version}"
-                    bound="true"/>
+                    version="${pom.version}"/>
         <dependency name="TestSingleton"
                     identifier="org.jomc.ri.tests.SingletonSpecification"
-                    version="${pom.version}"
-                    bound="false"/>
+                    version="${pom.version}" bound="false"/>
         <dependency name="TestMultiton"
                     identifier="org.jomc.ri.tests.MultitonSpecification"
-                    version="${pom.version}"
-                    bound="false"/>
+                    version="${pom.version}" bound="false"/>
         <dependency name="TestSpecification"
                     identifier="org.jomc.ri.tests.TestSpecification"
-                    version="${pom.version}"
-                    bound="false"/>
+                    version="${pom.version}" bound="false"/>
         <dependency name="SelectedTestSpecification"
                     identifier="org.jomc.ri.tests.TestSpecification"
-                    version="${pom.version}"
-                    bound="false"
+                    version="${pom.version}" bound="false"
                     implementationName="${pom.name}"/>
       </dependencies>
       <properties>

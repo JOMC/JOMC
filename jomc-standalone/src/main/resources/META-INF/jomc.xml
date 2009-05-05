@@ -147,7 +147,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -155,8 +155,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale"
-                    version="1.1" bound="true"
-                    implementationName="default"/>
+                    version="1.1" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -239,7 +238,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -247,8 +246,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale"
-                    version="1.1" bound="true"
-                    implementationName="default"/>
+                    version="1.1" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -291,7 +289,7 @@
       </specifications>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -299,8 +297,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale"
-                    version="1.1" bound="true"
-                    implementationName="default"/>
+                    version="1.1" implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -353,7 +350,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -385,7 +382,7 @@
       </specifications>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -393,7 +390,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -428,7 +425,7 @@
       </specifications>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -436,7 +433,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <properties>
@@ -478,7 +475,7 @@
       </specifications>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -486,7 +483,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -518,7 +515,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -526,7 +523,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -558,7 +555,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -566,7 +563,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -598,7 +595,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -606,7 +603,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -637,7 +634,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -645,7 +642,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>
@@ -677,7 +674,7 @@
       </authors>
       <dependencies>
         <dependency name="Logger" identifier="org.jomc.logging.Logger"
-                    version="1.0" bound="true">
+                    version="1.0">
 
           <properties>
             <property name="name" type="java.lang.String"
@@ -685,7 +682,7 @@
           </properties>
         </dependency>
         <dependency name="Locale" identifier="java.util.Locale" version="1.1"
-                    bound="true" implementationName="default"/>
+                    implementationName="default"/>
 
       </dependencies>
       <messages>

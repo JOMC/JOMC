@@ -39,7 +39,7 @@ package org.jomc.sequences;
  * Gets thrown when a sequence is not found for a given name.
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getLocale Locale}"<blockquote>
- * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope.</blockquote></li>
+ * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getSequenceNotFoundMessage sequenceNotFound}"<table>
