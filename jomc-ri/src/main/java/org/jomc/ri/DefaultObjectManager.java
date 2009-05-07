@@ -36,6 +36,8 @@ package org.jomc.ri;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,6 +49,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
+import javax.xml.bind.JAXBException;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
 import org.jomc.model.DefaultModelManager;
@@ -66,6 +69,7 @@ import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
 import org.jomc.ri.util.WeakIdentityHashMap;
 import org.jomc.spi.Listener;
+import org.xml.sax.SAXException;
 
 // SECTION-START[Implementation Comment]
 /**
@@ -159,7 +163,17 @@ public class DefaultObjectManager extends ObjectManager
 
                                 if ( instance != null )
                                 {
-                                    list.add( this.getObject( s.getIdentifier(), i.getName(), instance ) );
+                                    final Object o = this.getObject( s.getIdentifier(), i.getName(), instance );
+                                    if ( o != null )
+                                    {
+                                        list.add( o );
+                                    }
+                                    else
+                                    {
+                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                            i.getIdentifier(), i.getName() ), null );
+
+                                    }
                                 }
                                 else
                                 {
@@ -241,6 +255,12 @@ public class DefaultObjectManager extends ObjectManager
                             if ( instance != null )
                             {
                                 object = this.getObject( s.getIdentifier(), i.getName(), instance );
+                                if ( object == null )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        i.getIdentifier(), i.getName() ), null );
+
+                                }
                             }
                             else
                             {
@@ -325,23 +345,29 @@ public class DefaultObjectManager extends ObjectManager
                                 {
                                     if ( dependency.getImplementationName() != null )
                                     {
-                                        final Implementation implementation =
+                                        final Implementation i =
                                             available.getImplementationByName( dependency.getImplementationName() );
 
-                                        if ( implementation != null )
+                                        if ( i != null )
                                         {
                                             final DefaultInstance di = this.getInstance(
                                                 this.getClassLoader( object.getClass() ), ds.getIdentifier(),
-                                                implementation.getName(), dependency );
+                                                i.getName(), dependency );
 
                                             if ( di != null )
                                             {
-                                                o = this.getObject( ds.getIdentifier(), implementation.getName(), di );
+                                                o = this.getObject( ds.getIdentifier(), i.getName(), di );
+                                                if ( o == null )
+                                                {
+                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                        i.getIdentifier(), i.getName() ), null );
+
+                                                }
                                             }
                                             else
                                             {
                                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                    implementation.getIdentifier(), implementation.getName() ), null );
+                                                    i.getIdentifier(), i.getName() ), null );
 
                                             }
                                         }
@@ -363,6 +389,12 @@ public class DefaultObjectManager extends ObjectManager
                                         if ( di != null )
                                         {
                                             o = this.getObject( ds.getIdentifier(), ref.getName(), di );
+                                            if ( o == null )
+                                            {
+                                                this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                    ref.getIdentifier(), ref.getName() ), null );
+
+                                            }
                                         }
                                         else
                                         {
@@ -384,7 +416,19 @@ public class DefaultObjectManager extends ObjectManager
 
                                             if ( di != null )
                                             {
-                                                list.add( this.getObject( ds.getIdentifier(), a.getName(), di ) );
+                                                final Object o2 =
+                                                    this.getObject( ds.getIdentifier(), a.getName(), di );
+
+                                                if ( o2 != null )
+                                                {
+                                                    list.add( o2 );
+                                                }
+                                                else
+                                                {
+                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                        a.getIdentifier(), a.getName() ), null );
+
+                                                }
                                             }
                                             else
                                             {
@@ -404,7 +448,7 @@ public class DefaultObjectManager extends ObjectManager
                                         instance.getDependencyObjects().put( dependencyName, o );
                                     }
                                 }
-                                else
+                                else if ( !dependency.isOptional() )
                                 {
                                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
                                         dependency.getIdentifier() ), null );
@@ -458,41 +502,48 @@ public class DefaultObjectManager extends ObjectManager
 
         Object value = null;
 
-        this.initialize();
-
-        synchronized ( object )
+        try
         {
-            final DefaultInstance instance = this.getInstance( object );
+            this.initialize();
 
-            if ( instance != null )
+            synchronized ( object )
             {
-                value = instance.getPropertyObjects().get( propertyName );
+                final DefaultInstance instance = this.getInstance( object );
 
-                if ( value == null )
+                if ( instance != null )
                 {
-                    final Property property = instance.getProperties().getProperty( propertyName );
+                    value = instance.getPropertyObjects().get( propertyName );
 
-                    if ( property != null )
+                    if ( value == null )
                     {
-                        value = property.getPropertyValue();
+                        final Property property = instance.getProperties().getProperty( propertyName );
 
-                        if ( value != null )
+                        if ( property != null )
                         {
-                            instance.getPropertyObjects().put( propertyName, value );
+                            value = property.getPropertyValue();
+
+                            if ( value != null )
+                            {
+                                instance.getPropertyObjects().put( propertyName, value );
+                            }
+                        }
+                        else
+                        {
+                            this.log( Level.WARNING, this.getMissingPropertyMessage(
+                                propertyName, object.getClass().getName() ), null );
+
                         }
                     }
-                    else
-                    {
-                        this.log( Level.WARNING, this.getMissingPropertyMessage(
-                            propertyName, object.getClass().getName() ), null );
-
-                    }
+                }
+                else
+                {
+                    this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
                 }
             }
-            else
-            {
-                this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
-            }
+        }
+        catch ( InstantiationException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
         }
 
         return value;
@@ -517,34 +568,41 @@ public class DefaultObjectManager extends ObjectManager
 
         String text = null;
 
-        this.initialize();
-
-        synchronized ( object )
+        try
         {
-            final Instance instance = this.getInstance( object );
+            this.initialize();
 
-            if ( instance != null )
+            synchronized ( object )
             {
-                final Message message = instance.getMessages().getMessage( messageName );
+                final Instance instance = this.getInstance( object );
 
-                if ( message != null )
+                if ( instance != null )
                 {
-                    final MessageFormat fmt = new MessageFormat( message.getTemplate().
-                        getText( locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );
+                    final Message message = instance.getMessages().getMessage( messageName );
 
-                    text = fmt.format( arguments );
+                    if ( message != null )
+                    {
+                        final MessageFormat fmt = new MessageFormat( message.getTemplate().
+                            getText( locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );
+
+                        text = fmt.format( arguments );
+                    }
+                    else
+                    {
+                        this.log( Level.WARNING, this.getMissingMessageMessage(
+                            messageName, object.getClass().getName() ), null );
+
+                    }
                 }
                 else
                 {
-                    this.log( Level.WARNING, this.getMissingMessageMessage(
-                        messageName, object.getClass().getName() ), null );
-
+                    this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
                 }
             }
-            else
-            {
-                this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
-            }
+        }
+        catch ( InstantiationException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
         }
 
         return text;
@@ -552,6 +610,11 @@ public class DefaultObjectManager extends ObjectManager
 
     // SECTION-END
     // SECTION-START[DefaultObjectManager]
+    /** Empty {@code URL} array. */
+    private static final URL[] NO_URLS =
+    {
+    };
+
     /** Singleton instance. */
     private static final ObjectManager singleton = ObjectManager.newInstance();
 
@@ -620,7 +683,7 @@ public class DefaultObjectManager extends ObjectManager
     /**
      * Gets the flag indicating that classpath resolution is performed.
      * <p>Classpath resolution is performed by default. It can be disabled by setting the system property
-     * {@code org.jomc.ri.DefaultObjectManager.classpathAware} to {@code false}.</p>
+     * {@code jomc.classpathAware} to {@code false}.</p>
      *
      * @return {@code true} if the classloader of the instance is searched for resources; {@code false} if no
      * classpath resolution is performed.
@@ -629,8 +692,8 @@ public class DefaultObjectManager extends ObjectManager
     {
         if ( this.classpathAware == null )
         {
-            this.classpathAware = Boolean.valueOf( System.getProperty(
-                "org.jomc.ri.DefaultObjectManager.classpathAware", Boolean.TRUE.toString() ) );
+            this.classpathAware =
+                Boolean.valueOf( System.getProperty( "jomc.classpathAware", Boolean.TRUE.toString() ) );
 
         }
 
@@ -646,6 +709,7 @@ public class DefaultObjectManager extends ObjectManager
     public void setClasspathAware( final boolean value )
     {
         this.classpathAware = value;
+        this.initialized = false;
     }
 
     /**
@@ -680,33 +744,43 @@ public class DefaultObjectManager extends ObjectManager
                     defaultModelManager.setClassLoader( this.getClassLoader( this.getClass() ) );
                     defaultModelManager.getListeners().add( this.defaultModelManagerListener );
 
-                    this.modules = defaultModelManager.getClasspathModules(
-                        DefaultModelManager.DEFAULT_DOCUMENT_LOCATION );
+                    final Modules defaultModules =
+                        defaultModelManager.getClasspathModules( DefaultModelManager.DEFAULT_DOCUMENT_LOCATION );
 
-                    final Module classpathModule = defaultModelManager.getClasspathModule( this.modules );
+                    final Module classpathModule = defaultModelManager.getClasspathModule( defaultModules );
                     if ( classpathModule != null )
                     {
-                        this.modules.getModule().add( classpathModule );
+                        defaultModules.getModule().add( classpathModule );
                     }
 
                     defaultModelManager.getListeners().remove( this.defaultModelManagerListener );
-                }
-                else
-                {
-                    this.modules = new Modules();
-                }
 
-                this.getModelManager().validateModules( this.getModules() );
+                    this.getModelManager().validateModules( defaultModules );
+                    this.modules = defaultModules;
+                }
             }
             catch ( ModelException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
-                this.modules = null;
             }
             catch ( IOException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
-                this.modules = null;
+            }
+            catch ( SAXException e )
+            {
+                this.log( Level.SEVERE, e.getMessage(), e );
+            }
+            catch ( JAXBException e )
+            {
+                this.log( Level.SEVERE, e.getMessage(), e );
+            }
+            finally
+            {
+                if ( this.modules == null )
+                {
+                    this.modules = new Modules();
+                }
             }
         }
 
@@ -728,8 +802,6 @@ public class DefaultObjectManager extends ObjectManager
      * Gets the model manager backing the instance.
      *
      * @return The model manager backing the instance.
-     *
-     * @throws ContainerSystemException if getting the model manager fails.
      */
     public ModelManager getModelManager()
     {
@@ -752,7 +824,6 @@ public class DefaultObjectManager extends ObjectManager
      * @return The classloader of {@code clazz}.
      *
      * @throws NullPointerException if {@code clazz} is {@code null}.
-     * @throws ContainerSystemException if no classloader is available.
      */
     public ClassLoader getClassLoader( final Class clazz )
     {
@@ -769,7 +840,8 @@ public class DefaultObjectManager extends ObjectManager
 
         if ( cl == null )
         {
-            throw new ObjectManagementException( this.getMissingClassLoaderMessage() );
+            this.log( Level.WARNING, this.getMissingClassLoaderMessage(), null );
+            cl = new URLClassLoader( NO_URLS );
         }
 
         return cl;
@@ -837,7 +909,6 @@ public class DefaultObjectManager extends ObjectManager
                         this.objects.put( object, instance );
                     }
                 }
-
             }
         }
 
@@ -937,7 +1008,7 @@ public class DefaultObjectManager extends ObjectManager
      * @return The implementation of {@code modelScope} or {@code null} if no implementation is available implementing
      * {@code modelScope}.
      *
-     * @throws InstantiationException if getting the scope fails.
+     * @throws InstantiationException if instantiating a scope fails.
      */
     public org.jomc.spi.Scope getScope( final Scope modelScope ) throws InstantiationException
     {
@@ -997,8 +1068,13 @@ public class DefaultObjectManager extends ObjectManager
         }
     }
 
-    /** Initializes the instance lazily. */
-    public void initialize()
+    /**
+     * Initializes the instance.
+     * <p>This method is called once on first usage of a new instance.</p>
+     *
+     * @throws InstantiationException if initialization fails.
+     */
+    public void initialize() throws InstantiationException
     {
         try
         {
@@ -1027,13 +1103,22 @@ public class DefaultObjectManager extends ObjectManager
                     this.getListeners().add( this.bootstrapObjectManagementListener );
 
                     final Instance instance = this.getInstance( this );
+                    if ( instance == null )
+                    {
+                        throw new InstantiationException( this.getMissingInstanceMessage(
+                            this.getClass().getName(), "default" ) );
+
+                    }
+
                     instance.setScope( Scope.SINGLETON );
 
                     final org.jomc.spi.Scope singletons = this.getScope( Scope.SINGLETON );
-                    if ( singletons != null )
+                    if ( singletons == null )
                     {
-                        singletons.putObject( instance.getIdentifier(), this );
+                        throw new InstantiationException( this.getMissingScopeMessage( Scope.SINGLETON ) );
                     }
+
+                    singletons.putObject( instance.getIdentifier(), this );
 
                     // Bootstrap listener loading.
                     final Implementations implementations = this.getModules().getImplementations(
@@ -1094,7 +1179,7 @@ public class DefaultObjectManager extends ObjectManager
             this.modelManager = null;
             this.listeners = null;
             this.initialized = false;
-            this.log( Level.SEVERE, e.getMessage(), e );
+            throw e;
         }
     }
 
@@ -1195,6 +1280,15 @@ public class DefaultObjectManager extends ObjectManager
     private String getMissingInstanceMessage( final String implementation, final String implementationName )
     {
         return this.getMessage( "missingInstance", new Object[]
+            {
+                implementation, implementationName
+            } );
+
+    }
+
+    private String getMissingObjectMessage( final String implementation, final String implementationName )
+    {
+        return this.getMessage( "missingObject", new Object[]
             {
                 implementation, implementationName
             } );
