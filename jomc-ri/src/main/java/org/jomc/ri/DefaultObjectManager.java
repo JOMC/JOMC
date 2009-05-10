@@ -49,6 +49,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
@@ -762,6 +763,10 @@ public class DefaultObjectManager extends ObjectManager
             catch ( ModelException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
+                for ( ModelException.Detail d : e.getDetails() )
+                {
+                    this.log( d.getLevel(), d.getMessage(), null );
+                }
             }
             catch ( IOException e )
             {
@@ -1099,6 +1104,7 @@ public class DefaultObjectManager extends ObjectManager
 
                     this.modelManager = null;
                     this.listeners = null;
+                    this.modules = null;
 
                     this.getListeners().add( this.bootstrapObjectManagementListener );
 
@@ -1106,7 +1112,7 @@ public class DefaultObjectManager extends ObjectManager
                     if ( instance == null )
                     {
                         throw new InstantiationException( this.getMissingInstanceMessage(
-                            this.getClass().getName(), "default" ) );
+                            this.getClass().getName(), this.getArtifactNameMessage() ) );
 
                     }
 
@@ -1167,6 +1173,11 @@ public class DefaultObjectManager extends ObjectManager
         }
         catch ( InstantiationException e )
         {
+            for ( LogRecord r : this.bootstrapLogRecords )
+            {
+                Logger.getLogger( this.getClass().getName() ).log( r );
+            }
+
             this.objects.clear();
             this.scopes.clear();
             this.bootstrapLogRecords.clear();
@@ -1178,6 +1189,7 @@ public class DefaultObjectManager extends ObjectManager
 
             this.modelManager = null;
             this.listeners = null;
+            this.modules = null;
             this.initialized = false;
             throw e;
         }
@@ -1204,6 +1216,11 @@ public class DefaultObjectManager extends ObjectManager
             getString( key ) );
 
         return fmt.format( arguments );
+    }
+
+    private String getArtifactNameMessage()
+    {
+        return this.getMessage( "artifactName", null );
     }
 
     private String getMissingSpecificationMessage( final String specification )
