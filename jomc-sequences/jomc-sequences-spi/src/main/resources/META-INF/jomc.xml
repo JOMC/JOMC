@@ -48,8 +48,7 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.sequences.spi.SequenceValidator"
                    vendor="${pom.organization.name}"
-                   version="1.0"
-                   stateless="true">
+                   version="1.0">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Validates sequence instances.]]></text>

@@ -129,7 +129,7 @@
             <text language="en"><![CDATA[Test message with {0} argument.]]></text>
           </template>
           <arguments>
-            <argument index="0" name="testArgument" type="text"/>
+            <argument index="0" name="testArgument" type="Text"/>
           </arguments>
         </message>
       </messages>

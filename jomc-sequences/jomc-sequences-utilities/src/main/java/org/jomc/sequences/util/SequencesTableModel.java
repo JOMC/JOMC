@@ -34,27 +34,28 @@
 // SECTION-END
 package org.jomc.sequences.util;
 
+import java.beans.ExceptionListener;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.event.SwingPropertyChangeSupport;
 import javax.swing.table.AbstractTableModel;
+import org.jomc.ObjectManagementException;
 import org.jomc.sequences.ConcurrentModificationException;
 import org.jomc.sequences.IllegalSequenceException;
 import org.jomc.sequences.Sequence;
+import org.jomc.sequences.SequenceNotFoundException;
+import org.jomc.sequences.SequencesSystemException;
 
 // SECTION-START[Implementation Comment]
 /**
  * Swing {@code TableModel} Java Bean for displaying and editing a system's {@code SequenceDirectory}.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.util.SequencesTableModel} {@code 1.0}<blockquote>
- * Object applies to Context scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Context scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #isNameColumnEditableByDefault nameColumnEditableByDefault}"<blockquote>
@@ -71,6 +72,8 @@ import org.jomc.sequences.Sequence;
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getSequenceDirectory SequenceDirectory}"<blockquote>
  * Dependency on {@code org.jomc.sequences.SequenceDirectory} at specification level 1.0 applying to Singleton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getExceptionListener ExceptionListener}"<blockquote>
+ * Dependency on {@code java.beans.ExceptionListener} at specification level 1.4 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLocale Locale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLogger Logger}"<blockquote>
@@ -102,19 +105,9 @@ import org.jomc.sequences.Sequence;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Wert</pre></td></tr>
  * </table>
  * </li>
- * <li>"{@link #getIllegalRowIndexMessage illegalRowIndex}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal row index {0}. {1}</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Zeilen-Index {0}. {1}</pre></td></tr>
- * </table>
- * </li>
  * <li>"{@link #getIllegalColumnIndexMessage illegalColumnIndex}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal column index {0}. {1}</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Spalten-Index {0}. {1}</pre></td></tr>
- * </table>
- * </li>
- * <li>"{@link #getProcessCancelledMessage processCancelled}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Process cancelled</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Vorgang abgebrochen</pre></td></tr>
  * </table>
  * </li>
  * </ul></p>
@@ -130,14 +123,22 @@ import org.jomc.sequences.Sequence;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequencesTableModel extends AbstractTableModel
-    implements Serializable
+public class SequencesTableModel extends AbstractTableModel implements Serializable
 {
     // SECTION-START[TableModel]
 
     public int getRowCount()
     {
-        return this.getSequences().size();
+        try
+        {
+            return this.getSequences().size();
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
+        }
+
+        return 0;
     }
 
     public int getColumnCount()
@@ -148,125 +149,137 @@ public class SequencesTableModel extends AbstractTableModel
     @Override
     public String getColumnName( final int columnIndex )
     {
-        final String columnName;
-
-        switch ( columnIndex )
+        try
         {
-            case NAME_COLUMN_INDEX:
-                columnName =
-                    this.getNameColumnTitleMessage( this.getLocale() );
+            final String columnName;
 
-                break;
+            switch ( columnIndex )
+            {
+                case NAME_COLUMN_INDEX:
+                    columnName = this.getNameColumnTitleMessage( this.getLocale() );
+                    break;
 
-            case MINIMUM_COLUMN_INDEX:
-                columnName =
-                    this.getMinimumColumnTitleMessage( this.getLocale() );
+                case MINIMUM_COLUMN_INDEX:
+                    columnName = this.getMinimumColumnTitleMessage( this.getLocale() );
+                    break;
 
-                break;
+                case MAXIMUM_COLUMN_INDEX:
+                    columnName = this.getMaximumColumnTitleMessage( this.getLocale() );
+                    break;
 
-            case MAXIMUM_COLUMN_INDEX:
-                columnName =
-                    this.getMaximumColumnTitleMessage( this.getLocale() );
+                case INCREMENT_COLUMN_INDEX:
+                    columnName = this.getIncrementColumnTitleMessage( this.getLocale() );
+                    break;
 
-                break;
+                case VALUE_COLUMN_INDEX:
+                    columnName = this.getValueColumnTitleMessage( this.getLocale() );
+                    break;
 
-            case INCREMENT_COLUMN_INDEX:
-                columnName =
-                    this.getIncrementColumnTitleMessage( this.getLocale() );
+                default:
+                    columnName = super.getColumnName( columnIndex );
+                    this.getLogger().warn( this.getIllegalColumnIndexMessage( this.getLocale(), columnIndex ) );
+                    break;
 
-                break;
+            }
 
-            case VALUE_COLUMN_INDEX:
-                columnName =
-                    this.getValueColumnTitleMessage( this.getLocale() );
-
-                break;
-
-            default:
-                columnName = super.getColumnName( columnIndex );
-                this.getLogger().warn( this.getIllegalColumnIndexMessage(
-                    this.getLocale(), columnIndex ) );
-
+            return columnName;
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
         }
 
-        return columnName;
+        return "";
     }
 
     @Override
     public Class<?> getColumnClass( final int columnIndex )
     {
-        final Class columnClass;
-
-        switch ( columnIndex )
+        try
         {
-            case NAME_COLUMN_INDEX:
-                columnClass = String.class;
-                break;
+            final Class columnClass;
 
-            case MINIMUM_COLUMN_INDEX:
-            case MAXIMUM_COLUMN_INDEX:
-            case INCREMENT_COLUMN_INDEX:
-            case VALUE_COLUMN_INDEX:
-                columnClass = BigInteger.class;
-                break;
+            switch ( columnIndex )
+            {
+                case NAME_COLUMN_INDEX:
+                    columnClass = String.class;
+                    break;
 
-            default:
-                columnClass = super.getColumnClass( columnIndex );
-                this.getLogger().warn( this.getIllegalColumnIndexMessage(
-                    this.getLocale(), columnIndex ) );
+                case MINIMUM_COLUMN_INDEX:
+                case MAXIMUM_COLUMN_INDEX:
+                case INCREMENT_COLUMN_INDEX:
+                case VALUE_COLUMN_INDEX:
+                    columnClass = BigInteger.class;
+                    break;
 
-                break;
+                default:
+                    columnClass = super.getColumnClass( columnIndex );
+                    this.getLogger().warn( this.getIllegalColumnIndexMessage( this.getLocale(), columnIndex ) );
+                    break;
 
+            }
+
+            return columnClass;
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
         }
 
-        return columnClass;
+        return Object.class;
     }
 
     @Override
     public boolean isCellEditable( final int rowIndex, final int columnIndex )
     {
-        boolean cellEditable;
-
-        switch ( columnIndex )
+        try
         {
-            case NAME_COLUMN_INDEX:
-                cellEditable = this.getNameColumnEditable();
-                break;
+            final boolean cellEditable;
 
-            case MINIMUM_COLUMN_INDEX:
-                cellEditable = this.getMinimumColumnEditable();
-                break;
+            switch ( columnIndex )
+            {
+                case NAME_COLUMN_INDEX:
+                    cellEditable = this.getNameColumnEditable();
+                    break;
 
-            case MAXIMUM_COLUMN_INDEX:
-                cellEditable = this.getMaximumColumnEditable();
-                break;
+                case MINIMUM_COLUMN_INDEX:
+                    cellEditable = this.getMinimumColumnEditable();
+                    break;
 
-            case INCREMENT_COLUMN_INDEX:
-                cellEditable = this.getIncrementColumnEditable();
-                break;
+                case MAXIMUM_COLUMN_INDEX:
+                    cellEditable = this.getMaximumColumnEditable();
+                    break;
 
-            case VALUE_COLUMN_INDEX:
-                cellEditable = this.getValueColumnEditable();
-                break;
+                case INCREMENT_COLUMN_INDEX:
+                    cellEditable = this.getIncrementColumnEditable();
+                    break;
 
-            default:
-                cellEditable = super.isCellEditable( rowIndex, columnIndex );
-                this.getLogger().warn( this.getIllegalColumnIndexMessage(
-                    this.getLocale(), columnIndex ) );
+                case VALUE_COLUMN_INDEX:
+                    cellEditable = this.getValueColumnEditable();
+                    break;
 
-                break;
+                default:
+                    cellEditable = super.isCellEditable( rowIndex, columnIndex );
+                    this.getLogger().warn( this.getIllegalColumnIndexMessage( this.getLocale(), columnIndex ) );
+                    break;
 
+            }
+
+            return cellEditable;
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
         }
 
-        return cellEditable;
+        return false;
     }
 
     public Object getValueAt( final int rowIndex, final int columnIndex )
     {
-        Object value = null;
-
         try
         {
+            final Object value;
             final Sequence sequence = this.getSequences().get( rowIndex );
 
             switch ( columnIndex )
@@ -292,27 +305,28 @@ public class SequencesTableModel extends AbstractTableModel
                     break;
 
                 default:
-                    this.getLogger().warn( this.getIllegalColumnIndexMessage(
-                        this.getLocale(), columnIndex ) );
-
+                    value = null;
+                    this.getLogger().warn( this.getIllegalColumnIndexMessage( this.getLocale(), columnIndex ) );
                     break;
 
             }
+
+            return value;
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
         }
         catch ( IndexOutOfBoundsException e )
         {
-            this.getLogger().warn( this.getIllegalRowIndexMessage(
-                this.getLocale(), rowIndex, e.getMessage() ) );
-
+            this.fireExceptionThrown( e );
         }
 
-        return value;
+        return null;
     }
 
     @Override
-    public synchronized void setValueAt( final Object aValue,
-                                         final int rowIndex,
-                                         final int columnIndex )
+    public synchronized void setValueAt( final Object aValue, final int rowIndex, final int columnIndex )
     {
         try
         {
@@ -343,41 +357,43 @@ public class SequencesTableModel extends AbstractTableModel
                     break;
 
                 default:
-                    this.getLogger().warn( this.getIllegalColumnIndexMessage(
-                        this.getLocale(), columnIndex ) );
-
+                    this.getLogger().warn( this.getIllegalColumnIndexMessage( this.getLocale(), columnIndex ) );
                     break;
 
             }
 
-            this.getSequenceDirectory().editSequence(
-                name, revision, sequence );
-
+            this.getSequenceDirectory().editSequence( name, revision, sequence );
             this.fireTableRowsUpdated( rowIndex, rowIndex );
         }
-        catch ( final ConcurrentModificationException e )
+        catch ( SequenceNotFoundException e )
         {
-            JOptionPane.showMessageDialog(
-                null, e.getMessage(), getProcessCancelledMessage( getLocale() ),
-                JOptionPane.ERROR_MESSAGE );
-
+            this.fireExceptionThrown( e );
             this.sequences = null;
             this.fireTableDataChanged();
         }
-        catch ( final IllegalSequenceException e )
+        catch ( ConcurrentModificationException e )
         {
-            JOptionPane.showMessageDialog(
-                null, e.getMessage(), getProcessCancelledMessage( getLocale() ),
-                JOptionPane.ERROR_MESSAGE );
-
+            this.fireExceptionThrown( e );
+            this.sequences = null;
+            this.fireTableDataChanged();
+        }
+        catch ( IllegalSequenceException e )
+        {
+            this.fireExceptionThrown( e );
+            this.sequences = null;
+            this.fireTableDataChanged();
+        }
+        catch ( SequencesSystemException e )
+        {
+            this.fireExceptionThrown( e );
             this.sequences = null;
             this.fireTableDataChanged();
         }
         catch ( IndexOutOfBoundsException e )
         {
-            this.getLogger().warn( this.getIllegalRowIndexMessage(
-                this.getLocale(), rowIndex, e.getMessage() ) );
-
+            this.fireExceptionThrown( e );
+            this.sequences = null;
+            this.fireTableDataChanged();
         }
     }
 
@@ -468,25 +484,19 @@ public class SequencesTableModel extends AbstractTableModel
      * Change support.
      * @serial
      */
-    private PropertyChangeSupport changeSupport =
-        new SwingPropertyChangeSupport( this );
+    private PropertyChangeSupport changeSupport = new SwingPropertyChangeSupport( this );
 
     /**
      * Gets the flag indicating that the {@code name} column is editable.
      *
-     * @return {@code true} if the {@code name} column is editable;
-     * {@code false} if not.
+     * @return {@code true} if the {@code name} column is editable; {@code false} if not.
      */
     public Boolean getNameColumnEditable()
     {
         if ( this.nameColumnEditable == null )
         {
-            this.nameColumnEditable =
-                this.isNameColumnEditableByDefault();
-
-            this.changeSupport.firePropertyChange(
-                NAME_COLUMN_EDITABLE, null, this.nameColumnEditable );
-
+            this.nameColumnEditable = this.isNameColumnEditableByDefault();
+            this.changeSupport.firePropertyChange( NAME_COLUMN_EDITABLE, null, this.nameColumnEditable );
         }
 
         return this.nameColumnEditable;
@@ -495,34 +505,26 @@ public class SequencesTableModel extends AbstractTableModel
     /**
      * Sets the flag indicating that the {@code name} column is editable.
      *
-     * @param value {@code true} if the {@code name} column should be editable;
-     * {@code false} if not.
+     * @param value {@code true} if the {@code name} column should be editable; {@code false} if not.
      */
     public void setNameColumnEditable( final Boolean value )
     {
         final Boolean oldValue = this.nameColumnEditable;
         this.nameColumnEditable = value;
-        this.changeSupport.firePropertyChange(
-            NAME_COLUMN_EDITABLE, oldValue, this.nameColumnEditable );
-
+        this.changeSupport.firePropertyChange( NAME_COLUMN_EDITABLE, oldValue, this.nameColumnEditable );
     }
 
     /**
      * Gets the flag indicating that the {@code minimum} column is editable.
      *
-     * @return {@code true} if the {@code minimum} column is editable;
-     * {@code false} if not.
+     * @return {@code true} if the {@code minimum} column is editable;{@code false} if not.
      */
     public Boolean getMinimumColumnEditable()
     {
         if ( this.minimumColumnEditable == null )
         {
-            this.minimumColumnEditable =
-                this.isMinimumColumnEditableByDefault();
-
-            this.changeSupport.firePropertyChange(
-                MINIMUM_COLUMN_EDITABLE, null, this.minimumColumnEditable );
-
+            this.minimumColumnEditable = this.isMinimumColumnEditableByDefault();
+            this.changeSupport.firePropertyChange( MINIMUM_COLUMN_EDITABLE, null, this.minimumColumnEditable );
         }
 
         return this.minimumColumnEditable;
@@ -531,34 +533,26 @@ public class SequencesTableModel extends AbstractTableModel
     /**
      * Set the flag indicating that the {@code minimum} column is editable.
      *
-     * @param value {@code true} if the {@code minimum} column should be
-     * editable; {@code false} if not.
+     * @param value {@code true} if the {@code minimum} column should be editable; {@code false} if not.
      */
     public void setMinimumColumnEditable( final Boolean value )
     {
         final Boolean oldValue = this.minimumColumnEditable;
         this.minimumColumnEditable = value;
-        this.changeSupport.firePropertyChange(
-            MINIMUM_COLUMN_EDITABLE, oldValue, this.minimumColumnEditable );
-
+        this.changeSupport.firePropertyChange( MINIMUM_COLUMN_EDITABLE, oldValue, this.minimumColumnEditable );
     }
 
     /**
      * Gets the flag indicating that the {@code maximum} column is editable.
      *
-     * @return {@code true} if the {@code maximum} column is editable;
-     * {@code false} if not.
+     * @return {@code true} if the {@code maximum} column is editable; {@code false} if not.
      */
     public Boolean getMaximumColumnEditable()
     {
         if ( this.maximumColumnEditable == null )
         {
-            this.maximumColumnEditable =
-                this.isMaximumColumnEditableByDefault();
-
-            this.changeSupport.firePropertyChange(
-                MAXIMUM_COLUMN_EDITABLE, null, this.maximumColumnEditable );
-
+            this.maximumColumnEditable = this.isMaximumColumnEditableByDefault();
+            this.changeSupport.firePropertyChange( MAXIMUM_COLUMN_EDITABLE, null, this.maximumColumnEditable );
         }
 
         return this.maximumColumnEditable;
@@ -567,34 +561,26 @@ public class SequencesTableModel extends AbstractTableModel
     /**
      * Sets the flag indicating that the {@code maximum} column is editable.
      *
-     * @param value {@code true} if the {@code maximum} column should be
-     * editable; {@code false} if not.
+     * @param value {@code true} if the {@code maximum} column should be editable; {@code false} if not.
      */
     public void setMaximumColumnEditable( final Boolean value )
     {
         final Boolean oldValue = this.maximumColumnEditable;
         this.maximumColumnEditable = value;
-        this.changeSupport.firePropertyChange(
-            MAXIMUM_COLUMN_EDITABLE, oldValue, this.maximumColumnEditable );
-
+        this.changeSupport.firePropertyChange( MAXIMUM_COLUMN_EDITABLE, oldValue, this.maximumColumnEditable );
     }
 
     /**
      * Gets the flag indicating that the {@code increment} column is editable.
      *
-     * @return {@code true} if the {@code increment} column is editable;
-     * {@code false} if not.
+     * @return {@code true} if the {@code increment} column is editable; {@code false} if not.
      */
     public Boolean getIncrementColumnEditable()
     {
         if ( this.incrementColumnEditable == null )
         {
-            this.incrementColumnEditable =
-                this.isIncrementColumnEditableByDefault();
-
-            this.changeSupport.firePropertyChange(
-                INCREMENT_COLUMN_EDITABLE, null, this.incrementColumnEditable );
-
+            this.incrementColumnEditable = this.isIncrementColumnEditableByDefault();
+            this.changeSupport.firePropertyChange( INCREMENT_COLUMN_EDITABLE, null, this.incrementColumnEditable );
         }
 
         return this.incrementColumnEditable;
@@ -603,34 +589,26 @@ public class SequencesTableModel extends AbstractTableModel
     /**
      * Sets the flag indicating that the {@code increment} column is editable.
      *
-     * @param value {@code true} if the {@code increment} column should be
-     * editable; {@code false} if not.
+     * @param value {@code true} if the {@code increment} column should be editable; {@code false} if not.
      */
     public void setIncrementColumnEditable( final Boolean value )
     {
         final Boolean oldValue = this.incrementColumnEditable;
         this.incrementColumnEditable = value;
-        this.changeSupport.firePropertyChange(
-            INCREMENT_COLUMN_EDITABLE, oldValue, this.incrementColumnEditable );
-
+        this.changeSupport.firePropertyChange( INCREMENT_COLUMN_EDITABLE, oldValue, this.incrementColumnEditable );
     }
 
     /**
      * Gets the flag indicating that the {@code value} column is editable.
      *
-     * @return {@code true} if the {@code value} column is editable;
-     * {@code false} if not.
+     * @return {@code true} if the {@code value} column is editable; {@code false} if not.
      */
     public Boolean getValueColumnEditable()
     {
         if ( this.valueColumnEditable == null )
         {
-            this.valueColumnEditable =
-                this.isValueColumnEditableByDefault();
-
-            this.changeSupport.firePropertyChange(
-                VALUE_COLUMN_EDITABLE, null, this.valueColumnEditable );
-
+            this.valueColumnEditable = this.isValueColumnEditableByDefault();
+            this.changeSupport.firePropertyChange( VALUE_COLUMN_EDITABLE, null, this.valueColumnEditable );
         }
 
         return this.valueColumnEditable;
@@ -639,16 +617,13 @@ public class SequencesTableModel extends AbstractTableModel
     /**
      * Sets the flag indicating that the {@code value} column is editable.
      *
-     * @param value {@code true} if the {@code value} column should be
-     * editable; {@code false} if not.
+     * @param value {@code true} if the {@code value} column should be editable; {@code false} if not.
      */
     public void setValueColumnEditable( final Boolean value )
     {
         final Boolean oldValue = this.valueColumnEditable;
         this.valueColumnEditable = value;
-        this.changeSupport.firePropertyChange(
-            VALUE_COLUMN_EDITABLE, oldValue, this.valueColumnEditable );
-
+        this.changeSupport.firePropertyChange( VALUE_COLUMN_EDITABLE, oldValue, this.valueColumnEditable );
     }
 
     /**
@@ -666,69 +641,49 @@ public class SequencesTableModel extends AbstractTableModel
      *
      * @param value Entity to use for filtering sequences or {@code null}.
      */
-    public synchronized void setSequenceFilter( final Sequence value )
+    public void setSequenceFilter( final Sequence value )
     {
         final Sequence oldValue = this.sequenceFilter;
         this.sequenceFilter = value;
         this.sequences = null;
-
-        SwingUtilities.invokeLater( new Runnable()
-        {
-
-            public void run()
-            {
-                fireTableDataChanged();
-            }
-
-        } );
-
-        this.changeSupport.firePropertyChange(
-            SEQUENCE_FILTER, oldValue, this.sequenceFilter );
-
+        this.fireTableDataChanged();
+        this.changeSupport.firePropertyChange( SEQUENCE_FILTER, oldValue, this.sequenceFilter );
     }
 
     /**
      * Add a {@code PropertyChangeListener} to the listener list.
-     * <p>The listener is registered for all properties. The same listener
-     * object may be added more than once, and will be called as many times as
-     * it is added. If {@code listener} is {@code null}, no exception is thrown
-     * and no action is taken.</p>
+     * <p>The listener is registered for all properties. The same listener object may be added more than once, and will
+     * be called as many times as it is added. If {@code listener} is {@code null}, no exception is thrown and no action
+     * is taken.</p>
      *
      * @param listener The listener to be added.
      */
-    public void addPropertyChangeListener(
-        final PropertyChangeListener listener )
+    public void addPropertyChangeListener( final PropertyChangeListener listener )
     {
         this.changeSupport.addPropertyChangeListener( listener );
     }
 
     /**
      * Removes a {@code PropertyChangeListener} from the listener list.
-     * <p>This removes a {@code PropertyChangeListener} that was registered
-     * for all properties. If {@code listener} was added more than once, it will
-     * be notified one less time after being removed. If {@code listener} is
-     * {@code null}, or was never added, no exception is thrown and no action is
-     * taken.</p>
+     * <p>This removes a {@code PropertyChangeListener} that was registered for all properties. If {@code listener} was
+     * added more than once, it will be notified one less time after being removed. If {@code listener} is {@code null},
+     * or was never added, no exception is thrown and no action is taken.</p>
      *
      * @param listener The listener to be removed.
      */
-    public void removePropertyChangeListener(
-        final PropertyChangeListener listener )
+    public void removePropertyChangeListener( final PropertyChangeListener listener )
     {
         this.changeSupport.removePropertyChangeListener( listener );
     }
 
     /**
      * Gets an array of all the listeners that were added to the instance.
-     * <p>If some listeners have been added with a named property, then
-     * the returned array will be a mixture of {@code PropertyChangeListeners}
-     * and {@code PropertyChangeListenerProxy}s. If the calling method is
-     * interested in distinguishing the listeners then it must test each element
-     * to see if it's a {@code PropertyChangeListenerProxy}, perform the cast,
-     * and examine the parameter.</p>
+     * <p>If some listeners have been added with a named property, then the returned array will be a mixture of
+     * {@code PropertyChangeListeners} and {@code PropertyChangeListenerProxy}s. If the calling method is interested in
+     * distinguishing the listeners then it must test each element to see if it's a {@code PropertyChangeListenerProxy},
+     * perform the cast, and examine the parameter.</p>
      *
-     * @return All of the {@code PropertyChangeListeners} added or an empty
-     * array if no listeners have been added.
+     * @return All of the {@code PropertyChangeListeners} added or an empty array if no listeners have been added.
      *
      * @see PropertyChangeSupport#getPropertyChangeListeners()
      */
@@ -739,55 +694,43 @@ public class SequencesTableModel extends AbstractTableModel
 
     /**
      * Add a {@code PropertyChangeListener} for a specific property.
-     * <p>The listener will be invoked only when an event for that specific
-     * property occurs. The same listener object may be added more than once.
-     * For each property, the listener will be invoked the number of times it
-     * was added for that property. If {@code propertyName} or {@code listener}
-     * is {@code null}, no exception is thrown and no action is taken.</p>
+     * <p>The listener will be invoked only when an event for that specific property occurs. The same listener object
+     * may be added more than once. For each property, the listener will be invoked the number of times it was added for
+     * that property. If {@code propertyName} or {@code listener} is {@code null}, no exception is thrown and no action
+     * is taken.</p>
      *
      * @param propertyName The name of the property to listen on.
      * @param listener The listener to be added.
      */
-    public void addPropertyChangeListener(
-        final String propertyName,
-        final PropertyChangeListener listener )
+    public void addPropertyChangeListener( final String propertyName, final PropertyChangeListener listener )
     {
         this.changeSupport.addPropertyChangeListener( propertyName, listener );
     }
 
     /**
      * Removes a {@code PropertyChangeListener} for a specific property.
-     * <p>If {@code listener} was added more than once to the instance for the
-     * specified property, it will be notified one less time after being
-     * removed. If {@code propertyName} is {@code null}, no exception is thrown
-     * and no action is taken. If {@code listener} is {@code null}, or was never
-     * added for the specified property, no exception is thrown and no action is
-     * taken.</p>
+     * <p>If {@code listener} was added more than once to the instance for the specified property, it will be notified
+     * one less time after being removed. If {@code propertyName} is {@code null}, no exception is thrown and no action
+     * is taken. If {@code listener} is {@code null}, or was never added for the specified property, no exception is
+     * thrown and no action is taken.</p>
      *
      * @param propertyName The name of the property that was listened on.
      * @param listener The listener to be removed.
      */
-    public void removePropertyChangeListener(
-        final String propertyName,
-        final PropertyChangeListener listener )
+    public void removePropertyChangeListener( final String propertyName, final PropertyChangeListener listener )
     {
-        this.changeSupport.removePropertyChangeListener(
-            propertyName, listener );
-
+        this.changeSupport.removePropertyChangeListener( propertyName, listener );
     }
 
     /**
-     * Gets an array of all the listeners which have been associated with the
-     * named property.
+     * Gets an array of all the listeners which have been associated with the named property.
      *
      * @param propertyName The name of the property being listened to.
      *
-     * @return All of the {@code PropertyChangeListeners} associated with the
-     * named property. If no such listeners have been added, or if
-     * {@code propertyName} is {@code null}, an empty array is returned.
+     * @return All of the {@code PropertyChangeListeners} associated with the named property. If no such listeners have
+     * been added, or if {@code propertyName} is {@code null}, an empty array is returned.
      */
-    public PropertyChangeListener[] getPropertyChangeListeners(
-        final String propertyName )
+    public PropertyChangeListener[] getPropertyChangeListeners( final String propertyName )
     {
         return this.changeSupport.getPropertyChangeListeners( propertyName );
     }
@@ -796,20 +739,33 @@ public class SequencesTableModel extends AbstractTableModel
      * Gets the entities of the model.
      *
      * @return The entities of the model.
+     *
+     * @throws SequencesSystemException if searching entities fails.
      */
-    protected synchronized List<Sequence> getSequences()
+    protected List<Sequence> getSequences() throws SequencesSystemException
     {
         if ( this.sequences == null )
         {
             this.sequences = new LinkedList<Sequence>();
-            this.sequences.addAll(
-                this.getSequenceDirectory().searchSequences(
-                this.getSequenceFilter() != null
-                ? this.getSequenceFilter().getName() : null ) );
+            this.sequences.addAll( this.getSequenceDirectory().searchSequences(
+                this.getSequenceFilter() != null ? this.getSequenceFilter().getName() : null ) );
 
         }
 
         return this.sequences;
+    }
+
+    /**
+     * Notifies any available {@code ExceptionListener} whenever a recoverable exception has been caught.
+     *
+     * @param e The exception that was caught.
+     */
+    protected void fireExceptionThrown( final Exception e )
+    {
+        for ( ExceptionListener l : this.getExceptionListener() )
+        {
+            l.exceptionThrown( e );
+        }
     }
 
     // SECTION-END
@@ -825,10 +781,26 @@ public class SequencesTableModel extends AbstractTableModel
     {
         // SECTION-START[Default Constructor]
         super();
-    // SECTION-END
+        // SECTION-END
     }
     // SECTION-END
     // SECTION-START[Dependencies]
+
+    /**
+     * Gets the {@code ExceptionListener} dependency.
+     * <p>This method returns any available object of the {@code java.beans.ExceptionListener} specification at specification level 1.4.</p>
+     * @return The {@code ExceptionListener} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private java.beans.ExceptionListener[] getExceptionListener() throws org.jomc.ObjectManagementException
+    {
+        return (java.beans.ExceptionListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "ExceptionListener" );
+    }
 
     /**
      * Gets the {@code Locale} dependency.
@@ -843,7 +815,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -864,7 +836,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
 
     /**
@@ -880,7 +852,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceDirectory" );
+        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceDirectory" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -897,7 +869,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.lang.Boolean isIncrementColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "incrementColumnEditableByDefault" );
+        return (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "incrementColumnEditableByDefault" );
     }
 
     /**
@@ -912,7 +884,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.lang.Boolean isMaximumColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "maximumColumnEditableByDefault" );
+        return (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "maximumColumnEditableByDefault" );
     }
 
     /**
@@ -927,7 +899,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.lang.Boolean isMinimumColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "minimumColumnEditableByDefault" );
+        return (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "minimumColumnEditableByDefault" );
     }
 
     /**
@@ -942,7 +914,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.lang.Boolean isNameColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "nameColumnEditableByDefault" );
+        return (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "nameColumnEditableByDefault" );
     }
 
     /**
@@ -957,7 +929,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private java.lang.Boolean isValueColumnEditableByDefault() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "valueColumnEditableByDefault" );
+        return (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "valueColumnEditableByDefault" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -981,30 +953,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getIllegalColumnIndexMessage( final java.util.Locale locale, final java.lang.Number columnIndex ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalColumnIndex", locale, new Object[] { columnIndex, null } );
-    }
-
-    /**
-     * Gets the text of the {@code illegalRowIndex} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal row index {0}. {1}</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültiger Zeilen-Index {0}. {1}</pre></td></tr>
-     * </table></p>
-     * @param locale The locale of the message to return.
-     * @param rowIndex Format argument.
-     * @param message Format argument.
-     * @return The text of the {@code illegalRowIndex} message.
-     *
-     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    private String getIllegalRowIndexMessage( final java.util.Locale locale, final java.lang.Number rowIndex, final java.lang.String message ) throws org.jomc.ObjectManagementException
-    {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalRowIndex", locale, new Object[] { rowIndex, message, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "illegalColumnIndex", locale, new Object[] { columnIndex, null } );
     }
 
     /**
@@ -1025,7 +974,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getIncrementColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "incrementColumnTitle", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "incrementColumnTitle", locale,  null );
     }
 
     /**
@@ -1046,7 +995,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getMaximumColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "maximumColumnTitle", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "maximumColumnTitle", locale,  null );
     }
 
     /**
@@ -1067,7 +1016,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getMinimumColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "minimumColumnTitle", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "minimumColumnTitle", locale,  null );
     }
 
     /**
@@ -1088,28 +1037,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getNameColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "nameColumnTitle", locale,  null );
-    }
-
-    /**
-     * Gets the text of the {@code processCancelled} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Process cancelled</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Vorgang abgebrochen</pre></td></tr>
-     * </table></p>
-     * @param locale The locale of the message to return.
-     * @return The text of the {@code processCancelled} message.
-     *
-     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    private String getProcessCancelledMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
-    {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "processCancelled", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "nameColumnTitle", locale,  null );
     }
 
     /**
@@ -1130,7 +1058,7 @@ public class SequencesTableModel extends AbstractTableModel
     )
     private String getValueColumnTitleMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "valueColumnTitle", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "valueColumnTitle", locale,  null );
     }
     // SECTION-END
 }

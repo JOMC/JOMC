@@ -37,9 +37,9 @@ package org.jomc.ri.tests;
 // SECTION-START[Specification Comment]
 /**
  * <p>This specification applies to Multiton scope.
- * An application assembler is required to provide exactly one implementation of this specification. Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * MultitonSpecification object = (MultitonSpecification) ObjectManager.getInstance().getObject( MultitonSpecification.class );
+ * An application assembler is required to provide no more than one implementation of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * MultitonSpecification object = (MultitonSpecification) ObjectManagerFactory.getObjectManager().getObject( MultitonSpecification.class );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

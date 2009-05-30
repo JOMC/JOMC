@@ -41,11 +41,11 @@ import org.jomc.sequences.Sequence;
 /**
  * Validates sequence instances.
  * <p>This specification applies to Multiton scope.
- * An application assembler may provide multiple implementations of this specification (including none). Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for selecting a
- * single implementation.<pre>
- * SequenceValidator[] objects = (SequenceValidator[]) ObjectManager.getInstance().getObject( SequenceValidator.class );
- * SequenceValidator object = (SequenceValidator) ObjectManager.getInstance().getObject( SequenceValidator.class, "<i>implementation name</i>" );
+ * An application assembler may provide multiple implementations of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
+ * selecting a single implementation.<pre>
+ * SequenceValidator[] objects = (SequenceValidator[]) ObjectManagerFactory.getObjectManager().getObject( SequenceValidator.class );
+ * SequenceValidator object = (SequenceValidator) ObjectManagerFactory.getObjectManager().getObject( SequenceValidator.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -71,10 +71,9 @@ public interface SequenceValidator
      * @param newValue The value {@code oldValue} will be changed to or {@code null} if {@code oldValue} is about to be
      * removed from a directory.
      *
-     * @return The result describing the reason for preventing the requested operation or {@code null} if the
-     * implementation does not choose to prevent the operation from being performed.
+     * @throws IllegalSequenceException if the implementation chooses to prevent the operation from being performed.
      */
-    IllegalSequenceException assertOperationValid( Sequence oldValue, Sequence newValue );
+    void assertOperationValid( Sequence oldValue, Sequence newValue ) throws IllegalSequenceException;
 
     // SECTION-END
 }

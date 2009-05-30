@@ -127,7 +127,9 @@ public class IllegalSequenceException extends IllegalArgumentException
         @Override
         public String toString()
         {
-            return super.toString() + "\n" + this.getIdentifier();
+            return super.toString() + new StringBuffer().append( "{identifier=" ).append( this.getIdentifier() ).
+                append( '}' ).toString();
+
         }
 
         /**
@@ -165,12 +167,12 @@ public class IllegalSequenceException extends IllegalArgumentException
     }
 
     /** A mandatory property is missing a value. */
-    public static final Detail MANDATORY_PROPERTY_MISSING =
-        new Detail( IllegalSequenceException.class.getName() + ".MANDATORY_PROPERTY_MISSING" );
+    public static final Detail MANDATORY_VALUE =
+        new Detail( IllegalSequenceException.class.getName() + ".MANDATORY_VALUE" );
 
     /** A property value is illegal. */
-    public static final Detail ILLEGAL_PROPERTY_VALUE =
-        new Detail( IllegalSequenceException.class.getName() + ".ILLEGAL_PROPERTY_VALUE" );
+    public static final Detail ILLEGAL_VALUE =
+        new Detail( IllegalSequenceException.class.getName() + ".ILLEGAL_VALUE" );
 
     /** Key to the list of messages not bound to any particular property. */
     private static final String PROP_UNSPECIFIED = Sequence.class.getName();
@@ -367,7 +369,7 @@ public class IllegalSequenceException extends IllegalArgumentException
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -390,7 +392,7 @@ public class IllegalSequenceException extends IllegalArgumentException
     )
     private String getIllegalSequenceMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalSequence", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "illegalSequence", locale,  null );
     }
     // SECTION-END
 }

@@ -34,15 +34,19 @@
 // SECTION-END
 package org.jomc.sequences.ri;
 
+import org.jomc.sequences.CapacityLimitException;
+import org.jomc.sequences.ConcurrentModificationException;
+import org.jomc.sequences.DuplicateSequenceException;
 import org.jomc.sequences.IllegalSequenceException;
-import org.jomc.sequences.Sequence;
-import org.jomc.sequences.spi.SequenceValidator;
+import org.jomc.sequences.SequenceLimitException;
+import org.jomc.sequences.SequenceNotFoundException;
+import org.jomc.sequences.SequencesSystemException;
 
 // SECTION-START[Implementation Comment]
 /**
- * SequenceValidator implementation validating sequence instances for use with the reference implementation.
+ * {@code ExceptionListener} reference implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.sequences.spi.SequenceValidator} {@code 1.0}<blockquote>
+ * <li>{@code java.beans.ExceptionListener}<blockquote>
  * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  *
@@ -57,45 +61,41 @@ import org.jomc.sequences.spi.SequenceValidator;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class DefaultSequenceValidator implements SequenceValidator
+public class DefaultExceptionListener
+    implements
+    java.beans.ExceptionListener
 {
-    // SECTION-START[SequenceValidator]
+    // SECTION-START[DefaultExceptionListener]
 
-    public void assertOperationValid( final Sequence oldValue, final Sequence newValue )
+    public void exceptionThrown( final Exception e )
     {
-        boolean valid = true;
-        IllegalSequenceException result = null;
-
-        if ( newValue != null )
+        if ( e instanceof CapacityLimitException )
         {
-            result = new IllegalSequenceException();
-
-            if ( newValue.getName() == null )
-            {
-                valid = false;
-                result.getDetails( Sequence.PROP_NAME ).add( IllegalSequenceException.MANDATORY_VALUE );
-            }
-            if ( newValue.getMaximum() < newValue.getMinimum() || newValue.getMinimum() > newValue.getMaximum() )
-            {
-                valid = false;
-                result.getDetails( Sequence.PROP_MINIMUM ).add( IllegalSequenceException.ILLEGAL_VALUE );
-                result.getDetails( Sequence.PROP_MAXIMUM ).add( IllegalSequenceException.ILLEGAL_VALUE );
-            }
-            if ( newValue.getValue() > newValue.getMaximum() || newValue.getValue() < newValue.getMinimum() )
-            {
-                valid = false;
-                result.getDetails( Sequence.PROP_VALUE ).add( IllegalSequenceException.ILLEGAL_VALUE );
-            }
-            if ( newValue.getIncrement() <= 0L )
-            {
-                valid = false;
-                result.getDetails( Sequence.PROP_INCREMENT ).add( IllegalSequenceException.ILLEGAL_VALUE );
-            }
+            throw (CapacityLimitException) e;
         }
-
-        if ( !valid )
+        if ( e instanceof ConcurrentModificationException )
         {
-            throw result;
+            throw (ConcurrentModificationException) e;
+        }
+        if ( e instanceof DuplicateSequenceException )
+        {
+            throw (DuplicateSequenceException) e;
+        }
+        if ( e instanceof IllegalSequenceException )
+        {
+            throw (IllegalSequenceException) e;
+        }
+        if ( e instanceof SequenceLimitException )
+        {
+            throw (SequenceLimitException) e;
+        }
+        if ( e instanceof SequenceNotFoundException )
+        {
+            throw (SequenceNotFoundException) e;
+        }
+        if ( e instanceof SequencesSystemException )
+        {
+            throw (SequencesSystemException) e;
         }
     }
 
@@ -108,11 +108,17 @@ public class DefaultSequenceValidator implements SequenceValidator
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    public DefaultSequenceValidator()
+    public DefaultExceptionListener()
     {
         // SECTION-START[Default Constructor]
         super();
         // SECTION-END
     }
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
     // SECTION-END
 }

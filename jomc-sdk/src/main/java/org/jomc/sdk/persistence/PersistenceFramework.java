@@ -44,11 +44,9 @@ import org.jomc.sdk.Environment;
  * Persistence framework.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.persistence.EntityManagerFactory}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.persistence.EntityManager}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #isContainerManaged containerManaged}"<blockquote>
@@ -171,7 +169,7 @@ public class PersistenceFramework
     )
     private javax.naming.Context getInitialContext() throws org.jomc.ObjectManagementException
     {
-        return (javax.naming.Context) org.jomc.ObjectManager.getInstance().getDependency( this, "InitialContext" );
+        return (javax.naming.Context) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "InitialContext" );
     }
 
     /**
@@ -187,7 +185,7 @@ public class PersistenceFramework
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -208,7 +206,7 @@ public class PersistenceFramework
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -225,7 +223,7 @@ public class PersistenceFramework
     )
     private boolean isContainerManaged() throws org.jomc.ObjectManagementException
     {
-        return ( (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "containerManaged" ) ).booleanValue();
+        return ( (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "containerManaged" ) ).booleanValue();
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -249,7 +247,7 @@ public class PersistenceFramework
     )
     private String getMissingEntityManagerMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingEntityManager", locale, new Object[] { jndiName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "missingEntityManager", locale, new Object[] { jndiName, null } );
     }
 
     /**
@@ -271,7 +269,7 @@ public class PersistenceFramework
     )
     private String getMissingEntityManagerFactoryMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingEntityManagerFactory", locale, new Object[] { jndiName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "missingEntityManagerFactory", locale, new Object[] { jndiName, null } );
     }
     // SECTION-END
 }

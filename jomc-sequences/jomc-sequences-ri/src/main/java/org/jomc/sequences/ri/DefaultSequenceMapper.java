@@ -48,17 +48,16 @@ import org.jomc.sequences.model.SequenceType;
  * {@code SequenceMapper} reference implementation.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.ri.SequenceMapper} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Singleton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getLocale Locale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
- * <li>"{@link #getSystemErrorMessage systemError}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+ * <li>"{@link #getUnhandledExceptionMessage unhandledException}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Unhandled exception.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unbehandelte Ausnahme.</pre></td></tr>
  * </table>
  * </li>
  * <li>"{@link #getIllegalArgumentMessage illegalArgument}"<table>
@@ -134,7 +133,6 @@ public class DefaultSequenceMapper implements SequenceMapper
 
     // SECTION-END
     // SECTION-START[DefaultSequenceMapper]
-
     /**
      * Sets the value of property {@code revision} of a given sequence using reflection.
      *
@@ -190,9 +188,7 @@ public class DefaultSequenceMapper implements SequenceMapper
                 }
                 catch ( Exception e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() != null ? e.getMessage() : getSystemErrorMessage( getLocale() ), e );
-
+                    throw new SequencesSystemException( getUnhandledExceptionMessage( getLocale() ), e );
                 }
             }
 
@@ -230,7 +226,7 @@ public class DefaultSequenceMapper implements SequenceMapper
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -257,17 +253,17 @@ public class DefaultSequenceMapper implements SequenceMapper
     )
     private String getIllegalArgumentMessage( final java.util.Locale locale, final java.lang.String argumentName, final java.lang.String argumentValue ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
     }
 
     /**
-     * Gets the text of the {@code systemError} message.
+     * Gets the text of the {@code unhandledException} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Unhandled exception.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unbehandelte Ausnahme.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code systemError} message.
+     * @return The text of the {@code unhandledException} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -276,9 +272,9 @@ public class DefaultSequenceMapper implements SequenceMapper
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private String getSystemErrorMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
+    private String getUnhandledExceptionMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "systemError", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "unhandledException", locale,  null );
     }
     // SECTION-END
 }

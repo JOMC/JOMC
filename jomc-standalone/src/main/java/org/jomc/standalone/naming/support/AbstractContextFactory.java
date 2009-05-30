@@ -44,8 +44,7 @@ import org.jomc.standalone.Environment;
  * Base context factory.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.naming.spi.InitialContextFactory}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

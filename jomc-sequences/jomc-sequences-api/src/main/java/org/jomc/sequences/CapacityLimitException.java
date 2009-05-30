@@ -123,7 +123,7 @@ public class CapacityLimitException extends RuntimeException
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -147,7 +147,7 @@ public class CapacityLimitException extends RuntimeException
     )
     private String getCapacityLimitMessage( final java.util.Locale locale, final java.lang.Number capacityLimit ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "capacityLimit", locale, new Object[] { capacityLimit, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "capacityLimit", locale, new Object[] { capacityLimit, null } );
     }
     // SECTION-END
 }

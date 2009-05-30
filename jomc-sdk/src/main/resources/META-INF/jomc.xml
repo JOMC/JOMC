@@ -51,7 +51,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[SDK environment.]]></text>
@@ -111,7 +111,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[XML framework.]]></text>
@@ -144,7 +144,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Naming framework.]]></text>
@@ -172,7 +172,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Persistence framework.]]></text>
@@ -236,7 +236,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Transaction framework.]]></text>

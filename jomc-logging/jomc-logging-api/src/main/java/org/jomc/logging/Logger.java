@@ -38,9 +38,9 @@ package org.jomc.logging;
 /**
  * Logs events for a specific component.
  * <p>This specification applies to Multiton scope.
- * An application assembler is required to provide exactly one implementation of this specification. Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Logger object = (Logger) ObjectManager.getInstance().getObject( Logger.class );
+ * An application assembler is required to provide no more than one implementation of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * Logger object = (Logger) ObjectManagerFactory.getObjectManager().getObject( Logger.class );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

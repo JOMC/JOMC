@@ -50,8 +50,7 @@
                     class="org.jomc.ri.DefaultObjectManager"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[${pom.description}]]></text>
@@ -74,7 +73,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="true">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Naming system lookup support class.]]></text>

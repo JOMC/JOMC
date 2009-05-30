@@ -49,8 +49,7 @@
     <specification identifier="org.jomc.sequences.ri.SequenceMapper"
                    version="1.0"
                    vendor="${pom.organization.name}"
-                   scope="Singleton"
-                   stateless="true">
+                   scope="Singleton">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Maps model classes.]]></text>
@@ -68,7 +67,8 @@
                     class="org.jomc.sequences.ri.DefaultSequenceDirectory"
                     name="${pom.name}"
                     vendor="${pom.organization.name}"
-                    version="${pom.version}">
+                    version="${pom.version}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[SequenceDirectory reference implementation.]]></text>
@@ -109,6 +109,16 @@
                     implementationName="JOMC SDK"
                     bound="false"/>
 
+        <dependency name="Locale"
+                    identifier="java.util.Locale"
+                    version="1.1"
+                    implementationName="default"/>
+
+        <dependency name="ExceptionListener"
+                    identifier="java.beans.ExceptionListener"
+                    version="1.4"
+                    implementationName="${pom.name}"/>
+
         <dependency name="Logger"
                     identifier="org.jomc.logging.Logger"
                     version="1.0">
@@ -119,12 +129,6 @@
 
           </properties>
         </dependency>
-
-        <dependency name="Locale"
-                    identifier="java.util.Locale"
-                    version="1.1"
-                    implementationName="default"/>
-
       </dependencies>
       <properties>
         <property name="directoryName" type="java.lang.String" value="${pom.name}">
@@ -139,7 +143,7 @@
         </property>
       </properties>
       <messages>
-        <reference name="systemError"/>
+        <reference name="unhandledException"/>
         <reference name="illegalArgument"/>
         <reference name="implementationInfo"/>
         <reference name="successfullyStartedTransaction"/>
@@ -154,7 +158,8 @@
                     class="org.jomc.sequences.ri.DefaultSequenceValidator"
                     name="${pom.name}"
                     vendor="${pom.organization.name}"
-                    version="${pom.version}">
+                    version="${pom.version}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[SequenceValidator implementation validating sequence instances for use with the reference implementation.]]></text>
@@ -175,7 +180,8 @@
                     class="org.jomc.sequences.ri.DefaultSequenceMapper"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code SequenceMapper} reference implementation.]]></text>
@@ -197,7 +203,7 @@
 
       </dependencies>
       <messages>
-        <reference name="systemError"/>
+        <reference name="unhandledException"/>
         <reference name="illegalArgument"/>
       </messages>
     </implementation>
@@ -207,7 +213,8 @@
                     class="org.jomc.sequences.ri.DefaultSequenceObserver"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code SequenceObserver} reference implementation.]]></text>
@@ -255,12 +262,33 @@
         </message>
       </messages>
     </implementation>
+    
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.ri.DefaultExceptionListener"
+                    class="org.jomc.sequences.ri.DefaultExceptionListener"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    stateless="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code ExceptionListener} reference implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="java.beans.ExceptionListener"/>
+      </specifications>
+    </implementation>
   </implementations>
   <messages>
-    <message name="systemError">
+    <message name="unhandledException">
       <template defaultLanguage="en">
-        <text language="en"><![CDATA[A system error occured.]]></text>
-        <text language="de"><![CDATA[Es ist ein System-Fehler aufgetreten.]]></text>
+        <text language="en"><![CDATA[Unhandled exception.]]></text>
+        <text language="de"><![CDATA[Unbehandelte Ausnahme.]]></text>
       </template>
     </message>
     <message name="illegalArgument">

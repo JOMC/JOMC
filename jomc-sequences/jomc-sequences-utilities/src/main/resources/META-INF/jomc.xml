@@ -88,6 +88,10 @@
                     identifier="org.jomc.sequences.SequenceDirectory"
                     version="1.0"/>
 
+        <dependency name="ExceptionListener"
+                    identifier="java.beans.ExceptionListener"
+                    version="1.4"/>
+
         <dependency name="Locale"
                     identifier="java.util.Locale"
                     version="1.1"
@@ -147,9 +151,7 @@
         <reference name="maximumColumnTitle"/>
         <reference name="incrementColumnTitle"/>
         <reference name="valueColumnTitle"/>
-        <reference name="illegalRowIndex"/>
         <reference name="illegalColumnIndex"/>
-        <reference name="processCancelled"/>
       </messages>
     </implementation>
   </implementations>
@@ -184,16 +186,6 @@
         <text language="de"><![CDATA[Wert]]></text>
       </template>
     </message>
-    <message name="illegalRowIndex">
-      <template defaultLanguage="en">
-        <text language="en"><![CDATA[Illegal row index {0}. {1}]]></text>
-        <text language="de"><![CDATA[Ungültiger Zeilen-Index {0}. {1}]]></text>
-      </template>
-      <arguments>
-        <argument index="0" name="rowIndex" type="Number"/>
-        <argument index="1" name="message"/>
-      </arguments>
-    </message>
     <message name="illegalColumnIndex">
       <template defaultLanguage="en">
         <text language="en"><![CDATA[Illegal column index {0}. {1}]]></text>
@@ -202,12 +194,6 @@
       <arguments>
         <argument index="0" name="columnIndex" type="Number"/>
       </arguments>
-    </message>
-    <message name="processCancelled">
-      <template defaultLanguage="en">
-        <text language="en"><![CDATA[Process cancelled]]></text>
-        <text language="de"><![CDATA[Vorgang abgebrochen]]></text>
-      </template>
     </message>
   </messages>
 </module>

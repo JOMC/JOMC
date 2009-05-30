@@ -432,7 +432,7 @@ public class SequenceDirectoryTest extends TestCase
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceDirectory" );
+        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceDirectory" );
     }
     // SECTION-END
 }

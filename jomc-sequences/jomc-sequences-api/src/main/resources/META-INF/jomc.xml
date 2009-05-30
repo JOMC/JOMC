@@ -50,8 +50,7 @@
                    vendor="${pom.organization.name}"
                    version="1.0"
                    scope="Singleton"
-                   multiplicity="One"
-                   stateless="true">
+                   multiplicity="One">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Directory of sequences.]]></text>
@@ -68,8 +67,7 @@
                    vendor="${pom.organization.name}"
                    version="1.0"
                    scope="Singleton"
-                   multiplicity="One"
-                   stateless="true">
+                   multiplicity="One">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Provides operations performed with sequences.]]></text>

@@ -123,7 +123,7 @@ public class SequenceLimitException extends RuntimeException
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -147,7 +147,7 @@ public class SequenceLimitException extends RuntimeException
     )
     private String getSequenceLimitMessage( final java.util.Locale locale, final java.lang.Number sequenceLimit ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "sequenceLimit", locale, new Object[] { sequenceLimit, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "sequenceLimit", locale, new Object[] { sequenceLimit, null } );
     }
     // SECTION-END
 }

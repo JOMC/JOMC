@@ -40,11 +40,11 @@ import java.util.logging.Level;
 /**
  * Object management and configuration listener interface.
  * <p>This specification applies to Singleton scope.
- * An application assembler may provide multiple implementations of this specification (including none). Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for selecting a
- * single implementation.<pre>
- * Listener[] objects = (Listener[]) ObjectManager.getInstance().getObject( Listener.class );
- * Listener object = (Listener) ObjectManager.getInstance().getObject( Listener.class, "<i>implementation name</i>" );
+ * An application assembler may provide multiple implementations of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
+ * selecting a single implementation.<pre>
+ * Listener[] objects = (Listener[]) ObjectManagerFactory.getObjectManager().getObject( Listener.class );
+ * Listener object = (Listener) ObjectManagerFactory.getObjectManager().getObject( Listener.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

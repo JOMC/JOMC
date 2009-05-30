@@ -50,7 +50,8 @@
                     class="org.jomc.logging.ri.commons.CommonsLogger"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[${pom.description}]]></text>
@@ -69,7 +70,8 @@
                     class="org.jomc.logging.ri.commons.CommonsObjectManagementListener"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code ObjectManagementLister} backed by commons logging.]]></text>

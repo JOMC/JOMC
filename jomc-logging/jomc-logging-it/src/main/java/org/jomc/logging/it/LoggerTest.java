@@ -140,7 +140,7 @@ public class LoggerTest
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
 }

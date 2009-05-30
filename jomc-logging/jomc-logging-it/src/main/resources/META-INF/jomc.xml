@@ -50,7 +50,8 @@
                     class="org.jomc.logging.it.LoggerTest"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[${pom.description}]]></text>

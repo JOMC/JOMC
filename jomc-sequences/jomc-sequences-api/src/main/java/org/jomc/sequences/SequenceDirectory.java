@@ -41,9 +41,9 @@ import java.util.Set;
 /**
  * Directory of sequences.
  * <p>This specification applies to Singleton scope.
- * An application assembler is required to provide exactly one implementation of this specification. Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * SequenceDirectory object = (SequenceDirectory) ObjectManager.getInstance().getObject( SequenceDirectory.class );
+ * An application assembler is required to provide no more than one implementation of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * SequenceDirectory object = (SequenceDirectory) ObjectManagerFactory.getObjectManager().getObject( SequenceDirectory.class );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

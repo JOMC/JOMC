@@ -50,7 +50,8 @@
                     class="org.jomc.logging.ri.log4j.Log4JLogger"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[${pom.description}]]></text>
@@ -70,7 +71,8 @@
                     class="org.jomc.logging.ri.log4j.Log4JObjectManagementListener"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    vendor="${pom.organization.name}"
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code ObjectManagementLister} backed by Log4J logging.]]></text>

@@ -121,7 +121,7 @@ public class TopLinkTransactionController extends JTATransactionController
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -142,7 +142,7 @@ public class TopLinkTransactionController extends JTATransactionController
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -167,7 +167,7 @@ public class TopLinkTransactionController extends JTATransactionController
     )
     private String getImplementationInfoMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "implementationInfo", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "implementationInfo", locale,  null );
     }
     // SECTION-END
 }

@@ -1190,7 +1190,7 @@
       </snapshots>
     </repository>
     <repository>
-      <id>jpaxjcplugin.sourceforge.net</id>
+      <id>jpaxjcplugin-releases</id>
       <url>http://jpaxjcplugin.sourceforge.net/maven2/releases</url>
       <releases>
         <enabled>true</enabled>
@@ -1200,7 +1200,7 @@
       </snapshots>
     </repository>
     <repository>
-      <id>ccxjc.sourceforge.net</id>
+      <id>ccxjc-releases</id>
       <url>http://ccxjc.sourceforge.net/maven2/releases</url>
       <releases>
         <enabled>true</enabled>
@@ -1287,7 +1287,7 @@
       </snapshots>
     </pluginRepository>
     <pluginRepository>
-      <id>jpaxjcplugin.sourceforge.net</id>
+      <id>jpaxjcplugin-releases</id>
       <url>http://jpaxjcplugin.sourceforge.net/maven2/releases</url>
       <releases>
         <enabled>true</enabled>
@@ -1297,7 +1297,7 @@
       </snapshots>
     </pluginRepository>
     <pluginRepository>
-      <id>ccxjc.sourceforge.net</id>
+      <id>ccxjc-releases</id>
       <url>http://ccxjc.sourceforge.net/maven2/releases</url>
       <releases>
         <enabled>true</enabled>

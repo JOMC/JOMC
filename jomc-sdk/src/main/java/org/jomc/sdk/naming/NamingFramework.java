@@ -43,8 +43,7 @@ import javax.naming.NamingException;
  * Naming framework.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.naming.Context}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getJndiName jndiName}"<blockquote>
@@ -113,7 +112,7 @@ public class NamingFramework
     )
     private java.lang.String getJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "jndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "jndiName" );
     }
     // SECTION-END
     // SECTION-START[Messages]

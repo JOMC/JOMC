@@ -45,14 +45,11 @@ import org.jomc.sdk.Environment;
  * Transaction framework.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.transaction.TransactionManager}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.transaction.UserTransaction}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.transaction.TransactionSynchronizationRegistry}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getInitialContext InitialContext}"<blockquote>
@@ -184,7 +181,7 @@ public class TransactionFramework
     )
     private javax.naming.Context getInitialContext() throws org.jomc.ObjectManagementException
     {
-        return (javax.naming.Context) org.jomc.ObjectManager.getInstance().getDependency( this, "InitialContext" );
+        return (javax.naming.Context) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "InitialContext" );
     }
 
     /**
@@ -200,7 +197,7 @@ public class TransactionFramework
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -221,7 +218,7 @@ public class TransactionFramework
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -247,7 +244,7 @@ public class TransactionFramework
     )
     private String getMissingTransactionManagerMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingTransactionManager", locale, new Object[] { jndiName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "missingTransactionManager", locale, new Object[] { jndiName, null } );
     }
 
     /**
@@ -269,7 +266,7 @@ public class TransactionFramework
     )
     private String getMissingTransactionSynchronizationRegistryMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingTransactionSynchronizationRegistry", locale, new Object[] { jndiName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "missingTransactionSynchronizationRegistry", locale, new Object[] { jndiName, null } );
     }
 
     /**
@@ -291,7 +288,7 @@ public class TransactionFramework
     )
     private String getMissingUserTransactionMessage( final java.util.Locale locale, final java.lang.String jndiName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "missingUserTransaction", locale, new Object[] { jndiName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "missingUserTransaction", locale, new Object[] { jndiName, null } );
     }
     // SECTION-END
 }

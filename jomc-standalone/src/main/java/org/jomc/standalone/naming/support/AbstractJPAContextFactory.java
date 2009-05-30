@@ -64,8 +64,7 @@ import org.xml.sax.SAXException;
  * Base JPA context factory.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.naming.spi.InitialContextFactory}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getLogger Logger}"<blockquote>
@@ -391,7 +390,7 @@ public abstract class AbstractJPAContextFactory extends AbstractContextFactory
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]

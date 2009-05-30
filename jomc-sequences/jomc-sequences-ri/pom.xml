@@ -104,6 +104,10 @@
               <name>java.util.logging.config.file</name>
               <value>${project.build.testOutputDirectory}/logging.properties</value>
             </property>
+            <property>
+              <name>org.jomc.ri.DefaultObjectManager.traceMethods</name>
+              <value>true</value>
+            </property>
           </systemProperties>
         </configuration>
       </plugin>

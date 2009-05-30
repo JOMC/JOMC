@@ -38,9 +38,9 @@ package org.jomc.sequences;
 /**
  * Provides operations performed with sequences.
  * <p>This specification applies to Singleton scope.
- * An application assembler is required to provide exactly one implementation of this specification. Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * SequenceOperations object = (SequenceOperations) ObjectManager.getInstance().getObject( SequenceOperations.class );
+ * An application assembler is required to provide no more than one implementation of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * SequenceOperations object = (SequenceOperations) ObjectManagerFactory.getObjectManager().getObject( SequenceOperations.class );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

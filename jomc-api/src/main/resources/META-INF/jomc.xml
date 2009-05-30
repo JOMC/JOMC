@@ -81,5 +81,23 @@
 
       </authors>
     </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ObjectManagerFactory"
+                    class="org.jomc.ObjectManagerFactory"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Factory for the {@code ObjectManager} singleton.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@schulte.it" createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
   </implementations>
 </module>

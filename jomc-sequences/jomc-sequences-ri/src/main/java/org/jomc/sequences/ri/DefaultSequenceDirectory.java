@@ -71,11 +71,9 @@ import org.jomc.sequences.spi.SequenceValidator;
  * SequenceDirectory reference implementation.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.SequenceOperations} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Singleton scope.</blockquote></li>
  * <li>{@code org.jomc.sequences.SequenceDirectory} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.
- * State does not need to be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Singleton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getDirectoryName directoryName}"<blockquote>
@@ -94,15 +92,17 @@ import org.jomc.sequences.spi.SequenceValidator;
  * Dependency on {@code javax.persistence.EntityManager} applying to Multiton scope.</blockquote></li>
  * <li>"{@link #getUserTransaction UserTransaction}"<blockquote>
  * Dependency on {@code javax.transaction.UserTransaction} applying to Multiton scope.</blockquote></li>
- * <li>"{@link #getLogger Logger}"<blockquote>
- * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLocale Locale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getExceptionListener ExceptionListener}"<blockquote>
+ * Dependency on {@code java.beans.ExceptionListener} at specification level 1.4 applying to Multiton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getLogger Logger}"<blockquote>
+ * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
- * <li>"{@link #getSystemErrorMessage systemError}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+ * <li>"{@link #getUnhandledExceptionMessage unhandledException}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Unhandled exception.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unbehandelte Ausnahme.</pre></td></tr>
  * </table>
  * </li>
  * <li>"{@link #getIllegalArgumentMessage illegalArgument}"<table>
@@ -157,7 +157,6 @@ public class DefaultSequenceDirectory
     {
         boolean commit = false;
         boolean rollback = false;
-        BigInteger count = null;
 
         try
         {
@@ -169,7 +168,7 @@ public class DefaultSequenceDirectory
             final Query query = this.getEntityManager().createNamedQuery( COUNT_SEQUENCES_QUERY );
             query.setParameter( 1, this.getSequencesList().getName() );
 
-            count = BigInteger.valueOf( ( (Long) query.getSingleResult() ).longValue() );
+            final BigInteger count = BigInteger.valueOf( ( (Long) query.getSingleResult() ).longValue() );
 
             if ( commit )
             {
@@ -178,19 +177,11 @@ public class DefaultSequenceDirectory
 
             return count;
         }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
-        }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -202,9 +193,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -232,9 +222,12 @@ public class DefaultSequenceDirectory
                 commit = this.beginTransaction();
             }
 
+            Sequence s = null;
             final SequenceType sequenceType = this.getSequenceByName( name );
-            final Sequence s =
-                sequenceType == null ? null : this.getSequenceMapper().map( sequenceType, new Sequence() );
+            if ( sequenceType != null )
+            {
+                s = this.getSequenceMapper().map( sequenceType, new Sequence() );
+            }
 
             if ( commit )
             {
@@ -243,19 +236,11 @@ public class DefaultSequenceDirectory
 
             return s;
         }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
-        }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -267,9 +252,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -318,40 +302,13 @@ public class DefaultSequenceDirectory
             }
 
             this.notifyObservers( null, persistent );
-
             return persistent;
-        }
-        catch ( CapacityLimitException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( IllegalSequenceException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( DuplicateSequenceException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
         }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -363,9 +320,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -414,48 +370,21 @@ public class DefaultSequenceDirectory
             sequenceType.setJpaDate( Calendar.getInstance() );
             this.getEntityManager().merge( sequenceType );
 
-            final Sequence newValue = this.getSequenceMapper().map( sequenceType, new Sequence() );
+            final Sequence edited = this.getSequenceMapper().map( sequenceType, new Sequence() );
 
             if ( commit )
             {
                 this.commitTransaction();
             }
 
-            this.notifyObservers( oldValue, newValue );
-
-            return newValue;
-        }
-        catch ( SequenceNotFoundException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( ConcurrentModificationException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( IllegalSequenceException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
+            this.notifyObservers( oldValue, edited );
+            return edited;
         }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -467,9 +396,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -532,37 +460,11 @@ public class DefaultSequenceDirectory
             this.notifyObservers( s, null );
             return deleted;
         }
-        catch ( IllegalSequenceException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequenceNotFoundException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( ConcurrentModificationException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
-        }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -574,9 +476,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -619,19 +520,11 @@ public class DefaultSequenceDirectory
 
             return sequences;
         }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
-        }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -643,9 +536,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -653,7 +545,6 @@ public class DefaultSequenceDirectory
 
     // SECTION-END
     // SECTION-START[SequenceOperations]
-
     public long getNextSequenceValue( final String sequenceName ) throws SequenceLimitException
     {
         if ( sequenceName == null )
@@ -681,7 +572,7 @@ public class DefaultSequenceDirectory
             }
 
             final Sequence oldValue = this.getSequenceMapper().map( sequenceType, new Sequence() );
-            final long nextValue = sequenceType.getValue() + sequenceType.getIncrement();
+            final Long nextValue = sequenceType.getValue() + sequenceType.getIncrement();
 
             if ( nextValue < sequenceType.getValue() || nextValue > sequenceType.getMaximum() )
             {
@@ -702,33 +593,13 @@ public class DefaultSequenceDirectory
             }
 
             this.notifyObservers( oldValue, s );
-            return nextValue;
-        }
-        catch ( SequenceNotFoundException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequenceLimitException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
+            return s.getValue();
         }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -740,9 +611,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -809,34 +679,13 @@ public class DefaultSequenceDirectory
             }
 
             this.notifyObservers( oldValue, s );
-
             return values;
-        }
-        catch ( SequenceNotFoundException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequenceLimitException e )
-        {
-            this.getLogger().error( e.getMessage() );
-            rollback = true;
-            throw e;
-        }
-        catch ( SequencesSystemException e )
-        {
-            this.getLogger().fatal( e );
-            rollback = true;
-            throw e;
         }
         catch ( Exception e )
         {
-            this.getLogger().fatal( e );
             rollback = true;
-            throw new SequencesSystemException(
-                e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+            this.getExceptionListener().exceptionThrown( e );
+            throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
         {
@@ -848,9 +697,8 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? this.getSystemErrorMessage( this.getLocale() ) : e.getMessage(), e );
-
+                    this.getExceptionListener().exceptionThrown( e );
+                    throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
         }
@@ -1034,23 +882,23 @@ public class DefaultSequenceDirectory
         IllegalSequenceException result = null;
         for ( int i = validators.length - 1; i >= 0; i-- )
         {
-            final IllegalSequenceException current = validators[i].assertOperationValid( oldValue, newValue );
-
-            if ( current != null )
+            try
             {
-                if ( result != null )
+                validators[i].assertOperationValid( oldValue, newValue );
+            }
+            catch ( IllegalSequenceException e )
+            {
+                if ( result == null )
                 {
-                    for ( String propertyName : current.getPropertyNames() )
-                    {
-                        result.getDetails( propertyName ).addAll( current.getDetails( propertyName ) );
-                    }
+                    result = e;
+                }
 
-                    result.getDetails().addAll( current.getDetails() );
-                }
-                else
+                for ( String propertyName : e.getPropertyNames() )
                 {
-                    result = current;
+                    result.getDetails( propertyName ).addAll( e.getDetails( propertyName ) );
                 }
+
+                result.getDetails().addAll( e.getDetails() );
             }
         }
 
@@ -1127,9 +975,7 @@ public class DefaultSequenceDirectory
                 }
                 catch ( Exception e )
                 {
-                    throw new SequencesSystemException(
-                        e.getMessage() == null ? getSystemErrorMessage( getLocale() ) : e.getMessage(), e );
-
+                    throw new SequencesSystemException( getUnhandledExceptionMessage( getLocale() ), e );
                 }
             }
 
@@ -1173,7 +1019,23 @@ public class DefaultSequenceDirectory
     )
     private javax.persistence.EntityManager getEntityManager() throws org.jomc.ObjectManagementException
     {
-        return (javax.persistence.EntityManager) org.jomc.ObjectManager.getInstance().getDependency( this, "EntityManager" );
+        return (javax.persistence.EntityManager) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "EntityManager" );
+    }
+
+    /**
+     * Gets the {@code ExceptionListener} dependency.
+     * <p>This method returns the "{@code JOMC Sequences RI}" object of the {@code java.beans.ExceptionListener} specification at specification level 1.4.</p>
+     * @return The {@code ExceptionListener} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://www.jomc.org/jomc-tools"
+    )
+    private java.beans.ExceptionListener getExceptionListener() throws org.jomc.ObjectManagementException
+    {
+        return (java.beans.ExceptionListener) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "ExceptionListener" );
     }
 
     /**
@@ -1189,7 +1051,7 @@ public class DefaultSequenceDirectory
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -1210,7 +1072,7 @@ public class DefaultSequenceDirectory
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
 
     /**
@@ -1226,7 +1088,7 @@ public class DefaultSequenceDirectory
     )
     private org.jomc.sequences.ri.SequenceMapper getSequenceMapper() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.ri.SequenceMapper) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceMapper" );
+        return (org.jomc.sequences.ri.SequenceMapper) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceMapper" );
     }
 
     /**
@@ -1242,7 +1104,7 @@ public class DefaultSequenceDirectory
     )
     private org.jomc.sequences.SequenceObserver[] getSequenceObserver() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.SequenceObserver[]) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceObserver" );
+        return (org.jomc.sequences.SequenceObserver[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceObserver" );
     }
 
     /**
@@ -1258,7 +1120,7 @@ public class DefaultSequenceDirectory
     )
     private org.jomc.sequences.spi.SequenceValidator[] getSequenceValidator() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.spi.SequenceValidator[]) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceValidator" );
+        return (org.jomc.sequences.spi.SequenceValidator[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceValidator" );
     }
 
     /**
@@ -1274,7 +1136,7 @@ public class DefaultSequenceDirectory
     )
     private javax.transaction.UserTransaction getUserTransaction() throws org.jomc.ObjectManagementException
     {
-        return (javax.transaction.UserTransaction) org.jomc.ObjectManager.getInstance().getDependency( this, "UserTransaction" );
+        return (javax.transaction.UserTransaction) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UserTransaction" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -1291,7 +1153,7 @@ public class DefaultSequenceDirectory
     )
     private boolean isContainerManaged() throws org.jomc.ObjectManagementException
     {
-        return ( (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "containerManaged" ) ).booleanValue();
+        return ( (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "containerManaged" ) ).booleanValue();
     }
 
     /**
@@ -1306,7 +1168,7 @@ public class DefaultSequenceDirectory
     )
     private java.lang.String getDirectoryName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "directoryName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "directoryName" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -1331,7 +1193,7 @@ public class DefaultSequenceDirectory
     )
     private String getIllegalArgumentMessage( final java.util.Locale locale, final java.lang.String argumentName, final java.lang.String argumentValue ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "illegalArgument", locale, new Object[] { argumentName, argumentValue, null } );
     }
 
     /**
@@ -1352,7 +1214,7 @@ public class DefaultSequenceDirectory
     )
     private String getImplementationInfoMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "implementationInfo", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "implementationInfo", locale,  null );
     }
 
     /**
@@ -1374,7 +1236,7 @@ public class DefaultSequenceDirectory
     )
     private String getSuccessfullyCommittedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyCommittedTransaction", locale, new Object[] { status, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "successfullyCommittedTransaction", locale, new Object[] { status, null } );
     }
 
     /**
@@ -1396,7 +1258,7 @@ public class DefaultSequenceDirectory
     )
     private String getSuccessfullyCreatedSequenceDirectoryMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyCreatedSequenceDirectory", locale, new Object[] { name, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "successfullyCreatedSequenceDirectory", locale, new Object[] { name, null } );
     }
 
     /**
@@ -1418,7 +1280,7 @@ public class DefaultSequenceDirectory
     )
     private String getSuccessfullyRolledBackTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyRolledBackTransaction", locale, new Object[] { status, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "successfullyRolledBackTransaction", locale, new Object[] { status, null } );
     }
 
     /**
@@ -1440,17 +1302,17 @@ public class DefaultSequenceDirectory
     )
     private String getSuccessfullyStartedTransactionMessage( final java.util.Locale locale, final java.lang.Number status ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "successfullyStartedTransaction", locale, new Object[] { status, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "successfullyStartedTransaction", locale, new Object[] { status, null } );
     }
 
     /**
-     * Gets the text of the {@code systemError} message.
+     * Gets the text of the {@code unhandledException} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>A system error occured.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Es ist ein System-Fehler aufgetreten.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Unhandled exception.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unbehandelte Ausnahme.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code systemError} message.
+     * @return The text of the {@code unhandledException} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -1459,9 +1321,9 @@ public class DefaultSequenceDirectory
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private String getSystemErrorMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
+    private String getUnhandledExceptionMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "systemError", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "unhandledException", locale,  null );
     }
     // SECTION-END
 }

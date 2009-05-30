@@ -537,7 +537,7 @@ public class StandaloneContext implements Context
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -558,7 +558,7 @@ public class StandaloneContext implements Context
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -585,7 +585,7 @@ public class StandaloneContext implements Context
     )
     private String getBindInfoMessage( final java.util.Locale locale, final java.lang.String name, final java.lang.String object ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "bindInfo", locale, new Object[] { name, object, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "bindInfo", locale, new Object[] { name, object, null } );
     }
 
     /**
@@ -607,7 +607,7 @@ public class StandaloneContext implements Context
     )
     private String getCreateSubcontextInfoMessage( final java.util.Locale locale, final java.lang.String contextName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "createSubcontextInfo", locale, new Object[] { contextName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "createSubcontextInfo", locale, new Object[] { contextName, null } );
     }
 
     /**
@@ -629,7 +629,7 @@ public class StandaloneContext implements Context
     )
     private String getDestroySubcontextInfoMessage( final java.util.Locale locale, final java.lang.String contextName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "destroySubcontextInfo", locale, new Object[] { contextName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "destroySubcontextInfo", locale, new Object[] { contextName, null } );
     }
 
     /**
@@ -653,7 +653,7 @@ public class StandaloneContext implements Context
     )
     private String getRebindInfoMessage( final java.util.Locale locale, final java.lang.String name, final java.lang.String oldObject, final java.lang.String newObject ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "rebindInfo", locale, new Object[] { name, oldObject, newObject, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "rebindInfo", locale, new Object[] { name, oldObject, newObject, null } );
     }
 
     /**
@@ -676,7 +676,7 @@ public class StandaloneContext implements Context
     )
     private String getRenameInfoMessage( final java.util.Locale locale, final java.lang.String oldName, final java.lang.String newName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "renameInfo", locale, new Object[] { oldName, newName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "renameInfo", locale, new Object[] { oldName, newName, null } );
     }
 
     /**
@@ -698,7 +698,7 @@ public class StandaloneContext implements Context
     )
     private String getUnbindInfoMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "unbindInfo", locale, new Object[] { name, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "unbindInfo", locale, new Object[] { name, null } );
     }
     // SECTION-END
 }

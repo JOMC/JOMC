@@ -242,7 +242,7 @@ public class SequenceOperationsTest extends TestCase
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceDirectory" );
+        return (org.jomc.sequences.SequenceDirectory) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceDirectory" );
     }
 
     /**
@@ -258,7 +258,7 @@ public class SequenceOperationsTest extends TestCase
     )
     private org.jomc.sequences.SequenceOperations getSequenceOperations() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.sequences.SequenceOperations) org.jomc.ObjectManager.getInstance().getDependency( this, "SequenceOperations" );
+        return (org.jomc.sequences.SequenceOperations) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceOperations" );
     }
     // SECTION-END
 }

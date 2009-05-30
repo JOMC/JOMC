@@ -51,7 +51,7 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false">
+                    stateless="true">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Standalone environment.]]></text>
@@ -134,8 +134,7 @@
                     class="org.jomc.standalone.naming.StandaloneContext"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="false">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Standalone {@code Context} implementation.]]></text>
@@ -225,8 +224,7 @@
                     class="org.jomc.standalone.naming.StandaloneContextFactory"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="false">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Standalone {@code InitialContextFactory} implementation.]]></text>
@@ -273,8 +271,7 @@
                     class="org.jomc.standalone.naming.java.javaURLContextFactory"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="false">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Standalone context factory for the ''java'' URL scheme.]]></text>
@@ -315,8 +312,7 @@
                     class="org.jomc.standalone.naming.support.AbstractContextFactory"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="false">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Base context factory.]]></text>
@@ -337,7 +333,6 @@
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractContextFactory">
 
       <documentation defaultLanguage="en">
@@ -366,7 +361,6 @@
                     name="JOMC DataSourceContextFactory"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractContextFactory">
 
       <documentation defaultLanguage="en">
@@ -409,7 +403,6 @@
                     name="JBoss JTA"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractContextFactory">
 
       <documentation defaultLanguage="en">
@@ -459,7 +452,6 @@
                     name="Geronimo JTA"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractContextFactory">
 
       <documentation defaultLanguage="en">
@@ -502,7 +494,6 @@
                     name="Open JPA"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractJPAContextFactory">
 
       <documentation defaultLanguage="en">
@@ -542,7 +533,6 @@
                     name="Hibernate"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractJPAContextFactory">
 
       <documentation defaultLanguage="en">
@@ -582,7 +572,6 @@
                     name="Toplink"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractJPAContextFactory">
 
       <documentation defaultLanguage="en">
@@ -619,10 +608,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.standalone.naming.support.TopLinkTransactionController"
                     class="org.jomc.standalone.naming.support.TopLinkTransactionController"
-                    name="Toplink"
+                    name="Toplink Transaction Controller"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="false">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Standalone Toplink {@code ExternalTransactionController}.]]></text>
@@ -658,10 +646,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.standalone.naming.support.JotmContextFactory"
                     class="org.jomc.standalone.naming.support.JotmContextFactory"
-                    name="Toplink"
+                    name="JOTM"
                     version="${pom.version}"
                     vendor="${pom.organization.name}"
-                    final="false"
                     parent="org.jomc.standalone.naming.support.AbstractContextFactory">
 
       <documentation defaultLanguage="en">

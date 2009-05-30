@@ -121,7 +121,7 @@ public class ConcurrentModificationException extends RuntimeException
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -144,7 +144,7 @@ public class ConcurrentModificationException extends RuntimeException
     )
     private String getConcurrentlyModifiedMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "concurrentlyModified", locale,  null );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "concurrentlyModified", locale,  null );
     }
     // SECTION-END
 }

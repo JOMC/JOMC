@@ -43,8 +43,7 @@ import java.util.logging.Level;
  * {@code ObjectManagementLister} logging to the console.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.spi.Listener} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Singleton scope.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

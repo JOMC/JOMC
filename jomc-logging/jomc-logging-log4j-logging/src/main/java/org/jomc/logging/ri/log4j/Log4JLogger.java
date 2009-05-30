@@ -41,8 +41,7 @@ import org.jomc.logging.Logger;
  * Log4J logging system implementation.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.logging.Logger} {@code 1.0}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -87,7 +86,7 @@ public class Log4JLogger implements Logger
     )
     public java.lang.String getName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "name" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "name" );
     }
     // SECTION-END
     // SECTION-START[Log4JLogger]

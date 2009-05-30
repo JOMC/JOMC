@@ -114,7 +114,7 @@ public class JndiLookup
     )
     private java.lang.String getObjectName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "objectName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "objectName" );
     }
 
     /**
@@ -129,7 +129,7 @@ public class JndiLookup
     )
     private boolean isRemoteObject() throws org.jomc.ObjectManagementException
     {
-        return ( (java.lang.Boolean) org.jomc.ObjectManager.getInstance().getProperty( this, "remoteObject" ) ).booleanValue();
+        return ( (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "remoteObject" ) ).booleanValue();
     }
     // SECTION-END
     // SECTION-START[Messages]

@@ -384,7 +384,7 @@ public class Environment
     )
     private java.lang.String getDefaultDataSourceContextFactoryName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultDataSourceContextFactoryName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultDataSourceContextFactoryName" );
     }
 
     /**
@@ -399,7 +399,7 @@ public class Environment
     )
     private java.lang.String getDefaultDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultDataSourceJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultDataSourceJndiName" );
     }
 
     /**
@@ -414,7 +414,7 @@ public class Environment
     )
     private java.lang.String getDefaultEntityManagerFactoryJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultEntityManagerFactoryJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultEntityManagerFactoryJndiName" );
     }
 
     /**
@@ -429,7 +429,7 @@ public class Environment
     )
     private java.lang.String getDefaultEntityManagerJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultEntityManagerJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultEntityManagerJndiName" );
     }
 
     /**
@@ -444,7 +444,7 @@ public class Environment
     )
     private java.lang.String getDefaultJtaDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultJtaDataSourceJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultJtaDataSourceJndiName" );
     }
 
     /**
@@ -459,7 +459,7 @@ public class Environment
     )
     private java.lang.String getDefaultTransactionManagerJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultTransactionManagerJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultTransactionManagerJndiName" );
     }
 
     /**
@@ -474,7 +474,7 @@ public class Environment
     )
     private java.lang.String getDefaultTransactionSynchronizationRegistryJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultTransactionSynchronizationRegistryJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultTransactionSynchronizationRegistryJndiName" );
     }
 
     /**
@@ -489,7 +489,7 @@ public class Environment
     )
     private java.lang.String getDefaultUserTransactionJndiName() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "defaultUserTransactionJndiName" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "defaultUserTransactionJndiName" );
     }
     // SECTION-END
     // SECTION-START[Messages]

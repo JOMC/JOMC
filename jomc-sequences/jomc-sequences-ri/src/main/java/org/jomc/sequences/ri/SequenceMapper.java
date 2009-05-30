@@ -42,11 +42,11 @@ import org.jomc.sequences.model.SequenceType;
 /**
  * Maps model classes.
  * <p>This specification applies to Singleton scope.
- * An application assembler may provide multiple implementations of this specification (including none). Use of class
- * {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for selecting a
- * single implementation.<pre>
- * SequenceMapper[] objects = (SequenceMapper[]) ObjectManager.getInstance().getObject( SequenceMapper.class );
- * SequenceMapper object = (SequenceMapper) ObjectManager.getInstance().getObject( SequenceMapper.class, "<i>implementation name</i>" );
+ * An application assembler may provide multiple implementations of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
+ * selecting a single implementation.<pre>
+ * SequenceMapper[] objects = (SequenceMapper[]) ObjectManagerFactory.getObjectManager().getObject( SequenceMapper.class );
+ * SequenceMapper object = (SequenceMapper) ObjectManagerFactory.getObjectManager().getObject( SequenceMapper.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

@@ -123,7 +123,7 @@ public class SequenceNotFoundException extends IllegalArgumentException
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -147,7 +147,7 @@ public class SequenceNotFoundException extends IllegalArgumentException
     )
     private String getSequenceNotFoundMessage( final java.util.Locale locale, final java.lang.String sequenceName ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "sequenceNotFound", locale, new Object[] { sequenceName, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "sequenceNotFound", locale, new Object[] { sequenceName, null } );
     }
     // SECTION-END
 }

@@ -40,14 +40,11 @@ import java.util.Locale;
 /**
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.ri.tests.SingletonSpecification} {@code 1.0-alpha-1-SNAPSHOT}<blockquote>
- * Object applies to Singleton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Singleton scope.</blockquote></li>
  * <li>{@code org.jomc.ri.tests.MultitonSpecification} {@code 1.0-alpha-1-SNAPSHOT}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code org.jomc.ri.tests.TestSpecification} {@code 1.0-alpha-1-SNAPSHOT}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"<blockquote>
@@ -199,7 +196,7 @@ implements
     )
     private org.jomc.ri.tests.TestSpecification getSelectedTestSpecification() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.tests.TestSpecification) org.jomc.ObjectManager.getInstance().getDependency( this, "SelectedTestSpecification" );
+        return (org.jomc.ri.tests.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedTestSpecification" );
     }
 
     /**
@@ -215,7 +212,7 @@ implements
     )
     private org.jomc.ri.tests.SingletonSpecification getTestBoundSingleton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.tests.SingletonSpecification) org.jomc.ObjectManager.getInstance().getDependency( this, "TestBoundSingleton" );
+        return (org.jomc.ri.tests.SingletonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestBoundSingleton" );
     }
 
     /**
@@ -231,7 +228,7 @@ implements
     )
     private org.jomc.ri.tests.MultitonSpecification getTestMultiton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.tests.MultitonSpecification) org.jomc.ObjectManager.getInstance().getDependency( this, "TestMultiton" );
+        return (org.jomc.ri.tests.MultitonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestMultiton" );
     }
 
     /**
@@ -247,7 +244,7 @@ implements
     )
     private org.jomc.ri.tests.SingletonSpecification getTestSingleton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.tests.SingletonSpecification) org.jomc.ObjectManager.getInstance().getDependency( this, "TestSingleton" );
+        return (org.jomc.ri.tests.SingletonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestSingleton" );
     }
 
     /**
@@ -263,7 +260,7 @@ implements
     )
     private org.jomc.ri.tests.TestSpecification[] getTestSpecification() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.tests.TestSpecification[]) org.jomc.ObjectManager.getInstance().getDependency( this, "TestSpecification" );
+        return (org.jomc.ri.tests.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestSpecification" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -280,7 +277,7 @@ implements
     )
     private java.lang.String getTestProperty() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.String) org.jomc.ObjectManager.getInstance().getProperty( this, "testProperty" );
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "testProperty" );
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -303,7 +300,7 @@ implements
     )
     private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );
     }
     // SECTION-END
 }

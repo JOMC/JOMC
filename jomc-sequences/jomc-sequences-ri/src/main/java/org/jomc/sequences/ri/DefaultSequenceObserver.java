@@ -42,8 +42,7 @@ import org.jomc.sequences.SequenceObserver;
  * {@code SequenceObserver} reference implementation.
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.sequences.SequenceObserver} {@code 1.0}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getLogger Logger}"<blockquote>
@@ -121,7 +120,7 @@ public class DefaultSequenceObserver implements SequenceObserver
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
-        return (java.util.Locale) org.jomc.ObjectManager.getInstance().getDependency( this, "Locale" );
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
 
     /**
@@ -142,7 +141,7 @@ public class DefaultSequenceObserver implements SequenceObserver
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManager.getInstance().getDependency( this, "Logger" );
+        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -173,7 +172,7 @@ public class DefaultSequenceObserver implements SequenceObserver
     )
     private String getOperationInfoMessage( final java.util.Locale locale, final java.lang.String oldSequenceInfo, final java.lang.String newSequenceInfo ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManager.getInstance().getMessage( this, "operationInfo", locale, new Object[] { oldSequenceInfo, newSequenceInfo, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "operationInfo", locale, new Object[] { oldSequenceInfo, newSequenceInfo, null } );
     }
     // SECTION-END
 }

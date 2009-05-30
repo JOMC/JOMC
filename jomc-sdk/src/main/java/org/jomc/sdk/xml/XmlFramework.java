@@ -61,23 +61,17 @@ import org.xml.sax.SAXException;
  * XML framework.
  * <p><b>Specifications</b><ul>
  * <li>{@code javax.xml.bind.JAXBContext}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.xml.bind.Marshaller}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.xml.bind.Unmarshaller}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code javax.xml.validation.Schema}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code org.xml.sax.EntityResolver}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * <li>{@code org.w3c.dom.ls.LSResourceResolver}<blockquote>
- * Object applies to Multiton scope.
- * State must be retained across operations to operate as specified.</blockquote></li>
+ * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getConfiguration configuration}"<blockquote>
@@ -358,7 +352,7 @@ public class XmlFramework
     )
     private java.lang.Object getConfiguration() throws org.jomc.ObjectManagementException
     {
-        return (java.lang.Object) org.jomc.ObjectManager.getInstance().getProperty( this, "configuration" );
+        return (java.lang.Object) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "configuration" );
     }
     // SECTION-END
 }
