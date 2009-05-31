@@ -123,11 +123,6 @@
             </jarModule>
             <jarModule>
               <groupId>org.jomc.sequences</groupId>
-              <artifactId>jomc-sequences-spi</artifactId>
-              <includeInApplicationXml>false</includeInApplicationXml>
-            </jarModule>
-            <jarModule>
-              <groupId>org.jomc.sequences</groupId>
               <artifactId>jomc-sequences-model</artifactId>
               <includeInApplicationXml>false</includeInApplicationXml>
             </jarModule>

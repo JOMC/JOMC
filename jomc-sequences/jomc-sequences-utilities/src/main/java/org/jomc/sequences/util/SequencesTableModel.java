@@ -45,7 +45,7 @@ import javax.swing.event.SwingPropertyChangeSupport;
 import javax.swing.table.AbstractTableModel;
 import org.jomc.ObjectManagementException;
 import org.jomc.sequences.ConcurrentModificationException;
-import org.jomc.sequences.IllegalSequenceException;
+import org.jomc.sequences.SequenceVetoException;
 import org.jomc.sequences.Sequence;
 import org.jomc.sequences.SequenceNotFoundException;
 import org.jomc.sequences.SequencesSystemException;
@@ -377,7 +377,7 @@ public class SequencesTableModel extends AbstractTableModel implements Serializa
             this.sequences = null;
             this.fireTableDataChanged();
         }
-        catch ( IllegalSequenceException e )
+        catch ( SequenceVetoException e )
         {
             this.fireExceptionThrown( e );
             this.sequences = null;

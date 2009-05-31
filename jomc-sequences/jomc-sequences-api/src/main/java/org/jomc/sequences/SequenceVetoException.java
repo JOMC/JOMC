@@ -32,34 +32,22 @@
  *
  */
 // SECTION-END
-package org.jomc.sequences.ri;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import org.jomc.sequences.SequenceChangeEvent;
+package org.jomc.sequences;
 
 // SECTION-START[Implementation Comment]
 /**
- * {@code PropertyChangeListener} listening to the reference implementation.
- * <p><b>Specifications</b><ul>
- * <li>{@code java.beans.PropertyChangeListener}<blockquote>
- * Object applies to Multiton scope.</blockquote></li>
- * </ul></p>
+ *
+ * Gets thrown whenever illegal sequence information is passed to a method expecting legal sequence data.
  * <p><b>Dependencies</b><ul>
- * <li>"{@link #getLogger Logger}"<blockquote>
- * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getLocale Locale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
- * <li>"{@link #getOperationInfoMessage operationInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Directory update
-     *     --''{0}''
-     *     ++''{1}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Verzeichnisänderung
-     *     --''{0}''
-     *     ++''{1}''</pre></td></tr>
+ * <li>"{@link #getIllegalSequenceMessage illegalSequence}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal sequence data.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültige Sequenzdaten.</pre></td></tr>
  * </table>
+ * </li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -73,29 +61,51 @@ import org.jomc.sequences.SequenceChangeEvent;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class DefaultSequenceObserver implements PropertyChangeListener
+public class SequenceVetoException extends RuntimeException
 {
-    // SECTION-START[PropertyChangeListener]
+    // SECTION-START[SequenceVetoException]
 
-    public void propertyChange( final PropertyChangeEvent evt )
+    /**
+     * Event describing a vetoed sequence change.
+     * @serial
+     */
+    private SequenceChangeEvent sequenceChangeEvent;
+
+    /**
+     * Creates a new {@code SequenceVetoException} taking an event describing a vetoed sequence change.
+     *
+     * @param evt An event describing a vetoed sequence change.
+     */
+    public SequenceVetoException( final SequenceChangeEvent evt )
     {
-        if ( evt instanceof SequenceChangeEvent )
-        {
-            if ( this.getLogger().isDebugEnabled() )
-            {
-                final SequenceChangeEvent sequenceChange = (SequenceChangeEvent) evt;
-                this.getLogger().debug( this.getOperationInfoMessage(
-                    this.getLocale(), ( sequenceChange.getOldSequence() == null
-                                        ? null : sequenceChange.getOldSequence().toString() ),
-                    ( sequenceChange.getNewSequence() == null
-                      ? null : sequenceChange.getNewSequence().toString() ) ) );
+        super();
+        this.sequenceChangeEvent = evt;
+    }
 
-            }
-        }
+    /**
+     * Gets the event describing the vetoed change.
+     *
+     * @return The event describing the vetoed change.
+     */
+    public SequenceChangeEvent getSequenceChangeEvent()
+    {
+        return this.sequenceChangeEvent;
     }
 
     // SECTION-END
-    // SECTION-START[DefaultSequenceObserver]
+    // SECTION-START[Throwable]
+
+    /**
+     * Gets the message of the exception.
+     *
+     * @return The message of the exception.
+     */
+    @Override
+    public String getMessage()
+    {
+        return this.getIllegalSequenceMessage( this.getLocale() );
+    }
+
     // SECTION-END
     // SECTION-START[Constructors]
 
@@ -105,7 +115,7 @@ public class DefaultSequenceObserver implements PropertyChangeListener
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    public DefaultSequenceObserver()
+    public SequenceVetoException()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -129,46 +139,17 @@ public class DefaultSequenceObserver implements PropertyChangeListener
     {
         return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Locale" );
     }
-
-    /**
-     * Gets the {@code Logger} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
-     * <p><b>Properties</b><dl>
-     * <dt>"{@code name}"</dt>
-     * <dd>Property of type {@code java.lang.String} with value "org.jomc.sequences.ri.DefaultSequenceObserver".
-     * </dd>
-     * </dl>
-     * @return The {@code Logger} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
-    {
-        return (org.jomc.logging.Logger) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "Logger" );
-    }
-    // SECTION-END
-    // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
 
     /**
-     * Gets the text of the {@code operationInfo} message.
+     * Gets the text of the {@code illegalSequence} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Directory update
-     *     --''{0}''
-     *     ++''{1}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Verzeichnisänderung
-     *     --''{0}''
-     *     ++''{1}''</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal sequence data.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ungültige Sequenzdaten.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param oldSequenceInfo Format argument.
-     * @param newSequenceInfo Format argument.
-     * @return The text of the {@code operationInfo} message.
+     * @return The text of the {@code illegalSequence} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -177,9 +158,9 @@ public class DefaultSequenceObserver implements PropertyChangeListener
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private String getOperationInfoMessage( final java.util.Locale locale, final java.lang.String oldSequenceInfo, final java.lang.String newSequenceInfo ) throws org.jomc.ObjectManagementException
+    private String getIllegalSequenceMessage( final java.util.Locale locale ) throws org.jomc.ObjectManagementException
     {
-        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "operationInfo", locale, new Object[] { oldSequenceInfo, newSequenceInfo, null } );
+        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "illegalSequence", locale,  null );
     }
     // SECTION-END
 }

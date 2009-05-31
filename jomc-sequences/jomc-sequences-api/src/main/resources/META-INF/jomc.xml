@@ -78,21 +78,6 @@
 
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.sequences.SequenceObserver"
-                   vendor="${pom.organization.name}"
-                   version="1.0">
-
-      <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Interface to observe operations performed by a system's sequence directory.]]></text>
-      </documentation>
-      <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
   </specifications>
 
   <implementations>
@@ -101,8 +86,7 @@
                     class="org.jomc.sequences.CapacityLimitException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Gets thrown whenever the directories capacity limit has been reached.]]></text>
@@ -123,32 +107,15 @@
     </implementation>
 
     <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.sequences.IllegalSequenceException"
-                    class="org.jomc.sequences.IllegalSequenceException"
+    <implementation identifier="org.jomc.sequences.SequenceVetoException"
+                    class="org.jomc.sequences.SequenceVetoException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[
-Gets thrown whenever illegal sequence information is passed to a method
-expecting legal sequence data.
-<p>Throwing an {@code IllegalSequenceException}<blockquote><pre>
-IllegalSequenceException e = new IllegalSequenceException();
-e.getDetails(Sequence.PROP_<i>XYZ</i>).add(IllegalSequenceException.MANDATORY_PROPERTY_MISSING);
-e.getDetails().add(IllegalSequenceException.<i>XYZ</i>);
-throw e;</pre></blockquote></p>
-<p>Catching an {@code IllegalSequenceException}<blockquote><pre>
-catch(IllegalSequenceException e)
-{
-        <i>Fetch details bound to properties.</i>
-        e.getDetails(Sequence.PROP_<i>XYZ</i>);
-        ...
-        <i>Fetch details not bound to any property.</i>
-        e.getDetails();
-        ...
-}</blockquote></pre></p>]]></text>
+Gets thrown whenever illegal sequence information is passed to a method expecting legal sequence data.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
@@ -170,8 +137,7 @@ catch(IllegalSequenceException e)
                     class="org.jomc.sequences.SequenceLimitException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[
@@ -198,8 +164,7 @@ maximum value has already been reached.]]></text>
                     class="org.jomc.sequences.SequenceNotFoundException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Gets thrown when a sequence is not found for a given name.]]></text>
@@ -224,8 +189,7 @@ maximum value has already been reached.]]></text>
                     class="org.jomc.sequences.ConcurrentModificationException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Gets thrown whenever a sequence is edited or removed using outdated data.]]></text>
@@ -250,8 +214,7 @@ maximum value has already been reached.]]></text>
                     class="org.jomc.sequences.DuplicateSequenceException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Gets thrown when a sequence is about to be added to a directory although a sequence with the same name already exists.]]></text>
@@ -276,8 +239,7 @@ maximum value has already been reached.]]></text>
                     class="org.jomc.sequences.SequencesSystemException"
                     name="${pom.name}"
                     version="${pom.version}"
-                    vendor="${pom.organization.name}"
-                    final="true">
+                    vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Gets thrown whenever an unexpected error condition is detected.]]></text>
@@ -298,6 +260,23 @@ maximum value has already been reached.]]></text>
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Sequence of numbers.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.SequenceChangeEvent"
+                    class="org.jomc.sequences.SequenceChangeEvent"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[A "SequenceChange" event gets delivered whenever the state of a sequence changes.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"

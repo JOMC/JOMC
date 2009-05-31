@@ -84,7 +84,6 @@
   </build>
   <modules>
     <module>jomc-sequences-api</module>
-    <module>jomc-sequences-spi</module>
     <module>jomc-sequences-it</module>
     <module>jomc-sequences-model</module>
     <module>jomc-sequences-ri</module>

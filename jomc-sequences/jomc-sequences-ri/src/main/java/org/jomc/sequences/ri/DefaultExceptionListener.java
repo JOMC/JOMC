@@ -37,10 +37,9 @@ package org.jomc.sequences.ri;
 import org.jomc.sequences.CapacityLimitException;
 import org.jomc.sequences.ConcurrentModificationException;
 import org.jomc.sequences.DuplicateSequenceException;
-import org.jomc.sequences.IllegalSequenceException;
+import org.jomc.sequences.SequenceVetoException;
 import org.jomc.sequences.SequenceLimitException;
 import org.jomc.sequences.SequenceNotFoundException;
-import org.jomc.sequences.SequencesSystemException;
 
 // SECTION-START[Implementation Comment]
 /**
@@ -81,9 +80,9 @@ public class DefaultExceptionListener
         {
             throw (DuplicateSequenceException) e;
         }
-        if ( e instanceof IllegalSequenceException )
+        if ( e instanceof SequenceVetoException )
         {
-            throw (IllegalSequenceException) e;
+            throw (SequenceVetoException) e;
         }
         if ( e instanceof SequenceLimitException )
         {
@@ -92,10 +91,6 @@ public class DefaultExceptionListener
         if ( e instanceof SequenceNotFoundException )
         {
             throw (SequenceNotFoundException) e;
-        }
-        if ( e instanceof SequencesSystemException )
-        {
-            throw (SequencesSystemException) e;
         }
     }
 

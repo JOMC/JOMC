@@ -86,14 +86,6 @@
       </specifications>
 
       <dependencies>
-        <dependency name="SequenceObserver"
-                    identifier="org.jomc.sequences.SequenceObserver"
-                    version="1.0" />
-
-        <dependency name="SequenceValidator"
-                    identifier="org.jomc.sequences.spi.SequenceValidator"
-                    version="1.0"/>
-
         <dependency name="SequenceMapper"
                     identifier="org.jomc.sequences.ri.SequenceMapper"
                     version="1.0"
@@ -116,8 +108,15 @@
 
         <dependency name="ExceptionListener"
                     identifier="java.beans.ExceptionListener"
-                    version="1.4"
-                    implementationName="${pom.name}"/>
+                    version="1.4"/>
+
+        <dependency name="PropertyChangeListener"
+                    identifier="java.beans.PropertyChangeListener"
+                    version="1.4"/>
+
+        <dependency name="VetoableChangeListener"
+                    identifier="java.beans.VetoableChangeListener"
+                    version="1.4"/>
 
         <dependency name="Logger"
                     identifier="org.jomc.logging.Logger"
@@ -162,7 +161,7 @@
                     stateless="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[SequenceValidator implementation validating sequence instances for use with the reference implementation.]]></text>
+        <text language="en"><![CDATA[{@code VetoableChangeListener} implementation validating sequence instances for use with the reference implementation.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
@@ -170,9 +169,19 @@
 
       </authors>
       <specifications>
-        <reference identifier="org.jomc.sequences.spi.SequenceValidator"
-                   version="1.0"/>
+        <reference identifier="java.beans.VetoableChangeListener"/>
       </specifications>
+
+      <dependencies>
+        <dependency name="Locale"
+                    identifier="java.util.Locale"
+                    version="1.1"
+                    implementationName="default"/>
+
+      </dependencies>
+      <messages>
+        <reference name="illegalSequence"/>
+      </messages>
     </implementation>
 
     <!-- ******************************************************************* -->
@@ -217,7 +226,7 @@
                     stateless="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[{@code SequenceObserver} reference implementation.]]></text>
+        <text language="en"><![CDATA[{@code PropertyChangeListener} listening to the reference implementation.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
@@ -225,7 +234,7 @@
 
       </authors>
       <specifications>
-        <reference identifier="org.jomc.sequences.SequenceObserver" version="1.0"/>
+        <reference identifier="java.beans.PropertyChangeListener"/>
       </specifications>
       <dependencies>
         <dependency name="Logger"
@@ -342,6 +351,12 @@
       <arguments>
         <argument index="0" name="name"/>
       </arguments>
+    </message>
+    <message name="illegalSequence">
+      <template defaultLanguage="en">
+        <text language="en"><![CDATA[Illegal sequence data.]]></text>
+        <text language="de"><![CDATA[Ungültige Sequenzdaten.]]></text>
+      </template>
     </message>
   </messages>
 </module>

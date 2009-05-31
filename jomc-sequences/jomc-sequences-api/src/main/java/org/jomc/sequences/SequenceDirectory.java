@@ -98,13 +98,13 @@ public interface SequenceDirectory
      *
      * @return The data of the sequence from the directory.
      *
-     * @throws IllegalSequenceException if {@code sequence} holds illegal values.
+     * @throws SequenceVetoException if {@code sequence} holds illegal values.
      * @throws DuplicateSequenceException if a sequence with the same name already exists.
      * @throws CapacityLimitException if the directory's capacity limit has been reached.
      * @throws SequencesSystemException if adding the sequence fails.
      */
     Sequence addSequence( Sequence sequence )
-        throws IllegalSequenceException, DuplicateSequenceException, CapacityLimitException, SequencesSystemException;
+        throws SequenceVetoException, DuplicateSequenceException, CapacityLimitException, SequencesSystemException;
 
     /**
      * Updates a sequence in the directory.
@@ -115,14 +115,14 @@ public interface SequenceDirectory
      *
      * @return The data of the sequence from the directory.
      *
+     * @throws SequenceVetoException if {@code sequence} holds illegal values.
      * @throws SequenceNotFoundException if no sequence matching {@code name} exists in the directory.
-     * @throws IllegalSequenceException if {@code sequence} holds illegal values.
      * @throws ConcurrentModificationException if the same sequence got concurrently modified in the directory, that is,
      * {@code revision} denotes outdated data.
      * @throws SequencesSystemException if editing the sequence fails.
      */
     Sequence editSequence( String name, long revision, Sequence sequence )
-        throws SequenceNotFoundException, IllegalSequenceException, ConcurrentModificationException,
+        throws SequenceVetoException, SequenceNotFoundException, ConcurrentModificationException,
                SequencesSystemException;
 
     /**

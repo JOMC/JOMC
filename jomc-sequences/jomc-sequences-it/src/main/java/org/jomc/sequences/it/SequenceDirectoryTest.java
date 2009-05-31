@@ -42,7 +42,7 @@ import junit.framework.Assert;
 import junit.framework.TestCase;
 import org.jomc.sequences.ConcurrentModificationException;
 import org.jomc.sequences.DuplicateSequenceException;
-import org.jomc.sequences.IllegalSequenceException;
+import org.jomc.sequences.SequenceVetoException;
 import org.jomc.sequences.Sequence;
 import org.jomc.sequences.SequenceDirectory;
 import org.jomc.sequences.SequenceNotFoundException;
@@ -236,9 +236,9 @@ public class SequenceDirectoryTest extends TestCase
 
     /**
      * Tests that adding an illegal sequence or updating an existing sequence with illegal data is prevented by throwing
-     * a corresponding {@code IllegalSequenceException}.
+     * a corresponding {@code SequenceVetoException}.
      */
-    public void testIllegalSequenceException() throws Exception
+    public void testSequenceVetoException() throws Exception
     {
         assert this.getSequenceDirectory() != null;
 
@@ -258,7 +258,7 @@ public class SequenceDirectoryTest extends TestCase
             this.getSequenceDirectory().addSequence( illegal );
             throw new AssertionError();
         }
-        catch ( IllegalSequenceException e )
+        catch ( SequenceVetoException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
@@ -268,12 +268,10 @@ public class SequenceDirectoryTest extends TestCase
 
         try
         {
-            this.getSequenceDirectory().editSequence(
-                legal.getName(), legal.getRevision(), illegal );
-
+            this.getSequenceDirectory().editSequence( legal.getName(), legal.getRevision(), illegal );
             throw new AssertionError();
         }
-        catch ( IllegalSequenceException e )
+        catch ( SequenceVetoException e )
         {
             Assert.assertNotNull( e.getMessage() );
             System.out.println( e.toString() );
