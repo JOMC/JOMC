@@ -34,9 +34,16 @@
 // SECTION-END
 package org.jomc.sequences;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Specification Comment]
 /**
- * Gets thrown whenever an unrecoverable error condition is detected.
+ * Gets called whenever the state of a sequence changed.
+ * <p>This specification applies to Multiton scope.
+ * An application assembler may provide multiple implementations of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
+ * selecting a single implementation.<pre>
+ * SequenceChangeListener[] objects = (SequenceChangeListener[]) ObjectManagerFactory.getObjectManager().getObject( SequenceChangeListener.class );
+ * SequenceChangeListener object = (SequenceChangeListener) ObjectManagerFactory.getObjectManager().getObject( SequenceChangeListener.class, "<i>implementation name</i>" );
+ * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
@@ -49,61 +56,16 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequencesSystemException extends RuntimeException
+public interface SequenceChangeListener
 {
-    // SECTION-START[SequencesSystemException]
+    // SECTION-START[SequenceChangeListener]
 
     /**
-     * Creates a new {@code SequencesSystemException} taking a message describing the exception.
+     * Gets called whenever the state of a sequence changed.
      *
-     * @param msg The message describing the exception.
+     * @param evt The event describing the sequence change.
      */
-    public SequencesSystemException( final String msg )
-    {
-        super( msg );
-    }
+    void sequenceChange( SequenceChangeEvent evt );
 
-    /**
-     * Creates a new {@code SequencesSystemException} taking a causing exception.
-     *
-     * @param e The cause of the exception.
-     */
-    public SequencesSystemException( final Exception e )
-    {
-        super( e );
-    }
-
-    /**
-     * Creates a new {@code SequencesSystemException} taking a message describing the exception a causing exception.
-     *
-     * @param msg The message describing the exception.
-     * @param e The cause of the exception.
-     */
-    public SequencesSystemException( final String msg, final Exception e )
-    {
-        super( msg, e );
-    }
-
-    // SECTION-END
-    // SECTION-START[Constructors]
-
-    /** Default implementation constructor. */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    public SequencesSystemException()
-    {
-        // SECTION-START[Default Constructor]
-        super();
-        // SECTION-END
-    }
-    // SECTION-END
-    // SECTION-START[Dependencies]
-    // SECTION-END
-    // SECTION-START[Properties]
-    // SECTION-END
-    // SECTION-START[Messages]
     // SECTION-END
 }

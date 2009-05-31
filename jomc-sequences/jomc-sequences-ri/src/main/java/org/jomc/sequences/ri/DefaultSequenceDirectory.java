@@ -34,14 +34,7 @@
 // SECTION-END
 package org.jomc.sequences.ri;
 
-import java.beans.ExceptionListener;
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyVetoException;
-import java.beans.VetoableChangeListener;
-import java.lang.reflect.Field;
 import java.math.BigInteger;
-import java.security.AccessController;
-import java.security.PrivilegedAction;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
@@ -55,17 +48,21 @@ import javax.transaction.RollbackException;
 import javax.transaction.Status;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
+import org.jomc.ObjectManagementException;
 import org.jomc.sequences.CapacityLimitException;
 import org.jomc.sequences.ConcurrentModificationException;
 import org.jomc.sequences.DuplicateSequenceException;
 import org.jomc.sequences.SequenceVetoException;
 import org.jomc.sequences.Sequence;
 import org.jomc.sequences.SequenceChangeEvent;
+import org.jomc.sequences.SequenceChangeListener;
 import org.jomc.sequences.SequenceDirectory;
 import org.jomc.sequences.SequenceLimitException;
 import org.jomc.sequences.SequenceNotFoundException;
 import org.jomc.sequences.SequenceOperations;
+import org.jomc.sequences.SequencesException;
 import org.jomc.sequences.SequencesSystemException;
+import org.jomc.sequences.VetoableSequenceChangeListener;
 import org.jomc.sequences.model.SequenceType;
 import org.jomc.sequences.model.SequencesType;
 
@@ -85,6 +82,12 @@ import org.jomc.sequences.model.SequencesType;
  * Property of type {@code boolean} with value "false".</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
+ * <li>"{@link #getLogger Logger}"<blockquote>
+ * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getSequenceChangeListener SequenceChangeListener}"<blockquote>
+ * Dependency on {@code org.jomc.sequences.SequenceChangeListener} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
+ * <li>"{@link #getVetoableSequenceChangeListener VetoableSequenceChangeListener}"<blockquote>
+ * Dependency on {@code org.jomc.sequences.VetoableSequenceChangeListener} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getSequenceMapper SequenceMapper}"<blockquote>
  * Dependency on {@code org.jomc.sequences.ri.SequenceMapper} at specification level 1.0 applying to Singleton scope bound to an instance.</blockquote></li>
  * <li>"{@link #getEntityManager EntityManager}"<blockquote>
@@ -93,14 +96,6 @@ import org.jomc.sequences.model.SequencesType;
  * Dependency on {@code javax.transaction.UserTransaction} applying to Multiton scope.</blockquote></li>
  * <li>"{@link #getLocale Locale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.1 applying to Multiton scope bound to an instance.</blockquote></li>
- * <li>"{@link #getExceptionListener ExceptionListener}"<blockquote>
- * Dependency on {@code java.beans.ExceptionListener} at specification level 1.4 applying to Multiton scope bound to an instance.</blockquote></li>
- * <li>"{@link #getPropertyChangeListener PropertyChangeListener}"<blockquote>
- * Dependency on {@code java.beans.PropertyChangeListener} at specification level 1.4 applying to Multiton scope bound to an instance.</blockquote></li>
- * <li>"{@link #getVetoableChangeListener VetoableChangeListener}"<blockquote>
- * Dependency on {@code java.beans.VetoableChangeListener} at specification level 1.4 applying to Multiton scope bound to an instance.</blockquote></li>
- * <li>"{@link #getLogger Logger}"<blockquote>
- * Dependency on {@code org.jomc.logging.Logger} at specification level 1.0 applying to Multiton scope bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getUnhandledExceptionMessage unhandledException}"<table>
@@ -180,10 +175,16 @@ public class DefaultSequenceDirectory
 
             return count;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -196,7 +197,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -239,10 +239,16 @@ public class DefaultSequenceDirectory
 
             return s;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -255,7 +261,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -307,10 +312,16 @@ public class DefaultSequenceDirectory
             this.fireSequenceChange( null, persistent );
             return persistent;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -323,7 +334,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -383,10 +393,16 @@ public class DefaultSequenceDirectory
             this.fireSequenceChange( oldValue, edited );
             return edited;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -399,7 +415,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -463,10 +478,16 @@ public class DefaultSequenceDirectory
             this.fireSequenceChange( s, null );
             return deleted;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -479,7 +500,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -523,10 +543,16 @@ public class DefaultSequenceDirectory
 
             return sequences;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -539,7 +565,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -548,6 +573,7 @@ public class DefaultSequenceDirectory
 
     // SECTION-END
     // SECTION-START[SequenceOperations]
+
     public long getNextSequenceValue( final String sequenceName ) throws SequenceLimitException
     {
         if ( sequenceName == null )
@@ -598,10 +624,16 @@ public class DefaultSequenceDirectory
             this.fireSequenceChange( oldValue, s );
             return s.getValue();
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -614,7 +646,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -684,10 +715,16 @@ public class DefaultSequenceDirectory
             this.fireSequenceChange( oldValue, s );
             return values;
         }
+        catch ( SequencesException e )
+        {
+            rollback = true;
+            this.getLogger().error( e.getMessage() );
+            throw e;
+        }
         catch ( Exception e )
         {
             rollback = true;
-            this.fireExceptionThrown( e );
+            this.getLogger().fatal( e );
             throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
         }
         finally
@@ -700,7 +737,6 @@ public class DefaultSequenceDirectory
                 }
                 catch ( SystemException e )
                 {
-                    this.fireExceptionThrown( e );
                     throw new SequencesSystemException( this.getUnhandledExceptionMessage( this.getLocale() ), e );
                 }
             }
@@ -884,20 +920,7 @@ public class DefaultSequenceDirectory
     }
 
     /**
-     * Notifies all available {@code ExceptionListener}s about a caught exception.
-     *
-     * @param e The caught exception.
-     */
-    protected void fireExceptionThrown( final Exception e )
-    {
-        for ( ExceptionListener l : this.getExceptionListener() )
-        {
-            l.exceptionThrown( e );
-        }
-    }
-
-    /**
-     * Notifies all availble {@code PropertyChangeListener}s about a changed sequence.
+     * Notifies all availble {@code SequenceChangeListener}s about a changed sequence.
      *
      * @param oldValue The entity having been changed or {@code null} if {@code newValue} got added to the directory.
      * @param newValue The value {@code oldValue} got changed to or {@code null} if {@code oldValue} got removed from
@@ -906,25 +929,26 @@ public class DefaultSequenceDirectory
     protected void fireSequenceChange( final Sequence oldValue, final Sequence newValue )
     {
         SequenceChangeEvent sequenceChange = null;
-        for ( PropertyChangeListener l : this.getPropertyChangeListener() )
+        for ( SequenceChangeListener l : this.getSequenceChangeListener() )
         {
             if ( sequenceChange == null )
             {
                 sequenceChange = new SequenceChangeEvent( this, oldValue, newValue );
             }
 
-            l.propertyChange( sequenceChange );
+            l.sequenceChange( sequenceChange );
         }
     }
 
     /**
-     * Notifies all availble {@code VetoableChangeListener} about a changed sequence.
+     * Notifies all availble {@code SequenceChangeListener}s about a sequence about to change.
      *
-     * @param oldValue The entity having been changed or {@code null} if {@code newValue} got added to the directory.
-     * @param newValue The value {@code oldValue} got changed to or {@code null} if {@code oldValue} got removed from
-     * the directory.
+     * @param oldValue The entity about to change or {@code null} if {@code newValue} is about to be added to the
+     * directory.
+     * @param newValue The value {@code oldValue} will change to or {@code null} if {@code oldValue} will be removed
+     * from the directory.
      *
-     * @throws SequenceVetoException if any available {@code VetoableChangeListener} chooses to veto the sequence
+     * @throws SequenceVetoException if any available {@code SequenceChangeListener} chooses to veto the sequence
      * change.
      */
     protected void fireVetoableSequenceChange( final Sequence oldValue, final Sequence newValue )
@@ -932,7 +956,7 @@ public class DefaultSequenceDirectory
         SequenceChangeEvent sequenceChange = null;
         boolean vetoed = false;
 
-        for ( VetoableChangeListener l : this.getVetoableChangeListener() )
+        for ( VetoableSequenceChangeListener l : this.getVetoableSequenceChangeListener() )
         {
             if ( sequenceChange == null )
             {
@@ -941,9 +965,9 @@ public class DefaultSequenceDirectory
 
             try
             {
-                l.vetoableChange( sequenceChange );
+                l.vetoableSequenceChange( sequenceChange );
             }
-            catch ( PropertyVetoException e )
+            catch ( SequenceVetoException e )
             {
                 this.getLogger().error( e.getMessage() );
                 vetoed = true;
@@ -997,22 +1021,6 @@ public class DefaultSequenceDirectory
     }
 
     /**
-     * Gets the {@code ExceptionListener} dependency.
-     * <p>This method returns any available object of the {@code java.beans.ExceptionListener} specification at specification level 1.4.</p>
-     * @return The {@code ExceptionListener} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    private java.beans.ExceptionListener[] getExceptionListener() throws org.jomc.ObjectManagementException
-    {
-        return (java.beans.ExceptionListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "ExceptionListener" );
-    }
-
-    /**
      * Gets the {@code Locale} dependency.
      * <p>This method returns the "{@code default}" object of the {@code java.util.Locale} specification at specification level 1.1.</p>
      * @return The {@code Locale} dependency.
@@ -1050,9 +1058,9 @@ public class DefaultSequenceDirectory
     }
 
     /**
-     * Gets the {@code PropertyChangeListener} dependency.
-     * <p>This method returns any available object of the {@code java.beans.PropertyChangeListener} specification at specification level 1.4.</p>
-     * @return The {@code PropertyChangeListener} dependency.
+     * Gets the {@code SequenceChangeListener} dependency.
+     * <p>This method returns any available object of the {@code org.jomc.sequences.SequenceChangeListener} specification at specification level 1.0.</p>
+     * @return The {@code SequenceChangeListener} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
@@ -1060,9 +1068,9 @@ public class DefaultSequenceDirectory
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private java.beans.PropertyChangeListener[] getPropertyChangeListener() throws org.jomc.ObjectManagementException
+    private org.jomc.sequences.SequenceChangeListener[] getSequenceChangeListener() throws org.jomc.ObjectManagementException
     {
-        return (java.beans.PropertyChangeListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "PropertyChangeListener" );
+        return (org.jomc.sequences.SequenceChangeListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SequenceChangeListener" );
     }
 
     /**
@@ -1098,9 +1106,9 @@ public class DefaultSequenceDirectory
     }
 
     /**
-     * Gets the {@code VetoableChangeListener} dependency.
-     * <p>This method returns any available object of the {@code java.beans.VetoableChangeListener} specification at specification level 1.4.</p>
-     * @return The {@code VetoableChangeListener} dependency.
+     * Gets the {@code VetoableSequenceChangeListener} dependency.
+     * <p>This method returns any available object of the {@code org.jomc.sequences.VetoableSequenceChangeListener} specification at specification level 1.0.</p>
+     * @return The {@code VetoableSequenceChangeListener} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated
@@ -1108,9 +1116,9 @@ public class DefaultSequenceDirectory
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    private java.beans.VetoableChangeListener[] getVetoableChangeListener() throws org.jomc.ObjectManagementException
+    private org.jomc.sequences.VetoableSequenceChangeListener[] getVetoableSequenceChangeListener() throws org.jomc.ObjectManagementException
     {
-        return (java.beans.VetoableChangeListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "VetoableChangeListener" );
+        return (org.jomc.sequences.VetoableSequenceChangeListener[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "VetoableSequenceChangeListener" );
     }
     // SECTION-END
     // SECTION-START[Properties]

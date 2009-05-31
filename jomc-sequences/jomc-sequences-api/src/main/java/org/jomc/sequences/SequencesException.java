@@ -32,22 +32,11 @@
  *
  */
 // SECTION-END
-package org.jomc.sequences.ri;
-
-import org.jomc.sequences.CapacityLimitException;
-import org.jomc.sequences.ConcurrentModificationException;
-import org.jomc.sequences.DuplicateSequenceException;
-import org.jomc.sequences.SequenceVetoException;
-import org.jomc.sequences.SequenceLimitException;
-import org.jomc.sequences.SequenceNotFoundException;
+package org.jomc.sequences;
 
 // SECTION-START[Implementation Comment]
 /**
- * {@code ExceptionListener} reference implementation.
- * <p><b>Specifications</b><ul>
- * <li>{@code java.beans.ExceptionListener}<blockquote>
- * Object applies to Multiton scope.</blockquote></li>
- * </ul></p>
+ * Recoverable exception base class.
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
@@ -60,38 +49,39 @@ import org.jomc.sequences.SequenceNotFoundException;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class DefaultExceptionListener
-    implements
-    java.beans.ExceptionListener
+public abstract class SequencesException extends RuntimeException
 {
-    // SECTION-START[DefaultExceptionListener]
+    // SECTION-START[SequencesException]
 
-    public void exceptionThrown( final Exception e )
+    /**
+     * Creates a new {@code SequencesException} instance taking a message.
+     *
+     * @param msg The message of the new exception.
+     */
+    public SequencesException( final String msg )
     {
-        if ( e instanceof CapacityLimitException )
-        {
-            throw (CapacityLimitException) e;
-        }
-        if ( e instanceof ConcurrentModificationException )
-        {
-            throw (ConcurrentModificationException) e;
-        }
-        if ( e instanceof DuplicateSequenceException )
-        {
-            throw (DuplicateSequenceException) e;
-        }
-        if ( e instanceof SequenceVetoException )
-        {
-            throw (SequenceVetoException) e;
-        }
-        if ( e instanceof SequenceLimitException )
-        {
-            throw (SequenceLimitException) e;
-        }
-        if ( e instanceof SequenceNotFoundException )
-        {
-            throw (SequenceNotFoundException) e;
-        }
+        super( msg );
+    }
+
+    /**
+     * Creates a new {@code SequencesException} instance taking a causing throwable.
+     *
+     * @param t The cause of the new exception.
+     */
+    public SequencesException( final Throwable t )
+    {
+        super( t );
+    }
+
+    /**
+     * Creates a new {@code SequencesException} instance taking a message and a causing throwable.
+     *
+     * @param t The cause of the new exception.
+     * @param msg The message of the new exception.
+     */
+    public SequencesException( final String message, final Throwable t )
+    {
+        super( message, t );
     }
 
     // SECTION-END
@@ -103,7 +93,7 @@ public class DefaultExceptionListener
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    public DefaultExceptionListener()
+    public SequencesException()
     {
         // SECTION-START[Default Constructor]
         super();

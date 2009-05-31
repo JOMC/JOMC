@@ -32,11 +32,19 @@
  *
  */
 // SECTION-END
-package org.jomc.sequences;
+package org.jomc.sequences.ri;
+
+import org.jomc.sequences.Sequence;
+import org.jomc.sequences.SequenceChangeEvent;
+import org.jomc.sequences.SequenceVetoException;
 
 // SECTION-START[Implementation Comment]
 /**
- * Gets thrown whenever an unrecoverable error condition is detected.
+ * {@code VetoableSequenceChangeListener} reference implementation.
+ * <p><b>Specifications</b><ul>
+ * <li>{@code org.jomc.sequences.VetoableSequenceChangeListener} {@code 1.0}<blockquote>
+ * Object applies to Multiton scope.</blockquote></li>
+ * </ul></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
  * @version $Id$
@@ -49,39 +57,47 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequencesSystemException extends RuntimeException
+public class DefaultVetoableSequenceChangeListener
+    implements
+    org.jomc.sequences.VetoableSequenceChangeListener
 {
-    // SECTION-START[SequencesSystemException]
+    // SECTION-START[VetoableSequenceChangeListener]
 
-    /**
-     * Creates a new {@code SequencesSystemException} taking a message describing the exception.
-     *
-     * @param msg The message describing the exception.
-     */
-    public SequencesSystemException( final String msg )
+    public void vetoableSequenceChange( final SequenceChangeEvent evt ) throws SequenceVetoException
     {
-        super( msg );
-    }
+        boolean valid = true;
 
-    /**
-     * Creates a new {@code SequencesSystemException} taking a causing exception.
-     *
-     * @param e The cause of the exception.
-     */
-    public SequencesSystemException( final Exception e )
-    {
-        super( e );
-    }
+        if ( evt.getNewSequence() != null )
+        {
+            if ( evt.getNewSequence().getName() == null )
+            {
+                valid = false;
+                evt.getStatus( Sequence.PROP_NAME ).add( SequenceChangeEvent.MANDATORY_VALUE );
+            }
+            if ( evt.getNewSequence().getMaximum() < evt.getNewSequence().getMinimum() ||
+                 evt.getNewSequence().getMinimum() > evt.getNewSequence().getMaximum() )
+            {
+                valid = false;
+                evt.getStatus( Sequence.PROP_MINIMUM ).add( SequenceChangeEvent.ILLEGAL_VALUE );
+                evt.getStatus( Sequence.PROP_MAXIMUM ).add( SequenceChangeEvent.ILLEGAL_VALUE );
+            }
+            if ( evt.getNewSequence().getValue() > evt.getNewSequence().getMaximum() ||
+                 evt.getNewSequence().getValue() < evt.getNewSequence().getMinimum() )
+            {
+                valid = false;
+                evt.getStatus( Sequence.PROP_VALUE ).add( SequenceChangeEvent.ILLEGAL_VALUE );
+            }
+            if ( evt.getNewSequence().getIncrement() <= 0L )
+            {
+                valid = false;
+                evt.getStatus( Sequence.PROP_INCREMENT ).add( SequenceChangeEvent.ILLEGAL_VALUE );
+            }
+        }
 
-    /**
-     * Creates a new {@code SequencesSystemException} taking a message describing the exception a causing exception.
-     *
-     * @param msg The message describing the exception.
-     * @param e The cause of the exception.
-     */
-    public SequencesSystemException( final String msg, final Exception e )
-    {
-        super( msg, e );
+        if ( !valid )
+        {
+            throw new SequenceVetoException( evt );
+        }
     }
 
     // SECTION-END
@@ -93,7 +109,7 @@ public class SequencesSystemException extends RuntimeException
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    public SequencesSystemException()
+    public DefaultVetoableSequenceChangeListener()
     {
         // SECTION-START[Default Constructor]
         super();

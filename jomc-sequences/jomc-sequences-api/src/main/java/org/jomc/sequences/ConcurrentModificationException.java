@@ -60,7 +60,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class ConcurrentModificationException extends RuntimeException
+public class ConcurrentModificationException extends SequencesException
 {
     // SECTION-START[ConcurrentModificationException]
 

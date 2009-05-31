@@ -62,7 +62,7 @@ import java.math.BigInteger;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class CapacityLimitException extends RuntimeException
+public class CapacityLimitException extends SequencesException
 {
     // SECTION-START[CapacityLimitException]
 

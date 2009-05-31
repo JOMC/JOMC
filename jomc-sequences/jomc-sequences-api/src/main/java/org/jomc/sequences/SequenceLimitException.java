@@ -62,7 +62,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequenceLimitException extends RuntimeException
+public class SequenceLimitException extends SequencesException
 {
     // SECTION-START[SequenceLimitException]
 

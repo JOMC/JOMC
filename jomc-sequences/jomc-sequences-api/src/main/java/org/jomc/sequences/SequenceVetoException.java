@@ -61,7 +61,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequenceVetoException extends RuntimeException
+public class SequenceVetoException extends SequencesException
 {
     // SECTION-START[SequenceVetoException]
 

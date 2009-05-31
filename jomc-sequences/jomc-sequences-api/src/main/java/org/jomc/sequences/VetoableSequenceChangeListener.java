@@ -32,20 +32,17 @@
  *
  */
 // SECTION-END
-package org.jomc.sequences.spi;
-
-import org.jomc.sequences.IllegalSequenceException;
-import org.jomc.sequences.Sequence;
+package org.jomc.sequences;
 
 // SECTION-START[Specification Comment]
 /**
- * Validates sequence instances.
+ * Gets called whenever the state of a sequence is about to change.
  * <p>This specification applies to Multiton scope.
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * SequenceValidator[] objects = (SequenceValidator[]) ObjectManagerFactory.getObjectManager().getObject( SequenceValidator.class );
- * SequenceValidator object = (SequenceValidator) ObjectManagerFactory.getObjectManager().getObject( SequenceValidator.class, "<i>implementation name</i>" );
+ * VetoableSequenceChangeListener[] objects = (VetoableSequenceChangeListener[]) ObjectManagerFactory.getObjectManager().getObject( VetoableSequenceChangeListener.class );
+ * VetoableSequenceChangeListener object = (VetoableSequenceChangeListener) ObjectManagerFactory.getObjectManager().getObject( VetoableSequenceChangeListener.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
@@ -59,21 +56,18 @@ import org.jomc.sequences.Sequence;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public interface SequenceValidator
+public interface VetoableSequenceChangeListener
 {
-    // SECTION-START[SequenceValidator]
+    // SECTION-START[VetoableSequenceChangeListener]
 
     /**
-     * Gets called whenever the state of a sequence is about to change in a sequence directory.
+     * Gets called whenever the state of a sequence is about to change.
      *
-     * @param oldValue The entity getting changed or {@code null} if {@code newValue} is about to be added to a
-     * directory.
-     * @param newValue The value {@code oldValue} will be changed to or {@code null} if {@code oldValue} is about to be
-     * removed from a directory.
+     * @param evt The event describing the change about to happen.
      *
-     * @throws IllegalSequenceException if the implementation chooses to prevent the operation from being performed.
+     * @throws SequenceVetoException if the implementation chooses to prevent the change from being performed.
      */
-    void assertOperationValid( Sequence oldValue, Sequence newValue ) throws IllegalSequenceException;
+    void vetoableSequenceChange( SequenceChangeEvent evt ) throws SequenceVetoException;
 
     // SECTION-END
 }

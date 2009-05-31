@@ -34,15 +34,13 @@
 // SECTION-END
 package org.jomc.sequences.ri;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import org.jomc.sequences.SequenceChangeEvent;
 
 // SECTION-START[Implementation Comment]
 /**
- * {@code PropertyChangeListener} listening to the reference implementation.
+ * {@code SequenceChangeListener} reference implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code java.beans.PropertyChangeListener}<blockquote>
+ * <li>{@code org.jomc.sequences.SequenceChangeListener} {@code 1.0}<blockquote>
  * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
@@ -73,29 +71,23 @@ import org.jomc.sequences.SequenceChangeEvent;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class DefaultSequenceObserver implements PropertyChangeListener
+public class DefaultSequenceChangeListener
+    implements
+    org.jomc.sequences.SequenceChangeListener
 {
-    // SECTION-START[PropertyChangeListener]
+    // SECTION-START[SequenceChangeListener]
 
-    public void propertyChange( final PropertyChangeEvent evt )
+    public void sequenceChange( final SequenceChangeEvent evt )
     {
-        if ( evt instanceof SequenceChangeEvent )
+        if ( this.getLogger().isDebugEnabled() )
         {
-            if ( this.getLogger().isDebugEnabled() )
-            {
-                final SequenceChangeEvent sequenceChange = (SequenceChangeEvent) evt;
-                this.getLogger().debug( this.getOperationInfoMessage(
-                    this.getLocale(), ( sequenceChange.getOldSequence() == null
-                                        ? null : sequenceChange.getOldSequence().toString() ),
-                    ( sequenceChange.getNewSequence() == null
-                      ? null : sequenceChange.getNewSequence().toString() ) ) );
+            this.getLogger().debug( this.getOperationInfoMessage(
+                this.getLocale(), ( evt.getOldSequence() == null ? null : evt.getOldSequence().toString() ),
+                ( evt.getNewSequence() == null ? null : evt.getNewSequence().toString() ) ) );
 
-            }
         }
     }
 
-    // SECTION-END
-    // SECTION-START[DefaultSequenceObserver]
     // SECTION-END
     // SECTION-START[Constructors]
 
@@ -105,7 +97,7 @@ public class DefaultSequenceObserver implements PropertyChangeListener
         value = "org.jomc.tools.JavaSources",
         comments = "See http://www.jomc.org/jomc-tools"
     )
-    public DefaultSequenceObserver()
+    public DefaultSequenceChangeListener()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -135,7 +127,7 @@ public class DefaultSequenceObserver implements PropertyChangeListener
      * <p>This method returns any available object of the {@code org.jomc.logging.Logger} specification at specification level 1.0.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code name}"</dt>
-     * <dd>Property of type {@code java.lang.String} with value "org.jomc.sequences.ri.DefaultSequenceObserver".
+     * <dd>Property of type {@code java.lang.String} with value "org.jomc.sequences.ri.DefaultSequenceChangeListener".
      * </dd>
      * </dl>
      * @return The {@code Logger} dependency.

@@ -78,6 +78,36 @@
 
       </authors>
     </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.SequenceChangeListener"
+                   vendor="${pom.organization.name}"
+                   version="1.0">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets called whenever the state of a sequence changed.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.sequences.VetoableSequenceChangeListener"
+                   vendor="${pom.organization.name}"
+                   version="1.0">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Gets called whenever the state of a sequence is about to change.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
 
   <implementations>
@@ -242,7 +272,24 @@ maximum value has already been reached.]]></text>
                     vendor="${pom.organization.name}">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Gets thrown whenever an unexpected error condition is detected.]]></text>
+        <text language="en"><![CDATA[Gets thrown whenever an unrecoverable error condition is detected.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.sequences.SequencesException"
+                    class="org.jomc.sequences.SequencesException"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Recoverable exception base class.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"

@@ -60,7 +60,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class DuplicateSequenceException extends IllegalArgumentException
+public class DuplicateSequenceException extends SequencesException
 {
     // SECTION-START[DuplicateSequenceException]
 

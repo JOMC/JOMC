@@ -60,7 +60,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequenceNotFoundException extends IllegalArgumentException
+public class SequenceNotFoundException extends SequencesException
 {
     // SECTION-START[SequenceNotFoundException]
 
