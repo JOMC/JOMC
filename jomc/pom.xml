@@ -212,11 +212,6 @@
       <scope>runtime</scope>
     </dependency>
     <dependency>
-      <artifactId>jomc-sequences-spi</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <artifactId>jomc-sequences-it</artifactId>
       <groupId>org.jomc.sequences</groupId>
       <scope>runtime</scope>

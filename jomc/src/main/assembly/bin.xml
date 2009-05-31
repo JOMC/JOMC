@@ -114,7 +114,6 @@
       <outputDirectory>/${pom.build.finalName}/jomc-sequences-${jomcSequencesVersion}/lib/ri</outputDirectory>
       <scope>runtime</scope>
       <includes>
-        <include>org.jomc.sequences:jomc-sequences-spi</include>
         <include>org.jomc.sequences:jomc-sequences-model</include>
         <include>org.jomc.sequences:jomc-sequences-ri</include>
         <include>org.jomc.sequences:jomc-sequences-utilities</include>

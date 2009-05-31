@@ -1103,11 +1103,6 @@
       </dependency>
       <dependency>
         <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-spi</artifactId>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
         <artifactId>jomc-sequences-model</artifactId>
         <version>${jomcSequencesVersion}</version>
       </dependency>
