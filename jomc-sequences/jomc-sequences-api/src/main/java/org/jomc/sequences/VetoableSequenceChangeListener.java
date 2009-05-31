@@ -34,6 +34,8 @@
 // SECTION-END
 package org.jomc.sequences;
 
+import java.util.EventListener;
+
 // SECTION-START[Specification Comment]
 /**
  * Gets called whenever the state of a sequence is about to change.
@@ -56,7 +58,7 @@ package org.jomc.sequences;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public interface VetoableSequenceChangeListener
+public interface VetoableSequenceChangeListener extends EventListener
 {
     // SECTION-START[VetoableSequenceChangeListener]
 

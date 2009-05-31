@@ -34,8 +34,8 @@
 // SECTION-END
 package org.jomc.sequences;
 
-import java.beans.PropertyChangeEvent;
 import java.io.Serializable;
+import java.util.EventObject;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +56,7 @@ import java.util.Map;
     comments = "See http://www.jomc.org/jomc-tools"
 )
 // SECTION-END
-public class SequenceChangeEvent extends PropertyChangeEvent
+public class SequenceChangeEvent extends EventObject
 {
     // SECTION-START[SequenceChangeEvent]
 
@@ -179,6 +179,18 @@ public class SequenceChangeEvent extends PropertyChangeEvent
         new Status( Status.ERROR, Sequence.class.getName() + ".ILLEGAL_VALUE" );
 
     /**
+     * The entity getting changed.
+     * @serial
+     */
+    private Sequence oldSequence;
+
+    /**
+     * The the entity the old sequence is changed to.
+     * @serial
+     */
+    private Sequence newSequence;
+
+    /**
      * The status of the event.
      * @serial
      */
@@ -188,14 +200,16 @@ public class SequenceChangeEvent extends PropertyChangeEvent
      * Creates a new {@code SequenceChangeEvent} instance.
      *
      * @param source The source of the event.
-     * @param oldValue The entity getting changed or {@code null} if {@code newValue} is about to be added to
+     * @param oldSequence The entity getting changed or {@code null} if {@code newValue} is about to be added to
      * {@code source}.
-     * @param newValue The value {@code oldValue} will be changed to or {@code null} if {@code oldValue} is about to be
-     * removed from {@code source}.
+     * @param newSequence The value {@code oldValue} will be changed to or {@code null} if {@code oldValue} is about to
+     * be removed from {@code source}.
      */
-    public SequenceChangeEvent( final Object source, final Sequence oldValue, final Sequence newValue )
+    public SequenceChangeEvent( final Object source, final Sequence oldSequence, final Sequence newSequence )
     {
-        super( source, Sequence.class.getName(), oldValue, newValue );
+        super( source );
+        this.oldSequence = oldSequence;
+        this.newSequence = newSequence;
     }
 
     /**
@@ -205,7 +219,7 @@ public class SequenceChangeEvent extends PropertyChangeEvent
      */
     public Sequence getOldSequence()
     {
-        return (Sequence) this.getOldValue();
+        return this.oldSequence;
     }
 
     /**
@@ -216,7 +230,7 @@ public class SequenceChangeEvent extends PropertyChangeEvent
      */
     public Sequence getNewSequence()
     {
-        return (Sequence) this.getNewValue();
+        return this.newSequence;
     }
 
     /**
@@ -243,21 +257,6 @@ public class SequenceChangeEvent extends PropertyChangeEvent
         return list;
     }
 
-    // SECTION-END
-    // SECTION-START[Constructors]
-
-    /** Default implementation constructor. */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
-    )
-    public SequenceChangeEvent()
-    {
-        // SECTION-START[Default Constructor]
-        this( SequenceChangeEvent.class, null, null );
-        // SECTION-END
-    }
     // SECTION-END
     // SECTION-START[Dependencies]
     // SECTION-END
