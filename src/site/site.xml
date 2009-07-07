@@ -35,7 +35,7 @@
 <project name="JOMC">
   <bannerLeft>
     <name>JOMC</name>
-    <href>http://www.jomc.org</href>
+    <href>http://jomc.sourceforge.net</href>
   </bannerLeft>
   <skin>
     <groupId>org.apache.maven.skins</groupId>
@@ -49,7 +49,7 @@
     </head>
 
     <links>
-      <item name="Deutsche Version" href="http://www.jomc.org/de/index.html"/>
+      <item name="Deutsche Version" href="http://jomc.sourceforge.net/de/index.html"/>
     </links>
 
     <menu name="Sourceforge">

@@ -34,8 +34,8 @@
 -->
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://jomc.org/model http://www.jomc.org/jomc-model/jomc-1.0.xsd
-                            http://jomc.org/sdk/model http://www.jomc.org/jomc-sdk/jomc-sdk-1.0.xsd"
+        xsi:schemaLocation="http://jomc.org/model http://jomc.sourceforge.net/jomc-model/jomc-1.0.xsd
+                            http://jomc.org/sdk/model http://jomc.sourceforge.net/jomc-sdk/jomc-sdk-1.0.xsd"
         name="${pom.name}"
         version="${pom.version}"
         vendor="${pom.organization.name}"
@@ -68,7 +68,7 @@
           <xml-framework-configuration xmlns="http://jomc.org/sdk/model">
             <schemas>
               <schema public-id="http://jomc.org/sequences/model"
-                      system-id="http://www.jomc.org/jomc-sequences/jomc-sequences-model/jomc-sequences-1.0.xsd"
+                      system-id="http://jomc.sourceforge.net/jomc-sequences/jomc-sequences-model/jomc-sequences-1.0.xsd"
                       context-id="org.jomc.sequences.model"
                       classpath-id="org/jomc/sequences/model/jomc-sequences-1.0.xsd"/>
 
