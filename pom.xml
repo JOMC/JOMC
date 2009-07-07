@@ -110,11 +110,6 @@
         <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <version>2.0</version>
-          <configuration>
-            <inputEncoding>UTF-8</inputEncoding>
-            <outputEncoding>UTF-8</outputEncoding>
-            <locales>en,de</locales>
-          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -146,7 +141,7 @@
             <dependency>
               <groupId>net.sourceforge.jpaxjc</groupId>
               <artifactId>jpa-xjc-plugin</artifactId>
-              <version>1.0-beta-3</version>
+              <version>1.0-beta-4</version>
             </dependency>
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
@@ -172,7 +167,7 @@
         <plugin>
           <artifactId>buildnumber-maven-plugin</artifactId>
           <groupId>org.codehaus.mojo</groupId>
-          <version>1.0-beta-2</version>
+          <version>1.0-beta-3</version>
           <executions>
             <execution>
               <id>create-buildnumber</id>
@@ -423,7 +418,7 @@
         </plugin>
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.2-beta-3</version>
+          <version>2.2-beta-4</version>
         </plugin>
         <plugin>
           <artifactId>maven-shade-plugin</artifactId>
@@ -760,24 +755,24 @@
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
-        <version>1.5.6</version>
+        <version>${slf4jVersion}</version>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-jcl</artifactId>
-        <version>1.5.6</version>
+        <version>${slf4jVersion}</version>
         <scope>runtime</scope>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-log4j12</artifactId>
-        <version>1.5.6</version>
+        <version>${slf4jVersion}</version>
         <scope>runtime</scope>
       </dependency>
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-jdk14</artifactId>
-        <version>1.5.6</version>
+        <version>${slf4jVersion}</version>
         <scope>runtime</scope>
       </dependency>
 
@@ -1570,6 +1565,8 @@
     <jaxbImplVersion>2.1.10</jaxbImplVersion>
     <umlgraphVersion>4.6</umlgraphVersion>
     <surefireVersion>2.4.3</surefireVersion>
+    <slf4jVersion>1.5.8</slf4jVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
   </properties>
 </project>
