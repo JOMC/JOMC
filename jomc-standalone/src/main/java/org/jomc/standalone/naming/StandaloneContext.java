@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
- *   Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+ *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
  *   Redistribution and use in source and binary forms, with or without
@@ -89,7 +89,7 @@ import javax.naming.spi.NamingManager;
  * </table>
  * </ul></p>
  *
- * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
@@ -97,7 +97,7 @@ import javax.naming.spi.NamingManager;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://www.jomc.org/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
 )
 // SECTION-END
 public class StandaloneContext implements Context
@@ -513,7 +513,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public StandaloneContext()
     {
@@ -533,7 +533,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.util.Locale getLocale() throws org.jomc.ObjectManagementException
     {
@@ -554,7 +554,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.logging.Logger getLogger() throws org.jomc.ObjectManagementException
     {
@@ -581,7 +581,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getBindInfoMessage( final java.util.Locale locale, final java.lang.String name, final java.lang.String object ) throws org.jomc.ObjectManagementException
     {
@@ -603,7 +603,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getCreateSubcontextInfoMessage( final java.util.Locale locale, final java.lang.String contextName ) throws org.jomc.ObjectManagementException
     {
@@ -625,7 +625,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getDestroySubcontextInfoMessage( final java.util.Locale locale, final java.lang.String contextName ) throws org.jomc.ObjectManagementException
     {
@@ -649,7 +649,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getRebindInfoMessage( final java.util.Locale locale, final java.lang.String name, final java.lang.String oldObject, final java.lang.String newObject ) throws org.jomc.ObjectManagementException
     {
@@ -672,7 +672,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getRenameInfoMessage( final java.util.Locale locale, final java.lang.String oldName, final java.lang.String newName ) throws org.jomc.ObjectManagementException
     {
@@ -694,7 +694,7 @@ public class StandaloneContext implements Context
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private String getUnbindInfoMessage( final java.util.Locale locale, final java.lang.String name ) throws org.jomc.ObjectManagementException
     {

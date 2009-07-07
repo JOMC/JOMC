@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
- *   Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+ *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
  *   Redistribution and use in source and binary forms, with or without
@@ -56,7 +56,7 @@ import org.jomc.sequences.SequencesSystemException;
  * Dependency on {@code org.jomc.sequences.SequenceDirectory} at specification level 1.0 applying to Singleton scope bound to an instance.</blockquote></li>
  * </ul></p>
  *
- * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
@@ -64,7 +64,7 @@ import org.jomc.sequences.SequencesSystemException;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://www.jomc.org/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
 )
 // SECTION-END
 public class SequenceDirectoryTest extends TestCase
@@ -406,7 +406,7 @@ public class SequenceDirectoryTest extends TestCase
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public SequenceDirectoryTest()
     {
@@ -426,7 +426,7 @@ public class SequenceDirectoryTest extends TestCase
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private org.jomc.sequences.SequenceDirectory getSequenceDirectory() throws org.jomc.ObjectManagementException
     {

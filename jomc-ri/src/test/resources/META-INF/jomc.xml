@@ -2,7 +2,7 @@
 <!--
 
   Copyright (c) 2009 The JOMC Project
-  Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+  Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
@@ -54,7 +54,7 @@
 
       <authors>
         <author name="Christian Schulte" version="1.0"
-                mail="cs@schulte.it" createDate="2005-07-25T19:56:45Z"/>
+                mail="schulte2005@users.sourceforge.net" createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
     </specification>
@@ -65,7 +65,7 @@
 
       <authors>
         <author name="Christian Schulte" version="1.0"
-                mail="cs@schulte.it" createDate="2005-07-25T19:56:45Z"/>
+                mail="schulte2005@users.sourceforge.net" createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
     </specification>
@@ -74,7 +74,7 @@
                    version="${pom.version}">
 
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -89,7 +89,7 @@
                     vendor="${pom.organization.name}">
 
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -146,7 +146,7 @@
         <text language="en"><![CDATA[{@code ObjectManagementLister} logging to the console.]]></text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>

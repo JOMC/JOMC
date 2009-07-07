@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
- *   Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+ *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
  *   Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,7 @@ import java.util.Properties;
  * Property of type {@code java.lang.String} with value "java:jta/jomc-standalone".</blockquote></li>
  * </ul></p>
  *
- * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
@@ -69,7 +69,7 @@ import java.util.Properties;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://www.jomc.org/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
 )
 // SECTION-END
 public class Environment
@@ -359,7 +359,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public Environment()
     {
@@ -380,7 +380,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultDataSourceContextFactoryName() throws org.jomc.ObjectManagementException
     {
@@ -395,7 +395,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
@@ -410,7 +410,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultEntityManagerFactoryJndiName() throws org.jomc.ObjectManagementException
     {
@@ -425,7 +425,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultEntityManagerJndiName() throws org.jomc.ObjectManagementException
     {
@@ -440,7 +440,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultJtaDataSourceJndiName() throws org.jomc.ObjectManagementException
     {
@@ -455,7 +455,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultTransactionManagerJndiName() throws org.jomc.ObjectManagementException
     {
@@ -470,7 +470,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultTransactionSynchronizationRegistryJndiName() throws org.jomc.ObjectManagementException
     {
@@ -485,7 +485,7 @@ public class Environment
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     private java.lang.String getDefaultUserTransactionJndiName() throws org.jomc.ObjectManagementException
     {

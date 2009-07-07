@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
- *   Copyright (c) 2005 Christian Schulte <cs@schulte.it>
+ *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
  *   Redistribution and use in source and binary forms, with or without
@@ -44,7 +44,7 @@ import org.jomc.logging.Logger;
  * Object applies to Multiton scope.</blockquote></li>
  * </ul></p>
  *
- * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
@@ -52,7 +52,7 @@ import org.jomc.logging.Logger;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://www.jomc.org/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc-tools"
 )
 // SECTION-END
 public class Slf4JLogger implements Logger
@@ -63,7 +63,7 @@ public class Slf4JLogger implements Logger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public Slf4JLogger()
     {
@@ -82,7 +82,7 @@ public class Slf4JLogger implements Logger
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://www.jomc.org/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
     )
     public java.lang.String getName() throws org.jomc.ObjectManagementException
     {

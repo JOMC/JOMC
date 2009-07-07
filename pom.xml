@@ -42,19 +42,19 @@
   <name>JOMC</name>
   <version>1.0-alpha-1-SNAPSHOT</version>
   <description><![CDATA[Object management and configuration parent module.]]></description>
-  <url>http://www.jomc.org</url>
+  <url>http://jomc.sourceforge.net</url>
   <prerequisites>
     <maven>2.0.9</maven>
   </prerequisites>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
-    <url>http://www.jomc.org</url>
+    <url>http://jomc.sourceforge.net</url>
   </organization>
   <licenses>
     <license>
       <name>The JOMC Project Copyright</name>
-      <url>http://www.jomc.org/LICENSE.txt</url>
+      <url>http://jomc.sourceforge.net/LICENSE.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -63,7 +63,7 @@
       <id>schulte2005</id>
       <name>Christian Schulte</name>
       <timezone>Europe/Berlin</timezone>
-      <email>cs@schulte.it</email>
+      <email>schulte2005@users.sourceforge.net</email>
     </developer>
   </developers>
   <issueManagement>
