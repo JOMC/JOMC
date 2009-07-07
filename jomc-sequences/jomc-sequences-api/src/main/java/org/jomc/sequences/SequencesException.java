@@ -76,8 +76,8 @@ public abstract class SequencesException extends RuntimeException
     /**
      * Creates a new {@code SequencesException} instance taking a message and a causing throwable.
      *
+     * @param message The message of the new exception.
      * @param t The cause of the new exception.
-     * @param msg The message of the new exception.
      */
     public SequencesException( final String message, final Throwable t )
     {
