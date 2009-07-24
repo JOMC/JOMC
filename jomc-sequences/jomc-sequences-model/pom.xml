@@ -68,18 +68,23 @@
     </testResources>
     <plugins>
       <plugin>
-        <groupId>com.sun.tools.xjc.maven2</groupId>
-        <artifactId>maven-jaxb-plugin</artifactId>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
         <executions>
           <execution>
-            <id>generate</id>
+            <id>xjc</id>
             <goals>
               <goal>generate</goal>
             </goals>
             <configuration>
-              <args>-jpa "${pom.artifactId}" "${project.build.outputDirectory}" -copy-constructor -Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
-              <extension>true</extension>
-              <schemaDirectory>src/site/resources</schemaDirectory>
+              <args>
+                <arg>-jpa</arg>
+                <arg>${pom.artifactId}</arg>
+                <arg>${project.build.outputDirectory}</arg>
+                <arg>-copy-constructor</arg>
+                <arg>-Xinject-code</arg>
+                <arg>-mark-generated</arg>
+              </args>
             </configuration>
           </execution>
         </executions>

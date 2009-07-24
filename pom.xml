@@ -119,9 +119,9 @@
           </configuration>
         </plugin>
         <plugin>
-          <groupId>com.sun.tools.xjc.maven2</groupId>
-          <artifactId>maven-jaxb-plugin</artifactId>
-          <version>1.1</version>
+          <groupId>org.jvnet.jaxb2.maven2</groupId>
+          <artifactId>maven-jaxb2-plugin</artifactId>
+          <version>0.7.1</version>
           <dependencies>
             <dependency>
               <groupId>javax.xml.bind</groupId>
@@ -151,15 +151,20 @@
           </dependencies>
           <executions>
             <execution>
-              <id>generate</id>
-              <phase>process-resources</phase>
+              <id>xjc</id>
+              <phase>generate-sources</phase>
               <goals>
                 <goal>generate</goal>
               </goals>
               <configuration>
+                <args>
+                  <arg>-copy-constructor</arg>
+                  <arg>-Xinject-code</arg>
+                  <arg>-mark-generated</arg>
+                </args>
                 <schemaDirectory>src/site/resources</schemaDirectory>
-                <args>-copy-constructor -Xinject-code -mark-generated -episode "${project.build.outputDirectory}/META-INF/sun-jaxb.episode"</args>
                 <extension>true</extension>
+                <episode>true</episode>
               </configuration>
             </execution>
           </executions>
