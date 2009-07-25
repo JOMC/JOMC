@@ -327,8 +327,8 @@ public class DefaultObjectManager implements ObjectManager
                                 final Class specClass =
                                     Class.forName( ds.getIdentifier(), true, this.getClassLoader( object.getClass() ) );
 
-                                final Implementations available = this.getModules().getImplementations(
-                                    instance.getIdentifier(), dependency.getName() );
+                                final Implementations available =
+                                    this.getModules().getImplementations( ds.getIdentifier() );
 
                                 if ( available != null && !available.getImplementation().isEmpty() )
                                 {
@@ -1564,8 +1564,7 @@ public class DefaultObjectManager implements ObjectManager
                             modulesInfo.append( '@' ).append( modules.getModuleOfSpecification(
                                 d.getIdentifier() ).getName() ).append( '\n' );
 
-                            final Implementations available =
-                                modules.getImplementations( i.getIdentifier(), d.getName() );
+                            final Implementations available = modules.getImplementations( d.getIdentifier() );
 
                             if ( available != null )
                             {
