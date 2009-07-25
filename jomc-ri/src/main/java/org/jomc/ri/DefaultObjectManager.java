@@ -1217,16 +1217,14 @@ public class DefaultObjectManager implements ObjectManager
             final Class specClass = Class.forName( specification, true, instance.getClassLoader() );
             if ( specClass.isInterface() )
             {
-                final List<SpecificationReference> refs =
-                    this.getModules().getSpecifications( instance.getIdentifier() );
+                final Set<Class> interfaces = new HashSet<Class>();
+                interfaces.add( specClass );
 
-                final Set<Class> interfaces = new HashSet<Class>( refs.size() );
-                for ( SpecificationReference ref : refs )
+                if ( instance.getSpecifications() != null )
                 {
-                    final Specification s = this.getModules().getSpecification( ref.getIdentifier() );
-                    if ( s != null && s.getScope() == instance.getScope() )
+                    for ( Specification s : instance.getSpecifications().getSpecification() )
                     {
-                        final Class clazz = Class.forName( ref.getIdentifier(), true, instance.getClassLoader() );
+                        final Class clazz = Class.forName( s.getIdentifier(), true, instance.getClassLoader() );
                         if ( clazz.isInterface() )
                         {
                             interfaces.add( clazz );
@@ -1234,7 +1232,21 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
-                                ref.getIdentifier(), instance.getIdentifier() ), null );
+                                s.getIdentifier(), instance.getIdentifier() ), null );
+
+                        }
+                    }
+                    for ( SpecificationReference r : instance.getSpecifications().getReference() )
+                    {
+                        final Class clazz = Class.forName( r.getIdentifier(), true, instance.getClassLoader() );
+                        if ( clazz.isInterface() )
+                        {
+                            interfaces.add( clazz );
+                        }
+                        else
+                        {
+                            this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
+                                r.getIdentifier(), instance.getIdentifier() ), null );
 
                         }
                     }
