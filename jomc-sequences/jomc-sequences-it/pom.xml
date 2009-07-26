@@ -143,5 +143,10 @@
       <artifactId>jomc-ri</artifactId>
       <scope>runtime</scope>
     </dependency>
+    <dependency>
+      <groupId>org.jomc.logging</groupId>
+      <artifactId>jomc-logging-log4j-logging</artifactId>
+      <scope>runtime</scope>
+    </dependency>
   </dependencies>
 </project>
