@@ -553,8 +553,6 @@
     <module>jomc-api</module>
     <module>jomc-spi</module>
     <module>jomc-ri</module>
-    <module>jomc-standalone</module>
-    <module>jomc-sdk</module>
     <module>jomc</module>
   </modules>
   <reporting>
@@ -1105,16 +1103,6 @@
         <artifactId>jomc-tools</artifactId>
         <classifier>bin</classifier>
         <type>tar.bz2</type>
-        <version>${jomcVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-sdk</artifactId>
-        <version>${jomcVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-standalone</artifactId>
         <version>${jomcVersion}</version>
       </dependency>
       <dependency>

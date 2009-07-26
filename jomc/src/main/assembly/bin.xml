@@ -74,8 +74,6 @@
         <include>org.jomc:jomc-spi</include>
         <include>org.jomc:jomc-model</include>
         <include>org.jomc:jomc-ri</include>
-        <include>org.jomc:jomc-sdk</include>
-        <include>org.jomc:jomc-standalone</include>
       </includes>
     </dependencySet>
     <dependencySet>
