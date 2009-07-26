@@ -111,26 +111,6 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-sequences-${jomcSequencesVersion}/lib/ri</outputDirectory>
-      <scope>runtime</scope>
-      <includes>
-        <include>org.jomc.sequences:jomc-sequences-model</include>
-        <include>org.jomc.sequences:jomc-sequences-ri</include>
-        <include>org.jomc.sequences:jomc-sequences-utilities</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-sequences-${jomcSequencesVersion}/javaee</outputDirectory>
-      <scope>runtime</scope>
-      <includes>
-        <include>org.jomc.sequences:jomc-sequences-ear</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
       <outputDirectory>/${pom.build.finalName}/jomc-${jomcVersion}</outputDirectory>
       <scope>runtime</scope>
       <unpack>true</unpack>
@@ -146,16 +126,6 @@
       <unpack>true</unpack>
       <includes>
         <include>org.jomc.logging:jomc-logging-it:zip:bin</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-sequences-${jomcSequencesVersion}</outputDirectory>
-      <scope>runtime</scope>
-      <unpack>true</unpack>
-      <includes>
-        <include>org.jomc.sequences:jomc-sequences-it:zip:bin</include>
       </includes>
     </dependencySet>
   </dependencySets>

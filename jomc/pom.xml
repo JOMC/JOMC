@@ -204,58 +204,5 @@
       <groupId>org.jomc.logging</groupId>
       <scope>runtime</scope>
     </dependency>
-
-    <!-- JOMC Sequences -->
-    <dependency>
-      <artifactId>jomc-sequences-api</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-it</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-it</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-      <classifier>bin</classifier>
-      <type>zip</type>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-it</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-      <classifier>bin</classifier>
-      <type>tar.gz</type>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-it</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-      <classifier>bin</classifier>
-      <type>tar.bz2</type>
-      <optional>true</optional>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-ri</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-      <type>ejb</type>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-ear</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-      <type>ear</type>
-    </dependency>
-    <dependency>
-      <artifactId>jomc-sequences-utilities</artifactId>
-      <groupId>org.jomc.sequences</groupId>
-      <scope>runtime</scope>
-    </dependency>
   </dependencies>
 </project>

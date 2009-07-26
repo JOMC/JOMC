@@ -556,7 +556,6 @@
     <module>jomc-logging</module>
     <module>jomc-standalone</module>
     <module>jomc-sdk</module>
-    <module>jomc-sequences</module>
     <module>jomc</module>
   </modules>
   <reporting>
@@ -1177,62 +1176,6 @@
         <artifactId>jomc-logging-slf4j-logging</artifactId>
         <version>${jomcLoggingVersion}</version>
       </dependency>
-
-      <!-- JOMC Sequences -->
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-api</artifactId>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-model</artifactId>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-it</artifactId>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-it</artifactId>
-        <classifier>bin</classifier>
-        <type>zip</type>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-it</artifactId>
-        <classifier>bin</classifier>
-        <type>tar.gz</type>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-it</artifactId>
-        <classifier>bin</classifier>
-        <type>tar.bz2</type>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-utilities</artifactId>
-        <version>${jomcSequencesVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-ri</artifactId>
-        <version>${jomcSequencesVersion}</version>
-        <type>ejb</type>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.sequences</groupId>
-        <artifactId>jomc-sequences-ear</artifactId>
-        <version>${jomcSequencesVersion}</version>
-        <type>ear</type>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
   <repositories>
@@ -1573,7 +1516,6 @@
     <mavenChangesPluginVersion>2.1</mavenChangesPluginVersion>
     <jomcVersion>1.0-alpha-1-SNAPSHOT</jomcVersion>
     <jomcLoggingVersion>1.0-alpha-1-SNAPSHOT</jomcLoggingVersion>
-    <jomcSequencesVersion>1.0-alpha-1-SNAPSHOT</jomcSequencesVersion>
     <javaccMavenPluginVersion>2.5</javaccMavenPluginVersion>
     <jaxbApiVersion>2.1</jaxbApiVersion>
     <jaxbImplVersion>2.1.10</jaxbImplVersion>
