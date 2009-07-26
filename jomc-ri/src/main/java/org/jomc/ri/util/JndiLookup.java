@@ -46,6 +46,8 @@ import javax.rmi.PortableRemoteObject;
  * Property of type {@code java.lang.String}.</blockquote></li>
  * <li>"{@link #isRemoteObject remoteObject}"<blockquote>
  * Property of type {@code boolean} with value "false".</blockquote></li>
+ * <li>"{@link #getSpecificationClass specificationClass}"<blockquote>
+ * Property of type {@code java.lang.String}.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
@@ -70,13 +72,21 @@ public class JndiLookup
      *
      * @throws NamingException if the lookup fails.
      */
-    public Object getObject() throws NamingException
+    public Object getObject() throws NamingException, ClassNotFoundException
     {
         Object object = new InitialContext().lookup( this.getObjectName() );
 
         if ( object != null && this.isRemoteObject() )
         {
-            object = PortableRemoteObject.narrow( object, Object.class );
+            ClassLoader classLoader = this.getClass().getClassLoader();
+            if ( classLoader == null )
+            {
+                classLoader = ClassLoader.getSystemClassLoader();
+            }
+
+            object = PortableRemoteObject.narrow(
+                object, Class.forName( this.getSpecificationClass(), false, classLoader ) );
+
         }
 
         return object;
@@ -104,7 +114,7 @@ public class JndiLookup
 
     /**
      * Gets the value of the {@code objectName} property.
-     * @return The JNDI name of the object to lookup.
+     * @return Name of the object to lookup.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
     @javax.annotation.Generated
@@ -119,7 +129,7 @@ public class JndiLookup
 
     /**
      * Gets the value of the {@code remoteObject} property.
-     * @return Flag indicating the remote status of the JNDI object. True to narrow any JNDI objects. False to return JNDI objects unchanged.
+     * @return Flag indicating the remote status of the object. True to narrow the object. False to not narrow the object.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
     @javax.annotation.Generated
@@ -130,6 +140,21 @@ public class JndiLookup
     private boolean isRemoteObject() throws org.jomc.ObjectManagementException
     {
         return ( (java.lang.Boolean) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "remoteObject" ) ).booleanValue();
+    }
+
+    /**
+     * Gets the value of the {@code specificationClass} property.
+     * @return Class the object should be assignable to. Used when {@code remoteObject} is {@code true}.
+     * @throws org.jomc.ObjectManagementException if getting the property instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc-tools"
+    )
+    private java.lang.String getSpecificationClass() throws org.jomc.ObjectManagementException
+    {
+        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "specificationClass" );
     }
     // SECTION-END
     // SECTION-START[Messages]

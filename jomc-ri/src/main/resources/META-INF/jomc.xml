@@ -86,12 +86,17 @@
       <properties>
         <property name="objectName" type="java.lang.String">
           <documentation defaultLanguage="en">
-            <text language="en"><![CDATA[The JNDI name of the object to lookup.]]></text>
+            <text language="en"><![CDATA[Name of the object to lookup.]]></text>
           </documentation>
         </property>
         <property name="remoteObject" type="boolean" value="false">
           <documentation defaultLanguage="en">
-            <text language="en"><![CDATA[Flag indicating the remote status of the JNDI object. True to narrow any JNDI objects. False to return JNDI objects unchanged.]]></text>
+            <text language="en"><![CDATA[Flag indicating the remote status of the object. True to narrow the object. False to not narrow the object.]]></text>
+          </documentation>
+        </property>
+        <property name="specificationClass" type="java.lang.String">
+          <documentation defaultLanguage="en">
+            <text language="en"><![CDATA[Class the object should be assignable to. Used when {@code remoteObject} is {@code true}.]]></text>
           </documentation>
         </property>
       </properties>
