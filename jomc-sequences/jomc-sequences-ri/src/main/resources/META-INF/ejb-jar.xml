@@ -141,6 +141,10 @@
             <rollback>true</rollback>
         </application-exception>
         <application-exception>
+            <exception-class>org.jomc.sequences.SequenceVetoException</exception-class>
+            <rollback>true</rollback>
+        </application-exception>
+        <application-exception>
             <exception-class>org.jomc.sequences.SequencesSystemException</exception-class>
             <rollback>true</rollback>
         </application-exception>
