@@ -55,16 +55,16 @@ public class ObjectManagerFactory
 {
     // SECTION-START[ObjectManagerFactory]
 
-    /** Constant for the default classname providing the {@code getInstance()} and {@code newInstance()} methods. */
+    /** Constant for the default class name providing the {@code getInstance()} and {@code newInstance()} methods. */
     private static final String DEFAULT_FACTORY_CLASS = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the classname of the default {@code ObjectManager} implementation. */
+    /** Constant for the class name of the default {@code ObjectManager} implementation. */
     private static final String DEFAULT_IMPLEMENTATION = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the name of the system property holding the {@code getInstance()} factory classname. */
+    /** Constant for the name of the system property holding the {@code getInstance()} factory class name. */
     private static final String SYS_FACTORY_CLASSNAME = "jomc.ObjectManagerFactory";
 
-    /** Constant for the name of the system property holding the {@code newInstance()} implementation classname. */
+    /** Constant for the name of the system property holding the {@code newInstance()} implementation class name. */
     private static final String SYS_IMPLEMENTATION_CLASSNAME = "jomc.ObjectManager";
 
     /** Empty {@code Class} array. */

@@ -61,16 +61,16 @@ public interface ObjectManager
     // SECTION-START[Object Manager]
 
     /**
-     * Gets an object of an implementation of a specification.
-     * <p>When creating objects, use of the classloader associated with the given class, as returned by method
+     * Gets an instance of an implementation of a specification.
+     * <p>When creating objects, use of the class loader associated with the given class, as returned by method
      * {@link Class#getClassLoader() specification.getClassLoader()}, is recommended. Only if that method returns
-     * {@code null}, indicating the class has been loaded by the bootstrap classloader, use of the bootstrap classloader
-     * is recommended.</p>
+     * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
+     * loader is recommended.</p>
      *
-     * @param specification The specification class to return an implementation object of.
+     * @param specification The specification class to return an implementation instance of.
      *
-     * @return An object of an implementation of the specification class {@code specification} or {@code null} if
-     * nothing could be resolved.
+     * @return An instance of an implementation of the specification class {@code specification} or {@code null} if
+     * no such instance is available.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
@@ -79,17 +79,17 @@ public interface ObjectManager
         throws ObjectManagementException;
 
     /**
-     * Gets an object of an implementation of a specification.
-     * <p>When creating objects, use of the classloader associated with the given class, as returned by method
+     * Gets an instance of an implementation of a specification.
+     * <p>When creating objects, use of the class loader associated with the given class, as returned by method
      * {@link Class#getClassLoader() specification.getClassLoader()}, is recommended. Only if that method returns
-     * {@code null}, indicating the class has been loaded by the bootstrap classloader, use of the bootstrap classloader
-     * is recommended.</p>
+     * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
+     * loader is recommended.</p>
      *
-     * @param specification The specification class to return an implementation object of.
-     * @param implementationName The name of the implementation to return an object of.
+     * @param specification The specification class to return an implementation instance of.
+     * @param implementationName The name of the implementation to return an instance of.
      *
-     * @return An object of the implementation named {@code implementationName} of the specification class
-     * {@code specification} or {@code null} if nothing could be resolved.
+     * @return An instance of the implementation named {@code implementationName} of the specification class
+     * {@code specification} or {@code null} if no such instance is available.
      *
      * @throws NullPointerException if {@code specification} or {@code implementationName} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
@@ -99,16 +99,16 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a dependency of an object.
-     * <p>When creating objects, use of the classloader associated with the class of the given object, as returned by
+     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
      * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
-     * returns {@code null}, indicating the class has been loaded by the bootstrap classloader, use of the bootstrap
-     * classloader is recommended.</p>
+     * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
+     * class loader is recommended.</p>
      *
      * @param object The object to return a dependency instance of.
      * @param dependencyName The name of the dependency of {@code object} to return an instance of.
      *
-     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null} if nothing
-     * could be resolved.
+     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null} if no such
+     * instance is available.
      *
      * @throws NullPointerException if {@code object} or {@code dependencyName} is {@code null}.
      * @throws ObjectManagementException if getting the dependency instance fails.
@@ -118,16 +118,16 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a property of an object.
-     * <p>When creating objects, use of the classloader associated with the class of the given object, as returned by
+     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
      * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
-     * returns {@code null}, indicating the class has been loaded by the bootstrap classloader, use of the bootstrap
-     * classloader is recommended.</p>
+     * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
+     * class loader is recommended.</p>
      *
      * @param object The object to return a property instance of.
      * @param propertyName The name of the property of {@code object} to return an instance of.
      *
-     * @return An instance of the property named {@code propertyName} of {@code object} or {@code null} if nothing
-     * could be resolved.
+     * @return An instance of the property named {@code propertyName} of {@code object} or {@code null} if no such
+     * instance is available.
      *
      * @throws NullPointerException if {@code object} or {@code propertyName} is {@code null}.
      * @throws ObjectManagementException if getting the property instance fails.
@@ -136,11 +136,11 @@ public interface ObjectManager
         throws ObjectManagementException;
 
     /**
-     * Gets an instance of a message of an object for a given locale.
-     * <p>When creating objects, use of the classloader associated with the class of the given object, as returned by
+     * Gets an instance of a message of an object.
+     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
      * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
-     * returns {@code null}, indicating the class has been loaded by the bootstrap classloader, use of the bootstrap
-     * classloader is recommended.</p>
+     * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
+     * class loader is recommended.</p>
      *
      * @param object The object to return a message instance of.
      * @param messageName The name of the message of {@code object} to return an instance of.
@@ -148,7 +148,7 @@ public interface ObjectManager
      * @param arguments Arguments to format the message instance with or {@code null}.
      *
      * @return An instance of the message named {@code messageName} of {@code object} formatted with {@code arguments}
-     * for {@code locale} or {@code null} if nothing could be resolved.
+     * for {@code locale} or {@code null} if no such instance is available.
      *
      * @throws NullPointerException if {@code object}, {@code messageName} or {@code locale} is {@code null}.
      * @throws ObjectManagementException if getting the message instance fails.

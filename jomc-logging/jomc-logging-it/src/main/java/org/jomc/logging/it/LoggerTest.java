@@ -89,7 +89,7 @@ public class LoggerTest
         this.getLogger().isWarnEnabled();
     }
 
-    /** Test the various logger methods to not throw any exceptions. */
+    /** Tests the various logger methods to not throw any exceptions. */
     public void testLog() throws Exception
     {
         assert this.getLogger() != null;
