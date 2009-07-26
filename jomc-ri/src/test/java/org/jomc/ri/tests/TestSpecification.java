@@ -41,7 +41,7 @@ package org.jomc.ri.tests;
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class );
- * TestSpecification object = (TestSpecification) ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class, "<i>implementation name</i>" );
+ * TestSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

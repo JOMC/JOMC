@@ -94,7 +94,7 @@ public interface ObjectManager
      * @throws NullPointerException if {@code specification} or {@code implementationName} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
      */
-    Object getObject( Class specification, String implementationName )
+    <T> T getObject( Class<T> specification, String implementationName )
         throws ObjectManagementException;
 
     /**

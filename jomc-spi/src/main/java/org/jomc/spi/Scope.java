@@ -44,7 +44,7 @@ import java.util.Map;
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * Scope[] objects = (Scope[]) ObjectManagerFactory.getObjectManager().getObject( Scope.class );
- * Scope object = (Scope) ObjectManagerFactory.getObjectManager().getObject( Scope.class, "<i>implementation name</i>" );
+ * Scope object = ObjectManagerFactory.getObjectManager().getObject( Scope.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

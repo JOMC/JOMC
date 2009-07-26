@@ -44,7 +44,7 @@ import java.util.EventListener;
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * VetoableSequenceChangeListener[] objects = (VetoableSequenceChangeListener[]) ObjectManagerFactory.getObjectManager().getObject( VetoableSequenceChangeListener.class );
- * VetoableSequenceChangeListener object = (VetoableSequenceChangeListener) ObjectManagerFactory.getObjectManager().getObject( VetoableSequenceChangeListener.class, "<i>implementation name</i>" );
+ * VetoableSequenceChangeListener object = ObjectManagerFactory.getObjectManager().getObject( VetoableSequenceChangeListener.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

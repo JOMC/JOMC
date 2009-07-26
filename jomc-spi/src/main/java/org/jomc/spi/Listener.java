@@ -44,7 +44,7 @@ import java.util.logging.Level;
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * Listener[] objects = (Listener[]) ObjectManagerFactory.getObjectManager().getObject( Listener.class );
- * Listener object = (Listener) ObjectManagerFactory.getObjectManager().getObject( Listener.class, "<i>implementation name</i>" );
+ * Listener object = ObjectManagerFactory.getObjectManager().getObject( Listener.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

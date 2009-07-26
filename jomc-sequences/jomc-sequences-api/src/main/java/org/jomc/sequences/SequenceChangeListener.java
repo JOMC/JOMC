@@ -44,7 +44,7 @@ import java.util.EventListener;
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * SequenceChangeListener[] objects = (SequenceChangeListener[]) ObjectManagerFactory.getObjectManager().getObject( SequenceChangeListener.class );
- * SequenceChangeListener object = (SequenceChangeListener) ObjectManagerFactory.getObjectManager().getObject( SequenceChangeListener.class, "<i>implementation name</i>" );
+ * SequenceChangeListener object = ObjectManagerFactory.getObjectManager().getObject( SequenceChangeListener.class, "<i>implementation name</i>" );
  * </pre></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
