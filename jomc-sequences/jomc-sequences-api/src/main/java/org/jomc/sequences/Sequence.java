@@ -52,7 +52,7 @@ import java.util.Date;
     comments = "See http://jomc.sourceforge.net/jomc-tools"
 )
 // SECTION-END
-public class Sequence implements Comparable, Cloneable, Serializable
+public class Sequence implements Comparable<Sequence>, Cloneable, Serializable
 {
     // SECTION-START[Sequence]
 
@@ -259,37 +259,29 @@ public class Sequence implements Comparable, Cloneable, Serializable
     // SECTION-START[Comparable]
 
     /**
-     * Compares this object with the specified object for order.
-     * <p>Returns a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than
-     * the specified object.</p>
+     * Compares this sequence with the specified sequence for order.
+     * <p>Returns a negative integer, zero, or a positive integer as this sequence is less than, equal to, or greater
+     * than the specified sequence.</p>
      * <p><b>Note:</b><br/>This class has a natural ordering that is inconsistent with equals.</p>
      *
-     * @param o The Object to be compared.
+     * @param s The sequence to be compared.
      *
-     * @return A negative integer, zero, or a positive integer as this object is less than, equal to, or greater than
-     * the specified object.
-     *
-     * @throws ClassCastException if the specified object's type prevents it from being compared to this object.
+     * @return A negative integer, zero, or a positive integer as this sequence is less than, equal to, or greater than
+     * the specified sequence.
      */
-    public int compareTo( final Object o )
+    public int compareTo( final Sequence s )
     {
-        if ( o != null && !( o instanceof Sequence ) )
-        {
-            throw new ClassCastException( o.getClass().getName() );
-        }
-
-        final Sequence p = (Sequence) o;
-        int result = o == null ? 1 : 0;
+        int result = s == null ? 1 : 0;
 
         if ( result == 0 )
         {
             if ( this.getName() == null )
             {
-                result = p.getName() == null ? 0 : -1;
+                result = s.getName() == null ? 0 : -1;
             }
             else
             {
-                result = p.getName() == null ? 1 : this.getName().compareTo( p.getName() );
+                result = s.getName() == null ? 1 : this.getName().compareTo( s.getName() );
             }
         }
 
@@ -305,11 +297,11 @@ public class Sequence implements Comparable, Cloneable, Serializable
      * @return A clone of this instance.
      */
     @Override
-    public Object clone()
+    public Sequence clone()
     {
         try
         {
-            return super.clone();
+            return (Sequence) super.clone();
         }
         catch ( CloneNotSupportedException e )
         {
