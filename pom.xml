@@ -553,7 +553,6 @@
     <module>jomc-api</module>
     <module>jomc-spi</module>
     <module>jomc-ri</module>
-    <module>jomc-logging</module>
     <module>jomc-standalone</module>
     <module>jomc-sdk</module>
     <module>jomc</module>
@@ -1124,58 +1123,6 @@
         <version>${jomcVersion}</version>
       </dependency>
 
-      <!-- JOMC Logging -->
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-api</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-it</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-it</artifactId>
-        <classifier>bin</classifier>
-        <type>zip</type>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-it</artifactId>
-        <classifier>bin</classifier>
-        <type>tar.gz</type>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-it</artifactId>
-        <classifier>bin</classifier>
-        <type>tar.bz2</type>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-jdk-logging</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-log4j-logging</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-commons-logging</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc.logging</groupId>
-        <artifactId>jomc-logging-slf4j-logging</artifactId>
-        <version>${jomcLoggingVersion}</version>
-      </dependency>
     </dependencies>
   </dependencyManagement>
   <repositories>
@@ -1515,7 +1462,6 @@
     <mavenCheckstylePluginVersion>2.3</mavenCheckstylePluginVersion>
     <mavenChangesPluginVersion>2.1</mavenChangesPluginVersion>
     <jomcVersion>1.0-alpha-1-SNAPSHOT</jomcVersion>
-    <jomcLoggingVersion>1.0-alpha-1-SNAPSHOT</jomcLoggingVersion>
     <javaccMavenPluginVersion>2.5</javaccMavenPluginVersion>
     <jaxbApiVersion>2.1</jaxbApiVersion>
     <jaxbImplVersion>2.1.10</jaxbImplVersion>

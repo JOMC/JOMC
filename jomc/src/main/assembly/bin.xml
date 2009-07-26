@@ -81,51 +81,11 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-logging-${jomcLoggingVersion}/lib</outputDirectory>
-      <scope>runtime</scope>
-      <includes>
-        <include>org.jomc.logging:jomc-logging-api</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-logging-${jomcLoggingVersion}/lib/ri</outputDirectory>
-      <scope>runtime</scope>
-      <includes>
-        <include>org.jomc.logging:jomc-logging-jdk-logging</include>
-        <include>org.jomc.logging:jomc-logging-commons-logging</include>
-        <include>org.jomc.logging:jomc-logging-log4j-logging</include>
-        <include>org.jomc.logging:jomc-logging-slf4j-logging</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-sequences-${jomcSequencesVersion}/lib</outputDirectory>
-      <scope>runtime</scope>
-      <includes>
-        <include>org.jomc.sequences:jomc-sequences-api</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
       <outputDirectory>/${pom.build.finalName}/jomc-${jomcVersion}</outputDirectory>
       <scope>runtime</scope>
       <unpack>true</unpack>
       <includes>
         <include>org.jomc:jomc-tools:zip:bin</include>
-      </includes>
-    </dependencySet>
-    <dependencySet>
-      <directoryMode>0755</directoryMode>
-      <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-logging-${jomcLoggingVersion}</outputDirectory>
-      <scope>runtime</scope>
-      <unpack>true</unpack>
-      <includes>
-        <include>org.jomc.logging:jomc-logging-it:zip:bin</include>
       </includes>
     </dependencySet>
   </dependencySets>
