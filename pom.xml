@@ -212,6 +212,7 @@
               <compress>true</compress>
               <manifestEntries>
                 <Build-Date>${buildNumber}</Build-Date>
+                <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
           </configuration>
@@ -331,6 +332,7 @@
               <compress>true</compress>
               <manifestEntries>
                 <Build-Date>${buildNumber}</Build-Date>
+                <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
           </configuration>
@@ -480,6 +482,7 @@
               <compress>true</compress>
               <manifestEntries>
                 <Build-Date>${buildNumber}</Build-Date>
+                <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
           </configuration>
@@ -495,6 +498,7 @@
               <compress>true</compress>
               <manifestEntries>
                 <Build-Date>${buildNumber}</Build-Date>
+                <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
           </configuration>
@@ -511,13 +515,30 @@
               <compress>true</compress>
               <manifestEntries>
                 <Build-Date>${buildNumber}</Build-Date>
+                <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
           </configuration>
         </plugin>
+        <plugin>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <groupId>org.codehaus.mojo</groupId>
+          <version>1.4</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>maven-version</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
       </plugins>
     </pluginManagement>
     <plugins>
+      <plugin>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+      </plugin>
       <plugin>
         <artifactId>buildnumber-maven-plugin</artifactId>
         <groupId>org.codehaus.mojo</groupId>
