@@ -41,7 +41,7 @@
   <packaging>pom</packaging>
   <name>JOMC</name>
   <version>1.0-alpha-1-SNAPSHOT</version>
-  <description><![CDATA[Object management and configuration parent module.]]></description>
+  <description>Object management and configuration parent module.</description>
   <url>http://jomc.sourceforge.net</url>
   <prerequisites>
     <maven>2.0.9</maven>
@@ -146,7 +146,7 @@
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
               <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.0-beta-5</version>
+              <version>1.0-beta-6</version>
             </dependency>
           </dependencies>
           <executions>
@@ -253,12 +253,20 @@
             <keywords>true</keywords>
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
-            <show>private</show>
+            <show>protected</show>
             <source>1.5</source>
             <doctitle>${pom.name} ${pom.version} Documentation</doctitle>
             <windowtitle>${pom.name} ${pom.version} Documentation</windowtitle>
             <links>
-              <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+              <link>http://java.sun.com/javase/7/docs/api</link>
+              <link>http://java.sun.com/javaee/6/docs/api</link>
+              <link>http://jakarta.apache.org/bcel/apidocs</link>
+              <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
+              <link>http://commons.apache.org/cli/api-release</link>
+              <link>http://commons.apache.org/io/api-release</link>
+              <link>http://logging.apache.org/log4j/1.2/apidocs</link>
+              <link>http://commons.apache.org/logging/commons-logging-1.1.1/apidocs</link>
+              <link>http://www.slf4j.org/apidocs</link>
             </links>
             <groups>
               <group>
@@ -296,6 +304,18 @@
               <artifactId>UmlGraph</artifactId>
               <version>${umlgraphVersion}</version>
             </docletArtifact>
+            <tagletArtifacts>
+              <tagletArtifact>
+                <groupId>org.apache.maven.plugin-tools</groupId>
+                <artifactId>maven-plugin-tools-javadoc</artifactId>
+                <version>2.5</version>
+              </tagletArtifact>
+              <tagletArtifact>
+                <groupId>org.codehaus.plexus</groupId>
+                <artifactId>plexus-javadoc</artifactId>
+                <version>1.0</version>
+              </tagletArtifact>
+            </tagletArtifacts>
             <additionalparam>
                -inferrel -inferdep
                -hide java.*
@@ -551,7 +571,15 @@
               <doctitle>${pom.name} Specification ${pom.version}</doctitle>
               <windowtitle>${pom.name} Specification ${pom.version}</windowtitle>
               <links>
-                <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+                <link>http://java.sun.com/javase/7/docs/api</link>
+                <link>http://java.sun.com/javaee/6/docs/api</link>
+                <link>http://jakarta.apache.org/bcel/apidocs</link>
+                <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
+                <link>http://commons.apache.org/cli/api-release</link>
+                <link>http://commons.apache.org/io/api-release</link>
+                <link>http://logging.apache.org/log4j/1.2/apidocs</link>
+                <link>http://commons.apache.org/logging/commons-logging-1.1.1/apidocs</link>
+                <link>http://www.slf4j.org/apidocs</link>
               </links>
               <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
               <docletArtifact>
@@ -559,6 +587,18 @@
                 <artifactId>UmlGraph</artifactId>
                 <version>${umlgraphVersion}</version>
               </docletArtifact>
+              <tagletArtifacts>
+                <tagletArtifact>
+                  <groupId>org.apache.maven.plugin-tools</groupId>
+                  <artifactId>maven-plugin-tools-javadoc</artifactId>
+                  <version>2.5</version>
+                </tagletArtifact>
+                <tagletArtifact>
+                  <groupId>org.codehaus.plexus</groupId>
+                  <artifactId>plexus-javadoc</artifactId>
+                  <version>1.0</version>
+                </tagletArtifact>
+              </tagletArtifacts>
               <additionalparam>
                  -inferrel -inferdep
                  -hide java.*
@@ -588,7 +628,15 @@
               <doctitle>${pom.name} ${pom.version} Documentation</doctitle>
               <windowtitle>${pom.name} ${pom.version} Documentation</windowtitle>
               <links>
-                <link>http://java.sun.com/j2se/1.5.0/docs/api</link>
+                <link>http://java.sun.com/javase/7/docs/api</link>
+                <link>http://java.sun.com/javaee/6/docs/api</link>
+                <link>http://jakarta.apache.org/bcel/apidocs</link>
+                <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
+                <link>http://commons.apache.org/cli/api-release</link>
+                <link>http://commons.apache.org/io/api-release</link>
+                <link>http://logging.apache.org/log4j/1.2/apidocs</link>
+                <link>http://commons.apache.org/logging/commons-logging-1.1.1/apidocs</link>
+                <link>http://www.slf4j.org/apidocs</link>
               </links>
               <groups>
                 <group>
@@ -620,13 +668,24 @@
                   <packages>org.jomc.ri*</packages>
                 </group>
               </groups>
-            </configuration>
               <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
               <docletArtifact>
                 <groupId>gr.spinellis</groupId>
                 <artifactId>UmlGraph</artifactId>
                 <version>${umlgraphVersion}</version>
               </docletArtifact>
+              <tagletArtifacts>
+                <tagletArtifact>
+                  <groupId>org.apache.maven.plugin-tools</groupId>
+                  <artifactId>maven-plugin-tools-javadoc</artifactId>
+                  <version>2.5</version>
+                </tagletArtifact>
+                <tagletArtifact>
+                  <groupId>org.codehaus.plexus</groupId>
+                  <artifactId>plexus-javadoc</artifactId>
+                  <version>1.0</version>
+                </tagletArtifact>
+              </tagletArtifacts>
               <additionalparam>
                  -inferrel -inferdep
                  -hide java.*
@@ -636,6 +695,7 @@
                  -postfixpackage -nodefontsize 9
                  -nodefontpackagesize 7
               </additionalparam>
+            </configuration>
           </reportSet -->
         </reportSets>
       </plugin>
@@ -741,7 +801,7 @@
       <dependency>
         <groupId>org.apache.velocity</groupId>
         <artifactId>velocity</artifactId>
-        <version>1.6.1</version>
+        <version>1.6.2</version>
         <scope>compile</scope>
       </dependency>
       <dependency>
