@@ -30,7 +30,7 @@
  *   $Id$
  *
  */
-package org.jomc.ri.util;
+package org.jomc.model.util;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
