@@ -1,0 +1,92 @@
+##
+##   Copyright (c) 2009 The JOMC Project
+##   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
+##   All rights reserved.
+##
+##   Redistribution and use in source and binary forms, with or without
+##   modification, are permitted provided that the following conditions
+##   are met:
+##
+##     o Redistributions of source code must retain the above copyright
+##       notice, this list of conditions and the following disclaimer.
+##
+##     o Redistributions in binary form must reproduce the above copyright
+##       notice, this list of conditions and the following disclaimer in
+##       the documentation and/or other materials provided with the
+##       distribution.
+##
+##   THIS SOFTWARE IS PROVIDED BY THE JOMC PROJECT AND CONTRIBUTORS "AS IS"
+##   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+##   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+##   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE JOMC PROJECT OR
+##   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+##   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+##   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+##   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+##   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+##   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+##   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+##
+##   $Id$
+##
+## @param modules The modules declaring implementation.
+## @param implementation The implementation of the template.
+## @param tool The builder of the template.
+/**
+#if($implementation.getDocumentation())
+ * $tool.getJavadocComment($implementation.getDocumentation().getText("en"), " * ")
+#end
+#if($modules.getSpecifications($implementation.getIdentifier()))
+ * <p><b>Specifications</b><ul>
+#foreach($reference in $modules.getSpecifications($implementation.getIdentifier()))
+#set($specification = $modules.getSpecification($reference.getIdentifier()))
+ * <li>{@code $tool.getJavaTypeName($reference,true)}#if($reference.getVersion()) {@code $reference.getVersion()}#end<blockquote>
+ * Object applies to $specification.getScope().value() scope.</blockquote></li>
+#end
+ * </ul></p>
+#end
+#if($implementation.getProperties())
+ * <p><b>Properties</b><ul>
+#foreach($property in $implementation.getProperties().getProperty())
+ * <li>"{@link #$tool.getJavaGetterMethodName($property) $property.getName()}"<blockquote>
+ * Property of type {@code $property.getType().value()}#if($property.getValue()) with value "$property.getValue()"#end.</blockquote></li>
+#end
+ * </ul></p>
+#end
+#if($implementation.getDependencies())
+ * <p><b>Dependencies</b><ul>
+#foreach($dependency in $implementation.getDependencies().getDependency())
+#set($specification = $modules.getSpecification($dependency.getIdentifier()))
+ * <li>"{@link #$tool.getJavaGetterMethodName($dependency) $dependency.getName()}"<blockquote>
+ * Dependency on {@code $dependency.getIdentifier()}#if($dependency.getVersion()) at specification level $dependency.getVersion()#end applying to $specification.getScope().value() scope#if($dependency.isBound()) bound to an instance#end.</blockquote></li>
+#end
+ * </ul></p>
+#end
+#if($implementation.getMessages())
+ * <p><b>Messages</b><ul>
+#foreach($message in $implementation.getMessages().getMessage())
+ * <li>"{@link #$tool.getJavaGetterMethodName($message) $message.getName()}"<table>
+#foreach($text in $message.getTemplate().getText())
+ * <tr><td valign="top">$tool.getDisplayLanguage($text.getLanguage()):</td><td valign="top"><pre>$tool.getJavadocComment($message.getTemplate().getText($text.getLanguage()), "     * ")</pre></td></tr>
+#end
+ * </table>
+#end
+#foreach($reference in $implementation.getMessages().getReference())
+#set($message = $module.getMessages().getMessage($reference.getName()))
+ * <li>"{@link #$tool.getJavaGetterMethodName($message) $message.getName()}"<table>
+#foreach($text in $message.getTemplate().getText())
+ * <tr><td valign="top">$tool.getDisplayLanguage($text.getLanguage()):</td><td valign="top"><pre>$tool.getJavadocComment($message.getTemplate().getText($text.getLanguage()), "     * ")</pre></td></tr>
+#end
+ * </table>
+ * </li>
+#end
+ * </ul></p>
+#end
+ *
+#if($implementation.getAuthors())
+#foreach($author in $implementation.getAuthors().getAuthor())
+ * @author #if($author.getMail())<a href="mailto:$author.getMail()">#end$author.getName()#if($author.getMail())</a>#end $author.getVersion()
+#end
+#end
+ * @version $Id$
+ */

@@ -1,0 +1,78 @@
+##
+##   Copyright (c) 2009 The JOMC Project
+##   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
+##   All rights reserved.
+##
+##   Redistribution and use in source and binary forms, with or without
+##   modification, are permitted provided that the following conditions
+##   are met:
+##
+##     o Redistributions of source code must retain the above copyright
+##       notice, this list of conditions and the following disclaimer.
+##
+##     o Redistributions in binary form must reproduce the above copyright
+##       notice, this list of conditions and the following disclaimer in
+##       the documentation and/or other materials provided with the
+##       distribution.
+##
+##   THIS SOFTWARE IS PROVIDED BY THE JOMC PROJECT AND CONTRIBUTORS "AS IS"
+##   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+##   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+##   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE JOMC PROJECT OR
+##   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+##   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+##   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+##   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+##   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+##   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+##   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+##
+##   $Id$
+##
+## @param modules The modules declaring implementation.
+## @param implementation The implementation of the template.
+## @param tool The builder of the template.
+#set($dependencies = $modules.getDependencies($implementation.getIdentifier()))
+#if($dependencies)
+#foreach($dependency in $dependencies.getDependency())
+#set($specification = $modules.getSpecification($dependency.getIdentifier()))
+
+    /**
+     * Gets the {@code $dependency.getName()} dependency.
+#if($dependency.getImplementationName())
+     * <p>This method returns the "{@code $dependency.getImplementationName()}" object of the {@code $dependency.getIdentifier()} specification#if($dependency.getVersion()) at specification level $dependency.getVersion()#end.</p>
+#end
+#if(!$dependency.getImplementationName())
+     * <p>This method returns any available object of the {@code $dependency.getIdentifier()} specification#if($dependency.getVersion()) at specification level $dependency.getVersion()#end.</p>
+#end
+#if($dependency.getProperties())
+     * <p><b>Properties</b><dl>
+#foreach($property in $dependency.getProperties().getProperty())
+     * <dt>"{@code $property.getName()}"</dt>
+     * <dd>Property of type {@code $property.getType().value()}#if($property.getValue()) with value "$property.getValue()"#end.
+#if($property.getDocumentation())
+     * <blockquote>$tool.getJavadocComment($property.getDocumentation().getText("en"), "     * ")</blockquote>
+#end
+     * </dd>
+#end
+     * </dl>
+#end
+#if($dependency.getDocumentation())
+     * @return $tool.getJavadocComment($dependency.getDocumentation().getText("en"), "     * ")
+#end
+#if(!$dependency.getDocumentation())
+     * @return The {@code $dependency.getName()} dependency.
+#end
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated
+    (
+        value = "$tool.getClass().getName()",
+        comments = "See ${pom.url}"
+    )
+    $tool.getJavaModifierName($implementation,$dependency) $tool.getJavaTypeName($dependency) $tool.getJavaGetterMethodName($dependency)() throws org.jomc.ObjectManagementException
+    {
+        return ($tool.getJavaTypeName($dependency)) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "$dependency.getName()" );
+    }
+#end
+#end
