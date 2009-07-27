@@ -43,7 +43,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-spi</artifactId>
   <name>JOMC SPI</name>
-  <description><![CDATA[Object management and configuration implementation programming interface.]]></description>
+  <description>Object management and configuration implementation programming interface.</description>
   <build>
     <resources>
       <resource>
@@ -68,9 +68,9 @@
             </goals>
             <configuration>
               <resourceBundles>
-                <resourceBundle>org.jomc:jomc-resources:${jomcVersion}</resourceBundle>
-               </resourceBundles>
-               <properties>
+                <resourceBundle>org.jomc:jomc-resources:${pom.version}</resourceBundle>
+              </resourceBundles>
+              <properties>
                 <buildNumber>${buildNumber}</buildNumber>
               </properties>
             </configuration>
@@ -88,6 +88,7 @@
       <groupId>javax.annotation</groupId>
       <artifactId>jsr250-api</artifactId>
       <scope>compile</scope>
+      <optional>true</optional>
     </dependency>
   </dependencies>
 </project>

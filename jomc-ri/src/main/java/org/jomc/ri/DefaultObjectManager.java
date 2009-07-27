@@ -94,7 +94,7 @@ import org.xml.sax.SAXException;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
 public class DefaultObjectManager implements ObjectManager
@@ -105,7 +105,7 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     public DefaultObjectManager()
     {

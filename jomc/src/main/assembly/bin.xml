@@ -59,7 +59,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-${jomcVersion}/lib</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/lib</outputDirectory>
       <scope>runtime</scope>
       <includes>
         <include>org.jomc:jomc-api</include>
@@ -68,7 +68,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-${jomcVersion}/lib/ri</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}/lib/runtime</outputDirectory>
       <scope>runtime</scope>
       <includes>
         <include>org.jomc:jomc-spi</include>
@@ -79,7 +79,7 @@
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0755</fileMode>
-      <outputDirectory>/${pom.build.finalName}/jomc-${jomcVersion}</outputDirectory>
+      <outputDirectory>/${pom.build.finalName}</outputDirectory>
       <scope>runtime</scope>
       <unpack>true</unpack>
       <includes>

@@ -59,7 +59,7 @@
             </goals>
             <configuration>
               <resourceBundles>
-                <resourceBundle>org.jomc:jomc-resources:${jomcVersion}</resourceBundle>
+                <resourceBundle>org.jomc:jomc-resources:${pom.version}</resourceBundle>
               </resourceBundles>
               <properties>
                 <buildNumber>${buildNumber}</buildNumber>

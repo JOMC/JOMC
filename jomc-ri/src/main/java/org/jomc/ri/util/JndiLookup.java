@@ -58,7 +58,7 @@ import javax.rmi.PortableRemoteObject;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
 public class JndiLookup
@@ -99,7 +99,7 @@ public class JndiLookup
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     public JndiLookup()
     {
@@ -120,7 +120,7 @@ public class JndiLookup
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private java.lang.String getObjectName() throws org.jomc.ObjectManagementException
     {
@@ -135,7 +135,7 @@ public class JndiLookup
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private boolean isRemoteObject() throws org.jomc.ObjectManagementException
     {
@@ -150,7 +150,7 @@ public class JndiLookup
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private java.lang.String getSpecificationClass() throws org.jomc.ObjectManagementException
     {

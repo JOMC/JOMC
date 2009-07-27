@@ -76,7 +76,7 @@ import java.util.Locale;
 @javax.annotation.Generated
 (
     value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc-tools"
+    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
 public class TestImplementation
@@ -172,7 +172,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     public TestImplementation()
     {
@@ -192,7 +192,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private org.jomc.ri.tests.TestSpecification getSelectedTestSpecification() throws org.jomc.ObjectManagementException
     {
@@ -208,7 +208,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private org.jomc.ri.tests.SingletonSpecification getTestBoundSingleton() throws org.jomc.ObjectManagementException
     {
@@ -224,7 +224,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private org.jomc.ri.tests.MultitonSpecification getTestMultiton() throws org.jomc.ObjectManagementException
     {
@@ -240,7 +240,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private org.jomc.ri.tests.SingletonSpecification getTestSingleton() throws org.jomc.ObjectManagementException
     {
@@ -256,7 +256,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private org.jomc.ri.tests.TestSpecification[] getTestSpecification() throws org.jomc.ObjectManagementException
     {
@@ -273,7 +273,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private java.lang.String getTestProperty() throws org.jomc.ObjectManagementException
     {
@@ -296,7 +296,7 @@ implements
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc-tools"
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
     private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument ) throws org.jomc.ObjectManagementException
     {
