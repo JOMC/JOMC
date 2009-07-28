@@ -51,15 +51,15 @@ import java.util.Locale;
  * Property of type {@code java.lang.String} with value "TEST".</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
+ * <li>"{@link #getSelectedTestSpecification SelectedTestSpecification}"<blockquote>
+ * Dependency on {@code org.jomc.ri.tests.TestSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Multiton scope.</blockquote></li>
  * <li>"{@link #getTestBoundSingleton TestBoundSingleton}"<blockquote>
  * Dependency on {@code org.jomc.ri.tests.SingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Singleton scope bound to an instance.</blockquote></li>
- * <li>"{@link #getTestSingleton TestSingleton}"<blockquote>
- * Dependency on {@code org.jomc.ri.tests.SingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Singleton scope.</blockquote></li>
  * <li>"{@link #getTestMultiton TestMultiton}"<blockquote>
  * Dependency on {@code org.jomc.ri.tests.MultitonSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Multiton scope.</blockquote></li>
+ * <li>"{@link #getTestSingleton TestSingleton}"<blockquote>
+ * Dependency on {@code org.jomc.ri.tests.SingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Singleton scope.</blockquote></li>
  * <li>"{@link #getTestSpecification TestSpecification}"<blockquote>
- * Dependency on {@code org.jomc.ri.tests.TestSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Multiton scope.</blockquote></li>
- * <li>"{@link #getSelectedTestSpecification SelectedTestSpecification}"<blockquote>
  * Dependency on {@code org.jomc.ri.tests.TestSpecification} at specification level 1.0-alpha-1-SNAPSHOT applying to Multiton scope.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>

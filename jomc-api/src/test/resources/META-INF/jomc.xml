@@ -43,4 +43,25 @@
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${pom.description}]]></text>
   </documentation>
+
+  <implementations>
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.test.ObjectManagementExceptionTest"
+                    class="org.jomc.test.ObjectManagementExceptionTest"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    final="true">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Testcases for class {@code org.jomc.ObjectManagementException}.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+  </implementations>
 </module>

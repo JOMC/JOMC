@@ -5,4 +5,4 @@
 
   ${pom.description}
 
-  See the output of 'jomc --help'.
+  See the output of the 'jomc' application.

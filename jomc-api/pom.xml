@@ -55,28 +55,19 @@
       <testResource>
         <filtering>true</filtering>
         <directory>src/test/resources</directory>
+        <includes>
+          <include>META-INF/jomc.xml</include>
+        </includes>
+      </testResource>
+      <testResource>
+        <filtering>false</filtering>
+        <directory>src/test/resources</directory>
+        <includes>
+          <include>**/*.ser</include>
+        </includes>
       </testResource>
     </testResources>
     <plugins>
-      <plugin>
-        <artifactId>maven-remote-resources-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>process</id>
-            <goals>
-              <goal>process</goal>
-            </goals>
-            <configuration>
-              <resourceBundles>
-                <resourceBundle>org.jomc:jomc-resources:${pom.version}</resourceBundle>
-              </resourceBundles>
-              <properties>
-                <buildNumber>${buildNumber}</buildNumber>
-              </properties>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
       <plugin>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>

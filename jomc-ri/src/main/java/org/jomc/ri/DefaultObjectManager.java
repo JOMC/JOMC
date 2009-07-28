@@ -594,7 +594,6 @@ public class DefaultObjectManager implements ObjectManager
 
     // SECTION-END
     // SECTION-START[DefaultObjectManager]
-
     /** Empty {@code URL} array. */
     private static final URL[] NO_URLS =
     {
@@ -1219,10 +1218,10 @@ public class DefaultObjectManager implements ObjectManager
 
     private String getMessage( final String key, final Object arguments )
     {
-        final MessageFormat fmt = new MessageFormat( ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager" ).
-            getString( key ) );
+        final ResourceBundle bundle =
+            ResourceBundle.getBundle( DefaultObjectManager.class.getName().replace( '.', '/' ) );
 
-        return fmt.format( arguments );
+        return new MessageFormat( bundle.getString( key ) ).format( arguments );
     }
 
     private String getArtifactNameMessage()

@@ -62,10 +62,10 @@ public class ObjectManagerFactory
     private static final String DEFAULT_IMPLEMENTATION = "org.jomc.ri.DefaultObjectManager";
 
     /** Constant for the name of the system property holding the {@code getInstance()} factory class name. */
-    private static final String SYS_FACTORY_CLASSNAME = "jomc.ObjectManagerFactory";
+    private static final String SYS_FACTORY_CLASSNAME = "org.jomc.ObjectManagerFactory";
 
     /** Constant for the name of the system property holding the {@code newInstance()} implementation class name. */
-    private static final String SYS_IMPLEMENTATION_CLASSNAME = "jomc.ObjectManager";
+    private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
 
     /** Empty {@code Class} array. */
     private static final Class[] NO_CLASSES =

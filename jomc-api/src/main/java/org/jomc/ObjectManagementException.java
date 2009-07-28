@@ -53,6 +53,9 @@ public class ObjectManagementException extends RuntimeException
 {
     // SECTION-START[ObjectManagementException]
 
+    /** Serial version UID for compatibility with 1.0.x object streams. */
+    private static final long serialVersionUID = -2224998950220565115L;
+
     /**
      * Creates a new {@code ObjectManagementException} taking a message describing the exception.
      *

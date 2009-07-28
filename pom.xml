@@ -499,17 +499,35 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>buildnumber-maven-plugin</artifactId>
       </plugin>
+      <plugin>
+        <artifactId>maven-remote-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>process</id>
+            <goals>
+              <goal>process</goal>
+            </goals>
+            <configuration>
+              <resourceBundles>
+                <resourceBundle>org.jomc.build:jomc-build-resources:1.0-alpha-1-SNAPSHOT</resourceBundle>
+              </resourceBundles>
+              <properties>
+                <buildNumber>${buildNumber}</buildNumber>
+              </properties>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <modules>
-    <module>jomc-resources</module>
     <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
     <module>jomc-api</module>
     <module>jomc-spi</module>
     <module>jomc-ri</module>
-    <module>jomc</module>
+    <module>jomc-cli</module>
   </modules>
   <reporting>
     <plugins>
@@ -825,21 +843,21 @@
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>jomc-tools</artifactId>
+        <artifactId>jomc-cli</artifactId>
         <classifier>bin</classifier>
         <type>zip</type>
         <version>1.0-alpha-1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>jomc-tools</artifactId>
+        <artifactId>jomc-cli</artifactId>
         <classifier>bin</classifier>
         <type>tar.gz</type>
         <version>1.0-alpha-1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>jomc-tools</artifactId>
+        <artifactId>jomc-cli</artifactId>
         <classifier>bin</classifier>
         <type>tar.bz2</type>
         <version>1.0-alpha-1-SNAPSHOT</version>
