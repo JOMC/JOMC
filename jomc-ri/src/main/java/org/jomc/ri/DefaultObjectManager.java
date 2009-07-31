@@ -726,7 +726,7 @@ public class DefaultObjectManager implements ObjectManager
                     defaultModelManager.getListeners().add( this.defaultModelManagerListener );
 
                     final Modules defaultModules =
-                        defaultModelManager.getClasspathModules( DefaultModelManager.DEFAULT_DOCUMENT_LOCATION );
+                        defaultModelManager.getClasspathModules( defaultModelManager.getDefaultDocumentLocation() );
 
                     final Module classpathModule = defaultModelManager.getClasspathModule( defaultModules );
                     if ( classpathModule != null )
