@@ -268,6 +268,10 @@
                 <packages>org.jomc.spi*</packages>
               </group>
               <group>
+                <title>Command Line Interface</title>
+                <packages>org.jomc.cli*</packages>
+              </group>
+              <group>
                 <title>Model</title>
                 <packages>org.jomc.model*</packages>
               </group>
@@ -276,12 +280,8 @@
                 <packages>org.jomc.tools*</packages>
               </group>
               <group>
-                <title>Mojos</title>
+                <title>Maven 2 Goals</title>
                 <packages>org.jomc.tools.mojo*</packages>
-              </group>
-              <group>
-                <title>Tests</title>
-                <packages>org.jomc.it*</packages>
               </group>
               <group>
                 <title>Reference Implementation</title>
@@ -424,6 +424,11 @@
               <groupId>asm</groupId>
               <artifactId>asm-commons</artifactId>
               <version>3.2</version>
+            </dependency>
+            <dependency>
+              <groupId>org.jomc</groupId>
+              <artifactId>jomc-tools</artifactId>
+              <version>1.0-alpha-1-SNAPSHOT</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -643,6 +648,10 @@
                   <packages>org.jomc.spi*</packages>
                 </group>
                 <group>
+                  <title>Command Line Interface</title>
+                  <packages>org.jomc.cli*</packages>
+                </group>
+                <group>
                   <title>Model</title>
                   <packages>org.jomc.model*</packages>
                 </group>
@@ -651,12 +660,8 @@
                   <packages>org.jomc.tools*</packages>
                 </group>
                 <group>
-                  <title>Maven Plugin</title>
+                  <title>Maven 2 Goals</title>
                   <packages>org.jomc.tools.mojo*</packages>
-                </group>
-                <group>
-                  <title>Tests</title>
-                  <packages>org.jomc.it*</packages>
                 </group>
                 <group>
                   <title>Reference Implementation</title>
@@ -780,6 +785,12 @@
         <groupId>org.apache.maven</groupId>
         <artifactId>maven-artifact</artifactId>
         <version>2.0</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>1.2.1</version>
         <scope>provided</scope>
       </dependency>
 

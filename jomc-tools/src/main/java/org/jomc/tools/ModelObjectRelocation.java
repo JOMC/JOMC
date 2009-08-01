@@ -30,12 +30,14 @@
  *   $Id$
  *
  */
-package org.jomc.tools.mojo;
+package org.jomc.tools;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * Relocation of a {@code ModelObject}.
+ * Relocation of {@code ModelObject}s.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
  * @version $Id$
@@ -44,55 +46,76 @@ public class ModelObjectRelocation implements Serializable
 {
 
     /**
-     * The source to relocate.
+     * The source pattern to relocate.
      * @serial
      */
-    private String source;
+    private String sourcePattern;
 
     /**
-     * The target to relocate {@code source} to.
+     * The replacement pattern to replace the source pattern with.
      * @serial
      */
-    private String target;
+    private String replacementPattern;
 
     /**
-     * Gets the source to relocate.
-     *
-     * @return The source to relocate.
+     * Set of relocation exclusion patterns.
+     * @serial
      */
-    public String getSource()
+    private Set<String> exclusionPatterns;
+
+    /**
+     * Gets the source pattern to relocate.
+     *
+     * @return The source pattern to relocate.
+     */
+    public String getSourcePattern()
     {
-        return this.source;
+        return this.sourcePattern;
     }
 
     /**
-     * Sets the source to relocate.
+     * Sets the source pattern to relocate.
      *
-     * @param value The new source to relocate.
+     * @param value The new source pattern to relocate.
      */
-    public void setSource( final String value )
+    public void setSourcePattern( final String value )
     {
-        this.source = value;
+        this.sourcePattern = value;
     }
 
     /**
-     * Gets the target to relocate to.
+     * Gets the replacement pattern to replace the source pattern with.
      *
-     * @return The target to relocate to.
+     * @return The replacement pattern to replace the source pattern with.
      */
-    public String getTarget()
+    public String getReplacementPattern()
     {
-        return this.target;
+        return this.replacementPattern;
     }
 
     /**
-     * Sets the target to relocate to.
+     * Sets the replacement pattern to replace the source pattern with.
      *
-     * @param value The new target to relocate to.
+     * @param value The new replacement pattern to replace the source pattern with.
      */
-    public void setTarget( final String value )
+    public void setReplacementPattern( final String value )
     {
-        this.target = value;
+        this.replacementPattern = value;
+    }
+
+    /**
+     * Gets a set of relocation exclusion patterns.
+     *
+     * @return A set of relocation exclusion patterns.
+     */
+    public Set<String> getExclusionPatterns()
+    {
+        if ( this.exclusionPatterns == null )
+        {
+            this.exclusionPatterns = new HashSet<String>();
+        }
+
+        return this.exclusionPatterns;
     }
 
 }
