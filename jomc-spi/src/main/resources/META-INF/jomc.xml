@@ -74,5 +74,19 @@
 
       </authors>
     </specification>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.spi.Locator"
+                   vendor="${pom.organization.name}"
+                   version="1.0">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Locates implementation instances.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
 </module>

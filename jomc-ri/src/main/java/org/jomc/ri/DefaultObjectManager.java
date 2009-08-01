@@ -40,6 +40,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.text.MessageFormat;
@@ -72,10 +73,10 @@ import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
 import org.jomc.model.Property;
-import org.jomc.model.Scope;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
 import org.jomc.spi.Listener;
+import org.jomc.spi.Locator;
 import org.xml.sax.SAXException;
 
 // SECTION-START[Implementation Comment]
@@ -141,18 +142,38 @@ public class DefaultObjectManager implements ObjectManager
                     if ( s.getMultiplicity() == Multiplicity.ONE )
                     {
                         final Implementation i = available.getImplementation().get( 0 );
-                        final Instance instance = this.getModelManager().getInstance(
-                            this.getModules(), s, i, this.getClassLoader( specification ) );
 
-                        if ( instance != null )
+                        if ( i.getLocation() != null )
                         {
-                            object = this.getObject( s, instance );
+                            object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
+                            if ( object == null )
+                            {
+                                this.log( Level.WARNING, this.getMissingObjectMessage(
+                                    i.getIdentifier(), i.getName() ), null );
+
+                            }
                         }
                         else
                         {
-                            this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                i.getIdentifier(), i.getName() ), null );
+                            final Instance instance = this.getModelManager().getInstance(
+                                this.getModules(), s, i, this.getClassLoader( specification ) );
 
+                            if ( instance != null )
+                            {
+                                object = this.getObject( s, instance );
+                                if ( object == null )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        i.getIdentifier(), i.getName() ), null );
+
+                                }
+                            }
+                            else
+                            {
+                                this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                    i.getIdentifier(), i.getName() ), null );
+
+                            }
                         }
                     }
                     else if ( s.getMultiplicity() == Multiplicity.MANY )
@@ -161,12 +182,11 @@ public class DefaultObjectManager implements ObjectManager
 
                         for ( Implementation i : available.getImplementation() )
                         {
-                            final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), s, i, this.getClassLoader( specification ) );
-
-                            if ( instance != null )
+                            if ( i.getLocation() != null )
                             {
-                                final Object o = this.getObject( s, instance );
+                                final Object o =
+                                    this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
+
                                 if ( o != null )
                                 {
                                     list.add( o );
@@ -180,9 +200,29 @@ public class DefaultObjectManager implements ObjectManager
                             }
                             else
                             {
-                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                final Instance instance = this.getModelManager().getInstance(
+                                    this.getModules(), s, i, this.getClassLoader( specification ) );
 
+                                if ( instance != null )
+                                {
+                                    final Object o = this.getObject( s, instance );
+                                    if ( o != null )
+                                    {
+                                        list.add( o );
+                                    }
+                                    else
+                                    {
+                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                            i.getIdentifier(), i.getName() ), null );
+
+                                    }
+                                }
+                                else
+                                {
+                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                        i.getIdentifier(), i.getName() ), null );
+
+                                }
                             }
                         }
 
@@ -206,6 +246,14 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
         catch ( InstantiationException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
+        }
+        catch ( ClassNotFoundException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
+        }
+        catch ( IOException e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -241,12 +289,9 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( i != null )
                     {
-                        final Instance instance = this.getModelManager().getInstance(
-                            this.getModules(), s, i, this.getClassLoader( specification ) );
-
-                        if ( instance != null )
+                        if ( i.getLocation() != null )
                         {
-                            object = this.getObject( s, instance );
+                            object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
                             if ( object == null )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
@@ -256,9 +301,25 @@ public class DefaultObjectManager implements ObjectManager
                         }
                         else
                         {
-                            this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                i.getIdentifier(), i.getName() ), null );
+                            final Instance instance = this.getModelManager().getInstance(
+                                this.getModules(), s, i, this.getClassLoader( specification ) );
 
+                            if ( instance != null )
+                            {
+                                object = this.getObject( s, instance );
+                                if ( object == null )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        i.getIdentifier(), i.getName() ), null );
+
+                                }
+                            }
+                            else
+                            {
+                                this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                    i.getIdentifier(), i.getName() ), null );
+
+                            }
                         }
                     }
                     else
@@ -281,6 +342,14 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
         catch ( InstantiationException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
+        }
+        catch ( ClassNotFoundException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
+        }
+        catch ( IOException e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -323,9 +392,6 @@ public class DefaultObjectManager implements ObjectManager
 
                             if ( ds != null )
                             {
-                                final Class specClass =
-                                    Class.forName( ds.getIdentifier(), true, this.getClassLoader( object.getClass() ) );
-
                                 final Implementations available =
                                     this.getModules().getImplementations( ds.getIdentifier() );
 
@@ -338,13 +404,11 @@ public class DefaultObjectManager implements ObjectManager
 
                                         if ( i != null )
                                         {
-                                            final Instance di = this.getModelManager().getInstance(
-                                                this.getModules(), ds, i, dependency,
-                                                this.getClassLoader( object.getClass() ) );
-
-                                            if ( di != null )
+                                            if ( i.getLocation() != null )
                                             {
-                                                o = this.getObject( ds, di );
+                                                o = this.getObject(
+                                                    ds, i.getLocationUri(), this.getClassLoader( object.getClass() ) );
+
                                                 if ( o == null )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
@@ -354,9 +418,26 @@ public class DefaultObjectManager implements ObjectManager
                                             }
                                             else
                                             {
-                                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                    i.getIdentifier(), i.getName() ), null );
+                                                final Instance di = this.getModelManager().getInstance(
+                                                    this.getModules(), ds, i, dependency,
+                                                    this.getClassLoader( object.getClass() ) );
 
+                                                if ( di != null )
+                                                {
+                                                    o = this.getObject( ds, di );
+                                                    if ( o == null )
+                                                    {
+                                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                            i.getIdentifier(), i.getName() ), null );
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                                        i.getIdentifier(), i.getName() ), null );
+
+                                                }
                                             }
                                         }
                                         else
@@ -369,13 +450,11 @@ public class DefaultObjectManager implements ObjectManager
                                     else if ( ds.getMultiplicity() == Multiplicity.ONE )
                                     {
                                         final Implementation ref = available.getImplementation().get( 0 );
-                                        final Instance di = this.getModelManager().getInstance(
-                                            this.getModules(), ds, ref, dependency,
-                                            this.getClassLoader( object.getClass() ) );
-
-                                        if ( di != null )
+                                        if ( ref.getLocation() != null )
                                         {
-                                            o = this.getObject( ds, di );
+                                            o = this.getObject(
+                                                ds, ref.getLocationUri(), this.getClassLoader( object.getClass() ) );
+
                                             if ( o == null )
                                             {
                                                 this.log( Level.WARNING, this.getMissingObjectMessage(
@@ -385,9 +464,26 @@ public class DefaultObjectManager implements ObjectManager
                                         }
                                         else
                                         {
-                                            this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                ref.getIdentifier(), ref.getName() ), null );
+                                            final Instance di = this.getModelManager().getInstance(
+                                                this.getModules(), ds, ref, dependency,
+                                                this.getClassLoader( object.getClass() ) );
 
+                                            if ( di != null )
+                                            {
+                                                o = this.getObject( ds, di );
+                                                if ( o == null )
+                                                {
+                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                        ref.getIdentifier(), ref.getName() ), null );
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                                    ref.getIdentifier(), ref.getName() ), null );
+
+                                            }
                                         }
                                     }
                                     else
@@ -397,13 +493,10 @@ public class DefaultObjectManager implements ObjectManager
 
                                         for ( Implementation a : available.getImplementation() )
                                         {
-                                            final Instance di = this.getModelManager().getInstance(
-                                                this.getModules(), ds, a, dependency,
-                                                this.getClassLoader( object.getClass() ) );
-
-                                            if ( di != null )
+                                            if ( a.getLocation() != null )
                                             {
-                                                final Object o2 = this.getObject( ds, di );
+                                                final Object o2 = this.getObject(
+                                                    ds, a.getLocationUri(), this.getClassLoader( object.getClass() ) );
 
                                                 if ( o2 != null )
                                                 {
@@ -418,11 +511,36 @@ public class DefaultObjectManager implements ObjectManager
                                             }
                                             else
                                             {
-                                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                    a.getIdentifier(), a.getName() ), null );
+                                                final Instance di = this.getModelManager().getInstance(
+                                                    this.getModules(), ds, a, dependency,
+                                                    this.getClassLoader( object.getClass() ) );
 
+                                                if ( di != null )
+                                                {
+                                                    final Object o2 = this.getObject( ds, di );
+
+                                                    if ( o2 != null )
+                                                    {
+                                                        list.add( o2 );
+                                                    }
+                                                    else
+                                                    {
+                                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                                            a.getIdentifier(), a.getName() ), null );
+
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                                        a.getIdentifier(), a.getName() ), null );
+
+                                                }
                                             }
                                         }
+
+                                        final Class specClass = Class.forName(
+                                            ds.getIdentifier(), true, this.getClassLoader( object.getClass() ) );
 
                                         o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance(
                                             specClass, list.size() ) );
@@ -459,7 +577,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
         catch ( InstantiationException e )
@@ -467,6 +585,10 @@ public class DefaultObjectManager implements ObjectManager
             throw new ObjectManagementException( e.getMessage(), e );
         }
         catch ( ClassNotFoundException e )
+        {
+            throw new ObjectManagementException( e.getMessage(), e );
+        }
+        catch ( IOException e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -523,7 +645,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
         catch ( InstantiationException e )
@@ -581,7 +703,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectImplementationMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
         catch ( InstantiationException e )
@@ -609,7 +731,11 @@ public class DefaultObjectManager implements ObjectManager
     private ModelManager modelManager;
 
     /** Scopes of the instance. */
-    private final Map<Scope, org.jomc.spi.Scope> scopes = new HashMap<Scope, org.jomc.spi.Scope>();
+    private final Map<org.jomc.model.Scope, org.jomc.spi.Scope> scopes =
+        new HashMap<org.jomc.model.Scope, org.jomc.spi.Scope>();
+
+    /** Locators of the instance. */
+    private final Map<String, Locator> locators = new HashMap<String, Locator>();
 
     /** Listeners of the instance. */
     private List<Listener> listeners;
@@ -835,16 +961,26 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets an object of a given instance.
      *
-     * @param specification The identifier of the specification specifying the object to return.
+     * @param specification The specification specifying the object to return.
      * @param instance The instance of the object to get.
      *
      * @return An object of {@code instance} or {@code null} if nothing could be resolved.
      *
      * @throws InstantiationException if getting an object fails.
+     * @throws NullPointerException if {@code specification} or {@code instance} is {@code null}.
      */
     public Object getObject( final Specification specification, final Instance instance )
         throws InstantiationException
     {
+        if ( specification == null )
+        {
+            throw new NullPointerException( "specification" );
+        }
+        if ( instance == null )
+        {
+            throw new NullPointerException( "instance" );
+        }
+
         Object object = null;
         final org.jomc.spi.Scope scope = this.getScope( instance.getScope() );
 
@@ -889,6 +1025,49 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets an object for a given location URI.
+     *
+     * @param specification The specification specifying the object to return.
+     * @param location The location URI of the object to return.
+     * @param classLoader The class loader of {@code specification}.
+     *
+     * @return An object located at {@code location} or {@code null} if nothing could be resolved.
+     *
+     * @throws InstantiationException if instantiating a locator fails.
+     * @throws ClassNotFoundException if the class of {@code specification} is not found.
+     * @throws IOException if locating the object fails.
+     * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
+     */
+    public Object getObject( final Specification specification, final URI location, final ClassLoader classLoader )
+        throws InstantiationException, ClassNotFoundException, IOException
+    {
+        if ( specification == null )
+        {
+            throw new NullPointerException( "specification" );
+        }
+        if ( location == null )
+        {
+            throw new NullPointerException( "location" );
+        }
+        if ( classLoader == null )
+        {
+            throw new NullPointerException( "classLoader" );
+        }
+
+        Object object = null;
+        final Locator locator = this.getLocator( location );
+
+        if ( locator != null )
+        {
+            object = locator.getObject(
+                Class.forName( specification.getIdentifier(), true, classLoader ), location );
+
+        }
+
+        return object;
+    }
+
+    /**
      * Gets the scope implementation for a given model scope.
      *
      * @param modelScope The scope to get an implementation of.
@@ -897,9 +1076,15 @@ public class DefaultObjectManager implements ObjectManager
      * {@code modelScope}.
      *
      * @throws InstantiationException if instantiating a scope fails.
+     * @throws NullPointerException if {@code modelScope} is {@code null}.
      */
-    public org.jomc.spi.Scope getScope( final Scope modelScope ) throws InstantiationException
+    public org.jomc.spi.Scope getScope( final org.jomc.model.Scope modelScope ) throws InstantiationException
     {
+        if ( modelScope == null )
+        {
+            throw new NullPointerException( "modelScope" );
+        }
+
         synchronized ( this.scopes )
         {
             org.jomc.spi.Scope scope = this.scopes.get( modelScope );
@@ -935,15 +1120,9 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( scope == null )
             {
-                if ( modelScope == Scope.SINGLETON || modelScope == Scope.CONTEXT )
+                scope = this.getDefaultScope( modelScope );
+                if ( scope != null )
                 {
-                    scope = new DefaultScope( modelScope.value(), new HashMap<String, Object>() );
-                    this.scopes.put( modelScope, scope );
-                    this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
-                }
-                else if ( modelScope == Scope.MULTITON )
-                {
-                    scope = new DefaultScope( modelScope.value(), null );
                     this.scopes.put( modelScope, scope );
                     this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
                 }
@@ -958,6 +1137,136 @@ public class DefaultObjectManager implements ObjectManager
 
             return scope;
         }
+    }
+
+    /**
+     * Gets the default scope implementation for a given model scope.
+     *
+     * @param modelScope The scope to get the default implementation of.
+     *
+     * @return The default implementation of {@code modelScope} or {@code null} if no default implementation is
+     * available implementing {@code modelScope}.
+     *
+     * @throws NullPointerException if {@code modelScope} is {@code null}.
+     */
+    public org.jomc.spi.Scope getDefaultScope( final org.jomc.model.Scope modelScope )
+    {
+        if ( modelScope == null )
+        {
+            throw new NullPointerException( "modelScope" );
+        }
+
+        DefaultScope defaultScope = null;
+
+        if ( modelScope == org.jomc.model.Scope.SINGLETON || modelScope == org.jomc.model.Scope.CONTEXT )
+        {
+            defaultScope = new DefaultScope( modelScope.value(), new HashMap<String, Object>() );
+        }
+        else if ( modelScope == org.jomc.model.Scope.MULTITON )
+        {
+            defaultScope = new DefaultScope( modelScope.value(), null );
+        }
+
+        return defaultScope;
+    }
+
+    /**
+     * Gets a locator to use with a given location URI.
+     *
+     * @param location The location URI to get a locator for.
+     *
+     * @return The locator to use for locating objects at {@code location} or {@code null} if no locator is available.
+     *
+     * @throws InstantiationException if instantiating a locator fails.
+     * @throws NullPointerException if {@code location} is {@code null}.
+     */
+    public Locator getLocator( final URI location ) throws InstantiationException
+    {
+        if ( location == null )
+        {
+            throw new NullPointerException( "location" );
+        }
+
+        final String scheme = location.getScheme();
+
+        synchronized ( this.locators )
+        {
+            Locator locator = this.locators.get( scheme );
+
+            if ( locator == null )
+            {
+                // Bootstrap locator loading.
+                final Specification locatorSpecification =
+                    this.getModules().getSpecification( Locator.class.getName() );
+
+                final Implementations implementations =
+                    this.getModules().getImplementations( Locator.class.getName() );
+
+                if ( locatorSpecification != null && implementations != null )
+                {
+                    for ( Implementation i : implementations.getImplementation() )
+                    {
+                        if ( scheme.equals( i.getName() ) )
+                        {
+                            final Instance instance = this.getModelManager().getInstance(
+                                this.getModules(), locatorSpecification, i, this.getClassLoader( Locator.class ) );
+
+                            final Locator l = (Locator) this.getModelManager().getObject(
+                                this.getModules(), locatorSpecification, instance );
+
+                            locator = l;
+                            this.locators.put( scheme, locator );
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if ( locator == null )
+            {
+                locator = this.getDefaultLocator( location );
+                if ( locator != null )
+                {
+                    this.locators.put( scheme, locator );
+                    this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
+                }
+            }
+
+            if ( locator == null )
+            {
+                this.log( Level.WARNING, this.getMissingImplementationsMessage( Locator.class.getName() ), null );
+            }
+
+            return locator;
+        }
+    }
+
+    /**
+     * Gets the default locator implementation for a given location URI.
+     *
+     * @param location The location URI to get a default locator implementation for.
+     *
+     * @return The default locator implementation for {@code location} or {@code null} if no default implementation is
+     * available for {@code location}.
+     *
+     * @throws NullPointerException if {@code location} is {@code null}.
+     */
+    public Locator getDefaultLocator( final URI location )
+    {
+        if ( location == null )
+        {
+            throw new NullPointerException( "location" );
+        }
+
+        Locator locator = null;
+        final DefaultLocator defaultLocator = new DefaultLocator();
+
+        if ( defaultLocator.isLocationSupported( location ) )
+        {
+            locator = defaultLocator;
+        }
+
+        return locator;
     }
 
     /**
@@ -999,12 +1308,12 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
 
-                thisInstance.setScope( Scope.SINGLETON );
+                thisInstance.setScope( org.jomc.model.Scope.SINGLETON );
 
-                final org.jomc.spi.Scope singletons = this.getScope( Scope.SINGLETON );
+                final org.jomc.spi.Scope singletons = this.getScope( org.jomc.model.Scope.SINGLETON );
                 if ( singletons == null )
                 {
-                    throw new InstantiationException( this.getMissingScopeMessage( Scope.SINGLETON ) );
+                    throw new InstantiationException( this.getMissingScopeMessage( org.jomc.model.Scope.SINGLETON ) );
                 }
 
                 singletons.putObject( thisInstance.getIdentifier(), this );
@@ -1257,9 +1566,9 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getMissingObjectImplementationMessage( final Object object )
+    private String getMissingObjectInstanceMessage( final Object object )
     {
-        return this.getMessage( "missingObjectImplementation", new Object[]
+        return this.getMessage( "missingObjectInstance", new Object[]
             {
                 object.toString()
             } );
@@ -1336,7 +1645,7 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getDefaultScopeInfoMessage( final Scope scope,
+    private String getDefaultScopeInfoMessage( final org.jomc.model.Scope scope,
                                                final Map objects )
     {
         return this.getMessage( "defaultScopeInfo", new Object[]
@@ -1346,7 +1655,7 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getMissingScopeMessage( final Scope scope )
+    private String getMissingScopeMessage( final org.jomc.model.Scope scope )
     {
         return this.getMessage( "missingScope", new Object[]
             {
@@ -1377,6 +1686,15 @@ public class DefaultObjectManager implements ObjectManager
         return this.getMessage( "cannotProxySpecificationClass", new Object[]
             {
                 specification, instance
+            } );
+
+    }
+
+    private String getDefaultLocatorInfoMessage( final String scheme )
+    {
+        return this.getMessage( "defaultLocatorInfo", new Object[]
+            {
+                scheme
             } );
 
     }
