@@ -540,6 +540,7 @@
     </plugins>
   </build>
   <modules>
+    <module>jomc-util</module>
     <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
@@ -840,6 +841,11 @@
       </dependency>
 
       <!-- JOMC -->
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-util</artifactId>
+        <version>1.0-alpha-1-SNAPSHOT</version>
+      </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>

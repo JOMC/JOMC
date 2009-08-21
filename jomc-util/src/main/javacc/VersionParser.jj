@@ -69,7 +69,7 @@ PARSER_BEGIN(VersionParser)
  *   $Id$
  *
  */
-package org.jomc.model.util;
+package org.jomc.util;
 
 import java.io.StringReader;
 import java.util.List;

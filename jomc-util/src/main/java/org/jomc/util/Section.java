@@ -30,7 +30,7 @@
  *   $Id$
  *
  */
-package org.jomc.tools.util;
+package org.jomc.util;
 
 import java.util.HashMap;
 import java.util.LinkedList;

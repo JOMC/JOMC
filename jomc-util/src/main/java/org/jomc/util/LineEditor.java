@@ -30,7 +30,7 @@
  *   $Id$
  *
  */
-package org.jomc.tools.util;
+package org.jomc.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -71,7 +71,7 @@ public class LineEditor
     /**
      * Edits texts.
      * <p>This method splits the given string into lines and passes every line to method {@code getNextLine} in order of
-     * occurence in the given string.</p>
+     * occurrence in the given string.</p>
      *
      * @param text The text to edit.
      *
