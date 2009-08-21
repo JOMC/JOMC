@@ -77,14 +77,14 @@ import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
 import org.jomc.spi.Listener;
 import org.jomc.spi.Locator;
+import org.jomc.spi.Scope;
 import org.xml.sax.SAXException;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Documentation]
 /**
  * Object management and configuration reference implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ObjectManager} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.</blockquote></li>
+ * <li>{@code org.jomc.ObjectManager} {@code 1.0}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
@@ -102,7 +102,7 @@ public class DefaultObjectManager implements ObjectManager
 {
     // SECTION-START[Constructors]
 
-    /** Default implementation constructor. */
+    /** Creates a new {@code DefaultObjectManager} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
@@ -156,7 +156,7 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), s, i, this.getClassLoader( specification ) );
+                                this.getModules(), i, this.getClassLoader( specification ) );
 
                             if ( instance != null )
                             {
@@ -201,7 +201,7 @@ public class DefaultObjectManager implements ObjectManager
                             else
                             {
                                 final Instance instance = this.getModelManager().getInstance(
-                                    this.getModules(), s, i, this.getClassLoader( specification ) );
+                                    this.getModules(), i, this.getClassLoader( specification ) );
 
                                 if ( instance != null )
                                 {
@@ -245,15 +245,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
             }
         }
-        catch ( InstantiationException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( IOException e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -302,7 +294,7 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), s, i, this.getClassLoader( specification ) );
+                                this.getModules(), i, this.getClassLoader( specification ) );
 
                             if ( instance != null )
                             {
@@ -341,15 +333,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
             }
         }
-        catch ( InstantiationException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( IOException e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -419,7 +403,7 @@ public class DefaultObjectManager implements ObjectManager
                                             else
                                             {
                                                 final Instance di = this.getModelManager().getInstance(
-                                                    this.getModules(), ds, i, dependency,
+                                                    this.getModules(), i, dependency,
                                                     this.getClassLoader( object.getClass() ) );
 
                                                 if ( di != null )
@@ -465,7 +449,7 @@ public class DefaultObjectManager implements ObjectManager
                                         else
                                         {
                                             final Instance di = this.getModelManager().getInstance(
-                                                this.getModules(), ds, ref, dependency,
+                                                this.getModules(), ref, dependency,
                                                 this.getClassLoader( object.getClass() ) );
 
                                             if ( di != null )
@@ -512,7 +496,7 @@ public class DefaultObjectManager implements ObjectManager
                                             else
                                             {
                                                 final Instance di = this.getModelManager().getInstance(
-                                                    this.getModules(), ds, a, dependency,
+                                                    this.getModules(), a, dependency,
                                                     this.getClassLoader( object.getClass() ) );
 
                                                 if ( di != null )
@@ -580,15 +564,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( InstantiationException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( ClassNotFoundException e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
-        }
-        catch ( IOException e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -627,7 +603,7 @@ public class DefaultObjectManager implements ObjectManager
 
                         if ( property != null )
                         {
-                            value = property.getPropertyValue();
+                            value = property.getJavaValue( this.getClassLoader( object.getClass() ) );
 
                             if ( value != null )
                             {
@@ -648,7 +624,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( InstantiationException e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -706,7 +682,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( InstantiationException e )
+        catch ( Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -716,6 +692,15 @@ public class DefaultObjectManager implements ObjectManager
 
     // SECTION-END
     // SECTION-START[DefaultObjectManager]
+    /** Constant for the {@code Multiton} scope identifier. */
+    protected static final String MULTITON_SCOPE_IDENTIFIER = "Multiton";
+
+    /** Constant for the {@code Context} scope identifier. */
+    protected static final String CONTEXT_SCOPE_IDENTIFIER = "Context";
+
+    /** Constant for the {@code Singleton} scope identifier. */
+    protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
+
     /** Empty {@code URL} array. */
     private static final URL[] NO_URLS =
     {
@@ -731,8 +716,7 @@ public class DefaultObjectManager implements ObjectManager
     private ModelManager modelManager;
 
     /** Scopes of the instance. */
-    private final Map<org.jomc.model.Scope, org.jomc.spi.Scope> scopes =
-        new HashMap<org.jomc.model.Scope, org.jomc.spi.Scope>();
+    private final Map<String, Scope> scopes = new HashMap<String, Scope>();
 
     /** Locators of the instance. */
     private final Map<String, Locator> locators = new HashMap<String, Locator>();
@@ -788,9 +772,9 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the flag indicating that classpath resolution is performed.
+     * Gets a flag indicating that classpath resolution is performed.
      * <p>Classpath resolution is performed by default. It can be disabled by setting the system property
-     * {@code jomc.classpathAware} to {@code false}.</p>
+     * {@code org.jomc.ri.DefaultObjectManager.classpathAware} to {@code false}.</p>
      *
      * @return {@code true} if the class loader of the instance is searched for resources; {@code false} if no
      * classpath resolution is performed.
@@ -799,8 +783,8 @@ public class DefaultObjectManager implements ObjectManager
     {
         if ( this.classpathAware == null )
         {
-            this.classpathAware =
-                Boolean.valueOf( System.getProperty( "jomc.classpathAware", Boolean.TRUE.toString() ) );
+            this.classpathAware = Boolean.valueOf(
+                System.getProperty( "org.jomc.ri.DefaultObjectManager.classpathAware", Boolean.TRUE.toString() ) );
 
         }
 
@@ -982,7 +966,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Object object = null;
-        final org.jomc.spi.Scope scope = this.getScope( instance.getScope() );
+        final Scope scope = this.getScope( instance.getScope() );
 
         if ( scope != null )
         {
@@ -1078,7 +1062,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws InstantiationException if instantiating a scope fails.
      * @throws NullPointerException if {@code modelScope} is {@code null}.
      */
-    public org.jomc.spi.Scope getScope( final org.jomc.model.Scope modelScope ) throws InstantiationException
+    public Scope getScope( final String modelScope ) throws InstantiationException
     {
         if ( modelScope == null )
         {
@@ -1087,30 +1071,26 @@ public class DefaultObjectManager implements ObjectManager
 
         synchronized ( this.scopes )
         {
-            org.jomc.spi.Scope scope = this.scopes.get( modelScope );
+            Scope scope = this.scopes.get( modelScope );
 
             if ( scope == null )
             {
                 // Bootstrap scope loading.
-                final Specification scopeSpecification =
-                    this.getModules().getSpecification( org.jomc.spi.Scope.class.getName() );
-
-                final Implementations implementations =
-                    this.getModules().getImplementations( org.jomc.spi.Scope.class.getName() );
+                final Specification scopeSpecification = this.getModules().getSpecification( Scope.class.getName() );
+                final Implementations implementations = this.getModules().getImplementations( Scope.class.getName() );
 
                 if ( scopeSpecification != null && implementations != null )
                 {
                     for ( Implementation i : implementations.getImplementation() )
                     {
-                        final Instance instance = this.getModelManager().getInstance(
-                            this.getModules(), scopeSpecification, i, this.getClassLoader( org.jomc.spi.Scope.class ) );
-
-                        final org.jomc.spi.Scope s = (org.jomc.spi.Scope) this.getModelManager().getObject(
-                            this.getModules(), scopeSpecification, instance );
-
-                        if ( s.getName().equals( modelScope.value() ) )
+                        if ( modelScope.equals( i.getName() ) )
                         {
-                            scope = s;
+                            final Instance instance = this.getModelManager().getInstance(
+                                this.getModules(), i, this.getClassLoader( Scope.class ) );
+
+                            scope = (Scope) this.getModelManager().getObject(
+                                this.getModules(), scopeSpecification, instance );
+
                             this.scopes.put( modelScope, scope );
                             break;
                         }
@@ -1130,9 +1110,7 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( scope == null )
             {
-                this.log( Level.WARNING, this.getMissingImplementationsMessage( org.jomc.spi.Scope.class.getName() ),
-                          null );
-
+                this.log( Level.WARNING, this.getMissingImplementationsMessage( Scope.class.getName() ), null );
             }
 
             return scope;
@@ -1149,7 +1127,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code modelScope} is {@code null}.
      */
-    public org.jomc.spi.Scope getDefaultScope( final org.jomc.model.Scope modelScope )
+    public Scope getDefaultScope( final String modelScope )
     {
         if ( modelScope == null )
         {
@@ -1158,13 +1136,13 @@ public class DefaultObjectManager implements ObjectManager
 
         DefaultScope defaultScope = null;
 
-        if ( modelScope == org.jomc.model.Scope.SINGLETON || modelScope == org.jomc.model.Scope.CONTEXT )
+        if ( modelScope.equals( SINGLETON_SCOPE_IDENTIFIER ) || modelScope.equals( CONTEXT_SCOPE_IDENTIFIER ) )
         {
-            defaultScope = new DefaultScope( modelScope.value(), new HashMap<String, Object>() );
+            defaultScope = new DefaultScope( modelScope, new HashMap<String, Object>() );
         }
-        else if ( modelScope == org.jomc.model.Scope.MULTITON )
+        else if ( modelScope.equals( MULTITON_SCOPE_IDENTIFIER ) )
         {
-            defaultScope = new DefaultScope( modelScope.value(), null );
+            defaultScope = new DefaultScope( modelScope, null );
         }
 
         return defaultScope;
@@ -1209,12 +1187,11 @@ public class DefaultObjectManager implements ObjectManager
                         if ( scheme.equals( i.getName() ) )
                         {
                             final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), locatorSpecification, i, this.getClassLoader( Locator.class ) );
+                                this.getModules(), i, this.getClassLoader( Locator.class ) );
 
-                            final Locator l = (Locator) this.getModelManager().getObject(
+                            locator = (Locator) this.getModelManager().getObject(
                                 this.getModules(), locatorSpecification, instance );
 
-                            locator = l;
                             this.locators.put( scheme, locator );
                             break;
                         }
@@ -1308,12 +1285,12 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
 
-                thisInstance.setScope( org.jomc.model.Scope.SINGLETON );
+                thisInstance.setScope( SINGLETON_SCOPE_IDENTIFIER );
 
-                final org.jomc.spi.Scope singletons = this.getScope( org.jomc.model.Scope.SINGLETON );
+                final Scope singletons = this.getScope( SINGLETON_SCOPE_IDENTIFIER );
                 if ( singletons == null )
                 {
-                    throw new InstantiationException( this.getMissingScopeMessage( org.jomc.model.Scope.SINGLETON ) );
+                    throw new InstantiationException( this.getMissingScopeMessage( SINGLETON_SCOPE_IDENTIFIER ) );
                 }
 
                 singletons.putObject( thisInstance.getIdentifier(), this );
@@ -1331,15 +1308,14 @@ public class DefaultObjectManager implements ObjectManager
                     for ( Implementation i : implementations.getImplementation() )
                     {
                         final Instance listenerInstance = this.getModelManager().getInstance(
-                            this.getModules(), listenerSpecification, i,
-                            this.getClassLoader( org.jomc.spi.Listener.class ) );
+                            this.getModules(), i, this.getClassLoader( org.jomc.spi.Listener.class ) );
 
                         final org.jomc.spi.Listener l = (org.jomc.spi.Listener) this.getModelManager().getObject(
                             this.getModules(), listenerSpecification, listenerInstance );
 
                         this.getListeners().add( l );
-                        this.bootstrapLogRecords.add( new LogRecord( Level.FINE, this.getRegisteredListenerMessage(
-                            l.getClass().getName() ) ) );
+                        this.bootstrapLogRecords.add(
+                            new LogRecord( Level.FINE, this.getRegisteredListenerMessage( l.getClass().getName() ) ) );
 
                     }
                 }
@@ -1556,8 +1532,7 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getMissingImplementationMessage( final String implementationName,
-                                                    final String specification )
+    private String getMissingImplementationMessage( final String implementationName, final String specification )
     {
         return this.getMessage( "missingImplementation", new Object[]
             {
@@ -1575,8 +1550,7 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getMissingDependencyMessage( final String dependency,
-                                                final String implementation )
+    private String getMissingDependencyMessage( final String dependency, final String implementation )
     {
         return this.getMessage( "missingDependency", new Object[]
             {
@@ -1584,8 +1558,7 @@ public class DefaultObjectManager implements ObjectManager
             } );
     }
 
-    private String getMissingPropertyMessage( final String property,
-                                              final String implementation )
+    private String getMissingPropertyMessage( final String property, final String implementation )
     {
         return this.getMessage( "missingProperty", new Object[]
             {
@@ -1594,8 +1567,7 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getMissingMessageMessage( final String message,
-                                             final String implementation )
+    private String getMissingMessageMessage( final String message, final String implementation )
     {
         return this.getMessage( "missingMessage", new Object[]
             {
@@ -1645,21 +1617,20 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getDefaultScopeInfoMessage( final org.jomc.model.Scope scope,
-                                               final Map objects )
+    private String getDefaultScopeInfoMessage( final String modelScope, final Map objects )
     {
         return this.getMessage( "defaultScopeInfo", new Object[]
             {
-                scope.value(), objects == null ? "" : objects.toString()
+                modelScope, objects == null ? "" : objects.toString()
             } );
 
     }
 
-    private String getMissingScopeMessage( final org.jomc.model.Scope scope )
+    private String getMissingScopeMessage( final String modelScope )
     {
         return this.getMessage( "missingScope", new Object[]
             {
-                scope.value()
+                modelScope
             } );
 
     }
@@ -1827,16 +1798,32 @@ public class DefaultObjectManager implements ObjectManager
     private StringBuffer appendSpecificationInfo( final Specification s, final StringBuffer b )
     {
         return b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
-            append( s.getScope() ).append( ':' ).append( s.getMultiplicity() );
+            append( s.getMultiplicity() );
 
     }
 
     private StringBuffer appendImplementationInfo( final Implementation i, final StringBuffer b )
     {
-        return b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
-            append( i.getVersion() );
+        b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
+            append( i.getVersion() ).append( ':' ).append( i.getScope() );
 
+        if ( i.getClazz() != null )
+        {
+            b.append( ":Class:" ).append( i.getClazz() );
+        }
+        if ( i.getLocation() != null )
+        {
+            b.append( ":URI:" ).append( i.getLocation() ).append( "}" );
+        }
+
+        return b;
     }
 
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
     // SECTION-END
 }

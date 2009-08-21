@@ -62,8 +62,7 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.spi.Listener"
                    vendor="${pom.organization.name}"
-                   version="1.0"
-                   scope="Singleton">
+                   version="1.0">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Object management and configuration listener interface.]]></text>

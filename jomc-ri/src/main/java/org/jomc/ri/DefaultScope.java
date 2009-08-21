@@ -1,3 +1,4 @@
+// SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
@@ -30,19 +31,30 @@
  *   $Id$
  *
  */
+// SECTION-END
 package org.jomc.ri;
 
 import java.util.Map;
 import org.jomc.spi.Scope;
 
+// SECTION-START[Documentation]
 /**
  * Default {@code Scope} implementation.
  *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// SECTION-END
+// SECTION-START[Annotations]
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
+)
+// SECTION-END
 public class DefaultScope implements Scope
 {
+    // SECTION-START[DefaultScope]
 
     /** The name of the scope. */
     private String name;
@@ -107,4 +119,26 @@ public class DefaultScope implements Scope
         return null;
     }
 
+    // SECTION-END
+    // SECTION-START[Constructors]
+
+    /** Creates a new {@code DefaultScope} instance. */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
+    )
+    public DefaultScope()
+    {
+        // SECTION-START[Default Constructor]
+        super();
+        // SECTION-END
+    }
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
+    // SECTION-END
 }

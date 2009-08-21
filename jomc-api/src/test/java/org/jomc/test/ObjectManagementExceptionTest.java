@@ -37,7 +37,7 @@ package org.jomc.test;
 import java.io.ObjectInputStream;
 import org.jomc.ObjectManagementException;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Documentation]
 /**
  * Testcases for class {@code org.jomc.ObjectManagementException}.
  *
@@ -70,7 +70,7 @@ public class ObjectManagementExceptionTest
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Default implementation constructor. */
+    /** Creates a new {@code ObjectManagementExceptionTest} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",

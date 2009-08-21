@@ -36,16 +36,17 @@ package org.jomc.spi;
 
 import java.util.Map;
 
-// SECTION-START[Specification Comment]
+// SECTION-START[Documentation]
 /**
  * Scope a specification applies to.
- * <p>This specification applies to Multiton scope.
+ * <p>This specification declares a multiplicity of {@code Many}.
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * Scope[] objects = (Scope[]) ObjectManagerFactory.getObjectManager().getObject( Scope.class );
  * Scope object = ObjectManagerFactory.getObjectManager().getObject( Scope.class, "<i>implementation name</i>" );
- * </pre></p>
+ * </pre>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -63,46 +64,39 @@ public interface Scope
     // SECTION-START[Scope]
 
     /**
-     * Gets the name of the scope.
-     *
-     * @return The name of the scope.
-     */
-    String getName();
-
-    /**
      * Gets the objects of the scope.
      *
-     * @return The object of the scope.
+     * @return The objects of the scope.
      */
     Map<String, Object> getObjects();
 
     /**
      * Gets an object from the scope.
      *
-     * @param instance The identifier of the object to get from the scope.
+     * @param identifier The identifier of the object to get from the scope.
      *
-     * @return The object identified by {@code instance} or {@code null} if no object exists in the scope.
+     * @return The object identified by {@code identifier} or {@code null} if no such object exists in the scope.
      */
-    Object getObject( String instance );
+    Object getObject( String identifier );
 
     /**
      * Puts an object into the scope.
      *
-     * @param instance The identifier of the object to put into the scope.
+     * @param identifier The identifier of the object to put into the scope.
      * @param object The object to put into the scope.
      *
      * @return The previous object from the scope or {@code null} if there was no object in the scope.
      */
-    Object putObject( String instance, Object object );
+    Object putObject( String identifier, Object object );
 
     /**
      * Removes an object from the scope.
      *
-     * @param instance The identifier of the object to remove from the scope.
+     * @param identifier The identifier of the object to remove from the scope.
      *
      * @return The removed object or {@code null} if there was no object in the scope.
      */
-    Object removeObject( String instance );
+    Object removeObject( String identifier );
 
     // SECTION-END
 }

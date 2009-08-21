@@ -36,7 +36,7 @@ package org.jomc;
 
 import java.lang.reflect.Method;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Documentation]
 /**
  * Factory for the {@code ObjectManager} singleton.
  *
@@ -133,7 +133,7 @@ public class ObjectManagerFactory
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Default implementation constructor. */
+    /** Creates a new {@code ObjectManagerFactory} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",

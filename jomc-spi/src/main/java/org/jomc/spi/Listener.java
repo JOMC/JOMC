@@ -36,16 +36,17 @@ package org.jomc.spi;
 
 import java.util.logging.Level;
 
-// SECTION-START[Specification Comment]
+// SECTION-START[Documentation]
 /**
  * Object management and configuration listener interface.
- * <p>This specification applies to Singleton scope.
+ * <p>This specification declares a multiplicity of {@code Many}.
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * Listener[] objects = (Listener[]) ObjectManagerFactory.getObjectManager().getObject( Listener.class );
  * Listener object = ObjectManagerFactory.getObjectManager().getObject( Listener.class, "<i>implementation name</i>" );
- * </pre></p>
+ * </pre>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

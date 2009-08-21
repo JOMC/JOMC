@@ -34,7 +34,7 @@
 // SECTION-END
 package org.jomc;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Documentation]
 /**
  * Gets thrown whenever an unexpected error condition is detected.
  *
@@ -91,7 +91,7 @@ public class ObjectManagementException extends RuntimeException
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Default implementation constructor. */
+    /** Creates a new {@code ObjectManagementException} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",

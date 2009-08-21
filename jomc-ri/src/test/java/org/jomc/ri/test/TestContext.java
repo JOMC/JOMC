@@ -32,18 +32,14 @@
  *
  */
 // SECTION-END
-package org.jomc.ri.tests;
+package org.jomc.ri.test;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.logging.Level;
+import java.lang.*;
 
-// SECTION-START[Implementation Comment]
+// SECTION-START[Documentation]
 /**
- * {@code ObjectManagementLister} logging to the console.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.spi.Listener} {@code 1.0}<blockquote>
- * Object applies to Singleton scope.</blockquote></li>
+ * <li>{@code org.jomc.ri.test.TestContextSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
@@ -57,96 +53,23 @@ import java.util.logging.Level;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public class TestObjectManagementListener
+public class TestContext
     implements
-    org.jomc.spi.Listener
+        org.jomc.ri.test.TestContextSpecification
 {
-    // SECTION-START[TestObjectManagementListener]
-
-    /** The {@code OutputStream} to stream to. */
-    private OutputStream outputStream;
-
-    /** The {@code PrintWriter} events are printed with. */
-    private PrintWriter printWriter;
-
-    /**
-     * Gets the output stream events are streamed to.
-     *
-     * @return The output stream events are streamed to.
-     */
-    public OutputStream getOutputStream()
-    {
-        if ( this.outputStream == null )
-        {
-            this.outputStream = System.out;
-        }
-
-        return this.outputStream;
-    }
-
-    /**
-     * Gets the print writer events are printed with,
-     *
-     * @return The print writer events are printed with.
-     */
-    public PrintWriter getPrintWriter()
-    {
-        if ( this.printWriter == null )
-        {
-            this.printWriter = new PrintWriter( this.getOutputStream() );
-        }
-
-        return this.printWriter;
-    }
-
-    /**
-     * Sets the print writer to print events with,
-     *
-     * @param value The new print writer to print events with,
-     */
-    public void setPrintWriter( final PrintWriter value )
-    {
-        this.printWriter = value;
-    }
-
-    /**
-     * Sets the output stream to stream events to.
-     *
-     * @param value The new output stream to stream events to.
-     */
-    public void setOutputStream( final OutputStream value )
-    {
-        this.outputStream = value;
-    }
-
-    public void onLog( final Level level, final String message, final Throwable throwable )
-    {
-        this.getPrintWriter().print( "[JOMC] " );
-        this.getPrintWriter().print( "[" + level.toString() + "] " );
-
-        if ( message != null )
-        {
-            this.getPrintWriter().println( message );
-        }
-
-        if ( throwable != null )
-        {
-            throwable.printStackTrace( this.getPrintWriter() );
-        }
-
-        this.getPrintWriter().flush();
-    }
-
+    // SECTION-START[TestContextSpecification]
+    // SECTION-END
+    // SECTION-START[TestContext]
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Default implementation constructor. */
+    /** Creates a new {@code TestContext} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
         comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
-    public TestObjectManagementListener()
+    public TestContext()
     {
         // SECTION-START[Default Constructor]
         super();

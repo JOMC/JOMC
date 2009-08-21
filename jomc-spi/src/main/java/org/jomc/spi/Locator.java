@@ -37,16 +37,17 @@ package org.jomc.spi;
 import java.io.IOException;
 import java.net.URI;
 
-// SECTION-START[Specification Comment]
+// SECTION-START[Documentation]
 /**
  * Locates implementation instances.
- * <p>This specification applies to Multiton scope.
+ * <p>This specification declares a multiplicity of {@code Many}.
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
  * Locator[] objects = (Locator[]) ObjectManagerFactory.getObjectManager().getObject( Locator.class );
  * Locator object = ObjectManagerFactory.getObjectManager().getObject( Locator.class, "<i>implementation name</i>" );
- * </pre></p>
+ * </pre>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

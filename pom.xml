@@ -141,7 +141,7 @@
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
               <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.0-beta-6</version>
+              <version>1.0-beta-10-SNAPSHOT</version>
             </dependency>
           </dependencies>
           <executions>
@@ -154,6 +154,10 @@
               <configuration>
                 <args>
                   <arg>-copy-constructor</arg>
+                  <arg>-cc-visibility</arg>
+                  <arg>private</arg>
+                  <arg>-cc-target</arg>
+                  <arg>1.5</arg>
                   <arg>-Xinject-code</arg>
                   <arg>-mark-generated</arg>
                 </args>
@@ -195,7 +199,7 @@
             <preparationGoals>clean install</preparationGoals>
             <tagBase>https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags</tagBase>
             <useReleaseProfile>false</useReleaseProfile>
-            <releaseProfiles>release</releaseProfiles>
+            <releaseProfiles>jomc-release</releaseProfiles>
           </configuration>
         </plugin>
         <plugin>
@@ -233,6 +237,9 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.4.3</version>
+          <configuration>
+            <forkMode>once</forkMode>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -246,7 +253,7 @@
             <keywords>true</keywords>
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
-            <show>protected</show>
+            <show>private</show>
             <source>1.5</source>
             <doctitle>${pom.name} ${pom.version} Documentation</doctitle>
             <windowtitle>${pom.name} ${pom.version} Documentation</windowtitle>
@@ -306,13 +313,9 @@
               </tagletArtifact>
             </tagletArtifacts>
             <additionalparam>
-               -inferrel -inferdep
-               -hide java.*
-               -hide org.jomc.tools.*
-               -hide org.jomc.ri.*
-               -collpackages java.util.* -qualify
-               -postfixpackage -nodefontsize 9
-               -nodefontpackagesize 7
+              -inferrel -inferdep -hide java.* -hide org.jomc.tools.*
+              -hide org.jomc.ri.* -collpackages java.util.* -qualify
+              -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
             </additionalparam>
             <archive>
               <index>true</index>
@@ -562,7 +565,9 @@
             <inherited>true</inherited>
             <reports>
               <report>javadoc</report>
+              <report>test-javadoc</report>
               <report>jar</report>
+              <report>test-jar</report>
             </reports>
             <configuration>
               <breakiterator>true</breakiterator>
@@ -603,11 +608,9 @@
                 </tagletArtifact>
               </tagletArtifacts>
               <additionalparam>
-                 -inferrel -inferdep
-                 -hide java.*
-                 -collpackages java.util.* -qualify
-                 -postfixpackage -nodefontsize 9
-                 -nodefontpackagesize 7
+                -inferrel -inferdep -hide java.* -hide org.jomc.tools.*
+                -hide org.jomc.ri.* -collpackages java.util.* -qualify
+                -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
               </additionalparam>
             </configuration>
           </reportSet>
@@ -1011,7 +1014,7 @@
   </distributionManagement>
   <profiles>
     <profile>
-      <id>release</id>
+      <id>jomc-release</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>

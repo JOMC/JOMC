@@ -48,13 +48,20 @@ public class ModelExceptionTest
 
     public void testSerializable() throws Exception
     {
-        final ObjectInputStream in =
-            new ObjectInputStream( this.getClass().getResourceAsStream( "ModelException.ser" ) );
-
+        ObjectInputStream in = new ObjectInputStream( this.getClass().getResourceAsStream( "ModelException.ser" ) );
         final ModelException e = (ModelException) in.readObject();
         in.close();
-
         System.out.println( e.toString() );
+
+        in = new ObjectInputStream( this.getClass().getResourceAsStream( "ModelException.Detail.ser" ) );
+        final ModelException.Detail d = (ModelException.Detail) in.readObject();
+        in.close();
+        System.out.println( d.toString() );
+    }
+
+    public void testToString() throws Exception
+    {
+        System.out.println( new ModelException() );
     }
 
 }

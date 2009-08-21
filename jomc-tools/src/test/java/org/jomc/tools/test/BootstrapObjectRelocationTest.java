@@ -32,31 +32,46 @@
  *
  */
 // SECTION-END
-package org.jomc.ri.tests;
+package org.jomc.tools.test;
 
-// SECTION-START[Specification Comment]
+import java.io.ObjectInputStream;
+import org.jomc.tools.BootstrapObjectRelocation;
+
 /**
- * <p>This specification applies to Multiton scope.
- * An application assembler may provide multiple implementations of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
- * selecting a single implementation.<pre>
- * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class );
- * TestSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class, "<i>implementation name</i>" );
- * </pre></p>
+ * Testcases for class {@code org.jomc.tools.BootstrapObjectRelocation}.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
-// SECTION-END
-// SECTION-START[Annotations]
-@javax.annotation.Generated
-(
-    value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-)
-// SECTION-END
-public interface TestSpecification
+public class BootstrapObjectRelocationTest
 {
-    // SECTION-START[TestSpecification]
-    // SECTION-END
+
+    public void testSerializable() throws Exception
+    {
+        final ObjectInputStream in =
+            new ObjectInputStream( this.getClass().getResourceAsStream( "BootstrapObjectRelocation.ser" ) );
+
+        final BootstrapObjectRelocation o = (BootstrapObjectRelocation) in.readObject();
+        in.close();
+
+        System.out.println( o.toString() );
+    }
+
+    public void testToString() throws Exception
+    {
+        final BootstrapObjectRelocation o = new BootstrapObjectRelocation();
+
+        System.out.println( o.toString() );
+
+        o.setSourcePattern( "testSourcePattern" );
+        o.setReplacementPattern( "testReplacementPattern" );
+
+        for ( int i = 0; i < 10; i++ )
+        {
+            o.getExclusionPatterns().add( "testExclusionPattern" + i );
+        }
+
+        System.out.println( o.toString() );
+    }
+
 }

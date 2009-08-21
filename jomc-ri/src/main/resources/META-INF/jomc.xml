@@ -48,6 +48,7 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultObjectManager"
                     class="org.jomc.ri.DefaultObjectManager"
+                    scope="Singleton"
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}">
@@ -65,6 +66,44 @@
                    version="1.0"/>
 
       </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.DefaultLocator"
+                    class="org.jomc.ri.DefaultLocator"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[
+Default {@code Locator} implementation.
+<p>The default {@code Locator} implementation looks up objects using JNDI.
+It supports location URI schemes {@code "jndi"} and {@code "jndi+rmi"}.</p>]]>
+        </text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.DefaultScope"
+                    class="org.jomc.ri.DefaultScope"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Default {@code Scope} implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
     </implementation>
   </implementations>
 </module>

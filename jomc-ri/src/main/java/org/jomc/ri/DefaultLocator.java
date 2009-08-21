@@ -1,3 +1,4 @@
+// SECTION-START[License Header]
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
@@ -30,6 +31,7 @@
  *   $Id$
  *
  */
+// SECTION-END
 package org.jomc.ri;
 
 import java.io.IOException;
@@ -42,16 +44,28 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 import org.jomc.spi.Locator;
 
+// SECTION-START[Documentation]
 /**
- * Default {@code Locator} implementation.
- * <p>The default {@code Locator} implementation looks up objects using JNDI. It supports location URI schemes
- * {@code "jndi"} and {@code "jndi+rmi"}.</p>
  *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
+ * Default {@code Locator} implementation.
+ * <p>The default {@code Locator} implementation looks up objects using JNDI.
+ * It supports location URI schemes {@code "jndi"} and {@code "jndi+rmi"}.</p>
+ *
+ *
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// SECTION-END
+// SECTION-START[Annotations]
+@javax.annotation.Generated
+(
+    value = "org.jomc.tools.JavaSources",
+    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
+)
+// SECTION-END
 public class DefaultLocator implements Locator
 {
+    // SECTION-START[DefaultLocator]
 
     /** Constant for the {@code 'jndi'} URI scheme. */
     private static final String JNDI_URI_SCHEME = "jndi";
@@ -119,7 +133,7 @@ public class DefaultLocator implements Locator
      * @param location The location to get a JNDI name for.
      *
      * @return The JNDI name for {@code location}.
-     * 
+     *
      * @throws NullPointerException if {@code location} is {@code null}.
      */
     public String getJndiName( final URI location )
@@ -193,4 +207,26 @@ public class DefaultLocator implements Locator
 
     }
 
+    // SECTION-END
+    // SECTION-START[Constructors]
+
+    /** Creates a new {@code DefaultLocator} instance. */
+    @javax.annotation.Generated
+    (
+        value = "org.jomc.tools.JavaSources",
+        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
+    )
+    public DefaultLocator()
+    {
+        // SECTION-START[Default Constructor]
+        super();
+        // SECTION-END
+    }
+    // SECTION-END
+    // SECTION-START[Dependencies]
+    // SECTION-END
+    // SECTION-START[Properties]
+    // SECTION-END
+    // SECTION-START[Messages]
+    // SECTION-END
 }

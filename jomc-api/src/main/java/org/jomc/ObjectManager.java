@@ -36,14 +36,15 @@ package org.jomc;
 
 import java.util.Locale;
 
-// SECTION-START[Specification Comment]
+// SECTION-START[Documentation]
 /**
  * Manages objects.
- * <p>This specification applies to Singleton scope.
+ * <p>This specification declares a multiplicity of {@code One}.
  * An application assembler is required to provide no more than one implementation of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
  * ObjectManager object = (ObjectManager) ObjectManagerFactory.getObjectManager().getObject( ObjectManager.class );
- * </pre></p>
+ * </pre>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -62,8 +63,9 @@ public interface ObjectManager
 
     /**
      * Gets an instance of an implementation of a specification.
-     * <p>When creating objects, use of the class loader associated with the given class, as returned by method
-     * {@link Class#getClassLoader() specification.getClassLoader()}, is recommended. Only if that method returns
+     * <p><b>Note</b><br/>
+     * Implementations must use the class loader associated with the given class as returned by method
+     * {@link Class#getClassLoader() specification.getClassLoader()} for loading classes. Only if that method returns
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
      * loader is recommended.</p>
      *
@@ -80,8 +82,9 @@ public interface ObjectManager
 
     /**
      * Gets an instance of an implementation of a specification.
-     * <p>When creating objects, use of the class loader associated with the given class, as returned by method
-     * {@link Class#getClassLoader() specification.getClassLoader()}, is recommended. Only if that method returns
+     * <p><b>Note</b><br/>
+     * Implementations must use the class loader associated with the given class as returned by method
+     * {@link Class#getClassLoader() specification.getClassLoader()} for loading classes. Only if that method returns
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
      * loader is recommended.</p>
      *
@@ -99,8 +102,9 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a dependency of an object.
-     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
-     * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
+     * <p><b>Note</b><br/>
+     * Implementations must use the class loader associated with the class of the given object as returned by method
+     * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
      * class loader is recommended.</p>
      *
@@ -118,8 +122,9 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a property of an object.
-     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
-     * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
+     * <p><b>Note</b><br/>
+     * Implementations must use the class loader associated with the class of the given object as returned by method
+     * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
      * class loader is recommended.</p>
      *
@@ -137,8 +142,9 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a message of an object.
-     * <p>When creating objects, use of the class loader associated with the class of the given object, as returned by
-     * method {@link Class#getClassLoader() object.getClass().getClassLoader()}, is recommended. Only if that method
+     * <p><b>Note</b><br/>
+     * Implementations must use the class loader associated with the class of the given object as returned by method
+     * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
      * class loader is recommended.</p>
      *
