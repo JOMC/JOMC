@@ -1022,21 +1022,21 @@
             <executions>
               <execution>
                 <id>update-workdir</id>
-                <phase>initialize</phase>
+                <phase>validate</phase>
                 <goals>
                   <goal>update</goal>
                 </goals>
               </execution>
               <execution>
                 <id>checkin-main</id>
-                <phase>generate-sources</phase>
+                <phase>compile</phase>
                 <goals>
                   <goal>checkin</goal>
                 </goals>
               </execution>
               <execution>
                 <id>checkin-test</id>
-                <phase>generate-test-sources</phase>
+                <phase>test-compile</phase>
                 <goals>
                   <goal>checkin</goal>
                 </goals>
