@@ -30,16 +30,20 @@
  *   $Id$
  *
  */
-package org.jomc.tools;
+package org.jomc.mojo;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 import java.util.jar.JarEntry;
 import java.util.jar.JarOutputStream;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamSource;
 import org.apache.maven.plugins.shade.resource.ResourceTransformer;
 import org.jomc.model.DefaultModelManager;
 import org.jomc.model.Module;
@@ -51,7 +55,7 @@ import org.xml.sax.SAXException;
 /**
  * Maven Shade Plugin {@code ResourceTransformer} implementation for assembling JOMC resources.
  * <p><b>Usage</b><pre>
- * &lt;transformer implementation="org.jomc.tools.JomcResourceTransformer"&gt;
+ * &lt;transformer implementation="org.jomc.tools.mojo.JomcResourceTransformer"&gt;
  *   &lt;moduleName&gt;${pom.name}&lt;/moduleName&gt;
  *   &lt;moduleVersion&gt;${pom.version}&lt;/moduleVersion&gt;
  *   &lt;moduleVendor&gt;${pom.organization.name}&lt;/moduleVendor&gt;
@@ -63,31 +67,8 @@ import org.xml.sax.SAXException;
  *   &lt;bootstrapResources&gt;
  *     &lt;bootstrapResource&gt;META-INF/jomc-bootstrap.xml&lt;/bootstrapResource&gt;
  *   &lt;/bootstrapResources&gt;
- *   &lt;modelObjectRelocations&gt;
- *     &lt;modelObjectRelocation&gt;
- *       &lt;sourcePattern&gt;some.prefix.to.relocate&lt;/sourcePattern&gt;
- *       &lt;replacementPattern&gt;some.prefix.to.relocate.that.prefix.to&lt;/replacementPattern&gt;
- *       &lt;exclusionPatterns&gt;
- *         &lt;exclusionPattern&gt;some.prefix.to.relocate.but.this&lt;/exclusionPattern&gt;
- *       &lt;/exclusionPatterns&gt;
- *     &lt;/modelObjectRelocation&gt;
- *   &lt;/modelObjectRelocations&gt;
- *   &lt;bootstrapObjectRelocations&gt;
- *     &lt;bootstrapObjectRelocation&gt;
- *       &lt;sourcePattern&gt;some.prefix.to.relocate&lt;/sourcePattern&gt;
- *       &lt;replacementPattern&gt;some.prefix.to.relocate.that.prefix.to&lt;/replacementPattern&gt;
- *       &lt;exclusionPatterns&gt;
- *         &lt;exclusionPattern&gt;some.prefix.to.relocate.but.this&lt;/exclusionPattern&gt;
- *       &lt;/exclusionPatterns&gt;
- *     &lt;/bootstrapObjectRelocation&gt;
- *     &lt;bootstrapObjectRelocation&gt;
- *       &lt;sourcePattern&gt;some/prefix/to/relocate&lt;/sourcePattern&gt;
- *       &lt;replacementPattern&gt;some/prefix/to/relocate/that/prefix/to&lt;/replacementPattern&gt;
- *       &lt;exclusionPatterns&gt;
- *         &lt;exclusionPattern&gt;some/prefix/to/relocate/but/this&lt;/exclusionPattern&gt;
- *       &lt;/exclusionPatterns&gt;
- *     &lt;/bootstrapObjectRelocation&gt;
- *   &lt;/bootstrapObjectRelocations&gt;
+ *   &lt;modelObjectStylesheet&gt;Filename of a style sheet to use for transforming the merged model document.&lt;/modelObjectStylesheet&gt;
+ *   &lt;bootstrapObjectStylesheet&gt;Filename of a style sheet to use for transforming the merged bootstrap document.&lt;/bootstrapObjectStylesheet&gt;
  * &lt;/transformer&gt;
  * </pre></p>
  *
@@ -116,37 +97,55 @@ public class JomcResourceTransformer implements ResourceTransformer
     private String moduleVendor;
 
     /** The resource name of the assembled module. */
-    private String moduleResource;
+    private String moduleResource = "META-INF/jomc.xml";
 
     /** Names of resources to process. */
-    private String[] moduleResources;
+    private String[] moduleResources =
+    {
+        "META-INF/jomc.xml"
+    };
 
     /** The resource name of the assembled bootstrap resources. */
-    private String bootstrapResource;
+    private String bootstrapResource = "META-INF/jomc-bootstrap.xml";
 
     /** Names of bootstrap resources to process. */
-    private String[] bootstrapResources;
+    private String[] bootstrapResources =
+    {
+        "META-INF/jomc-bootstrap.xml"
+    };
 
-    /** Directory holding documents to merge. */
-    private File mergeDirectory;
+    /** Model object style sheet to apply. */
+    private File modelObjectStylesheet;
 
-    /** Model object relocations to apply. */
-    private ModelObjectRelocation[] modelObjectRelocations;
+    /** Bootstrap object style sheet to apply. */
+    private File bootstrapObjectStylesheet;
 
-    /** Bootstrap object relocations to apply. */
-    private BootstrapObjectRelocation[] bootstrapObjectRelocations;
+    /** Bootstrap resources. */
+    private final Schemas schemas = new Schemas();
 
-    /** The {@code ModuleAssembler} of the instance. */
-    private ModuleAssembler moduleAssembler = new ModuleAssembler();
-
-    /** The {@code DefaultModelManager} of the instance. */
-    private DefaultModelManager defaultModelManager = new DefaultModelManager();
-
-    /** Bootstrap schemas. */
-    private Schemas bootstrapSchemas = new Schemas();
+    /** Model resources. */
+    private final Modules modules = new Modules();
 
     /** Type of the currently processed resource. */
     private ResourceType currentResourceType;
+
+    /** The model manager of the instance. */
+    private DefaultModelManager modelManager;
+
+    /**
+     * Gets the {@code ModelManager} of the instance.
+     *
+     * @return The {@code ModelManager} of the instance.
+     */
+    public DefaultModelManager getModelManager()
+    {
+        if ( this.modelManager == null )
+        {
+            this.modelManager = new DefaultModelManager();
+        }
+
+        return this.modelManager;
+    }
 
     public boolean canTransformResource( final String arg )
     {
@@ -187,7 +186,7 @@ public class JomcResourceTransformer implements ResourceTransformer
             switch ( this.currentResourceType )
             {
                 case MODEL_OBJECT_RESOURCE:
-                    Object modelObject = this.defaultModelManager.getUnmarshaller( true ).unmarshal( in );
+                    Object modelObject = this.getModelManager().getUnmarshaller( true ).unmarshal( in );
                     if ( modelObject instanceof JAXBElement )
                     {
                         modelObject = ( (JAXBElement) modelObject ).getValue();
@@ -196,17 +195,17 @@ public class JomcResourceTransformer implements ResourceTransformer
                     {
                         for ( Module m : ( (Modules) modelObject ).getModule() )
                         {
-                            this.moduleAssembler.getModules().getModule().add( m );
+                            this.modules.getModule().add( m );
                         }
                     }
                     if ( modelObject instanceof Module )
                     {
-                        this.moduleAssembler.getModules().getModule().add( (Module) modelObject );
+                        this.modules.getModule().add( (Module) modelObject );
                     }
                     break;
 
                 case BOOTSTRAP_OBJECT_RESOURCE:
-                    Object bootstrapObject = this.defaultModelManager.getBootstrapUnmarshaller( true ).unmarshal( in );
+                    Object bootstrapObject = this.getModelManager().getBootstrapUnmarshaller( true ).unmarshal( in );
                     if ( bootstrapObject instanceof JAXBElement )
                     {
                         bootstrapObject = ( (JAXBElement) bootstrapObject ).getValue();
@@ -215,12 +214,12 @@ public class JomcResourceTransformer implements ResourceTransformer
                     {
                         for ( Schema s : ( (Schemas) bootstrapObject ).getSchema() )
                         {
-                            this.bootstrapSchemas.getSchema().add( s );
+                            this.schemas.getSchema().add( s );
                         }
                     }
                     if ( bootstrapObject instanceof Schema )
                     {
-                        this.bootstrapSchemas.getSchema().add( (Schema) bootstrapObject );
+                        this.schemas.getSchema().add( (Schema) bootstrapObject );
                     }
                     break;
 
@@ -241,47 +240,63 @@ public class JomcResourceTransformer implements ResourceTransformer
 
     public boolean hasTransformedResource()
     {
-        return !( this.moduleAssembler.getModules().getModule().isEmpty() &&
-                  this.bootstrapSchemas.getSchema().isEmpty() );
-
+        return !( this.modules.getModule().isEmpty() && this.schemas.getSchema().isEmpty() );
     }
 
     public void modifyOutputStream( final JarOutputStream out ) throws IOException
     {
         try
         {
-            if ( !this.moduleAssembler.getModules().getModule().isEmpty() )
+            if ( !this.modules.getModule().isEmpty() )
             {
-                ModelObjectRelocator relocator = null;
-                if ( this.modelObjectRelocations != null )
+                Module mergedModule = this.modules.getMergedModule();
+                mergedModule.setName( this.moduleName );
+                mergedModule.setVersion( this.moduleVersion );
+                mergedModule.setVendor( this.moduleVendor );
+
+                if ( this.modelObjectStylesheet != null )
                 {
-                    relocator = new ModelObjectRelocator();
-                    relocator.getModelObjectRelocations().addAll( Arrays.asList( this.modelObjectRelocations ) );
+                    final Transformer transformer = TransformerFactory.newInstance().newTransformer(
+                        new StreamSource( this.modelObjectStylesheet ) );
+
+                    mergedModule = this.getModelManager().transformModelObject(
+                        this.getModelManager().getObjectFactory().createModule( mergedModule ), transformer );
+
                 }
 
-                final Module mergedModule = this.moduleAssembler.mergeModules(
-                    this.moduleName, this.moduleVersion, this.moduleVendor, this.mergeDirectory, relocator );
-
                 out.putNextEntry( new JarEntry( this.moduleResource ) );
-                this.moduleAssembler.getModelManager().getMarshaller( true, true ).marshal(
-                    this.moduleAssembler.getModelManager().getObjectFactory().createModule( mergedModule ), out );
+                this.getModelManager().getMarshaller( true, true ).marshal(
+                    this.getModelManager().getObjectFactory().createModule( mergedModule ), out );
 
             }
-            if ( !this.bootstrapSchemas.getSchema().isEmpty() )
+
+            if ( !this.schemas.getSchema().isEmpty() )
             {
-                BootstrapObjectRelocator relocator = null;
-                if ( this.bootstrapObjectRelocations != null )
+                Schemas copy = new Schemas( this.schemas );
+
+                if ( this.bootstrapObjectStylesheet != null )
                 {
-                    relocator = new BootstrapObjectRelocator();
-                    relocator.getBootstrapObjectRelocations().addAll( Arrays.asList( this.bootstrapObjectRelocations ) );
-                    this.bootstrapSchemas = relocator.relocateBootstrapObject( this.bootstrapSchemas, Schemas.class );
+                    final Transformer transformer = TransformerFactory.newInstance().newTransformer(
+                        new StreamSource( this.bootstrapObjectStylesheet ) );
+
+                    copy = this.getModelManager().transformBootstrapObject(
+                        this.getModelManager().getBootstrapObjectFactory().createSchemas( copy ), transformer );
+
                 }
 
                 out.putNextEntry( new JarEntry( this.bootstrapResource ) );
-                this.defaultModelManager.getBootstrapMarshaller( true, true ).marshal(
-                    this.defaultModelManager.getBootstrapObjectFactory().createSchemas( this.bootstrapSchemas ), out );
+                this.getModelManager().getBootstrapMarshaller( true, true ).marshal(
+                    this.getModelManager().getBootstrapObjectFactory().createSchemas( copy ), out );
 
             }
+        }
+        catch ( TransformerConfigurationException e )
+        {
+            throw (IOException) new IOException( e.getMessage() ).initCause( e );
+        }
+        catch ( TransformerException e )
+        {
+            throw (IOException) new IOException( e.getMessage() ).initCause( e );
         }
         catch ( SAXException e )
         {

@@ -58,6 +58,9 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
 import org.jomc.ObjectManagerFactory;
@@ -829,14 +832,12 @@ public class DefaultObjectManager implements ObjectManager
         {
             try
             {
-                if ( this.isClasspathAware() )
+                if ( this.isClasspathAware() && this.getModelManager() instanceof DefaultModelManager )
                 {
-                    final DefaultModelManager defaultModelManager = new DefaultModelManager();
-                    defaultModelManager.setClassLoader( this.getClassLoader( this.getClass() ) );
-                    defaultModelManager.getListeners().add( this.defaultModelManagerListener );
+                    final DefaultModelManager defaultModelManager = (DefaultModelManager) this.getModelManager();
 
-                    final Modules defaultModules =
-                        defaultModelManager.getClasspathModules( defaultModelManager.getDefaultDocumentLocation() );
+                    Modules defaultModules = defaultModelManager.getClasspathModules(
+                        defaultModelManager.getDefaultDocumentLocation() );
 
                     final Module classpathModule = defaultModelManager.getClasspathModule( defaultModules );
                     if ( classpathModule != null )
@@ -844,7 +845,15 @@ public class DefaultObjectManager implements ObjectManager
                         defaultModules.getModule().add( classpathModule );
                     }
 
-                    defaultModelManager.getListeners().remove( this.defaultModelManagerListener );
+                    final List<Transformer> defaultTransformers = defaultModelManager.getClasspathTransformers(
+                        defaultModelManager.getDefaultStylesheetLocation() );
+
+                    for ( Transformer t : defaultTransformers )
+                    {
+                        defaultModules = defaultModelManager.transformModelObject(
+                            defaultModelManager.getObjectFactory().createModules( defaultModules ), t );
+
+                    }
 
                     this.getModelManager().validateModules( defaultModules );
                     this.modules = defaultModules;
@@ -857,6 +866,10 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     this.log( d.getLevel(), d.getMessage(), null );
                 }
+            }
+            catch ( TransformerException e )
+            {
+                this.log( Level.SEVERE, e.getMessage(), e );
             }
             catch ( IOException e )
             {
