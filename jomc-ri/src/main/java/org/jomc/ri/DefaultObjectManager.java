@@ -59,7 +59,6 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBException;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
@@ -1686,27 +1685,30 @@ public class DefaultObjectManager implements ObjectManager
     private String getModulesReport( final Modules modules )
     {
         final StringBuffer modulesInfo = new StringBuffer();
+        final String lineSeparator = System.getProperty( "line.separator" );
+
         if ( modules.getDocumentation() != null )
         {
             modulesInfo.append( modules.getDocumentation().getText( Locale.getDefault().getLanguage() ).getValue() ).
-                append( '\n' );
+                append( lineSeparator );
 
         }
         else
         {
-            modulesInfo.append( '\n' );
+            modulesInfo.append( lineSeparator );
         }
 
         for ( Module m : modules.getModule() )
         {
-            modulesInfo.append( "\tM:" ).append( m.getName() ).append( ':' ).append( m.getVersion() ).append( '\n' );
+            modulesInfo.append( "\tM:" ).append( m.getName() ).append( ':' ).append( m.getVersion() ).
+                append( lineSeparator );
 
             if ( m.getSpecifications() != null )
             {
                 for ( Specification s : m.getSpecifications().getSpecification() )
                 {
                     modulesInfo.append( "\t\t" );
-                    this.appendSpecificationInfo( s, modulesInfo ).append( '\n' );
+                    this.appendSpecificationInfo( s, modulesInfo ).append( lineSeparator );
 
                     final Implementations available = modules.getImplementations( s.getIdentifier() );
 
@@ -1717,7 +1719,7 @@ public class DefaultObjectManager implements ObjectManager
                             modulesInfo.append( "\t\t\t" );
                             this.appendImplementationInfo( i, modulesInfo ).append( "@" ).
                                 append( modules.getModuleOfImplementation( i.getIdentifier() ).getName() ).
-                                append( '\n' );
+                                append( lineSeparator );
 
                         }
                     }
@@ -1729,14 +1731,14 @@ public class DefaultObjectManager implements ObjectManager
                 for ( Implementation i : m.getImplementations().getImplementation() )
                 {
                     modulesInfo.append( "\t\t" );
-                    this.appendImplementationInfo( i, modulesInfo ).append( '\n' );
+                    this.appendImplementationInfo( i, modulesInfo ).append( lineSeparator );
 
                     if ( i.getParent() != null )
                     {
                         modulesInfo.append( "\t\t\t" );
                         this.appendImplementationInfo( modules.getImplementation( i.getParent() ), modulesInfo ).
                             append( '@' ).append( modules.getModuleOfImplementation( i.getParent() ).getName() ).
-                            append( '\n' );
+                            append( lineSeparator );
 
                     }
                     if ( i.getSpecifications() != null )
@@ -1745,7 +1747,7 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             modulesInfo.append( "\t\t\tS:" ).append( s.getIdentifier() ).append( ':' ).
                                 append( s.getVersion() ).append( '@' ).append( modules.getModuleOfSpecification(
-                                s.getIdentifier() ).getName() ).append( '\n' );
+                                s.getIdentifier() ).getName() ).append( lineSeparator );
 
                         }
                     }
@@ -1763,7 +1765,7 @@ public class DefaultObjectManager implements ObjectManager
                             }
 
                             modulesInfo.append( '@' ).append( modules.getModuleOfSpecification(
-                                d.getIdentifier() ).getName() ).append( '\n' );
+                                d.getIdentifier() ).getName() ).append( lineSeparator );
 
                             final Implementations available = modules.getImplementations( d.getIdentifier() );
 
@@ -1774,7 +1776,7 @@ public class DefaultObjectManager implements ObjectManager
                                     modulesInfo.append( "\t\t\t\t" );
                                     this.appendImplementationInfo( di, modulesInfo ).append( "@" ).
                                         append( modules.getModuleOfImplementation( di.getIdentifier() ).getName() ).
-                                        append( '\n' );
+                                        append( lineSeparator );
 
                                 }
                             }
@@ -1787,7 +1789,7 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             modulesInfo.append( "\t\t\tM:" ).append( msg.getName() ).append( ':' ).
                                 append( msg.getTemplate().getText( Locale.getDefault().getLanguage() ).getValue() ).
-                                append( '\n' );
+                                append( lineSeparator );
 
                         }
                     }
@@ -1796,9 +1798,23 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         for ( Property p : i.getProperties().getProperty() )
                         {
-                            modulesInfo.append( "\t\t\tP:" ).append( p.getName() ).append( ':' ).append( p.getType() ).
-                                append( ':' ).append( p.getValue() ).append( '\n' );
+                            modulesInfo.append( "\t\t\tP:" ).append( p.getName() ).append( ':' ).
+                                append( p.getType() ).append( ':' );
 
+                            try
+                            {
+                                modulesInfo.append( p.getJavaValue( this.getClassLoader( this.getClass() ) ) );
+                            }
+                            catch ( ClassNotFoundException e )
+                            {
+                                modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
+                            }
+                            catch ( InstantiationException e )
+                            {
+                                modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
+                            }
+
+                            modulesInfo.append( lineSeparator );
                         }
                     }
                 }
