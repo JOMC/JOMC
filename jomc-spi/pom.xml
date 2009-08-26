@@ -64,12 +64,4 @@
       </plugin>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>javax.annotation</groupId>
-      <artifactId>jsr250-api</artifactId>
-      <scope>compile</scope>
-      <optional>true</optional>
-    </dependency>
-  </dependencies>
 </project>
