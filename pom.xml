@@ -119,9 +119,9 @@
           <version>2.3</version>
         </plugin>
         <plugin>
-          <groupId>org.jvnet.jaxb2.maven2</groupId>
-          <artifactId>maven-jaxb2-plugin</artifactId>
-          <version>0.7.1</version>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>jaxb2-maven-plugin</artifactId>
+          <version>1.2</version>
           <dependencies>
             <dependency>
               <groupId>javax.xml.bind</groupId>
@@ -141,7 +141,7 @@
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
               <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.0-beta-13</version>
+              <version>1.0-beta-14</version>
             </dependency>
           </dependencies>
           <executions>
@@ -149,21 +149,13 @@
               <id>xjc</id>
               <phase>generate-sources</phase>
               <goals>
-                <goal>generate</goal>
+                <goal>xjc</goal>
               </goals>
               <configuration>
-                <args>
-                  <arg>-copy-constructor</arg>
-                  <arg>-cc-visibility</arg>
-                  <arg>private</arg>
-                  <arg>-cc-target</arg>
-                  <arg>1.5</arg>
-                  <arg>-Xinject-code</arg>
-                  <arg>-mark-generated</arg>
-                </args>
+                <arguments>-copy-constructor -cc-visibility private -cc-target 1.5 -mark-generated -Xinject-code</arguments>
+                <bindingDirectory>src/main/schemas</bindingDirectory>
                 <schemaDirectory>src/main/schemas</schemaDirectory>
                 <extension>true</extension>
-                <episode>true</episode>
               </configuration>
             </execution>
           </executions>
@@ -224,9 +216,9 @@
           <version>1.0-alpha-4</version>
         </plugin>
         <plugin>
-          <groupId>net.sourceforge.mjarsigner</groupId>
-          <artifactId>jarsigner-maven-plugin</artifactId>
-          <version>1.0-beta-3</version>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jarsigner-plugin</artifactId>
+          <version>1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -497,11 +489,6 @@
               </configuration>
             </execution>
           </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.jboss.maven.plugins</groupId>
-          <artifactId>maven-jboss-license-plugin</artifactId>
-          <version>1.0.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -924,82 +911,6 @@
 
     </dependencies>
   </dependencyManagement>
-  <repositories>
-    <repository>
-      <id>http://download.java.net/maven/1</id>
-      <url>http://download.java.net/maven/1</url>
-      <layout>legacy</layout>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>http://download.java.net/maven/2</id>
-      <url>http://download.java.net/maven/2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-    <repository>
-      <id>http://mjarsigner.sourceforge.net/maven2/releases</id>
-      <url>http://mjarsigner.sourceforge.net/maven2/releases</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <id>http://download.java.net/maven/1</id>
-      <url>http://download.java.net/maven/1</url>
-      <layout>legacy</layout>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>http://download.java.net/maven/2</id>
-      <url>http://download.java.net/maven/2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>http://mjarsigner.sourceforge.net/maven2/releases</id>
-      <url>http://mjarsigner.sourceforge.net/maven2/releases</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>http://repository.jboss.org/maven2</id>
-      <url>http://repository.jboss.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
   <distributionManagement>
     <repository>
       <id>http://jomc.sourceforge.net/maven2/releases</id>
@@ -1098,8 +1009,8 @@
             </executions>
           </plugin>
           <plugin>
-            <groupId>net.sourceforge.mjarsigner</groupId>
-            <artifactId>jarsigner-maven-plugin</artifactId>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jarsigner-plugin</artifactId>
             <executions>
               <execution>
                 <id>sign</id>
