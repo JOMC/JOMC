@@ -361,12 +361,7 @@
               <id>main-java-classes</id>
               <goals>
                 <goal>main-java-classes</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>verify-main-java-classes</id>
-              <goals>
-                <goal>verify-main-java-classes</goal>
+                <goal>validate-main-java-classes</goal>
               </goals>
             </execution>
             <execution>
@@ -379,12 +374,7 @@
               <id>test-java-classes</id>
               <goals>
                 <goal>test-java-classes</goal>
-              </goals>
-            </execution>
-            <execution>
-              <id>verify-test-java-classes</id>
-              <goals>
-                <goal>verify-test-java-classes</goal>
+                <goal>validate-test-java-classes</goal>
               </goals>
             </execution>
           </executions>
