@@ -57,22 +57,12 @@
 
       </authors>
     </specification>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestContextSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
+    
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification"
                    vendor="${pom.organization.name}"
-                   version="${pom.version}">
+                   version="${pom.version}"
+                   scope="Singleton">
 
       <authors>
         <author name="Christian Schulte" version="1.0"
@@ -83,11 +73,11 @@
     </specification>
   </specifications>
   <implementations>
+    
     <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestMultiton"
-                    class="org.jomc.ri.test.TestMultiton"
-                    name="TestMultiton"
-                    scope="Multiton"
+    <implementation identifier="org.jomc.ri.test.TestImplementation"
+                    class="org.jomc.ri.test.TestImplementation"
+                    name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}">
 
@@ -101,64 +91,9 @@
         <reference identifier="org.jomc.ri.test.TestMultitonSpecification"
                    version="${pom.version}"/>
 
-      </specifications>
-    </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestContext"
-                    class="org.jomc.ri.test.TestContext"
-                    name="TestContext"
-                    scope="Context"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-      <specifications>
-        <reference identifier="org.jomc.ri.test.TestContextSpecification"
-                   version="${pom.version}"/>
-
-      </specifications>
-    </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestSingleton"
-                    class="org.jomc.ri.test.TestSingleton"
-                    name="TestSingleton"
-                    scope="Singleton"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-      <specifications>
         <reference identifier="org.jomc.ri.test.TestSingletonSpecification"
                    version="${pom.version}"/>
-
       </specifications>
-    </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.ImplementationTest"
-                    class="org.jomc.ri.test.ImplementationTest"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
       <dependencies>
         <dependency name="BoundMultitons"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
@@ -171,30 +106,12 @@
         <dependency name="SelectedBoundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
                     version="${pom.version}"
-                    implementationName="TestMultiton"
+                    implementationName="${pom.name}"
                     bound="true"/>
         <dependency name="SelectedUnboundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
                     version="${pom.version}"
-                    implementationName="TestMultiton"
-                    bound="false"/>
-        <dependency name="BoundContexts"
-                    identifier="org.jomc.ri.test.TestContextSpecification"
-                    version="${pom.version}"
-                    bound="true"/>
-        <dependency name="UnboundContexts"
-                    identifier="org.jomc.ri.test.TestContextSpecification"
-                    version="${pom.version}"
-                    bound="false"/>
-        <dependency name="SelectedBoundContext"
-                    identifier="org.jomc.ri.test.TestContextSpecification"
-                    version="${pom.version}"
-                    implementationName="TestContext"
-                    bound="true"/>
-        <dependency name="SelectedUnboundContext"
-                    identifier="org.jomc.ri.test.TestContextSpecification"
-                    version="${pom.version}"
-                    implementationName="TestContext"
+                    implementationName="${pom.name}"
                     bound="false"/>
         <dependency name="BoundSingletons"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
@@ -207,12 +124,12 @@
         <dependency name="SelectedBoundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${pom.version}"
-                    implementationName="TestSingleton"
+                    implementationName="${pom.name}"
                     bound="true"/>
         <dependency name="SelectedUnboundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${pom.version}"
-                    implementationName="TestSingleton"
+                    implementationName="${pom.name}"
                     bound="false"/>
       </dependencies>
       <properties>

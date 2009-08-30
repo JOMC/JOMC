@@ -48,6 +48,8 @@ import java.util.logging.Level;
  * </pre>
  * </p>
  *
+ * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */

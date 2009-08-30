@@ -48,7 +48,6 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultObjectManager"
                     class="org.jomc.ri.DefaultObjectManager"
-                    scope="Singleton"
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}">

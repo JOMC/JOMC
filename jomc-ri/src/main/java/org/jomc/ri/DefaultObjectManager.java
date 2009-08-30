@@ -694,12 +694,6 @@ public class DefaultObjectManager implements ObjectManager
 
     // SECTION-END
     // SECTION-START[DefaultObjectManager]
-    /** Constant for the {@code Multiton} scope identifier. */
-    protected static final String MULTITON_SCOPE_IDENTIFIER = "Multiton";
-
-    /** Constant for the {@code Context} scope identifier. */
-    protected static final String CONTEXT_SCOPE_IDENTIFIER = "Context";
-
     /** Constant for the {@code Singleton} scope identifier. */
     protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
 
@@ -978,43 +972,60 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Object object = null;
-        final Scope scope = this.getScope( instance.getScope() );
-
-        if ( scope != null )
+        if ( specification.getScope() != null )
         {
-            synchronized ( scope )
+            final Scope scope = this.getScope( specification.getScope() );
+
+            if ( scope != null )
             {
-                object = scope.getObject( instance.getIdentifier() );
-
-                if ( object == null )
+                synchronized ( scope )
                 {
-                    scope.putObject( instance.getIdentifier(), instance );
+                    object = scope.getObject( instance.getIdentifier() );
 
-                    try
+                    if ( object == null )
                     {
-                        object = this.getModelManager().getObject( this.getModules(), specification, instance );
-                    }
-                    finally
-                    {
-                        if ( object != null )
+                        scope.putObject( instance.getIdentifier(), instance );
+
+                        try
                         {
-                            object = this.createProxy( specification, instance, object );
+                            object = this.getModelManager().getObject( this.getModules(), specification, instance );
                         }
+                        finally
+                        {
+                            if ( object != null )
+                            {
+                                object = this.createProxy( specification, instance, object );
+                            }
 
-                        scope.putObject( instance.getIdentifier(), object );
+                            scope.putObject( instance.getIdentifier(), object );
+                        }
+                    }
+                    else if ( object instanceof Instance )
+                    {
+                        throw new ObjectManagementException( this.getDependencyCycleMessage(
+                            ( (Instance) object ).getIdentifier() ) );
+
                     }
                 }
-                else if ( object instanceof Instance )
-                {
-                    throw new ObjectManagementException( this.getDependencyCycleMessage(
-                        ( (Instance) object ).getIdentifier() ) );
-
-                }
+            }
+            else
+            {
+                this.log( Level.WARNING, this.getMissingScopeMessage( specification.getScope() ), null );
             }
         }
         else
         {
-            this.log( Level.WARNING, this.getMissingScopeMessage( instance.getScope() ), null );
+            try
+            {
+                object = this.getModelManager().getObject( this.getModules(), specification, instance );
+            }
+            finally
+            {
+                if ( object != null )
+                {
+                    object = this.createProxy( specification, instance, object );
+                }
+            }
         }
 
         return object;
@@ -1148,13 +1159,9 @@ public class DefaultObjectManager implements ObjectManager
 
         DefaultScope defaultScope = null;
 
-        if ( modelScope.equals( SINGLETON_SCOPE_IDENTIFIER ) || modelScope.equals( CONTEXT_SCOPE_IDENTIFIER ) )
+        if ( modelScope.equals( SINGLETON_SCOPE_IDENTIFIER ) )
         {
             defaultScope = new DefaultScope( modelScope, new HashMap<String, Object>() );
-        }
-        else if ( modelScope.equals( MULTITON_SCOPE_IDENTIFIER ) )
-        {
-            defaultScope = new DefaultScope( modelScope, null );
         }
 
         return defaultScope;
@@ -1289,6 +1296,14 @@ public class DefaultObjectManager implements ObjectManager
 
                 this.getListeners().add( this.bootstrapObjectManagementListener );
 
+                final Specification objectManager = this.getModules().getSpecification( ObjectManager.class.getName() );
+                if ( objectManager == null )
+                {
+                    throw new InstantiationException( this.getMissingSpecificationMessage(
+                        ObjectManager.class.getName() ) );
+
+                }
+
                 final Instance thisInstance = this.getModelManager().getInstance( this.getModules(), this );
                 if ( thisInstance == null )
                 {
@@ -1297,15 +1312,16 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
 
-                thisInstance.setScope( SINGLETON_SCOPE_IDENTIFIER );
-
-                final Scope singletons = this.getScope( SINGLETON_SCOPE_IDENTIFIER );
-                if ( singletons == null )
+                if ( objectManager.getScope() != null )
                 {
-                    throw new InstantiationException( this.getMissingScopeMessage( SINGLETON_SCOPE_IDENTIFIER ) );
-                }
+                    final Scope scope = this.getScope( objectManager.getScope() );
+                    if ( scope == null )
+                    {
+                        throw new InstantiationException( this.getMissingScopeMessage( objectManager.getScope() ) );
+                    }
 
-                singletons.putObject( thisInstance.getIdentifier(), this );
+                    scope.putObject( thisInstance.getIdentifier(), this );
+                }
 
                 // Bootstrap listener loading.
                 final Specification listenerSpecification = this.getModules().getSpecification(
@@ -1834,7 +1850,7 @@ public class DefaultObjectManager implements ObjectManager
     private StringBuffer appendImplementationInfo( final Implementation i, final StringBuffer b )
     {
         b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
-            append( i.getVersion() ).append( ':' ).append( i.getScope() );
+            append( i.getVersion() ).append( ':' );
 
         if ( i.getClazz() != null )
         {

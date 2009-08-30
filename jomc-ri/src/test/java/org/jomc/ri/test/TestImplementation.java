@@ -38,31 +38,27 @@ import java.util.Locale;
 
 // SECTION-START[Documentation]
 /**
+ * <p><b>Specifications</b><ul>
+ * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
+ * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
+ * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"<blockquote>
  * Property of type {@code java.lang.String} with value "TEST".</blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
- * <li>"{@link #getBoundContexts BoundContexts}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestContextSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundMultitons BoundMultitons}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getSelectedBoundContext SelectedBoundContext}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestContextSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedBoundSingleton SelectedBoundSingleton}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getSelectedUnboundContext SelectedUnboundContext}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestContextSpecification} at specification level 1.0-alpha-1-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-1-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-1-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getUnboundContexts UnboundContexts}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestContextSpecification} at specification level 1.0-alpha-1-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundMultitons UnboundMultitons}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-1-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundSingletons UnboundSingletons}"<blockquote>
@@ -85,9 +81,16 @@ import java.util.Locale;
     comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
 )
 // SECTION-END
-public class ImplementationTest
+public class TestImplementation
+    implements
+    org.jomc.ri.test.TestMultitonSpecification,
+    org.jomc.ri.test.TestSingletonSpecification
 {
-    // SECTION-START[ImplementationTest]
+    // SECTION-START[TestMultitonSpecification]
+    // SECTION-END
+    // SECTION-START[TestSingletonSpecification]
+    // SECTION-END
+    // SECTION-START[TestImplementation]
 
     private static final int NUM_REQUESTS = 25000;
 
@@ -167,82 +170,6 @@ public class ImplementationTest
         }
 
         System.out.println( NUM_REQUESTS + " * 'SelectedUnboundMultiton': ~" + ( t / NUM_RUNS ) + "ms." );
-    }
-
-    public void testBoundContexts() throws Exception
-    {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
-        {
-            final long t0 = System.currentTimeMillis();
-
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
-            {
-                this.getBoundContexts();
-            }
-
-            t += ( System.currentTimeMillis() - t0 );
-        }
-
-        System.out.println( NUM_REQUESTS + " * 'BoundContexts': ~" + ( t / NUM_RUNS ) + "ms." );
-    }
-
-    public void testUnboundContexts() throws Exception
-    {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
-        {
-            final long t0 = System.currentTimeMillis();
-
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
-            {
-                this.getUnboundContexts();
-            }
-
-            t += ( System.currentTimeMillis() - t0 );
-        }
-
-        System.out.println( NUM_REQUESTS + " * 'UnboundContexts': ~" + ( t / NUM_RUNS ) + "ms." );
-    }
-
-    public void testSelectedBoundContext() throws Exception
-    {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
-        {
-            final long t0 = System.currentTimeMillis();
-
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
-            {
-                this.getSelectedBoundContext();
-            }
-
-            t += ( System.currentTimeMillis() - t0 );
-        }
-
-        System.out.println( NUM_REQUESTS + " * 'SelectedBoundContext': ~" + ( t / NUM_RUNS ) + "ms." );
-    }
-
-    public void testSelectedUnboundContext() throws Exception
-    {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
-        {
-            final long t0 = System.currentTimeMillis();
-
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
-            {
-                this.getSelectedUnboundContext();
-            }
-
-            t += ( System.currentTimeMillis() - t0 );
-        }
-
-        System.out.println( NUM_REQUESTS + " * 'SelectedUnboundContext': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testBoundSingletons() throws Exception
@@ -363,13 +290,13 @@ public class ImplementationTest
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Creates a new {@code ImplementationTest} instance. */
+    /** Creates a new {@code TestImplementation} instance. */
     @javax.annotation.Generated
     (
         value = "org.jomc.tools.JavaSources",
         comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
     )
-    public ImplementationTest()
+    public TestImplementation()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -377,22 +304,6 @@ public class ImplementationTest
     }
     // SECTION-END
     // SECTION-START[Dependencies]
-
-    /**
-     * Gets the {@code BoundContexts} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestContextSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
-     * @return The {@code BoundContexts} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestContextSpecification[] getBoundContexts() throws org.jomc.ObjectManagementException
-    {
-        return (org.jomc.ri.test.TestContextSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundContexts" );
-    }
 
     /**
      * Gets the {@code BoundMultitons} dependency.
@@ -427,24 +338,8 @@ public class ImplementationTest
     }
 
     /**
-     * Gets the {@code SelectedBoundContext} dependency.
-     * <p>This method returns the "{@code TestContext}" object of the {@code org.jomc.ri.test.TestContextSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
-     * @return The {@code SelectedBoundContext} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestContextSpecification getSelectedBoundContext() throws org.jomc.ObjectManagementException
-    {
-        return (org.jomc.ri.test.TestContextSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundContext" );
-    }
-
-    /**
      * Gets the {@code SelectedBoundMultiton} dependency.
-     * <p>This method returns the "{@code TestMultiton}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -460,7 +355,7 @@ public class ImplementationTest
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
-     * <p>This method returns the "{@code TestSingleton}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -475,24 +370,8 @@ public class ImplementationTest
     }
 
     /**
-     * Gets the {@code SelectedUnboundContext} dependency.
-     * <p>This method returns the "{@code TestContext}" object of the {@code org.jomc.ri.test.TestContextSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
-     * @return The {@code SelectedUnboundContext} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestContextSpecification getSelectedUnboundContext() throws org.jomc.ObjectManagementException
-    {
-        return (org.jomc.ri.test.TestContextSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundContext" );
-    }
-
-    /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
-     * <p>This method returns the "{@code TestMultiton}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -508,7 +387,7 @@ public class ImplementationTest
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
-     * <p>This method returns the "{@code TestSingleton}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -520,22 +399,6 @@ public class ImplementationTest
     private org.jomc.ri.test.TestSingletonSpecification getSelectedUnboundSingleton() throws org.jomc.ObjectManagementException
     {
         return (org.jomc.ri.test.TestSingletonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundSingleton" );
-    }
-
-    /**
-     * Gets the {@code UnboundContexts} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestContextSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
-     * @return The {@code UnboundContexts} dependency.
-     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
-     */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestContextSpecification[] getUnboundContexts() throws org.jomc.ObjectManagementException
-    {
-        return (org.jomc.ri.test.TestContextSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundContexts" );
     }
 
     /**

@@ -49,7 +49,8 @@
     <specification identifier="org.jomc.ObjectManager"
                    vendor="${pom.organization.name}"
                    version="1.0"
-                   multiplicity="One">
+                   multiplicity="One"
+                   scope="Singleton">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Manages objects.]]></text>

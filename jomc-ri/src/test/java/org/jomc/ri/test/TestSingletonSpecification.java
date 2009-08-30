@@ -47,6 +47,8 @@ import java.lang.*;
  * </pre>
  * </p>
  *
+ * <p>This specification applies to {@code Singleton} scope. The same {@code singleton} object is returned whenever requested.</p>
+ *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
