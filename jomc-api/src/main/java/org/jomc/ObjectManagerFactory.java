@@ -55,27 +55,17 @@ public class ObjectManagerFactory
 {
     // SECTION-START[ObjectManagerFactory]
 
-    /** Constant for the default class name providing the {@code getInstance()} and {@code newInstance()} methods. */
-    private static final String DEFAULT_FACTORY_CLASS = "org.jomc.ri.DefaultObjectManager";
+    /** Constant for the name of the class providing the default {@code getObjectManager()} method. */
+    private static final String DEFAULT_FACTORY_CLASSNAME = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the class name of the default {@code ObjectManager} implementation. */
-    private static final String DEFAULT_IMPLEMENTATION = "org.jomc.ri.DefaultObjectManager";
+    /** Constant for the name of the class providing the default {@code ObjectManager} implementation. */
+    private static final String DEFAULT_IMPLEMENTATION_CLASSNAME = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the name of the system property holding the {@code getInstance()} factory class name. */
+    /** Constant for the name of the system property holding the {@code getObjectManager()} method's class name. */
     private static final String SYS_FACTORY_CLASSNAME = "org.jomc.ObjectManagerFactory";
 
-    /** Constant for the name of the system property holding the {@code newInstance()} implementation class name. */
+    /** Constant for the name of the system property holding the {@code ObjectManager} implementation class name. */
     private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
-
-    /** Empty {@code Class} array. */
-    private static final Class[] NO_CLASSES =
-    {
-    };
-
-    /** Empty {@code Object} array. */
-    private static final Object[] NO_OBJECTS =
-    {
-    };
 
     /**
      * Gets the {@code ObjectManager} singleton instance.
@@ -93,13 +83,13 @@ public class ObjectManagerFactory
      */
     public static ObjectManager getObjectManager() throws ObjectManagementException
     {
-        final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASS );
+        final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
 
         try
         {
             final Class factoryClass = Class.forName( factory );
-            final Method factoryMethod = factoryClass.getMethod( "getObjectManager", NO_CLASSES );
-            return (ObjectManager) factoryMethod.invoke( null, NO_OBJECTS );
+            final Method factoryMethod = factoryClass.getMethod( "getObjectManager", (Class[]) null );
+            return (ObjectManager) factoryMethod.invoke( null, (Object[]) null );
         }
         catch ( Exception e )
         {
@@ -118,7 +108,7 @@ public class ObjectManagerFactory
      */
     public static ObjectManager newObjectManager() throws ObjectManagementException
     {
-        final String impl = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION );
+        final String impl = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
 
         try
         {
