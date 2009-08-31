@@ -39,8 +39,8 @@ import java.util.Locale;
 // SECTION-START[Documentation]
 /**
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
- * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-1-SNAPSHOT}</li>
+ * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-alpha-1-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-1-SNAPSHOT} {@code Singleton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"<blockquote>

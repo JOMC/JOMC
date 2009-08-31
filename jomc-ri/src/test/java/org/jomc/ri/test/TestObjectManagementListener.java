@@ -42,7 +42,7 @@ import java.util.logging.Level;
 /**
  * {@code ObjectManagementLister} logging to the console.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.spi.Listener} {@code 1.0}</li>
+ * <li>{@code org.jomc.spi.Listener} {@code 1.0} {@code Multiton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
