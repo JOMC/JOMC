@@ -516,7 +516,7 @@
             </goals>
             <configuration>
               <resourceBundles>
-                <resourceBundle>org.jomc.build:jomc-build-resources:1.0-alpha-1-SNAPSHOT</resourceBundle>
+                <resourceBundle>org.jomc.build:jomc-build-resources:1.0</resourceBundle>
               </resourceBundles>
               <properties>
                 <buildNumber>${buildNumber}</buildNumber>
