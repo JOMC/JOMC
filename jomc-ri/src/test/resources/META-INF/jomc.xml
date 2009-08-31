@@ -57,7 +57,7 @@
 
       </authors>
     </specification>
-    
+
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification"
                    vendor="${pom.organization.name}"
@@ -73,7 +73,7 @@
     </specification>
   </specifications>
   <implementations>
-    
+
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.TestImplementation"
                     class="org.jomc.ri.test.TestImplementation"
