@@ -536,6 +536,7 @@
     <module>jomc-spi</module>
     <module>jomc-ri</module>
     <module>jomc-cli</module>
+    <module>jomc-dist</module>
   </modules>
   <reporting>
     <plugins>
