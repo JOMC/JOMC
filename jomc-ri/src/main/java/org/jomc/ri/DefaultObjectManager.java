@@ -86,7 +86,7 @@ import org.xml.sax.SAXException;
 /**
  * Object management and configuration reference implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ObjectManager} {@code 1.0}</li>
+ * <li>{@code org.jomc.ObjectManager} {@code 1.0} {@code Singleton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
