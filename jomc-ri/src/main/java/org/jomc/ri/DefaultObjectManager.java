@@ -1850,7 +1850,7 @@ public class DefaultObjectManager implements ObjectManager
     private StringBuffer appendImplementationInfo( final Implementation i, final StringBuffer b )
     {
         b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
-            append( i.getVersion() ).append( ':' );
+            append( i.getVersion() );
 
         if ( i.getClazz() != null )
         {
