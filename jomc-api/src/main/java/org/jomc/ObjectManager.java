@@ -46,18 +46,15 @@ import java.util.Locale;
  * </pre>
  * </p>
  *
- * <p>This specification applies to {@code Singleton} scope. The same {@code singleton} object is returned whenever requested.</p>
+ * <p>This specification applies to {@code Singleton} scope. The same singleton object is returned whenever requested.</p>
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
 // SECTION-END
 // SECTION-START[Annotations]
-@javax.annotation.Generated
-(
-    value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-)
+@javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public interface ObjectManager
 {

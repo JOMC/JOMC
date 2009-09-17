@@ -47,6 +47,7 @@
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.spi.Scope"
+                   class="org.jomc.spi.Scope"
                    vendor="${pom.organization.name}"
                    version="1.0">
 
@@ -61,6 +62,7 @@
     </specification>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.spi.Listener"
+                   class="org.jomc.spi.Listener"
                    vendor="${pom.organization.name}"
                    version="1.0">
 
@@ -75,6 +77,7 @@
     </specification>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.spi.Locator"
+                   class="org.jomc.spi.Locator"
                    vendor="${pom.organization.name}"
                    version="1.0">
 

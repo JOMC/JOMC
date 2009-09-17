@@ -42,8 +42,8 @@ import java.lang.*;
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * TestMultitonSpecification[] objects = (TestMultitonSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestMultitonSpecification.class );
- * TestMultitonSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestMultitonSpecification.class, "<i>implementation name</i>" );
+ * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class );
+ * TestSpecification object = ObjectManagerFactory.getObjectManager().getObject( TestSpecification.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *
@@ -54,14 +54,11 @@ import java.lang.*;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-@javax.annotation.Generated
-(
-    value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-)
+@javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
 // SECTION-END
-public interface TestMultitonSpecification
+public interface TestSpecification
 {
-    // SECTION-START[TestMultitonSpecification]
+    // SECTION-START[TestSpecification]
     // SECTION-END
 }

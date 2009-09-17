@@ -75,16 +75,12 @@ import java.util.Locale;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-@javax.annotation.Generated
-(
-    value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-)
+@javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public class TestImplementation
     implements
-    org.jomc.ri.test.TestMultitonSpecification,
-    org.jomc.ri.test.TestSingletonSpecification
+    org.jomc.ri.test.TestSpecification
 {
     // SECTION-START[TestMultitonSpecification]
     // SECTION-END
@@ -291,11 +287,8 @@ public class TestImplementation
     // SECTION-START[Constructors]
 
     /** Creates a new {@code TestImplementation} instance. */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
     public TestImplementation()
     {
         // SECTION-START[Default Constructor]
@@ -308,129 +301,113 @@ public class TestImplementation
     /**
      * Gets the {@code BoundMultitons} dependency.
      * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestMultitonSpecification[] getBoundMultitons() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification[] getBoundMultitons() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestMultitonSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundMultitons" );
+        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundMultitons" );
     }
 
     /**
      * Gets the {@code BoundSingletons} dependency.
      * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestSingletonSpecification[] getBoundSingletons() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification[] getBoundSingletons() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestSingletonSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
+        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
     }
 
     /**
      * Gets the {@code SelectedBoundMultiton} dependency.
      * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestMultitonSpecification getSelectedBoundMultiton() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification getSelectedBoundMultiton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestMultitonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundMultiton" );
+        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundMultiton" );
     }
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
      * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestSingletonSpecification getSelectedBoundSingleton() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification getSelectedBoundSingleton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestSingletonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundSingleton" );
+        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundSingleton" );
     }
 
     /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
      * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestMultitonSpecification getSelectedUnboundMultiton() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification getSelectedUnboundMultiton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestMultitonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundMultiton" );
+        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundMultiton" );
     }
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
      * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestSingletonSpecification getSelectedUnboundSingleton() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification getSelectedUnboundSingleton() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestSingletonSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundSingleton" );
+        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundSingleton" );
     }
 
     /**
      * Gets the {@code UnboundMultitons} dependency.
      * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code UnboundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestMultitonSpecification[] getUnboundMultitons() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification[] getUnboundMultitons() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestMultitonSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundMultitons" );
+        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundMultitons" );
     }
 
     /**
      * Gets the {@code UnboundSingletons} dependency.
      * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-1-SNAPSHOT.</p>
+     * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code UnboundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
-    private org.jomc.ri.test.TestSingletonSpecification[] getUnboundSingletons() throws org.jomc.ObjectManagementException
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.TestSpecification[] getUnboundSingletons() throws org.jomc.ObjectManagementException
     {
-        return (org.jomc.ri.test.TestSingletonSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundSingletons" );
+        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundSingletons" );
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -440,11 +417,8 @@ public class TestImplementation
      * @return The value of the {@code testProperty} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
     private java.lang.String getTestProperty() throws org.jomc.ObjectManagementException
     {
         return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "testProperty" );
@@ -463,11 +437,8 @@ public class TestImplementation
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
     private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument ) throws org.jomc.ObjectManagementException
     {
         return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );

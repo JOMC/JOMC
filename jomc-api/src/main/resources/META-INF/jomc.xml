@@ -47,6 +47,7 @@
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ObjectManager"
+                   class="org.jomc.ObjectManager"
                    vendor="${pom.organization.name}"
                    version="1.0"
                    multiplicity="One"

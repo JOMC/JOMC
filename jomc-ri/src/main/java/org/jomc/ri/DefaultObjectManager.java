@@ -94,22 +94,16 @@ import org.xml.sax.SAXException;
  */
 // SECTION-END
 // SECTION-START[Annotations]
-@javax.annotation.Generated
-(
-    value = "org.jomc.tools.JavaSources",
-    comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-)
+@javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public class DefaultObjectManager implements ObjectManager
 {
     // SECTION-START[Constructors]
 
     /** Creates a new {@code DefaultObjectManager} instance. */
-    @javax.annotation.Generated
-    (
-        value = "org.jomc.tools.JavaSources",
-        comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools"
-    )
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
     public DefaultObjectManager()
     {
         // SECTION-START[Default Constructor]
@@ -132,12 +126,11 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final Specification s = this.getModules().getSpecification( specification.getName() );
+            final Specification s = this.getModules().getSpecification( specification );
 
             if ( s != null )
             {
-                final Implementations available =
-                    this.getModules().getImplementations( specification.getName() );
+                final Implementations available = this.getModules().getImplementations( s.getIdentifier() );
 
                 if ( available != null && !available.getImplementation().isEmpty() )
                 {
@@ -273,10 +266,11 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final Specification s = this.getModules().getSpecification( specification.getName() );
+            final Specification s = this.getModules().getSpecification( specification );
+
             if ( s != null )
             {
-                final Implementations available = this.getModules().getImplementations( specification.getName() );
+                final Implementations available = this.getModules().getImplementations( s.getIdentifier() );
                 if ( available != null && !available.getImplementation().isEmpty() )
                 {
                     final Implementation i = available.getImplementationByName( implementationName );
@@ -526,7 +520,7 @@ public class DefaultObjectManager implements ObjectManager
                                         }
 
                                         final Class specClass = Class.forName(
-                                            ds.getIdentifier(), true, this.getClassLoader( object.getClass() ) );
+                                            ds.getClazz(), true, this.getClassLoader( object.getClass() ) );
 
                                         o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance(
                                             specClass, list.size() ) );
@@ -1066,9 +1060,7 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( locator != null )
         {
-            object = locator.getObject(
-                Class.forName( specification.getIdentifier(), true, classLoader ), location );
-
+            object = locator.getObject( Class.forName( specification.getClazz(), true, classLoader ), location );
         }
 
         return object;
@@ -1099,25 +1091,34 @@ public class DefaultObjectManager implements ObjectManager
             if ( scope == null )
             {
                 // Bootstrap scope loading.
-                final Specification scopeSpecification = this.getModules().getSpecification( Scope.class.getName() );
-                final Implementations implementations = this.getModules().getImplementations( Scope.class.getName() );
+                final Specification scopeSpecification = this.getModules().getSpecification( Scope.class );
 
-                if ( scopeSpecification != null && implementations != null )
+                if ( scopeSpecification != null )
                 {
-                    for ( Implementation i : implementations.getImplementation() )
+                    final Implementations implementations =
+                        this.getModules().getImplementations( scopeSpecification.getIdentifier() );
+
+                    if ( implementations != null )
                     {
-                        if ( modelScope.equals( i.getName() ) )
+                        for ( Implementation i : implementations.getImplementation() )
                         {
-                            final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( Scope.class ) );
+                            if ( modelScope.equals( i.getName() ) )
+                            {
+                                final Instance instance = this.getModelManager().getInstance(
+                                    this.getModules(), i, this.getClassLoader( Scope.class ) );
 
-                            scope = (Scope) this.getModelManager().getObject(
-                                this.getModules(), scopeSpecification, instance );
+                                scope = (Scope) this.getModelManager().getObject(
+                                    this.getModules(), scopeSpecification, instance );
 
-                            this.scopes.put( modelScope, scope );
-                            break;
+                                this.scopes.put( modelScope, scope );
+                                break;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Scope.class.getName() ), null );
                 }
             }
 
@@ -1193,28 +1194,34 @@ public class DefaultObjectManager implements ObjectManager
             if ( locator == null )
             {
                 // Bootstrap locator loading.
-                final Specification locatorSpecification =
-                    this.getModules().getSpecification( Locator.class.getName() );
+                final Specification locatorSpecification = this.getModules().getSpecification( Locator.class );
 
-                final Implementations implementations =
-                    this.getModules().getImplementations( Locator.class.getName() );
-
-                if ( locatorSpecification != null && implementations != null )
+                if ( locatorSpecification != null )
                 {
-                    for ( Implementation i : implementations.getImplementation() )
+                    final Implementations implementations =
+                        this.getModules().getImplementations( locatorSpecification.getIdentifier() );
+
+                    if ( implementations != null )
                     {
-                        if ( scheme.equals( i.getName() ) )
+                        for ( Implementation i : implementations.getImplementation() )
                         {
-                            final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( Locator.class ) );
+                            if ( scheme.equals( i.getName() ) )
+                            {
+                                final Instance instance = this.getModelManager().getInstance(
+                                    this.getModules(), i, this.getClassLoader( Locator.class ) );
 
-                            locator = (Locator) this.getModelManager().getObject(
-                                this.getModules(), locatorSpecification, instance );
+                                locator = (Locator) this.getModelManager().getObject(
+                                    this.getModules(), locatorSpecification, instance );
 
-                            this.locators.put( scheme, locator );
-                            break;
+                                this.locators.put( scheme, locator );
+                                break;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Locator.class.getName() ), null );
                 }
             }
 
@@ -1296,7 +1303,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 this.getListeners().add( this.bootstrapObjectManagementListener );
 
-                final Specification objectManager = this.getModules().getSpecification( ObjectManager.class.getName() );
+                final Specification objectManager = this.getModules().getSpecification( ObjectManager.class );
                 if ( objectManager == null )
                 {
                     throw new InstantiationException( this.getMissingSpecificationMessage(
@@ -1324,34 +1331,39 @@ public class DefaultObjectManager implements ObjectManager
                 }
 
                 // Bootstrap listener loading.
-                final Specification listenerSpecification = this.getModules().getSpecification(
-                    org.jomc.spi.Listener.class.getName() );
+                final Specification listenerSpecification = this.getModules().getSpecification( Listener.class );
 
-                final Implementations implementations = this.getModules().getImplementations(
-                    org.jomc.spi.Listener.class.getName() );
-
-                if ( listenerSpecification != null && implementations != null &&
-                     !implementations.getImplementation().isEmpty() )
+                if ( listenerSpecification != null )
                 {
-                    for ( Implementation i : implementations.getImplementation() )
+                    final Implementations implementations =
+                        this.getModules().getImplementations( listenerSpecification.getIdentifier() );
+
+                    if ( implementations != null && !implementations.getImplementation().isEmpty() )
                     {
-                        final Instance listenerInstance = this.getModelManager().getInstance(
-                            this.getModules(), i, this.getClassLoader( org.jomc.spi.Listener.class ) );
+                        for ( Implementation i : implementations.getImplementation() )
+                        {
+                            final Instance listenerInstance = this.getModelManager().getInstance(
+                                this.getModules(), i, this.getClassLoader( Listener.class ) );
 
-                        final org.jomc.spi.Listener l = (org.jomc.spi.Listener) this.getModelManager().getObject(
-                            this.getModules(), listenerSpecification, listenerInstance );
+                            final Listener l = (Listener) this.getModelManager().getObject(
+                                this.getModules(), listenerSpecification, listenerInstance );
 
-                        this.getListeners().add( l );
-                        this.bootstrapLogRecords.add(
-                            new LogRecord( Level.FINE, this.getRegisteredListenerMessage( l.getClass().getName() ) ) );
+                            this.getListeners().add( l );
+                            this.bootstrapLogRecords.add( new LogRecord(
+                                Level.FINE, this.getRegisteredListenerMessage( l.getClass().getName() ) ) );
+
+                        }
+                    }
+                    else
+                    {
+                        this.log( Level.WARNING, this.getMissingImplementationsMessage(
+                            listenerSpecification.getIdentifier() ), null );
 
                     }
                 }
                 else
                 {
-                    this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                        org.jomc.spi.Listener.class.getName() ), null );
-
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Listener.class.getName() ), null );
                 }
 
                 this.getListeners().remove( this.bootstrapObjectManagementListener );
@@ -1426,7 +1438,7 @@ public class DefaultObjectManager implements ObjectManager
     {
         try
         {
-            final Class specClass = Class.forName( specification.getIdentifier(), true, instance.getClassLoader() );
+            final Class specClass = Class.forName( specification.getClazz(), true, instance.getClassLoader() );
             if ( specClass.isInterface() )
             {
                 final Set<Class> interfaces = new HashSet<Class>();
@@ -1436,7 +1448,7 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     for ( Specification s : instance.getSpecifications().getSpecification() )
                     {
-                        final Class clazz = Class.forName( s.getIdentifier(), true, instance.getClassLoader() );
+                        final Class clazz = Class.forName( s.getClazz(), true, instance.getClassLoader() );
                         if ( clazz.isInterface() )
                         {
                             interfaces.add( clazz );
@@ -1444,21 +1456,7 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
-                                s.getIdentifier(), instance.getIdentifier() ), null );
-
-                        }
-                    }
-                    for ( SpecificationReference r : instance.getSpecifications().getReference() )
-                    {
-                        final Class clazz = Class.forName( r.getIdentifier(), true, instance.getClassLoader() );
-                        if ( clazz.isInterface() )
-                        {
-                            interfaces.add( clazz );
-                        }
-                        else
-                        {
-                            this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
-                                r.getIdentifier(), instance.getIdentifier() ), null );
+                                s.getClazz(), instance.getIdentifier() ), null );
 
                         }
                     }
@@ -1843,7 +1841,7 @@ public class DefaultObjectManager implements ObjectManager
     private StringBuffer appendSpecificationInfo( final Specification s, final StringBuffer b )
     {
         return b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
-            append( s.getMultiplicity() );
+            append( s.getMultiplicity() ).append( ":Class:" ).append( s.getClazz() );
 
     }
 
@@ -1858,7 +1856,7 @@ public class DefaultObjectManager implements ObjectManager
         }
         if ( i.getLocation() != null )
         {
-            b.append( ":URI:" ).append( i.getLocation() ).append( "}" );
+            b.append( ":Location:" ).append( i.getLocation() );
         }
 
         return b;

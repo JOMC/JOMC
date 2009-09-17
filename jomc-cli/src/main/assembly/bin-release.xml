@@ -41,9 +41,27 @@
     <format>tar.bz2</format>
     <format>zip</format>
   </formats>
+  <files>
+    <file>
+      <destName>relocate-classes.xslt</destName>
+      <fileMode>0444</fileMode>
+      <filtered>false</filtered>
+      <lineEnding>dos</lineEnding>
+      <outputDirectory>/examples/xslt</outputDirectory>
+      <source>src/main/jomc/relocations.xslt</source>
+    </file>
+    <file>
+      <destName>jomc-cli.xml</destName>
+      <fileMode>0444</fileMode>
+      <filtered>false</filtered>
+      <lineEnding>dos</lineEnding>
+      <outputDirectory>/examples/xml</outputDirectory>
+      <source>${project.build.outputDirectory}/META-INF/jomc.xml</source>
+    </file>
+  </files>
   <fileSets>
     <fileSet>
-      <directory>target/maven-shared-archive-resources/META-INF</directory>
+      <directory>${project.build.directory}/maven-shared-archive-resources/META-INF</directory>
       <fileMode>0444</fileMode>
       <outputDirectory>/</outputDirectory>
       <lineEnding>dos</lineEnding>
@@ -63,6 +81,38 @@
       </includes>
     </fileSet>
     <fileSet>
+      <directory>src/main/assembly/bin</directory>
+      <outputDirectory>/bin</outputDirectory>
+      <lineEnding>dos</lineEnding>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0555</fileMode>
+      <filtered>true</filtered>
+      <includes>
+        <include>jomc.bat</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/assembly/bin</directory>
+      <outputDirectory>/bin</outputDirectory>
+      <lineEnding>unix</lineEnding>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0555</fileMode>
+      <filtered>true</filtered>
+      <includes>
+        <include>jomc</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/assembly/examples/xslt</directory>
+      <fileMode>0444</fileMode>
+      <outputDirectory>/examples/xslt</outputDirectory>
+      <lineEnding>dos</lineEnding>
+      <filtered>true</filtered>
+      <includes>
+        <include>*.xslt</include>
+      </includes>
+    </fileSet>
+    <fileSet>
       <directory>${project.build.directory}/jomc-javadoc</directory>
       <fileMode>0444</fileMode>
       <outputDirectory>/doc</outputDirectory>
@@ -74,34 +124,46 @@
       <directoryMode>0755</directoryMode>
       <fileMode>0555</fileMode>
       <scope>compile</scope>
+      <outputDirectory>/bin</outputDirectory>
+      <includes>
+        <include>org.jomc:jomc-cli</include>
+      </includes>
+    </dependencySet>
+    <dependencySet>
+      <directoryMode>0755</directoryMode>
+      <fileMode>0555</fileMode>
+      <scope>compile</scope>
       <includes>
         <include>org.jomc:jomc-api</include>
       </includes>
       <outputDirectory>/lib</outputDirectory>
       <useProjectArtifact>false</useProjectArtifact>
       <useProjectAttachments>false</useProjectAttachments>
-      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <useTransitiveDependencies>true</useTransitiveDependencies>
     </dependencySet>
     <dependencySet>
       <directoryMode>0755</directoryMode>
       <fileMode>0555</fileMode>
       <scope>runtime</scope>
-      <excludes>
-        <exclude>org.jomc:jomc-api</exclude>
-      </excludes>
+      <includes>
+        <include>org.jomc:jomc-spi</include>
+        <include>org.jomc:jomc-util</include>
+        <include>org.jomc:jomc-model</include>
+        <include>org.jomc:jomc-ri</include>
+      </includes>
       <outputDirectory>/lib/ri</outputDirectory>
       <useProjectArtifact>false</useProjectArtifact>
       <useProjectAttachments>false</useProjectAttachments>
-      <useTransitiveDependencies>false</useTransitiveDependencies>
+      <useTransitiveDependencies>true</useTransitiveDependencies>
     </dependencySet>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
+      <useProjectAttachments>false</useProjectAttachments>
+      <useTransitiveDependencies>true</useTransitiveDependencies>
       <directoryMode>0755</directoryMode>
       <fileMode>0555</fileMode>
       <scope>provided</scope>
       <outputDirectory>/lib/ext</outputDirectory>
-      <useProjectArtifact>false</useProjectArtifact>
-      <useProjectAttachments>false</useProjectAttachments>
-      <useTransitiveDependencies>true</useTransitiveDependencies>
     </dependencySet>
   </dependencySets>
 </assembly>

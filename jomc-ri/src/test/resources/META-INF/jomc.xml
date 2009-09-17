@@ -46,7 +46,22 @@
 
   <specifications>
     <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestSpecification"
+                   class="org.jomc.ri.test.TestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestMultitonSpecification"
+                   class="org.jomc.ri.test.TestSpecification"
                    vendor="${pom.organization.name}"
                    version="${pom.version}">
 
@@ -60,6 +75,7 @@
 
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification"
+                   class="org.jomc.ri.test.TestSpecification"
                    vendor="${pom.organization.name}"
                    version="${pom.version}"
                    scope="Singleton">
@@ -150,7 +166,6 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.TestObjectManagementListener"
                     class="org.jomc.ri.test.TestObjectManagementListener"
-                    scope="Singleton"
                     name="${pom.name}"
                     version="${pom.version}"
                     vendor="${pom.organization.name}">
