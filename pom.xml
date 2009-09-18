@@ -141,7 +141,7 @@
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
               <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.0-beta-14</version>
+              <version>1.0</version>
             </dependency>
           </dependencies>
           <executions>
