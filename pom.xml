@@ -726,6 +726,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
+        <inherited>false</inherited>
         <version>2.1</version>
         <configuration>
           <issueLinkTemplatePerSystem>
@@ -849,13 +850,6 @@
         <artifactId>jomc-cli</artifactId>
         <classifier>bin</classifier>
         <type>tar.gz</type>
-        <version>1.0-alpha-1-SNAPSHOT</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-cli</artifactId>
-        <classifier>bin</classifier>
-        <type>tar.bz2</type>
         <version>1.0-alpha-1-SNAPSHOT</version>
       </dependency>
       <dependency>
