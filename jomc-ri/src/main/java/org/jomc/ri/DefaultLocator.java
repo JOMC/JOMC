@@ -48,8 +48,9 @@ import org.jomc.spi.Locator;
 /**
  *
  * Default {@code Locator} implementation.
- * &lt;p&gt;The default {@code Locator} implementation looks up objects using JNDI.
- * It supports location URI schemes {@code &quot;jndi&quot;} and {@code &quot;jndi+rmi&quot;}.&lt;/p&gt;
+ *
+ * The default {@code Locator} implementation looks up objects using JNDI.
+ * It supports location URI schemes {@code &quot;jndi&quot;} and {@code &quot;jndi+rmi&quot;}.
  *
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
