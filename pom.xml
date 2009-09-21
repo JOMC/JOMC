@@ -426,7 +426,7 @@
             <dependency>
               <groupId>org.jomc</groupId>
               <artifactId>maven-jomc-plugin</artifactId>
-              <version>1.0-alpha-1-SNAPSHOT</version>
+              <version>${pom.version}</version>
             </dependency>
           </dependencies>
         </plugin>
