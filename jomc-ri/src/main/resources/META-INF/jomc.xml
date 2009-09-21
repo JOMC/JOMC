@@ -79,7 +79,7 @@
 Default {@code Locator} implementation.
 
 The default {@code Locator} implementation looks up objects using JNDI.
-It supports location URI schemes {@code "jndi"} and {@code "jndi+rmi"}.]]>
+It supports location URI schemes {@code jndi} and {@code jndi+rmi}.]]>
         </text>
       </documentation>
       <authors>
