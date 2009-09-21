@@ -54,7 +54,7 @@ import java.util.Locale;
 // SECTION-END
 // SECTION-START[Annotations]
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1/jomc-tools" )
 // SECTION-END
 public interface ObjectManager
 {
