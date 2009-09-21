@@ -68,11 +68,14 @@ public interface Locator
      *
      * @param specification The specification class of the object to locate.
      * @param location The location URI of the object to locate.
+     * @param <T> The type of the object.
+     *
+     * @return The object located at {@code location} or {@code null} if no object is found at {@code location}.
      *
      * @throws NullPointerException if {@code specification} or {@code location} is {@code null}.
      * @throws IOException if locating the object fails.
      */
-    <T> T getObject( Class<T> specification, URI location ) throws IOException;
+    <T> T getObject( Class<T> specification, URI location ) throws NullPointerException, IOException;
 
     // SECTION-END
 }

@@ -32,28 +32,14 @@
   $Id$
 
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
-         name="JOMC">
-  <skin>
-    <groupId>org.apache.maven.skins</groupId>
-    <artifactId>maven-default-skin</artifactId>
-    <version>1.0</version>
-  </skin>
+<document xmlns="http://maven.apache.org/changes/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+  <properties>
+    <title>Changelog</title>
+    <author email="cs@jomc.org">Christian Schulte</author>
+  </properties>
   <body>
-    <head>
-      <meta name="keywords" lang="de" content="objekt, container, java, quelltext, generator, quelltextgenerator, configuration, management"/>
-      <meta name="keywords" lang="en" content="object, container, java, source, code, sourcecode, generator, sourcecodegenerator, configuration, management"/>
-    </head>
-    <menu ref="parent" />
-    <menu ref="modules" />
-    <menu name="Sourceforge">
-      <item name="Project Summary" href="http://sourceforge.net/projects/jomc/"/>
-      <item name="Support" href="http://sourceforge.net/projects/jomc/support/"/>
-      <item name="Files" href="http://sourceforge.net/projects/jomc/files/"/>
-      <item name="Issues" href="http://sourceforge.net/apps/mantisbt/jomc/"/>
-    </menu>
-    <menu ref="reports" />
+    <release version="1.0-alpha-1" date="2009-09-19"/>
   </body>
-</project>
+</document>

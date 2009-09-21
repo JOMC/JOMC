@@ -113,7 +113,7 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-END
     // SECTION-START[ObjectManager]
 
-    public Object getObject( final Class specification ) throws ObjectManagementException
+    public Object getObject( final Class specification )
     {
         if ( specification == null )
         {
@@ -240,7 +240,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
             }
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -249,7 +249,6 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     public Object getObject( final Class specification, final String implementationName )
-        throws ObjectManagementException
     {
         if ( specification == null )
         {
@@ -329,7 +328,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
             }
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -338,7 +337,6 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     public Object getDependency( final Object object, final String dependencyName )
-        throws ObjectManagementException
     {
         if ( object == null )
         {
@@ -549,7 +547,7 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             this.log( Level.WARNING, this.getMissingDependencyMessage(
-                                dependency.getName(), instance.getIdentifier() ), null );
+                                dependencyName, instance.getIdentifier() ), null );
 
                         }
                     }
@@ -560,7 +558,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -568,7 +566,7 @@ public class DefaultObjectManager implements ObjectManager
         return o;
     }
 
-    public Object getProperty( final Object object, final String propertyName ) throws ObjectManagementException
+    public Object getProperty( final Object object, final String propertyName )
     {
         if ( object == null )
         {
@@ -620,7 +618,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -629,7 +627,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     public String getMessage( final Object object, final String messageName, final Locale locale,
-                              final Object arguments ) throws ObjectManagementException
+                              final Object arguments )
     {
         if ( object == null )
         {
@@ -678,7 +676,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
             }
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -730,7 +728,6 @@ public class DefaultObjectManager implements ObjectManager
     private final DefaultModelManager.Listener defaultModelManagerListener = new DefaultModelManager.Listener()
     {
 
-        @Override
         public void onLog( final Level level, final String message, final Throwable t )
         {
             log( level, message, t );
@@ -846,7 +843,7 @@ public class DefaultObjectManager implements ObjectManager
                     this.modules = defaultModules;
                 }
             }
-            catch ( ModelException e )
+            catch ( final ModelException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
                 for ( ModelException.Detail d : e.getDetails() )
@@ -854,19 +851,19 @@ public class DefaultObjectManager implements ObjectManager
                     this.log( d.getLevel(), d.getMessage(), null );
                 }
             }
-            catch ( TransformerException e )
+            catch ( final TransformerException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
             }
-            catch ( IOException e )
+            catch ( final IOException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
             }
-            catch ( SAXException e )
+            catch ( final SAXException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
             }
-            catch ( JAXBException e )
+            catch ( final JAXBException e )
             {
                 this.log( Level.SEVERE, e.getMessage(), e );
             }
@@ -950,11 +947,10 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return An object of {@code instance} or {@code null} if nothing could be resolved.
      *
-     * @throws InstantiationException if getting an object fails.
      * @throws NullPointerException if {@code specification} or {@code instance} is {@code null}.
+     * @throws InstantiationException if getting an object fails.
      */
-    public Object getObject( final Specification specification, final Instance instance )
-        throws InstantiationException
+    public Object getObject( final Specification specification, final Instance instance ) throws InstantiationException
     {
         if ( specification == null )
         {
@@ -1034,10 +1030,10 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return An object located at {@code location} or {@code null} if nothing could be resolved.
      *
+     * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
      * @throws ClassNotFoundException if the class of {@code specification} is not found.
      * @throws IOException if locating the object fails.
-     * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
      */
     public Object getObject( final Specification specification, final URI location, final ClassLoader classLoader )
         throws InstantiationException, ClassNotFoundException, IOException
@@ -1074,8 +1070,8 @@ public class DefaultObjectManager implements ObjectManager
      * @return The implementation of {@code modelScope} or {@code null} if no implementation is available implementing
      * {@code modelScope}.
      *
-     * @throws InstantiationException if instantiating a scope fails.
      * @throws NullPointerException if {@code modelScope} is {@code null}.
+     * @throws InstantiationException if instantiating a scope fails.
      */
     public Scope getScope( final String modelScope ) throws InstantiationException
     {
@@ -1162,7 +1158,7 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( modelScope.equals( SINGLETON_SCOPE_IDENTIFIER ) )
         {
-            defaultScope = new DefaultScope( modelScope, new HashMap<String, Object>() );
+            defaultScope = new DefaultScope( new HashMap<String, Object>() );
         }
 
         return defaultScope;
@@ -1175,8 +1171,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return The locator to use for locating objects at {@code location} or {@code null} if no locator is available.
      *
-     * @throws InstantiationException if instantiating a locator fails.
      * @throws NullPointerException if {@code location} is {@code null}.
+     * @throws InstantiationException if instantiating a locator fails.
      */
     public Locator getLocator( final URI location ) throws InstantiationException
     {
@@ -1383,7 +1379,7 @@ public class DefaultObjectManager implements ObjectManager
 
             }
         }
-        catch ( InstantiationException e )
+        catch ( final InstantiationException e )
         {
             for ( LogRecord r : this.bootstrapLogRecords )
             {
@@ -1411,8 +1407,8 @@ public class DefaultObjectManager implements ObjectManager
      * Notifies registered listeners.
      *
      * @param level The level of the event.
-     * @param message The message of the event.
-     * @param throwable The throwable of the event.
+     * @param message The message of the event or {@code null}.
+     * @param throwable The throwable of the event or {@code null}.
      */
     protected void log( final Level level, final String message, final Throwable throwable )
     {
@@ -1433,9 +1429,11 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws InstantiationException if creating a proxy fails.
      */
-    private Object createProxy( final Specification specification, final Instance instance, Object object )
+    private Object createProxy( final Specification specification, final Instance instance, final Object object )
         throws InstantiationException
     {
+        Object proxy = object;
+
         try
         {
             final Class specClass = Class.forName( specification.getClazz(), true, instance.getClassLoader() );
@@ -1462,8 +1460,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
 
-                final Object proxied = object;
-                object = Proxy.newProxyInstance(
+                proxy = Proxy.newProxyInstance(
                     instance.getClassLoader(), interfaces.toArray( new Class[ interfaces.size() ] ),
                     new InvocationHandler()
                     {
@@ -1474,31 +1471,31 @@ public class DefaultObjectManager implements ObjectManager
                             try
                             {
                                 final Method m =
-                                    proxied.getClass().getMethod( method.getName(), method.getParameterTypes() );
+                                    object.getClass().getMethod( method.getName(), method.getParameterTypes() );
 
                                 if ( instance.isStateless() )
                                 {
-                                    return m.invoke( proxied, args );
+                                    return m.invoke( object, args );
                                 }
                                 else
                                 {
-                                    synchronized ( proxied )
+                                    synchronized ( object )
                                     {
-                                        return m.invoke( proxied, args );
+                                        return m.invoke( object, args );
                                     }
                                 }
                             }
-                            catch ( NoSuchMethodException e )
+                            catch ( final NoSuchMethodException e )
                             {
                                 log( Level.SEVERE, e.getMessage(), e );
                                 throw new ObjectManagementException( e.getMessage(), e );
                             }
-                            catch ( SecurityException e )
+                            catch ( final SecurityException e )
                             {
                                 log( Level.SEVERE, e.getMessage(), e );
                                 throw new ObjectManagementException( e.getMessage(), e );
                             }
-                            catch ( InvocationTargetException e )
+                            catch ( final InvocationTargetException e )
                             {
                                 if ( e.getTargetException() != null )
                                 {
@@ -1508,7 +1505,7 @@ public class DefaultObjectManager implements ObjectManager
                                 log( Level.SEVERE, e.getMessage(), e );
                                 throw new ObjectManagementException( e.getMessage(), e );
                             }
-                            catch ( IllegalAccessException e )
+                            catch ( final IllegalAccessException e )
                             {
                                 log( Level.SEVERE, e.getMessage(), e );
                                 throw new ObjectManagementException( e.getMessage(), e );
@@ -1519,9 +1516,9 @@ public class DefaultObjectManager implements ObjectManager
 
             }
 
-            return object;
+            return proxy;
         }
-        catch ( ClassNotFoundException e )
+        catch ( final ClassNotFoundException e )
         {
             throw (InstantiationException) new InstantiationException( e.getMessage() ).initCause( e );
         }
@@ -1696,14 +1693,14 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getModulesReport( final Modules modules )
+    private String getModulesReport( final Modules mods )
     {
-        final StringBuffer modulesInfo = new StringBuffer();
+        final StringBuilder modulesInfo = new StringBuilder();
         final String lineSeparator = System.getProperty( "line.separator" );
 
-        if ( modules.getDocumentation() != null )
+        if ( mods.getDocumentation() != null )
         {
-            modulesInfo.append( modules.getDocumentation().getText( Locale.getDefault().getLanguage() ).getValue() ).
+            modulesInfo.append( mods.getDocumentation().getText( Locale.getDefault().getLanguage() ).getValue() ).
                 append( lineSeparator );
 
         }
@@ -1712,7 +1709,7 @@ public class DefaultObjectManager implements ObjectManager
             modulesInfo.append( lineSeparator );
         }
 
-        for ( Module m : modules.getModule() )
+        for ( Module m : mods.getModule() )
         {
             modulesInfo.append( "\tM:" ).append( m.getName() ).append( ':' ).append( m.getVersion() ).
                 append( lineSeparator );
@@ -1724,7 +1721,7 @@ public class DefaultObjectManager implements ObjectManager
                     modulesInfo.append( "\t\t" );
                     this.appendSpecificationInfo( s, modulesInfo ).append( lineSeparator );
 
-                    final Implementations available = modules.getImplementations( s.getIdentifier() );
+                    final Implementations available = mods.getImplementations( s.getIdentifier() );
 
                     if ( available != null )
                     {
@@ -1732,7 +1729,7 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             modulesInfo.append( "\t\t\t" );
                             this.appendImplementationInfo( i, modulesInfo ).append( "@" ).
-                                append( modules.getModuleOfImplementation( i.getIdentifier() ).getName() ).
+                                append( mods.getModuleOfImplementation( i.getIdentifier() ).getName() ).
                                 append( lineSeparator );
 
                         }
@@ -1750,8 +1747,8 @@ public class DefaultObjectManager implements ObjectManager
                     if ( i.getParent() != null )
                     {
                         modulesInfo.append( "\t\t\t" );
-                        this.appendImplementationInfo( modules.getImplementation( i.getParent() ), modulesInfo ).
-                            append( '@' ).append( modules.getModuleOfImplementation( i.getParent() ).getName() ).
+                        this.appendImplementationInfo( mods.getImplementation( i.getParent() ), modulesInfo ).
+                            append( '@' ).append( mods.getModuleOfImplementation( i.getParent() ).getName() ).
                             append( lineSeparator );
 
                     }
@@ -1760,7 +1757,7 @@ public class DefaultObjectManager implements ObjectManager
                         for ( SpecificationReference s : i.getSpecifications().getReference() )
                         {
                             modulesInfo.append( "\t\t\tS:" ).append( s.getIdentifier() ).append( ':' ).
-                                append( s.getVersion() ).append( '@' ).append( modules.getModuleOfSpecification(
+                                append( s.getVersion() ).append( '@' ).append( mods.getModuleOfSpecification(
                                 s.getIdentifier() ).getName() ).append( lineSeparator );
 
                         }
@@ -1778,10 +1775,10 @@ public class DefaultObjectManager implements ObjectManager
                                 modulesInfo.append( ":" ).append( d.getImplementationName() );
                             }
 
-                            modulesInfo.append( '@' ).append( modules.getModuleOfSpecification(
+                            modulesInfo.append( '@' ).append( mods.getModuleOfSpecification(
                                 d.getIdentifier() ).getName() ).append( lineSeparator );
 
-                            final Implementations available = modules.getImplementations( d.getIdentifier() );
+                            final Implementations available = mods.getImplementations( d.getIdentifier() );
 
                             if ( available != null )
                             {
@@ -1789,7 +1786,7 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     modulesInfo.append( "\t\t\t\t" );
                                     this.appendImplementationInfo( di, modulesInfo ).append( "@" ).
-                                        append( modules.getModuleOfImplementation( di.getIdentifier() ).getName() ).
+                                        append( mods.getModuleOfImplementation( di.getIdentifier() ).getName() ).
                                         append( lineSeparator );
 
                                 }
@@ -1819,11 +1816,11 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 modulesInfo.append( p.getJavaValue( this.getClassLoader( this.getClass() ) ) );
                             }
-                            catch ( ClassNotFoundException e )
+                            catch ( final ClassNotFoundException e )
                             {
                                 modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
                             }
-                            catch ( InstantiationException e )
+                            catch ( final InstantiationException e )
                             {
                                 modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
                             }
@@ -1838,14 +1835,16 @@ public class DefaultObjectManager implements ObjectManager
         return modulesInfo.toString();
     }
 
-    private StringBuffer appendSpecificationInfo( final Specification s, final StringBuffer b )
+    private StringBuilder appendSpecificationInfo( final Specification s, final StringBuilder b )
     {
-        return b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
-            append( s.getMultiplicity() ).append( ":Class:" ).append( s.getClazz() );
+        b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
+            append( s.getMultiplicity() ).append( ":Scope:" ).
+            append( s.getScope() == null ? "Multiton" : s.getScope() ).append( ":Class:" ).append( s.getClazz() );
 
+        return b;
     }
 
-    private StringBuffer appendImplementationInfo( final Implementation i, final StringBuffer b )
+    private StringBuilder appendImplementationInfo( final Implementation i, final StringBuilder b )
     {
         b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
             append( i.getVersion() );

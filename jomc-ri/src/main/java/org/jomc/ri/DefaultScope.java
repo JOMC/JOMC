@@ -53,37 +53,22 @@ public class DefaultScope implements Scope
 {
     // SECTION-START[DefaultScope]
 
-    /** The name of the scope. */
-    private String name;
-
     /** Objects of the scope. */
     private Map<String, Object> objects;
 
     /**
-     * Creates a new {@code DefaultScope} instance taking the name of the scope.
+     * Creates a new {@code DefaultScope} instance taking a map backing the scope.
      *
-     * @param name The name of the scope.
      * @param map The map backing the scope or {@code null}.
      */
-    public DefaultScope( final String name, final Map<String, Object> map )
+    public DefaultScope( final Map<String, Object> map )
     {
-        this.name = name;
         this.objects = map;
     }
 
-    /**
-     * Gets the {@code Map} backing the scope.
-     *
-     * @return The {@code Map} backing the scope.
-     */
     public Map<String, Object> getObjects()
     {
         return this.objects;
-    }
-
-    public String getName()
-    {
-        return this.name;
     }
 
     public Object getObject( final String instance )

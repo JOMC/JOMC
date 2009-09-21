@@ -191,7 +191,7 @@ public class DefaultLocator implements Locator
 
             return object;
         }
-        catch ( NamingException e )
+        catch ( final NamingException e )
         {
             throw (IOException) new IOException( e.getMessage() ).initCause( e );
         }

@@ -307,9 +307,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification[] getBoundMultitons() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification[] getBoundMultitons()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundMultitons" );
+        final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundMultitons" );
+        assert _d != null : "'BoundMultitons' dependency not found.";
+        return _d;
     }
 
     /**
@@ -321,9 +323,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification[] getBoundSingletons() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification[] getBoundSingletons()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
+        final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
+        assert _d != null : "'BoundSingletons' dependency not found.";
+        return _d;
     }
 
     /**
@@ -335,9 +339,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification getSelectedBoundMultiton() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification getSelectedBoundMultiton()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundMultiton" );
+        final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundMultiton" );
+        assert _d != null : "'SelectedBoundMultiton' dependency not found.";
+        return _d;
     }
 
     /**
@@ -349,9 +355,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification getSelectedBoundSingleton() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification getSelectedBoundSingleton()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundSingleton" );
+        final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedBoundSingleton" );
+        assert _d != null : "'SelectedBoundSingleton' dependency not found.";
+        return _d;
     }
 
     /**
@@ -363,9 +371,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification getSelectedUnboundMultiton() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification getSelectedUnboundMultiton()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundMultiton" );
+        final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundMultiton" );
+        assert _d != null : "'SelectedUnboundMultiton' dependency not found.";
+        return _d;
     }
 
     /**
@@ -377,9 +387,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification getSelectedUnboundSingleton() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification getSelectedUnboundSingleton()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundSingleton" );
+        final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "SelectedUnboundSingleton" );
+        assert _d != null : "'SelectedUnboundSingleton' dependency not found.";
+        return _d;
     }
 
     /**
@@ -391,9 +403,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification[] getUnboundMultitons() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification[] getUnboundMultitons()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundMultitons" );
+        final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundMultitons" );
+        assert _d != null : "'UnboundMultitons' dependency not found.";
+        return _d;
     }
 
     /**
@@ -405,9 +419,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private org.jomc.ri.test.TestSpecification[] getUnboundSingletons() throws org.jomc.ObjectManagementException
+    private org.jomc.ri.test.TestSpecification[] getUnboundSingletons()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundSingletons" );
+        final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "UnboundSingletons" );
+        assert _d != null : "'UnboundSingletons' dependency not found.";
+        return _d;
     }
     // SECTION-END
     // SECTION-START[Properties]
@@ -419,9 +435,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private java.lang.String getTestProperty() throws org.jomc.ObjectManagementException
+    private java.lang.String getTestProperty()
     {
-        return (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "testProperty" );
+        final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager().getProperty( this, "testProperty" );
+        assert _p != null : "'testProperty' property not found.";
+        return _p;
     }
     // SECTION-END
     // SECTION-START[Messages]
@@ -439,9 +457,11 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-1-SNAPSHOT/jomc-tools" )
-    private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument ) throws org.jomc.ObjectManagementException
+    private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
-        return org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );
+        final String _m = org.jomc.ObjectManagerFactory.getObjectManager().getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );
+        assert _m != null : "'testMessage' message not found.";
+        return _m;
     }
     // SECTION-END
 }

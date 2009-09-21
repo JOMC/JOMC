@@ -78,7 +78,7 @@ public class ObjectManagerFactory
      *
      * @throws ObjectManagementException if getting the singleton instance fails.
      */
-    public static ObjectManager getObjectManager() throws ObjectManagementException
+    public static ObjectManager getObjectManager()
     {
         final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
 
@@ -88,7 +88,7 @@ public class ObjectManagerFactory
             final Method factoryMethod = factoryClass.getMethod( "getObjectManager", (Class[]) null );
             return (ObjectManager) factoryMethod.invoke( null, (Object[]) null );
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
@@ -103,7 +103,7 @@ public class ObjectManagerFactory
      *
      * @throws ObjectManagementException if creating a new {@code ObjectManager} instance fails.
      */
-    public static ObjectManager newObjectManager() throws ObjectManagementException
+    public static ObjectManager newObjectManager()
     {
         final String impl = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
 
@@ -111,7 +111,7 @@ public class ObjectManagerFactory
         {
             return (ObjectManager) Class.forName( impl ).newInstance();
         }
-        catch ( Exception e )
+        catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }

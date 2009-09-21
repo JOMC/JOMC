@@ -68,8 +68,10 @@ public interface Listener
      * @param level The level of the event.
      * @param message The message of the event or {@code null}.
      * @param throwable The throwable of the event or {@code null}.
+     *
+     * @throws NullPointerException if {@code level} is {@code null}.
      */
-    void onLog( Level level, String message, Throwable throwable );
+    void onLog( Level level, String message, Throwable throwable ) throws NullPointerException;
 
     // SECTION-END
 }

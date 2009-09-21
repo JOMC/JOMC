@@ -65,7 +65,7 @@ public interface Scope
     /**
      * Gets the objects of the scope.
      *
-     * @return The objects of the scope.
+     * @return The objects of the scope or {@code null}.
      */
     Map<String, Object> getObjects();
 
@@ -75,8 +75,10 @@ public interface Scope
      * @param identifier The identifier of the object to get from the scope.
      *
      * @return The object identified by {@code identifier} or {@code null} if no such object exists in the scope.
+     *
+     * @throws NullPointerException if {@code identifier} is {@code null}.
      */
-    Object getObject( String identifier );
+    Object getObject( String identifier ) throws NullPointerException;
 
     /**
      * Puts an object into the scope.
@@ -85,8 +87,10 @@ public interface Scope
      * @param object The object to put into the scope.
      *
      * @return The previous object from the scope or {@code null} if there was no object in the scope.
+     *
+     * @throws NullPointerException if {@code identifier} or {@code object} is {@code null}.
      */
-    Object putObject( String identifier, Object object );
+    Object putObject( String identifier, Object object ) throws NullPointerException;
 
     /**
      * Removes an object from the scope.
@@ -94,8 +98,10 @@ public interface Scope
      * @param identifier The identifier of the object to remove from the scope.
      *
      * @return The removed object or {@code null} if there was no object in the scope.
+     *
+     * @throws NullPointerException if {@code identifier} is {@code null}.
      */
-    Object removeObject( String identifier );
+    Object removeObject( String identifier ) throws NullPointerException;
 
     // SECTION-END
 }

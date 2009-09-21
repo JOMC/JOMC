@@ -77,7 +77,7 @@ public interface ObjectManager
      * @throws ObjectManagementException if getting the object fails.
      */
     Object getObject( Class specification )
-        throws ObjectManagementException;
+        throws NullPointerException, ObjectManagementException;
 
     /**
      * Gets an instance of an implementation of a specification.
@@ -89,6 +89,7 @@ public interface ObjectManager
      *
      * @param specification The specification class to return an implementation instance of.
      * @param implementationName The name of the implementation to return an instance of.
+     * @param <T> The type of the instance.
      *
      * @return An instance of the implementation named {@code implementationName} of the specification class
      * {@code specification} or {@code null} if no such instance is available.
@@ -97,7 +98,7 @@ public interface ObjectManager
      * @throws ObjectManagementException if getting the object fails.
      */
     <T> T getObject( Class<T> specification, String implementationName )
-        throws ObjectManagementException;
+        throws NullPointerException, ObjectManagementException;
 
     /**
      * Gets an instance of a dependency of an object.
@@ -117,7 +118,7 @@ public interface ObjectManager
      * @throws ObjectManagementException if getting the dependency instance fails.
      */
     Object getDependency( Object object, String dependencyName )
-        throws ObjectManagementException;
+        throws NullPointerException, ObjectManagementException;
 
     /**
      * Gets an instance of a property of an object.
@@ -137,7 +138,7 @@ public interface ObjectManager
      * @throws ObjectManagementException if getting the property instance fails.
      */
     Object getProperty( Object object, String propertyName )
-        throws ObjectManagementException;
+        throws NullPointerException, ObjectManagementException;
 
     /**
      * Gets an instance of a message of an object.
@@ -159,7 +160,7 @@ public interface ObjectManager
      * @throws ObjectManagementException if getting the message instance fails.
      */
     String getMessage( Object object, String messageName, Locale locale, Object arguments )
-        throws ObjectManagementException;
+        throws NullPointerException, ObjectManagementException;
 
     // SECTION-END
 }
