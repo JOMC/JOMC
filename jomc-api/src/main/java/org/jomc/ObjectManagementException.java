@@ -44,7 +44,7 @@ package org.jomc;
 // SECTION-END
 // SECTION-START[Annotations]
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-2-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-3-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public class ObjectManagementException extends RuntimeException
 {
@@ -90,7 +90,7 @@ public class ObjectManagementException extends RuntimeException
 
     /** Creates a new {@code ObjectManagementException} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-2-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-3-SNAPSHOT/jomc-tools" )
     public ObjectManagementException()
     {
         // SECTION-START[Default Constructor]
