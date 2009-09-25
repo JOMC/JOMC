@@ -926,16 +926,12 @@
   </distributionManagement>
   <profiles>
     <profile>
-      <id>ci</id>
+      <id>jomc-ci</id>
       <activation>
         <activeByDefault>false</activeByDefault>
       </activation>
       <build>
         <plugins>
-          <plugin>
-            <groupId>org.jomc</groupId>
-            <artifactId>maven-jomc-plugin</artifactId>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-scm-plugin</artifactId>
