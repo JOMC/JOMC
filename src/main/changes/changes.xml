@@ -50,6 +50,10 @@
       and made model validation more strict.
       ]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added goal <code>validate-runtime-modules</code> to <code>maven-jomc-plugin</code>.
+      ]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[
       Corrected a <code>MissingResourceException</code> thrown by class <code>org.jomc.model.DefaultModelManager</code>.
       ]]>
