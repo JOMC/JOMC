@@ -30,66 +30,39 @@
  *   $Id$
  *
  */
-package org.jomc.model;
+package org.jomc.mojo;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.logging.Level;
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
+import org.jomc.model.DefaultModelManager;
+import org.jomc.model.Modules;
 
 /**
- * {@code ErrorHander} collecting {@code ModelException.Detail}s.
+ * Validates a projects' runtime modules.
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a>
  * @version $Id$
  *
- * @see #getDetails()
+ * @phase verify
+ * @goal validate-runtime-modules
+ * @requiresDependencyResolution test
  */
-final class ModelExceptionErrorHandler implements ErrorHandler
+public class ValidateModulesMojo extends AbstractJomcMojo
 {
 
-    /** The details of the instance. */
-    private final List<ModelException.Detail> details = new LinkedList<ModelException.Detail>();
-
-    /** Creates a new {@code ModelExceptionErrorHandler} instance. */
-    ModelExceptionErrorHandler()
+    @Override
+    protected void executeTool() throws Exception
     {
-        super();
+        final DefaultModelManager defaultModelManager = new DefaultModelManager();
+        final Modules modules = this.getModules( defaultModelManager, this.getMainClassLoader(), true );
+        if ( modules != null )
+        {
+            defaultModelManager.validateModules( modules );
+        }
     }
 
-    /**
-     * Gets the details of the instance.
-     *
-     * @return The details of the instance.
-     */
-    public List<ModelException.Detail> getDetails()
+    @Override
+    protected String getToolName()
     {
-        return this.details;
-    }
-
-    public void warning( final SAXParseException exception ) throws SAXException
-    {
-        this.getDetails().add( new ModelException.Detail(
-            exception.getClass().getName(), Level.WARNING, exception.getMessage() ) );
-
-    }
-
-    public void error( final SAXParseException exception ) throws SAXException
-    {
-        this.getDetails().add( new ModelException.Detail(
-            exception.getClass().getName(), Level.SEVERE, exception.getMessage() ) );
-
-        throw exception;
-    }
-
-    public void fatalError( final SAXParseException exception ) throws SAXException
-    {
-        this.getDetails().add( new ModelException.Detail(
-            exception.getClass().getName(), Level.SEVERE, exception.getMessage() ) );
-
-        throw exception;
+        return "ValidateModulesMojo";
     }
 
 }

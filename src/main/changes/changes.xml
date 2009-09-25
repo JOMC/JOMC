@@ -40,6 +40,68 @@
     <author email="cs@jomc.org">Christian Schulte</author>
   </properties>
   <body>
+    <!-- ******************************************************************* -->
     <release version="1.0-alpha-1" date="2009-09-19"/>
+
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-2" date="2009-09-25">
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added support for inheriting from multiple implementations to the model
+      and made model validation more strict.
+      ]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>MissingResourceException</code> thrown by class <code>org.jomc.model.DefaultModelManager</code>.
+      ]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected an <code>InstantiationException</code> thrown by method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code>
+      for <code>null</code> values.
+      ]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      <code>http://jomc.org/model</code> schema updates<ul>
+      <li>Added <code>deprecated</code> attribute to <code>ModelObject</code> complex type.</li>
+      <li>Added <code>final</code> and <code>override</code> attributes to
+      <ul>
+        <li><code>SpecificationReference</code></li>
+        <li><code>Implementation</code></li>
+        <li><code>Property</code></li>
+        <li><code>PropertyReference</code></li>
+        <li><code>Message</code></li>
+        <li><code>MessageReference</code></li>
+      </ul>
+      complex types.</li>
+      <li>Added <code>abstract</code> attribute to <code>Implementation</code> complex type.</li>
+      <li>Removed <code>parent</code> attribute from <code>Implemenation</code> complex type and added <code>implementations</code> element.</li>
+      <li>Added <code>reference</code> element to <code>Implementations</code> complex type.</li>
+      <li>Added <code>version</code> attribute to <code>ImplementationReference</code> complex type.</li>
+      </ul>]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      <code>http://jomc.org/model</code> schema updates<ul>
+      <li>Corrected <code>text-key</code> selector of <code>texts</code> element.</li>
+      <li>Corrected <code>documentation-key</code> selector of <code>documentation</code> element.</li>
+      <li>Corrected <code>template-key</code> selector of <code>template</code> element.</li>
+      <li>Corrected <code>module-key</code> selector of <code>modules</code> element.</li>
+      <li>Corrected <code>specification-key</code> selector of <code>modules</code> element.</li>
+      <li>Corrected <code>implementation-key</code> selector of <code>modules</code> element.</li>
+      <li>Corrected <code>specification-uniqueness</code> selector of <code>specifications</code> element.</li>
+      <li>Corrected <code>specification-reference-uniqueness</code> selector of <code>specifications</code> element.</li>
+      <li>Corrected <code>implementation-uniqueness</code> selector of <code>implementations</code> element.</li>
+      <li>Corrected <code>implementation-uniqueness</code> selector of <code>implementations</code> element.</li>
+      <li>Corrected <code>dependency-uniqueness</code> selector of <code>dependencies</code> element.</li>
+      <li>Corrected <code>property-name-uniqueness</code> selector of <code>properties</code> element.</li>
+      <li>Corrected <code>property-reference-uniqueness</code> selector of <code>properties</code> element.</li>
+      <li>Corrected <code>message-name-uniqueness</code> selector of <code>messages</code> element.</li>
+      <li>Corrected <code>message-reference-uniqueness</code> selector of <code>messages</code> element.</li>
+      <li>Corrected <code>argument-name-uniqueness</code> selector of <code>arguments</code> element.</li>
+      <li>Corrected <code>argument-index-uniqueness</code> selector of <code>arguments</code> element.</li>
+      <li>Corrected <code>instance-uniqueness</code> selector of <code>instances</code> element.</li>
+      <li>Corrected <code>argument-index-uniqueness</code> selector of <code>instances</code> element.</li>
+      </ul>]]>
+      </action>
+    </release>
+
   </body>
 </document>

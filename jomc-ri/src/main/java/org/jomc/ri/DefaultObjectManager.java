@@ -66,6 +66,7 @@ import org.jomc.ObjectManagerFactory;
 import org.jomc.model.DefaultModelManager;
 import org.jomc.model.Dependency;
 import org.jomc.model.Implementation;
+import org.jomc.model.ImplementationReference;
 import org.jomc.model.Implementations;
 import org.jomc.model.Instance;
 import org.jomc.model.Message;
@@ -148,7 +149,7 @@ public class DefaultObjectManager implements ObjectManager
 
                             }
                         }
-                        else
+                        else if ( !i.isAbstract() )
                         {
                             final Instance instance = this.getModelManager().getInstance(
                                 this.getModules(), i, this.getClassLoader( specification ) );
@@ -193,7 +194,7 @@ public class DefaultObjectManager implements ObjectManager
 
                                 }
                             }
-                            else
+                            else if ( !i.isAbstract() )
                             {
                                 final Instance instance = this.getModelManager().getInstance(
                                     this.getModules(), i, this.getClassLoader( specification ) );
@@ -286,7 +287,7 @@ public class DefaultObjectManager implements ObjectManager
 
                             }
                         }
-                        else
+                        else if ( !i.isAbstract() )
                         {
                             final Instance instance = this.getModelManager().getInstance(
                                 this.getModules(), i, this.getClassLoader( specification ) );
@@ -394,7 +395,7 @@ public class DefaultObjectManager implements ObjectManager
 
                                                 }
                                             }
-                                            else
+                                            else if ( !i.isAbstract() )
                                             {
                                                 final Instance di = this.getModelManager().getInstance(
                                                     this.getModules(), i, dependency,
@@ -440,7 +441,7 @@ public class DefaultObjectManager implements ObjectManager
 
                                             }
                                         }
-                                        else
+                                        else if ( !ref.isAbstract() )
                                         {
                                             final Instance di = this.getModelManager().getInstance(
                                                 this.getModules(), ref, dependency,
@@ -487,7 +488,7 @@ public class DefaultObjectManager implements ObjectManager
 
                                                 }
                                             }
-                                            else
+                                            else if ( !a.isAbstract() )
                                             {
                                                 final Instance di = this.getModelManager().getInstance(
                                                     this.getModules(), a, dependency,
@@ -1280,7 +1281,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             if ( !this.initialized )
             {
-                final long start = System.currentTimeMillis();
+                final long t0 = System.currentTimeMillis();
                 this.initialized = true;
 
                 this.scopes.clear();
@@ -1375,7 +1376,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.bootstrapLogRecords.clear();
                 this.log( Level.FINE, this.getModulesReport( this.getModules() ), null );
                 this.log( Level.FINE, this.getImplementationInfoMessage(
-                    new Date( System.currentTimeMillis() - start ) ), null );
+                    Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
 
             }
         }
@@ -1631,11 +1632,11 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getImplementationInfoMessage( final Date startTime )
+    private String getImplementationInfoMessage( final Long startMillis )
     {
         return this.getMessage( "implementationInfo", new Object[]
             {
-                startTime
+                startMillis
             } );
 
     }
@@ -1744,13 +1745,17 @@ public class DefaultObjectManager implements ObjectManager
                     modulesInfo.append( "\t\t" );
                     this.appendImplementationInfo( i, modulesInfo ).append( lineSeparator );
 
-                    if ( i.getParent() != null )
+                    if ( i.getImplementations() != null )
                     {
                         modulesInfo.append( "\t\t\t" );
-                        this.appendImplementationInfo( mods.getImplementation( i.getParent() ), modulesInfo ).
-                            append( '@' ).append( mods.getModuleOfImplementation( i.getParent() ).getName() ).
-                            append( lineSeparator );
+                        for ( ImplementationReference r : i.getImplementations().getReference() )
+                        {
+                            this.appendImplementationInfo(
+                                mods.getImplementation( r.getIdentifier() ), modulesInfo ).append( '@' ).
+                                append( mods.getModuleOfImplementation( r.getIdentifier() ).getName() ).
+                                append( lineSeparator );
 
+                        }
                     }
                     if ( i.getSpecifications() != null )
                     {
