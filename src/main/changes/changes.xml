@@ -107,5 +107,14 @@
       </action>
     </release>
 
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-3">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.tools.JavaClasses</code> to correct a
+      <code>NullPointerException</code> thrown for missing classpath resources.
+      Affects the <code>validate-java-classes</code> command.]]>
+      </action>
+    </release>
+
   </body>
 </document>
