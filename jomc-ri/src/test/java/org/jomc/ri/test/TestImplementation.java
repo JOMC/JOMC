@@ -43,8 +43,9 @@ import java.util.Locale;
  * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-3-SNAPSHOT} {@code Singleton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
- * <li>"{@link #getTestProperty testProperty}"<blockquote>
- * Property of type {@code java.lang.String} with value "TEST".</blockquote></li>
+ * <li>"{@link #getTestProperty testProperty}"
+ * <blockquote>Property of type {@code java.lang.String}.
+ * </blockquote></li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getBoundMultitons BoundMultitons}"<blockquote>
