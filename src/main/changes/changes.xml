@@ -119,6 +119,16 @@
       <action dev="schulte2005" type="update"><![CDATA[
       Improved error handling of class <code>org.jomc.util.SectionEditor</code>.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Renamed mojo parameters <code>javaSourceProcessingDisabled</code> and
+      <code>javaClassProcessingDisabled</code> to
+      <code>javaSourceProcessingEnabled</code> and
+      <code>javaClassProcessingEnabled</code>. Renamed corresponding
+      expressions <code>jomc.javaSources.disabled</code> and
+      <code>jomc.javaClasses.disabled</code> to
+      <code>jomc.javaSources.enabled</code> and
+      <code>jomc.javaClasses.enabled</code>.]]>
+      </action>
     </release>
 
   </body>
