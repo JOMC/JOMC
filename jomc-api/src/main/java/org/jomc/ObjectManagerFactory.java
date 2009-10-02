@@ -46,7 +46,7 @@ import java.lang.reflect.Method;
 // SECTION-END
 // SECTION-START[Annotations]
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-3-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-4-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public class ObjectManagerFactory
 {
@@ -122,7 +122,7 @@ public class ObjectManagerFactory
 
     /** Creates a new {@code ObjectManagerFactory} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-3-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-4-SNAPSHOT/jomc-tools" )
     public ObjectManagerFactory()
     {
         // SECTION-START[Default Constructor]
