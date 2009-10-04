@@ -108,7 +108,7 @@
     </release>
 
     <!-- ******************************************************************* -->
-    <release version="1.0-alpha-3">
+    <release version="1.0-alpha-3" date="2009-10-01">
       <action dev="schulte2005" type="fix"><![CDATA[
       Updated class <code>org.jomc.tools.JavaClasses</code> to correct a
       <code>NullPointerException</code> thrown for missing classpath resources.]]>
@@ -128,6 +128,13 @@
       <code>jomc.javaClasses.disabled</code> to
       <code>jomc.javaSources.enabled</code> and
       <code>jomc.javaClasses.enabled</code>.]]>
+      </action>
+    </release>
+
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-4" date="2009-10-04">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Build updates.]]>
       </action>
     </release>
 
