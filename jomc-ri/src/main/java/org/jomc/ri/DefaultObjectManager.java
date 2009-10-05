@@ -362,7 +362,9 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( o == null )
                     {
-                        final Dependency dependency = instance.getDependencies().getDependency( dependencyName );
+                        final Dependency dependency = instance.getDependencies() != null
+                                                      ? instance.getDependencies().getDependency( dependencyName )
+                                                      : null;
 
                         if ( dependency != null )
                         {
@@ -418,7 +420,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 }
                                             }
                                         }
-                                        else
+                                        else if ( !dependency.isOptional() )
                                         {
                                             this.log( Level.WARNING, this.getMissingImplementationMessage(
                                                 dependency.getImplementationName(), dependency.getIdentifier() ), null );
@@ -593,7 +595,9 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( value == null )
                     {
-                        final Property property = instance.getProperties().getProperty( propertyName );
+                        final Property property = instance.getProperties() != null
+                                                  ? instance.getProperties().getProperty( propertyName )
+                                                  : null;
 
                         if ( property != null )
                         {
@@ -654,9 +658,11 @@ public class DefaultObjectManager implements ObjectManager
             {
                 synchronized ( instance )
                 {
-                    final Message message = instance.getMessages().getMessage( messageName );
+                    final Message message = instance.getMessages() != null
+                                            ? instance.getMessages().getMessage( messageName )
+                                            : null;
 
-                    if ( message != null )
+                    if ( message != null && message.getTemplate() != null )
                     {
                         final MessageFormat fmt = new MessageFormat( message.getTemplate().
                             getText( locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );

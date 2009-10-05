@@ -143,12 +143,30 @@
       <action dev="schulte2005" type="update"><![CDATA[
       Updated class <code>org.jomc.tools.JomcTool</code> to support overriding
       templates. Instead of having to copy all templates from the default
-      profile to a new profile, only templates differing from the default
-      profile need to be provided when creating a new profile.]]>
+      profile, only templates differing from the default profile need to be
+      added to new profiles.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
       Updated class <code>org.jomc.tools.JavaSources</code> to close any
       writers after merging templates.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>NullPointerException</code> thrown by method
+      <code>getDependency(Object, String)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
+      get a dependency of an instance without any dependencies.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>NullPointerException</code> thrown by method
+      <code>getProperty(Object, String)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
+      get a property of an instance without any properties.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>NullPointerException</code> thrown by method
+      <code>getMessage(Object, String, Locale, Object)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
+      get a message of an instance without any messages.]]>
       </action>
     </release>
 

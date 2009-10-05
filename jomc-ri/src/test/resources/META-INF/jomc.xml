@@ -147,6 +147,12 @@
                     version="${pom.version}"
                     implementationName="${pom.name}"
                     bound="false"/>
+        <dependency name="OptionalLocale"
+                    identifier="java.util.Locale"
+                    version="${pom.version}"
+                    implementationName="DOES NOT EXIST"
+                    bound="false"
+                    optional="true"/>
       </dependencies>
       <properties>
         <property name="testProperty" type="java.lang.String" value="TEST"/>
@@ -181,5 +187,22 @@
         <reference identifier="org.jomc.spi.Listener" version="1.0"/>
       </specifications>
     </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.DefaultObjectManagerTest"
+                    class="org.jomc.ri.test.DefaultObjectManagerTest"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test cases for the {@code DefaultObjectManager} class.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </implementation>
+
   </implementations>
 </module>

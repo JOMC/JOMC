@@ -35,6 +35,7 @@
 package org.jomc.ri.test;
 
 import java.util.Locale;
+import junit.framework.Assert;
 
 // SECTION-START[Documentation]
 /**
@@ -52,6 +53,8 @@ import java.util.Locale;
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * <li>"{@link #getOptionalLocale OptionalLocale}"<blockquote>
+ * Dependency on {@code java.util.Locale} at specification level 1.0-alpha-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedBoundSingleton SelectedBoundSingleton}"<blockquote>
@@ -95,193 +98,166 @@ public class TestImplementation
 
     public void testBoundMultitons() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "BoundMultitons", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getBoundMultitons();
+                getBoundMultitons();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'BoundMultitons': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testUnboundMultitons() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "UnboundMultitons", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getUnboundMultitons();
+                getUnboundMultitons();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'UnboundMultitons': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testSelectedBoundMultiton() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "SelectedBoundMultiton", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getSelectedBoundMultiton();
+                getSelectedBoundMultiton();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'SelectedBoundMultiton': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testSelectedUnboundMultiton() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "SelectedUnboundMultiton", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getSelectedUnboundMultiton();
+                getSelectedUnboundMultiton();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'SelectedUnboundMultiton': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testBoundSingletons() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "BoundSingletons", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getBoundSingletons();
+                getBoundSingletons();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'BoundSingletons': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testUnboundSingletons() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "UnboundSingletons", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getUnboundSingletons();
+                getUnboundSingletons();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'UnboundSingletons': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testSelectedBoundSingleton() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "SelectedBoundSingleton", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getSelectedBoundSingleton();
+                getSelectedBoundSingleton();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'SelectedBoundSingleton': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testSelectedUnboundSingleton() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "SelectedUnboundSingleton", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getSelectedUnboundSingleton();
+                getSelectedUnboundSingleton();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'SelectedUnboundSingleton': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testProperties() throws Exception
     {
-        long t = 0L;
-
-        for ( int i = NUM_RUNS - 1; i >= 0; i-- )
+        this.printEstimatedExecutionTime( "TestProperty", new Runnable()
         {
-            final long t0 = System.currentTimeMillis();
 
-            for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
+            public void run()
             {
-                this.getTestProperty();
+                getTestProperty();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
-        }
+        } );
 
-        System.out.println( NUM_REQUESTS + " * 'TestProperty': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     public void testMessages() throws Exception
+    {
+        this.printEstimatedExecutionTime( "TestMessage", new Runnable()
+        {
+
+            public void run()
+            {
+                getTestMessageMessage( Locale.getDefault(), "arg" );
+            }
+
+        } );
+
+    }
+
+    public void testOptionalDependency() throws Exception
+    {
+        Assert.assertNull( this.getOptionalLocale() );
+    }
+
+    protected void printEstimatedExecutionTime( final String identifier, final Runnable runnable )
     {
         long t = 0L;
 
         for ( int i = NUM_RUNS - 1; i >= 0; i-- )
         {
             final long t0 = System.currentTimeMillis();
-            final Locale locale = Locale.getDefault();
 
             for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
             {
-                this.getTestMessageMessage( locale, "arg" );
+                runnable.run();
             }
 
             t += ( System.currentTimeMillis() - t0 );
         }
 
-        System.out.println( NUM_REQUESTS + " * 'TestMessage': ~" + ( t / NUM_RUNS ) + "ms." );
+        System.out.println( NUM_REQUESTS + " * '" + identifier + "': ~" + ( t / NUM_RUNS ) + "ms." );
     }
 
     // SECTION-END
@@ -329,6 +305,21 @@ public class TestImplementation
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
         assert _d != null : "'BoundSingletons' dependency not found.";
         return _d;
+    }
+
+    /**
+     * Gets the {@code OptionalLocale} dependency.
+     * <p>This method returns the "{@code DOES NOT EXIST}" object of the {@code java.util.Locale} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
+     * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
+     * @return The {@code OptionalLocale} dependency.
+     * {@code null} if no object is available.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-5-SNAPSHOT/jomc-tools" )
+    private java.util.Locale getOptionalLocale()
+    {
+        return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "OptionalLocale" );
     }
 
     /**
