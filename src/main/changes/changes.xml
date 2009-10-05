@@ -138,5 +138,19 @@
       </action>
     </release>
 
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-5" date="2009-10-06">
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated class <code>org.jomc.tools.JomcTool</code> to support overriding
+      templates. Instead of having to copy all templates from the default
+      profile to a new profile, only templates differing from the default
+      profile need to be provided when creating a new profile.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.tools.JavaSources</code> to close any
+      writers after merging templates.]]>
+      </action>
+    </release>
+
   </body>
 </document>
