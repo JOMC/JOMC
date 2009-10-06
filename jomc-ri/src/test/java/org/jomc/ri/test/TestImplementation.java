@@ -73,8 +73,7 @@ import junit.framework.Assert;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getTestMessageMessage testMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.
- *             </pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
  * </table>
  * </ul></p>
  *
@@ -446,8 +445,7 @@ public class TestImplementation
     /**
      * Gets the text of the {@code testMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.
-     *             </pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.
