@@ -56,7 +56,7 @@ import java.util.logging.Level;
 // SECTION-END
 // SECTION-START[Annotations]
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-5-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-6-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public interface Listener
 {
