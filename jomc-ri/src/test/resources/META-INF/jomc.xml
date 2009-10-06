@@ -60,6 +60,50 @@
     </specification>
 
     <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestSpecificationOne"
+                   class="org.jomc.ri.test.TestSpecificationOne"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestSpecificationOneMore"
+                   class="org.jomc.ri.test.TestSpecificationOneMore"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestSpecificationMany"
+                   class="org.jomc.ri.test.TestSpecificationMany"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestMultitonSpecification"
                    class="org.jomc.ri.test.TestSpecification"
                    vendor="${pom.organization.name}"
@@ -87,13 +131,75 @@
 
       </authors>
     </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                   class="org.jomc.ri.test.TestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="DOES_NOT_EXIST">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
+                   class="org.jomc.ri.test.TestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="DOES_NOT_EXIST"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
+                   class="org.jomc.ri.test.TestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="DOES_NOT_EXIST"
+                   multiplicity="One">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecification"
+                   class="org.jomc.ri.test.TestScopeSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="Test">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
   <implementations>
 
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.TestImplementation"
                     class="org.jomc.ri.test.TestImplementation"
-                    name="${pom.name}"
+                    name="TestImplementation"
                     version="${pom.version}"
                     vendor="${pom.organization.name}">
 
@@ -109,6 +215,16 @@
 
         <reference identifier="org.jomc.ri.test.TestSingletonSpecification"
                    version="${pom.version}"/>
+
+        <reference identifier="org.jomc.ri.test.TestSpecificationOne"
+                   version="${pom.version}"/>
+
+        <reference identifier="org.jomc.ri.test.TestSpecificationMany"
+                   version="${pom.version}"/>
+
+        <reference identifier="org.jomc.ri.test.TestScopeSpecification"
+                   version="${pom.version}"/>
+
       </specifications>
       <dependencies>
         <dependency name="BoundMultitons"
@@ -122,12 +238,12 @@
         <dependency name="SelectedBoundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
                     version="${pom.version}"
-                    implementationName="${pom.name}"
+                    implementationName="TestImplementation"
                     bound="true"/>
         <dependency name="SelectedUnboundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
                     version="${pom.version}"
-                    implementationName="${pom.name}"
+                    implementationName="TestImplementation"
                     bound="false"/>
         <dependency name="BoundSingletons"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
@@ -140,12 +256,12 @@
         <dependency name="SelectedBoundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${pom.version}"
-                    implementationName="${pom.name}"
+                    implementationName="TestImplementation"
                     bound="true"/>
         <dependency name="SelectedUnboundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${pom.version}"
-                    implementationName="${pom.name}"
+                    implementationName="TestImplementation"
                     bound="false"/>
         <dependency name="OptionalLocale"
                     identifier="java.util.Locale"
@@ -160,7 +276,8 @@
       <messages>
         <message name="testMessage">
           <template defaultLanguage="en">
-            <text language="en"><![CDATA[Test message with {0} argument.]]></text>
+            <text language="en"><![CDATA[Test message with {0} argument.]]>
+            </text>
           </template>
           <arguments>
             <argument index="0" name="testArgument" type="Text"/>
@@ -202,6 +319,161 @@
         <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
                 createDate="2005-07-25T19:56:45Z"/>
       </authors>
+      <!--
+      This implementation intentionally does not declare any dependencies,
+      properties and messages.
+      -->
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestScopeImplementation"
+                    class="org.jomc.ri.test.TestScopeImplementation"
+                    name="TestScopeImplementation"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test implementation of the {@code ScopeTestSpecification}.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
+                   version="${pom.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                   version="${pom.version}"/>
+      </specifications>
+      <dependencies>
+        <dependency name="TestScopeSpecificationMany"
+                    identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                    version="${pom.version}"
+                    bound="false"
+                    optional="true"/>
+        <dependency name="TestScopeSpecificationOne"
+                    identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
+                    version="${pom.version}"
+                    bound="false"
+                    optional="true"/>
+      </dependencies>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestLocationImplementation"
+                    class="org.jomc.ri.test.TestLocationImplementation"
+                    name="TestLocationImplementation"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    location="UNSUPPORTED:DOES_NOT_EXIST">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test implementation with unsupported location.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
+                   version="${pom.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                   version="${pom.version}"/>
+      </specifications>
+      <dependencies>
+        <dependency name="TestScopeSpecificationMany"
+                    identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                    version="${pom.version}"
+                    bound="false"
+                    optional="true"/>
+        <dependency name="TestScopeSpecificationOne"
+                    identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
+                    version="${pom.version}"
+                    bound="false"
+                    optional="true"/>
+      </dependencies>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.IllegalLocationImplementation"
+                    name="IllegalLocationImplementation"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    location="UNSUPPORTED:DOES_NOT_EXIST">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test implementation without class and with unsupported location.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.test.TestSpecificationOneMore"
+                   version="${pom.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSpecificationMany"
+                   version="${pom.version}"/>
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestScope"
+                    class="org.jomc.ri.test.TestScope"
+                    name="Test"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test {@code Scope} implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Scope"
+                   version="1.0"/>
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestLocator"
+                    class="org.jomc.ri.test.TestLocator"
+                    name="Test"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test {@code Locator} implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Locator"
+                   version="1.0"/>
+      </specifications>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestLocatorImplementation"
+                    name="TestLocatorImplementation"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}"
+                    location="Test:IGNORED">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test {@code Locator} implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecification"
+                   version="${pom.version}"/>
+      </specifications>
     </implementation>
 
   </implementations>

@@ -41,7 +41,10 @@ import junit.framework.Assert;
 /**
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-alpha-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestScopeSpecification} {@code 1.0-alpha-5-SNAPSHOT} {@code Test}</li>
  * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-alpha-5-SNAPSHOT} {@code Singleton}</li>
+ * <li>{@code org.jomc.ri.test.TestSpecificationMany} {@code 1.0-alpha-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestSpecificationOne} {@code 1.0-alpha-5-SNAPSHOT} {@code Multiton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"
@@ -70,7 +73,8 @@ import junit.framework.Assert;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getTestMessageMessage testMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.
+ *             </pre></td></tr>
  * </table>
  * </ul></p>
  *
@@ -84,7 +88,10 @@ import junit.framework.Assert;
 // SECTION-END
 public class TestImplementation
     implements
-    org.jomc.ri.test.TestSpecification
+    org.jomc.ri.test.TestSpecification,
+    org.jomc.ri.test.TestSpecificationOne,
+    org.jomc.ri.test.TestSpecificationMany,
+    org.jomc.ri.test.TestScopeSpecification
 {
     // SECTION-START[TestMultitonSpecification]
     // SECTION-END
@@ -324,7 +331,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundMultiton} dependency.
-     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -340,7 +347,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
-     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -356,7 +363,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
-     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -372,7 +379,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
-     * <p>This method returns the "{@code JOMC RI}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-alpha-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -439,7 +446,8 @@ public class TestImplementation
     /**
      * Gets the text of the {@code testMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.
+     *             </pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.

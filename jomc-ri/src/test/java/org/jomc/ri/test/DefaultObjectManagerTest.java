@@ -275,6 +275,12 @@ public class DefaultObjectManagerTest
         Assert.assertNotNull( this.getObjectManager().getListeners() );
         Assert.assertNotNull( this.getObjectManager().getModelManager() );
         Assert.assertNotNull( this.getObjectManager().getModules() );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "TestImplementation" ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class, "TestImplementation" ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class, "TestImplementation" ) );
     }
 
     /**
@@ -285,10 +291,19 @@ public class DefaultObjectManagerTest
     public void testNull() throws Exception
     {
         Assert.assertNull( this.getObjectManager().getObject( Object.class ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecification.class ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class ) );
         Assert.assertNull( this.getObjectManager().getObject( ObjectManager.class, "DOES NOT EXIST" ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecification.class, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getDependency( this, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getProperty( this, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getMessage( this, "DOES NOT EXIST", Locale.getDefault(), null ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class,
+                                                              "IllegalLocationImplementation" ) );
+
+        Assert.assertNull( this.getObjectManager().getObject( TestScopeSpecification.class,
+                                                              "TestLocatorImplementation" ) );
+
     }
 
     public static void assertNullPointerException( final NullPointerException e )

@@ -144,7 +144,7 @@ public class DefaultObjectManager implements ObjectManager
                             if ( object == null )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                    i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
@@ -159,14 +159,14 @@ public class DefaultObjectManager implements ObjectManager
                                 if ( object == null )
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), null );
+                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
                             else
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                    i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
@@ -189,7 +189,7 @@ public class DefaultObjectManager implements ObjectManager
                                 else
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), null );
+                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
@@ -208,14 +208,14 @@ public class DefaultObjectManager implements ObjectManager
                                     else
                                     {
                                         this.log( Level.WARNING, this.getMissingObjectMessage(
-                                            i.getIdentifier(), i.getName() ), null );
+                                            i.getIdentifier(), i.getName() ), new Exception() );
 
                                     }
                                 }
                                 else
                                 {
                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        i.getIdentifier(), i.getName() ), null );
+                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
@@ -227,17 +227,23 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else
                     {
-                        this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage( s.getMultiplicity() ), null );
+                        this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage( s.getMultiplicity() ),
+                                  new Exception() );
+
                     }
                 }
                 else
                 {
-                    this.log( Level.WARNING, this.getMissingImplementationsMessage( specification.getName() ), null );
+                    this.log( Level.WARNING, this.getMissingImplementationsMessage( specification.getName() ),
+                              new Exception() );
+
                 }
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
+                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
+                          new Exception() );
+
             }
         }
         catch ( final Exception e )
@@ -282,7 +288,7 @@ public class DefaultObjectManager implements ObjectManager
                             if ( object == null )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                    i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
@@ -297,14 +303,14 @@ public class DefaultObjectManager implements ObjectManager
                                 if ( object == null )
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), null );
+                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
                             else
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                    i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
@@ -312,20 +318,22 @@ public class DefaultObjectManager implements ObjectManager
                     else
                     {
                         this.log( Level.WARNING, this.getMissingImplementationMessage(
-                            implementationName, s.getIdentifier() ), null );
+                            implementationName, s.getIdentifier() ), new Exception() );
 
                     }
                 }
                 else
                 {
                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                        specification.getName() ), null );
+                        specification.getName() ), new Exception() );
 
                 }
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ), null );
+                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
+                          new Exception() );
+
             }
         }
         catch ( final Exception e )
@@ -392,7 +400,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 if ( o == null )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        i.getIdentifier(), i.getName() ), null );
+                                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                                 }
                                             }
@@ -408,14 +416,14 @@ public class DefaultObjectManager implements ObjectManager
                                                     if ( o == null )
                                                     {
                                                         this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                            i.getIdentifier(), i.getName() ), null );
+                                                            i.getIdentifier(), i.getName() ), new Exception() );
 
                                                     }
                                                 }
                                                 else
                                                 {
                                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                        i.getIdentifier(), i.getName() ), null );
+                                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                                 }
                                             }
@@ -423,7 +431,8 @@ public class DefaultObjectManager implements ObjectManager
                                         else if ( !dependency.isOptional() )
                                         {
                                             this.log( Level.WARNING, this.getMissingImplementationMessage(
-                                                dependency.getImplementationName(), dependency.getIdentifier() ), null );
+                                                dependency.getImplementationName(), dependency.getIdentifier() ),
+                                                      new Exception() );
 
                                         }
                                     }
@@ -438,7 +447,7 @@ public class DefaultObjectManager implements ObjectManager
                                             if ( o == null )
                                             {
                                                 this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                    ref.getIdentifier(), ref.getName() ), null );
+                                                    ref.getIdentifier(), ref.getName() ), new Exception() );
 
                                             }
                                         }
@@ -454,14 +463,14 @@ public class DefaultObjectManager implements ObjectManager
                                                 if ( o == null )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        ref.getIdentifier(), ref.getName() ), null );
+                                                        ref.getIdentifier(), ref.getName() ), new Exception() );
 
                                                 }
                                             }
                                             else
                                             {
                                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                    ref.getIdentifier(), ref.getName() ), null );
+                                                    ref.getIdentifier(), ref.getName() ), new Exception() );
 
                                             }
                                         }
@@ -485,7 +494,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 else
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        a.getIdentifier(), a.getName() ), null );
+                                                        a.getIdentifier(), a.getName() ), new Exception() );
 
                                                 }
                                             }
@@ -506,14 +515,14 @@ public class DefaultObjectManager implements ObjectManager
                                                     else
                                                     {
                                                         this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                            a.getIdentifier(), a.getName() ), null );
+                                                            a.getIdentifier(), a.getName() ), new Exception() );
 
                                                     }
                                                 }
                                                 else
                                                 {
                                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                        a.getIdentifier(), a.getName() ), null );
+                                                        a.getIdentifier(), a.getName() ), new Exception() );
 
                                                 }
                                             }
@@ -535,21 +544,21 @@ public class DefaultObjectManager implements ObjectManager
                                 else if ( !dependency.isOptional() )
                                 {
                                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                                        dependency.getIdentifier() ), null );
+                                        dependency.getIdentifier() ), new Exception() );
 
                                 }
                             }
                             else
                             {
                                 this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                                    dependency.getIdentifier() ), null );
+                                    dependency.getIdentifier() ), new Exception() );
 
                             }
                         }
                         else
                         {
                             this.log( Level.WARNING, this.getMissingDependencyMessage(
-                                dependencyName, instance.getIdentifier() ), null );
+                                dependencyName, instance.getIdentifier() ), new Exception() );
 
                         }
                     }
@@ -557,7 +566,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
         }
         catch ( final Exception e )
@@ -611,7 +620,7 @@ public class DefaultObjectManager implements ObjectManager
                         else
                         {
                             this.log( Level.WARNING, this.getMissingPropertyMessage(
-                                propertyName, object.getClass().getName() ), null );
+                                propertyName, object.getClass().getName() ), new Exception() );
 
                         }
                     }
@@ -619,7 +628,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
         }
         catch ( final Exception e )
@@ -672,14 +681,14 @@ public class DefaultObjectManager implements ObjectManager
                     else
                     {
                         this.log( Level.WARNING, this.getMissingMessageMessage(
-                            messageName, object.getClass().getName() ), null );
+                            messageName, object.getClass().getName() ), new Exception() );
 
                     }
                 }
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), null );
+                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
         }
         catch ( final Exception e )
@@ -938,7 +947,7 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( cl == null )
         {
-            this.log( Level.WARNING, this.getMissingClassLoaderMessage(), null );
+            this.log( Level.WARNING, this.getMissingClassLoaderMessage(), new Exception() );
             cl = new URLClassLoader( NO_URLS );
         }
 
@@ -1006,7 +1015,7 @@ public class DefaultObjectManager implements ObjectManager
             }
             else
             {
-                this.log( Level.WARNING, this.getMissingScopeMessage( specification.getScope() ), null );
+                this.log( Level.WARNING, this.getMissingScopeMessage( specification.getScope() ), new Exception() );
             }
         }
         else
@@ -1064,6 +1073,10 @@ public class DefaultObjectManager implements ObjectManager
         {
             object = locator.getObject( Class.forName( specification.getClazz(), true, classLoader ), location );
         }
+        else
+        {
+            this.log( Level.WARNING, this.getMissingLocatorMessage( location ), new Exception() );
+        }
 
         return object;
     }
@@ -1113,6 +1126,11 @@ public class DefaultObjectManager implements ObjectManager
                                     this.getModules(), scopeSpecification, instance );
 
                                 this.scopes.put( modelScope, scope );
+                                this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
+                                    {
+                                        i.getIdentifier(), modelScope
+                                    } ), null );
+
                                 break;
                             }
                         }
@@ -1120,7 +1138,9 @@ public class DefaultObjectManager implements ObjectManager
                 }
                 else
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Scope.class.getName() ), null );
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Scope.class.getName() ),
+                              new Exception() );
+
                 }
             }
 
@@ -1132,11 +1152,6 @@ public class DefaultObjectManager implements ObjectManager
                     this.scopes.put( modelScope, scope );
                     this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
                 }
-            }
-
-            if ( scope == null )
-            {
-                this.log( Level.WARNING, this.getMissingImplementationsMessage( Scope.class.getName() ), null );
             }
 
             return scope;
@@ -1187,63 +1202,69 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "location" );
         }
 
+        Locator locator = null;
         final String scheme = location.getScheme();
 
-        synchronized ( this.locators )
+        if ( scheme != null )
         {
-            Locator locator = this.locators.get( scheme );
-
-            if ( locator == null )
+            synchronized ( this.locators )
             {
-                // Bootstrap locator loading.
-                final Specification locatorSpecification = this.getModules().getSpecification( Locator.class );
+                locator = this.locators.get( scheme );
 
-                if ( locatorSpecification != null )
+                if ( locator == null )
                 {
-                    final Implementations implementations =
-                        this.getModules().getImplementations( locatorSpecification.getIdentifier() );
+                    // Bootstrap locator loading.
+                    final Specification locatorSpecification = this.getModules().getSpecification( Locator.class );
 
-                    if ( implementations != null )
+                    if ( locatorSpecification != null )
                     {
-                        for ( Implementation i : implementations.getImplementation() )
+                        final Implementations implementations =
+                            this.getModules().getImplementations( locatorSpecification.getIdentifier() );
+
+                        if ( implementations != null )
                         {
-                            if ( scheme.equals( i.getName() ) )
+                            for ( Implementation i : implementations.getImplementation() )
                             {
-                                final Instance instance = this.getModelManager().getInstance(
-                                    this.getModules(), i, this.getClassLoader( Locator.class ) );
+                                if ( scheme.equals( i.getName() ) )
+                                {
+                                    final Instance instance = this.getModelManager().getInstance(
+                                        this.getModules(), i, this.getClassLoader( Locator.class ) );
 
-                                locator = (Locator) this.getModelManager().getObject(
-                                    this.getModules(), locatorSpecification, instance );
+                                    locator = (Locator) this.getModelManager().getObject(
+                                        this.getModules(), locatorSpecification, instance );
 
-                                this.locators.put( scheme, locator );
-                                break;
+                                    this.locators.put( scheme, locator );
+                                    this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
+                                        {
+                                            i.getIdentifier(), scheme
+                                        } ), null );
+
+                                    break;
+                                }
                             }
                         }
                     }
+                    else
+                    {
+                        this.log( Level.WARNING, this.getMissingSpecificationMessage( Locator.class.getName() ),
+                                  new Exception() );
+
+                    }
                 }
-                else
+
+                if ( locator == null )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Locator.class.getName() ), null );
+                    locator = this.getDefaultLocator( location );
+                    if ( locator != null )
+                    {
+                        this.locators.put( scheme, locator );
+                        this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
+                    }
                 }
             }
-
-            if ( locator == null )
-            {
-                locator = this.getDefaultLocator( location );
-                if ( locator != null )
-                {
-                    this.locators.put( scheme, locator );
-                    this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
-                }
-            }
-
-            if ( locator == null )
-            {
-                this.log( Level.WARNING, this.getMissingImplementationsMessage( Locator.class.getName() ), null );
-            }
-
-            return locator;
         }
+
+        return locator;
     }
 
     /**
@@ -1359,13 +1380,15 @@ public class DefaultObjectManager implements ObjectManager
                     else
                     {
                         this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                            listenerSpecification.getIdentifier() ), null );
+                            listenerSpecification.getIdentifier() ), new Exception() );
 
                     }
                 }
                 else
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Listener.class.getName() ), null );
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Listener.class.getName() ),
+                              new Exception() );
+
                 }
 
                 this.getListeners().remove( this.bootstrapObjectManagementListener );
@@ -1397,8 +1420,7 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( this.modelManager instanceof DefaultModelManager )
             {
-                ( (DefaultModelManager) this.modelManager ).getListeners().remove(
-                    this.defaultModelManagerListener );
+                ( (DefaultModelManager) this.modelManager ).getListeners().remove( this.defaultModelManagerListener );
             }
 
             this.modelManager = null;
@@ -1695,6 +1717,15 @@ public class DefaultObjectManager implements ObjectManager
         return this.getMessage( "defaultLocatorInfo", new Object[]
             {
                 scheme
+            } );
+
+    }
+
+    private String getMissingLocatorMessage( final URI location )
+    {
+        return this.getMessage( "missingLocator", new Object[]
+            {
+                location.toString()
             } );
 
     }

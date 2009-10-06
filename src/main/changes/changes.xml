@@ -168,6 +168,17 @@
       <code>org.jomc.ri.DefaultObjectManager</code> when trying to
       get a message of an instance without any messages.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>NullPointerException</code> thrown by method
+      <code>getLocator(URI)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
+      get a locator using an URI with an undefined scheme.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.tools.JomcTool</code> to avoid generating
+      implementation source files leading to <code>repeated interface</code>
+      compile errors.]]>
+      </action>
     </release>
 
   </body>
