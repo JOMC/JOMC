@@ -276,8 +276,7 @@
       <messages>
         <message name="testMessage">
           <template defaultLanguage="en">
-            <text language="en"><![CDATA[Test message with {0} argument.]]>
-            </text>
+            <text language="en"><![CDATA[Test message with {0} argument.]]></text>
           </template>
           <arguments>
             <argument index="0" name="testArgument" type="Text"/>
