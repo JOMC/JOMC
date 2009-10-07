@@ -251,16 +251,12 @@
           <version>2.6</version>
           <configuration>
             <breakiterator>true</breakiterator>
-            <charset>${project.reporting.outputEncoding}</charset>
-            <docencoding>${project.reporting.outputEncoding}</docencoding>
-            <encoding>${project.build.sourceEncoding}</encoding>
             <keywords>true</keywords>
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
-            <show>private</show>
             <source>1.5</source>
-            <doctitle>${pom.name} ${pom.version} Documentation</doctitle>
-            <windowtitle>${pom.name} ${pom.version} Documentation</windowtitle>
+            <doctitle>${pom.name} Specification ${pom.version}</doctitle>
+            <windowtitle>${pom.name} Specification ${pom.version}</windowtitle>
             <links>
               <link>http://java.sun.com/javase/7/docs/api</link>
               <link>http://jakarta.apache.org/bcel/apidocs</link>
@@ -567,19 +563,12 @@
             <reports>
               <report>javadoc</report>
               <report>test-javadoc</report>
-              <report>jar</report>
-              <report>test-jar</report>
             </reports>
             <configuration>
               <breakiterator>true</breakiterator>
-              <charset>${project.reporting.outputEncoding}</charset>
-              <docencoding>${project.reporting.outputEncoding}</docencoding>
-              <encoding>${project.build.sourceEncoding}</encoding>
               <keywords>true</keywords>
               <linksource>true</linksource>
               <serialwarn>true</serialwarn>
-              <show>protected</show>
-              <nodeprecated>true</nodeprecated>
               <source>1.5</source>
               <doctitle>${pom.name} Specification ${pom.version}</doctitle>
               <windowtitle>${pom.name} Specification ${pom.version}</windowtitle>
@@ -615,90 +604,6 @@
               </additionalparam>
             </configuration>
           </reportSet>
-          <!-- reportSet>
-            <id>aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-            <configuration>
-              <breakiterator>true</breakiterator>
-              <charset>${project.reporting.outputEncoding}</charset>
-              <docencoding>${project.reporting.outputEncoding}</docencoding>
-              <encoding>${project.build.sourceEncoding}</encoding>
-              <keywords>true</keywords>
-              <linksource>true</linksource>
-              <serialwarn>true</serialwarn>
-              <show>protected</show>
-              <source>1.5</source>
-              <doctitle>${pom.name} ${pom.version} Documentation</doctitle>
-              <windowtitle>${pom.name} ${pom.version} Documentation</windowtitle>
-              <links>
-                <link>http://java.sun.com/javase/7/docs/api</link>
-                <link>http://jakarta.apache.org/bcel/apidocs</link>
-                <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
-                <link>http://commons.apache.org/cli/api-release</link>
-                <link>http://commons.apache.org/io/api-release</link>
-              </links>
-              <groups>
-                <group>
-                  <title>Application Programming Interface</title>
-                  <packages>org.jomc</packages>
-                </group>
-                <group>
-                  <title>Implementation Programming Interface</title>
-                  <packages>org.jomc.spi*</packages>
-                </group>
-                <group>
-                  <title>Command Line Interface</title>
-                  <packages>org.jomc.cli*</packages>
-                </group>
-                <group>
-                  <title>Model</title>
-                  <packages>org.jomc.model*</packages>
-                </group>
-                <group>
-                  <title>Tools</title>
-                  <packages>org.jomc.tools*</packages>
-                </group>
-                <group>
-                  <title>Maven 2 Goals</title>
-                  <packages>org.jomc.tools.mojo*</packages>
-                </group>
-                <group>
-                  <title>Reference Implementation</title>
-                  <packages>org.jomc.ri*</packages>
-                </group>
-              </groups>
-              <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
-              <docletArtifact>
-                <groupId>gr.spinellis</groupId>
-                <artifactId>UmlGraph</artifactId>
-                <version>4.6</version>
-              </docletArtifact>
-              <tagletArtifacts>
-                <tagletArtifact>
-                  <groupId>org.apache.maven.plugin-tools</groupId>
-                  <artifactId>maven-plugin-tools-javadoc</artifactId>
-                  <version>2.5</version>
-                </tagletArtifact>
-                <tagletArtifact>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-javadoc</artifactId>
-                  <version>1.0</version>
-                </tagletArtifact>
-              </tagletArtifacts>
-              <additionalparam>
-                 -inferrel -inferdep
-                 -hide java.*
-                 -hide org.jomc.tools.*
-                 -hide org.jomc.ri.*
-                 -collpackages java.util.* -qualify
-                 -postfixpackage -nodefontsize 9
-                 -nodefontpackagesize 7
-              </additionalparam>
-            </configuration>
-          </reportSet -->
         </reportSets>
       </plugin>
       <plugin>
