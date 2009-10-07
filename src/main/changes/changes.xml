@@ -181,5 +181,12 @@
       </action>
     </release>
 
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-6">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated CLI classes to correctly support the platform encoding when
+      producing output.]]>
+      </action>
+    </release>
   </body>
 </document>
