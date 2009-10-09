@@ -188,5 +188,16 @@
       producing output.]]>
       </action>
     </release>
+
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-7">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected an <code>EmptyStackException</code> thrown by method
+      <code>editLine</code> of class <code>org.jomc.util.SectionEditor</code>
+      when encountering a section end marker without a matching section start
+      marker.]]>
+      </action>
+    </release>
+
   </body>
 </document>
