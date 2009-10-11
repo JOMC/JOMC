@@ -197,6 +197,10 @@
       when encountering a section end marker without a matching section start
       marker.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.model.DefaultModelManager</code> to correctly
+      maintain the state of an object created using a static factory method.]]>
+      </action>
     </release>
 
   </body>
