@@ -140,7 +140,7 @@ public class DefaultObjectManager implements ObjectManager
                         if ( i.getLocation() != null )
                         {
                             object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
-                            if ( object == null )
+                            if ( object == null && this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
@@ -155,14 +155,14 @@ public class DefaultObjectManager implements ObjectManager
                             if ( instance != null )
                             {
                                 object = this.getObject( s, instance );
-                                if ( object == null )
+                                if ( object == null && this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                         i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
-                            else
+                            else if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
@@ -185,7 +185,7 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     list.add( o );
                                 }
-                                else
+                                else if ( this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                         i.getIdentifier(), i.getName() ), new Exception() );
@@ -204,14 +204,14 @@ public class DefaultObjectManager implements ObjectManager
                                     {
                                         list.add( o );
                                     }
-                                    else
+                                    else if ( this.isLoggable( Level.WARNING ) )
                                     {
                                         this.log( Level.WARNING, this.getMissingObjectMessage(
                                             i.getIdentifier(), i.getName() ), new Exception() );
 
                                     }
                                 }
-                                else
+                                else if ( this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
                                         i.getIdentifier(), i.getName() ), new Exception() );
@@ -224,21 +224,21 @@ public class DefaultObjectManager implements ObjectManager
                                  : list.toArray( (Object[]) Array.newInstance( specification, list.size() ) );
 
                     }
-                    else
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage( s.getMultiplicity() ),
                                   new Exception() );
 
                     }
                 }
-                else
+                else if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, this.getMissingImplementationsMessage( specification.getName() ),
                               new Exception() );
 
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
                           new Exception() );
@@ -284,7 +284,7 @@ public class DefaultObjectManager implements ObjectManager
                         if ( i.getLocation() != null )
                         {
                             object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
-                            if ( object == null )
+                            if ( object == null && this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
@@ -299,14 +299,14 @@ public class DefaultObjectManager implements ObjectManager
                             if ( instance != null )
                             {
                                 object = this.getObject( s, instance );
-                                if ( object == null )
+                                if ( object == null && this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                         i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
-                            else
+                            else if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
@@ -314,21 +314,21 @@ public class DefaultObjectManager implements ObjectManager
                             }
                         }
                     }
-                    else
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getMissingImplementationMessage(
                             implementationName, s.getIdentifier() ), new Exception() );
 
                     }
                 }
-                else
+                else if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
                         specification.getName() ), new Exception() );
 
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
                           new Exception() );
@@ -396,7 +396,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 o = this.getObject(
                                                     ds, i.getLocationUri(), this.getClassLoader( object.getClass() ) );
 
-                                                if ( o == null )
+                                                if ( o == null && this.isLoggable( Level.WARNING ) )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                                         i.getIdentifier(), i.getName() ), new Exception() );
@@ -412,14 +412,14 @@ public class DefaultObjectManager implements ObjectManager
                                                 if ( di != null )
                                                 {
                                                     o = this.getObject( ds, di );
-                                                    if ( o == null )
+                                                    if ( o == null && this.isLoggable( Level.WARNING ) )
                                                     {
                                                         this.log( Level.WARNING, this.getMissingObjectMessage(
                                                             i.getIdentifier(), i.getName() ), new Exception() );
 
                                                     }
                                                 }
-                                                else
+                                                else if ( this.isLoggable( Level.WARNING ) )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
                                                         i.getIdentifier(), i.getName() ), new Exception() );
@@ -427,7 +427,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 }
                                             }
                                         }
-                                        else if ( !dependency.isOptional() )
+                                        else if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
                                         {
                                             this.log( Level.WARNING, this.getMissingImplementationMessage(
                                                 dependency.getImplementationName(), dependency.getIdentifier() ),
@@ -443,7 +443,7 @@ public class DefaultObjectManager implements ObjectManager
                                             o = this.getObject(
                                                 ds, ref.getLocationUri(), this.getClassLoader( object.getClass() ) );
 
-                                            if ( o == null )
+                                            if ( o == null && this.isLoggable( Level.WARNING ) )
                                             {
                                                 this.log( Level.WARNING, this.getMissingObjectMessage(
                                                     ref.getIdentifier(), ref.getName() ), new Exception() );
@@ -459,14 +459,14 @@ public class DefaultObjectManager implements ObjectManager
                                             if ( di != null )
                                             {
                                                 o = this.getObject( ds, di );
-                                                if ( o == null )
+                                                if ( o == null && this.isLoggable( Level.WARNING ) )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                                         ref.getIdentifier(), ref.getName() ), new Exception() );
 
                                                 }
                                             }
-                                            else
+                                            else if ( this.isLoggable( Level.WARNING ) )
                                             {
                                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
                                                     ref.getIdentifier(), ref.getName() ), new Exception() );
@@ -490,7 +490,7 @@ public class DefaultObjectManager implements ObjectManager
                                                 {
                                                     list.add( o2 );
                                                 }
-                                                else
+                                                else if ( this.isLoggable( Level.WARNING ) )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingObjectMessage(
                                                         a.getIdentifier(), a.getName() ), new Exception() );
@@ -511,14 +511,14 @@ public class DefaultObjectManager implements ObjectManager
                                                     {
                                                         list.add( o2 );
                                                     }
-                                                    else
+                                                    else if ( this.isLoggable( Level.WARNING ) )
                                                     {
                                                         this.log( Level.WARNING, this.getMissingObjectMessage(
                                                             a.getIdentifier(), a.getName() ), new Exception() );
 
                                                     }
                                                 }
-                                                else
+                                                else if ( this.isLoggable( Level.WARNING ) )
                                                 {
                                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
                                                         a.getIdentifier(), a.getName() ), new Exception() );
@@ -540,21 +540,21 @@ public class DefaultObjectManager implements ObjectManager
                                         instance.getDependencyObjects().put( dependencyName, o );
                                     }
                                 }
-                                else if ( !dependency.isOptional() )
+                                else if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
                                         dependency.getIdentifier() ), new Exception() );
 
                                 }
                             }
-                            else
+                            else if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingSpecificationMessage(
                                     dependency.getIdentifier() ), new Exception() );
 
                             }
                         }
-                        else
+                        else if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( Level.WARNING, this.getMissingDependencyMessage(
                                 dependencyName, instance.getIdentifier() ), new Exception() );
@@ -563,7 +563,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
@@ -616,7 +616,7 @@ public class DefaultObjectManager implements ObjectManager
                                 instance.getPropertyObjects().put( propertyName, value );
                             }
                         }
-                        else
+                        else if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( Level.WARNING, this.getMissingPropertyMessage(
                                 propertyName, object.getClass().getName() ), new Exception() );
@@ -625,7 +625,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
@@ -677,7 +677,7 @@ public class DefaultObjectManager implements ObjectManager
 
                         text = fmt.format( arguments );
                     }
-                    else
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getMissingMessageMessage(
                             messageName, object.getClass().getName() ), new Exception() );
@@ -685,7 +685,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
             }
@@ -740,6 +740,9 @@ public class DefaultObjectManager implements ObjectManager
      * @see #initialize()
      */
     private final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
+
+    /** Log level of the instance. */
+    private Level logLevel;
 
     /** {@code DefaultModelManager.Listener} of the instance. */
     private final DefaultModelManager.Listener defaultModelManagerListener = new DefaultModelManager.Listener()
@@ -829,6 +832,67 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the log level of the instance.
+     * <p>The default log level of the instance is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.logLevel} holding the default log level of the instance.
+     * If that system property is not set, a {@code WARNING} log level is returned.</p>
+     *
+     * @return The log level of the instance.
+     *
+     * @see #setLogLevel(java.util.logging.Level)
+     * @see #isLoggable(java.util.logging.Level)
+     * @see Level#parse(java.lang.String)
+     */
+    public Level getLogLevel()
+    {
+        if ( this.logLevel == null )
+        {
+            this.logLevel = Level.parse( System.getProperty( "org.jomc.ri.DefaultObjectManager.logLevel",
+                                                             Level.WARNING.getName() ) );
+
+        }
+
+        return this.logLevel;
+    }
+
+    /**
+     * Sets the log level of the instance.
+     *
+     * @param value The new log level of the instance or {@code null}.
+     *
+     * @see #getLogLevel()
+     * @see #isLoggable(java.util.logging.Level)
+     */
+    public void setLogLevel( final Level value )
+    {
+        this.logLevel = value;
+    }
+
+    /**
+     * Checks if a message at a given level is provided to the listeners of the instance.
+     *
+     * @param level The level to test.
+     *
+     * @return {@code true} if messages at {@code level} are provided to the listeners of the instance;
+     * {@code false} if messages at {@code level} are not provided to the listeners of the instance.
+     *
+     * @throws NullPointerException if {@code level} is {@code null}.
+     *
+     * @see #getLogLevel()
+     * @see #setLogLevel(java.util.logging.Level)
+     * @see #log(java.util.logging.Level, java.lang.String, java.lang.Throwable)
+     */
+    public boolean isLoggable( final Level level )
+    {
+        if ( level == null )
+        {
+            throw new NullPointerException( "level" );
+        }
+
+        return level.intValue() >= this.getLogLevel().intValue();
+    }
+
+    /**
      * Gets the modules of the instance.
      *
      * @return The modules of the instance.
@@ -870,27 +934,46 @@ public class DefaultObjectManager implements ObjectManager
             }
             catch ( final ModelException e )
             {
-                this.log( Level.SEVERE, e.getMessage(), e );
+                if ( this.isLoggable( Level.SEVERE ) )
+                {
+                    this.log( Level.SEVERE, e.getMessage(), e );
+                }
+
                 for ( ModelException.Detail d : e.getDetails() )
                 {
-                    this.log( d.getLevel(), d.getMessage(), null );
+                    if ( this.isLoggable( d.getLevel() ) )
+                    {
+                        this.log( d.getLevel(), d.getMessage(), null );
+                    }
                 }
             }
             catch ( final TransformerException e )
             {
-                this.log( Level.SEVERE, e.getMessage(), e );
+                if ( this.isLoggable( Level.SEVERE ) )
+                {
+                    this.log( Level.SEVERE, e.getMessage(), e );
+                }
             }
             catch ( final IOException e )
             {
-                this.log( Level.SEVERE, e.getMessage(), e );
+                if ( this.isLoggable( Level.SEVERE ) )
+                {
+                    this.log( Level.SEVERE, e.getMessage(), e );
+                }
             }
             catch ( final SAXException e )
             {
-                this.log( Level.SEVERE, e.getMessage(), e );
+                if ( this.isLoggable( Level.SEVERE ) )
+                {
+                    this.log( Level.SEVERE, e.getMessage(), e );
+                }
             }
             catch ( final JAXBException e )
             {
-                this.log( Level.SEVERE, e.getMessage(), e );
+                if ( this.isLoggable( Level.SEVERE ) )
+                {
+                    this.log( Level.SEVERE, e.getMessage(), e );
+                }
             }
             finally
             {
@@ -974,7 +1057,11 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( cl == null )
         {
-            this.log( Level.WARNING, this.getMissingClassLoaderMessage(), new Exception() );
+            if ( this.isLoggable( Level.WARNING ) )
+            {
+                this.log( Level.WARNING, this.getMissingClassLoaderMessage(), new Exception() );
+            }
+
             cl = new URLClassLoader( NO_URLS );
         }
 
@@ -1040,7 +1127,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingScopeMessage( specification.getScope() ), new Exception() );
             }
@@ -1100,7 +1187,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             object = locator.getObject( Class.forName( specification.getClazz(), true, classLoader ), location );
         }
-        else
+        else if ( this.isLoggable( Level.WARNING ) )
         {
             this.log( Level.WARNING, this.getMissingLocatorMessage( location ), new Exception() );
         }
@@ -1157,14 +1244,17 @@ public class DefaultObjectManager implements ObjectManager
                                         this.getModules(), scopeSpecification, instance );
 
                                     this.scopes.put( modelScope, scope );
-                                    this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
-                                        {
-                                            i.getIdentifier(), modelScope
-                                        } ), null );
+                                    if ( this.isLoggable( Level.CONFIG ) )
+                                    {
+                                        this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
+                                            {
+                                                i.getIdentifier(), modelScope
+                                            } ), null );
 
+                                    }
                                     break;
                                 }
-                                else
+                                else if ( this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( Level.WARNING, this.getMissingInstanceMessage(
                                         i.getIdentifier(), i.getName() ), new Exception() );
@@ -1174,7 +1264,7 @@ public class DefaultObjectManager implements ObjectManager
                         }
                     }
                 }
-                else
+                else if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, this.getMissingSpecificationMessage( Scope.class.getName() ),
                               new Exception() );
@@ -1188,7 +1278,10 @@ public class DefaultObjectManager implements ObjectManager
                 if ( scope != null )
                 {
                     this.scopes.put( modelScope, scope );
-                    this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
+                    if ( this.isLoggable( Level.FINE ) )
+                    {
+                        this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
+                    }
                 }
             }
 
@@ -1278,14 +1371,18 @@ public class DefaultObjectManager implements ObjectManager
                                             this.getModules(), locatorSpecification, instance );
 
                                         this.locators.put( scheme, locator );
-                                        this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
-                                            {
-                                                i.getIdentifier(), scheme
-                                            } ), null );
+                                        if ( this.isLoggable( Level.CONFIG ) )
+                                        {
+                                            this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
+                                                {
+                                                    i.getIdentifier(), scheme
+                                                } ), null );
+
+                                        }
 
                                         break;
                                     }
-                                    else
+                                    else if ( this.isLoggable( Level.WARNING ) )
                                     {
                                         this.log( Level.WARNING, this.getMissingInstanceMessage(
                                             i.getIdentifier(), i.getName() ), new Exception() );
@@ -1295,7 +1392,7 @@ public class DefaultObjectManager implements ObjectManager
                             }
                         }
                     }
-                    else
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getMissingSpecificationMessage( Locator.class.getName() ),
                                   new Exception() );
@@ -1309,7 +1406,10 @@ public class DefaultObjectManager implements ObjectManager
                     if ( locator != null )
                     {
                         this.locators.put( scheme, locator );
-                        this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
+                        if ( this.isLoggable( Level.FINE ) )
+                        {
+                            this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
+                        }
                     }
                 }
             }
@@ -1380,20 +1480,23 @@ public class DefaultObjectManager implements ObjectManager
                                 this.invoker = (Invoker) this.getModelManager().getObject(
                                     this.getModules(), invokerSpecification, invokerInstance );
 
-                                this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
-                                    {
-                                        i.getIdentifier()
-                                    } ), null );
+                                if ( this.isLoggable( Level.CONFIG ) )
+                                {
+                                    this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
+                                        {
+                                            i.getIdentifier()
+                                        } ), null );
 
+                                }
                             }
-                            else
+                            else if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
-                        else
+                        else if ( this.isLoggable( Level.FINE ) )
                         {
                             this.log( Level.FINE, this.getMessage( "ignoredInvoker", new Object[]
                                 {
@@ -1404,7 +1507,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                 }
             }
-            else
+            else if ( this.isLoggable( Level.WARNING ) )
             {
                 this.log( Level.WARNING, this.getMissingSpecificationMessage( Invoker.class.getName() ),
                           new Exception() );
@@ -1414,7 +1517,10 @@ public class DefaultObjectManager implements ObjectManager
             if ( this.invoker == null )
             {
                 this.invoker = new DefaultInvoker();
-                this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", null ), null );
+                if ( this.isLoggable( Level.FINE ) )
+                {
+                    this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", null ), null );
+                }
             }
         }
 
@@ -1506,14 +1612,14 @@ public class DefaultObjectManager implements ObjectManager
 
                         }
                     }
-                    else
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getMissingImplementationsMessage(
                             listenerSpecification.getIdentifier() ), new Exception() );
 
                     }
                 }
-                else
+                else if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, this.getMissingSpecificationMessage( Listener.class.getName() ),
                               new Exception() );
@@ -1531,10 +1637,14 @@ public class DefaultObjectManager implements ObjectManager
                 }
 
                 this.bootstrapLogRecords.clear();
-                this.log( Level.FINE, this.getModulesReport( this.getModules() ), null );
-                this.log( Level.FINE, this.getImplementationInfoMessage(
-                    Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
 
+                if ( this.isLoggable( Level.FINE ) )
+                {
+                    this.log( Level.FINE, this.getModulesReport( this.getModules() ), null );
+                    this.log( Level.FINE, this.getImplementationInfoMessage(
+                        Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+
+                }
             }
         }
         catch ( final InstantiationException e )
@@ -1567,12 +1677,22 @@ public class DefaultObjectManager implements ObjectManager
      * @param level The level of the event.
      * @param message The message of the event or {@code null}.
      * @param throwable The throwable of the event or {@code null}.
+     *
+     * @throws NullPointerException if {@code level} is {@code null}.
      */
     protected void log( final Level level, final String message, final Throwable throwable )
     {
-        for ( Listener l : this.getListeners() )
+        if ( level == null )
         {
-            l.onLog( level, message, throwable );
+            throw new NullPointerException( "level" );
+        }
+
+        if ( this.isLoggable( level ) )
+        {
+            for ( Listener l : this.getListeners() )
+            {
+                l.onLog( level, message, throwable );
+            }
         }
     }
 
@@ -1609,7 +1729,7 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             interfaces.add( clazz );
                         }
-                        else
+                        else if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
                                 s.getClazz(), instance.getIdentifier() ), null );

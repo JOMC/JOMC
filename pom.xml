@@ -243,6 +243,20 @@
           <version>2.4.3</version>
           <configuration>
             <forkMode>once</forkMode>
+            <systemProperties>
+              <property>
+                <name>org.jomc.model.DefaultModelManager.logLevel</name>
+                <value>ALL</value>
+              </property>
+              <property>
+                <name>org.jomc.ri.DefaultObjectManager.logLevel</name>
+                <value>ALL</value>
+              </property>
+              <property>
+                <name>org.jomc.tools.JomcTool.logLevel</name>
+                <value>ALL</value>
+              </property>
+            </systemProperties>
           </configuration>
         </plugin>
         <plugin>
