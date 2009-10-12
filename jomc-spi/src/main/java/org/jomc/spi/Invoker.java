@@ -1,0 +1,90 @@
+// SECTION-START[License Header]
+/*
+ *   Copyright (c) 2009 The JOMC Project
+ *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
+ *   All rights reserved.
+ *
+ *   Redistribution and use in source and binary forms, with or without
+ *   modification, are permitted provided that the following conditions
+ *   are met:
+ *
+ *     o Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *
+ *     o Redistributions in binary form must reproduce the above copyright
+ *       notice, this list of conditions and the following disclaimer in
+ *       the documentation and/or other materials provided with the
+ *       distribution.
+ *
+ *   THIS SOFTWARE IS PROVIDED BY THE JOMC PROJECT AND CONTRIBUTORS "AS IS"
+ *   AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ *   THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ *   PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE JOMC PROJECT OR
+ *   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ *   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ *   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ *   OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ *   WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ *   OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ *   ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ *   $Id$
+ *
+ */
+// SECTION-END
+package org.jomc.spi;
+
+import java.lang.reflect.Method;
+import java.lang.reflect.UndeclaredThrowableException;
+
+// SECTION-START[Documentation]
+/**
+ * Invokes objects.
+ * <p>This specification declares a multiplicity of {@code One}.
+ * An application assembler is required to provide no more than one implementation of this specification (including none).
+ * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
+ * Invoker object = (Invoker) ObjectManagerFactory.getObjectManager().getObject( Invoker.class );
+ * </pre>
+ * </p>
+ *
+ * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ *
+ * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
+ * @version $Id$
+ */
+// SECTION-END
+// SECTION-START[Annotations]
+@javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
+// SECTION-END
+public interface Invoker
+{
+    // SECTION-START[InvocationHandler]
+
+    /**
+     * Performs a method invocation on an object.
+     *
+     * @param object The object to invoke {@code method} on.
+     * @param method The method to invoke on {@code object}.
+     * @param arguments The arguments of the invocation.
+     *
+     * @return The return value of the invocation. If the declared return type of {@code method} is a primitive type,
+     * then the value returned by this method must be an instance of the corresponding primitive wrapper class;
+     * otherwise, it must be a type assignable to the declared return type of {@code method}. If the value returned by
+     * this method is {@code null} and the declared return type of {@code method} is primitive, then a
+     * {@code NullPointerException} will be thrown. If the value returned by this method is otherwise not compatible to
+     * the declared return type of {@code method}, a {@code ClassCastException} will be thrown.
+     *
+     * @throws Throwable The exception thrown from the method invocation. The exception's type must be assignable
+     * either to any of the exception types declared in the {@code throws} clause of {@code method} or to the unchecked
+     * exception types {@code java.lang.RuntimeException} or {@code java.lang.Error}. If a checked exception is thrown
+     * by this method that is not assignable to any of the exception types declared in the {@code throws} clause of
+     * {@code method}, then an {@code UndeclaredThrowableException} containing the exception that was thrown by this
+     * method will be thrown.
+     *
+     * @see UndeclaredThrowableException
+     */
+    Object invoke( Object object, Method method, Object[] arguments ) throws Throwable;
+
+    // SECTION-END
+}

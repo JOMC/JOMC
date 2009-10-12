@@ -34,15 +34,16 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.util.logging.Level;
+import java.util.Arrays;
+import java.util.Iterator;
+import org.jomc.ri.DefaultInvocation;
+import org.jomc.ri.DefaultInvoker;
 
 // SECTION-START[Documentation]
 /**
- * {@code ObjectManagementLister} logging to the console.
+ * Test {@code Invoker} implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.spi.Listener} {@code 1.0} {@code Multiton}</li>
+ * <li>{@code org.jomc.spi.Invoker} {@code Multiton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
@@ -53,91 +54,44 @@ import java.util.logging.Level;
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
 // SECTION-END
-public class TestObjectManagementListener
-    implements
-    org.jomc.spi.Listener
+public class TestInvoker extends DefaultInvoker
 {
-    // SECTION-START[TestObjectManagementListener]
+    // SECTION-START[DefaultInvoker]
 
-    /** The {@code OutputStream} to stream to. */
-    private OutputStream outputStream;
-
-    /** The {@code PrintWriter} events are printed with. */
-    private PrintWriter printWriter;
-
-    /**
-     * Gets the output stream events are streamed to.
-     *
-     * @return The output stream events are streamed to.
-     */
-    public OutputStream getOutputStream()
+    @Override
+    public DefaultInvocation postInvoke( final DefaultInvocation invocation )
     {
-        if ( this.outputStream == null )
+        final StringBuilder b = new StringBuilder();
+        b.append( invocation.getObject().toString() );
+
+        if ( invocation.getInstance() != null )
         {
-            this.outputStream = System.out;
+            b.append( "[" ).append( invocation.getInstance().getIdentifier() ).append( "]: " );
         }
 
-        return this.outputStream;
-    }
+        b.append( invocation.getMethod().getName() ).append( "( " );
 
-    /**
-     * Gets the print writer events are printed with,
-     *
-     * @return The print writer events are printed with.
-     */
-    public PrintWriter getPrintWriter()
-    {
-        if ( this.printWriter == null )
+        for ( Iterator it = Arrays.asList( invocation.getArguments() ).iterator(); it.hasNext(); )
         {
-            this.printWriter = new PrintWriter( this.getOutputStream(), true );
+            b.append( it.next() );
+            if ( it.hasNext() )
+            {
+                b.append( ", " );
+            }
         }
 
-        return this.printWriter;
-    }
-
-    /**
-     * Sets the print writer to print events with,
-     *
-     * @param value The new print writer to print events with,
-     */
-    public void setPrintWriter( final PrintWriter value )
-    {
-        this.printWriter = value;
-    }
-
-    /**
-     * Sets the output stream to stream events to.
-     *
-     * @param value The new output stream to stream events to.
-     */
-    public void setOutputStream( final OutputStream value )
-    {
-        this.outputStream = value;
-    }
-
-    public void onLog( final Level level, final String message, final Throwable throwable )
-    {
-        if ( message != null )
-        {
-            this.getPrintWriter().print( "[JOMC] " );
-            this.getPrintWriter().print( "[" + level.getLocalizedName() + "] " );
-            this.getPrintWriter().println( message );
-        }
-        if ( throwable != null )
-        {
-            this.getPrintWriter().print( "[JOMC] " );
-            this.getPrintWriter().print( "[" + level.getLocalizedName() + "] " );
-            this.getPrintWriter().println( throwable );
-        }
+        b.append( " ): " ).append( invocation.getResult() );
+        System.out.println( b.toString() );
+        return invocation;
     }
 
     // SECTION-END
     // SECTION-START[Constructors]
 
-    /** Creates a new {@code TestObjectManagementListener} instance. */
+    /** Creates a new {@code TestInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
-    public TestObjectManagementListener()
+    public TestInvoker()
     {
         // SECTION-START[Default Constructor]
         super();

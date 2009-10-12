@@ -82,7 +82,23 @@
                    version="1.0">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Locates implementation instances.]]></text>
+        <text language="en"><![CDATA[Locates objects.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.spi.Invoker"
+                   class="org.jomc.spi.Invoker"
+                   vendor="${pom.organization.name}"
+                   version="1.0"
+                   multiplicity="One">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Invokes objects.]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"

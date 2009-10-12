@@ -56,6 +56,8 @@ import junit.framework.Assert;
  * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-alpha-7-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-7-SNAPSHOT bound to an instance.</blockquote></li>
+ * <li>"{@link #getInvokerTestSpecification InvokerTestSpecification}"<blockquote>
+ * Dependency on {@code org.jomc.ri.test.InvokerTestSpecification} at specification level 1.0-alpha-7-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getOptionalLocale OptionalLocale}"<blockquote>
  * Dependency on {@code java.util.Locale} at specification level 1.0-alpha-7-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
@@ -247,6 +249,11 @@ public class TestImplementation
         Assert.assertNull( this.getOptionalLocale() );
     }
 
+    public void testInvoker() throws Exception
+    {
+        this.getInvokerTestSpecification().invoke( "TEST" );
+    }
+
     protected void printEstimatedExecutionTime( final String identifier, final Runnable runnable )
     {
         long t = 0L;
@@ -310,6 +317,22 @@ public class TestImplementation
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "BoundSingletons" );
         assert _d != null : "'BoundSingletons' dependency not found.";
+        return _d;
+    }
+
+    /**
+     * Gets the {@code InvokerTestSpecification} dependency.
+     * <p>This method returns the "{@code InvokerTest}" object of the {@code org.jomc.ri.test.InvokerTestSpecification} specification at specification level 1.0-alpha-7-SNAPSHOT.</p>
+     * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
+     * @return The {@code InvokerTestSpecification} dependency.
+     * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
+    private org.jomc.ri.test.InvokerTestSpecification getInvokerTestSpecification()
+    {
+        final org.jomc.ri.test.InvokerTestSpecification _d = (org.jomc.ri.test.InvokerTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "InvokerTestSpecification" );
+        assert _d != null : "'InvokerTestSpecification' dependency not found.";
         return _d;
     }
 

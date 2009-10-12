@@ -36,8 +36,6 @@ package org.jomc.ri;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URI;
@@ -77,6 +75,7 @@ import org.jomc.model.Multiplicity;
 import org.jomc.model.Property;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
+import org.jomc.spi.Invoker;
 import org.jomc.spi.Listener;
 import org.jomc.spi.Locator;
 import org.jomc.spi.Scope;
@@ -724,6 +723,9 @@ public class DefaultObjectManager implements ObjectManager
     /** Locators of the instance. */
     private final Map<String, Locator> locators = new HashMap<String, Locator>();
 
+    /** Invoker of the instance. */
+    private Invoker invoker;
+
     /** Listeners of the instance. */
     private List<Listener> listeners;
 
@@ -767,6 +769,8 @@ public class DefaultObjectManager implements ObjectManager
      * Default {@link ObjectManagerFactory#getObjectManager()} implementation backed by static field.
      *
      * @return The default {@code ObjectManager} singleton instance.
+     *
+     * @see ObjectManagerFactory#getObjectManager()
      */
     public static ObjectManager getObjectManager()
     {
@@ -780,6 +784,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return {@code true} if the class loader of the instance is searched for resources; {@code false} if no
      * classpath resolution is performed.
+     *
+     * @see #setClasspathAware(boolean)
      */
     public boolean isClasspathAware()
     {
@@ -798,8 +804,10 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param value {@code true} if the class loader of the instance is searched for resources; {@code false} if no
      * classpath resolution is performed.
+     *
+     * @see #isClasspathAware()
      */
-    public void setClasspathAware( final boolean value )
+    public synchronized void setClasspathAware( final boolean value )
     {
         this.classpathAware = value;
         this.initialized = false;
@@ -824,6 +832,8 @@ public class DefaultObjectManager implements ObjectManager
      * Gets the modules of the instance.
      *
      * @return The modules of the instance.
+     *
+     * @see #setModules(org.jomc.model.Modules)
      */
     public Modules getModules()
     {
@@ -898,17 +908,21 @@ public class DefaultObjectManager implements ObjectManager
      * Sets the modules of the instance.
      *
      * @param value The new modules of the instance.
+     *
+     * @see #getModules()
      */
-    public void setModules( final Modules value )
+    public synchronized void setModules( final Modules value )
     {
         this.modules = value;
         this.initialized = false;
     }
 
     /**
-     * Gets the model manager backing the instance.
+     * Gets the model manager of the instance.
      *
-     * @return The model manager backing the instance.
+     * @return The model manager of the instance.
+     *
+     * @see #setModelManager(org.jomc.model.ModelManager)
      */
     public ModelManager getModelManager()
     {
@@ -921,6 +935,19 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         return this.modelManager;
+    }
+
+    /**
+     * Sets the model manager of the instance.
+     *
+     * @param value The new model manager of the instance.
+     *
+     * @see #getModelManager()
+     */
+    public synchronized void setModelManager( final ModelManager value )
+    {
+        this.modelManager = value;
+        this.initialized = false;
     }
 
     /**
@@ -1091,6 +1118,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code modelScope} is {@code null}.
      * @throws InstantiationException if instantiating a scope fails.
+     *
+     * @see #getDefaultScope(java.lang.String)
      */
     public Scope getScope( final String modelScope ) throws InstantiationException
     {
@@ -1122,16 +1151,25 @@ public class DefaultObjectManager implements ObjectManager
                                 final Instance instance = this.getModelManager().getInstance(
                                     this.getModules(), i, this.getClassLoader( Scope.class ) );
 
-                                scope = (Scope) this.getModelManager().getObject(
-                                    this.getModules(), scopeSpecification, instance );
+                                if ( instance != null )
+                                {
+                                    scope = (Scope) this.getModelManager().getObject(
+                                        this.getModules(), scopeSpecification, instance );
 
-                                this.scopes.put( modelScope, scope );
-                                this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
-                                    {
-                                        i.getIdentifier(), modelScope
-                                    } ), null );
+                                    this.scopes.put( modelScope, scope );
+                                    this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
+                                        {
+                                            i.getIdentifier(), modelScope
+                                        } ), null );
 
-                                break;
+                                    break;
+                                }
+                                else
+                                {
+                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                        i.getIdentifier(), i.getName() ), new Exception() );
+
+                                }
                             }
                         }
                     }
@@ -1167,6 +1205,8 @@ public class DefaultObjectManager implements ObjectManager
      * available implementing {@code modelScope}.
      *
      * @throws NullPointerException if {@code modelScope} is {@code null}.
+     *
+     * @see #getScope(java.lang.String)
      */
     public Scope getDefaultScope( final String modelScope )
     {
@@ -1194,6 +1234,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
+     *
+     * @see #getDefaultLocator(java.net.URI)
      */
     public Locator getLocator( final URI location ) throws InstantiationException
     {
@@ -1230,16 +1272,25 @@ public class DefaultObjectManager implements ObjectManager
                                     final Instance instance = this.getModelManager().getInstance(
                                         this.getModules(), i, this.getClassLoader( Locator.class ) );
 
-                                    locator = (Locator) this.getModelManager().getObject(
-                                        this.getModules(), locatorSpecification, instance );
+                                    if ( instance != null )
+                                    {
+                                        locator = (Locator) this.getModelManager().getObject(
+                                            this.getModules(), locatorSpecification, instance );
 
-                                    this.locators.put( scheme, locator );
-                                    this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
-                                        {
-                                            i.getIdentifier(), scheme
-                                        } ), null );
+                                        this.locators.put( scheme, locator );
+                                        this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
+                                            {
+                                                i.getIdentifier(), scheme
+                                            } ), null );
 
-                                    break;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                            i.getIdentifier(), i.getName() ), new Exception() );
+
+                                    }
                                 }
                             }
                         }
@@ -1276,6 +1327,8 @@ public class DefaultObjectManager implements ObjectManager
      * available for {@code location}.
      *
      * @throws NullPointerException if {@code location} is {@code null}.
+     *
+     * @see #getLocator(java.net.URI)
      */
     public Locator getDefaultLocator( final URI location )
     {
@@ -1293,6 +1346,79 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         return locator;
+    }
+
+    /**
+     * Gets the invoker of the instance.
+     *
+     * @return The invoker of the instance.
+     *
+     * @throws InstantiationException if instantiating a new invoker fails.
+     */
+    public Invoker getInvoker() throws InstantiationException
+    {
+        if ( this.invoker == null )
+        {
+            final Specification invokerSpecification = this.getModules().getSpecification( Invoker.class );
+
+            if ( invokerSpecification != null )
+            {
+                final Implementations implementations =
+                    this.getModules().getImplementations( invokerSpecification.getIdentifier() );
+
+                if ( implementations != null && !implementations.getImplementation().isEmpty() )
+                {
+                    for ( Implementation i : implementations.getImplementation() )
+                    {
+                        if ( this.invoker == null )
+                        {
+                            final Instance invokerInstance = this.getModelManager().getInstance(
+                                this.getModules(), i, this.getClassLoader( Invoker.class ) );
+
+                            if ( invokerInstance != null )
+                            {
+                                this.invoker = (Invoker) this.getModelManager().getObject(
+                                    this.getModules(), invokerSpecification, invokerInstance );
+
+                                this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
+                                    {
+                                        i.getIdentifier()
+                                    } ), null );
+
+                            }
+                            else
+                            {
+                                this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                    i.getIdentifier(), i.getName() ), new Exception() );
+
+                            }
+                        }
+                        else
+                        {
+                            this.log( Level.FINE, this.getMessage( "ignoredInvoker", new Object[]
+                                {
+                                    i.getIdentifier()
+                                } ), null );
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                this.log( Level.WARNING, this.getMissingSpecificationMessage( Invoker.class.getName() ),
+                          new Exception() );
+
+            }
+
+            if ( this.invoker == null )
+            {
+                this.invoker = new DefaultInvoker();
+                this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", null ), null );
+            }
+        }
+
+        return this.invoker;
     }
 
     /**
@@ -1323,6 +1449,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.modelManager = null;
                 this.listeners = null;
                 this.modules = null;
+                this.invoker = null;
 
                 this.getListeners().add( this.bootstrapObjectManagementListener );
 
@@ -1352,6 +1479,8 @@ public class DefaultObjectManager implements ObjectManager
 
                     scope.putObject( thisInstance.getIdentifier(), this );
                 }
+
+                this.getInvoker();
 
                 // Bootstrap listener loading.
                 final Specification listenerSpecification = this.getModules().getSpecification( Listener.class );
@@ -1426,6 +1555,7 @@ public class DefaultObjectManager implements ObjectManager
             this.modelManager = null;
             this.listeners = null;
             this.modules = null;
+            this.invoker = null;
             this.initialized = false;
             throw e;
         }
@@ -1490,54 +1620,13 @@ public class DefaultObjectManager implements ObjectManager
 
                 proxy = Proxy.newProxyInstance(
                     instance.getClassLoader(), interfaces.toArray( new Class[ interfaces.size() ] ),
-                    new InvocationHandler()
+                    new java.lang.reflect.InvocationHandler()
                     {
 
                         public Object invoke( final Object proxy, final Method method, final Object[] args )
                             throws Throwable
                         {
-                            try
-                            {
-                                final Method m =
-                                    object.getClass().getMethod( method.getName(), method.getParameterTypes() );
-
-                                if ( instance.isStateless() )
-                                {
-                                    return m.invoke( object, args );
-                                }
-                                else
-                                {
-                                    synchronized ( object )
-                                    {
-                                        return m.invoke( object, args );
-                                    }
-                                }
-                            }
-                            catch ( final NoSuchMethodException e )
-                            {
-                                log( Level.SEVERE, e.getMessage(), e );
-                                throw new ObjectManagementException( e.getMessage(), e );
-                            }
-                            catch ( final SecurityException e )
-                            {
-                                log( Level.SEVERE, e.getMessage(), e );
-                                throw new ObjectManagementException( e.getMessage(), e );
-                            }
-                            catch ( final InvocationTargetException e )
-                            {
-                                if ( e.getTargetException() != null )
-                                {
-                                    throw e.getTargetException();
-                                }
-
-                                log( Level.SEVERE, e.getMessage(), e );
-                                throw new ObjectManagementException( e.getMessage(), e );
-                            }
-                            catch ( final IllegalAccessException e )
-                            {
-                                log( Level.SEVERE, e.getMessage(), e );
-                                throw new ObjectManagementException( e.getMessage(), e );
-                            }
+                            return getInvoker().invoke( object, method, args );
                         }
 
                     } );

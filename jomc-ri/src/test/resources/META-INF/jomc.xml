@@ -193,6 +193,21 @@
 
       </authors>
     </specification>
+
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.ri.test.InvokerTestSpecification"
+                   class="org.jomc.ri.test.InvokerTestSpecification"
+                   vendor="${pom.organization.name}"
+                   version="${pom.version}"
+                   scope="Singleton">
+
+      <authors>
+        <author name="Christian Schulte" version="1.0"
+                mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
   <implementations>
 
@@ -269,6 +284,11 @@
                     implementationName="DOES NOT EXIST"
                     bound="false"
                     optional="true"/>
+        <dependency name="InvokerTestSpecification"
+                    identifier="org.jomc.ri.test.InvokerTestSpecification"
+                    version="${pom.version}"
+                    implementationName="InvokerTest"
+                    bound="true"/>
       </dependencies>
       <properties>
         <property name="testProperty" type="java.lang.String" value="TEST"/>
@@ -475,5 +495,45 @@
       </specifications>
     </implementation>
 
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.TestInvoker"
+                    name="TestInvoker"
+                    class="org.jomc.ri.test.TestInvoker"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Test {@code Invoker} implementation.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Invoker"/>
+      </specifications>
+      <implementations>
+        <reference identifier="org.jomc.ri.DefaultInvoker"/>
+      </implementations>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.test.InvokerTest"
+                    name="InvokerTest"
+                    class="org.jomc.ri.test.InvokerTest"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[{@code Invoker} test cases.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.test.InvokerTestSpecification"/>
+      </specifications>
+    </implementation>
   </implementations>
 </module>

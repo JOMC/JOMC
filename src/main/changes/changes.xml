@@ -205,6 +205,14 @@
       Updated command line tool to display illegal XML elements when using the
       <code>--debug</code> option.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added <code>org.jomc.spi.Invoker</code> interface to the
+      <code>jomc-spi</code> artifact to allow customization of object
+      invocations. Added corresponding default implementation classes
+      <code>org.jomc.ri.DefaultInvocation</code> and
+      <code>org.jomc.ri.DefaultInvoker</code> to <code>jomc-ri</code> artifact
+      and updated class <code>org.jomc.ri.DefaultObjectManager</code>.]]>
+      </action>
     </release>
 
   </body>

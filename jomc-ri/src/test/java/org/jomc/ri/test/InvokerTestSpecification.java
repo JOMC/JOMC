@@ -32,24 +32,22 @@
  *
  */
 // SECTION-END
-package org.jomc.spi;
+package org.jomc.ri.test;
 
-import java.io.IOException;
-import java.net.URI;
+import java.lang.*;
 
 // SECTION-START[Documentation]
 /**
- * Locates objects.
  * <p>This specification declares a multiplicity of {@code Many}.
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * Locator[] objects = (Locator[]) ObjectManagerFactory.getObjectManager().getObject( Locator.class );
- * Locator object = ObjectManagerFactory.getObjectManager().getObject( Locator.class, "<i>implementation name</i>" );
+ * InvokerTestSpecification[] objects = (InvokerTestSpecification[]) ObjectManagerFactory.getObjectManager().getObject( InvokerTestSpecification.class );
+ * InvokerTestSpecification object = ObjectManagerFactory.getObjectManager().getObject( InvokerTestSpecification.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>This specification applies to {@code Singleton} scope. The same singleton object is returned whenever requested.</p>
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
@@ -59,23 +57,11 @@ import java.net.URI;
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
 // SECTION-END
-public interface Locator
+public interface InvokerTestSpecification
 {
-    // SECTION-START[Locator]
+    // SECTION-START[InvocationHandlerTestSpecification]
 
-    /**
-     * Gets an object for a given location URI.
-     *
-     * @param specification The specification class of the object to locate.
-     * @param location The location URI of the object to locate.
-     * @param <T> The type of the object.
-     *
-     * @return The object located at {@code location} or {@code null} if no object is found at {@code location}.
-     *
-     * @throws NullPointerException if {@code specification} or {@code location} is {@code null}.
-     * @throws IOException if locating the object fails.
-     */
-    <T> T getObject( Class<T> specification, URI location ) throws NullPointerException, IOException;
+    String invoke( String argument ) throws Exception;
 
     // SECTION-END
 }

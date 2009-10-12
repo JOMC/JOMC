@@ -105,5 +105,41 @@ It supports location URI schemes {@code jndi} and {@code jndi+rmi}.]]>
 
       </authors>
     </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.DefaultInvoker"
+                    class="org.jomc.ri.DefaultInvoker"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Default {@code Invoker} implementation.
+@see DefaultInvocation]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- ******************************************************************* -->
+    <implementation identifier="org.jomc.ri.DefaultInvocation"
+                    class="org.jomc.ri.DefaultInvocation"
+                    name="${pom.name}"
+                    version="${pom.version}"
+                    vendor="${pom.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Default invocation.
+@see DefaultInvoker]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
   </implementations>
 </module>
