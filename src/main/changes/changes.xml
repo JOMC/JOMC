@@ -201,6 +201,10 @@
       Updated class <code>org.jomc.model.DefaultModelManager</code> to correctly
       maintain the state of an object created using a static factory method.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated command line tool to display illegal XML elements when using the
+      <code>--debug</code> option.]]>
+      </action>
     </release>
 
   </body>
