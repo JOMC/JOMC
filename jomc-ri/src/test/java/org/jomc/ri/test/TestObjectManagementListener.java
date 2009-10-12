@@ -51,7 +51,7 @@ import java.util.logging.Level;
 // SECTION-END
 // SECTION-START[Annotations]
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
 // SECTION-END
 public class TestObjectManagementListener
     implements
@@ -136,7 +136,7 @@ public class TestObjectManagementListener
 
     /** Creates a new {@code TestObjectManagementListener} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-7-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
     public TestObjectManagementListener()
     {
         // SECTION-START[Default Constructor]
