@@ -34,13 +34,16 @@
 // SECTION-END
 package org.jomc.spi;
 
+import java.lang.reflect.Method;
+import java.util.Map;
+
 // SECTION-START[Documentation]
 /**
- * Invokes objects.
+ * Invocation of an object.
  * <p>This specification declares a multiplicity of {@code One}.
  * An application assembler is required to provide no more than one implementation of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Invoker object = (Invoker) ObjectManagerFactory.getObjectManager().getObject( Invoker.class );
+ * Invocation object = (Invocation) ObjectManagerFactory.getObjectManager().getObject( Invocation.class );
  * </pre>
  * </p>
  *
@@ -54,33 +57,55 @@ package org.jomc.spi;
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
 // SECTION-END
-public interface Invoker
+public interface Invocation
 {
-    // SECTION-START[InvocationHandler]
+    // SECTION-START[Invocation]
 
     /**
-     * Performs a method invocation on an object.
+     * Gets the context of this invocation.
      *
-     * @param invocation The invocation to perform.
-     *
-     * @return The return value of the invocation. If the declared return type of the method of the invocation is a
-     * primitive type, then the value returned by this method must be an instance of the corresponding primitive wrapper
-     * class; otherwise, it must be a type assignable to the declared return type of the method of the invocation.
-     * If the value returned by this method is {@code null} and the declared return type of the method of the invocation
-     * is primitive, then a {@code NullPointerException} will be thrown. If the value returned by this method is
-     * otherwise not compatible to the declared return type of the method of the invocation, a
-     * {@code ClassCastException} will be thrown.
-     *
-     * @throws Throwable The exception thrown from the method invocation. The exception's type must be assignable
-     * either to any of the exception types declared in the {@code throws} clause of the method of the invocation or to
-     * the unchecked exception types {@code java.lang.RuntimeException} or {@code java.lang.Error}.
-     * If a checked exception is thrown by this method that is not assignable to any of the exception types declared in
-     * the {@code throws} clause of the method of the invocation, then an {@code UndeclaredThrowableException}
-     * containing the exception that was thrown by this method will be thrown.
-     *
-     * @see java.lang.reflect.UndeclaredThrowableException
+     * @return The context of this invocation.
      */
-    Object invoke( Invocation invocation ) throws Throwable;
+    Map getContext();
+
+    /**
+     * Gets the object of this invocation.
+     *
+     * @return The object of this invocation.
+     */
+    Object getObject();
+
+    /**
+     * Gets the method of this invocation.
+     *
+     * @return The method of this invocation.
+     */
+    Method getMethod();
+
+    /**
+     * Gets the arguments of this invocation.
+     *
+     * @return The arguments of this invocation or {@code null}.
+     */
+    Object[] getArguments();
+
+    /**
+     * Gets the result of this invocation.
+     *
+     * @return The result of this invocation or {@code null}.
+     *
+     * @see #setResult(java.lang.Object)
+     */
+    Object getResult();
+
+    /**
+     * Sets the result of this invocation.
+     *
+     * @param value The new result of this invocation or {@code null}.
+     *
+     * @see #getResult()
+     */
+    void setResult( Object value );
 
     // SECTION-END
 }

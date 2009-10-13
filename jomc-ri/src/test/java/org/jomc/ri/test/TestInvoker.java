@@ -36,8 +36,10 @@ package org.jomc.ri.test;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import org.jomc.model.Instance;
 import org.jomc.ri.DefaultInvocation;
 import org.jomc.ri.DefaultInvoker;
+import org.jomc.spi.Invocation;
 
 // SECTION-START[Documentation]
 /**
@@ -59,14 +61,17 @@ public class TestInvoker extends DefaultInvoker
     // SECTION-START[DefaultInvoker]
 
     @Override
-    public DefaultInvocation postInvoke( final DefaultInvocation invocation )
+    public Invocation postInvoke( final Invocation invocation )
     {
         final StringBuilder b = new StringBuilder();
         b.append( invocation.getObject().toString() );
 
-        if ( invocation.getInstance() != null )
+        if ( invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) != null )
         {
-            b.append( "[" ).append( invocation.getInstance().getIdentifier() ).append( "]: " );
+            b.append( "[" ).append(
+                ( (Instance) invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) ).getIdentifier() ).
+                append( "]: " );
+
         }
 
         b.append( invocation.getMethod().getName() ).append( "( " );

@@ -35,7 +35,10 @@
 package org.jomc.ri;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import org.jomc.model.Instance;
+import org.jomc.spi.Invocation;
 
 // SECTION-START[Documentation]
 /**
@@ -50,15 +53,18 @@ import org.jomc.model.Instance;
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
 // SECTION-END
-public class DefaultInvocation
+public class DefaultInvocation implements Invocation
 {
     // SECTION-START[DefaultInvocation]
 
+    /** Constant for the context key of the {@code Instance} corresponding to the object of this invocation. */
+    public static final String INSTANCE_KEY = Instance.class.getName();
+
+    /** The context of this invocation. */
+    private Map context;
+
     /** The object of this invocation. */
     private Object object;
-
-    /** The instance of the object of this invocation. */
-    private Instance instance;
 
     /** The method of this invocation. */
     private Method method;
@@ -77,7 +83,7 @@ public class DefaultInvocation
     public DefaultInvocation( final DefaultInvocation invocation )
     {
         this( invocation.getObject(), invocation.getMethod(), invocation.getArguments() );
-        this.instance = invocation.getInstance();
+        this.context = new HashMap( invocation.getContext() );
         this.result = invocation.getResult();
     }
 
@@ -97,82 +103,75 @@ public class DefaultInvocation
         this.arguments = arguments;
     }
 
-    /**
-     * Gets the object of this invocation.
-     *
-     * @return The object of this invocation.
-     */
+    public Map getContext()
+    {
+        if ( this.context == null )
+        {
+            this.context = new HashMap();
+        }
+
+        return this.context;
+    }
+
     public Object getObject()
     {
         return this.object;
     }
 
-    /**
-     * Gets the method of this invocation.
-     *
-     * @return The method of this invocation.
-     */
     public Method getMethod()
     {
         return this.method;
     }
 
-    /**
-     * Gets the arguments of this invocation.
-     *
-     * @return The arguments of this invocation or {@code null}.
-     */
     public Object[] getArguments()
     {
         return this.arguments;
     }
 
-    /**
-     * Gets the instance of the object of this invocation.
-     *
-     * @return The instance of the object of this invocation or {@code null}.
-     *
-     * @see #setInstance(org.jomc.model.Instance)
-     */
-    public Instance getInstance()
-    {
-        return this.instance;
-    }
-
-    /**
-     * Sets the instance of the object of this invocation.
-     *
-     * @param value The new instance of the object of this invocation or {@code null}.
-     *
-     * @see #getInstance()
-     */
-    public void setInstance( final Instance value )
-    {
-        this.instance = value;
-    }
-
-    /**
-     * Gets the result of this invocation.
-     *
-     * @return The result of this invocation or {@code null}.
-     *
-     * @see #setResult(java.lang.Object)
-     */
     public Object getResult()
     {
         return this.result;
     }
 
-    /**
-     * Sets the result of this invocation.
-     *
-     * @param value The new result of this invocation or {@code null}.
-     *
-     * @see #getResult()
-     */
     public void setResult( final Object value )
     {
         this.result = value;
+    }
+
+    /**
+     * Gets the instance of the object of this invocation from the context of this invocation.
+     *
+     * @return The instance of the object of this invocation from the context of this invocation or {@code null}.
+     *
+     * @see #setInstance(org.jomc.model.Instance)
+     * @see #INSTANCE_KEY
+     */
+    public Instance getInstance()
+    {
+        return (Instance) this.getContext().get( INSTANCE_KEY );
+    }
+
+    /**
+     * Sets the instance of the object of this invocation into the context of this invocation.
+     *
+     * @param value The new instance of the object of this invocation to set into the context or {@code null}.
+     *
+     * @return The previous context {@code Instance} or {@code null}, if the context did not contain an
+     * {@code Instance}.
+     *
+     * @see #getInstance()
+     * @see #INSTANCE_KEY
+     */
+    public Instance setInstance( final Instance value )
+    {
+        if ( value == null )
+        {
+            return (Instance) this.getContext().remove( INSTANCE_KEY );
+        }
+        else
+        {
+            return (Instance) this.getContext().put( INSTANCE_KEY, value );
+        }
     }
 
     // SECTION-END

@@ -35,9 +35,8 @@
 package org.jomc.ri;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import org.jomc.ObjectManagerFactory;
 import org.jomc.model.Instance;
+import org.jomc.spi.Invocation;
 import org.jomc.spi.Invoker;
 
 // SECTION-START[Documentation]
@@ -59,68 +58,40 @@ public class DefaultInvoker implements Invoker
 
     /**
      * Performs a method invocation on an object.
-     * <p>This method creates a new invocation with the given arguments and passes that invocation to the
-     * {@code preInvoke} method. If the result property of the invocation returned by the {@code preInvoke} method is
-     * an instance of {@code Throwable}, that instance will be thrown; otherwise the invocation returned by the
-     * {@code preInvoke} method is performed and then passed to the {@code postInvoke} method. If the result property of
-     * the invocation returned from the {@code postInvoke} method is an instance of {@code Throwable}, that instance
-     * will be thrown; otherwise the value of the result property is returned by this method.</p>
+     * <p>This method first passes the given invocation to the {@code preInvoke} method. If the result property of the
+     * invocation returned by the {@code preInvoke} method is an instance of {@code Throwable}, that instance will be
+     * thrown; otherwise the invocation returned by the {@code preInvoke} method is performed and then passed to the
+     * {@code postInvoke} method. If the result property of the invocation returned from the {@code postInvoke} method
+     * is an instance of {@code Throwable}, that instance will be thrown; otherwise the value of the result property is
+     * returned by this method.</p>
      *
-     * @param object The object to invoke {@code method} on.
-     * @param method The method to invoke on {@code object}.
-     * @param arguments The arguments of the invocation.
+     * @param invocation The invocation to perform.
      *
-     * @return The return value of the invocation. If the declared return type of {@code method} is a primitive type,
-     * then the value returned by this method must be an instance of the corresponding primitive wrapper class;
-     * otherwise, it must be a type assignable to the declared return type of {@code method}. If the value returned by
-     * this method is {@code null} and the declared return type of {@code method} is primitive, then a
-     * {@code NullPointerException} will be thrown. If the value returned by this method is otherwise not compatible to
-     * the declared return type of {@code method}, a {@code ClassCastException} will be thrown.
+     * @return The return value of the invocation. If the declared return type of the method of the invocation is a
+     * primitive type, then the value returned by this method must be an instance of the corresponding primitive wrapper
+     * class; otherwise, it must be a type assignable to the declared return type of the method of the invocation.
+     * If the value returned by this method is {@code null} and the declared return type of the method of the invocation
+     * is primitive, then a {@code NullPointerException} will be thrown. If the value returned by this method is
+     * otherwise not compatible to the declared return type of the method of the invocation, a
+     * {@code ClassCastException} will be thrown.
      *
      * @throws Throwable The exception thrown from the method invocation. The exception's type must be assignable
-     * either to any of the exception types declared in the {@code throws} clause of {@code method} or to the unchecked
-     * exception types {@code java.lang.RuntimeException} or {@code java.lang.Error}. If a checked exception is thrown
-     * by this method that is not assignable to any of the exception types declared in the {@code throws} clause of
-     * {@code method}, then an {@code UndeclaredThrowableException} containing the exception that was thrown by this
-     * method will be thrown.
+     * either to any of the exception types declared in the {@code throws} clause of the method of the invocation or to
+     * the unchecked exception types {@code java.lang.RuntimeException} or {@code java.lang.Error}.
+     * If a checked exception is thrown by this method that is not assignable to any of the exception types declared in
+     * the {@code throws} clause of the method of the invocation, then an {@code UndeclaredThrowableException}
+     * containing the exception that was thrown by this method will be thrown.
      *
-     * @see #preInvoke(org.jomc.ri.DefaultInvocation)
-     * @see #postInvoke(org.jomc.ri.DefaultInvocation)
+     * @see #preInvoke(org.jomc.spi.Invocation)
+     * @see #postInvoke(org.jomc.spi.Invocation)
      */
-    public Object invoke( final Object object, final Method method, final Object[] arguments ) throws Throwable
+    public Object invoke( Invocation invocation ) throws Throwable
     {
-        DefaultInvocation invocation = new DefaultInvocation( object, method, arguments );
+        final Instance instance = (Instance) invocation.getContext().get( DefaultInvocation.INSTANCE_KEY );
 
-        if ( ObjectManagerFactory.getObjectManager() instanceof DefaultObjectManager )
+        try
         {
-            final DefaultObjectManager defaultObjectManager =
-                (DefaultObjectManager) ObjectManagerFactory.getObjectManager();
-
-            final Instance instance = defaultObjectManager.getModelManager().getInstance(
-                defaultObjectManager.getModules(), object );
-
-            invocation.setInstance( instance );
-        }
-
-        if ( invocation.getInstance() != null && invocation.getInstance().isStateless() )
-        {
-            invocation = this.preInvoke( invocation );
-            if ( invocation.getResult() instanceof Throwable )
-            {
-                throw (Throwable) invocation.getResult();
-            }
-
-            invoke( invocation );
-
-            invocation = this.postInvoke( invocation );
-            if ( invocation.getResult() instanceof Throwable )
-            {
-                throw (Throwable) invocation.getResult();
-            }
-        }
-        else
-        {
-            synchronized ( invocation.getObject() )
+            if ( instance != null && instance.isStateless() )
             {
                 invocation = this.preInvoke( invocation );
                 if ( invocation.getResult() instanceof Throwable )
@@ -128,7 +99,20 @@ public class DefaultInvoker implements Invoker
                     throw (Throwable) invocation.getResult();
                 }
 
-                invoke( invocation );
+                try
+                {
+                    invocation.setResult(
+                        invocation.getMethod().invoke( invocation.getObject(), invocation.getArguments() ) );
+
+                }
+                catch ( final InvocationTargetException e )
+                {
+                    invocation.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                }
+                catch ( final Throwable t )
+                {
+                    invocation.setResult( t );
+                }
 
                 invocation = this.postInvoke( invocation );
                 if ( invocation.getResult() instanceof Throwable )
@@ -136,9 +120,45 @@ public class DefaultInvoker implements Invoker
                     throw (Throwable) invocation.getResult();
                 }
             }
-        }
+            else
+            {
+                synchronized ( invocation.getObject() )
+                {
+                    invocation = this.preInvoke( invocation );
+                    if ( invocation.getResult() instanceof Throwable )
+                    {
+                        throw (Throwable) invocation.getResult();
+                    }
 
-        return invocation.getResult();
+                    try
+                    {
+                        invocation.setResult(
+                            invocation.getMethod().invoke( invocation.getObject(), invocation.getArguments() ) );
+
+                    }
+                    catch ( final InvocationTargetException e )
+                    {
+                        invocation.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                    }
+                    catch ( final Throwable t )
+                    {
+                        invocation.setResult( t );
+                    }
+
+                    invocation = this.postInvoke( invocation );
+                    if ( invocation.getResult() instanceof Throwable )
+                    {
+                        throw (Throwable) invocation.getResult();
+                    }
+                }
+            }
+
+            return invocation.getResult();
+        }
+        finally
+        {
+            invocation.getContext().clear();
+        }
     }
 
     // SECTION-END
@@ -158,7 +178,7 @@ public class DefaultInvoker implements Invoker
      *
      * @throws NullPointerException if {@code invocation} is {@code null}.
      */
-    public DefaultInvocation preInvoke( final DefaultInvocation invocation )
+    public Invocation preInvoke( final Invocation invocation )
     {
         if ( invocation == null )
         {
@@ -183,7 +203,7 @@ public class DefaultInvoker implements Invoker
      *
      * @throws NullPointerException if {@code invocation} is {@code null}.
      */
-    public DefaultInvocation postInvoke( final DefaultInvocation invocation )
+    public Invocation postInvoke( final Invocation invocation )
     {
         if ( invocation == null )
         {
@@ -193,25 +213,8 @@ public class DefaultInvoker implements Invoker
         return invocation;
     }
 
-    private static void invoke( final DefaultInvocation i )
-    {
-        try
-        {
-            i.setResult( i.getMethod().invoke( i.getObject(), i.getArguments() ) );
-        }
-        catch ( final InvocationTargetException e )
-        {
-            i.setResult( e.getTargetException() != null ? e.getTargetException() : e );
-        }
-        catch ( final Throwable t )
-        {
-            i.setResult( t );
-        }
-    }
-
     // SECTION-END
     // SECTION-START[Constructors]
-
     /** Creates a new {@code DefaultInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )

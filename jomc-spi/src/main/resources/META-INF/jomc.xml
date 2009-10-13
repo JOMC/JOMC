@@ -106,5 +106,21 @@
 
       </authors>
     </specification>
+    <!-- ******************************************************************* -->
+    <specification identifier="org.jomc.spi.Invocation"
+                   class="org.jomc.spi.Invocation"
+                   vendor="${pom.organization.name}"
+                   version="1.0"
+                   multiplicity="One">
+
+      <documentation defaultLanguage="en">
+        <text language="en"><![CDATA[Invocation of an object.]]></text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
 </module>

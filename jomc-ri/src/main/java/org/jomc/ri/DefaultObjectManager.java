@@ -75,6 +75,7 @@ import org.jomc.model.Multiplicity;
 import org.jomc.model.Property;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
+import org.jomc.spi.Invocation;
 import org.jomc.spi.Invoker;
 import org.jomc.spi.Listener;
 import org.jomc.spi.Locator;
@@ -1528,6 +1529,92 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets an invocation for a given object, instance, method and arguments.
+     *
+     * @param object The object to invoke.
+     * @param instance The instance of the object to invoke.
+     * @param method The method to invoke on {@code object}.
+     * @param arguments The arguments of the invocation or {@code null}.
+     *
+     * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
+     * @throws InstantiationException if instantiating a new invocation fails.
+     */
+    public Invocation getInvocation( final Object object, final Instance instance, final Method method,
+                                     final Object[] arguments ) throws InstantiationException
+    {
+        if ( object == null )
+        {
+            throw new NullPointerException( "object" );
+        }
+        if ( instance == null )
+        {
+            throw new NullPointerException( "instance" );
+        }
+        if ( method == null )
+        {
+            throw new NullPointerException( "method" );
+        }
+
+        Invocation invocation = null;
+
+        final Specification invocationSpecification = this.getModules().getSpecification( Invocation.class );
+
+        if ( invocationSpecification != null )
+        {
+            final Implementations implementations =
+                this.getModules().getImplementations( invocationSpecification.getIdentifier() );
+
+            if ( implementations != null && !implementations.getImplementation().isEmpty() )
+            {
+                for ( Implementation i : implementations.getImplementation() )
+                {
+                    if ( invocation == null )
+                    {
+                        final Instance invocationInstance = this.getModelManager().getInstance(
+                            this.getModules(), i, this.getClassLoader( Invocation.class ) );
+
+                        if ( invocationInstance != null )
+                        {
+                            invocation = (Invocation) this.getModelManager().getObject(
+                                this.getModules(), invocationSpecification, invocationInstance );
+
+                        }
+                        else if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                i.getIdentifier(), i.getName() ), new Exception() );
+
+                        }
+                    }
+                    else if ( this.isLoggable( Level.FINE ) )
+                    {
+                        this.log( Level.FINE, this.getMessage( "ignoredInvocation", new Object[]
+                            {
+                                i.getIdentifier()
+                            } ), null );
+
+                    }
+                }
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, this.getMissingSpecificationMessage( Invocation.class.getName() ),
+                      new Exception() );
+
+        }
+
+        if ( invocation == null )
+        {
+            final DefaultInvocation defaultInvocation = new DefaultInvocation( object, method, arguments );
+            defaultInvocation.setInstance( instance );
+            invocation = defaultInvocation;
+        }
+
+        return invocation;
+    }
+
+    /**
      * Initializes the instance.
      * <p>This method is called once on first usage of a new instance.</p>
      *
@@ -1746,7 +1833,7 @@ public class DefaultObjectManager implements ObjectManager
                         public Object invoke( final Object proxy, final Method method, final Object[] args )
                             throws Throwable
                         {
-                            return getInvoker().invoke( object, method, args );
+                            return getInvoker().invoke( getInvocation( object, instance, method, args ) );
                         }
 
                     } );

@@ -220,5 +220,19 @@
       </action>
     </release>
 
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-8">
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added interface <code>org.jomc.spi.Invocation</code> to the
+      <code>jomc-spi</code> artifact and updated interface
+      <code>org.jomc.spi.Invoker</code> and classes
+      <code>org.jomc.ri.DefaultInvoker</code>,
+      <code>org.jomc.ri.DefaultInvocation</code> and
+      <code>org.jomc.ri.DefaultObjectManager</code> to no longer force the
+      use of the <code>jomc-ri</code> artifact at compile time for customizing
+      invocation behavior.]]>
+      </action>
+    </release>
+
   </body>
 </document>
