@@ -57,50 +57,32 @@ public class DefaultInvocation implements Invocation
 {
     // SECTION-START[DefaultInvocation]
 
+    /** Constant for the context key of the {@code Object} of this invocation. */
+    public static final String OBJECT_KEY = Invocation.class.getName() + ".object";
+
+    /** Constant for the context key of the {@code Method} of this invocation. */
+    public static final String METHOD_KEY = Invocation.class.getName() + ".method";
+
+    /** Constant for the context key of the {@code Object[]} arguments of this invocation. */
+    public static final String ARGUMENTS_KEY = Invocation.class.getName() + ".arguments";
+
+    /** Constant for the context key of the result {@code Object} of this invocation. */
+    public static final String RESULT_KEY = Invocation.class.getName() + ".result";
+
     /** Constant for the context key of the {@code Instance} corresponding to the object of this invocation. */
-    public static final String INSTANCE_KEY = Instance.class.getName();
+    public static final String INSTANCE_KEY = Invocation.class.getName() + ".instance";
 
     /** The context of this invocation. */
     private Map context;
-
-    /** The object of this invocation. */
-    private Object object;
-
-    /** The method of this invocation. */
-    private Method method;
-
-    /** The arguments of this invocation. */
-    private Object[] arguments;
-
-    /** The result of this invocation. */
-    private Object result;
 
     /**
      * Creates a new {@code DefaultInvocation} instance taking an invocation to initialize the instance with.
      *
      * @param invocation The invocation to initialize the instance with.
      */
-    public DefaultInvocation( final DefaultInvocation invocation )
+    public DefaultInvocation( final Invocation invocation )
     {
-        this( invocation.getObject(), invocation.getMethod(), invocation.getArguments() );
         this.context = new HashMap( invocation.getContext() );
-        this.result = invocation.getResult();
-    }
-
-    /**
-     * Creates a new {@code DefaultInvocation} instance taking an object of the invocation, a method and the
-     * arguments of the invocation.
-     *
-     * @param object The object of the invocation.
-     * @param method The method of the invocation.
-     * @param arguments The arguments of the invocation or {@code null},
-     */
-    public DefaultInvocation( final Object object, final Method method, final Object[] arguments )
-    {
-        super();
-        this.object = object;
-        this.method = method;
-        this.arguments = arguments;
     }
 
     public Map getContext()
@@ -115,27 +97,34 @@ public class DefaultInvocation implements Invocation
 
     public Object getObject()
     {
-        return this.object;
+        return this.getContext().get( OBJECT_KEY );
     }
 
     public Method getMethod()
     {
-        return this.method;
+        return (Method) this.getContext().get( METHOD_KEY );
     }
 
     public Object[] getArguments()
     {
-        return this.arguments;
+        return (Object[]) this.getContext().get( ARGUMENTS_KEY );
     }
 
     public Object getResult()
     {
-        return this.result;
+        return this.getContext().get( RESULT_KEY );
     }
 
     public void setResult( final Object value )
     {
-        this.result = value;
+        if ( value == null )
+        {
+            this.getContext().remove( RESULT_KEY );
+        }
+        else
+        {
+            this.getContext().put( RESULT_KEY, value );
+        }
     }
 
     /**
@@ -143,7 +132,6 @@ public class DefaultInvocation implements Invocation
      *
      * @return The instance of the object of this invocation from the context of this invocation or {@code null}.
      *
-     * @see #setInstance(org.jomc.model.Instance)
      * @see #INSTANCE_KEY
      */
     public Instance getInstance()
@@ -151,29 +139,18 @@ public class DefaultInvocation implements Invocation
         return (Instance) this.getContext().get( INSTANCE_KEY );
     }
 
-    /**
-     * Sets the instance of the object of this invocation into the context of this invocation.
-     *
-     * @param value The new instance of the object of this invocation to set into the context or {@code null}.
-     *
-     * @return The previous context {@code Instance} or {@code null}, if the context did not contain an
-     * {@code Instance}.
-     *
-     * @see #getInstance()
-     * @see #INSTANCE_KEY
-     */
-    public Instance setInstance( final Instance value )
-    {
-        if ( value == null )
-        {
-            return (Instance) this.getContext().remove( INSTANCE_KEY );
-        }
-        else
-        {
-            return (Instance) this.getContext().put( INSTANCE_KEY, value );
-        }
-    }
+    // SECTION-END
+    // SECTION-START[Constructors]
 
+    /** Creates a new {@code DefaultInvocation} instance. */
+    @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
+    public DefaultInvocation()
+    {
+        // SECTION-START[Default Constructor]
+        super();
+        // SECTION-END
+    }
     // SECTION-END
     // SECTION-START[Dependencies]
     // SECTION-END

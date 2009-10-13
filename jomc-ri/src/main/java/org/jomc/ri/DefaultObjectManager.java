@@ -1606,11 +1606,13 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( invocation == null )
         {
-            final DefaultInvocation defaultInvocation = new DefaultInvocation( object, method, arguments );
-            defaultInvocation.setInstance( instance );
-            invocation = defaultInvocation;
+            invocation = new DefaultInvocation();
         }
 
+        invocation.getContext().put( DefaultInvocation.OBJECT_KEY, object );
+        invocation.getContext().put( DefaultInvocation.METHOD_KEY, method );
+        invocation.getContext().put( DefaultInvocation.ARGUMENTS_KEY, arguments );
+        invocation.getContext().put( DefaultInvocation.INSTANCE_KEY, instance );
         return invocation;
     }
 

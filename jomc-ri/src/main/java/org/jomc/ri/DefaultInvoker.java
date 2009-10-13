@@ -215,6 +215,7 @@ public class DefaultInvoker implements Invoker
 
     // SECTION-END
     // SECTION-START[Constructors]
+
     /** Creates a new {@code DefaultInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
