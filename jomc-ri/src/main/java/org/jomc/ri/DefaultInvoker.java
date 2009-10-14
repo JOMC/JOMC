@@ -168,9 +168,9 @@ public class DefaultInvoker implements Invoker
      * <p>Overriding classes may use this method to perform any kind of operation prior to an invocation and to create
      * custom invocation instances. If an overriding class wishes to throw an exception, it may do so by setting the
      * result property of the returned invocation to an instance of {@code Throwable} thrown as the result of the
-     * invocation. If an overriding class wishes to extend the {@code DefaultInvocation} class, it may do so by
-     * returning a different instance from this method. By default, this method does nothing and returns the given
-     * invocation unchanged.</p>
+     * invocation. If an overriding class wishes to provide a custom {@code Invocation} class, it may do so by returning
+     * a different instance from this method. By default, this method does nothing and returns the given invocation
+     * unchanged.</p>
      *
      * @param invocation The invocation about to be performed.
      *
@@ -215,7 +215,6 @@ public class DefaultInvoker implements Invoker
 
     // SECTION-END
     // SECTION-START[Constructors]
-
     /** Creates a new {@code DefaultInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
