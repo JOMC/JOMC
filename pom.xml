@@ -269,8 +269,6 @@
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
             <source>1.5</source>
-            <doctitle>${pom.name} Specification ${pom.version}</doctitle>
-            <windowtitle>${pom.name} Specification ${pom.version}</windowtitle>
             <links>
               <link>http://java.sun.com/javase/7/docs/api</link>
               <link>http://jakarta.apache.org/bcel/apidocs</link>
@@ -592,8 +590,6 @@
               <linksource>true</linksource>
               <serialwarn>true</serialwarn>
               <source>1.5</source>
-              <doctitle>${pom.name} Specification ${pom.version}</doctitle>
-              <windowtitle>${pom.name} Specification ${pom.version}</windowtitle>
               <links>
                 <link>http://java.sun.com/javase/7/docs/api</link>
                 <link>http://jakarta.apache.org/bcel/apidocs</link>
