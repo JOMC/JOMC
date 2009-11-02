@@ -69,7 +69,8 @@ public class ObjectManagerFactory
      * <p>This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
      * class declaring a <blockquote>{@code public static ObjectManager getObjectManager()}</blockquote> method called
      * by this method to get the instance to return.</p>
-     * <p>The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
+     * <p><b>Note</b><br/>
+     * The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
      * {@code ObjectManager} implementation.</p>
      *
      * @return The {@code ObjectManager} singleton instance.
@@ -97,7 +98,8 @@ public class ObjectManagerFactory
     /**
      * Creates a new {@code ObjectManager} instance.
      * <p>The object manager implementation returned by this method is controlled by system property
-     * {@code org.jomc.ObjectManager} providing the name of the {@code ObjectManager} implementation to return.</p>
+     * {@code org.jomc.ObjectManager} providing the name of the {@code ObjectManager} implementation class to return
+     * a new instance of.</p>
      *
      * @return A new {@code ObjectManager} instance.
      *

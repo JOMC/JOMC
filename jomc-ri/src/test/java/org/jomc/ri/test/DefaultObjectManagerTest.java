@@ -39,8 +39,8 @@ import java.util.Locale;
 import junit.framework.Assert;
 import org.jomc.ObjectManager;
 import org.jomc.model.Instance;
-import org.jomc.model.Specification;
 import org.jomc.ri.DefaultObjectManager;
+import org.jomc.spi.Scope;
 
 // SECTION-START[Documentation]
 /**
@@ -86,7 +86,17 @@ public class DefaultObjectManagerTest
     {
         try
         {
-            this.getObjectManager().getClassLoader( null );
+            this.getObjectManager().getClassLoader( (Class) null );
+            Assert.fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getClassLoader( (ClassLoader) null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -136,7 +146,17 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getLocator( null );
+            this.getObjectManager().getLocator( null, null );
+            Assert.fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getLocator( this.getClass().getClassLoader(), null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -186,7 +206,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( (Specification) null, (Instance) null );
+            this.getObjectManager().getObject( (Scope) null, (Instance) null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -196,7 +216,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( new Specification(), (Instance) null );
+            this.getObjectManager().getObject( (Scope) null, new Instance(), null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -206,7 +226,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( null, null, null );
+            this.getObjectManager().getObject( (Class) null, null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -216,7 +236,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( new Specification(), null, null );
+            this.getObjectManager().getObject( this.getClass(), null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -226,7 +246,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( new Specification(), new URI( "/" ), null );
+            this.getObjectManager().getObject( this.getClass(), new URI( "/" ), null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -256,7 +276,17 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getScope( null );
+            this.getObjectManager().getScope( null, null );
+            Assert.fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getScope( this.getClass().getClassLoader(), null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -273,8 +303,7 @@ public class DefaultObjectManagerTest
     public void testNotNull() throws Exception
     {
         Assert.assertNotNull( this.getObjectManager().getListeners() );
-        Assert.assertNotNull( this.getObjectManager().getModelManager() );
-        Assert.assertNotNull( this.getObjectManager().getModules() );
+        Assert.assertNotNull( this.getObjectManager().getModules( this.getClass().getClassLoader() ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "TestImplementation" ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class ) );

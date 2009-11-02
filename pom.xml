@@ -133,7 +133,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>jaxb2-maven-plugin</artifactId>
-          <version>1.2</version>
+          <version>1.3-SNAPSHOT</version>
           <dependencies>
             <dependency>
               <groupId>javax.xml.bind</groupId>
@@ -153,13 +153,12 @@
             <dependency>
               <groupId>net.sourceforge.ccxjc</groupId>
               <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.0.1</version>
+              <version>1.1</version>
             </dependency>
           </dependencies>
           <executions>
             <execution>
               <id>xjc</id>
-              <phase>generate-sources</phase>
               <goals>
                 <goal>xjc</goal>
               </goals>
@@ -167,6 +166,18 @@
                 <arguments>-copy-constructor -cc-visibility private -cc-target 1.5 -mark-generated -Xinject-code</arguments>
                 <bindingDirectory>src/main/schemas</bindingDirectory>
                 <schemaDirectory>src/main/schemas</schemaDirectory>
+                <extension>true</extension>
+              </configuration>
+            </execution>
+            <execution>
+              <id>testXjc</id>
+              <goals>
+                <goal>testXjc</goal>
+              </goals>
+              <configuration>
+                <arguments>-copy-constructor -cc-visibility private -cc-target 1.5 -mark-generated -Xinject-code</arguments>
+                <bindingDirectory>src/test/schemas</bindingDirectory>
+                <schemaDirectory>src/test/schemas</schemaDirectory>
                 <extension>true</extension>
               </configuration>
             </execution>
@@ -230,7 +241,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jarsigner-plugin</artifactId>
-          <version>1.1</version>
+          <version>1.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -245,15 +256,23 @@
             <forkMode>once</forkMode>
             <systemProperties>
               <property>
-                <name>org.jomc.model.DefaultModelManager.logLevel</name>
+                <name>org.jomc.model.DefaultModelManager.defaultLogLevel</name>
                 <value>ALL</value>
               </property>
               <property>
-                <name>org.jomc.ri.DefaultObjectManager.logLevel</name>
+                <name>org.jomc.ri.DefaultObjectManager.defaultLogLevel</name>
                 <value>ALL</value>
               </property>
               <property>
-                <name>org.jomc.tools.JomcTool.logLevel</name>
+                <name>org.jomc.tools.JomcTool.defaultLogLevel</name>
+                <value>ALL</value>
+              </property>
+              <property>
+                <name>org.jomc.cli.Jomc.defaultLogLevel</name>
+                <value>ALL</value>
+              </property>
+              <property>
+                <name>org.jomc.cli.command.AbstractJomcCommand.defaultLogLevel</name>
                 <value>ALL</value>
               </property>
             </systemProperties>
@@ -269,6 +288,8 @@
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
             <source>1.5</source>
+            <doctitle>${project.name} ${project.version}</doctitle>
+            <windowtitle>${project.name} ${project.version}</windowtitle>
             <links>
               <link>http://java.sun.com/javase/7/docs/api</link>
               <link>http://jakarta.apache.org/bcel/apidocs</link>
@@ -343,7 +364,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>javacc-maven-plugin</artifactId>
-          <version>2.5</version>
+          <version>2.6</version>
           <executions>
             <execution>
               <id>javacc</id>
@@ -351,6 +372,7 @@
                 <goal>javacc</goal>
               </goals>
               <configuration>
+                <jdkVersion>1.4</jdkVersion>
                 <forceLaCheck>true</forceLaCheck>
               </configuration>
             </execution>
@@ -407,7 +429,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>2.5</version>
+          <version>2.5.1</version>
           <executions>
             <execution>
               <id>helpmojo</id>
@@ -457,7 +479,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>2.1</version>
+          <version>2.1.1</version>
           <configuration>
             <archive>
               <index>true</index>
@@ -484,32 +506,6 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <version>1.0-beta-1</version>
-          <executions>
-            <execution>
-              <id>enforce</id>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireProperty>
-                    <property>project.build.sourceEncoding</property>
-                    <message>Must set 'project.build.sourceEncoding'.</message>
-                  </requireProperty>
-                  <requireProperty>
-                    <property>project.reporting.outputEncoding</property>
-                    <message>Must set 'project.reporting.outputEncoding'.</message>
-                  </requireProperty>
-                </rules>
-                <fail>true</fail>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-plugin</artifactId>
           <version>1.2</version>
           <configuration>
@@ -521,10 +517,6 @@
       </plugins>
     </pluginManagement>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-enforcer-plugin</artifactId>
-      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
@@ -590,6 +582,8 @@
               <linksource>true</linksource>
               <serialwarn>true</serialwarn>
               <source>1.5</source>
+              <doctitle>${project.name} ${project.version}</doctitle>
+              <windowtitle>${project.name} ${project.version}</windowtitle>
               <links>
                 <link>http://java.sun.com/javase/7/docs/api</link>
                 <link>http://jakarta.apache.org/bcel/apidocs</link>
@@ -682,6 +676,14 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
         <version>1.0-alpha-2</version>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>clirr-maven-plugin</artifactId>
+        <version>2.2.2</version>
+        <configuration>
+          <minSeverity>info</minSeverity>
+        </configuration>
       </plugin>
     </plugins>
   </reporting>
@@ -903,6 +905,11 @@
                 </goals>
               </execution>
             </executions>
+            <configuration>
+              <excludeClassifiers>
+                <excludeClassifier>bin</excludeClassifier>
+              </excludeClassifiers>
+            </configuration>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
@@ -920,4 +927,32 @@
       </build>
     </profile>
   </profiles>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
+  <repositories>
+    <repository>
+      <id>snapshots.repository.codehaus.org</id>
+      <url>http://snapshots.repository.codehaus.org</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>snapshots.repository.codehaus.org</id>
+      <url>http://snapshots.repository.codehaus.org</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 </project>

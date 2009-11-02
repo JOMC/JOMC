@@ -230,7 +230,41 @@
       <code>org.jomc.ri.DefaultInvocation</code> and
       <code>org.jomc.ri.DefaultObjectManager</code> to no longer force the
       use of the <code>jomc-ri</code> artifact at compile time for customizing
-      invocation behavior.]]>
+      invocation handling.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated various classes to support programmatic configuration of
+      defaults in addition to system properties.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>NullPointerException</code> thrown by the
+      <code>resolveEntity</code> method of the <code>EntityResolver</code>
+      returned by method <code>getEntityResolver</code> of class
+      <code>org.jomc.model.DefaultModelManager</code> when given a
+      <code>null</code> public id.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated the <code>LSResourceResolver</code> returned by method
+      <code>getResourceResolver</code> of class
+      <code>org.jomc.model.DefaultModelManager</code> to correctly support
+      resolving resources of type <code>http://www.w3.org/2001/XMLSchema</code>
+      and to log a warning when used to resolve resources of unsupported
+      type.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected a <code>MissingResourceException</code> thrown by the
+      <code>getSchemaResources</code> method of class
+      <code>org.jomc.model.DefaultModelManager</code> when the log level of
+      the instance is lower or equal to <code>Level.FINE</code> and schema
+      resources are found in <code>MANIFEST.MF</code> files.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added interface <code>org.jomc.model.ModelObjectValidator</code> and
+      moved validation methods from interface
+      <code>org.jomc.model.ModelManager</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated to support static factory methods in abstract classes.]]>
       </action>
     </release>
 

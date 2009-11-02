@@ -53,25 +53,31 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
-import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
+import javax.xml.bind.util.JAXBResult;
+import javax.xml.bind.util.JAXBSource;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
+import javax.xml.validation.Schema;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
 import org.jomc.ObjectManagerFactory;
 import org.jomc.model.DefaultModelManager;
+import org.jomc.model.DefaultModelObjectValidator;
 import org.jomc.model.Dependency;
 import org.jomc.model.Implementation;
 import org.jomc.model.ImplementationReference;
 import org.jomc.model.Implementations;
 import org.jomc.model.Instance;
 import org.jomc.model.Message;
-import org.jomc.model.ModelException;
-import org.jomc.model.ModelManager;
+import org.jomc.model.ModelObjectValidationReport;
+import org.jomc.model.ModelObjectValidator;
 import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
+import org.jomc.model.ObjectFactory;
 import org.jomc.model.Property;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
@@ -80,6 +86,7 @@ import org.jomc.spi.Invoker;
 import org.jomc.spi.Listener;
 import org.jomc.spi.Locator;
 import org.jomc.spi.Scope;
+import org.jomc.util.WeakIdentityHashMap;
 import org.xml.sax.SAXException;
 
 // SECTION-START[Documentation]
@@ -120,138 +127,183 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "specification" );
         }
 
-        Object object = null;
-
         try
         {
             this.initialize();
 
-            final Specification s = this.getModules().getSpecification( specification );
+            final ClassLoader classLoader = this.getClassLoader( specification );
+            final Modules model = this.getModules( classLoader );
+            final Specification s = model.getSpecification( specification );
 
-            if ( s != null )
+            if ( s == null )
             {
-                final Implementations available = this.getModules().getImplementations( s.getIdentifier() );
-
-                if ( available != null && !available.getImplementation().isEmpty() )
+                if ( this.isLoggable( Level.WARNING ) )
                 {
-                    if ( s.getMultiplicity() == Multiplicity.ONE )
-                    {
-                        final Implementation i = available.getImplementation().get( 0 );
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
+                        specification.getName() ), new Exception() );
 
-                        if ( i.getLocation() != null )
+                }
+
+                return null;
+            }
+
+            Scope scope = null;
+            if ( s.getScope() != null )
+            {
+                scope = this.getScope( classLoader, s.getScope() );
+
+                if ( scope == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingScopeMessage( s.getScope() ), null );
+                    }
+
+                    return null;
+                }
+            }
+
+            final Implementations available = model.getImplementations( s.getIdentifier() );
+            if ( available == null || available.getImplementation().isEmpty() )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, this.getMissingImplementationsMessage(
+                        specification.getName() ), new Exception() );
+
+                }
+
+                return null;
+            }
+
+            if ( s.getMultiplicity() == Multiplicity.ONE )
+            {
+                final Implementation i = available.getImplementation().get( 0 );
+
+                if ( i.getLocation() != null )
+                {
+                    final Object object = this.getObject(
+                        Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+
+                    if ( object == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
                         {
-                            object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
-                            if ( object == null && this.isLoggable( Level.WARNING ) )
+                            this.log( Level.WARNING, this.getMissingObjectMessage(
+                                i.getIdentifier(), i.getName() ), new Exception() );
+
+                        }
+
+                        return null;
+                    }
+
+                    return object;
+                }
+                else if ( !i.isAbstract() )
+                {
+                    final Instance instance = model.getInstance( i.getIdentifier() );
+                    if ( instance == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                i.getIdentifier(), i.getName() ), new Exception() );
+
+                        }
+
+                        return null;
+                    }
+
+                    final Object object = this.getObject( scope, instance, classLoader );
+                    if ( object == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( Level.WARNING, this.getMissingObjectMessage(
+                                i.getIdentifier(), i.getName() ), new Exception() );
+
+                        }
+
+                        return null;
+                    }
+
+                    return object;
+                }
+            }
+            else if ( s.getMultiplicity() == Multiplicity.MANY )
+            {
+                final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
+
+                for ( Implementation i : available.getImplementation() )
+                {
+                    if ( i.getLocation() != null )
+                    {
+                        final Object o = this.getObject(
+                            Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+
+                        if ( o == null )
+                        {
+                            if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingObjectMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
-                        else if ( !i.isAbstract() )
+                        else
                         {
-                            final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( specification ) );
-
-                            if ( instance != null )
-                            {
-                                object = this.getObject( s, instance );
-                                if ( object == null && this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                }
-                            }
-                            else if ( this.isLoggable( Level.WARNING ) )
+                            list.add( o );
+                        }
+                    }
+                    else if ( !i.isAbstract() )
+                    {
+                        final Instance instance = model.getInstance( i.getIdentifier() );
+                        if ( instance == null )
+                        {
+                            if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( Level.WARNING, this.getMissingInstanceMessage(
                                     i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
-                        }
-                    }
-                    else if ( s.getMultiplicity() == Multiplicity.MANY )
-                    {
-                        final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
 
-                        for ( Implementation i : available.getImplementation() )
+                            return null;
+                        }
+
+                        final Object o = this.getObject( scope, instance, classLoader );
+                        if ( o == null )
                         {
-                            if ( i.getLocation() != null )
+                            if ( this.isLoggable( Level.WARNING ) )
                             {
-                                final Object o =
-                                    this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
+                                this.log( Level.WARNING, this.getMissingObjectMessage(
+                                    i.getIdentifier(), i.getName() ), new Exception() );
 
-                                if ( o != null )
-                                {
-                                    list.add( o );
-                                }
-                                else if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                }
-                            }
-                            else if ( !i.isAbstract() )
-                            {
-                                final Instance instance = this.getModelManager().getInstance(
-                                    this.getModules(), i, this.getClassLoader( specification ) );
-
-                                if ( instance != null )
-                                {
-                                    final Object o = this.getObject( s, instance );
-                                    if ( o != null )
-                                    {
-                                        list.add( o );
-                                    }
-                                    else if ( this.isLoggable( Level.WARNING ) )
-                                    {
-                                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                                            i.getIdentifier(), i.getName() ), new Exception() );
-
-                                    }
-                                }
-                                else if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                }
                             }
                         }
-
-                        object = list.isEmpty() ? null
-                                 : list.toArray( (Object[]) Array.newInstance( specification, list.size() ) );
-
-                    }
-                    else if ( this.isLoggable( Level.WARNING ) )
-                    {
-                        this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage( s.getMultiplicity() ),
-                                  new Exception() );
-
+                        else
+                        {
+                            list.add( o );
+                        }
                     }
                 }
-                else if ( this.isLoggable( Level.WARNING ) )
-                {
-                    this.log( Level.WARNING, this.getMissingImplementationsMessage( specification.getName() ),
-                              new Exception() );
 
-                }
+                return list.isEmpty()
+                       ? null : list.toArray( (Object[]) Array.newInstance( specification, list.size() ) );
+
             }
             else if ( this.isLoggable( Level.WARNING ) )
             {
-                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
-                          new Exception() );
+                this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage(
+                    s.getMultiplicity() ), new Exception() );
 
             }
+
+            return null;
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
-
-        return object;
     }
 
     public Object getObject( final Class specification, final String implementationName )
@@ -265,83 +317,124 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "implementationName" );
         }
 
-        Object object = null;
-
         try
         {
             this.initialize();
 
-            final Specification s = this.getModules().getSpecification( specification );
+            final ClassLoader classLoader = this.getClassLoader( specification );
+            final Modules model = this.getModules( classLoader );
+            final Specification s = model.getSpecification( specification );
 
-            if ( s != null )
+            if ( s == null )
             {
-                final Implementations available = this.getModules().getImplementations( s.getIdentifier() );
-                if ( available != null && !available.getImplementation().isEmpty() )
+                if ( this.isLoggable( Level.WARNING ) )
                 {
-                    final Implementation i = available.getImplementationByName( implementationName );
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
+                        specification.getName() ), new Exception() );
 
-                    if ( i != null )
-                    {
-                        if ( i.getLocation() != null )
-                        {
-                            object = this.getObject( s, i.getLocationUri(), this.getClassLoader( specification ) );
-                            if ( object == null && this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingObjectMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
-
-                            }
-                        }
-                        else if ( !i.isAbstract() )
-                        {
-                            final Instance instance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( specification ) );
-
-                            if ( instance != null )
-                            {
-                                object = this.getObject( s, instance );
-                                if ( object == null && this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                }
-                            }
-                            else if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
-
-                            }
-                        }
-                    }
-                    else if ( this.isLoggable( Level.WARNING ) )
-                    {
-                        this.log( Level.WARNING, this.getMissingImplementationMessage(
-                            implementationName, s.getIdentifier() ), new Exception() );
-
-                    }
                 }
-                else if ( this.isLoggable( Level.WARNING ) )
+
+                return null;
+            }
+
+            Scope scope = null;
+            if ( s.getScope() != null )
+            {
+                scope = this.getScope( classLoader, s.getScope() );
+
+                if ( scope == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingScopeMessage( s.getScope() ), null );
+                    }
+
+                    return null;
+                }
+            }
+
+            final Implementations available = model.getImplementations( s.getIdentifier() );
+            if ( available == null || available.getImplementation().isEmpty() )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, this.getMissingImplementationsMessage(
                         specification.getName() ), new Exception() );
 
                 }
-            }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingSpecificationMessage( specification.getName() ),
-                          new Exception() );
 
+                return null;
             }
+
+            final Implementation i = available.getImplementationByName( implementationName );
+            if ( i == null )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, this.getMissingImplementationMessage(
+                        implementationName, s.getIdentifier() ), new Exception() );
+
+                }
+
+                return null;
+            }
+
+            if ( i.getLocation() != null )
+            {
+                final Object object = this.getObject(
+                    Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+
+                if ( object == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                            i.getIdentifier(), i.getName() ), new Exception() );
+
+                    }
+
+                    return null;
+                }
+
+                return object;
+            }
+            else if ( !i.isAbstract() )
+            {
+                final Instance instance = model.getInstance( i.getIdentifier() );
+                if ( instance == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingInstanceMessage(
+                            i.getIdentifier(), i.getName() ), new Exception() );
+
+                    }
+
+                    return null;
+                }
+
+                final Object object = this.getObject( scope, instance, classLoader );
+                if ( object == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                            i.getIdentifier(), i.getName() ), new Exception() );
+
+                    }
+
+                    return null;
+                }
+
+                return object;
+            }
+
+            return null;
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
-
-        return object;
     }
 
     public Object getDependency( final Object object, final String dependencyName )
@@ -355,226 +448,274 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "dependencyName" );
         }
 
-        Object o = null;
-
         try
         {
             this.initialize();
-            final Instance instance = this.getModelManager().getInstance( this.getModules(), object );
 
-            if ( instance != null )
+            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final Modules model = this.getModules( classLoader );
+            final Instance instance = model.getInstance( object );
+
+            if ( instance == null )
             {
-                synchronized ( instance )
+                if ( this.isLoggable( Level.WARNING ) )
                 {
-                    o = instance.getDependencyObjects().get( dependencyName );
+                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                }
 
-                    if ( o == null )
+                return null;
+            }
+
+            synchronized ( instance )
+            {
+                final Dependency dependency = instance.getDependencies() != null
+                                              ? instance.getDependencies().getDependency( dependencyName ) : null;
+
+                if ( dependency == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
                     {
-                        final Dependency dependency = instance.getDependencies() != null
-                                                      ? instance.getDependencies().getDependency( dependencyName )
-                                                      : null;
+                        this.log( Level.WARNING, this.getMissingDependencyMessage(
+                            dependencyName, instance.getIdentifier() ), new Exception() );
 
-                        if ( dependency != null )
+                    }
+
+                    return null;
+                }
+
+                Object o = instance.getDependencyObjects().get( dependencyName );
+                if ( o == null )
+                {
+                    final Specification ds = model.getSpecification( dependency.getIdentifier() );
+                    if ( ds == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
                         {
-                            final Specification ds = this.getModules().getSpecification( dependency.getIdentifier() );
+                            this.log( Level.WARNING, this.getMissingSpecificationMessage(
+                                dependency.getIdentifier() ), new Exception() );
 
-                            if ( ds != null )
-                            {
-                                final Implementations available =
-                                    this.getModules().getImplementations( ds.getIdentifier() );
-
-                                if ( available != null && !available.getImplementation().isEmpty() )
-                                {
-                                    if ( dependency.getImplementationName() != null )
-                                    {
-                                        final Implementation i =
-                                            available.getImplementationByName( dependency.getImplementationName() );
-
-                                        if ( i != null )
-                                        {
-                                            if ( i.getLocation() != null )
-                                            {
-                                                o = this.getObject(
-                                                    ds, i.getLocationUri(), this.getClassLoader( object.getClass() ) );
-
-                                                if ( o == null && this.isLoggable( Level.WARNING ) )
-                                                {
-                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                                }
-                                            }
-                                            else if ( !i.isAbstract() )
-                                            {
-                                                final Instance di = this.getModelManager().getInstance(
-                                                    this.getModules(), i, dependency,
-                                                    this.getClassLoader( object.getClass() ) );
-
-                                                if ( di != null )
-                                                {
-                                                    o = this.getObject( ds, di );
-                                                    if ( o == null && this.isLoggable( Level.WARNING ) )
-                                                    {
-                                                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                            i.getIdentifier(), i.getName() ), new Exception() );
-
-                                                    }
-                                                }
-                                                else if ( this.isLoggable( Level.WARNING ) )
-                                                {
-                                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                        i.getIdentifier(), i.getName() ), new Exception() );
-
-                                                }
-                                            }
-                                        }
-                                        else if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
-                                        {
-                                            this.log( Level.WARNING, this.getMissingImplementationMessage(
-                                                dependency.getImplementationName(), dependency.getIdentifier() ),
-                                                      new Exception() );
-
-                                        }
-                                    }
-                                    else if ( ds.getMultiplicity() == Multiplicity.ONE )
-                                    {
-                                        final Implementation ref = available.getImplementation().get( 0 );
-                                        if ( ref.getLocation() != null )
-                                        {
-                                            o = this.getObject(
-                                                ds, ref.getLocationUri(), this.getClassLoader( object.getClass() ) );
-
-                                            if ( o == null && this.isLoggable( Level.WARNING ) )
-                                            {
-                                                this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                    ref.getIdentifier(), ref.getName() ), new Exception() );
-
-                                            }
-                                        }
-                                        else if ( !ref.isAbstract() )
-                                        {
-                                            final Instance di = this.getModelManager().getInstance(
-                                                this.getModules(), ref, dependency,
-                                                this.getClassLoader( object.getClass() ) );
-
-                                            if ( di != null )
-                                            {
-                                                o = this.getObject( ds, di );
-                                                if ( o == null && this.isLoggable( Level.WARNING ) )
-                                                {
-                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        ref.getIdentifier(), ref.getName() ), new Exception() );
-
-                                                }
-                                            }
-                                            else if ( this.isLoggable( Level.WARNING ) )
-                                            {
-                                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                    ref.getIdentifier(), ref.getName() ), new Exception() );
-
-                                            }
-                                        }
-                                    }
-                                    else
-                                    {
-                                        final List<Object> list =
-                                            new ArrayList<Object>( available.getImplementation().size() );
-
-                                        for ( Implementation a : available.getImplementation() )
-                                        {
-                                            if ( a.getLocation() != null )
-                                            {
-                                                final Object o2 = this.getObject(
-                                                    ds, a.getLocationUri(), this.getClassLoader( object.getClass() ) );
-
-                                                if ( o2 != null )
-                                                {
-                                                    list.add( o2 );
-                                                }
-                                                else if ( this.isLoggable( Level.WARNING ) )
-                                                {
-                                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                        a.getIdentifier(), a.getName() ), new Exception() );
-
-                                                }
-                                            }
-                                            else if ( !a.isAbstract() )
-                                            {
-                                                final Instance di = this.getModelManager().getInstance(
-                                                    this.getModules(), a, dependency,
-                                                    this.getClassLoader( object.getClass() ) );
-
-                                                if ( di != null )
-                                                {
-                                                    final Object o2 = this.getObject( ds, di );
-
-                                                    if ( o2 != null )
-                                                    {
-                                                        list.add( o2 );
-                                                    }
-                                                    else if ( this.isLoggable( Level.WARNING ) )
-                                                    {
-                                                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                                                            a.getIdentifier(), a.getName() ), new Exception() );
-
-                                                    }
-                                                }
-                                                else if ( this.isLoggable( Level.WARNING ) )
-                                                {
-                                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                                        a.getIdentifier(), a.getName() ), new Exception() );
-
-                                                }
-                                            }
-                                        }
-
-                                        final Class specClass = Class.forName(
-                                            ds.getClazz(), true, this.getClassLoader( object.getClass() ) );
-
-                                        o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance(
-                                            specClass, list.size() ) );
-
-                                    }
-
-                                    if ( o != null && dependency.isBound() )
-                                    {
-                                        instance.getDependencyObjects().put( dependencyName, o );
-                                    }
-                                }
-                                else if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                                        dependency.getIdentifier() ), new Exception() );
-
-                                }
-                            }
-                            else if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                                    dependency.getIdentifier() ), new Exception() );
-
-                            }
                         }
-                        else if ( this.isLoggable( Level.WARNING ) )
-                        {
-                            this.log( Level.WARNING, this.getMissingDependencyMessage(
-                                dependencyName, instance.getIdentifier() ), new Exception() );
 
+                        return null;
+                    }
+
+                    Scope scope = null;
+                    if ( ds.getScope() != null )
+                    {
+                        scope = this.getScope( classLoader, ds.getScope() );
+
+                        if ( scope == null )
+                        {
+                            if ( this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( Level.WARNING, this.getMissingScopeMessage( ds.getScope() ), null );
+                            }
+
+                            return null;
                         }
                     }
+
+                    final Implementations available = model.getImplementations( ds.getIdentifier() );
+                    if ( available == null || available.getImplementation().isEmpty() )
+                    {
+                        if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( Level.WARNING, this.getMissingImplementationsMessage(
+                                dependency.getIdentifier() ), new Exception() );
+
+                        }
+
+                        return null;
+                    }
+
+                    if ( dependency.getImplementationName() != null )
+                    {
+                        final Implementation i =
+                            available.getImplementationByName( dependency.getImplementationName() );
+
+                        if ( i == null )
+                        {
+                            if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( Level.WARNING, this.getMissingImplementationMessage(
+                                    dependency.getImplementationName(), dependency.getIdentifier() ), new Exception() );
+
+                            }
+
+                            return null;
+                        }
+
+                        if ( i.getLocation() != null )
+                        {
+                            o = this.getObject(
+                                Class.forName( ds.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+
+                            if ( o == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        i.getIdentifier(), i.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+                        }
+                        else if ( !i.isAbstract() )
+                        {
+                            final Instance di = model.getInstance( i.getIdentifier(), dependency );
+                            if ( di == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                        i.getIdentifier(), i.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+
+                            o = this.getObject( scope, di, classLoader );
+                            if ( o == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        i.getIdentifier(), i.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+                        }
+                    }
+                    else if ( ds.getMultiplicity() == Multiplicity.ONE )
+                    {
+                        final Implementation ref = available.getImplementation().get( 0 );
+                        if ( ref.getLocation() != null )
+                        {
+                            o = this.getObject(
+                                Class.forName( ds.getClazz(), true, classLoader ), ref.getLocationUri(), classLoader );
+
+                            if ( o == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        ref.getIdentifier(), ref.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+                        }
+                        else if ( !ref.isAbstract() )
+                        {
+                            final Instance di = model.getInstance( ref.getIdentifier(), dependency );
+                            if ( di == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                        ref.getIdentifier(), ref.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+
+                            o = this.getObject( scope, di, classLoader );
+                            if ( o == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingObjectMessage(
+                                        ref.getIdentifier(), ref.getName() ), new Exception() );
+
+                                }
+
+                                return null;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
+
+                        for ( Implementation a : available.getImplementation() )
+                        {
+                            if ( a.getLocation() != null )
+                            {
+                                final Object o2 = this.getObject( Class.forName( ds.getClazz(), true, classLoader ),
+                                                                  a.getLocationUri(), classLoader );
+
+                                if ( o2 == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                            a.getIdentifier(), a.getName() ), new Exception() );
+
+                                    }
+                                }
+                                else
+                                {
+                                    list.add( o2 );
+                                }
+                            }
+                            else if ( !a.isAbstract() )
+                            {
+                                final Instance di = model.getInstance( a.getIdentifier(), dependency );
+                                if ( di == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                            a.getIdentifier(), a.getName() ), new Exception() );
+
+                                    }
+
+                                    return null;
+                                }
+
+                                final Object o2 = this.getObject( scope, di, classLoader );
+                                if ( o2 == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, this.getMissingObjectMessage(
+                                            a.getIdentifier(), a.getName() ), new Exception() );
+
+                                    }
+                                }
+                                else
+                                {
+                                    list.add( o2 );
+                                }
+                            }
+                        }
+
+                        final Class specClass = Class.forName( ds.getClazz(), true, classLoader );
+                        o = list.isEmpty()
+                            ? null : list.toArray( (Object[]) Array.newInstance( specClass, list.size() ) );
+
+                    }
                 }
-            }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+
+                if ( o != null && dependency.isBound() )
+                {
+                    instance.getDependencyObjects().put( dependencyName, o );
+                }
+
+                return o;
             }
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
-
-        return o;
     }
 
     public Object getProperty( final Object object, final String propertyName )
@@ -588,55 +729,58 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "propertyName" );
         }
 
-        Object value = null;
-
         try
         {
             this.initialize();
 
-            final Instance instance = this.getModelManager().getInstance( this.getModules(), object );
+            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final Modules model = this.getModules( classLoader );
+            final Instance instance = model.getInstance( object );
 
-            if ( instance != null )
+            if ( instance == null )
             {
-                synchronized ( instance )
+                if ( this.isLoggable( Level.WARNING ) )
                 {
-                    value = instance.getPropertyObjects().get( propertyName );
+                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                }
 
-                    if ( value == null )
+                return null;
+            }
+
+            synchronized ( instance )
+            {
+                Object value = instance.getPropertyObjects().get( propertyName );
+                if ( value == null )
+                {
+                    final Property property =
+                        instance.getProperties() != null ? instance.getProperties().getProperty( propertyName ) : null;
+
+                    if ( property == null )
                     {
-                        final Property property = instance.getProperties() != null
-                                                  ? instance.getProperties().getProperty( propertyName )
-                                                  : null;
-
-                        if ( property != null )
-                        {
-                            value = property.getJavaValue( this.getClassLoader( object.getClass() ) );
-
-                            if ( value != null )
-                            {
-                                instance.getPropertyObjects().put( propertyName, value );
-                            }
-                        }
-                        else if ( this.isLoggable( Level.WARNING ) )
+                        if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( Level.WARNING, this.getMissingPropertyMessage(
                                 propertyName, object.getClass().getName() ), new Exception() );
 
                         }
+
+                        return null;
+                    }
+
+                    value = property.getJavaValue( classLoader );
+                    if ( value != null )
+                    {
+                        instance.getPropertyObjects().put( propertyName, value );
                     }
                 }
-            }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+
+                return value;
             }
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
-
-        return value;
     }
 
     public String getMessage( final Object object, final String messageName, final Locale locale,
@@ -655,48 +799,51 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "locale" );
         }
 
-        String text = null;
-
         try
         {
             this.initialize();
 
-            final Instance instance = this.getModelManager().getInstance( this.getModules(), object );
+            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final Modules model = this.getModules( classLoader );
+            final Instance instance = model.getInstance( object );
 
-            if ( instance != null )
+            if ( instance == null )
             {
-                synchronized ( instance )
+                if ( this.isLoggable( Level.WARNING ) )
                 {
-                    final Message message = instance.getMessages() != null
-                                            ? instance.getMessages().getMessage( messageName )
-                                            : null;
+                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                }
 
-                    if ( message != null && message.getTemplate() != null )
-                    {
-                        final MessageFormat fmt = new MessageFormat( message.getTemplate().
-                            getText( locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );
+                return null;
+            }
 
-                        text = fmt.format( arguments );
-                    }
-                    else if ( this.isLoggable( Level.WARNING ) )
+            synchronized ( instance )
+            {
+                final Message message =
+                    instance.getMessages() != null ? instance.getMessages().getMessage( messageName ) : null;
+
+                if ( message == null || message.getTemplate() == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
                     {
                         this.log( Level.WARNING, this.getMissingMessageMessage(
                             messageName, object.getClass().getName() ), new Exception() );
 
                     }
+
+                    return null;
                 }
-            }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+
+                final MessageFormat fmt = new MessageFormat( message.getTemplate().getText(
+                    locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );
+
+                return fmt.format( arguments );
             }
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( e.getMessage(), e );
         }
-
-        return text;
     }
 
     // SECTION-END
@@ -712,20 +859,19 @@ public class DefaultObjectManager implements ObjectManager
     /** Singleton instance. */
     private static final ObjectManager singleton = ObjectManagerFactory.newObjectManager();
 
-    /** The modules of the instance. */
-    private Modules modules;
+    /**
+     * Log level events are logged at by default.
+     * @see #getDefaultLogLevel()
+     */
+    private static final Level DEFAULT_LOG_LEVEL = Level.WARNING;
 
-    /** The model manager of the instance. */
-    private ModelManager modelManager;
+    /** Default log level. */
+    private static volatile Level defaultLogLevel;
 
-    /** Scopes of the instance. */
-    private final Map<String, Scope> scopes = new HashMap<String, Scope>();
+    /** Name of the platform's bootstrap class loader class. */
+    private static volatile String bootstrapClassLoaderClassName;
 
-    /** Locators of the instance. */
-    private final Map<String, Locator> locators = new HashMap<String, Locator>();
-
-    /** Invoker of the instance. */
-    private Invoker invoker;
+    private static volatile boolean bootstrapClassLoaderClassNameInitialized;
 
     /** Listeners of the instance. */
     private List<Listener> listeners;
@@ -733,41 +879,23 @@ public class DefaultObjectManager implements ObjectManager
     /** Flag indicating that initialization has been performed. */
     private boolean initialized;
 
-    /** Flag indicating classpath awareness. */
-    private Boolean classpathAware;
-
-    /**
-     * Bootstrap {@code LogRecord}s.
-     * @see #initialize()
-     */
-    private final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
-
     /** Log level of the instance. */
     private Level logLevel;
 
-    /** {@code DefaultModelManager.Listener} of the instance. */
-    private final DefaultModelManager.Listener defaultModelManagerListener = new DefaultModelManager.Listener()
-    {
+    /** Modules of the instance. */
+    private final Map<ClassLoader, Modules> modules = new WeakIdentityHashMap();
 
-        public void onLog( final Level level, final String message, final Throwable t )
-        {
-            log( level, message, t );
-        }
+    /** Invokers of the instance. */
+    private final Map<ClassLoader, Invoker> invokers = new WeakIdentityHashMap();
 
-    };
+    /** Scopes of the instance. */
+    private final Map<ClassLoader, Map<String, Scope>> scopes = new WeakIdentityHashMap();
 
-    /** Bootstrap {@code ObjectManagementListener}. */
-    private final Listener bootstrapObjectManagementListener = new Listener()
-    {
+    /** Locators of the instance. */
+    private final Map<ClassLoader, Map<String, Locator>> locators = new WeakIdentityHashMap();
 
-        public void onLog( final Level level, final String message, final Throwable throwable )
-        {
-            final LogRecord record = new LogRecord( level, message );
-            record.setThrown( throwable );
-            bootstrapLogRecords.add( record );
-        }
-
-    };
+    /** Objects of the instance. */
+    private final Map<ClassLoader, Map<Object, Instance>> objects = new WeakIdentityHashMap();
 
     /**
      * Default {@link ObjectManagerFactory#getObjectManager()} implementation backed by static field.
@@ -782,43 +910,10 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets a flag indicating that classpath resolution is performed.
-     * <p>Classpath resolution is performed by default. It can be disabled by setting the system property
-     * {@code org.jomc.ri.DefaultObjectManager.classpathAware} to {@code false}.</p>
-     *
-     * @return {@code true} if the class loader of the instance is searched for resources; {@code false} if no
-     * classpath resolution is performed.
-     *
-     * @see #setClasspathAware(boolean)
-     */
-    public boolean isClasspathAware()
-    {
-        if ( this.classpathAware == null )
-        {
-            this.classpathAware = Boolean.valueOf(
-                System.getProperty( "org.jomc.ri.DefaultObjectManager.classpathAware", Boolean.TRUE.toString() ) );
-
-        }
-
-        return this.classpathAware;
-    }
-
-    /**
-     * Sets the flag indicating that classpath resolution should be performed.
-     *
-     * @param value {@code true} if the class loader of the instance is searched for resources; {@code false} if no
-     * classpath resolution is performed.
-     *
-     * @see #isClasspathAware()
-     */
-    public synchronized void setClasspathAware( final boolean value )
-    {
-        this.classpathAware = value;
-        this.initialized = false;
-    }
-
-    /**
      * Gets the list of registered listeners.
+     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * to the returned list will be present inside the object. This is why there is no {@code set} method for the
+     * listeners property.</p>
      *
      * @return The list of registered listeners.
      */
@@ -833,23 +928,58 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the default log level events are logged at.
+     * <p>The default log level is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.defaultLogLevel} holding the log level to log events at by default.
+     * If that property is not set, the {@code WARNING} default is returned.</p>
+     *
+     * @return The log level events are logged at by default.
+     *
+     * @see #getLogLevel()
+     * @see Level#parse(java.lang.String)
+     */
+    public static Level getDefaultLogLevel()
+    {
+        if ( defaultLogLevel == null )
+        {
+            defaultLogLevel = Level.parse( System.getProperty( "org.jomc.ri.DefaultObjectManager.defaultLogLevel",
+                                                               DEFAULT_LOG_LEVEL.getName() ) );
+
+        }
+
+        return defaultLogLevel;
+    }
+
+    /**
+     * Sets the default log level events are logged at.
+     *
+     * @param value The new default level events are logged at or {@code null}.
+     *
+     * @see #getDefaultLogLevel()
+     */
+    public static void setDefaultLogLevel( final Level value )
+    {
+        defaultLogLevel = value;
+    }
+
+    /**
      * Gets the log level of the instance.
-     * <p>The default log level of the instance is controlled by system property
-     * {@code org.jomc.ri.DefaultObjectManager.logLevel} holding the default log level of the instance.
-     * If that system property is not set, a {@code WARNING} log level is returned.</p>
      *
      * @return The log level of the instance.
      *
+     * @see #getDefaultLogLevel()
      * @see #setLogLevel(java.util.logging.Level)
      * @see #isLoggable(java.util.logging.Level)
-     * @see Level#parse(java.lang.String)
      */
     public Level getLogLevel()
     {
         if ( this.logLevel == null )
         {
-            this.logLevel = Level.parse( System.getProperty( "org.jomc.ri.DefaultObjectManager.logLevel",
-                                                             Level.WARNING.getName() ) );
+            this.logLevel = getDefaultLogLevel();
+            this.log( Level.CONFIG, this.getMessage( "defaultLogLevelInfo", new Object[]
+                {
+                    this.getClass().getCanonicalName(), this.logLevel.getLocalizedName()
+                } ), null );
 
         }
 
@@ -894,144 +1024,186 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the modules of the instance.
+     * Gets the name of the platform's bootstrap class loader class.
+     * <p>The name of the platform's bootstrap class loader class is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.bootstrapClassLoaderClassName} holding the name of the platform's
+     * bootstrap class loader class. If that property is not set, the bootstrap class loader is assumed to be
+     * represented by a {@code null} parent class loader.</p>
      *
-     * @return The modules of the instance.
+     * @return The name of the platform's bootstrap class loader class or {@code null}.
      *
-     * @see #setModules(org.jomc.model.Modules)
+     * @see #getClassLoader(java.lang.ClassLoader)
      */
-    public Modules getModules()
+    public static String getBootstrapClassLoaderClassName()
     {
-        if ( this.modules == null )
+        if ( bootstrapClassLoaderClassName == null && !bootstrapClassLoaderClassNameInitialized )
         {
-            try
+            bootstrapClassLoaderClassName =
+                System.getProperty( "org.jomc.ri.DefaultObjectManager.bootstrapClassLoaderClassName" );
+
+            bootstrapClassLoaderClassNameInitialized = true;
+        }
+
+        return bootstrapClassLoaderClassName;
+    }
+
+    /**
+     * Sets the name of the platform's bootstrap class loader class.
+     *
+     * @param value The new name of the platform's bootstrap class loader class or {@code null}.
+     *
+     * @see #getBootstrapClassLoaderClassName()
+     */
+    public static void setBootstrapClassLoaderClassName( final String value )
+    {
+        bootstrapClassLoaderClassName = value;
+        bootstrapClassLoaderClassNameInitialized = false;
+    }
+
+    /**
+     * Gets the modules of a given class loader.
+     *
+     * @param classLoader The class loader to get the modules of.
+     *
+     * @return The modules of the given class loader.
+     *
+     * @throws NullPointerException if {@code classLoader} is {@code null},
+     */
+    public Modules getModules( final ClassLoader classLoader )
+    {
+        if ( classLoader == null )
+        {
+            throw new NullPointerException( "classLoader" );
+        }
+
+        synchronized ( this.modules )
+        {
+            Modules cachedModules = this.modules.get( classLoader );
+
+            if ( cachedModules == null )
             {
-                if ( this.isClasspathAware() && this.getModelManager() instanceof DefaultModelManager )
+                try
                 {
-                    final DefaultModelManager defaultModelManager = (DefaultModelManager) this.getModelManager();
+                    final DefaultModelManager defaultModelManager = new DefaultModelManager();
+                    defaultModelManager.setLogLevel( this.getLogLevel() );
+                    defaultModelManager.getListeners().add( new DefaultModelManager.Listener()
+                    {
 
-                    Modules defaultModules = defaultModelManager.getClasspathModules(
-                        defaultModelManager.getDefaultDocumentLocation() );
+                        public void onLog( final Level level, final String message, final Throwable t )
+                        {
+                            log( level, message, t );
+                        }
 
-                    final Module classpathModule = defaultModelManager.getClasspathModule( defaultModules );
+                    } );
+
+                    final ObjectFactory objectFactory = new ObjectFactory();
+                    final JAXBContext context = defaultModelManager.getContext( classLoader );
+                    final Schema schema = defaultModelManager.getSchema( classLoader );
+
+                    cachedModules = defaultModelManager.getClasspathModules(
+                        classLoader, DefaultModelManager.getDefaultModuleLocation() );
+
+                    final Module classpathModule =
+                        cachedModules.getClasspathModule( Modules.getDefaultClasspathModuleName(), classLoader );
+
                     if ( classpathModule != null )
                     {
-                        defaultModules.getModule().add( classpathModule );
+                        cachedModules.getModule().add( classpathModule );
                     }
 
                     final List<Transformer> defaultTransformers = defaultModelManager.getClasspathTransformers(
-                        defaultModelManager.getDefaultStylesheetLocation() );
+                        classLoader, DefaultModelManager.getDefaultTransformerLocation() );
 
                     for ( Transformer t : defaultTransformers )
                     {
-                        defaultModules = defaultModelManager.transformModelObject(
-                            defaultModelManager.getObjectFactory().createModules( defaultModules ), t );
-
+                        final JAXBElement<Modules> e = objectFactory.createModules( cachedModules );
+                        final JAXBSource source = new JAXBSource( context, e );
+                        final JAXBResult result = new JAXBResult( context );
+                        t.transform( source, result );
+                        cachedModules = ( (JAXBElement<Modules>) result.getResult() ).getValue();
                     }
 
-                    this.getModelManager().validateModules( defaultModules );
-                    this.modules = defaultModules;
-                }
-            }
-            catch ( final ModelException e )
-            {
-                if ( this.isLoggable( Level.SEVERE ) )
-                {
-                    this.log( Level.SEVERE, e.getMessage(), e );
-                }
+                    final ModelObjectValidator modelObjectValidator = new DefaultModelObjectValidator();
+                    final ModelObjectValidationReport validationReport = modelObjectValidator.validateModules(
+                        objectFactory.createModules( cachedModules ), context, schema );
 
-                for ( ModelException.Detail d : e.getDetails() )
-                {
-                    if ( this.isLoggable( d.getLevel() ) )
+                    for ( ModelObjectValidationReport.Detail d : validationReport.getDetails() )
                     {
-                        this.log( d.getLevel(), d.getMessage(), null );
+                        if ( this.isLoggable( d.getLevel() ) )
+                        {
+                            this.log( d.getLevel(), d.getMessage(), null );
+                        }
+                    }
+
+                    if ( validationReport.isModelObjectValid() )
+                    {
+                        final ClassLoader objectsLoader = this.getClassLoader( classLoader );
+                        Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
+                        if ( objectMap == null )
+                        {
+                            objectMap = new WeakIdentityHashMap();
+                            this.objects.put( objectsLoader, objectMap );
+                        }
+
+                        this.modules.put( classLoader, new Modules( cachedModules, objectMap ) );
+
+                        if ( this.isLoggable( Level.FINE ) )
+                        {
+                            this.log( Level.FINE, this.getModulesReport( cachedModules, classLoader ), null );
+                        }
+                    }
+                    else
+                    {
+                        cachedModules = null;
+                    }
+                }
+                catch ( final TransformerException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                catch ( final IOException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                catch ( final SAXException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                catch ( final JAXBException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                finally
+                {
+                    if ( cachedModules == null )
+                    {
+                        cachedModules = new Modules();
                     }
                 }
             }
-            catch ( final TransformerException e )
-            {
-                if ( this.isLoggable( Level.SEVERE ) )
-                {
-                    this.log( Level.SEVERE, e.getMessage(), e );
-                }
-            }
-            catch ( final IOException e )
-            {
-                if ( this.isLoggable( Level.SEVERE ) )
-                {
-                    this.log( Level.SEVERE, e.getMessage(), e );
-                }
-            }
-            catch ( final SAXException e )
-            {
-                if ( this.isLoggable( Level.SEVERE ) )
-                {
-                    this.log( Level.SEVERE, e.getMessage(), e );
-                }
-            }
-            catch ( final JAXBException e )
-            {
-                if ( this.isLoggable( Level.SEVERE ) )
-                {
-                    this.log( Level.SEVERE, e.getMessage(), e );
-                }
-            }
-            finally
-            {
-                if ( this.modules == null )
-                {
-                    this.modules = new Modules();
-                }
-            }
+
+            return cachedModules;
         }
-
-        return this.modules;
-    }
-
-    /**
-     * Sets the modules of the instance.
-     *
-     * @param value The new modules of the instance.
-     *
-     * @see #getModules()
-     */
-    public synchronized void setModules( final Modules value )
-    {
-        this.modules = value;
-        this.initialized = false;
-    }
-
-    /**
-     * Gets the model manager of the instance.
-     *
-     * @return The model manager of the instance.
-     *
-     * @see #setModelManager(org.jomc.model.ModelManager)
-     */
-    public ModelManager getModelManager()
-    {
-        if ( this.modelManager == null )
-        {
-            final DefaultModelManager defaultManager = new DefaultModelManager();
-            defaultManager.setClassLoader( this.getClassLoader( this.getClass() ) );
-            defaultManager.getListeners().add( this.defaultModelManagerListener );
-            this.modelManager = defaultManager;
-        }
-
-        return this.modelManager;
-    }
-
-    /**
-     * Sets the model manager of the instance.
-     *
-     * @param value The new model manager of the instance.
-     *
-     * @see #getModelManager()
-     */
-    public synchronized void setModelManager( final ModelManager value )
-    {
-        this.modelManager = value;
-        this.initialized = false;
     }
 
     /**
@@ -1070,80 +1242,110 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets an object of a given instance.
+     * Gets the parent class loader of a given class loader recursively.
+     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
+     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
+     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
+     * current class loader's parent class loader is equal to the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
+     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
+     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
      *
-     * @param specification The specification specifying the object to return.
-     * @param instance The instance of the object to get.
+     * @param classLoader The class loader whose parent class loader to return.
      *
-     * @return An object of {@code instance} or {@code null} if nothing could be resolved.
+     * @return The parent class loader of {@code classLoader}.
      *
-     * @throws NullPointerException if {@code specification} or {@code instance} is {@code null}.
-     * @throws InstantiationException if getting an object fails.
+     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     *
+     * @see #getBootstrapClassLoaderClassName()
+     * @see ClassLoader#getParent()
      */
-    public Object getObject( final Specification specification, final Instance instance ) throws InstantiationException
+    public ClassLoader getClassLoader( final ClassLoader classLoader )
     {
-        if ( specification == null )
+        if ( classLoader == null )
         {
-            throw new NullPointerException( "specification" );
+            throw new NullPointerException( "classLoader" );
         }
+
+        if ( classLoader.getParent() != null &&
+             !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+        {
+            return this.getClassLoader( classLoader.getParent() );
+        }
+
+        return classLoader;
+    }
+
+    /**
+     * Gets an object of a given instance from a given scope.
+     *
+     * @param scope The scope to get the object from or {@code null}.
+     * @param instance The instance of the object to get.
+     * @param classLoader The class loader to use for creating the object.
+     *
+     * @return An object of {@code instance} from {@code scope} or {@code null} if no such object is found.
+     *
+     * @throws NullPointerException if {@code instance} or {@code classLoader} is {@code null}.
+     * @throws InstantiationException if creating an object fails.
+     */
+    public Object getObject( final Scope scope, final Instance instance, final ClassLoader classLoader )
+        throws InstantiationException
+    {
         if ( instance == null )
         {
             throw new NullPointerException( "instance" );
         }
+        if ( classLoader == null )
+        {
+            throw new NullPointerException( "classLoader" );
+        }
 
         Object object = null;
-        if ( specification.getScope() != null )
+        final Modules model = this.getModules( classLoader );
+
+        if ( scope != null )
         {
-            final Scope scope = this.getScope( specification.getScope() );
-
-            if ( scope != null )
+            synchronized ( scope )
             {
-                synchronized ( scope )
+                object = scope.getObject( instance.getIdentifier() );
+
+                if ( object == null )
                 {
-                    object = scope.getObject( instance.getIdentifier() );
+                    scope.putObject( instance.getIdentifier(), instance );
 
-                    if ( object == null )
+                    try
                     {
-                        scope.putObject( instance.getIdentifier(), instance );
-
-                        try
-                        {
-                            object = this.getModelManager().getObject( this.getModules(), specification, instance );
-                        }
-                        finally
-                        {
-                            if ( object != null )
-                            {
-                                object = this.createProxy( specification, instance, object );
-                            }
-
-                            scope.putObject( instance.getIdentifier(), object );
-                        }
+                        object = model.createObject( instance, classLoader );
                     }
-                    else if ( object instanceof Instance )
+                    finally
                     {
-                        throw new ObjectManagementException( this.getDependencyCycleMessage(
-                            ( (Instance) object ).getIdentifier() ) );
+                        if ( object != null )
+                        {
+                            object = this.createProxy( instance, object );
+                        }
 
+                        scope.putObject( instance.getIdentifier(), object );
                     }
                 }
-            }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingScopeMessage( specification.getScope() ), new Exception() );
+                else if ( object instanceof Instance )
+                {
+                    throw new ObjectManagementException( this.getDependencyCycleMessage(
+                        ( (Instance) object ).getIdentifier() ) );
+
+                }
             }
         }
         else
         {
             try
             {
-                object = this.getModelManager().getObject( this.getModules(), specification, instance );
+                object = model.createObject( instance, classLoader );
             }
             finally
             {
                 if ( object != null )
                 {
-                    object = this.createProxy( specification, instance, object );
+                    object = this.createProxy( instance, object );
                 }
             }
         }
@@ -1154,18 +1356,19 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets an object for a given location URI.
      *
-     * @param specification The specification specifying the object to return.
-     * @param location The location URI of the object to return.
-     * @param classLoader The class loader of {@code specification}.
+     * @param specification The specification class of the object to locate.
+     * @param location The location URI of the object to locate.
+     * @param classLoader The class loader to use for loading locator classes.
+     * @param <T> The type of the object.
      *
-     * @return An object located at {@code location} or {@code null} if nothing could be resolved.
+     * @return An object located at {@code location} or {@code null} if no such object is found.
      *
      * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
      * @throws ClassNotFoundException if the class of {@code specification} is not found.
      * @throws IOException if locating the object fails.
      */
-    public Object getObject( final Specification specification, final URI location, final ClassLoader classLoader )
+    public <T> T getObject( final Class<T> specification, final URI location, final ClassLoader classLoader )
         throws InstantiationException, ClassNotFoundException, IOException
     {
         if ( specification == null )
@@ -1181,12 +1384,12 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        Object object = null;
-        final Locator locator = this.getLocator( location );
+        T object = null;
+        final Locator locator = this.getLocator( classLoader, location );
 
         if ( locator != null )
         {
-            object = locator.getObject( Class.forName( specification.getClazz(), true, classLoader ), location );
+            object = locator.getObject( specification, location );
         }
         else if ( this.isLoggable( Level.WARNING ) )
         {
@@ -1197,59 +1400,71 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the scope implementation for a given model scope.
+     * Gets the scope implementation for a given scope identifier.
      *
-     * @param modelScope The scope to get an implementation of.
+     * @param classLoader The class loader to use for loading scope implementations.
+     * @param identifier The identifier of the scope to get an implementation of.
      *
-     * @return The implementation of {@code modelScope} or {@code null} if no implementation is available implementing
-     * {@code modelScope}.
+     * @return The implementation of the scope identified by {@code identifier} or {@code null} if no such
+     * scope implementation is found.
      *
-     * @throws NullPointerException if {@code modelScope} is {@code null}.
+     * @throws NullPointerException if {@code classLoader} or {@code identifier} is {@code null}.
      * @throws InstantiationException if instantiating a scope fails.
      *
      * @see #getDefaultScope(java.lang.String)
      */
-    public Scope getScope( final String modelScope ) throws InstantiationException
+    public Scope getScope( final ClassLoader classLoader, final String identifier ) throws InstantiationException
     {
-        if ( modelScope == null )
+        if ( classLoader == null )
         {
-            throw new NullPointerException( "modelScope" );
+            throw new NullPointerException( "classLoader" );
         }
+        if ( identifier == null )
+        {
+            throw new NullPointerException( "identifier" );
+        }
+
+        final Modules model = this.getModules( classLoader );
+        final ClassLoader scopesLoader = this.getClassLoader( classLoader );
 
         synchronized ( this.scopes )
         {
-            Scope scope = this.scopes.get( modelScope );
+            Map<String, Scope> cachedScopes = this.scopes.get( scopesLoader );
+            if ( cachedScopes == null )
+            {
+                cachedScopes = new HashMap();
+                this.scopes.put( scopesLoader, cachedScopes );
+            }
+
+            Scope scope = cachedScopes.get( identifier );
 
             if ( scope == null )
             {
                 // Bootstrap scope loading.
-                final Specification scopeSpecification = this.getModules().getSpecification( Scope.class );
+                final Specification scopeSpecification = model.getSpecification( Scope.class );
 
                 if ( scopeSpecification != null )
                 {
                     final Implementations implementations =
-                        this.getModules().getImplementations( scopeSpecification.getIdentifier() );
+                        model.getImplementations( scopeSpecification.getIdentifier() );
 
                     if ( implementations != null )
                     {
                         for ( Implementation i : implementations.getImplementation() )
                         {
-                            if ( modelScope.equals( i.getName() ) )
+                            if ( identifier.equals( i.getName() ) )
                             {
-                                final Instance instance = this.getModelManager().getInstance(
-                                    this.getModules(), i, this.getClassLoader( Scope.class ) );
+                                final Instance instance = model.getInstance( i.getIdentifier() );
 
                                 if ( instance != null )
                                 {
-                                    scope = (Scope) this.getModelManager().getObject(
-                                        this.getModules(), scopeSpecification, instance );
-
-                                    this.scopes.put( modelScope, scope );
+                                    scope = (Scope) model.createObject( instance, classLoader );
+                                    cachedScopes.put( identifier, scope );
                                     if ( this.isLoggable( Level.CONFIG ) )
                                     {
                                         this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
                                             {
-                                                i.getIdentifier(), modelScope
+                                                i.getIdentifier(), identifier, scopesLoader.toString()
                                             } ), null );
 
                                     }
@@ -1275,13 +1490,13 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( scope == null )
             {
-                scope = this.getDefaultScope( modelScope );
+                scope = this.getDefaultScope( identifier );
                 if ( scope != null )
                 {
-                    this.scopes.put( modelScope, scope );
+                    cachedScopes.put( identifier, scope );
                     if ( this.isLoggable( Level.FINE ) )
                     {
-                        this.log( Level.FINE, this.getDefaultScopeInfoMessage( modelScope, scope.getObjects() ), null );
+                        this.log( Level.FINE, this.getDefaultScopeInfoMessage( identifier, scopesLoader ), null );
                     }
                 }
             }
@@ -1291,27 +1506,27 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the default scope implementation for a given model scope.
+     * Gets the default scope implementation for a given identifier.
      *
-     * @param modelScope The scope to get the default implementation of.
+     * @param identifier The identifier of the scope to get a default implementation of.
      *
-     * @return The default implementation of {@code modelScope} or {@code null} if no default implementation is
-     * available implementing {@code modelScope}.
+     * @return The default implementation of the scope identified by {@code identifier} or {@code null} if no such
+     * default implementation is available.
      *
-     * @throws NullPointerException if {@code modelScope} is {@code null}.
+     * @throws NullPointerException if {@code identifier} is {@code null}.
      *
-     * @see #getScope(java.lang.String)
+     * @see #getScope(java.lang.ClassLoader, java.lang.String)
      */
-    public Scope getDefaultScope( final String modelScope )
+    public Scope getDefaultScope( final String identifier )
     {
-        if ( modelScope == null )
+        if ( identifier == null )
         {
-            throw new NullPointerException( "modelScope" );
+            throw new NullPointerException( "identifier" );
         }
 
         DefaultScope defaultScope = null;
 
-        if ( modelScope.equals( SINGLETON_SCOPE_IDENTIFIER ) )
+        if ( identifier.equals( SINGLETON_SCOPE_IDENTIFIER ) )
         {
             defaultScope = new DefaultScope( new HashMap<String, Object>() );
         }
@@ -1322,40 +1537,55 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a locator to use with a given location URI.
      *
+     * @param classLoader The class loader to use for loading locator implementations.
      * @param location The location URI to get a locator for.
      *
-     * @return The locator to use for locating objects at {@code location} or {@code null} if no locator is available.
+     * @return The locator to use for locating objects at {@code location} or {@code null} if no such locator is
+     * available.
      *
-     * @throws NullPointerException if {@code location} is {@code null}.
+     * @throws NullPointerException if {@code classLoader} or {@code location} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
      *
      * @see #getDefaultLocator(java.net.URI)
      */
-    public Locator getLocator( final URI location ) throws InstantiationException
+    public Locator getLocator( final ClassLoader classLoader, final URI location ) throws InstantiationException
     {
+        if ( classLoader == null )
+        {
+            throw new NullPointerException( "classLoader" );
+        }
         if ( location == null )
         {
             throw new NullPointerException( "location" );
         }
 
-        Locator locator = null;
         final String scheme = location.getScheme();
 
         if ( scheme != null )
         {
+            final Modules model = this.getModules( classLoader );
+            final ClassLoader locatorsLoader = this.getClassLoader( classLoader );
+
             synchronized ( this.locators )
             {
-                locator = this.locators.get( scheme );
+                Map<String, Locator> cachedLocators = this.locators.get( locatorsLoader );
+                if ( cachedLocators == null )
+                {
+                    cachedLocators = new HashMap();
+                    this.locators.put( locatorsLoader, cachedLocators );
+                }
+
+                Locator locator = cachedLocators.get( scheme );
 
                 if ( locator == null )
                 {
                     // Bootstrap locator loading.
-                    final Specification locatorSpecification = this.getModules().getSpecification( Locator.class );
+                    final Specification locatorSpecification = model.getSpecification( Locator.class );
 
                     if ( locatorSpecification != null )
                     {
                         final Implementations implementations =
-                            this.getModules().getImplementations( locatorSpecification.getIdentifier() );
+                            model.getImplementations( locatorSpecification.getIdentifier() );
 
                         if ( implementations != null )
                         {
@@ -1363,20 +1593,18 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 if ( scheme.equals( i.getName() ) )
                                 {
-                                    final Instance instance = this.getModelManager().getInstance(
-                                        this.getModules(), i, this.getClassLoader( Locator.class ) );
+                                    final Instance instance = model.getInstance( i.getIdentifier() );
 
                                     if ( instance != null )
                                     {
-                                        locator = (Locator) this.getModelManager().getObject(
-                                            this.getModules(), locatorSpecification, instance );
+                                        locator = (Locator) model.createObject( instance, classLoader );
+                                        cachedLocators.put( scheme, locator );
 
-                                        this.locators.put( scheme, locator );
                                         if ( this.isLoggable( Level.CONFIG ) )
                                         {
                                             this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
                                                 {
-                                                    i.getIdentifier(), scheme
+                                                    i.getIdentifier(), scheme, locatorsLoader.toString()
                                                 } ), null );
 
                                         }
@@ -1406,17 +1634,19 @@ public class DefaultObjectManager implements ObjectManager
                     locator = this.getDefaultLocator( location );
                     if ( locator != null )
                     {
-                        this.locators.put( scheme, locator );
+                        cachedLocators.put( scheme, locator );
                         if ( this.isLoggable( Level.FINE ) )
                         {
-                            this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme ), null );
+                            this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme, locatorsLoader ), null );
                         }
                     }
                 }
+
+                return locator;
             }
         }
 
-        return locator;
+        return null;
     }
 
     /**
@@ -1429,7 +1659,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      *
-     * @see #getLocator(java.net.URI)
+     * @see #getLocator(java.lang.ClassLoader, java.net.URI)
      */
     public Locator getDefaultLocator( final URI location )
     {
@@ -1450,82 +1680,102 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the invoker of the instance.
+     * Gets the invoker of the given class loader.
      *
-     * @return The invoker of the instance.
+     * @param classLoader The class loader to use for loading invoker implementations.
      *
+     * @return The invoker of the given class loader.
+     *
+     * @throws NullPointerException if {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a new invoker fails.
      */
-    public Invoker getInvoker() throws InstantiationException
+    public Invoker getInvoker( final ClassLoader classLoader ) throws InstantiationException
     {
-        if ( this.invoker == null )
+        if ( classLoader == null )
         {
-            final Specification invokerSpecification = this.getModules().getSpecification( Invoker.class );
+            throw new NullPointerException( "classLoader" );
+        }
 
-            if ( invokerSpecification != null )
+        final Modules model = this.getModules( classLoader );
+        final ClassLoader invokersLoader = this.getClassLoader( classLoader );
+
+        synchronized ( this.invokers )
+        {
+            Invoker invoker = this.invokers.get( invokersLoader );
+
+            if ( invoker == null )
             {
-                final Implementations implementations =
-                    this.getModules().getImplementations( invokerSpecification.getIdentifier() );
+                final Specification invokerSpecification = model.getSpecification( Invoker.class );
 
-                if ( implementations != null && !implementations.getImplementation().isEmpty() )
+                if ( invokerSpecification != null )
                 {
-                    for ( Implementation i : implementations.getImplementation() )
+                    final Implementations implementations =
+                        model.getImplementations( invokerSpecification.getIdentifier() );
+
+                    if ( implementations != null && !implementations.getImplementation().isEmpty() )
                     {
-                        if ( this.invoker == null )
+                        for ( Implementation i : implementations.getImplementation() )
                         {
-                            final Instance invokerInstance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( Invoker.class ) );
-
-                            if ( invokerInstance != null )
+                            if ( invoker == null )
                             {
-                                this.invoker = (Invoker) this.getModelManager().getObject(
-                                    this.getModules(), invokerSpecification, invokerInstance );
+                                final Instance invokerInstance = model.getInstance( i.getIdentifier() );
 
-                                if ( this.isLoggable( Level.CONFIG ) )
+                                if ( invokerInstance != null )
                                 {
-                                    this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
-                                        {
-                                            i.getIdentifier()
-                                        } ), null );
+                                    invoker = (Invoker) model.createObject( invokerInstance, classLoader );
+                                    this.invokers.put( invokersLoader, invoker );
+
+                                    if ( this.isLoggable( Level.CONFIG ) )
+                                    {
+                                        this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
+                                            {
+                                                i.getIdentifier(), invokersLoader.toString()
+                                            } ), null );
+
+                                    }
+                                }
+                                else if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                        i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
-                            else if ( this.isLoggable( Level.WARNING ) )
+                            else if ( this.isLoggable( Level.FINE ) )
                             {
-                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
+                                this.log( Level.FINE, this.getMessage( "ignoredInvoker", new Object[]
+                                    {
+                                        i.getIdentifier()
+                                    } ), null );
 
                             }
                         }
-                        else if ( this.isLoggable( Level.FINE ) )
-                        {
-                            this.log( Level.FINE, this.getMessage( "ignoredInvoker", new Object[]
-                                {
-                                    i.getIdentifier()
-                                } ), null );
+                    }
+                }
+                else if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Invoker.class.getName() ),
+                              new Exception() );
 
-                        }
+                }
+
+                if ( invoker == null )
+                {
+                    invoker = new DefaultInvoker();
+                    this.invokers.put( invokersLoader, invoker );
+                    if ( this.isLoggable( Level.FINE ) )
+                    {
+                        this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", new Object[]
+                            {
+                                invokersLoader.toString()
+                            } ), null );
+
                     }
                 }
             }
-            else if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingSpecificationMessage( Invoker.class.getName() ),
-                          new Exception() );
 
-            }
-
-            if ( this.invoker == null )
-            {
-                this.invoker = new DefaultInvoker();
-                if ( this.isLoggable( Level.FINE ) )
-                {
-                    this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", null ), null );
-                }
-            }
+            return invoker;
         }
-
-        return this.invoker;
     }
 
     /**
@@ -1535,6 +1785,8 @@ public class DefaultObjectManager implements ObjectManager
      * @param instance The instance of the object to invoke.
      * @param method The method to invoke on {@code object}.
      * @param arguments The arguments of the invocation or {@code null}.
+     *
+     * @return An invocation with {@code object}, {@code instance}, {@code method} and {@code arguments}.
      *
      * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
      * @throws InstantiationException if instantiating a new invocation fails.
@@ -1556,13 +1808,14 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Invocation invocation = null;
-
-        final Specification invocationSpecification = this.getModules().getSpecification( Invocation.class );
+        final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+        final Modules model = this.getModules( classLoader );
+        final Specification invocationSpecification = model.getSpecification( Invocation.class );
 
         if ( invocationSpecification != null )
         {
             final Implementations implementations =
-                this.getModules().getImplementations( invocationSpecification.getIdentifier() );
+                model.getImplementations( invocationSpecification.getIdentifier() );
 
             if ( implementations != null && !implementations.getImplementation().isEmpty() )
             {
@@ -1570,14 +1823,11 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( invocation == null )
                     {
-                        final Instance invocationInstance = this.getModelManager().getInstance(
-                            this.getModules(), i, this.getClassLoader( Invocation.class ) );
+                        final Instance invocationInstance = model.getInstance( i.getIdentifier() );
 
                         if ( invocationInstance != null )
                         {
-                            invocation = (Invocation) this.getModelManager().getObject(
-                                this.getModules(), invocationSpecification, invocationInstance );
-
+                            invocation = (Invocation) model.createObject( invocationInstance, classLoader );
                         }
                         else if ( this.isLoggable( Level.WARNING ) )
                         {
@@ -1631,24 +1881,29 @@ public class DefaultObjectManager implements ObjectManager
                 final long t0 = System.currentTimeMillis();
                 this.initialized = true;
 
-                this.scopes.clear();
-                this.bootstrapLogRecords.clear();
-
-                if ( this.modelManager instanceof DefaultModelManager )
-                {
-                    ( (DefaultModelManager) this.modelManager ).getListeners().
-                        remove( this.defaultModelManagerListener );
-
-                }
-
-                this.modelManager = null;
                 this.listeners = null;
-                this.modules = null;
-                this.invoker = null;
+                this.modules.clear();
+                this.invokers.clear();
+                this.locators.clear();
+                this.scopes.clear();
 
-                this.getListeners().add( this.bootstrapObjectManagementListener );
+                final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
+                Listener bootstrapListener = new Listener()
+                {
 
-                final Specification objectManager = this.getModules().getSpecification( ObjectManager.class );
+                    public void onLog( final Level level, final String message, final Throwable throwable )
+                    {
+                        final LogRecord record = new LogRecord( level, message );
+                        record.setThrown( throwable );
+                        bootstrapLogRecords.add( record );
+                    }
+
+                };
+                this.getListeners().add( bootstrapListener );
+
+                final ClassLoader classLoader = this.getClassLoader( this.getClass() );
+                final Modules model = this.getModules( classLoader );
+                final Specification objectManager = model.getSpecification( ObjectManager.class );
                 if ( objectManager == null )
                 {
                     throw new InstantiationException( this.getMissingSpecificationMessage(
@@ -1656,7 +1911,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
 
-                final Instance thisInstance = this.getModelManager().getInstance( this.getModules(), this );
+                final Instance thisInstance = model.getInstance( this );
                 if ( thisInstance == null )
                 {
                     throw new InstantiationException( this.getMissingInstanceMessage(
@@ -1666,7 +1921,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( objectManager.getScope() != null )
                 {
-                    final Scope scope = this.getScope( objectManager.getScope() );
+                    final Scope scope = this.getScope( classLoader, objectManager.getScope() );
                     if ( scope == null )
                     {
                         throw new InstantiationException( this.getMissingScopeMessage( objectManager.getScope() ) );
@@ -1675,30 +1930,33 @@ public class DefaultObjectManager implements ObjectManager
                     scope.putObject( thisInstance.getIdentifier(), this );
                 }
 
-                this.getInvoker();
-
                 // Bootstrap listener loading.
-                final Specification listenerSpecification = this.getModules().getSpecification( Listener.class );
+                final Specification listenerSpecification = model.getSpecification( Listener.class );
 
                 if ( listenerSpecification != null )
                 {
                     final Implementations implementations =
-                        this.getModules().getImplementations( listenerSpecification.getIdentifier() );
+                        model.getImplementations( listenerSpecification.getIdentifier() );
 
                     if ( implementations != null && !implementations.getImplementation().isEmpty() )
                     {
                         for ( Implementation i : implementations.getImplementation() )
                         {
-                            final Instance listenerInstance = this.getModelManager().getInstance(
-                                this.getModules(), i, this.getClassLoader( Listener.class ) );
+                            final Instance listenerInstance = model.getInstance( i.getIdentifier() );
+                            if ( listenerInstance != null )
+                            {
+                                final Listener l = (Listener) model.createObject( listenerInstance, classLoader );
+                                this.getListeners().add( l );
+                                this.log( Level.CONFIG, this.getRegisteredListenerMessage(
+                                    l.getClass().getName() ), null );
 
-                            final Listener l = (Listener) this.getModelManager().getObject(
-                                this.getModules(), listenerSpecification, listenerInstance );
+                            }
+                            else if ( this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( Level.WARNING, this.getMissingInstanceMessage(
+                                    i.getIdentifier(), i.getName() ), null );
 
-                            this.getListeners().add( l );
-                            this.bootstrapLogRecords.add( new LogRecord(
-                                Level.FINE, this.getRegisteredListenerMessage( l.getClass().getName() ) ) );
-
+                            }
                         }
                     }
                     else if ( this.isLoggable( Level.WARNING ) )
@@ -1710,26 +1968,24 @@ public class DefaultObjectManager implements ObjectManager
                 }
                 else if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Listener.class.getName() ),
-                              new Exception() );
+                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
+                        Listener.class.getName() ), new Exception() );
 
                 }
 
-                this.getListeners().remove( this.bootstrapObjectManagementListener );
+                this.getListeners().remove( bootstrapListener );
+                bootstrapListener = null;
 
                 if ( !this.getListeners().isEmpty() )
                 {
-                    for ( LogRecord logRecord : this.bootstrapLogRecords )
+                    for ( LogRecord logRecord : bootstrapLogRecords )
                     {
                         this.log( logRecord.getLevel(), logRecord.getMessage(), logRecord.getThrown() );
                     }
                 }
 
-                this.bootstrapLogRecords.clear();
-
                 if ( this.isLoggable( Level.FINE ) )
                 {
-                    this.log( Level.FINE, this.getModulesReport( this.getModules() ), null );
                     this.log( Level.FINE, this.getImplementationInfoMessage(
                         Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
 
@@ -1738,23 +1994,11 @@ public class DefaultObjectManager implements ObjectManager
         }
         catch ( final InstantiationException e )
         {
-            for ( LogRecord r : this.bootstrapLogRecords )
-            {
-                Logger.getLogger( this.getClass().getName() ).log( r );
-            }
-
-            this.scopes.clear();
-            this.bootstrapLogRecords.clear();
-
-            if ( this.modelManager instanceof DefaultModelManager )
-            {
-                ( (DefaultModelManager) this.modelManager ).getListeners().remove( this.defaultModelManagerListener );
-            }
-
-            this.modelManager = null;
             this.listeners = null;
-            this.modules = null;
-            this.invoker = null;
+            this.modules.clear();
+            this.invokers.clear();
+            this.locators.clear();
+            this.scopes.clear();
             this.initialized = false;
             throw e;
         }
@@ -1788,7 +2032,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Creates a proxy for a given object.
      *
-     * @param specification The specification to create a proxy for.
      * @param instance The instance of {@code object}.
      * @param object The object to create a proxy for.
      *
@@ -1796,53 +2039,47 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws InstantiationException if creating a proxy fails.
      */
-    private Object createProxy( final Specification specification, final Instance instance, final Object object )
-        throws InstantiationException
+    private Object createProxy( final Instance instance, final Object object ) throws InstantiationException
     {
-        Object proxy = object;
-
         try
         {
-            final Class specClass = Class.forName( specification.getClazz(), true, instance.getClassLoader() );
-            if ( specClass.isInterface() )
+            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final Set<Class> interfaces = new HashSet<Class>();
+            boolean canProxy = instance.getSpecifications() != null;
+
+            if ( canProxy )
             {
-                final Set<Class> interfaces = new HashSet<Class>();
-                interfaces.add( specClass );
-
-                if ( instance.getSpecifications() != null )
+                for ( Specification s : instance.getSpecifications().getSpecification() )
                 {
-                    for ( Specification s : instance.getSpecifications().getSpecification() )
-                    {
-                        final Class clazz = Class.forName( s.getClazz(), true, instance.getClassLoader() );
-                        if ( clazz.isInterface() )
-                        {
-                            interfaces.add( clazz );
-                        }
-                        else if ( this.isLoggable( Level.WARNING ) )
-                        {
-                            this.log( Level.WARNING, this.getCannotProxySpecificationClassMessage(
-                                s.getClazz(), instance.getIdentifier() ), null );
+                    final Class clazz = Class.forName( s.getClazz(), true, classLoader );
 
-                        }
+                    if ( !clazz.isInterface() )
+                    {
+                        canProxy = false;
+                        break;
                     }
+
+                    interfaces.add( clazz );
                 }
+            }
 
-                proxy = Proxy.newProxyInstance(
-                    instance.getClassLoader(), interfaces.toArray( new Class[ interfaces.size() ] ),
-                    new java.lang.reflect.InvocationHandler()
+            if ( canProxy )
+            {
+                return Proxy.newProxyInstance( classLoader, interfaces.toArray( new Class[ interfaces.size() ] ),
+                                               new java.lang.reflect.InvocationHandler()
+                {
+
+                    public Object invoke( final Object proxy, final Method method, final Object[] args )
+                        throws Throwable
                     {
+                        return getInvoker( classLoader ).invoke( getInvocation( object, instance, method, args ) );
+                    }
 
-                        public Object invoke( final Object proxy, final Method method, final Object[] args )
-                            throws Throwable
-                        {
-                            return getInvoker().invoke( getInvocation( object, instance, method, args ) );
-                        }
-
-                    } );
+                } );
 
             }
 
-            return proxy;
+            return object;
         }
         catch ( final ClassNotFoundException e )
         {
@@ -1966,11 +2203,11 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getDefaultScopeInfoMessage( final String modelScope, final Map objects )
+    private String getDefaultScopeInfoMessage( final String modelScope, final ClassLoader classLoader )
     {
         return this.getMessage( "defaultScopeInfo", new Object[]
             {
-                modelScope, objects == null ? "" : objects.toString()
+                modelScope, classLoader.toString()
             } );
 
     }
@@ -1986,7 +2223,7 @@ public class DefaultObjectManager implements ObjectManager
 
     private String getRegisteredListenerMessage( final String listener )
     {
-        return this.getMessage( "registeredListener", new Object[]
+        return this.getMessage( "listenerInfo", new Object[]
             {
                 listener
             } );
@@ -2001,20 +2238,11 @@ public class DefaultObjectManager implements ObjectManager
             } );
     }
 
-    private String getCannotProxySpecificationClassMessage( final String specification, final String instance )
-    {
-        return this.getMessage( "cannotProxySpecificationClass", new Object[]
-            {
-                specification, instance
-            } );
-
-    }
-
-    private String getDefaultLocatorInfoMessage( final String scheme )
+    private String getDefaultLocatorInfoMessage( final String scheme, final ClassLoader classLoader )
     {
         return this.getMessage( "defaultLocatorInfo", new Object[]
             {
-                scheme
+                scheme, classLoader.toString()
             } );
 
     }
@@ -2028,21 +2256,21 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getModulesReport( final Modules mods )
+    private String getModulesReport( final Modules mods, final ClassLoader classLoader )
     {
         final StringBuilder modulesInfo = new StringBuilder();
         final String lineSeparator = System.getProperty( "line.separator" );
 
+        modulesInfo.append( classLoader );
+
         if ( mods.getDocumentation() != null )
         {
-            modulesInfo.append( mods.getDocumentation().getText( Locale.getDefault().getLanguage() ).getValue() ).
-                append( lineSeparator );
+            modulesInfo.append( " - " ).append( mods.getDocumentation().getText(
+                Locale.getDefault().getLanguage() ).getValue() );
 
         }
-        else
-        {
-            modulesInfo.append( lineSeparator );
-        }
+
+        modulesInfo.append( lineSeparator );
 
         for ( Module m : mods.getModule() )
         {

@@ -85,75 +85,72 @@ public class DefaultInvoker implements Invoker
      * @see #preInvoke(org.jomc.spi.Invocation)
      * @see #postInvoke(org.jomc.spi.Invocation)
      */
-    public Object invoke( Invocation invocation ) throws Throwable
+    public Object invoke( final Invocation invocation ) throws Throwable
     {
-        final Instance instance = (Instance) invocation.getContext().get( DefaultInvocation.INSTANCE_KEY );
+        Invocation current = invocation;
+        final Instance instance = (Instance) current.getContext().get( DefaultInvocation.INSTANCE_KEY );
 
         try
         {
             if ( instance != null && instance.isStateless() )
             {
-                invocation = this.preInvoke( invocation );
-                if ( invocation.getResult() instanceof Throwable )
+                current = this.preInvoke( current );
+                if ( current.getResult() instanceof Throwable )
                 {
-                    throw (Throwable) invocation.getResult();
+                    throw (Throwable) current.getResult();
                 }
 
                 try
                 {
-                    invocation.setResult(
-                        invocation.getMethod().invoke( invocation.getObject(), invocation.getArguments() ) );
-
+                    current.setResult( current.getMethod().invoke( current.getObject(), current.getArguments() ) );
                 }
                 catch ( final InvocationTargetException e )
                 {
-                    invocation.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                    current.setResult( e.getTargetException() != null ? e.getTargetException() : e );
                 }
                 catch ( final Throwable t )
                 {
-                    invocation.setResult( t );
+                    current.setResult( t );
                 }
 
-                invocation = this.postInvoke( invocation );
-                if ( invocation.getResult() instanceof Throwable )
+                current = this.postInvoke( current );
+                if ( current.getResult() instanceof Throwable )
                 {
-                    throw (Throwable) invocation.getResult();
+                    throw (Throwable) current.getResult();
                 }
             }
             else
             {
                 synchronized ( invocation.getObject() )
                 {
-                    invocation = this.preInvoke( invocation );
-                    if ( invocation.getResult() instanceof Throwable )
+                    current = this.preInvoke( current );
+                    if ( current.getResult() instanceof Throwable )
                     {
-                        throw (Throwable) invocation.getResult();
+                        throw (Throwable) current.getResult();
                     }
 
                     try
                     {
-                        invocation.setResult(
-                            invocation.getMethod().invoke( invocation.getObject(), invocation.getArguments() ) );
-
+                        current.setResult( current.getMethod().invoke( current.getObject(), current.getArguments() ) );
                     }
                     catch ( final InvocationTargetException e )
                     {
-                        invocation.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                        current.setResult( e.getTargetException() != null ? e.getTargetException() : e );
                     }
                     catch ( final Throwable t )
                     {
-                        invocation.setResult( t );
+                        current.setResult( t );
                     }
 
-                    invocation = this.postInvoke( invocation );
-                    if ( invocation.getResult() instanceof Throwable )
+                    current = this.postInvoke( current );
+                    if ( current.getResult() instanceof Throwable )
                     {
-                        throw (Throwable) invocation.getResult();
+                        throw (Throwable) current.getResult();
                     }
                 }
             }
 
-            return invocation.getResult();
+            return current.getResult();
         }
         finally
         {
