@@ -258,6 +258,11 @@
       the instance is lower or equal to <code>Level.FINE</code> and schema
       resources are found in <code>MANIFEST.MF</code> files.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected the 'documents' and 'classpath' options of the command line
+      interface to use the platform path separator instead of a hardcoded ':'
+      character for separating values.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Added interface <code>org.jomc.model.ModelObjectValidator</code> and
       moved validation methods from interface
