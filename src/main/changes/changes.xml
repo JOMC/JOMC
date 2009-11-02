@@ -263,6 +263,11 @@
       interface to use the platform path separator instead of a hardcoded ':'
       character for separating values.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected the <code>validateClasses</code> methods of class
+      <code>org.jomc.tools.JavaClasses</code> taking a class loader to correctly
+      build resource names from class names.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Added interface <code>org.jomc.model.ModelObjectValidator</code> and
       moved validation methods from interface

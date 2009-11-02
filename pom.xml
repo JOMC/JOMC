@@ -134,7 +134,7 @@
               <delimiter>${*}</delimiter>
             </delimiters>
             <useDefaultDelimiters>false</useDefaultDelimiters>
-            <escapeWindowsPaths>false</escapeWindowsPaths>
+            <escapeWindowsPaths>true</escapeWindowsPaths>
           </configuration>
         </plugin>
         <plugin>
