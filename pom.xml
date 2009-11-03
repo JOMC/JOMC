@@ -297,13 +297,9 @@
             <source>1.5</source>
             <doctitle>${project.name} ${project.version}</doctitle>
             <windowtitle>${project.name} ${project.version}</windowtitle>
-            <links>
-              <link>http://java.sun.com/javase/7/docs/api</link>
-              <link>http://jakarta.apache.org/bcel/apidocs</link>
-              <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
-              <link>http://commons.apache.org/cli/api-release</link>
-              <link>http://commons.apache.org/io/api-release</link>
-            </links>
+            <detectJavaApiLink>true</detectJavaApiLink>
+            <detectLinks>true</detectLinks>
+            <detectOfflineLinks>false</detectOfflineLinks>
             <groups>
               <group>
                 <title>Application Programming Interface</title>
@@ -591,13 +587,9 @@
               <source>1.5</source>
               <doctitle>${project.name} ${project.version}</doctitle>
               <windowtitle>${project.name} ${project.version}</windowtitle>
-              <links>
-                <link>http://java.sun.com/javase/7/docs/api</link>
-                <link>http://jakarta.apache.org/bcel/apidocs</link>
-                <link>http://velocity.apache.org/engine/releases/velocity-1.6.2/apidocs</link>
-                <link>http://commons.apache.org/cli/api-release</link>
-                <link>http://commons.apache.org/io/api-release</link>
-              </links>
+              <detectJavaApiLink>true</detectJavaApiLink>
+              <detectLinks>true</detectLinks>
+              <detectOfflineLinks>false</detectOfflineLinks>
               <doclet>gr.spinellis.umlgraph.doclet.UmlGraphDoc</doclet>
               <docletArtifact>
                 <groupId>gr.spinellis</groupId>
