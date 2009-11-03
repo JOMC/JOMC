@@ -276,6 +276,16 @@
       <action dev="schulte2005" type="update"><![CDATA[
       Updated to support static factory methods in abstract classes.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added parameters <code>moduleIncludes</code> and
+      <code>moduleExcludes</code> to class
+      <code>org.jomc.mojo.JomcResourceTransformer</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added options <code>module-includes</code> and
+      <code>module-excludes</code> to the <code>merge-modules</code> command of
+      the command line interface.]]>
+      </action>
     </release>
 
   </body>
