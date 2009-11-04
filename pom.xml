@@ -40,7 +40,7 @@
   <name>JOMC</name>
   <version>1.0-alpha-8-SNAPSHOT</version>
   <description>Object management and configuration parent module.</description>
-  <url>http://jomc.sourceforge.net/jomc/${pom.version}</url>
+  <url>http://jomc.sourceforge.net/jomc/${project.version}</url>
   <prerequisites>
     <maven>2.0.9</maven>
   </prerequisites>
@@ -465,7 +465,7 @@
             <dependency>
               <groupId>org.jomc</groupId>
               <artifactId>maven-jomc-plugin</artifactId>
-              <version>${pom.version}</version>
+              <version>${project.version}</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -845,7 +845,7 @@
     <site>
       <id>www.jomc.org</id>
       <name>JOMC Site</name>
-      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${pom.version}</url>
+      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${project.version}</url>
     </site>
   </distributionManagement>
   <profiles>

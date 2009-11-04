@@ -35,25 +35,25 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${pom.name}"
-        version="${pom.version}"
-        vendor="${pom.organization.name}"
+        name="${project.name}"
+        version="${project.version}"
+        vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
-    <text language="en"><![CDATA[${pom.description}]]></text>
+    <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <implementations>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultObjectManager"
                     class="org.jomc.ri.DefaultObjectManager"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[${pom.description}]]></text>
+        <text language="en"><![CDATA[${project.description}]]></text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
@@ -70,9 +70,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultLocator"
                     class="org.jomc.ri.DefaultLocator"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[
@@ -92,9 +92,9 @@ It supports location URI schemes {@code jndi} and {@code jndi+rmi}.]]>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultScope"
                     class="org.jomc.ri.DefaultScope"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Default {@code Scope} implementation.]]></text>
@@ -109,9 +109,9 @@ It supports location URI schemes {@code jndi} and {@code jndi+rmi}.]]>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultInvoker"
                     class="org.jomc.ri.DefaultInvoker"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Default {@code Invoker} implementation.
@@ -127,9 +127,9 @@ It supports location URI schemes {@code jndi} and {@code jndi+rmi}.]]>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.DefaultInvocation"
                     class="org.jomc.ri.DefaultInvocation"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Default invocation.

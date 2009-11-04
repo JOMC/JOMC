@@ -35,22 +35,22 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${pom.name} Tests"
-        version="${pom.version}"
-        vendor="${pom.organization.name}"
+        name="${project.name} Tests"
+        version="${project.version}"
+        vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
-    <text language="en"><![CDATA[${pom.description}]]></text>
+    <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <implementations>
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.test.ObjectManagementExceptionTest"
                     class="org.jomc.test.ObjectManagementExceptionTest"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     final="true">
 
       <documentation defaultLanguage="en">
@@ -67,9 +67,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.test.ObjectManagerFactoryTest"
                     class="org.jomc.test.ObjectManagerFactoryTest"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     final="true">
 
       <documentation defaultLanguage="en">
@@ -86,9 +86,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.test.ObjectManagerDummy"
                     class="org.jomc.test.ObjectManagerDummy"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     final="true">
 
       <documentation defaultLanguage="en">

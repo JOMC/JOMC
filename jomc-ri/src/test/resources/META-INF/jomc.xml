@@ -35,21 +35,21 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${pom.name} Tests"
-        version="${pom.version}"
-        vendor="${pom.organization.name}"
+        name="${project.name} Tests"
+        version="${project.version}"
+        vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
-    <text language="en"><![CDATA[${pom.description}]]></text>
+    <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSpecification"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}">
+                   vendor="${project.organization.name}"
+                   version="${project.version}">
 
       <authors>
         <author name="Christian Schulte" version="1.0"
@@ -62,8 +62,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSpecificationOne"
                    class="org.jomc.ri.test.TestSpecificationOne"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    multiplicity="One">
 
       <authors>
@@ -77,8 +77,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSpecificationOneMore"
                    class="org.jomc.ri.test.TestSpecificationOneMore"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    multiplicity="One">
 
       <authors>
@@ -92,8 +92,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSpecificationMany"
                    class="org.jomc.ri.test.TestSpecificationMany"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}">
+                   vendor="${project.organization.name}"
+                   version="${project.version}">
 
       <authors>
         <author name="Christian Schulte" version="1.0"
@@ -106,8 +106,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestMultitonSpecification"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}">
+                   vendor="${project.organization.name}"
+                   version="${project.version}">
 
       <authors>
         <author name="Christian Schulte" version="1.0"
@@ -120,8 +120,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="Singleton">
 
       <authors>
@@ -135,8 +135,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="DOES_NOT_EXIST">
 
       <authors>
@@ -150,8 +150,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="DOES_NOT_EXIST"
                    multiplicity="One">
 
@@ -166,8 +166,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
                    class="org.jomc.ri.test.TestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="DOES_NOT_EXIST"
                    multiplicity="One">
 
@@ -182,8 +182,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecification"
                    class="org.jomc.ri.test.TestScopeSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="Test">
 
       <authors>
@@ -197,8 +197,8 @@
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ri.test.InvokerTestSpecification"
                    class="org.jomc.ri.test.InvokerTestSpecification"
-                   vendor="${pom.organization.name}"
-                   version="${pom.version}"
+                   vendor="${project.organization.name}"
+                   version="${project.version}"
                    scope="Singleton">
 
       <authors>
@@ -215,8 +215,8 @@
     <implementation identifier="org.jomc.ri.test.TestImplementation"
                     class="org.jomc.ri.test.TestImplementation"
                     name="TestImplementation"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <authors>
         <author name="Christian Schulte" version="1.0"
@@ -226,67 +226,67 @@
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestMultitonSpecification"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
 
         <reference identifier="org.jomc.ri.test.TestSingletonSpecification"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
 
         <reference identifier="org.jomc.ri.test.TestSpecificationOne"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
 
         <reference identifier="org.jomc.ri.test.TestSpecificationMany"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
 
         <reference identifier="org.jomc.ri.test.TestScopeSpecification"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
 
       </specifications>
       <dependencies>
         <dependency name="BoundMultitons"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="true"/>
         <dependency name="UnboundMultitons"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"/>
         <dependency name="SelectedBoundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="TestImplementation"
                     bound="true"/>
         <dependency name="SelectedUnboundMultiton"
                     identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="TestImplementation"
                     bound="false"/>
         <dependency name="BoundSingletons"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="true"/>
         <dependency name="UnboundSingletons"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"/>
         <dependency name="SelectedBoundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="TestImplementation"
                     bound="true"/>
         <dependency name="SelectedUnboundSingleton"
                     identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="TestImplementation"
                     bound="false"/>
         <dependency name="OptionalLocale"
                     identifier="java.util.Locale"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="DOES NOT EXIST"
                     bound="false"
                     optional="true"/>
         <dependency name="InvokerTestSpecification"
                     identifier="org.jomc.ri.test.InvokerTestSpecification"
-                    version="${pom.version}"
+                    version="${project.version}"
                     implementationName="InvokerTest"
                     bound="true"/>
       </dependencies>
@@ -308,9 +308,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.TestObjectManagementListener"
                     class="org.jomc.ri.test.TestObjectManagementListener"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code ObjectManagementLister} logging to the console.]]></text>
@@ -327,9 +327,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.DefaultObjectManagerTest"
                     class="org.jomc.ri.test.DefaultObjectManagerTest"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Test cases for the {@code DefaultObjectManager} class.]]></text>
@@ -348,8 +348,8 @@
     <implementation identifier="org.jomc.ri.test.TestScopeImplementation"
                     class="org.jomc.ri.test.TestScopeImplementation"
                     name="TestScopeImplementation"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Test implementation of the {@code ScopeTestSpecification}.]]></text>
@@ -360,19 +360,19 @@
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
       </specifications>
       <dependencies>
         <dependency name="TestScopeSpecificationMany"
                     identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"
                     optional="true"/>
         <dependency name="TestScopeSpecificationOne"
                     identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"
                     optional="true"/>
       </dependencies>
@@ -382,8 +382,8 @@
     <implementation identifier="org.jomc.ri.test.TestLocationImplementation"
                     class="org.jomc.ri.test.TestLocationImplementation"
                     name="TestLocationImplementation"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     location="UNSUPPORTED:DOES_NOT_EXIST">
 
       <documentation defaultLanguage="en">
@@ -395,19 +395,19 @@
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
       </specifications>
       <dependencies>
         <dependency name="TestScopeSpecificationMany"
                     identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"
                     optional="true"/>
         <dependency name="TestScopeSpecificationOne"
                     identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
-                    version="${pom.version}"
+                    version="${project.version}"
                     bound="false"
                     optional="true"/>
       </dependencies>
@@ -416,8 +416,8 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.IllegalLocationImplementation"
                     name="IllegalLocationImplementation"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     location="UNSUPPORTED:DOES_NOT_EXIST">
 
       <documentation defaultLanguage="en">
@@ -429,9 +429,9 @@
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestSpecificationOneMore"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
         <reference identifier="org.jomc.ri.test.TestSpecificationMany"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
       </specifications>
     </implementation>
 
@@ -439,8 +439,8 @@
     <implementation identifier="org.jomc.ri.test.TestScope"
                     class="org.jomc.ri.test.TestScope"
                     name="Test"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Test {@code Scope} implementation.]]></text>
@@ -459,8 +459,8 @@
     <implementation identifier="org.jomc.ri.test.TestLocator"
                     class="org.jomc.ri.test.TestLocator"
                     name="Test"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Test {@code Locator} implementation.]]></text>
@@ -478,8 +478,8 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ri.test.TestLocatorImplementation"
                     name="TestLocatorImplementation"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     location="Test:IGNORED">
 
       <documentation defaultLanguage="en">
@@ -491,7 +491,7 @@
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecification"
-                   version="${pom.version}"/>
+                   version="${project.version}"/>
       </specifications>
     </implementation>
 
@@ -499,8 +499,8 @@
     <implementation identifier="org.jomc.ri.test.TestInvoker"
                     name="TestInvoker"
                     class="org.jomc.ri.test.TestInvoker"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[Test {@code Invoker} implementation.]]></text>
@@ -521,8 +521,8 @@
     <implementation identifier="org.jomc.ri.test.InvokerTest"
                     name="InvokerTest"
                     class="org.jomc.ri.test.InvokerTest"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}">
+                    version="${project.version}"
+                    vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en"><![CDATA[{@code Invoker} test cases.]]></text>

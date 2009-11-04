@@ -35,20 +35,20 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${pom.name}"
-        version="${pom.version}"
-        vendor="${pom.organization.name}"
+        name="${project.name}"
+        version="${project.version}"
+        vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
-    <text language="en"><![CDATA[${pom.description}]]></text>
+    <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <specifications>
     <!-- ******************************************************************* -->
     <specification identifier="org.jomc.ObjectManager"
                    class="org.jomc.ObjectManager"
-                   vendor="${pom.organization.name}"
+                   vendor="${project.organization.name}"
                    version="1.0"
                    multiplicity="One"
                    scope="Singleton">
@@ -68,9 +68,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ObjectManagementException"
                     class="org.jomc.ObjectManagementException"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     final="true">
 
       <documentation defaultLanguage="en">
@@ -86,9 +86,9 @@
     <!-- ******************************************************************* -->
     <implementation identifier="org.jomc.ObjectManagerFactory"
                     class="org.jomc.ObjectManagerFactory"
-                    name="${pom.name}"
-                    version="${pom.version}"
-                    vendor="${pom.organization.name}"
+                    name="${project.name}"
+                    version="${project.version}"
+                    vendor="${project.organization.name}"
                     final="true">
 
       <documentation defaultLanguage="en">
