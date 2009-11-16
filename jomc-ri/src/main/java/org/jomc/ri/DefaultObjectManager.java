@@ -1156,7 +1156,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( validationReport.isModelObjectValid() )
                     {
-                        final ClassLoader objectsLoader = this.getClassLoader( classLoader );
+                        final ClassLoader objectsLoader = getClassLoader( classLoader );
                         Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
                         if ( objectMap == null )
                         {
@@ -1444,7 +1444,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         final Modules model = this.getModules( classLoader );
-        final ClassLoader scopesLoader = this.getClassLoader( classLoader );
+        final ClassLoader scopesLoader = getClassLoader( classLoader );
 
         synchronized ( this.scopes )
         {
@@ -1583,7 +1583,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( scheme != null )
         {
             final Modules model = this.getModules( classLoader );
-            final ClassLoader locatorsLoader = this.getClassLoader( classLoader );
+            final ClassLoader locatorsLoader = getClassLoader( classLoader );
 
             synchronized ( this.locators )
             {
@@ -1716,7 +1716,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         final Modules model = this.getModules( classLoader );
-        final ClassLoader invokersLoader = this.getClassLoader( classLoader );
+        final ClassLoader invokersLoader = getClassLoader( classLoader );
 
         synchronized ( this.invokers )
         {
