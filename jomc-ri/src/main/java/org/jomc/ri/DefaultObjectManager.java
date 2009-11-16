@@ -1,5 +1,4 @@
 // SECTION-START[License Header]
-// <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
@@ -32,7 +31,6 @@
  *   $Id$
  *
  */
-// </editor-fold>
 // SECTION-END
 package org.jomc.ri;
 
@@ -92,7 +90,6 @@ import org.jomc.util.WeakIdentityHashMap;
 import org.xml.sax.SAXException;
 
 // SECTION-START[Documentation]
-// <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Object management and configuration reference implementation.
  * <p><b>Specifications</b><ul>
@@ -102,18 +99,14 @@ import org.xml.sax.SAXException;
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
-// </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
-// <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
-// </editor-fold>
 // SECTION-END
 public class DefaultObjectManager implements ObjectManager
 {
     // SECTION-START[Constructors]
-    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code DefaultObjectManager} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
@@ -124,7 +117,6 @@ public class DefaultObjectManager implements ObjectManager
         super();
         // SECTION-END
     }
-    // </editor-fold>
     // SECTION-END
     // SECTION-START[ObjectManager]
 
@@ -864,10 +856,6 @@ public class DefaultObjectManager implements ObjectManager
     {
     };
 
-    /** Singleton instance. */
-    private static final ObjectManager singleton =
-        ObjectManagerFactory.newObjectManager( DefaultObjectManager.class.getClassLoader() );
-
     /**
      * Log level events are logged at by default.
      * @see #getDefaultLogLevel()
@@ -906,16 +894,30 @@ public class DefaultObjectManager implements ObjectManager
     /** Objects of the instance. */
     private final Map<ClassLoader, Map<Object, Instance>> objects = new WeakIdentityHashMap();
 
+    /** {@code ObjectManager} singletons. */
+    private static final Map<ClassLoader, ObjectManager> singletons = new WeakIdentityHashMap();
+
     /**
-     * Default {@link ObjectManagerFactory#getObjectManager()} implementation backed by static field.
+     * Default {@link ObjectManagerFactory#getObjectManager(ClassLoader)} implementation.
      *
      * @return The default {@code ObjectManager} singleton instance.
      *
-     * @see ObjectManagerFactory#getObjectManager()
+     * @see ObjectManagerFactory#getObjectManager(ClassLoader)
      */
-    public static ObjectManager getObjectManager()
+    public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
-        return (ObjectManager) singleton.getObject( ObjectManager.class );
+        synchronized ( singletons )
+        {
+            final ClassLoader singletonsLoader = getClassLoader( classLoader );
+            ObjectManager manager = singletons.get( singletonsLoader );
+            if ( manager == null )
+            {
+                manager = ObjectManagerFactory.newObjectManager( classLoader );
+                singletons.put( singletonsLoader, manager );
+            }
+
+            return (ObjectManager) manager.getObject( ObjectManager.class );
+        }
     }
 
     /**
@@ -1269,7 +1271,7 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getBootstrapClassLoaderClassName()
      * @see ClassLoader#getParent()
      */
-    public ClassLoader getClassLoader( final ClassLoader classLoader )
+    public static ClassLoader getClassLoader( final ClassLoader classLoader )
     {
         if ( classLoader == null )
         {
@@ -1279,7 +1281,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( classLoader.getParent() != null &&
              !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
         {
-            return this.getClassLoader( classLoader.getParent() );
+            return getClassLoader( classLoader.getParent() );
         }
 
         return classLoader;
