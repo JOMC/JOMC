@@ -857,7 +857,8 @@ public class DefaultObjectManager implements ObjectManager
     };
 
     /** Singleton instance. */
-    private static final ObjectManager singleton = ObjectManagerFactory.newObjectManager();
+    private static final ObjectManager singleton =
+        ObjectManagerFactory.newObjectManager( DefaultObjectManager.class.getClassLoader() );
 
     /**
      * Log level events are logged at by default.

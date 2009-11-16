@@ -73,19 +73,22 @@ public class ObjectManagerFactory
      * The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
      * {@code ObjectManager} implementation.</p>
      *
+     * @param classLoader The class loader to use for getting the singleton instance; {@code null} to use the platform's
+     * bootstrap class loader.
+     *
      * @return The {@code ObjectManager} singleton instance.
      *
      * @see ObjectManagerFactory#newObjectManager()
      *
      * @throws ObjectManagementException if getting the singleton instance fails.
      */
-    public static ObjectManager getObjectManager()
+    public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
         final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
 
         try
         {
-            final Class factoryClass = Class.forName( factory );
+            final Class factoryClass = Class.forName( factory, true, classLoader );
             final Method factoryMethod = factoryClass.getMethod( "getObjectManager", (Class[]) null );
             return (ObjectManager) factoryMethod.invoke( null, (Object[]) null );
         }
@@ -101,17 +104,20 @@ public class ObjectManagerFactory
      * {@code org.jomc.ObjectManager} providing the name of the {@code ObjectManager} implementation class to return
      * a new instance of.</p>
      *
+     * @param classLoader The class loader to use for creating the instance; {@code null} to use the platform's
+     * bootstrap class loader.
+     *
      * @return A new {@code ObjectManager} instance.
      *
      * @throws ObjectManagementException if creating a new {@code ObjectManager} instance fails.
      */
-    public static ObjectManager newObjectManager()
+    public static ObjectManager newObjectManager( final ClassLoader classLoader )
     {
         final String impl = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
 
         try
         {
-            return (ObjectManager) Class.forName( impl ).newInstance();
+            return (ObjectManager) Class.forName( impl, true, classLoader ).newInstance();
         }
         catch ( final Exception e )
         {
