@@ -71,10 +71,14 @@ public class ObjectManagerFactoryTest
         {
             System.setProperty( SYS_FACTORY_CLASSNAME, ObjectManagerDummy.class.getName() );
             System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, ObjectManagerDummy.class.getName() );
-            Assert.assertNotNull( ObjectManagerFactory.getObjectManager() );
-            Assert.assertTrue( ObjectManagerFactory.getObjectManager() == ObjectManagerFactory.getObjectManager() );
-            Assert.assertNotNull( ObjectManagerFactory.newObjectManager() );
-            Assert.assertFalse( ObjectManagerFactory.newObjectManager() == ObjectManagerFactory.newObjectManager() );
+            Assert.assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+            Assert.assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) ==
+                               ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+
+            Assert.assertNotNull( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+            Assert.assertFalse( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) ==
+                                ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+
         }
         finally
         {

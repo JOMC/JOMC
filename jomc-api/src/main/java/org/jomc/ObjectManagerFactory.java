@@ -73,8 +73,8 @@ public class ObjectManagerFactory
     /**
      * Gets the {@code ObjectManager} singleton instance.
      * <p>This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
-     * class declaring a <blockquote>{@code public static ObjectManager getObjectManager()}</blockquote> method called
-     * by this method to get the instance to return.</p>
+     * class declaring a <blockquote>{@code public static ObjectManager getObjectManager( ClassLoader )}</blockquote>
+     * method called by this method to get the instance to return.</p>
      * <p><b>Note</b><br/>
      * The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
      * {@code ObjectManager} implementation.</p>
@@ -95,8 +95,8 @@ public class ObjectManagerFactory
         try
         {
             final Class factoryClass = Class.forName( factory, true, classLoader );
-            final Method factoryMethod = factoryClass.getMethod( "getObjectManager", (Class[]) null );
-            return (ObjectManager) factoryMethod.invoke( null, (Object[]) null );
+            final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
+            return (ObjectManager) factoryMethod.invoke( null, classLoader );
         }
         catch ( final Exception e )
         {

@@ -94,7 +94,7 @@ public class ObjectManagerDummy
     // SECTION-START[ObjectManagerDummy]
     private static final ObjectManager objectManager = new ObjectManagerDummy();
 
-    public static ObjectManager getObjectManager()
+    public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
         return objectManager;
     }
