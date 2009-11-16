@@ -1,4 +1,5 @@
 // SECTION-START[License Header]
+// <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
@@ -31,12 +32,14 @@
  *   $Id$
  *
  */
+// </editor-fold>
 // SECTION-END
 package org.jomc.ri.test;
 
 import junit.framework.Assert;
 
 // SECTION-START[Documentation]
+// <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Test implementation with unsupported location.
  * <p><b>Specifications</b><ul>
@@ -53,10 +56,13 @@ import junit.framework.Assert;
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
+// <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
+// </editor-fold>
 // SECTION-END
 public class TestLocationImplementation
     implements
@@ -72,6 +78,7 @@ public class TestLocationImplementation
 
     // SECTION-END
     // SECTION-START[Constructors]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code TestLocationImplementation} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
@@ -82,8 +89,10 @@ public class TestLocationImplementation
         super();
         // SECTION-END
     }
+    // </editor-fold>
     // SECTION-END
     // SECTION-START[Dependencies]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
 
     /**
      * Gets the {@code TestScopeSpecificationMany} dependency.
@@ -97,7 +106,7 @@ public class TestLocationImplementation
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getTestScopeSpecificationMany()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestScopeSpecificationMany" );
+        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationMany" );
     }
 
     /**
@@ -112,8 +121,9 @@ public class TestLocationImplementation
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getTestScopeSpecificationOne()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager().getDependency( this, "TestScopeSpecificationOne" );
+        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationOne" );
     }
+    // </editor-fold>
     // SECTION-END
     // SECTION-START[Properties]
     // SECTION-END

@@ -1,4 +1,5 @@
 // SECTION-START[License Header]
+// <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
@@ -31,12 +32,14 @@
  *   $Id$
  *
  */
+// </editor-fold>
 // SECTION-END
 package org.jomc.ri.test;
 
 import java.lang.*;
 
 // SECTION-START[Documentation]
+// <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * <p>This specification declares a multiplicity of {@code Many}.
  * An application assembler may provide multiple implementations of this specification (including none).
@@ -52,10 +55,13 @@ import java.lang.*;
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
+// <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
+// </editor-fold>
 // SECTION-END
 public interface TestSpecificationMany
 {

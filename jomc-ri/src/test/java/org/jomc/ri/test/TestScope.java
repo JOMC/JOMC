@@ -1,4 +1,5 @@
 // SECTION-START[License Header]
+// <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
@@ -31,6 +32,7 @@
  *   $Id$
  *
  */
+// </editor-fold>
 // SECTION-END
 package org.jomc.ri.test;
 
@@ -38,6 +40,7 @@ import java.util.HashMap;
 import org.jomc.ri.DefaultScope;
 
 // SECTION-START[Documentation]
+// <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Test {@code Scope} implementation.
  * <p><b>Specifications</b><ul>
@@ -47,10 +50,13 @@ import org.jomc.ri.DefaultScope;
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
+// <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
+// </editor-fold>
 // SECTION-END
 public class TestScope
     extends DefaultScope
@@ -62,6 +68,7 @@ public class TestScope
     // SECTION-START[TestScope]
     // SECTION-END
     // SECTION-START[Constructors]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code TestScope} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
@@ -72,6 +79,7 @@ public class TestScope
         super( new HashMap<String, Object>() );
         // SECTION-END
     }
+    // </editor-fold>
     // SECTION-END
     // SECTION-START[Dependencies]
     // SECTION-END

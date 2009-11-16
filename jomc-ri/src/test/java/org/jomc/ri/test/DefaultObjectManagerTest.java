@@ -1,4 +1,5 @@
 // SECTION-START[License Header]
+// <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
  *   Copyright (c) 2009 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <cs@jomc.org>
@@ -31,6 +32,7 @@
  *   $Id$
  *
  */
+// </editor-fold>
 // SECTION-END
 package org.jomc.ri.test;
 
@@ -43,16 +45,20 @@ import org.jomc.ri.DefaultObjectManager;
 import org.jomc.spi.Scope;
 
 // SECTION-START[Documentation]
+// <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Test cases for the {@code DefaultObjectManager} class.
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$
  */
+// </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
+// <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                              comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-8-SNAPSHOT/jomc-tools" )
+// </editor-fold>
 // SECTION-END
 public class DefaultObjectManagerTest
 {
@@ -343,6 +349,7 @@ public class DefaultObjectManagerTest
 
     // SECTION-END
     // SECTION-START[Constructors]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code DefaultObjectManagerTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
@@ -353,6 +360,7 @@ public class DefaultObjectManagerTest
         super();
         // SECTION-END
     }
+    // </editor-fold>
     // SECTION-END
     // SECTION-START[Dependencies]
     // SECTION-END
