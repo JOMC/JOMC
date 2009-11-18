@@ -42,7 +42,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URI;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,7 +138,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = this.getClassLoader( specification );
+            final ClassLoader classLoader = getClassLoader( specification );
             final Modules model = this.getModules( classLoader );
             final Specification s = model.getSpecification( specification );
 
@@ -329,7 +328,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = this.getClassLoader( specification );
+            final ClassLoader classLoader = getClassLoader( specification );
             final Modules model = this.getModules( classLoader );
             final Specification s = model.getSpecification( specification );
 
@@ -460,7 +459,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final ClassLoader classLoader = getClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -741,7 +740,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final ClassLoader classLoader = getClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -811,7 +810,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final ClassLoader classLoader = getClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -877,6 +876,11 @@ public class DefaultObjectManager implements ObjectManager
     private static volatile String bootstrapClassLoaderClassName;
 
     private static volatile boolean bootstrapClassLoaderClassNameInitialized;
+
+    /** {@code ClassLoader} instance representing the bootstrap class loader. */
+    private static final ClassLoader BOOTSTRAP_CLASSLOADER = new ClassLoader( null )
+    {
+    };
 
     /** Listeners of the instance. */
     private List<Listener> listeners;
@@ -1234,7 +1238,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code clazz} is {@code null}.
      */
-    public ClassLoader getClassLoader( final Class clazz )
+    public static ClassLoader getClassLoader( final Class clazz )
     {
         if ( clazz == null )
         {
@@ -1244,17 +1248,7 @@ public class DefaultObjectManager implements ObjectManager
         ClassLoader cl = clazz.getClassLoader();
         if ( cl == null )
         {
-            cl = ClassLoader.getSystemClassLoader();
-        }
-
-        if ( cl == null )
-        {
-            if ( this.isLoggable( Level.WARNING ) )
-            {
-                this.log( Level.WARNING, this.getMissingClassLoaderMessage(), new Exception() );
-            }
-
-            cl = new URLClassLoader( NO_URLS );
+            cl = BOOTSTRAP_CLASSLOADER;
         }
 
         return cl;
@@ -1270,7 +1264,8 @@ public class DefaultObjectManager implements ObjectManager
      * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
      * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
      *
-     * @param classLoader The class loader whose parent class loader to return.
+     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
+     * {@code ClassLoader} instance representing the platform's bootstrap class loader.
      *
      * @return The parent class loader of {@code classLoader}.
      *
@@ -1283,7 +1278,7 @@ public class DefaultObjectManager implements ObjectManager
     {
         if ( classLoader == null )
         {
-            throw new NullPointerException( "classLoader" );
+            return BOOTSTRAP_CLASSLOADER;
         }
 
         if ( classLoader.getParent() != null &&
@@ -1827,7 +1822,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Invocation invocation = null;
-        final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+        final ClassLoader classLoader = getClassLoader( object.getClass() );
         final Modules model = this.getModules( classLoader );
         final Specification invocationSpecification = model.getSpecification( Invocation.class );
 
@@ -1920,7 +1915,7 @@ public class DefaultObjectManager implements ObjectManager
                 };
                 this.getListeners().add( bootstrapListener );
 
-                final ClassLoader classLoader = this.getClassLoader( this.getClass() );
+                final ClassLoader classLoader = getClassLoader( this.getClass() );
                 final Modules model = this.getModules( classLoader );
                 final Specification objectManager = model.getSpecification( ObjectManager.class );
                 if ( objectManager == null )
@@ -2062,7 +2057,7 @@ public class DefaultObjectManager implements ObjectManager
     {
         try
         {
-            final ClassLoader classLoader = this.getClassLoader( object.getClass() );
+            final ClassLoader classLoader = getClassLoader( object.getClass() );
             final Set<Class> interfaces = new HashSet<Class>();
             boolean canProxy = instance.getSpecifications() != null;
 
@@ -2179,11 +2174,6 @@ public class DefaultObjectManager implements ObjectManager
                 message, implementation
             } );
 
-    }
-
-    private String getMissingClassLoaderMessage()
-    {
-        return this.getMessage( "missingClassloader", null );
     }
 
     private String getMissingInstanceMessage( final String implementation, final String implementationName )
@@ -2400,7 +2390,7 @@ public class DefaultObjectManager implements ObjectManager
 
                             try
                             {
-                                modulesInfo.append( p.getJavaValue( this.getClassLoader( this.getClass() ) ) );
+                                modulesInfo.append( p.getJavaValue( getClassLoader( this.getClass() ) ) );
                             }
                             catch ( final ClassNotFoundException e )
                             {

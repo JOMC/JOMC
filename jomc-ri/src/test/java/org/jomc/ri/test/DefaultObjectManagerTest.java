@@ -92,17 +92,7 @@ public class DefaultObjectManagerTest
     {
         try
         {
-            this.getObjectManager().getClassLoader( (Class) null );
-            Assert.fail( "Expected NullPointerException not thrown." );
-        }
-        catch ( NullPointerException e )
-        {
-            assertNullPointerException( e );
-        }
-
-        try
-        {
-            this.getObjectManager().getClassLoader( (ClassLoader) null );
+            DefaultObjectManager.getClassLoader( (Class) null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
