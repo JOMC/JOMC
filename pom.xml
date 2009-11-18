@@ -182,7 +182,6 @@
           <executions>
             <execution>
               <id>create-buildnumber</id>
-              <inherited>false</inherited>
               <phase>validate</phase>
               <goals>
                 <goal>create</goal>
