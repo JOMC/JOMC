@@ -36,6 +36,7 @@
 // SECTION-END
 package org.jomc;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 // SECTION-START[Documentation]
@@ -97,6 +98,17 @@ public class ObjectManagerFactory
             final Class factoryClass = Class.forName( factory, true, classLoader );
             final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
             return (ObjectManager) factoryMethod.invoke( null, classLoader );
+        }
+        catch ( final InvocationTargetException e )
+        {
+            if ( e.getTargetException() != null )
+            {
+                throw new ObjectManagementException( e.getTargetException().getMessage(), e.getTargetException() );
+            }
+            else
+            {
+                throw new ObjectManagementException( e.getMessage(), e );
+            }
         }
         catch ( final Exception e )
         {
