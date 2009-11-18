@@ -36,7 +36,12 @@
 // SECTION-END
 package org.jomc.ri;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -44,6 +49,8 @@ import java.net.URI;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -52,6 +59,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import javax.xml.bind.JAXBContext;
@@ -75,6 +83,7 @@ import org.jomc.model.Instance;
 import org.jomc.model.Message;
 import org.jomc.model.ModelObjectValidationReport;
 import org.jomc.model.ModelObjectValidator;
+import org.jomc.model.ModelProvider;
 import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
@@ -1126,6 +1135,106 @@ public class DefaultObjectManager implements ObjectManager
                     cachedModules = defaultModelManager.getClasspathModules(
                         classLoader, DefaultModelManager.getDefaultModuleLocation() );
 
+                    final Map<String, Class<ModelProvider>> providers =
+                        new TreeMap<String, Class<ModelProvider>>( new Comparator<String>()
+                    {
+
+                        public int compare( final String key1, final String key2 )
+                        {
+                            return key1.compareTo( key2 );
+                        }
+
+                    } );
+
+                    final File platformProviders = new File( new StringBuilder().append(
+                        System.getProperty( "java.home" ) ).append( File.separator ).append( "jre" ).
+                        append( File.separator ).append( "lib" ).append( File.separator ).append( "jomc.properties" ).
+                        toString() );
+
+                    if ( platformProviders.exists() )
+                    {
+                        if ( this.isLoggable( Level.CONFIG ) )
+                        {
+                            this.log( Level.CONFIG, this.getMessage( "processing", new Object[]
+                                {
+                                    platformProviders.getAbsolutePath()
+                                } ), null );
+
+                        }
+
+                        final java.util.Properties p = new java.util.Properties();
+                        final InputStream in = new FileInputStream( platformProviders );
+                        p.load( in );
+                        in.close();
+
+                        for ( Map.Entry e : p.entrySet() )
+                        {
+                            if ( e.getKey().toString().startsWith( "org.jomc.model.ModelProvider." ) )
+                            {
+                                providers.put( e.getKey().toString(), (Class<ModelProvider>) Class.forName(
+                                    e.getValue().toString(), true, classLoader ) );
+
+                            }
+                        }
+                    }
+
+                    final Enumeration<URL> serviceProviders =
+                        classLoader.getResources( "META-INF/services/org.jomc.model.ModelProvider" );
+
+                    if ( serviceProviders != null )
+                    {
+                        for ( ; serviceProviders.hasMoreElements(); )
+                        {
+                            String line;
+                            final URL serviceProvider = serviceProviders.nextElement();
+
+                            if ( this.isLoggable( Level.CONFIG ) )
+                            {
+                                this.log( Level.CONFIG, this.getMessage( "processing", new Object[]
+                                    {
+                                        serviceProvider.toExternalForm()
+                                    } ), null );
+
+                            }
+
+                            final BufferedReader reader =
+                                new BufferedReader( new InputStreamReader( serviceProvider.openStream(), "UTF-8" ) );
+
+                            while ( ( line = reader.readLine() ) != null )
+                            {
+                                if ( line.contains( "#" ) )
+                                {
+                                    continue;
+                                }
+
+                                providers.put( "org.jomc.model.ModelProvider." + providers.size(),
+                                               (Class<ModelProvider>) Class.forName( line, true, classLoader ) );
+
+                            }
+
+                            reader.close();
+                        }
+                    }
+
+                    for ( Class<ModelProvider> provider : providers.values() )
+                    {
+                        if ( this.isLoggable( Level.CONFIG ) )
+                        {
+                            this.log( Level.CONFIG, this.getMessage( "modelProviderInfo", new Object[]
+                                {
+                                    provider.getName()
+                                } ), null );
+
+                        }
+
+                        final ModelProvider modelProvider = provider.newInstance();
+                        final Modules providerModules = modelProvider.getModules( classLoader, cachedModules );
+                        if ( providerModules != null )
+                        {
+                            cachedModules.getModule().addAll( providerModules.getModule() );
+                        }
+                    }
+
                     final Module classpathModule =
                         cachedModules.getClasspathModule( Modules.getDefaultClasspathModuleName(), classLoader );
 
@@ -1179,6 +1288,33 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         cachedModules = null;
                     }
+                }
+                catch ( final ClassNotFoundException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                catch ( final InstantiationException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
+                }
+                catch ( final IllegalAccessException e )
+                {
+                    if ( this.isLoggable( Level.SEVERE ) )
+                    {
+                        this.log( Level.SEVERE, e.getMessage(), e );
+                    }
+
+                    cachedModules = null;
                 }
                 catch ( final TransformerException e )
                 {
