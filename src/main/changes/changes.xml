@@ -221,7 +221,7 @@
     </release>
 
     <!-- ******************************************************************* -->
-    <release version="1.0-alpha-8">
+    <release version="1.0-alpha-8" date="2009-11-18">
       <action dev="schulte2005" type="update"><![CDATA[
       Added interface <code>org.jomc.spi.Invocation</code> to the
       <code>jomc-spi</code> artifact and updated interface
