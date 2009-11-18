@@ -47,8 +47,8 @@ import java.net.URI;
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * Locator[] objects = (Locator[]) ObjectManagerFactory.getObjectManager().getObject( Locator.class );
- * Locator object = ObjectManagerFactory.getObjectManager().getObject( Locator.class, "<i>implementation name</i>" );
+ * Locator[] objects = (Locator[]) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Locator.class );
+ * Locator object = ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Locator.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *
