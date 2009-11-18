@@ -84,7 +84,7 @@ public class ObjectManagerFactory
      *
      * @return The {@code ObjectManager} singleton instance.
      *
-     * @see ObjectManagerFactory#newObjectManager()
+     * @see #newObjectManager(java.lang.ClassLoader)
      *
      * @throws ObjectManagementException if getting the singleton instance fails.
      */
