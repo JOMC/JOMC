@@ -288,5 +288,18 @@
       </action>
     </release>
 
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-9" date="2009-11-20">
+      <action dev="schulte2005" type="update"><![CDATA[
+      <code>http://jomc.org/model</code> schema updates<ul>
+      <li>Updated <code>class</code> attribute of <code>Specification</code>
+      complex type from <code>required</code> to <code>optional</code>.</li>
+      </ul>]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to correctly
+      close open streams/readers.]]>
+      </action>
+    </release>
   </body>
 </document>
