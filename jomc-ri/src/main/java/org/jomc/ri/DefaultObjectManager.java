@@ -2105,6 +2105,8 @@ public class DefaultObjectManager implements ObjectManager
      */
     public synchronized void initialize() throws InstantiationException
     {
+        final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
+
         try
         {
             if ( !this.initialized )
@@ -2118,7 +2120,6 @@ public class DefaultObjectManager implements ObjectManager
                 this.locators.clear();
                 this.scopes.clear();
 
-                final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
                 Listener bootstrapListener = new Listener()
                 {
 
@@ -2225,13 +2226,33 @@ public class DefaultObjectManager implements ObjectManager
         }
         catch ( final InstantiationException e )
         {
+            Throwable cause = e;
+            if ( !bootstrapLogRecords.isEmpty() )
+            {
+                for ( LogRecord r : bootstrapLogRecords )
+                {
+                    if ( r.getLevel().intValue() > Level.WARNING.intValue() )
+                    {
+                        if ( r.getMessage() != null )
+                        {
+                            cause = new IllegalStateException( r.getMessage() ).initCause( cause );
+                        }
+                        if ( r.getThrown() != null )
+                        {
+                            cause = new IllegalStateException( r.getThrown().toString() ).initCause( cause );
+                        }
+                    }
+                }
+            }
+
             this.listeners = null;
             this.modules.clear();
             this.invokers.clear();
             this.locators.clear();
             this.scopes.clear();
             this.initialized = false;
-            throw e;
+
+            throw (InstantiationException) new InstantiationException( cause.getMessage() ).initCause( cause );
         }
     }
 
@@ -2512,8 +2533,18 @@ public class DefaultObjectManager implements ObjectManager
 
         for ( Module m : mods.getModule() )
         {
-            modulesInfo.append( "\tM:" ).append( m.getName() ).append( ':' ).append( m.getVersion() ).
-                append( lineSeparator );
+            modulesInfo.append( "\tM:" ).append( m.getName() );
+
+            if ( m.getVersion() != null )
+            {
+                modulesInfo.append( "|Version:" ).append( m.getVersion() );
+            }
+            if ( m.getVendor() != null )
+            {
+                modulesInfo.append( "|Vendor:" ).append( m.getVendor() );
+            }
+
+            modulesInfo.append( lineSeparator );
 
             if ( m.getSpecifications() != null )
             {
@@ -2529,7 +2560,7 @@ public class DefaultObjectManager implements ObjectManager
                         for ( Implementation i : available.getImplementation() )
                         {
                             modulesInfo.append( "\t\t\t" );
-                            this.appendImplementationInfo( i, modulesInfo ).append( "@" ).
+                            this.appendImplementationInfo( i, modulesInfo ).append( "|Module:" ).
                                 append( mods.getModuleOfImplementation( i.getIdentifier() ).getName() ).
                                 append( lineSeparator );
 
@@ -2551,7 +2582,7 @@ public class DefaultObjectManager implements ObjectManager
                         for ( ImplementationReference r : i.getImplementations().getReference() )
                         {
                             this.appendImplementationInfo(
-                                mods.getImplementation( r.getIdentifier() ), modulesInfo ).append( '@' ).
+                                mods.getImplementation( r.getIdentifier() ), modulesInfo ).append( "|Module:" ).
                                 append( mods.getModuleOfImplementation( r.getIdentifier() ).getName() ).
                                 append( lineSeparator );
 
@@ -2561,8 +2592,14 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         for ( SpecificationReference s : i.getSpecifications().getReference() )
                         {
-                            modulesInfo.append( "\t\t\tS:" ).append( s.getIdentifier() ).append( ':' ).
-                                append( s.getVersion() ).append( '@' ).append( mods.getModuleOfSpecification(
+                            modulesInfo.append( "\t\t\tS:" ).append( s.getIdentifier() );
+
+                            if ( s.getVersion() != null )
+                            {
+                                modulesInfo.append( "|Version:" ).append( s.getVersion() );
+                            }
+
+                            modulesInfo.append( "|Module:" ).append( mods.getModuleOfSpecification(
                                 s.getIdentifier() ).getName() ).append( lineSeparator );
 
                         }
@@ -2572,15 +2609,15 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         for ( Dependency d : i.getDependencies().getDependency() )
                         {
-                            modulesInfo.append( "\t\t\tD:" ).append( d.getName() ).append( ':' ).
+                            modulesInfo.append( "\t\t\tD:" ).append( d.getName() ).append( "|Identifier:" ).
                                 append( d.getIdentifier() );
 
                             if ( d.getImplementationName() != null )
                             {
-                                modulesInfo.append( ":" ).append( d.getImplementationName() );
+                                modulesInfo.append( "|Name:" ).append( d.getImplementationName() );
                             }
 
-                            modulesInfo.append( '@' ).append( mods.getModuleOfSpecification(
+                            modulesInfo.append( "|Module:" ).append( mods.getModuleOfSpecification(
                                 d.getIdentifier() ).getName() ).append( lineSeparator );
 
                             final Implementations available = mods.getImplementations( d.getIdentifier() );
@@ -2590,7 +2627,7 @@ public class DefaultObjectManager implements ObjectManager
                                 for ( Implementation di : available.getImplementation() )
                                 {
                                     modulesInfo.append( "\t\t\t\t" );
-                                    this.appendImplementationInfo( di, modulesInfo ).append( "@" ).
+                                    this.appendImplementationInfo( di, modulesInfo ).append( "|Module:" ).
                                         append( mods.getModuleOfImplementation( di.getIdentifier() ).getName() ).
                                         append( lineSeparator );
 
@@ -2603,7 +2640,7 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         for ( Message msg : i.getMessages().getMessage() )
                         {
-                            modulesInfo.append( "\t\t\tM:" ).append( msg.getName() ).append( ':' ).
+                            modulesInfo.append( "\t\t\tM:" ).append( msg.getName() ).append( "|Text:" ).
                                 append( msg.getTemplate().getText( Locale.getDefault().getLanguage() ).getValue() ).
                                 append( lineSeparator );
 
@@ -2614,8 +2651,14 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         for ( Property p : i.getProperties().getProperty() )
                         {
-                            modulesInfo.append( "\t\t\tP:" ).append( p.getName() ).append( ':' ).
-                                append( p.getType() ).append( ':' );
+                            modulesInfo.append( "\t\t\tP:" ).append( p.getName() );
+
+                            if ( p.getType() != null )
+                            {
+                                modulesInfo.append( "|Type:" ).append( p.getType() );
+                            }
+
+                            modulesInfo.append( "|Value:" );
 
                             try
                             {
@@ -2642,13 +2685,22 @@ public class DefaultObjectManager implements ObjectManager
 
     private StringBuilder appendSpecificationInfo( final Specification s, final StringBuilder b )
     {
-        b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
-            append( s.getMultiplicity() ).append( ":Scope:" ).
+        b.append( "S:" ).append( s.getIdentifier() );
+        if ( s.getVersion() != null )
+        {
+            b.append( "|Version:" ).append( s.getVersion() );
+        }
+        if ( s.getVendor() != null )
+        {
+            b.append( "|Vendor:" ).append( s.getVendor() );
+        }
+
+        b.append( "|Multiplicity:" ).append( s.getMultiplicity() ).append( "|Scope:" ).
             append( s.getScope() == null ? "Multiton" : s.getScope() );
 
         if ( s.getClazz() != null )
         {
-            b.append( ":Class:" ).append( s.getClazz() );
+            b.append( "|Class:" ).append( s.getClazz() );
         }
 
         return b;
@@ -2656,16 +2708,25 @@ public class DefaultObjectManager implements ObjectManager
 
     private StringBuilder appendImplementationInfo( final Implementation i, final StringBuilder b )
     {
-        b.append( "I:" ).append( i.getIdentifier() ).append( ':' ).append( i.getName() ).append( ':' ).
-            append( i.getVersion() );
+        b.append( "I:" ).append( i.getIdentifier() ).append( "|Name:" ).append( i.getName() ).append( "|Abstract:" ).
+            append( i.isAbstract() ).append( "|Final:" ).append( i.isFinal() ).append( "|Stateless:" ).
+            append( i.isStateless() );
 
+        if ( i.getVersion() != null )
+        {
+            b.append( "|Version:" ).append( i.getVersion() );
+        }
+        if ( i.getVendor() != null )
+        {
+            b.append( "|Vendor:" ).append( i.getVendor() );
+        }
         if ( i.getClazz() != null )
         {
-            b.append( ":Class:" ).append( i.getClazz() );
+            b.append( "|Class:" ).append( i.getClazz() );
         }
         if ( i.getLocation() != null )
         {
-            b.append( ":Location:" ).append( i.getLocation() );
+            b.append( "|Location:" ).append( i.getLocation() );
         }
 
         return b;

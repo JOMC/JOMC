@@ -308,6 +308,10 @@
       Corrected the help output of the command line interface to include
       options 'debug', 'verbose' and 'fail-on-warnings'.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to report
+      errors when initialization fails due to an illegal model.]]>
+      </action>
     </release>
   </body>
 </document>
