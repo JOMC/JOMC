@@ -933,11 +933,6 @@ public class DefaultObjectManager implements ObjectManager
     /** Constant for the {@code Singleton} scope identifier. */
     protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
 
-    /** Empty {@code URL} array. */
-    private static final URL[] NO_URLS =
-    {
-    };
-
     /**
      * Log level events are logged at by default.
      * @see #getDefaultLogLevel()
@@ -1228,10 +1223,21 @@ public class DefaultObjectManager implements ObjectManager
 
                         }
 
+                        InputStream in = null;
                         final java.util.Properties p = new java.util.Properties();
-                        final InputStream in = new FileInputStream( platformProviders );
-                        p.load( in );
-                        in.close();
+
+                        try
+                        {
+                            in = new FileInputStream( platformProviders );
+                            p.load( in );
+                        }
+                        finally
+                        {
+                            if ( in != null )
+                            {
+                                in.close();
+                            }
+                        }
 
                         for ( Map.Entry e : p.entrySet() )
                         {
@@ -1249,7 +1255,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( serviceProviders != null )
                     {
-                        for ( ; serviceProviders.hasMoreElements(); )
+                        while ( serviceProviders.hasMoreElements() )
                         {
                             String line;
                             final URL serviceProvider = serviceProviders.nextElement();
@@ -1263,22 +1269,31 @@ public class DefaultObjectManager implements ObjectManager
 
                             }
 
-                            final BufferedReader reader =
-                                new BufferedReader( new InputStreamReader( serviceProvider.openStream(), "UTF-8" ) );
-
-                            while ( ( line = reader.readLine() ) != null )
+                            BufferedReader reader = null;
+                            try
                             {
-                                if ( line.contains( "#" ) )
+                                reader = new BufferedReader( new InputStreamReader(
+                                    serviceProvider.openStream(), "UTF-8" ) );
+
+                                while ( ( line = reader.readLine() ) != null )
                                 {
-                                    continue;
+                                    if ( line.contains( "#" ) )
+                                    {
+                                        continue;
+                                    }
+
+                                    providers.put( "org.jomc.model.ModelProvider." + providers.size(),
+                                                   (Class<ModelProvider>) Class.forName( line, true, classLoader ) );
+
                                 }
-
-                                providers.put( "org.jomc.model.ModelProvider." + providers.size(),
-                                               (Class<ModelProvider>) Class.forName( line, true, classLoader ) );
-
                             }
-
-                            reader.close();
+                            finally
+                            {
+                                if ( reader != null )
+                                {
+                                    reader.close();
+                                }
+                            }
                         }
                     }
 
