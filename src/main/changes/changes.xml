@@ -301,5 +301,13 @@
       close open streams/readers.]]>
       </action>
     </release>
+
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-10">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected the help output of the command line interface to include
+      options 'debug', 'verbose' and 'fail-on-warnings'.]]>
+      </action>
+    </release>
   </body>
 </document>
