@@ -52,7 +52,7 @@ import org.jomc.ObjectManagerFactory;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-9-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-9/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class ObjectManagerFactoryTest
@@ -106,7 +106,7 @@ public class ObjectManagerFactoryTest
 
     /** Creates a new {@code ObjectManagerFactoryTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-9-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-9/jomc-tools" )
     public ObjectManagerFactoryTest()
     {
         // SECTION-START[Default Constructor]
