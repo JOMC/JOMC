@@ -198,6 +198,16 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( i.getLocation() != null )
                 {
+                    if ( s.getClazz() == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ), new Exception() );
+                        }
+
+                        return null;
+                    }
+
                     final Object object = this.getObject(
                         Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
 
@@ -254,6 +264,18 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( i.getLocation() != null )
                     {
+                        if ( s.getClazz() == null )
+                        {
+                            if ( this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ),
+                                          new Exception() );
+
+                            }
+
+                            return null;
+                        }
+
                         final Object o = this.getObject(
                             Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
 
@@ -397,6 +419,16 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( i.getLocation() != null )
             {
+                if ( s.getClazz() == null )
+                {
+                    if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ), new Exception() );
+                    }
+
+                    return null;
+                }
+
                 final Object object = this.getObject(
                     Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
 
@@ -563,6 +595,18 @@ public class DefaultObjectManager implements ObjectManager
 
                         if ( i.getLocation() != null )
                         {
+                            if ( ds.getClazz() == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
+                                              new Exception() );
+
+                                }
+
+                                return null;
+                            }
+
                             o = this.getObject(
                                 Class.forName( ds.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
 
@@ -612,6 +656,17 @@ public class DefaultObjectManager implements ObjectManager
                         final Implementation ref = available.getImplementation().get( 0 );
                         if ( ref.getLocation() != null )
                         {
+                            if ( ds.getClazz() == null )
+                            {
+                                if ( this.isLoggable( Level.WARNING ) )
+                                {
+                                    this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
+                                              new Exception() );
+                                }
+
+                                return null;
+                            }
+
                             o = this.getObject(
                                 Class.forName( ds.getClazz(), true, classLoader ), ref.getLocationUri(), classLoader );
 
@@ -659,6 +714,18 @@ public class DefaultObjectManager implements ObjectManager
                     else
                     {
                         final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
+
+                        if ( !available.getImplementation().isEmpty() && ds.getClazz() == null )
+                        {
+                            if ( this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
+                                          new Exception() );
+
+                            }
+
+                            return null;
+                        }
 
                         for ( Implementation a : available.getImplementation() )
                         {
@@ -713,9 +780,8 @@ public class DefaultObjectManager implements ObjectManager
                             }
                         }
 
-                        final Class specClass = Class.forName( ds.getClazz(), true, classLoader );
-                        o = list.isEmpty()
-                            ? null : list.toArray( (Object[]) Array.newInstance( specClass, list.size() ) );
+                        o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance( Class.forName(
+                            ds.getClazz(), true, classLoader ), list.size() ) );
 
                     }
                 }
@@ -2201,19 +2267,22 @@ public class DefaultObjectManager implements ObjectManager
             {
                 for ( Specification s : instance.getSpecifications().getSpecification() )
                 {
-                    final Class clazz = Class.forName( s.getClazz(), true, classLoader );
-
-                    if ( !clazz.isInterface() )
+                    if ( s.getClazz() != null )
                     {
-                        canProxy = false;
-                        break;
-                    }
+                        final Class clazz = Class.forName( s.getClazz(), true, classLoader );
 
-                    interfaces.add( clazz );
+                        if ( !clazz.isInterface() )
+                        {
+                            canProxy = false;
+                            break;
+                        }
+
+                        interfaces.add( clazz );
+                    }
                 }
             }
 
-            if ( canProxy )
+            if ( canProxy && !interfaces.isEmpty() )
             {
                 return Proxy.newProxyInstance( classLoader, interfaces.toArray( new Class[ interfaces.size() ] ),
                                                new java.lang.reflect.InvocationHandler()
@@ -2401,6 +2470,15 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
+    private String getMissingSpecificationClassMessage( final Specification specification )
+    {
+        return this.getMessage( "missingSpecificationClass", new Object[]
+            {
+                specification.getIdentifier()
+            } );
+
+    }
+
     private String getModulesReport( final Modules mods, final ClassLoader classLoader )
     {
         final StringBuilder modulesInfo = new StringBuilder();
@@ -2551,7 +2629,12 @@ public class DefaultObjectManager implements ObjectManager
     {
         b.append( "S:" ).append( s.getIdentifier() ).append( ':' ).append( s.getVersion() ).append( ':' ).
             append( s.getMultiplicity() ).append( ":Scope:" ).
-            append( s.getScope() == null ? "Multiton" : s.getScope() ).append( ":Class:" ).append( s.getClazz() );
+            append( s.getScope() == null ? "Multiton" : s.getScope() );
+
+        if ( s.getClazz() != null )
+        {
+            b.append( ":Class:" ).append( s.getClazz() );
+        }
 
         return b;
     }
