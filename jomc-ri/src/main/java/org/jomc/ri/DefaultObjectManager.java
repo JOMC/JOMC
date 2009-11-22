@@ -2105,11 +2105,11 @@ public class DefaultObjectManager implements ObjectManager
      */
     public synchronized void initialize() throws InstantiationException
     {
-        final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
-
-        try
+        if ( !this.initialized )
         {
-            if ( !this.initialized )
+            final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
+
+            try
             {
                 final long t0 = System.currentTimeMillis();
                 this.initialized = true;
@@ -2223,36 +2223,36 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
             }
-        }
-        catch ( final InstantiationException e )
-        {
-            Throwable cause = e;
-            if ( !bootstrapLogRecords.isEmpty() )
+            catch ( final InstantiationException e )
             {
-                for ( LogRecord r : bootstrapLogRecords )
+                Throwable cause = e;
+                if ( !bootstrapLogRecords.isEmpty() )
                 {
-                    if ( r.getLevel().intValue() > Level.WARNING.intValue() )
+                    for ( LogRecord r : bootstrapLogRecords )
                     {
-                        if ( r.getMessage() != null )
+                        if ( r.getLevel().intValue() > Level.WARNING.intValue() )
                         {
-                            cause = new IllegalStateException( r.getMessage() ).initCause( cause );
-                        }
-                        if ( r.getThrown() != null )
-                        {
-                            cause = new IllegalStateException( r.getThrown().toString() ).initCause( cause );
+                            if ( r.getMessage() != null )
+                            {
+                                cause = new IllegalStateException( r.getMessage() ).initCause( cause );
+                            }
+                            if ( r.getThrown() != null )
+                            {
+                                cause = new IllegalStateException( r.getThrown().toString() ).initCause( cause );
+                            }
                         }
                     }
                 }
+
+                this.listeners = null;
+                this.modules.clear();
+                this.invokers.clear();
+                this.locators.clear();
+                this.scopes.clear();
+                this.initialized = false;
+
+                throw (InstantiationException) new InstantiationException( cause.getMessage() ).initCause( cause );
             }
-
-            this.listeners = null;
-            this.modules.clear();
-            this.invokers.clear();
-            this.locators.clear();
-            this.scopes.clear();
-            this.initialized = false;
-
-            throw (InstantiationException) new InstantiationException( cause.getMessage() ).initCause( cause );
         }
     }
 
