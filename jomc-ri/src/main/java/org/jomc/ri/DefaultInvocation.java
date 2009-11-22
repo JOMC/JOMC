@@ -40,6 +40,7 @@ import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import org.jomc.model.Instance;
+import org.jomc.model.Modules;
 import org.jomc.spi.Invocation;
 
 // SECTION-START[Documentation]
@@ -77,6 +78,12 @@ public class DefaultInvocation implements Invocation
 
     /** Constant for the context key of the {@code Instance} corresponding to the object of this invocation. */
     public static final String INSTANCE_KEY = Invocation.class.getName() + ".instance";
+
+    /** Constant for the context key of the {@code Modules} corresponding to the object of this invocation. */
+    public static final String MODULES_KEY = Invocation.class.getName() + ".modules";
+
+    /** Constant for the context key of the {@code ClassLoader} corresponding to the modules of this invocation. */
+    public static final String CLASSLOADER_KEY = Invocation.class.getName() + ".classLoader";
 
     /** The context of this invocation. */
     private Map context;
@@ -143,6 +150,32 @@ public class DefaultInvocation implements Invocation
     public Instance getInstance()
     {
         return (Instance) this.getContext().get( INSTANCE_KEY );
+    }
+
+    /**
+     * Gets the modules corresponding to the object of this invocation from the context of this invocation.
+     *
+     * @return The modules corresponding to the object of this invocation from the context of this invocation or
+     * {@code null}.
+     *
+     * @see #MODULES_KEY
+     */
+    public Modules getModules()
+    {
+        return (Modules) this.getContext().get( MODULES_KEY );
+    }
+
+    /**
+     * Gets the class loader corresponding to the modules of this invocation from the context of this invocation.
+     *
+     * @return The class loader corresponding to the modules of this invocation from the context of this invocation or
+     * {@code null}.
+     *
+     * @see #CLASSLOADER_KEY
+     */
+    public ClassLoader getClassLoader()
+    {
+        return (ClassLoader) this.getContext().get( CLASSLOADER_KEY );
     }
 
     // SECTION-END

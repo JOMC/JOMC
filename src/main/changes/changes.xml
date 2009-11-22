@@ -321,6 +321,11 @@
       Updated class <code>org.jomc.model.Modules</code> to not build instances
       from implementations not declaring a class.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated classes <code>org.jomc.ri.DefaultObjectManager</code> and
+      <code>org.jomc.ri.DefaultInvocation</code> adding the modules and the
+      class loader corresponding to an invocation to the invocation context.]]>
+      </action>
     </release>
   </body>
 </document>

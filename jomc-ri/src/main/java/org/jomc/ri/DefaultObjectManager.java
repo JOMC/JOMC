@@ -2094,6 +2094,8 @@ public class DefaultObjectManager implements ObjectManager
         invocation.getContext().put( DefaultInvocation.METHOD_KEY, method );
         invocation.getContext().put( DefaultInvocation.ARGUMENTS_KEY, arguments );
         invocation.getContext().put( DefaultInvocation.INSTANCE_KEY, instance );
+        invocation.getContext().put( DefaultInvocation.MODULES_KEY, model );
+        invocation.getContext().put( DefaultInvocation.CLASSLOADER_KEY, classLoader );
         return invocation;
     }
 
