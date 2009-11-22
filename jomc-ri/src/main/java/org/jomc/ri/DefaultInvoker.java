@@ -269,6 +269,7 @@ public class DefaultInvoker implements Invoker
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
+
     /** Creates a new {@code DefaultInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-10-SNAPSHOT/jomc-tools" )
