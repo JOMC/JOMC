@@ -317,6 +317,10 @@
       call the <code>postInvoke</code> method when an exception is thrown by
       the <code>preInvoke</code> method.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.model.Modules</code> to not build instances
+      from implementations not declaring a class.]]>
+      </action>
     </release>
   </body>
 </document>
