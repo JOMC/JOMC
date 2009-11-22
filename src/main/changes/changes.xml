@@ -312,6 +312,11 @@
       Updated class <code>org.jomc.ri.DefaultObjectManager</code> to report
       errors when initialization fails due to an illegal model.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.ri.DefaultInvoker</code> to correctly
+      call the <code>postInvoke</code> method when an exception is thrown by
+      the <code>preInvoke</code> method.]]>
+      </action>
     </release>
   </body>
 </document>

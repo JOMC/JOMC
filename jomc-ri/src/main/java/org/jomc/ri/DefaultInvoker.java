@@ -100,63 +100,87 @@ public class DefaultInvoker implements Invoker
         {
             if ( instance != null && instance.isStateless() )
             {
-                current = this.preInvoke( current );
-                if ( current.getResult() instanceof Throwable )
+                try
                 {
-                    throw (Throwable) current.getResult();
+                    current = this.preInvoke( current );
+                }
+                catch ( final Throwable t )
+                {
+                    this.handleException( current, t );
+                }
+
+                if ( !( current.getResult() instanceof Throwable ) )
+                {
+                    try
+                    {
+                        current.setResult( current.getMethod().invoke( current.getObject(), current.getArguments() ) );
+                    }
+                    catch ( final Throwable t )
+                    {
+                        this.handleException( current, t );
+                    }
                 }
 
                 try
                 {
-                    current.setResult( current.getMethod().invoke( current.getObject(), current.getArguments() ) );
-                }
-                catch ( final InvocationTargetException e )
-                {
-                    current.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                    current = this.postInvoke( current );
                 }
                 catch ( final Throwable t )
                 {
-                    current.setResult( t );
+                    this.handleException( current, t );
                 }
 
-                current = this.postInvoke( current );
                 if ( current.getResult() instanceof Throwable )
                 {
                     throw (Throwable) current.getResult();
                 }
+
+                return current.getResult();
             }
             else
             {
                 synchronized ( invocation.getObject() )
                 {
-                    current = this.preInvoke( current );
-                    if ( current.getResult() instanceof Throwable )
+                    try
                     {
-                        throw (Throwable) current.getResult();
+                        current = this.preInvoke( current );
+                    }
+                    catch ( final Throwable t )
+                    {
+                        this.handleException( current, t );
+                    }
+
+                    if ( !( current.getResult() instanceof Throwable ) )
+                    {
+                        try
+                        {
+                            current.setResult( current.getMethod().invoke( current.getObject(),
+                                                                           current.getArguments() ) );
+
+                        }
+                        catch ( final Throwable t )
+                        {
+                            this.handleException( current, t );
+                        }
                     }
 
                     try
                     {
-                        current.setResult( current.getMethod().invoke( current.getObject(), current.getArguments() ) );
-                    }
-                    catch ( final InvocationTargetException e )
-                    {
-                        current.setResult( e.getTargetException() != null ? e.getTargetException() : e );
+                        current = this.postInvoke( current );
                     }
                     catch ( final Throwable t )
                     {
-                        current.setResult( t );
+                        this.handleException( current, t );
                     }
 
-                    current = this.postInvoke( current );
                     if ( current.getResult() instanceof Throwable )
                     {
                         throw (Throwable) current.getResult();
                     }
+
+                    return current.getResult();
                 }
             }
-
-            return current.getResult();
         }
         finally
         {
@@ -216,10 +240,35 @@ public class DefaultInvoker implements Invoker
         return invocation;
     }
 
+    /**
+     * Called whenever an exception has been caught.
+     * <p>Overriding classes may use this method for handling exceptions. By default, this method updates the result of
+     * the given invocation with the given throwable. If that throwable is an instance of
+     * {@code InvocationTargetException}, this method updates the result with the value of that exception's target
+     * exception. If the result of the given invocation already is an instance of {@code Throwable}, this method does
+     * not update the result.</p>
+     *
+     * @param invocation The invocation to update.
+     * @param t The throwable to update {@code invocation} with.
+     */
+    public void handleException( final Invocation invocation, final Throwable t )
+    {
+        if ( invocation != null && !( invocation.getResult() instanceof Throwable ) )
+        {
+            if ( t instanceof InvocationTargetException &&
+                 ( (InvocationTargetException) t ).getTargetException() != null )
+            {
+                invocation.setResult( ( (InvocationTargetException) t ).getTargetException() );
+                return;
+            }
+
+            invocation.setResult( t );
+        }
+    }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
     /** Creates a new {@code DefaultInvoker} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-10-SNAPSHOT/jomc-tools" )
