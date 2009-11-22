@@ -2108,6 +2108,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( !this.initialized )
         {
             final List<LogRecord> bootstrapLogRecords = new LinkedList<LogRecord>();
+            final List<Listener> providedListeners = new LinkedList<Listener>();
 
             try
             {
@@ -2178,7 +2179,7 @@ public class DefaultObjectManager implements ObjectManager
                             if ( listenerInstance != null )
                             {
                                 final Listener l = (Listener) model.createObject( listenerInstance, classLoader );
-                                this.getListeners().add( l );
+                                providedListeners.add( l );
                                 this.log( Level.CONFIG, this.getRegisteredListenerMessage(
                                     l.getClass().getName() ), null );
 
@@ -2205,6 +2206,14 @@ public class DefaultObjectManager implements ObjectManager
 
                 }
 
+                if ( this.isLoggable( Level.FINE ) )
+                {
+                    this.log( Level.FINE, this.getImplementationInfoMessage(
+                        Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+
+                }
+
+                this.getListeners().addAll( providedListeners );
                 this.getListeners().remove( bootstrapListener );
                 bootstrapListener = null;
 
@@ -2214,13 +2223,6 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         this.log( logRecord.getLevel(), logRecord.getMessage(), logRecord.getThrown() );
                     }
-                }
-
-                if ( this.isLoggable( Level.FINE ) )
-                {
-                    this.log( Level.FINE, this.getImplementationInfoMessage(
-                        Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
-
                 }
             }
             catch ( final InstantiationException e )
