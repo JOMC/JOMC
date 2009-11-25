@@ -1309,7 +1309,9 @@ public class DefaultObjectManager implements ObjectManager
                         }
 
                         final ModelProvider modelProvider = provider.newInstance();
-                        final Modules providerModules = modelProvider.getModules( classLoader, cachedModules );
+                        final Modules providerModules =
+                            modelProvider.getModules( classLoader, new Modules( cachedModules ) );
+
                         if ( providerModules != null )
                         {
                             cachedModules.getModule().addAll( providerModules.getModule() );
