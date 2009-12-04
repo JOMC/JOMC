@@ -327,5 +327,14 @@
       class loader corresponding to an invocation to the invocation context.]]>
       </action>
     </release>
+
+    <!-- ******************************************************************* -->
+    <release version="1.0-alpha-11">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected <code>getInstance</code> methods of class
+      <code>org.jomc.model.Modules</code> to support collecting
+      <code>xs:any</code> objects not bound with a JAXB context.]]>
+      </action>
+    </release>
   </body>
 </document>
