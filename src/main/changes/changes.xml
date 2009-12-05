@@ -339,6 +339,12 @@
       Added validation of dependency property override constraints to class
       <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.tools.JomcTool</code> to correct method
+      <code>getJavaTypeName(org.jomc.model.Property, boolean)</code> to stop
+      ignoring the given type of a property when property <code>any</code> holds
+      a non-<code>null</code> value.]]>
+      </action>
     </release>
   </body>
 </document>
