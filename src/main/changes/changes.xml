@@ -335,6 +335,10 @@
       <code>org.jomc.model.Modules</code> to support collecting
       <code>xs:any</code> objects not bound with a JAXB context.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Added validation of dependency property override constraints to class
+      <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
+      </action>
     </release>
   </body>
 </document>
