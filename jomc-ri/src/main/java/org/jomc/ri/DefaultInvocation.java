@@ -57,7 +57,7 @@ import org.jomc.spi.Invocation;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-11-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class DefaultInvocation implements Invocation
@@ -184,7 +184,7 @@ public class DefaultInvocation implements Invocation
 
     /** Creates a new {@code DefaultInvocation} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-11-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
     public DefaultInvocation()
     {
         // SECTION-START[Default Constructor]
