@@ -274,7 +274,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-11">
+    <release version="1.0-alpha-11" date="2009-12-07">
       <action dev="schulte2005" type="fix"><![CDATA[
       Corrected the <code>getInstance</code> methods of class <code>org.jomc.model.Modules</code> to support collecting
       <code>xs:any</code> objects not bound with a JAXB context.]]>
