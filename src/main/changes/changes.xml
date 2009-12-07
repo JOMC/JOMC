@@ -40,28 +40,22 @@
     <author email="cs@jomc.org">Christian Schulte</author>
   </properties>
   <body>
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-1" date="2009-09-19"/>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-2" date="2009-09-25">
       <action dev="schulte2005" type="update"><![CDATA[
-      Added support for inheriting from multiple implementations to the model
-      and made model validation more strict.
-      ]]>
+      Added support for inheriting from multiple implementations to the model and made model validation more strict.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added goal <code>validate-runtime-modules</code> to <code>maven-jomc-plugin</code>.
-      ]]>
+      Added goal <code>validate-runtime-modules</code> to <code>maven-jomc-plugin</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>MissingResourceException</code> thrown by class <code>org.jomc.model.DefaultModelManager</code>.
-      ]]>
+      Corrected a <code>MissingResourceException</code> thrown by class <code>org.jomc.model.DefaultModelManager</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
       Corrected an <code>InstantiationException</code> thrown by method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code>
-      for <code>null</code> values.
-      ]]>
+      for <code>null</code> values.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
       <code>http://jomc.org/model</code> schema updates<ul>
@@ -106,12 +100,11 @@
       </ul>]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-3" date="2009-10-01">
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.tools.JavaClasses</code> to correct a
-      <code>NullPointerException</code> thrown for missing classpath resources.]]>
+      Updated class <code>org.jomc.tools.JavaClasses</code> to correct a <code>NullPointerException</code> thrown for
+      missing classpath resources.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
       Updated tools to support classes without package.]]>
@@ -120,219 +113,170 @@
       Improved error handling of class <code>org.jomc.util.SectionEditor</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Renamed mojo parameters <code>javaSourceProcessingDisabled</code> and
-      <code>javaClassProcessingDisabled</code> to
-      <code>javaSourceProcessingEnabled</code> and
-      <code>javaClassProcessingEnabled</code>. Renamed corresponding
-      expressions <code>jomc.javaSources.disabled</code> and
-      <code>jomc.javaClasses.disabled</code> to
-      <code>jomc.javaSources.enabled</code> and
-      <code>jomc.javaClasses.enabled</code>.]]>
+      Renamed mojo parameters <code>javaSourceProcessingDisabled</code> and <code>javaClassProcessingDisabled</code> to
+      <code>javaSourceProcessingEnabled</code> and <code>javaClassProcessingEnabled</code>. Renamed corresponding
+      expressions <code>jomc.javaSources.disabled</code> and <code>jomc.javaClasses.disabled</code> to
+      <code>jomc.javaSources.enabled</code> and <code>jomc.javaClasses.enabled</code>.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-4" date="2009-10-04">
-      <action dev="schulte2005" type="fix"><![CDATA[
-      Build updates.]]>
-      </action>
+      <action dev="schulte2005" type="fix">Build updates.</action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-5" date="2009-10-06">
       <action dev="schulte2005" type="update"><![CDATA[
-      Updated class <code>org.jomc.tools.JomcTool</code> to support overriding
-      templates. Instead of having to copy all templates from the default
-      profile, only templates differing from the default profile need to be
-      added to new profiles.]]>
+      Updated class <code>org.jomc.tools.JomcTool</code> to support overriding templates. Instead of having to copy all
+      templates from the default profile, only templates differing from the default profile need to be added to new
+      profiles.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.tools.JavaSources</code> to close any
-      writers after merging templates.]]>
+      Updated class <code>org.jomc.tools.JavaSources</code> to close any writers after merging templates.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>NullPointerException</code> thrown by method
-      <code>getDependency(Object, String)</code> of class
-      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
-      get a dependency of an instance without any dependencies.]]>
+      Corrected a <code>NullPointerException</code> thrown by method <code>getDependency(Object, String)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to get a dependency of an instance without any
+      dependencies.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>NullPointerException</code> thrown by method
-      <code>getProperty(Object, String)</code> of class
-      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
-      get a property of an instance without any properties.]]>
+      Corrected a <code>NullPointerException</code> thrown by method <code>getProperty(Object, String)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to get a property of an instance without any properties.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>NullPointerException</code> thrown by method
-      <code>getMessage(Object, String, Locale, Object)</code> of class
-      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
-      get a message of an instance without any messages.]]>
+      Corrected a <code>NullPointerException</code> thrown by method <code>getMessage(Object, String, Locale, Object)</code>
+      of class <code>org.jomc.ri.DefaultObjectManager</code> when trying to get a message of an instance without any
+      messages.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>NullPointerException</code> thrown by method
-      <code>getLocator(URI)</code> of class
-      <code>org.jomc.ri.DefaultObjectManager</code> when trying to
-      get a locator using an URI with an undefined scheme.]]>
+      Corrected a <code>NullPointerException</code> thrown by method <code>getLocator(URI)</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> when trying to get a locator using an URI with an undefined scheme.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.tools.JomcTool</code> to avoid generating
-      implementation source files leading to <code>repeated interface</code>
-      compile errors.]]>
+      Updated class <code>org.jomc.tools.JomcTool</code> to avoid generating implementation source files leading to
+      <code>repeated interface</code> compile errors.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-6" date="2009-10-08">
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated CLI classes to correctly support the platform encoding when
-      producing output.]]>
+      Updated CLI classes to correctly support the platform encoding when producing output.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-7" date="2009-10-12">
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected an <code>EmptyStackException</code> thrown by method
-      <code>editLine</code> of class <code>org.jomc.util.SectionEditor</code>
-      when encountering a section end marker without a matching section start
+      Corrected an <code>EmptyStackException</code> thrown by method <code>editLine</code> of class
+      <code>org.jomc.util.SectionEditor</code> when encountering a section end marker without a matching section start
       marker.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.model.DefaultModelManager</code> to correctly
-      maintain the state of an object created using a static factory method.]]>
+      Updated class <code>org.jomc.model.DefaultModelManager</code> to correctly maintain the state of an object
+      created using a static factory method.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Updated command line tool to display illegal XML elements when using the
-      <code>--debug</code> option.]]>
+      Updated command line tool to display illegal XML elements when using the <code>--debug</code> option.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added <code>org.jomc.spi.Invoker</code> interface to the
-      <code>jomc-spi</code> artifact to allow customization of object
-      invocations. Added corresponding default implementation classes
-      <code>org.jomc.ri.DefaultInvocation</code> and
-      <code>org.jomc.ri.DefaultInvoker</code> to <code>jomc-ri</code> artifact
-      and updated class <code>org.jomc.ri.DefaultObjectManager</code>.]]>
+      Added <code>org.jomc.spi.Invoker</code> interface to the <code>jomc-spi</code> artifact to allow customization of
+      object invocations. Added corresponding default implementation classes <code>org.jomc.ri.DefaultInvocation</code>
+      and <code>org.jomc.ri.DefaultInvoker</code> to <code>jomc-ri</code> artifact and updated class
+      <code>org.jomc.ri.DefaultObjectManager</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added parameter <code>modelObjectStylesheet</code> to goals
-      <code>main-java-classes</code> and <code>test-java-classes</code>
-      of the <code>maven-jomc-plugin</code>.]]>
+      Added parameter <code>modelObjectStylesheet</code> to goals <code>main-java-classes</code> and
+      <code>test-java-classes</code> of the <code>maven-jomc-plugin</code>.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-8" date="2009-11-18">
       <action dev="schulte2005" type="update"><![CDATA[
-      Added interface <code>org.jomc.spi.Invocation</code> to the
-      <code>jomc-spi</code> artifact and updated interface
-      <code>org.jomc.spi.Invoker</code> and classes
-      <code>org.jomc.ri.DefaultInvoker</code>,
-      <code>org.jomc.ri.DefaultInvocation</code> and
-      <code>org.jomc.ri.DefaultObjectManager</code> to no longer force the
-      use of the <code>jomc-ri</code> artifact at compile time for customizing
-      invocation handling.]]>
+      Added interface <code>org.jomc.spi.Invocation</code> to the <code>jomc-spi</code> artifact and updated interface
+      <code>org.jomc.spi.Invoker</code> and classes <code>org.jomc.ri.DefaultInvoker</code>,
+      <code>org.jomc.ri.DefaultInvocation</code> and <code>org.jomc.ri.DefaultObjectManager</code> to no longer force
+      the use of the <code>jomc-ri</code> artifact at compile time for customizing invocation handling.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Updated various classes to support programmatic configuration of
-      defaults in addition to system properties.]]>
+      Updated various classes to support programmatic configuration of defaults in addition to system properties.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>NullPointerException</code> thrown by the
-      <code>resolveEntity</code> method of the <code>EntityResolver</code>
-      returned by method <code>getEntityResolver</code> of class
-      <code>org.jomc.model.DefaultModelManager</code> when given a
-      <code>null</code> public id.]]>
+      Corrected a <code>NullPointerException</code> thrown by the <code>resolveEntity</code> method of the
+      <code>EntityResolver</code> returned by method <code>getEntityResolver</code> of class
+      <code>org.jomc.model.DefaultModelManager</code> when given a <code>null</code> public id.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated the <code>LSResourceResolver</code> returned by method
-      <code>getResourceResolver</code> of class
-      <code>org.jomc.model.DefaultModelManager</code> to correctly support
-      resolving resources of type <code>http://www.w3.org/2001/XMLSchema</code>
-      and to log a warning when used to resolve resources of unsupported
+      Updated the <code>LSResourceResolver</code> returned by method <code>getResourceResolver</code> of class
+      <code>org.jomc.model.DefaultModelManager</code> to correctly support resolving resources of type
+      <code>http://www.w3.org/2001/XMLSchema</code> and to log a warning when used to resolve resources of unsupported
       type.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected a <code>MissingResourceException</code> thrown by the
-      <code>getSchemaResources</code> method of class
-      <code>org.jomc.model.DefaultModelManager</code> when the log level of
-      the instance is lower or equal to <code>Level.FINE</code> and schema
-      resources are found in <code>MANIFEST.MF</code> files.]]>
+      Corrected a <code>MissingResourceException</code> thrown by the <code>getSchemaResources</code> method of class
+      <code>org.jomc.model.DefaultModelManager</code> when the log level of the instance is lower or equal to
+      <code>Level.FINE</code> and schema resources are found in <code>MANIFEST.MF</code> files.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected the 'documents' and 'classpath' options of the command line
-      interface to use the platform path separator instead of a hardcoded ':'
-      character for separating values.]]>
+      Corrected the 'documents' and 'classpath' options of the command line interface to use the platform path separator
+      instead of a hardcoded ':' character for separating values.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected the <code>validateClasses</code> methods of class
-      <code>org.jomc.tools.JavaClasses</code> taking a class loader to correctly
-      build resource names from class names.]]>
+      Corrected the <code>validateClasses</code> methods of class <code>org.jomc.tools.JavaClasses</code> taking a class
+      loader to correctly build resource names from class names.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added interface <code>org.jomc.model.ModelObjectValidator</code> and
-      moved validation methods from interface
+      Added interface <code>org.jomc.model.ModelObjectValidator</code> and moved validation methods from interface
       <code>org.jomc.model.ModelManager</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Updated to support static factory methods in abstract classes.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added parameters <code>moduleIncludes</code> and
-      <code>moduleExcludes</code> to class
+      Added parameters <code>moduleIncludes</code> and <code>moduleExcludes</code> to class
       <code>org.jomc.mojo.JomcResourceTransformer</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Added options <code>module-includes</code> and
-      <code>module-excludes</code> to the <code>merge-modules</code> command of
-      the command line interface.]]>
+      Added options <code>module-includes</code> and <code>module-excludes</code> to the <code>merge-modules</code>
+      command of the command line interface.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-9" date="2009-11-20">
       <action dev="schulte2005" type="update"><![CDATA[
       <code>http://jomc.org/model</code> schema updates<ul>
-      <li>Updated <code>class</code> attribute of <code>Specification</code>
-      complex type from <code>required</code> to <code>optional</code>.</li>
+      <li>Updated <code>class</code> attribute of <code>Specification</code> complex type from <code>required</code> to
+      <code>optional</code>.</li>
       </ul>]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to correctly
-      close open streams/readers.]]>
+      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to correctly close open streams/readers.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-10" date="2009-11-27">
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected the help output of the command line interface to include
-      options 'debug', 'verbose' and 'fail-on-warnings'.]]>
+      Corrected the help output of the command line interface to include options 'debug', 'verbose' and
+      'fail-on-warnings'.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to report
-      errors when initialization fails due to an illegal model.]]>
+      Updated class <code>org.jomc.ri.DefaultObjectManager</code> to report errors when initialization fails due to an
+      illegal model.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.ri.DefaultInvoker</code> to correctly
-      call the <code>postInvoke</code> method when an exception is thrown by
-      the <code>preInvoke</code> method.]]>
+      Updated class <code>org.jomc.ri.DefaultInvoker</code> to correctly call the <code>postInvoke</code> method when an
+      exception is thrown by the <code>preInvoke</code> method.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.model.Modules</code> to not build instances
-      from implementations not declaring a class.]]>
+      Updated class <code>org.jomc.model.Modules</code> to not build instances from implementations not declaring a
+      class.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
-      Updated classes <code>org.jomc.ri.DefaultObjectManager</code> and
-      <code>org.jomc.ri.DefaultInvocation</code> adding the modules and the
-      class loader corresponding to an invocation to the invocation context.]]>
+      Updated classes <code>org.jomc.ri.DefaultObjectManager</code> and <code>org.jomc.ri.DefaultInvocation</code>
+      adding the modules and the class loader corresponding to an invocation to the invocation context.]]>
       </action>
     </release>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-11">
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected <code>getInstance</code> methods of class
-      <code>org.jomc.model.Modules</code> to support collecting
+      Corrected the <code>getInstance</code> methods of class <code>org.jomc.model.Modules</code> to support collecting
       <code>xs:any</code> objects not bound with a JAXB context.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
@@ -340,10 +284,22 @@
       <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated class <code>org.jomc.tools.JomcTool</code> to correct method
-      <code>getJavaTypeName(org.jomc.model.Property, boolean)</code> to stop
-      ignoring the given type of a property when property <code>any</code> holds
-      a non-<code>null</code> value.]]>
+      Updated class <code>org.jomc.tools.JomcTool</code> to stop the <code>getJavaTypeName(org.jomc.model.Property, boolean)</code>
+      method from ignoring the given type of a property when property <code>any</code> holds a non-<code>null</code>
+      value.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Removed all <code>appinfo</code> elements with XML namespace <code>http://java.sun.com/xml/ns/jaxb</code> from
+      the <code>jomc-1.0.xsd</code> and <code>jomc-bootstrap-1.0.xsd</code> schemas.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated the <code>minOccurs</code> facet of the <code>template</code> element reference of the
+      <code>Message</code> complex type of the <code>http://jomc.org/model</code> namespace from <code>0</code>
+      to <code>1</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Renamed the <code>implementationName</code> attribute of the <code>Instance</code> complex type of the
+      <code>http://jomc.org/model</code> namespace to <code>name</code>.]]>
       </action>
     </release>
   </body>
