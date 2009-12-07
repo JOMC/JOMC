@@ -49,7 +49,7 @@ package org.jomc;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-11-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class ObjectManagementException extends RuntimeException
@@ -97,7 +97,7 @@ public class ObjectManagementException extends RuntimeException
 
     /** Creates a new {@code ObjectManagementException} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-11-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
     public ObjectManagementException()
     {
         // SECTION-START[Default Constructor]
