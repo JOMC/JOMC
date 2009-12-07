@@ -982,6 +982,9 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Default {@link ObjectManagerFactory#getObjectManager(ClassLoader)} implementation.
      *
+     * @param classLoader The class loader to use for getting the singleton instance; {@code null} to use the platform's
+     * bootstrap class loader.
+     *
      * @return The default {@code ObjectManager} singleton instance.
      *
      * @see ObjectManagerFactory#getObjectManager(ClassLoader)
