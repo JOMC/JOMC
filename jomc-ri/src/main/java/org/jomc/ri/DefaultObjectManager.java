@@ -2243,11 +2243,11 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             if ( r.getMessage() != null )
                             {
-                                cause = new IllegalStateException( r.getMessage() ).initCause( cause );
+                                cause = new ObjectManagementException( r.getMessage(), cause );
                             }
                             if ( r.getThrown() != null )
                             {
-                                cause = new IllegalStateException( r.getThrown().toString() ).initCause( cause );
+                                cause = new ObjectManagementException( r.getThrown().getMessage(), cause );
                             }
                         }
                     }
