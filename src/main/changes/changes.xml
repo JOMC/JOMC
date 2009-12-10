@@ -302,5 +302,12 @@
       <code>http://jomc.org/model</code> namespace to <code>name</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-12">
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected the <code>createObject</code> method of class <code>org.jomc.model.Modules</code> to stop throwing
+      a <code>NullPointerException</code> when a factory method returns <code>null</code>.]]>
+      </action>
+    </release>
   </body>
 </document>
