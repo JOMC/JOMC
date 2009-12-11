@@ -57,7 +57,7 @@ import org.jomc.spi.Scope;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-13-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class DefaultObjectManagerTest
@@ -343,7 +343,7 @@ public class DefaultObjectManagerTest
 
     /** Creates a new {@code DefaultObjectManagerTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-12-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-13-SNAPSHOT/jomc-tools" )
     public DefaultObjectManagerTest()
     {
         // SECTION-START[Default Constructor]
