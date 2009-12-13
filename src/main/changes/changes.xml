@@ -309,5 +309,29 @@
       a <code>NullPointerException</code> when a factory method returns <code>null</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-13">
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated methods<ul>
+      <li><code>public String getJavaPackageName( final Specification specification )</code></li>
+      <li><code>public String getJavaTypeName( final Specification specification, final boolean qualified )</code></li>
+      <li><code>public String getJavaClasspathLocation( final Specification specification )</code></li>
+      <li><code>public String getJavaPackageName( final SpecificationReference reference )</code></li>
+      <li><code>public String getJavaTypeName( final SpecificationReference reference, final boolean qualified )</code></li>
+      <li><code>public String getJavaPackageName( final Implementation implementation )</code></li>
+      <li><code>public String getJavaTypeName( final Implementation implementation, final boolean qualified )</code></li>
+      <li><code>public String getJavaClasspathLocation( final Implementation implementation )</code></li>
+      <li><code>public String getJavaTypeName( final Dependency dependency )</code></li>
+      <li><code>public boolean isJavaDefaultPackage( final Specification specification )</code></li>
+      <li><code>public boolean isJavaDefaultPackage( final Implementation implementation )</code></li>
+      </ul> of class <code>org.jomc.tools.JomcTool</code> to return <code>null</code> rather than throwing a
+      <code>NullPointerException</code> when passed a model object with a <code>null</code> class value.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected method
+      <code>public List&lt;String&gt; getJavaInterfaceNames( final Implementation implementation, final boolean qualified )</code>
+      of class <code>org.jomc.tools.JomcTool</code> to ignore specifications with a <code>null</code> class value.]]>
+      </action>
+    </release>
   </body>
 </document>
