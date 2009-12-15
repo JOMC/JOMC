@@ -35,91 +35,66 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${project.name}"
-        version="${project.version}"
-        vendor="${project.organization.name}"
-        modelVersion="1.0">
+        name="${project.name}" version="${project.version}" vendor="${project.organization.name}" modelVersion="1.0">
 
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <specifications>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.spi.Scope"
-                   class="org.jomc.spi.Scope"
-                   vendor="${project.organization.name}"
-                   version="1.0">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.spi.Scope" class="org.jomc.spi.Scope" classDeclaration="true"
+                   vendor="${project.organization.name}"  version="1.0">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Scope a specification applies to.]]></text>
+        <text language="en">Scope a specification applies to.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.spi.Listener"
-                   class="org.jomc.spi.Listener"
-                   vendor="${project.organization.name}"
-                   version="1.0">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.spi.Listener" class="org.jomc.spi.Listener" classDeclaration="true"
+                   vendor="${project.organization.name}" version="1.0">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Object management and configuration listener interface.]]></text>
+        <text language="en">Object management and configuration listener interface.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.spi.Locator"
-                   class="org.jomc.spi.Locator"
-                   vendor="${project.organization.name}"
-                   version="1.0">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.spi.Locator" class="org.jomc.spi.Locator" classDeclaration="true"
+                   vendor="${project.organization.name}" version="1.0">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Locates objects.]]></text>
+        <text language="en">Locates objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.spi.Invoker"
-                   class="org.jomc.spi.Invoker"
-                   vendor="${project.organization.name}"
-                   version="1.0"
-                   multiplicity="One">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.spi.Invoker" class="org.jomc.spi.Invoker" classDeclaration="true"
+                   vendor="${project.organization.name}" version="1.0" multiplicity="One">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Invokes objects.]]></text>
+        <text language="en">Invokes objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.spi.Invocation"
-                   class="org.jomc.spi.Invocation"
-                   vendor="${project.organization.name}"
-                   version="1.0"
-                   multiplicity="One">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.spi.Invocation" class="org.jomc.spi.Invocation" classDeclaration="true"
+                   vendor="${project.organization.name}" version="1.0" multiplicity="One">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Invocation of an object.]]></text>
+        <text language="en">Invocation of an object.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
   </specifications>

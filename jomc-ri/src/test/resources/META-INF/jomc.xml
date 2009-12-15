@@ -35,9 +35,7 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${project.name} Tests"
-        version="${project.version}"
-        vendor="${project.organization.name}"
+        name="${project.name} Tests" version="${project.version}" vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
@@ -45,250 +43,125 @@
   </documentation>
 
   <specifications>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestSpecification"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}">
-
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestSpecification" class="org.jomc.ri.test.TestSpecification"
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestSpecificationOne"
-                   class="org.jomc.ri.test.TestSpecificationOne"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestSpecificationOne" class="org.jomc.ri.test.TestSpecificationOne"
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    multiplicity="One">
-
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecificationOneMore"
-                   class="org.jomc.ri.test.TestSpecificationOneMore"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
+                   class="org.jomc.ri.test.TestSpecificationOneMore" classDeclaration="true"
+                   vendor="${project.organization.name}" version="${project.version}" multiplicity="One">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestSpecificationMany" class="org.jomc.ri.test.TestSpecificationMany"
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestMultitonSpecification" class="org.jomc.ri.test.TestSpecification"
+                   vendor="${project.organization.name}" version="${project.version}">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestSingletonSpecification" class="org.jomc.ri.test.TestSpecification"
+                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany" class="org.jomc.ri.test.TestSpecification"
+                   vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+    </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne1" class="org.jomc.ri.test.TestSpecification"
+                   vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One">
-
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestSpecificationMany"
-                   class="org.jomc.ri.test.TestSpecificationMany"
-                   vendor="${project.organization.name}"
-                   version="${project.version}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestMultitonSpecification"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestSingletonSpecification"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="Singleton">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="DOES_NOT_EXIST">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="DOES_NOT_EXIST"
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne2" class="org.jomc.ri.test.TestSpecification"
+                   vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One">
-
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
-                   class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="DOES_NOT_EXIST"
-                   multiplicity="One">
-
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ri.test.TestScopeSpecification" class="org.jomc.ri.test.TestScopeSpecification"
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}" scope="Test">
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
-
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ri.test.TestScopeSpecification"
-                   class="org.jomc.ri.test.TestScopeSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="Test">
-
-      <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
-      </authors>
-    </specification>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.InvokerTestSpecification"
-                   class="org.jomc.ri.test.InvokerTestSpecification"
-                   vendor="${project.organization.name}"
-                   version="${project.version}"
-                   scope="Singleton">
-
+                   class="org.jomc.ri.test.InvokerTestSpecification" classDeclaration="true"
+                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
   </specifications>
   <implementations>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestImplementation"
-                    class="org.jomc.ri.test.TestImplementation"
-                    name="TestImplementation"
-                    version="${project.version}"
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.TestImplementation" class="org.jomc.ri.test.TestImplementation"
+                    classDeclaration="true" name="TestImplementation" version="${project.version}"
                     vendor="${project.organization.name}">
-
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.ri.test.TestMultitonSpecification"
-                   version="${project.version}"/>
-
-        <reference identifier="org.jomc.ri.test.TestSingletonSpecification"
-                   version="${project.version}"/>
-
-        <reference identifier="org.jomc.ri.test.TestSpecificationOne"
-                   version="${project.version}"/>
-
-        <reference identifier="org.jomc.ri.test.TestSpecificationMany"
-                   version="${project.version}"/>
-
-        <reference identifier="org.jomc.ri.test.TestScopeSpecification"
-                   version="${project.version}"/>
-
+        <reference identifier="org.jomc.ri.test.TestMultitonSpecification" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSingletonSpecification" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSpecificationOne" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSpecificationMany" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecification" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="BoundMultitons"
-                    identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}"
-                    bound="true"/>
-        <dependency name="UnboundMultitons"
-                    identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}"
-                    bound="false"/>
-        <dependency name="SelectedBoundMultiton"
-                    identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}"
-                    implementationName="TestImplementation"
-                    bound="true"/>
-        <dependency name="SelectedUnboundMultiton"
-                    identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}"
-                    implementationName="TestImplementation"
-                    bound="false"/>
-        <dependency name="BoundSingletons"
-                    identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}"
-                    bound="true"/>
-        <dependency name="UnboundSingletons"
-                    identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}"
-                    bound="false"/>
-        <dependency name="SelectedBoundSingleton"
-                    identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}"
-                    implementationName="TestImplementation"
-                    bound="true"/>
-        <dependency name="SelectedUnboundSingleton"
-                    identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}"
-                    implementationName="TestImplementation"
-                    bound="false"/>
-        <dependency name="OptionalLocale"
-                    identifier="java.util.Locale"
-                    version="${project.version}"
-                    implementationName="DOES NOT EXIST"
-                    bound="false"
-                    optional="true"/>
-        <dependency name="InvokerTestSpecification"
-                    identifier="org.jomc.ri.test.InvokerTestSpecification"
-                    version="${project.version}"
-                    implementationName="InvokerTest"
-                    bound="true"/>
+        <dependency name="BoundMultitons" identifier="org.jomc.ri.test.TestMultitonSpecification"
+                    version="${project.version}" bound="true"/>
+        <dependency name="UnboundMultitons" identifier="org.jomc.ri.test.TestMultitonSpecification"
+                    version="${project.version}" bound="false"/>
+        <dependency name="SelectedBoundMultiton" identifier="org.jomc.ri.test.TestMultitonSpecification"
+                    version="${project.version}" implementationName="TestImplementation" bound="true"/>
+        <dependency name="SelectedUnboundMultiton" identifier="org.jomc.ri.test.TestMultitonSpecification"
+                    version="${project.version}" implementationName="TestImplementation" bound="false"/>
+        <dependency name="BoundSingletons" identifier="org.jomc.ri.test.TestSingletonSpecification"
+                    version="${project.version}" bound="true"/>
+        <dependency name="UnboundSingletons" identifier="org.jomc.ri.test.TestSingletonSpecification"
+                    version="${project.version}" bound="false"/>
+        <dependency name="SelectedBoundSingleton" identifier="org.jomc.ri.test.TestSingletonSpecification"
+                    version="${project.version}" implementationName="TestImplementation" bound="true"/>
+        <dependency name="SelectedUnboundSingleton" identifier="org.jomc.ri.test.TestSingletonSpecification"
+                    version="${project.version}" implementationName="TestImplementation" bound="false"/>
+        <dependency name="OptionalLocale" identifier="java.util.Locale" version="${project.version}"
+                    implementationName="DOES NOT EXIST" bound="false" optional="true"/>
+        <dependency name="InvokerTestSpecification" identifier="org.jomc.ri.test.InvokerTestSpecification"
+                    version="${project.version}" implementationName="InvokerTest" bound="true"/>
       </dependencies>
       <properties>
         <property name="testProperty" type="java.lang.String" value="TEST"/>
@@ -296,7 +169,7 @@
       <messages>
         <message name="testMessage">
           <template defaultLanguage="en">
-            <text language="en"><![CDATA[Test message with {0} argument.]]></text>
+            <text language="en">Test message with {0} argument.</text>
           </template>
           <arguments>
             <argument index="0" name="testArgument" type="Text"/>
@@ -304,210 +177,139 @@
         </message>
       </messages>
     </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestObjectManagementListener"
-                    class="org.jomc.ri.test.TestObjectManagementListener"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
+                    class="org.jomc.ri.test.TestObjectManagementListener" classDeclaration="true"
+                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[{@code ObjectManagementLister} logging to the console.]]></text>
+        <text language="en">{@code ObjectManagementLister} logging to the console.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Listener" version="1.0"/>
       </specifications>
     </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.DefaultObjectManagerTest"
-                    class="org.jomc.ri.test.DefaultObjectManagerTest"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
+                    class="org.jomc.ri.test.DefaultObjectManagerTest" classDeclaration="true"
+                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test cases for the {@code DefaultObjectManager} class.]]></text>
+        <text language="en">Test cases for the {@code DefaultObjectManager} class.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
-      <!--
-      This implementation intentionally does not declare any dependencies,
-      properties and messages.
-      -->
+      <!-- This implementation intentionally does not declare any dependencies, properties and messages. -->
     </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestScopeImplementation"
-                    class="org.jomc.ri.test.TestScopeImplementation"
-                    name="TestScopeImplementation"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
+                    class="org.jomc.ri.test.TestScopeImplementation" classDeclaration="true"
+                    name="TestScopeImplementation" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test implementation of the {@code ScopeTestSpecification}.]]></text>
+        <text language="en">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
-                   version="${project.version}"/>
-        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                   version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne1" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="TestScopeSpecificationMany"
-                    identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                    version="${project.version}"
-                    bound="false"
-                    optional="true"/>
-        <dependency name="TestScopeSpecificationOne"
-                    identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
-                    version="${project.version}"
-                    bound="false"
-                    optional="true"/>
+        <dependency name="TestScopeSpecificationMany" identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                    version="${project.version}" bound="false" optional="true"/>
+        <dependency name="TestScopeSpecificationOne" identifier="org.jomc.ri.test.TestScopeSpecificationOne1"
+                    version="${project.version}" bound="false" optional="true"/>
       </dependencies>
     </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestLocationImplementation"
-                    class="org.jomc.ri.test.TestLocationImplementation"
-                    name="TestLocationImplementation"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
+                    class="org.jomc.ri.test.TestLocationImplementation" classDeclaration="true"
+                    name="TestLocationImplementation" version="${project.version}" vendor="${project.organization.name}"
                     location="UNSUPPORTED:DOES_NOT_EXIST">
-
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test implementation with unsupported location.]]></text>
+        <text language="en">Test implementation with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
-                   version="${project.version}"/>
-        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                   version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne2" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecificationMany" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="TestScopeSpecificationMany"
-                    identifier="org.jomc.ri.test.TestScopeSpecificationMany"
-                    version="${project.version}"
-                    bound="false"
-                    optional="true"/>
-        <dependency name="TestScopeSpecificationOne"
-                    identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
-                    version="${project.version}"
-                    bound="false"
-                    optional="true"/>
+        <dependency name="TestScopeSpecificationMany" identifier="org.jomc.ri.test.TestScopeSpecificationMany"
+                    version="${project.version}" bound="false" optional="true"/>
+        <dependency name="TestScopeSpecificationOne" identifier="org.jomc.ri.test.TestScopeSpecificationOne2"
+                    version="${project.version}" bound="false" optional="true"/>
       </dependencies>
     </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.IllegalLocationImplementation"
-                    name="IllegalLocationImplementation"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    location="UNSUPPORTED:DOES_NOT_EXIST">
-
+                    name="IllegalLocationImplementation" version="${project.version}"
+                    vendor="${project.organization.name}" location="UNSUPPORTED:DOES_NOT_EXIST">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test implementation without class and with unsupported location.]]></text>
+        <text language="en">Test implementation without class and with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.ri.test.TestSpecificationOneMore"
-                   version="${project.version}"/>
-        <reference identifier="org.jomc.ri.test.TestSpecificationMany"
-                   version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSpecificationOneMore" version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestSpecificationMany" version="${project.version}"/>
       </specifications>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestScope"
-                    class="org.jomc.ri.test.TestScope"
-                    name="Test"
-                    version="${project.version}"
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.TestScope" class="org.jomc.ri.test.TestScope" classDeclaration="true"
+                    name="Test" version="${project.version}" vendor="${project.organization.name}">
+      <documentation defaultLanguage="en">
+        <text language="en">Test {@code Scope} implementation.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.spi.Scope" version="1.0"/>
+      </specifications>
+    </implementation>
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.TestLocator" class="org.jomc.ri.test.TestLocator"
+                    classDeclaration="true" name="Test" version="${project.version}"
                     vendor="${project.organization.name}">
-
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test {@code Scope} implementation.]]></text>
+        <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.spi.Scope"
-                   version="1.0"/>
+        <reference identifier="org.jomc.spi.Locator" version="1.0"/>
       </specifications>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestLocator"
-                    class="org.jomc.ri.test.TestLocator"
-                    name="Test"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
-      <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test {@code Locator} implementation.]]></text>
-      </documentation>
-      <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-      </authors>
-      <specifications>
-        <reference identifier="org.jomc.spi.Locator"
-                   version="1.0"/>
-      </specifications>
-    </implementation>
-
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestLocatorImplementation"
-                    name="TestLocatorImplementation"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
+                    name="TestLocatorImplementation" version="${project.version}" vendor="${project.organization.name}"
                     location="Test:IGNORED">
-
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test {@code Locator} implementation.]]></text>
+        <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
-        <reference identifier="org.jomc.ri.test.TestScopeSpecification"
-                   version="${project.version}"/>
+        <reference identifier="org.jomc.ri.test.TestScopeSpecification" version="${project.version}"/>
       </specifications>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.TestInvoker"
-                    name="TestInvoker"
-                    class="org.jomc.ri.test.TestInvoker"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.TestInvoker" name="TestInvoker" class="org.jomc.ri.test.TestInvoker"
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Test {@code Invoker} implementation.]]></text>
+        <text language="en">Test {@code Invoker} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Invoker"/>
@@ -516,20 +318,14 @@
         <reference identifier="org.jomc.ri.DefaultInvoker"/>
       </implementations>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ri.test.InvokerTest"
-                    name="InvokerTest"
-                    class="org.jomc.ri.test.InvokerTest"
-                    version="${project.version}"
-                    vendor="${project.organization.name}">
-
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.InvokerTest" name="InvokerTest" class="org.jomc.ri.test.InvokerTest"
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[{@code Invoker} test cases.]]></text>
+        <text language="en">{@code Invoker} test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.InvokerTestSpecification"/>

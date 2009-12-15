@@ -47,7 +47,6 @@ import org.jomc.spi.Invocation;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default invocation.
- * @see DefaultInvoker
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$

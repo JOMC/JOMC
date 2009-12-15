@@ -35,9 +35,7 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${project.name} Tests"
-        version="${project.version}"
-        vendor="${project.organization.name}"
+        name="${project.name} Tests" version="${project.version}" vendor="${project.organization.name}"
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
@@ -45,65 +43,45 @@
   </documentation>
 
   <implementations>
-    <!-- ******************************************************************* -->
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.test.ObjectManagementExceptionTest"
                     class="org.jomc.test.ObjectManagementExceptionTest"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    final="true">
+                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Testcases for class {@code org.jomc.ObjectManagementException}.]]></text>
+        <text language="en">Testcases for class {@code org.jomc.ObjectManagementException}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.test.ObjectManagerFactoryTest"
-                    class="org.jomc.test.ObjectManagerFactoryTest"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    final="true">
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.test.ObjectManagerFactoryTest" class="org.jomc.test.ObjectManagerFactoryTest"
+                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Testcases for class {@code org.jomc.ObjectManagerFactory}.]]></text>
+        <text language="en">Testcases for class {@code org.jomc.ObjectManagerFactory}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.test.ObjectManagerDummy"
-                    class="org.jomc.test.ObjectManagerDummy"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    final="true">
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.test.ObjectManagerDummy" class="org.jomc.test.ObjectManagerDummy"
+                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[{@code ObjectManager} dummy implementation.]]></text>
+        <text language="en">{@code ObjectManager} dummy implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org"
-                createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
       <specifications>
         <reference identifier="org.jomc.ObjectManager" version="1.0"/>
       </specifications>
     </implementation>
-
   </implementations>
 </module>

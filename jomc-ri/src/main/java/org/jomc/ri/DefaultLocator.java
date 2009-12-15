@@ -49,12 +49,7 @@ import org.jomc.spi.Locator;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- *
  * Default {@code Locator} implementation.
- *
- * The default {@code Locator} implementation looks up objects using JNDI.
- * It supports location URI schemes {@code jndi} and {@code jndi+rmi}.
- *
  *
  * @author <a href="mailto:cs@jomc.org">Christian Schulte</a> 1.0
  * @version $Id$

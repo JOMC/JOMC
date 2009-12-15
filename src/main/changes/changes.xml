@@ -332,6 +332,10 @@
       <code>public List&lt;String&gt; getJavaInterfaceNames( final Implementation implementation, final boolean qualified )</code>
       of class <code>org.jomc.tools.JomcTool</code> to ignore specifications with a <code>null</code> class value.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added attribute <code>classDeclaration</code> to <code>Specification</code> and <code>Implementation</code>
+      complex types of the <code>http://jomc.org/model</code> namespace.]]>
+      </action>
     </release>
   </body>
 </document>

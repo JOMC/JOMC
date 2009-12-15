@@ -35,69 +35,49 @@
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://jomc.org/model http://jomc.org/model/jomc-1.0.xsd"
-        name="${project.name}"
-        version="${project.version}"
-        vendor="${project.organization.name}"
-        modelVersion="1.0">
+        name="${project.name}" version="${project.version}" vendor="${project.organization.name}" modelVersion="1.0">
 
   <documentation defaultLanguage="en">
     <text language="en"><![CDATA[${project.description}]]></text>
   </documentation>
 
   <specifications>
-    <!-- ******************************************************************* -->
-    <specification identifier="org.jomc.ObjectManager"
-                   class="org.jomc.ObjectManager"
-                   vendor="${project.organization.name}"
-                   version="1.0"
-                   multiplicity="One"
-                   scope="Singleton">
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="org.jomc.ObjectManager" class="org.jomc.ObjectManager" classDeclaration="true"
+                   vendor="${project.organization.name}" version="1.0" multiplicity="One" scope="Singleton">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Manages objects.]]></text>
+        <text language="en">Manages objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </specification>
   </specifications>
 
   <implementations>
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ObjectManagementException"
-                    class="org.jomc.ObjectManagementException"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    final="true">
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ObjectManagementException" class="org.jomc.ObjectManagementException"
+                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Gets thrown whenever an unexpected error condition is detected.]]></text>
+        <text language="en">Gets thrown whenever an unexpected error condition is detected.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </implementation>
-
-    <!-- ******************************************************************* -->
-    <implementation identifier="org.jomc.ObjectManagerFactory"
-                    class="org.jomc.ObjectManagerFactory"
-                    name="${project.name}"
-                    version="${project.version}"
-                    vendor="${project.organization.name}"
-                    final="true">
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ObjectManagerFactory" class="org.jomc.ObjectManagerFactory"
+                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[Factory for the {@code ObjectManager} singleton.]]></text>
+        <text language="en">Factory for the {@code ObjectManager} singleton.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0"
-                mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
-
+        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
       </authors>
     </implementation>
   </implementations>
