@@ -310,7 +310,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-13">
+    <release version="1.0-alpha-13" date="2009-12-16">
       <action dev="schulte2005" type="update"><![CDATA[
       Updated methods<ul>
       <li><code>public String getJavaPackageName( final Specification specification )</code></li>
