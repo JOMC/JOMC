@@ -336,6 +336,11 @@
       Added attribute <code>classDeclaration</code> to <code>Specification</code> and <code>Implementation</code>
       complex types of the <code>http://jomc.org/model</code> namespace.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected <pre>Can't find bundle for base name org/jomc/mojo/ValidateMainJavaClassesMojo</pre> and
+      <pre>Can't find bundle for base name org/jomc/mojo/ValidateTestJavaClassesMojo</pre> build errors when using
+      <code>-Djomc.javaClasses.enabled=false</code> command line argument.]]>
+      </action>
     </release>
   </body>
 </document>
