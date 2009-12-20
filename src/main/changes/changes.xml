@@ -335,6 +335,13 @@
       Added validation of message templates to class <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
+      Added validation of simple type property values or object type values to class
+      <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Added validation of property types to class <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
       Corrected method
       <code>public List&lt;String&gt; getJavaInterfaceNames( final Implementation implementation, final boolean qualified )</code>
       of class <code>org.jomc.tools.JomcTool</code> to ignore specifications with a <code>null</code> class value.]]>
