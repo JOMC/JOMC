@@ -332,6 +332,15 @@
       complex types of the <code>http://jomc.org/model</code> namespace.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
+      Updated class <code>org.jomc.model.DefaultModelObjectValidator</code> to use constant report detail identifiers
+      for any caught <code>org.jomc.util.ParseException</code> and <code>org.jomc.util.TokenMgrError</code> exceptions
+      instead of simple class names.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Removed the <code>setElement</code> method of class <code>org.jomc.model.ModelObjectValidationReport.Detail</code>
+      and added a corresponding parameter to the constructor making report details immutable.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
       Added validation of message templates to class <code>org.jomc.model.DefaultModelObjectValidator</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
