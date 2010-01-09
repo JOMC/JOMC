@@ -251,7 +251,7 @@
             <forkMode>once</forkMode>
             <systemProperties>
               <property>
-                <name>org.jomc.model.DefaultModelManager.defaultLogLevel</name>
+                <name>org.jomc.model.ModelContext.defaultLogLevel</name>
                 <value>ALL</value>
               </property>
               <property>
@@ -438,18 +438,8 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>1.2.2</version>
+          <version>${maven-shade-plugin.version}</version>
           <dependencies>
-            <dependency>
-              <groupId>asm</groupId>
-              <artifactId>asm</artifactId>
-              <version>3.2</version>
-            </dependency>
-            <dependency>
-              <groupId>asm</groupId>
-              <artifactId>asm-commons</artifactId>
-              <version>3.2</version>
-            </dependency>
             <dependency>
               <groupId>org.jomc</groupId>
               <artifactId>maven-jomc-plugin</artifactId>
@@ -823,7 +813,7 @@
       <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>1.2.2</version>
+        <version>${maven-shade-plugin.version}</version>
       </dependency>
 
       <!-- Apache Misc -->
@@ -1018,5 +1008,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <jomc-build.version>1.3</jomc-build.version>
+    <maven-shade-plugin.version>1.3</maven-shade-plugin.version>
   </properties>
 </project>

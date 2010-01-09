@@ -32,8 +32,6 @@
  */
 package org.jomc.model;
 
-import java.io.IOException;
-
 /**
  * Object management and configuration model provider interface.
  *
@@ -44,17 +42,15 @@ public interface ModelProvider
 {
 
     /**
-     * Gets the modules of the provider.
+     * Searches a given context for modules.
      *
-     * @param classLoader The class loader to use for providing modules; {@code null} to use the platform's bootstrap
-     * class loader.
-     * @param modules The already provided modules or {@code null}.
+     * @param context The context to search for modules.
      *
-     * @return The modules provided by this provider or {@code null} if this provider does not choose to provide any
-     * modules.
+     * @return The modules found in the context or {@code null} if no modules are found.
      *
-     * @throws IOException if providing modules fails.
+     * @throws NullPointerException if {@code context} is {@code null}.
+     * @throws ModelException if searching the context fails.
      */
-    Modules getModules( ClassLoader classLoader, Modules modules ) throws IOException;
+    Modules findModules( ModelContext context ) throws NullPointerException, ModelException;
 
 }

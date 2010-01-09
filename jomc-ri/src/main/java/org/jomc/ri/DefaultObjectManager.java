@@ -36,21 +36,13 @@
 // SECTION-END
 package org.jomc.ri;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.URI;
-import java.net.URL;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -59,35 +51,23 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.util.JAXBResult;
-import javax.xml.bind.util.JAXBSource;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.validation.Schema;
 import org.jomc.ObjectManagementException;
 import org.jomc.ObjectManager;
 import org.jomc.ObjectManagerFactory;
-import org.jomc.model.DefaultModelManager;
-import org.jomc.model.DefaultModelObjectValidator;
 import org.jomc.model.Dependency;
 import org.jomc.model.Implementation;
 import org.jomc.model.ImplementationReference;
 import org.jomc.model.Implementations;
 import org.jomc.model.Instance;
 import org.jomc.model.Message;
-import org.jomc.model.ModelObjectValidationReport;
-import org.jomc.model.ModelObjectValidator;
-import org.jomc.model.ModelProvider;
+import org.jomc.model.ModelContext;
+import org.jomc.model.ModelException;
+import org.jomc.model.ModelValidationReport;
 import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
-import org.jomc.model.ObjectFactory;
 import org.jomc.model.Property;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
@@ -97,7 +77,6 @@ import org.jomc.spi.Listener;
 import org.jomc.spi.Locator;
 import org.jomc.spi.Scope;
 import org.jomc.util.WeakIdentityHashMap;
-import org.xml.sax.SAXException;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -1180,9 +1159,9 @@ public class DefaultObjectManager implements ObjectManager
             {
                 try
                 {
-                    final DefaultModelManager defaultModelManager = new DefaultModelManager();
-                    defaultModelManager.setLogLevel( this.getLogLevel() );
-                    defaultModelManager.getListeners().add( new DefaultModelManager.Listener()
+                    final ModelContext modelContext = ModelContext.createModelContext( classLoader );
+                    modelContext.setLogLevel( this.getLogLevel() );
+                    modelContext.getListeners().add( new ModelContext.Listener()
                     {
 
                         public void onLog( final Level level, final String message, final Throwable t )
@@ -1192,136 +1171,8 @@ public class DefaultObjectManager implements ObjectManager
 
                     } );
 
-                    final ObjectFactory objectFactory = new ObjectFactory();
-                    final JAXBContext context = defaultModelManager.getContext( classLoader );
-                    final Schema schema = defaultModelManager.getSchema( classLoader );
-
-                    cachedModules = defaultModelManager.getClasspathModules(
-                        classLoader, DefaultModelManager.getDefaultModuleLocation() );
-
-                    final Map<String, Class<ModelProvider>> providers =
-                        new TreeMap<String, Class<ModelProvider>>( new Comparator<String>()
-                    {
-
-                        public int compare( final String key1, final String key2 )
-                        {
-                            return key1.compareTo( key2 );
-                        }
-
-                    } );
-
-                    final File platformProviders = new File( new StringBuilder().append(
-                        System.getProperty( "java.home" ) ).append( File.separator ).append( "jre" ).
-                        append( File.separator ).append( "lib" ).append( File.separator ).append( "jomc.properties" ).
-                        toString() );
-
-                    if ( platformProviders.exists() )
-                    {
-                        if ( this.isLoggable( Level.CONFIG ) )
-                        {
-                            this.log( Level.CONFIG, this.getMessage( "processing", new Object[]
-                                {
-                                    platformProviders.getAbsolutePath()
-                                } ), null );
-
-                        }
-
-                        InputStream in = null;
-                        final java.util.Properties p = new java.util.Properties();
-
-                        try
-                        {
-                            in = new FileInputStream( platformProviders );
-                            p.load( in );
-                        }
-                        finally
-                        {
-                            if ( in != null )
-                            {
-                                in.close();
-                            }
-                        }
-
-                        for ( Map.Entry e : p.entrySet() )
-                        {
-                            if ( e.getKey().toString().startsWith( "org.jomc.model.ModelProvider." ) )
-                            {
-                                providers.put( e.getKey().toString(), (Class<ModelProvider>) Class.forName(
-                                    e.getValue().toString(), true, classLoader ) );
-
-                            }
-                        }
-                    }
-
-                    final Enumeration<URL> serviceProviders =
-                        classLoader.getResources( "META-INF/services/org.jomc.model.ModelProvider" );
-
-                    if ( serviceProviders != null )
-                    {
-                        while ( serviceProviders.hasMoreElements() )
-                        {
-                            String line;
-                            final URL serviceProvider = serviceProviders.nextElement();
-
-                            if ( this.isLoggable( Level.CONFIG ) )
-                            {
-                                this.log( Level.CONFIG, this.getMessage( "processing", new Object[]
-                                    {
-                                        serviceProvider.toExternalForm()
-                                    } ), null );
-
-                            }
-
-                            BufferedReader reader = null;
-                            try
-                            {
-                                reader = new BufferedReader( new InputStreamReader(
-                                    serviceProvider.openStream(), "UTF-8" ) );
-
-                                while ( ( line = reader.readLine() ) != null )
-                                {
-                                    if ( line.contains( "#" ) )
-                                    {
-                                        continue;
-                                    }
-
-                                    providers.put( "org.jomc.model.ModelProvider." + providers.size(),
-                                                   (Class<ModelProvider>) Class.forName( line, true, classLoader ) );
-
-                                }
-                            }
-                            finally
-                            {
-                                if ( reader != null )
-                                {
-                                    reader.close();
-                                }
-                            }
-                        }
-                    }
-
-                    for ( Class<ModelProvider> provider : providers.values() )
-                    {
-                        if ( this.isLoggable( Level.CONFIG ) )
-                        {
-                            this.log( Level.CONFIG, this.getMessage( "modelProviderInfo", new Object[]
-                                {
-                                    provider.getName()
-                                } ), null );
-
-                        }
-
-                        final ModelProvider modelProvider = provider.newInstance();
-                        final Modules providerModules =
-                            modelProvider.getModules( classLoader, new Modules( cachedModules ) );
-
-                        if ( providerModules != null )
-                        {
-                            cachedModules.getModule().addAll( providerModules.getModule() );
-                        }
-                    }
-
-                    final Module classpathModule =
+                    cachedModules = modelContext.findModules();
+                    Module classpathModule =
                         cachedModules.getClasspathModule( Modules.getDefaultClasspathModuleName(), classLoader );
 
                     if ( classpathModule != null )
@@ -1329,31 +1180,16 @@ public class DefaultObjectManager implements ObjectManager
                         cachedModules.getModule().add( classpathModule );
                     }
 
-                    final List<Transformer> defaultTransformers = defaultModelManager.getClasspathTransformers(
-                        classLoader, DefaultModelManager.getDefaultTransformerLocation() );
+                    cachedModules = modelContext.processModules( cachedModules );
 
-                    for ( Transformer t : defaultTransformers )
+                    final ModelValidationReport validationReport = modelContext.validateModules( cachedModules );
+
+                    for ( ModelValidationReport.Detail d : validationReport.getDetails() )
                     {
-                        final JAXBElement<Modules> e = objectFactory.createModules( cachedModules );
-                        final JAXBSource source = new JAXBSource( context, e );
-                        final JAXBResult result = new JAXBResult( context );
-                        t.transform( source, result );
-                        cachedModules = ( (JAXBElement<Modules>) result.getResult() ).getValue();
+                        this.log( d.getLevel(), d.getMessage(), null );
                     }
 
-                    final ModelObjectValidator modelObjectValidator = new DefaultModelObjectValidator();
-                    final ModelObjectValidationReport validationReport = modelObjectValidator.validateModules(
-                        objectFactory.createModules( cachedModules ), context, schema );
-
-                    for ( ModelObjectValidationReport.Detail d : validationReport.getDetails() )
-                    {
-                        if ( this.isLoggable( d.getLevel() ) )
-                        {
-                            this.log( d.getLevel(), d.getMessage(), null );
-                        }
-                    }
-
-                    if ( validationReport.isModelObjectValid() )
+                    if ( validationReport.isModelValid() )
                     {
                         final ClassLoader objectsLoader = getClassLoader( classLoader );
                         Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
@@ -1375,61 +1211,7 @@ public class DefaultObjectManager implements ObjectManager
                         cachedModules = null;
                     }
                 }
-                catch ( final ClassNotFoundException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final InstantiationException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final IllegalAccessException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final TransformerException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final IOException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final SAXException e )
-                {
-                    if ( this.isLoggable( Level.SEVERE ) )
-                    {
-                        this.log( Level.SEVERE, e.getMessage(), e );
-                    }
-
-                    cachedModules = null;
-                }
-                catch ( final JAXBException e )
+                catch ( final ModelException e )
                 {
                     if ( this.isLoggable( Level.SEVERE ) )
                     {
