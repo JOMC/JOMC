@@ -55,7 +55,7 @@ import org.jomc.ri.DefaultScope;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-13-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-14-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class TestScope
@@ -72,7 +72,7 @@ public class TestScope
 
     /** Creates a new {@code TestScope} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-13-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-14-SNAPSHOT/jomc-tools" )
     public TestScope()
     {
         // SECTION-START[Default Constructor]
