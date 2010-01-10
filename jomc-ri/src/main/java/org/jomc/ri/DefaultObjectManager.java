@@ -929,6 +929,13 @@ public class DefaultObjectManager implements ObjectManager
     /** {@code ClassLoader} instance representing the bootstrap class loader. */
     private static final ClassLoader BOOTSTRAP_CLASSLOADER = new ClassLoader( null )
     {
+
+        @Override
+        public String toString()
+        {
+            return DefaultObjectManager.class.getName() + ".BootstrapClassLoader@" + System.identityHashCode( this );
+        }
+
     };
 
     /** Listeners of the instance. */
