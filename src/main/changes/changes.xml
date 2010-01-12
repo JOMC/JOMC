@@ -371,5 +371,11 @@
       <code>-Djomc.javaClasses.enabled=false</code> command line argument.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-13" date="2010-01-10">
+      <action dev="schulte2005" type="update"><![CDATA[
+      <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">jomc-model updates.</a>]]>
+      </action>
+    </release>
   </body>
 </document>
