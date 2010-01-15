@@ -372,9 +372,15 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-13" date="2010-01-10">
+    <release version="1.0-alpha-14" date="2010-01-10">
       <action dev="schulte2005" type="update"><![CDATA[
-      <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">jomc-model updates.</a>]]>
+      Class updates<ul>
+      <li><a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">jomc-model</a></li>
+      </ul>]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated method <code>createSchema</code> of class <code>org.jomc.model.DefaultModelContext</code> to throw
+      an <code>org.jomc.model.ModelException</code> when no schemas are found.]]>
       </action>
     </release>
   </body>
