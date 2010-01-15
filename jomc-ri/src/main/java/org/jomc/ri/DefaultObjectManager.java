@@ -1189,7 +1189,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     cachedModules = modelContext.processModules( cachedModules );
 
-                    final ModelValidationReport validationReport = modelContext.validateModules( cachedModules );
+                    final ModelValidationReport validationReport = modelContext.validateModel( cachedModules );
 
                     for ( ModelValidationReport.Detail d : validationReport.getDetails() )
                     {
