@@ -845,7 +845,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     public String getMessage( final Object object, final String messageName, final Locale locale,
-                              final Object arguments )
+                              final Object... arguments )
     {
         if ( object == null )
         {
@@ -895,10 +895,9 @@ public class DefaultObjectManager implements ObjectManager
                     return null;
                 }
 
-                final MessageFormat fmt = new MessageFormat( message.getTemplate().getText(
-                    locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), locale );
+                return MessageFormat.format( message.getTemplate().getText(
+                    locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), arguments );
 
-                return fmt.format( arguments );
             }
         }
         catch ( final Exception e )

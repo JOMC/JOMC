@@ -493,7 +493,7 @@ public class TestImplementation
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-14-SNAPSHOT/jomc-tools" )
     private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
-        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "testMessage", locale, new Object[] { testArgument, null } );
+        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "testMessage", locale, testArgument );
         assert _m != null : "'testMessage' message not found.";
         return _m;
     }

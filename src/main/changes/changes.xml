@@ -380,6 +380,11 @@
       See the <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
+      Updated method <code>getMessage</code> of interface <code>org.jomc.ObjectManager</code> and the corresponding
+      <code>implementation-messages.vm</code> template to use a var-args parameter for the format arguments.
+      See the <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-api/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
       Updated class <code>org.jomc.model.DefaultModelValidator</code> to validate the Java value of properties.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[

@@ -157,7 +157,7 @@ public interface ObjectManager
      * @param object The object to return a message instance of.
      * @param messageName The name of the message of {@code object} to return an instance of.
      * @param locale The locale of the message instance to return.
-     * @param arguments Arguments to format the message instance with or {@code null}.
+     * @param arguments Arguments to format the message instance with.
      *
      * @return An instance of the message named {@code messageName} of {@code object} formatted with {@code arguments}
      * for {@code locale} or {@code null} if no such instance is available.
@@ -165,7 +165,7 @@ public interface ObjectManager
      * @throws NullPointerException if {@code object}, {@code messageName} or {@code locale} is {@code null}.
      * @throws ObjectManagementException if getting the message instance fails.
      */
-    String getMessage( Object object, String messageName, Locale locale, Object arguments )
+    String getMessage( Object object, String messageName, Locale locale, Object... arguments )
         throws NullPointerException, ObjectManagementException;
 
     // SECTION-END

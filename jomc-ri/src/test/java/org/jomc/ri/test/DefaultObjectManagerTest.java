@@ -162,7 +162,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getMessage( null, null, null, null );
+            this.getObjectManager().getMessage( null, null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -172,7 +172,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getMessage( this, null, null, null );
+            this.getObjectManager().getMessage( this, null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -182,7 +182,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getMessage( this, "", null, null );
+            this.getObjectManager().getMessage( this, "", null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( NullPointerException e )
@@ -322,7 +322,7 @@ public class DefaultObjectManagerTest
         Assert.assertNull( this.getObjectManager().getObject( TestSpecification.class, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getDependency( this, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getProperty( this, "DOES NOT EXIST" ) );
-        Assert.assertNull( this.getObjectManager().getMessage( this, "DOES NOT EXIST", Locale.getDefault(), null ) );
+        Assert.assertNull( this.getObjectManager().getMessage( this, "DOES NOT EXIST", Locale.getDefault() ) );
         Assert.assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class,
                                                               "IllegalLocationImplementation" ) );
 

@@ -85,7 +85,7 @@ public class ObjectManagerDummy
     }
 
     public String getMessage( final Object object, final String messageName, final Locale locale,
-                              final Object arguments )
+                              final Object... arguments )
     {
         throw new UnsupportedOperationException();
     }
