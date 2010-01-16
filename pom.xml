@@ -158,6 +158,7 @@
                 <bindingDirectory>src/main/schemas</bindingDirectory>
                 <schemaDirectory>src/main/schemas</schemaDirectory>
                 <extension>true</extension>
+                <outputDirectory>${xjcOutputDirectory}</outputDirectory>
               </configuration>
             </execution>
             <execution>
@@ -170,6 +171,7 @@
                 <bindingDirectory>src/test/schemas</bindingDirectory>
                 <schemaDirectory>src/test/schemas</schemaDirectory>
                 <extension>true</extension>
+                <outputDirectory>${xjcTestOutputDirectory}</outputDirectory>
               </configuration>
             </execution>
           </executions>
@@ -757,7 +759,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
-        <version>1.0-alpha-2</version>
+        <version>${emma-maven-plugin.version}</version>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -1009,5 +1011,8 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <jomc-build.version>1.3</jomc-build.version>
     <maven-shade-plugin.version>1.3</maven-shade-plugin.version>
+    <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
+    <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
+    <xjcTestOutputDirectory>${project.build.directory}/generated-test-sources/jaxb</xjcTestOutputDirectory>
   </properties>
 </project>

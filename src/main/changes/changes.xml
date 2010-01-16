@@ -372,15 +372,26 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-14" date="2010-01-10">
+    <release version="1.0-alpha-14" date="2010-01-16">
       <action dev="schulte2005" type="update"><![CDATA[
-      Class updates<ul>
-      <li><a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">jomc-model</a></li>
-      </ul>]]>
+      Updated method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code> to support retrieving
+      values from value classes and based validation methods of class <code>org.jomc.model.ModelContext</code>
+      on SAX instead of JAXB.
+      See the <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated class <code>org.jomc.model.DefaultModelValidator</code> to validate the Java value of properties.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Updated method <code>createSchema</code> of class <code>org.jomc.model.DefaultModelContext</code> to throw
+      Corrected method <code>createSchema</code> of class <code>org.jomc.model.DefaultModelContext</code> to throw
       an <code>org.jomc.model.ModelException</code> when no schemas are found.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Corrected method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code> to throw an
+      <code>org.jomc.model.ModelException</code> when missing a value for Java primitive types.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Added missing validation of specification properties to class <code>org.jomc.model.DefaultModelValidator</code>.]]>
       </action>
     </release>
   </body>

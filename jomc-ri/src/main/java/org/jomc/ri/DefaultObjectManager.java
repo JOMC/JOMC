@@ -828,7 +828,7 @@ public class DefaultObjectManager implements ObjectManager
                         return null;
                     }
 
-                    value = property.getJavaValue( classLoader );
+                    value = property.getJavaValue();
                     if ( value != null )
                     {
                         instance.getPropertyObjects().put( propertyName, value );
@@ -2450,25 +2450,16 @@ public class DefaultObjectManager implements ObjectManager
                         for ( Property p : i.getProperties().getProperty() )
                         {
                             modulesInfo.append( "\t\t\tP:" ).append( p.getName() );
-
-                            if ( p.getType() != null )
-                            {
-                                modulesInfo.append( "|Type:" ).append( p.getType() );
-                            }
-
-                            modulesInfo.append( "|Value:" );
+                            modulesInfo.append( "|Type:" ).append( p.getType() );
+                            modulesInfo.append( "|Value:" ).append( p.getValue() );
 
                             try
                             {
-                                modulesInfo.append( p.getJavaValue( getClassLoader( this.getClass() ) ) );
+                                modulesInfo.append( "|JavaValue:" ).append( p.getJavaValue() );
                             }
-                            catch ( final ClassNotFoundException e )
+                            catch ( final ModelException e )
                             {
-                                modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
-                            }
-                            catch ( final InstantiationException e )
-                            {
-                                modulesInfo.append( Level.WARNING.getLocalizedName() ).append( " " ).append( e );
+                                modulesInfo.append( "|JavaValue:" ).append( e );
                             }
 
                             modulesInfo.append( lineSeparator );
