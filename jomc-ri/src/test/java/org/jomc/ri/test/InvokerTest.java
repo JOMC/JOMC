@@ -54,7 +54,7 @@ import java.lang.*;
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
 @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-14-SNAPSHOT/jomc-tools" )
+                             comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-15-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class InvokerTest
@@ -74,7 +74,7 @@ public class InvokerTest
 
     /** Creates a new {@code InvokerTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.JavaSources",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-14-SNAPSHOT/jomc-tools" )
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-15-SNAPSHOT/jomc-tools" )
     public InvokerTest()
     {
         // SECTION-START[Default Constructor]
