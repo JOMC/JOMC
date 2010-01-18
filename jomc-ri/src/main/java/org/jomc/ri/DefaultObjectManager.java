@@ -1207,9 +1207,9 @@ public class DefaultObjectManager implements ObjectManager
 
                         this.modules.put( classLoader, new Modules( cachedModules, objectMap ) );
 
-                        if ( this.isLoggable( Level.FINE ) )
+                        if ( this.isLoggable( Level.FINEST ) )
                         {
-                            this.log( Level.FINE, this.getModulesReport( cachedModules, classLoader ), null );
+                            this.logModulesReport( cachedModules, classLoader );
                         }
                     }
                     else
@@ -1518,9 +1518,9 @@ public class DefaultObjectManager implements ObjectManager
                 if ( scope != null )
                 {
                     cachedScopes.put( identifier, scope );
-                    if ( this.isLoggable( Level.FINE ) )
+                    if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.FINE, this.getDefaultScopeInfoMessage( identifier, scopesLoader ), null );
+                        this.log( Level.CONFIG, this.getDefaultScopeInfoMessage( identifier, scopesLoader ), null );
                     }
                 }
             }
@@ -1659,9 +1659,9 @@ public class DefaultObjectManager implements ObjectManager
                     if ( locator != null )
                     {
                         cachedLocators.put( scheme, locator );
-                        if ( this.isLoggable( Level.FINE ) )
+                        if ( this.isLoggable( Level.CONFIG ) )
                         {
-                            this.log( Level.FINE, this.getDefaultLocatorInfoMessage( scheme, locatorsLoader ), null );
+                            this.log( Level.CONFIG, this.getDefaultLocatorInfoMessage( scheme, locatorsLoader ), null );
                         }
                     }
                 }
@@ -1765,9 +1765,9 @@ public class DefaultObjectManager implements ObjectManager
 
                                 }
                             }
-                            else if ( this.isLoggable( Level.FINE ) )
+                            else if ( this.isLoggable( Level.CONFIG ) )
                             {
-                                this.log( Level.FINE, this.getMessage( "ignoredInvoker", new Object[]
+                                this.log( Level.CONFIG, this.getMessage( "ignoredInvoker", new Object[]
                                     {
                                         i.getIdentifier()
                                     } ), null );
@@ -1787,9 +1787,9 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     invoker = new DefaultInvoker();
                     this.invokers.put( invokersLoader, invoker );
-                    if ( this.isLoggable( Level.FINE ) )
+                    if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.FINE, this.getMessage( "defaultInvokerInfo", new Object[]
+                        this.log( Level.CONFIG, this.getMessage( "defaultInvokerInfo", new Object[]
                             {
                                 invokersLoader.toString()
                             } ), null );
@@ -1860,9 +1860,9 @@ public class DefaultObjectManager implements ObjectManager
 
                         }
                     }
-                    else if ( this.isLoggable( Level.FINE ) )
+                    else if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.FINE, this.getMessage( "ignoredInvocation", new Object[]
+                        this.log( Level.CONFIG, this.getMessage( "ignoredInvocation", new Object[]
                             {
                                 i.getIdentifier()
                             } ), null );
@@ -2312,24 +2312,26 @@ public class DefaultObjectManager implements ObjectManager
 
     }
 
-    private String getModulesReport( final Modules mods, final ClassLoader classLoader )
+    private void logModulesReport( final Modules mods, final ClassLoader classLoader )
     {
         final StringBuilder modulesInfo = new StringBuilder();
-        final String lineSeparator = System.getProperty( "line.separator" );
 
-        modulesInfo.append( classLoader );
+        this.log( Level.FINEST, this.getMessage( "modulesReport", null ), null );
+
+        modulesInfo.append( "\tClassLoader:" ).append( classLoader );
 
         if ( mods.getDocumentation() != null )
         {
-            modulesInfo.append( " - " ).append( mods.getDocumentation().getText(
+            modulesInfo.append( "|Documentation:" ).append( mods.getDocumentation().getText(
                 Locale.getDefault().getLanguage() ).getValue() );
 
         }
 
-        modulesInfo.append( lineSeparator );
+        this.log( Level.FINEST, modulesInfo.toString(), null );
 
         for ( Module m : mods.getModule() )
         {
+            modulesInfo.setLength( 0 );
             modulesInfo.append( "\tM:" ).append( m.getName() );
 
             if ( m.getVersion() != null )
@@ -2341,14 +2343,17 @@ public class DefaultObjectManager implements ObjectManager
                 modulesInfo.append( "|Vendor:" ).append( m.getVendor() );
             }
 
-            modulesInfo.append( lineSeparator );
+            this.log( Level.FINEST, modulesInfo.toString(), null );
+            modulesInfo.setLength( 0 );
 
             if ( m.getSpecifications() != null )
             {
                 for ( Specification s : m.getSpecifications().getSpecification() )
                 {
                     modulesInfo.append( "\t\t" );
-                    this.appendSpecificationInfo( s, modulesInfo ).append( lineSeparator );
+                    this.appendSpecificationInfo( s, modulesInfo );
+                    this.log( Level.FINEST, modulesInfo.toString(), null );
+                    modulesInfo.setLength( 0 );
 
                     final Implementations available = mods.getImplementations( s.getIdentifier() );
 
@@ -2358,9 +2363,10 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             modulesInfo.append( "\t\t\t" );
                             this.appendImplementationInfo( i, modulesInfo ).append( "|Module:" ).
-                                append( mods.getModuleOfImplementation( i.getIdentifier() ).getName() ).
-                                append( lineSeparator );
+                                append( mods.getModuleOfImplementation( i.getIdentifier() ).getName() );
 
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
                         }
                     }
                 }
@@ -2371,7 +2377,9 @@ public class DefaultObjectManager implements ObjectManager
                 for ( Implementation i : m.getImplementations().getImplementation() )
                 {
                     modulesInfo.append( "\t\t" );
-                    this.appendImplementationInfo( i, modulesInfo ).append( lineSeparator );
+                    this.appendImplementationInfo( i, modulesInfo );
+                    this.log( Level.FINEST, modulesInfo.toString(), null );
+                    modulesInfo.setLength( 0 );
 
                     if ( i.getImplementations() != null )
                     {
@@ -2380,9 +2388,10 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             this.appendImplementationInfo(
                                 mods.getImplementation( r.getIdentifier() ), modulesInfo ).append( "|Module:" ).
-                                append( mods.getModuleOfImplementation( r.getIdentifier() ).getName() ).
-                                append( lineSeparator );
+                                append( mods.getModuleOfImplementation( r.getIdentifier() ).getName() );
 
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
                         }
                     }
                     if ( i.getSpecifications() != null )
@@ -2397,8 +2406,10 @@ public class DefaultObjectManager implements ObjectManager
                             }
 
                             modulesInfo.append( "|Module:" ).append( mods.getModuleOfSpecification(
-                                s.getIdentifier() ).getName() ).append( lineSeparator );
+                                s.getIdentifier() ).getName() );
 
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
                         }
                     }
 
@@ -2415,7 +2426,10 @@ public class DefaultObjectManager implements ObjectManager
                             }
 
                             modulesInfo.append( "|Module:" ).append( mods.getModuleOfSpecification(
-                                d.getIdentifier() ).getName() ).append( lineSeparator );
+                                d.getIdentifier() ).getName() );
+
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
 
                             final Implementations available = mods.getImplementations( d.getIdentifier() );
 
@@ -2425,9 +2439,10 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     modulesInfo.append( "\t\t\t\t" );
                                     this.appendImplementationInfo( di, modulesInfo ).append( "|Module:" ).
-                                        append( mods.getModuleOfImplementation( di.getIdentifier() ).getName() ).
-                                        append( lineSeparator );
+                                        append( mods.getModuleOfImplementation( di.getIdentifier() ).getName() );
 
+                                    this.log( Level.FINEST, modulesInfo.toString(), null );
+                                    modulesInfo.setLength( 0 );
                                 }
                             }
                         }
@@ -2438,9 +2453,10 @@ public class DefaultObjectManager implements ObjectManager
                         for ( Message msg : i.getMessages().getMessage() )
                         {
                             modulesInfo.append( "\t\t\tM:" ).append( msg.getName() ).append( "|Text:" ).
-                                append( msg.getTemplate().getText( Locale.getDefault().getLanguage() ).getValue() ).
-                                append( lineSeparator );
+                                append( msg.getTemplate().getText( Locale.getDefault().getLanguage() ).getValue() );
 
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
                         }
                     }
 
@@ -2461,14 +2477,13 @@ public class DefaultObjectManager implements ObjectManager
                                 modulesInfo.append( "|JavaValue:" ).append( e );
                             }
 
-                            modulesInfo.append( lineSeparator );
+                            this.log( Level.FINEST, modulesInfo.toString(), null );
+                            modulesInfo.setLength( 0 );
                         }
                     }
                 }
             }
         }
-
-        return modulesInfo.toString();
     }
 
     private StringBuilder appendSpecificationInfo( final Specification s, final StringBuilder b )

@@ -399,5 +399,32 @@
       Added missing validation of specification properties to class <code>org.jomc.model.DefaultModelValidator</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-15" date="2010-01-18">
+      <action dev="schulte2005" type="update"><![CDATA[
+      Added <code>jaxp-api-1.4.2.jar</code> and <code>jaxp-ri-1.4.2.jar</code> to the CLI distribution and updated
+      the README file.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[
+      Updated methods<ul>
+      <li><code>setCharacterStream</code></li>
+      <li><code>setByteStream</code></li>
+      <li><code>setStringData</code></li>
+      <li><code>setSystemId</code></li>
+      <li><code>setPublicId</code></li>
+      <li><code>setBaseURI</code></li>
+      <li><code>setEncoding</code></li>
+      <li><code>setCertifiedText</code></li>
+      </ul> of the <code>LSInput</code> implementation returned by method <code>resolveResource</code> of the
+      <code>LSResourceResolver</code> implementation returned by method <code>createResourceResolver</code> of class
+      <code>org.jomc.model.DefaultModelContext</code> to log a warning instead of throwing an
+      <code>UnsupportedOperationException</code>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Updated method <code>createSchema</code> of class <code>org.jomc.model.DefaultModelContext</code> to make use of
+      the context's <code>LSResourceResolver</code> when creating a schema instance. In previous versions, schema
+      resources were resolved remotely when imported or included in another schema.]]>
+      </action>
+    </release>
   </body>
 </document>
