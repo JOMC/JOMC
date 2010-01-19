@@ -429,6 +429,11 @@
       the context's <code>LSResourceResolver</code> when creating a schema instance. In previous versions, schema
       resources were resolved remotely when imported or included in another schema.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[
+      Added a <code>ClassLoader</code> argument to method <code>getJavaValue</code> of class
+      <code>org.jomc.model.Property</code>.
+      See the <a href="http://jomc.org/jomc/1.0-alpha-15/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      </action>
     </release>
   </body>
 </document>

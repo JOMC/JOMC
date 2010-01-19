@@ -828,7 +828,7 @@ public class DefaultObjectManager implements ObjectManager
                         return null;
                     }
 
-                    value = property.getJavaValue();
+                    value = property.getJavaValue( classLoader );
                     if ( value != null )
                     {
                         instance.getPropertyObjects().put( propertyName, value );
@@ -2470,7 +2470,7 @@ public class DefaultObjectManager implements ObjectManager
 
                             try
                             {
-                                modulesInfo.append( "|JavaValue:" ).append( p.getJavaValue() );
+                                modulesInfo.append( "|JavaValue:" ).append( p.getJavaValue( classLoader ) );
                             }
                             catch ( final ModelException e )
                             {
