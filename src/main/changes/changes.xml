@@ -400,7 +400,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-15" date="2010-01-18">
+    <release version="1.0-alpha-15" date="2010-01-19">
       <action dev="schulte2005" type="update"><![CDATA[
       Added <code>jaxp-api-1.4.2.jar</code> and <code>jaxp-ri-1.4.2.jar</code> to the CLI distribution and updated
       the README file.]]>
