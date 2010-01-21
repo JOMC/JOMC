@@ -1205,7 +1205,8 @@ public class DefaultObjectManager implements ObjectManager
                             this.objects.put( objectsLoader, objectMap );
                         }
 
-                        this.modules.put( classLoader, new Modules( cachedModules, objectMap ) );
+                        cachedModules = new Modules( cachedModules, objectMap );
+                        this.modules.put( classLoader, cachedModules );
 
                         if ( this.isLoggable( Level.FINEST ) )
                         {
