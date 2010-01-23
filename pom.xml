@@ -397,6 +397,12 @@
                 <goal>validate-test-java-classes</goal>
               </goals>
             </execution>
+            <execution>
+              <id>test-model</id>
+              <goals>
+                <goal>validate-test-modules</goal>
+              </goals>
+            </execution>
           </executions>
         </plugin>
         <plugin>
