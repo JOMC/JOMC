@@ -435,5 +435,16 @@
       See the <a href="http://jomc.org/jomc/1.0-alpha-15/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-16" date="2010-01-19">
+      <action dev="schulte2005" type="update"><![CDATA[Added goal <code>validate-test-modules</code> to the
+      <code>maven-jomc-plugin</code> and renamed the <code>validate-runtime-modules</code> goal to
+      <code>validate-main-modules</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Renamed parameters <code>jomc.javaSources.enabled</code> and
+      <code>jomc.javaClasses.enabled</code> of the <code>maven-jomc-plugin</code> to <code>jomc.sourceProcessing</code>
+      and <code>jomc.classProcessing</code> and added parameter <code>jomc.modelProcessing</code>.]]>
+      </action>
+    </release>
   </body>
 </document>
