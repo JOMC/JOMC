@@ -256,7 +256,7 @@
               <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
               <org.jomc.tools.JomcTool.defaultLogLevel>ALL</org.jomc.tools.JomcTool.defaultLogLevel>
               <org.jomc.cli.Jomc.defaultLogLevel>ALL</org.jomc.cli.Jomc.defaultLogLevel>
-              <org.jomc.cli.command.AbstractJomcCommand.defaultLogLevel>ALL</org.jomc.cli.command.AbstractJomcCommand.defaultLogLevel>
+              <org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>
             </systemPropertyVariables>
           </configuration>
         </plugin>
