@@ -477,6 +477,10 @@
       <action dev="schulte2005" type="fix"><![CDATA[Updated class <code>org.jomc.model.bootstrap.BootstrapContext</code>
       to validate read bootstrap documents against the bootstrap schema.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code>
+      to translate any line separators in message templates to the system's line separator based on system property
+      <code>line.separator</code>.]]>
+      </action>
     </release>
   </body>
 </document>

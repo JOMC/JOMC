@@ -36,7 +36,9 @@
 // SECTION-END
 package org.jomc.ri;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.StringReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
@@ -895,9 +897,30 @@ public class DefaultObjectManager implements ObjectManager
                     return null;
                 }
 
-                return MessageFormat.format( message.getTemplate().getText(
-                    locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), arguments );
+                final String text =
+                    message.getTemplate().getText( locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue();
 
+                final StringBuilder builder = new StringBuilder( text.length() );
+                final BufferedReader reader = new BufferedReader( new StringReader( text ) );
+
+                String line;
+                boolean firstLine = true;
+
+                while ( ( line = reader.readLine() ) != null )
+                {
+                    if ( firstLine )
+                    {
+                        firstLine = false;
+                    }
+                    else
+                    {
+                        builder.append( LINE_SEPARATOR );
+                    }
+
+                    builder.append( line );
+                }
+
+                return MessageFormat.format( builder.toString(), arguments );
             }
         }
         catch ( final Exception e )
@@ -910,6 +933,10 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-START[DefaultObjectManager]
     /** Constant for the {@code Singleton} scope identifier. */
     protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
+
+    /** System's line separator. */
+    private static final String LINE_SEPARATOR =
+        System.getProperty( "line.separator" ) == null ? "\n" : System.getProperty( "line.separator" );
 
     /**
      * Log level events are logged at by default.
