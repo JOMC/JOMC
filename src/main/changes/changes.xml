@@ -436,7 +436,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-16" date="2010-01-19">
+    <release version="1.0-alpha-16" date="2010-02-02">
       <action dev="schulte2005" type="update"><![CDATA[Added goal <code>validate-test-modules</code> to the
       <code>maven-jomc-plugin</code> and renamed the <code>validate-runtime-modules</code> goal to
       <code>validate-main-modules</code>.]]>
