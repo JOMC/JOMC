@@ -1205,7 +1205,7 @@ public class DefaultObjectManager implements ObjectManager
                     } );
 
                     cachedModules = modelContext.findModules();
-                    Module classpathModule =
+                    final Module classpathModule =
                         cachedModules.getClasspathModule( Modules.getDefaultClasspathModuleName(), classLoader );
 
                     if ( classpathModule != null )
