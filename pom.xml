@@ -251,6 +251,7 @@
           <version>${surefire.version}</version>
           <configuration>
             <forkMode>once</forkMode>
+            <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <systemPropertyVariables>
               <org.jomc.model.ModelContext.defaultLogLevel>ALL</org.jomc.model.ModelContext.defaultLogLevel>
               <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
