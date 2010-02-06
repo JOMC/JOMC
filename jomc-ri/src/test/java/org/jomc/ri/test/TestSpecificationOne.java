@@ -44,7 +44,7 @@ import java.lang.*;
  * <p>This specification declares a multiplicity of {@code One}.
  * An application assembler is required to provide no more than one implementation of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * TestSpecificationOne object = (TestSpecificationOne) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( TestSpecificationOne.class );
+ * TestSpecificationOne object = (TestSpecificationOne) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class );
  * </pre>
  * </p>
  *

@@ -45,8 +45,8 @@ import java.lang.*;
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( TestSpecification.class );
- * TestSpecification object = ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( TestSpecification.class, "<i>implementation name</i>" );
+ * TestSpecification[] objects = (TestSpecification[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification.class );
+ * TestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecification.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *
