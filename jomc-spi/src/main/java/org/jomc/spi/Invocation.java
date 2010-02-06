@@ -46,7 +46,7 @@ import java.util.Map;
  * <p>This specification declares a multiplicity of {@code One}.
  * An application assembler is required to provide no more than one implementation of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Invocation object = (Invocation) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Invocation.class );
+ * Invocation object = (Invocation) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invocation.class );
  * </pre>
  * </p>
  *

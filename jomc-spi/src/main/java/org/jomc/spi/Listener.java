@@ -46,8 +46,8 @@ import java.util.logging.Level;
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * Listener[] objects = (Listener[]) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Listener.class );
- * Listener object = ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Listener.class, "<i>implementation name</i>" );
+ * Listener[] objects = (Listener[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Listener.class );
+ * Listener object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Listener.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *

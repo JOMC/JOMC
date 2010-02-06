@@ -46,8 +46,8 @@ import java.util.Map;
  * An application assembler may provide multiple implementations of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
  * selecting a single implementation.<pre>
- * Scope[] objects = (Scope[]) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Scope.class );
- * Scope object = ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
+ * Scope[] objects = (Scope[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class );
+ * Scope object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
  * </pre>
  * </p>
  *

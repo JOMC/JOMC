@@ -43,7 +43,7 @@ package org.jomc.spi;
  * <p>This specification declares a multiplicity of {@code One}.
  * An application assembler is required to provide no more than one implementation of this specification (including none).
  * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Invoker object = (Invoker) ObjectManagerFactory.getObjectManager( getClassLoader() ).getObject( Invoker.class );
+ * Invoker object = (Invoker) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class );
  * </pre>
  * </p>
  *
