@@ -66,7 +66,7 @@ import java.util.logging.Level;
 // SECTION-END
 public interface Listener
 {
-    // SECTION-START[ObjectManagementListener]
+    // SECTION-START[Listener]
 
     /**
      * Get called on logging.

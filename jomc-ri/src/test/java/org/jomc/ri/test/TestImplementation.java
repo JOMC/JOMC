@@ -100,9 +100,13 @@ public class TestImplementation
     org.jomc.ri.test.TestSpecificationMany,
     org.jomc.ri.test.TestScopeSpecification
 {
-    // SECTION-START[TestMultitonSpecification]
+    // SECTION-START[TestSpecification]
     // SECTION-END
-    // SECTION-START[TestSingletonSpecification]
+    // SECTION-START[TestScopeSpecification]
+    // SECTION-END
+    // SECTION-START[TestSpecificationMany]
+    // SECTION-END
+    // SECTION-START[TestSpecificationOne]
     // SECTION-END
     // SECTION-START[TestImplementation]
 

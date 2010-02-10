@@ -89,4 +89,6 @@ public class InvokerTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+    // SECTION-START[InvokerTest]
+    // SECTION-END
 }

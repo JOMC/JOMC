@@ -64,7 +64,7 @@ import java.util.Locale;
 // SECTION-END
 public interface ObjectManager
 {
-    // SECTION-START[Object Manager]
+    // SECTION-START[ObjectManager]
 
     /**
      * Gets an instance of an implementation of a specification.

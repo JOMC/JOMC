@@ -68,6 +68,8 @@ public class TestLocationImplementation
     implements
     org.jomc.ri.test.TestSpecification
 {
+    // SECTION-START[TestSpecification]
+    // SECTION-END
     // SECTION-START[TestLocationImplementation]
 
     public void testUnsupportedLocation() throws Exception

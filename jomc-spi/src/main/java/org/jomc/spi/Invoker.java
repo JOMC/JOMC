@@ -62,7 +62,7 @@ package org.jomc.spi;
 // SECTION-END
 public interface Invoker
 {
-    // SECTION-START[InvocationHandler]
+    // SECTION-START[Invoker]
 
     /**
      * Performs a method invocation on an object.

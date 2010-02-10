@@ -65,7 +65,7 @@ import java.lang.*;
 // SECTION-END
 public interface InvokerTestSpecification
 {
-    // SECTION-START[InvocationHandlerTestSpecification]
+    // SECTION-START[InvokerTestSpecification]
 
     String invoke( String argument ) throws Exception;
 

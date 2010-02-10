@@ -161,19 +161,6 @@
                 <outputDirectory>${xjcOutputDirectory}</outputDirectory>
               </configuration>
             </execution>
-            <execution>
-              <id>testXjc</id>
-              <goals>
-                <goal>testXjc</goal>
-              </goals>
-              <configuration>
-                <arguments>-copy-constructor -mark-generated -Xinject-code</arguments>
-                <bindingDirectory>src/test/schemas</bindingDirectory>
-                <schemaDirectory>src/test/schemas</schemaDirectory>
-                <extension>true</extension>
-                <outputDirectory>${xjcTestOutputDirectory}</outputDirectory>
-              </configuration>
-            </execution>
           </executions>
         </plugin>
         <plugin>
@@ -325,9 +312,8 @@
               </tagletArtifact>
             </tagletArtifacts>
             <additionalparam>
-              -inferrel -inferdep -hide java.* -hide org.jomc.tools.*
-              -hide org.jomc.ri.* -collpackages java.util.* -qualify
-              -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
+              -inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9
+              -nodefontpackagesize 7
             </additionalparam>
             <archive>
               <index>true</index>
@@ -686,9 +672,8 @@
                 </tagletArtifact>
               </tagletArtifacts>
               <additionalparam>
-                -inferrel -inferdep -hide java.* -hide org.jomc.tools.*
-                -hide org.jomc.ri.* -collpackages java.util.* -qualify
-                -postfixpackage -nodefontsize 9 -nodefontpackagesize 7
+                -inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 9
+                -nodefontpackagesize 7
               </additionalparam>
             </configuration>
           </reportSet>

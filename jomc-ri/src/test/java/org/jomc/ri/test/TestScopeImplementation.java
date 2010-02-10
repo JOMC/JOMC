@@ -68,6 +68,8 @@ public class TestScopeImplementation
     implements
     org.jomc.ri.test.TestSpecification
 {
+    // SECTION-START[TestSpecification]
+    // SECTION-END
     // SECTION-START[TestScopeImplementation]
 
     public void testUnsupportedScope() throws Exception

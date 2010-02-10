@@ -64,7 +64,9 @@ import org.jomc.spi.Invocation;
 // SECTION-END
 public class TestInvoker extends DefaultInvoker
 {
-    // SECTION-START[DefaultInvoker]
+    // SECTION-START[Invoker]
+    // SECTION-END
+    // SECTION-START[TestInvoker]
 
     @Override
     public Invocation postInvoke( final Invocation invocation )

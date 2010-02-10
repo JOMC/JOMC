@@ -59,7 +59,7 @@ import org.jomc.spi.Invoker;
 // SECTION-END
 public class DefaultInvoker implements Invoker
 {
-    // SECTION-START[Invoker]
+    // SECTION-START[DefaultInvoker]
 
     /**
      * Performs a method invocation on an object.
@@ -187,8 +187,6 @@ public class DefaultInvoker implements Invoker
         }
     }
 
-    // SECTION-END
-    // SECTION-START[DefaultInvoker]
     /**
      * Called before an invocation is performed.
      * <p>Overriding classes may use this method to perform any kind of operation prior to an invocation and to create

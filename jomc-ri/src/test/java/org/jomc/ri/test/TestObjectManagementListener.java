@@ -121,6 +121,8 @@ public class TestObjectManagementListener
         this.outputStream = value;
     }
 
+    // SECTION-END
+    // SECTION-START[Listener]
     public void onLog( final Level level, final String message, final Throwable throwable )
     {
         if ( message != null )
