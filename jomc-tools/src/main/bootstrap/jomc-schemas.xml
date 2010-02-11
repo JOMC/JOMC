@@ -32,13 +32,11 @@
   $Id$
 
 -->
-<source-files xmlns="http://jomc.org/tools/model"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://jomc.org/tools/model http://jomc.org/tools/model/jomc-tools-1.0.xsd">
+<schemas xmlns="http://jomc.org/model/bootstrap"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://jomc.org/model/bootstrap http://jomc.org/model/bootstrap/jomc-bootstrap-1.0.xsd">
 
-  <source-file identifier="org.jomc.cli.test.JomcTest">
-    <source-sections>
-      <source-section name="Test Section" editable="true" optional="true"/>
-    </source-sections>
-  </source-file>
-</source-files>
+  <schema public-id="http://jomc.org/tools/model" system-id="http://jomc.org/tools/model/jomc-tools-1.0.xsd"
+          context-id="org.jomc.tools.model" classpath-id="org/jomc/tools/model/jomc-tools-1.0.xsd"/>
+
+</schemas>
