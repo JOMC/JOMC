@@ -495,6 +495,10 @@
       <action dev="schulte2005" type="update"><![CDATA[Added options <code>whitespaces-per-indent</code> and
       <code>indentation-character</code> to the command line application.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[Added methods for accessing elements and objects from
+      <code>any</code> properties of model objects.
+      See the <a href="http://jomc.org/jomc/1.0-alpha-17/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      </action>
     </release>
   </body>
 </document>
