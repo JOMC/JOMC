@@ -2,7 +2,7 @@
 <!--
 
   Copyright (c) 2009 The JOMC Project
-  Copyright (c) 2005 Christian Schulte <cs@jomc.org>
+  Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without
@@ -39,7 +39,7 @@
         modelVersion="1.0">
 
   <documentation defaultLanguage="en">
-    <text language="en"><![CDATA[${project.description}]]></text>
+    <text language="en">${project.description}</text>
   </documentation>
 
   <specifications>
@@ -47,7 +47,9 @@
     <specification identifier="org.jomc.ri.test.TestSpecification" class="org.jomc.ri.test.TestSpecification"
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
@@ -55,7 +57,9 @@
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    multiplicity="One">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
@@ -63,35 +67,45 @@
                    class="org.jomc.ri.test.TestSpecificationOneMore" classDeclaration="true"
                    vendor="${project.organization.name}" version="${project.version}" multiplicity="One">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecificationMany" class="org.jomc.ri.test.TestSpecificationMany"
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestMultitonSpecification" class="org.jomc.ri.test.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification" class="org.jomc.ri.test.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany" class="org.jomc.ri.test.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
@@ -99,7 +113,9 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
@@ -107,14 +123,18 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecification" class="org.jomc.ri.test.TestScopeSpecification"
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}" scope="Test">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
     <!-- *********************************************************************************************************** -->
@@ -122,7 +142,9 @@
                    class="org.jomc.ri.test.InvokerTestSpecification" classDeclaration="true"
                    vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
     </specification>
   </specifications>
@@ -132,7 +154,9 @@
                     classDeclaration="true" name="TestImplementation" version="${project.version}"
                     vendor="${project.organization.name}">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestMultitonSpecification" version="${project.version}"/>
@@ -185,7 +209,9 @@
         <text language="en">{@code ObjectManagementLister} logging to the console.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Listener" version="1.0"/>
@@ -199,7 +225,9 @@
         <text language="en">Test cases for the {@code DefaultObjectManager} class.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <!-- This implementation intentionally does not declare any dependencies, properties and messages. -->
     </implementation>
@@ -211,7 +239,9 @@
         <text language="en">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne1" version="${project.version}"/>
@@ -233,7 +263,9 @@
         <text language="en">Test implementation with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecificationOne2" version="${project.version}"/>
@@ -254,7 +286,9 @@
         <text language="en">Test implementation without class and with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestSpecificationOneMore" version="${project.version}"/>
@@ -268,7 +302,9 @@
         <text language="en">Test {@code Scope} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Scope" version="1.0"/>
@@ -282,7 +318,9 @@
         <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Locator" version="1.0"/>
@@ -296,7 +334,9 @@
         <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.TestScopeSpecification" version="${project.version}"/>
@@ -309,7 +349,9 @@
         <text language="en">Test {@code Invoker} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.spi.Invoker"/>
@@ -325,7 +367,9 @@
         <text language="en">{@code Invoker} test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="cs@jomc.org" createDate="2005-07-25T19:56:45Z"/>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
       </authors>
       <specifications>
         <reference identifier="org.jomc.ri.test.InvokerTestSpecification"/>
