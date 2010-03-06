@@ -484,13 +484,30 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-17" date="2010-01-19">
+      <action dev="schulte2005" type="update"><![CDATA[Renamed classes <code>org.jomc.tools.JavaBundles</code> to
+      <code>org.jomc.tools.ResourceFileProcessor</code>, <code>org.jomc.tools.JavaClasses</code> to
+      <code>org.jomc.tools.ClassFileProcessor</code> and <code>org.jomc.tools.JavaSources</code> to
+      <code>org.jomc.tools.SourceFileProcessor</code>.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Added <code>jomc-tools-1.0.xsd</code> schema to the
-      <code>jomc-tools</code> artifact and updated class <code>org.jomc.tools.JavaSources</code> to support
+      <code>jomc-tools</code> artifact and updated class <code>org.jomc.tools.SourceFileProcessor</code> to support
       configuration of source file sections.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[Renamed the <code>main-java-sources</code> goal to
+      <code>manage-main-sources</code>, the <code>test-java-sources</code> goal to <code>manage-test-sources</code>,
+      the <code>main-java-classes</code> goal to <code>commit-main-classes</code>, the
+      <code>validate-main-java-classes</code> goal to <code>validate-main-classes</code>, the
+      <code>test-java-classes</code> goal to <code>commit-test-classes</code> and the
+      <code>validate-test-java-classes</code> goal to <code>validate-test-classes</code>.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Added parameters <code>whitespacesPerIndent</code> and
-      <code>indentationCharacter</code> to the <code>main-java-sources</code> and <code>test-java-sources</code> goals
-      of the <code>maven-jomc-plugin</code>.]]>
+      <code>indentationCharacter</code> to the <code>manage-main-sources</code> and <code>manage-test-sources</code>
+      goals of the <code>maven-jomc-plugin</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Renamed the <code>generate-java-bundles</code> command to
+      <code>generate-resources</code>, the <code>commit-java-classes</code> command to <code>commit-classes</code>,
+      the <code>validate-java-classes</code> command to <code>validate-classes</code>, and the
+      <code>manage-java-sources</code> command to <code>manage-sources</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[Added options <code>whitespaces-per-indent</code> and
       <code>indentation-character</code> to the command line application.]]>
@@ -499,6 +516,7 @@
       <code>any</code> properties of model objects.
       See the <a href="http://jomc.org/jomc/1.0-alpha-17/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
+      <action dev="schulte2005" type="update">Added profile 'jomc-java-bundles'.</action>
     </release>
   </body>
 </document>

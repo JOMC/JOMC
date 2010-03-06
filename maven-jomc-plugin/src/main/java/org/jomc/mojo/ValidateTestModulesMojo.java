@@ -52,7 +52,7 @@ public class ValidateTestModulesMojo extends AbstractJomcMojo
 {
 
     /** Constant for the name of the tool backing the mojo. */
-    private static final String TOOLNAME = "validate-test-modules";
+    private static final String TOOLNAME = "ModelValidator";
 
     /** Creates a new {@code ValidateTestModulesMojo} instance. */
     public ValidateTestModulesMojo()
@@ -63,7 +63,7 @@ public class ValidateTestModulesMojo extends AbstractJomcMojo
     @Override
     protected void executeTool() throws Exception
     {
-        final ModelContext context = this.getModelContext( this.getTestClassLoader() );
+        final ModelContext context = this.createModelContext( this.getTestClassLoader() );
         final ModelValidationReport validationReport = context.validateModel( this.getToolModules( context ) );
 
         this.log( context, validationReport.isModelValid() ? Level.INFO : Level.SEVERE, validationReport );
