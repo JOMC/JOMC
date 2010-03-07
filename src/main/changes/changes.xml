@@ -44,10 +44,10 @@
     <release version="1.0-alpha-1" date="2009-09-19"/>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-2" date="2009-09-25">
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added support for inheriting from multiple implementations to the model and made model validation more strict.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added goal <code>validate-runtime-modules</code> to <code>maven-jomc-plugin</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
@@ -176,20 +176,20 @@
       <action dev="schulte2005" type="update"><![CDATA[
       Updated command line tool to display illegal XML elements when using the <code>--debug</code> option.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added <code>org.jomc.spi.Invoker</code> interface to the <code>jomc-spi</code> artifact to allow customization of
       object invocations. Added corresponding default implementation classes <code>org.jomc.ri.DefaultInvocation</code>
       and <code>org.jomc.ri.DefaultInvoker</code> to <code>jomc-ri</code> artifact and updated class
       <code>org.jomc.ri.DefaultObjectManager</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added parameter <code>modelObjectStylesheet</code> to goals <code>main-java-classes</code> and
       <code>test-java-classes</code> of the <code>maven-jomc-plugin</code>.]]>
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-8" date="2009-11-18">
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added interface <code>org.jomc.spi.Invocation</code> to the <code>jomc-spi</code> artifact and updated interface
       <code>org.jomc.spi.Invoker</code> and classes <code>org.jomc.ri.DefaultInvoker</code>,
       <code>org.jomc.ri.DefaultInvocation</code> and <code>org.jomc.ri.DefaultObjectManager</code> to no longer force
@@ -222,18 +222,18 @@
       Corrected the <code>validateClasses</code> methods of class <code>org.jomc.tools.JavaClasses</code> taking a class
       loader to correctly build resource names from class names.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added interface <code>org.jomc.model.ModelObjectValidator</code> and moved validation methods from interface
       <code>org.jomc.model.ModelManager</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Updated to support static factory methods in abstract classes.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added parameters <code>moduleIncludes</code> and <code>moduleExcludes</code> to class
       <code>org.jomc.mojo.JomcResourceTransformer</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added options <code>module-includes</code> and <code>module-excludes</code> to the <code>merge-modules</code>
       command of the command line interface.]]>
       </action>
@@ -327,7 +327,7 @@
       </ul> of class <code>org.jomc.tools.JomcTool</code> to return <code>null</code> rather than throwing a
       <code>NullPointerException</code> when passed a model object with a <code>null</code> class value.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added attribute <code>classDeclaration</code> to <code>Specification</code> and <code>Implementation</code>
       complex types of the <code>http://jomc.org/model</code> namespace.]]>
       </action>
@@ -389,10 +389,10 @@
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
       Corrected method <code>createSchema</code> of class <code>org.jomc.model.DefaultModelContext</code> to throw
-      an <code>org.jomc.model.ModelException</code> when no schemas are found.]]>
+      a <code>org.jomc.model.ModelException</code> when no schemas are found.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
-      Corrected method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code> to throw an
+      Corrected method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code> to throw a
       <code>org.jomc.model.ModelException</code> when missing a value for Java primitive types.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[
@@ -401,7 +401,7 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-15" date="2010-01-19">
-      <action dev="schulte2005" type="update"><![CDATA[
+      <action dev="schulte2005" type="add"><![CDATA[
       Added <code>jaxp-api-1.4.2.jar</code> and <code>jaxp-ri-1.4.2.jar</code> to the CLI distribution and updated
       the README file.]]>
       </action>
@@ -437,7 +437,7 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-16" date="2010-01-19">
-      <action dev="schulte2005" type="update"><![CDATA[Added goal <code>validate-test-modules</code> to the
+      <action dev="schulte2005" type="add"><![CDATA[Added goal <code>validate-test-modules</code> to the
       <code>maven-jomc-plugin</code> and renamed the <code>validate-runtime-modules</code> goal to
       <code>validate-main-modules</code>.]]>
       </action>
@@ -452,10 +452,10 @@
       class <code>org.jomc.model.bootstrap.DefaultSchemaProvider</code> from <code>META-INF/jomc-bootstrap.xml</code> to
       <code>META-INF/jomc-schemas.xml</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added <code>Services</code> and <code>Service</code> complex
+      <action dev="schulte2005" type="add"><![CDATA[Added <code>Services</code> and <code>Service</code> complex
       type declarations to the <code>jomc-bootstrap-1.0.xsd</code> schema.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added interface <code>org.jomc.model.bootstrap.ServiceProvider</code>
+      <action dev="schulte2005" type="add"><![CDATA[Added interface <code>org.jomc.model.bootstrap.ServiceProvider</code>
       and corresponding default implementation class <code>org.jomc.model.bootstrap.DefaultServiceProvider</code>
       supporting service definitions read from <code>META-INF/jomc-services.xml</code> XML resources rather than
       <code>META-INF/services/*</code> resources to support ordering of services.
@@ -464,7 +464,7 @@
       <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.mojo.JomcResourceTransformer</code>
       to support <code>META-INF/jomc-services.xml</code> resources.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added options <code>schema-location</code>,
+      <action dev="schulte2005" type="add"><![CDATA[Added options <code>schema-location</code>,
       <code>service-location</code> and <code>transformer-location</code> to the command line application.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>maven-jomc-plugin</code> to correct a
@@ -489,7 +489,7 @@
       <code>org.jomc.tools.ClassFileProcessor</code> and <code>org.jomc.tools.JavaSources</code> to
       <code>org.jomc.tools.SourceFileProcessor</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added <code>jomc-tools-1.0.xsd</code> schema to the
+      <action dev="schulte2005" type="add"><![CDATA[Added <code>jomc-tools-1.0.xsd</code> schema to the
       <code>jomc-tools</code> artifact and updated class <code>org.jomc.tools.SourceFileProcessor</code> to support
       configuration of source file sections.]]>
       </action>
@@ -500,11 +500,11 @@
       <code>test-java-classes</code> goal to <code>commit-test-classes</code> and the
       <code>validate-test-java-classes</code> goal to <code>validate-test-classes</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added parameters <code>whitespacesPerIndent</code> and
+      <action dev="schulte2005" type="add"><![CDATA[Added parameters <code>whitespacesPerIndent</code> and
       <code>indentationCharacter</code> to the <code>manage-main-sources</code> and <code>manage-test-sources</code>
       goals of the <code>maven-jomc-plugin</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added parameter <code>resourceProcessing</code> to the
+      <action dev="schulte2005" type="add"><![CDATA[Added parameter <code>resourceProcessing</code> to the
       <code>maven-jomc-plugin</code> and added goals <code>write-main-resources</code> and
       <code>write-test-resources</code>.]]>
       </action>
@@ -513,14 +513,14 @@
       the <code>validate-java-classes</code> command to <code>validate-classes</code>, and the
       <code>manage-java-sources</code> command to <code>manage-sources</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added options <code>whitespaces-per-indent</code> and
+      <action dev="schulte2005" type="add"><![CDATA[Added options <code>whitespaces-per-indent</code> and
       <code>indentation-character</code> to the command line application.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Added methods for accessing elements and objects from
+      <action dev="schulte2005" type="add"><![CDATA[Added methods for accessing elements and objects from
       <code>any</code> properties of model objects.
       See the <a href="http://jomc.org/jomc/1.0-alpha-17/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
-      <action dev="schulte2005" type="update">Added profile 'jomc-java-bundles'.</action>
+      <action dev="schulte2005" type="add">Added profile 'jomc-java-bundles'.</action>
     </release>
   </body>
 </document>
