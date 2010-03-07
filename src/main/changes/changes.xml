@@ -504,6 +504,10 @@
       <code>indentationCharacter</code> to the <code>manage-main-sources</code> and <code>manage-test-sources</code>
       goals of the <code>maven-jomc-plugin</code>.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[Added parameter <code>resourceProcessing</code> to the
+      <code>maven-jomc-plugin</code> and added goals <code>write-main-resources</code> and
+      <code>write-test-resources</code>.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Renamed the <code>generate-java-bundles</code> command to
       <code>generate-resources</code>, the <code>commit-java-classes</code> command to <code>commit-classes</code>,
       the <code>validate-java-classes</code> command to <code>validate-classes</code>, and the
