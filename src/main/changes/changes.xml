@@ -483,7 +483,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-17" date="2010-01-19">
+    <release version="1.0-alpha-17" date="2010-03-07">
       <action dev="schulte2005" type="update"><![CDATA[Renamed classes <code>org.jomc.tools.JavaBundles</code> to
       <code>org.jomc.tools.ResourceFileProcessor</code>, <code>org.jomc.tools.JavaClasses</code> to
       <code>org.jomc.tools.ClassFileProcessor</code> and <code>org.jomc.tools.JavaSources</code> to
