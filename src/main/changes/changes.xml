@@ -522,5 +522,11 @@
       </action>
       <action dev="schulte2005" type="add">Added profile 'jomc-java-bundles'.</action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-18" date="2010-03-07">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getJavadocComment</code> of class
+      <code>org.jomc.tools.JomcTool</code> to correctly support platform line separators.]]>
+      </action>
+    </release>
   </body>
 </document>
