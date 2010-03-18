@@ -524,6 +524,13 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-alpha-18" date="2010-03-07">
+      <action dev="schulte2005" type="update"><![CDATA[Updated method <code>getVelocityEngine</code> of class
+      <code>org.jomc.tools.JomcTool</code> to configure new <code>VelocityEngine</code> instances to log all messages at
+      <code>Level.FINE</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated the <code>debug</code> option of the command line
+      application to take an optional log level argument.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getJavadocComment</code> of class
       <code>org.jomc.tools.JomcTool</code> to correctly support platform line separators.]]>
       </action>
