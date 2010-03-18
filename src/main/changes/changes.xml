@@ -527,6 +527,9 @@
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getJavadocComment</code> of class
       <code>org.jomc.tools.JomcTool</code> to correctly support platform line separators.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated the command line application to filter out resources
+      provided with the <code>-classpath</code> option already part of the application.]]>
+      </action>
     </release>
   </body>
 </document>
