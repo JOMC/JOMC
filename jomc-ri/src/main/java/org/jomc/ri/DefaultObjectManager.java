@@ -147,7 +147,7 @@ public class DefaultObjectManager implements ObjectManager
             Scope scope = null;
             if ( s.getScope() != null )
             {
-                scope = this.getScope( classLoader, s.getScope() );
+                scope = this.getScope( s.getScope(), classLoader );
 
                 if ( scope == null )
                 {
@@ -359,7 +359,7 @@ public class DefaultObjectManager implements ObjectManager
             Scope scope = null;
             if ( s.getScope() != null )
             {
-                scope = this.getScope( classLoader, s.getScope() );
+                scope = this.getScope( s.getScope(), classLoader );
 
                 if ( scope == null )
                 {
@@ -531,7 +531,7 @@ public class DefaultObjectManager implements ObjectManager
                     Scope scope = null;
                     if ( ds.getScope() != null )
                     {
-                        scope = this.getScope( classLoader, ds.getScope() );
+                        scope = this.getScope( ds.getScope(), classLoader );
 
                         if ( scope == null )
                         {
@@ -1437,7 +1437,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         T object = null;
-        final Locator locator = this.getLocator( classLoader, location );
+        final Locator locator = this.getLocator( location, classLoader );
 
         if ( locator != null )
         {
@@ -1454,8 +1454,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the scope implementation for a given scope identifier.
      *
-     * @param classLoader The class loader to use for loading scope implementations.
      * @param identifier The identifier of the scope to get an implementation of.
+     * @param classLoader The class loader to use for loading scope implementations.
      *
      * @return The implementation of the scope identified by {@code identifier} or {@code null} if no such
      * scope implementation is found.
@@ -1465,7 +1465,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @see #getDefaultScope(java.lang.String)
      */
-    public Scope getScope( final ClassLoader classLoader, final String identifier ) throws InstantiationException
+    public Scope getScope( final String identifier, final ClassLoader classLoader ) throws InstantiationException
     {
         if ( classLoader == null )
         {
@@ -1589,8 +1589,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a locator to use with a given location URI.
      *
-     * @param classLoader The class loader to use for loading locator implementations.
      * @param location The location URI to get a locator for.
+     * @param classLoader The class loader to use for loading locator implementations.
      *
      * @return The locator to use for locating objects at {@code location} or {@code null} if no such locator is
      * available.
@@ -1600,7 +1600,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @see #getDefaultLocator(java.net.URI)
      */
-    public Locator getLocator( final ClassLoader classLoader, final URI location ) throws InstantiationException
+    public Locator getLocator( final URI location, final ClassLoader classLoader ) throws InstantiationException
     {
         if ( classLoader == null )
         {
@@ -1977,7 +1977,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( objectManager.getScope() != null )
                 {
-                    final Scope scope = this.getScope( classLoader, objectManager.getScope() );
+                    final Scope scope = this.getScope( objectManager.getScope(), classLoader );
                     if ( scope == null )
                     {
                         throw new InstantiationException( this.getMissingScopeMessage( objectManager.getScope() ) );

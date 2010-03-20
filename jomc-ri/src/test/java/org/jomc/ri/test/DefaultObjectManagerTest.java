@@ -152,7 +152,17 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getLocator( this.getClass().getClassLoader(), null );
+            this.getObjectManager().getLocator( new URI( "TEST" ), null );
+            Assert.fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getLocator( null, this.getClass().getClassLoader() );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
@@ -282,7 +292,17 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getScope( this.getClass().getClassLoader(), null );
+            this.getObjectManager().getScope( "TEST", null );
+            Assert.fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getScope( null, this.getClass().getClassLoader() );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
