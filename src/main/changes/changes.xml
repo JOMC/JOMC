@@ -377,12 +377,12 @@
       Updated method <code>getJavaValue</code> of class <code>org.jomc.model.Property</code> to support retrieving
       values from value classes and based validation methods of class <code>org.jomc.model.ModelContext</code>
       on SAX instead of JAXB.
-      See the <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-14/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Updated method <code>getMessage</code> of interface <code>org.jomc.ObjectManager</code> and the corresponding
       <code>implementation-messages.vm</code> template to use a var-args parameter for the format arguments.
-      See the <a href="http://jomc.org/jomc/1.0-alpha-14/jomc-api/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-14/jomc-api/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[
       Updated class <code>org.jomc.model.DefaultModelValidator</code> to validate the Java value of properties.]]>
@@ -432,7 +432,7 @@
       <action dev="schulte2005" type="fix"><![CDATA[
       Added a <code>ClassLoader</code> argument to method <code>getJavaValue</code> of class
       <code>org.jomc.model.Property</code>.
-      See the <a href="http://jomc.org/jomc/1.0-alpha-15/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-15/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
@@ -459,7 +459,7 @@
       and corresponding default implementation class <code>org.jomc.model.bootstrap.DefaultServiceProvider</code>
       supporting service definitions read from <code>META-INF/jomc-services.xml</code> XML resources rather than
       <code>META-INF/services/*</code> resources to support ordering of services.
-      See the <a href="http://jomc.org/jomc/1.0-alpha-16/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-16/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.mojo.JomcResourceTransformer</code>
       to support <code>META-INF/jomc-services.xml</code> resources.]]>
@@ -518,7 +518,7 @@
       </action>
       <action dev="schulte2005" type="add"><![CDATA[Added methods for accessing elements and objects from
       <code>any</code> properties of model objects.
-      See the <a href="http://jomc.org/jomc/1.0-alpha-17/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-17/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="add">Added profile 'jomc-java-bundles'.</action>
     </release>
@@ -536,6 +536,26 @@
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the command line application to filter out resources
       provided with the <code>-classpath</code> option already part of the application.]]>
+      </action>
+    </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-19" date="2010-03-19">
+      <action dev="schulte2005" type="add"><![CDATA[Added methods <code>getDefaultProviderLocation</code>,
+      <code>setDefaultProviderLocation</code>, <code>getProviderLocation</code>, <code>setProviderLocation</code>,
+      <code>getDefaultPlatformProviderLocation</code>, <code>setDefaultPlatformProviderLocation</code>,
+      <code>getPlatformProviderLocation</code>, <code>setPlatformProviderLocation</code>,
+      <code>getDefaultBootstrapSchemaSystemId</code>, <code>setDefaultBootstrapSchemaSystemId</code>,
+      <code>getBootstrapSchemaSystemId</code> and <code>setBootstrapSchemaSystemId</code> to class
+      <code>org.jomc.model.bootstrap.DefaultBootstrapContext</code>.
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-19/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>ClassCastException</code> thrown by methods
+      <code>findModules</code>, <code>processModules</code> and <code>validateModel</code> of class
+      <code>org.jomc.model.DefaultModelContext</code> with illegal configuration resources.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>ClassCastException</code> thrown by methods
+      <code>findSchemas</code> and <code>findServices</code> of class
+      <code>org.jomc.model.bootstrap.BootstrapContext</code> with illegal configuration resources.]]>
       </action>
     </release>
   </body>
