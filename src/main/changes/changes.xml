@@ -549,6 +549,14 @@
       <code>org.jomc.model.bootstrap.DefaultBootstrapContext</code>.
       See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-19/jomc-model/clirr-report.html">CLIRR report</a>.]]>
       </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added parameters <code>providerLocation</code>,
+      <code>platformProviderLocation</code> and <code>bootstrapSchemaSystemId</code> to the
+      <code>maven-jomc-plugin</code>.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added options <code>provider-location</code>,
+      <code>platform-provider-location</code> and <code>bootstrap-schema-system-id</code> to the
+      command line application.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>ClassCastException</code> thrown by methods
       <code>findModules</code>, <code>processModules</code> and <code>validateModel</code> of class
       <code>org.jomc.model.DefaultModelContext</code> with illegal configuration resources.]]>
