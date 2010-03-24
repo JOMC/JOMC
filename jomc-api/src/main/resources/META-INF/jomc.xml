@@ -44,7 +44,7 @@
   <specifications>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ObjectManager" class="org.jomc.ObjectManager" classDeclaration="true"
-                   vendor="${project.organization.name}" version="1.0" multiplicity="One" scope="Singleton">
+                   vendor="${project.organization.name}" version="${jomc.version}" multiplicity="One" scope="Singleton">
 
       <documentation defaultLanguage="en">
         <text language="en">Manages objects.</text>
@@ -60,7 +60,7 @@
   <implementations>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ObjectManagementException" class="org.jomc.ObjectManagementException"
-                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    classDeclaration="true" name="${project.name}" version="${jomc.version}"
                     vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
@@ -74,7 +74,7 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ObjectManagerFactory" class="org.jomc.ObjectManagerFactory"
-                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    classDeclaration="true" name="${project.name}" version="${jomc.version}"
                     vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">

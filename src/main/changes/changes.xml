@@ -564,6 +564,12 @@
       <code>setDefaultTemplateProfile</code> to class <code>org.jomc.tools.JomcTool</code>.
       See the <a href="http://jomc.sourceforge.net/jomc/1.0-alpha-19/jomc-tools/clirr-report.html">CLIRR report</a>.]]>
       </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added parameter <code>defaultTemplateProfile</code> to the
+      <code>maven-jomc-plugin</code>.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added option <code>default-template-profile</code> to the
+      command line application.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Renamed the <code>profile</code> option of the command line
       application to <code>template-profile</code>.]]>
       </action>
