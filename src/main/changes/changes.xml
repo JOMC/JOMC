@@ -581,6 +581,9 @@
       <code>findSchemas</code> and <code>findServices</code> of class
       <code>org.jomc.model.bootstrap.BootstrapContext</code> with illegal configuration resources.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>MissingResourceException</code> thrown by methods
+      of class <code>org.jomc.ri.DefaultObjectManager</code> for unsupported multiplicity values.]]>
+      </action>
     </release>
   </body>
 </document>
