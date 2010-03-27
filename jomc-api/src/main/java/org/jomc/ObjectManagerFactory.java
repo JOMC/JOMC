@@ -95,7 +95,7 @@ public class ObjectManagerFactory
 
         try
         {
-            final Class factoryClass = Class.forName( factory, true, classLoader );
+            final Class<?> factoryClass = Class.forName( factory, true, classLoader );
             final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
             return (ObjectManager) factoryMethod.invoke( null, classLoader );
         }
@@ -135,7 +135,7 @@ public class ObjectManagerFactory
 
         try
         {
-            return (ObjectManager) Class.forName( impl, true, classLoader ).newInstance();
+            return Class.forName( impl, true, classLoader ).asSubclass( ObjectManager.class ).newInstance();
         }
         catch ( final Exception e )
         {
