@@ -40,14 +40,23 @@ package org.jomc.spi;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Invokes objects.
- * <p>This specification declares a multiplicity of {@code One}.
- * An application assembler is required to provide no more than one implementation of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Invoker object = (Invoker) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code One}.
+ *   An application assembler may provide either no or one implementation of this specification.
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * Invoker object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class );
+ * Invoker object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

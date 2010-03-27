@@ -43,16 +43,23 @@ import java.net.URI;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Locates objects.
- * <p>This specification declares a multiplicity of {@code Many}.
- * An application assembler may provide multiple implementations of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
- * selecting a single implementation.<pre>
- * Locator[] objects = (Locator[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator.class );
- * Locator object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator.class, "<i>implementation name</i>" );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code Many}.
+ *   An application assembler may provide multiple implementations of this specification (including none).
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * Locator[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator[].class );
+ * Locator object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

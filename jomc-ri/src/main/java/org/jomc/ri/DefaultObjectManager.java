@@ -42,6 +42,7 @@ import java.io.StringReader;
 import java.lang.reflect.Array;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.math.BigInteger;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -51,7 +52,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -87,6 +87,120 @@ import org.jomc.util.WeakIdentityHashMap;
  * <p><b>Specifications</b><ul>
  * <li>{@code org.jomc.ObjectManager} {@code 1.0} {@code Singleton}</li>
  * </ul></p>
+ * <p><b>Messages</b><ul>
+ * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDependencyCycleMessage dependencyCycle}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getIgnoredInvocationMessage ignoredInvocation}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getIgnoredInvokerMessage ignoredInvoker}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getIllegalArraySpecificationMessage illegalArraySpecification}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getIllegalObjectSpecificationMessage illegalObjectSpecification}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getImplementationInfoMessage implementationInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 in {0,number}ms initialisiert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getInvokerInfoMessage invokerInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getListenerInfoMessage listenerInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getLocatorInfoMessage locatorInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingDependencyMessage missingDependency}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingImplementationMessage missingImplementation}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingImplementationsMessage missingImplementations}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingInstanceMessage missingInstance}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingLocatorMessage missingLocator}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingMessageMessage missingMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingObjectMessage missingObject}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingObjectInstanceMessage missingObjectInstance}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingPropertyMessage missingProperty}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingScopeMessage missingScope}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingSpecificationMessage missingSpecification}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingSpecificationClassMessage missingSpecificationClass}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getModulesReportMessage modulesReport}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
+ * </table>
+ * <li>"{@link #getScopeInfoMessage scopeInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjects}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</pre></td></tr>
+ * </table>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -117,7 +231,7 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-END
     // SECTION-START[ObjectManager]
 
-    public Object getObject( final Class specification )
+    public <T> T getObject( final Class<T> specification )
     {
         if ( specification == null )
         {
@@ -128,16 +242,46 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = getClassLoader( specification );
+            Class<?> specificationClass = specification;
+            if ( specification.isArray() )
+            {
+                specificationClass = specification.getComponentType();
+            }
+
+            final ClassLoader classLoader = getClassLoader( specificationClass );
             final Modules model = this.getModules( classLoader );
-            final Specification s = model.getSpecification( specification );
+            final Specification s = model.getSpecification( specificationClass );
 
             if ( s == null )
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                        specification.getName() ), new Exception() );
+                    this.log( Level.WARNING, getMissingSpecificationMessage(
+                        Locale.getDefault(), specificationClass.getName() ), new Exception() );
+
+                }
+
+                return null;
+            }
+
+            if ( s.getMultiplicity() == Multiplicity.ONE && specification.isArray() )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, getIllegalArraySpecificationMessage(
+                        Locale.getDefault(), s.getIdentifier(), s.getMultiplicity().value() ), new Exception() );
+
+                }
+
+                return null;
+            }
+
+            if ( s.getMultiplicity() != Multiplicity.ONE && !specification.isArray() )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, getIllegalObjectSpecificationMessage(
+                        Locale.getDefault(), s.getIdentifier(), s.getMultiplicity().value() ), new Exception() );
 
                 }
 
@@ -153,7 +297,9 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingScopeMessage( s.getScope() ), null );
+                        this.log( Level.WARNING, getMissingScopeMessage(
+                            Locale.getDefault(), s.getScope() ), new Exception() );
+
                     }
 
                     return null;
@@ -161,50 +307,52 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             final Implementations available = model.getImplementations( s.getIdentifier() );
-            if ( available == null || available.getImplementation().isEmpty() )
+            if ( available == null )
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                        specification.getName() ), new Exception() );
+                    this.log( Level.WARNING, getMissingImplementationsMessage(
+                        Locale.getDefault(), s.getIdentifier() ), new Exception() );
 
                 }
 
                 return null;
             }
 
-            if ( s.getMultiplicity() == Multiplicity.ONE )
-            {
-                final Implementation i = available.getImplementation().get( 0 );
+            final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
 
+            for ( Implementation i : available.getImplementation() )
+            {
                 if ( i.getLocation() != null )
                 {
                     if ( s.getClazz() == null )
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ), new Exception() );
+                            this.log( Level.WARNING, getMissingSpecificationClassMessage(
+                                Locale.getDefault(), s.getIdentifier() ), new Exception() );
+
                         }
 
                         return null;
                     }
 
-                    final Object object = this.getObject(
-                        Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+                    final Object o = this.getObject( Class.forName( s.getClazz(), true, classLoader ),
+                                                     i.getLocationUri(), classLoader );
 
-                    if ( object == null )
+                    if ( o == null )
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingObjectMessage(
-                                i.getIdentifier(), i.getName() ), new Exception() );
+                            this.log( Level.WARNING, getMissingObjectMessage(
+                                Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                         }
-
-                        return null;
                     }
-
-                    return object;
+                    else if ( specificationClass.isAssignableFrom( o.getClass() ) )
+                    {
+                        list.add( o );
+                    }
                 }
                 else if ( !i.isAbstract() )
                 {
@@ -213,108 +361,42 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                i.getIdentifier(), i.getName() ), new Exception() );
+                            this.log( Level.WARNING, getMissingInstanceMessage(
+                                Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                         }
 
                         return null;
                     }
 
-                    final Object object = this.getObject( scope, instance, classLoader );
-                    if ( object == null )
+                    final Object o = this.getObject( scope, instance, classLoader );
+                    if ( o == null )
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingObjectMessage(
-                                i.getIdentifier(), i.getName() ), new Exception() );
+                            this.log( Level.WARNING, getMissingObjectMessage(
+                                Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                         }
-
-                        return null;
                     }
-
-                    return object;
+                    else if ( specificationClass.isAssignableFrom( o.getClass() ) )
+                    {
+                        list.add( o );
+                    }
                 }
             }
-            else if ( s.getMultiplicity() == Multiplicity.MANY )
+
+            if ( specification.isArray() )
             {
-                final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
-
-                for ( Implementation i : available.getImplementation() )
-                {
-                    if ( i.getLocation() != null )
-                    {
-                        if ( s.getClazz() == null )
-                        {
-                            if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ),
-                                          new Exception() );
-
-                            }
-
-                            return null;
-                        }
-
-                        final Object o = this.getObject(
-                            Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
-
-                        if ( o == null )
-                        {
-                            if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingObjectMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
-
-                            }
-                        }
-                        else
-                        {
-                            list.add( o );
-                        }
-                    }
-                    else if ( !i.isAbstract() )
-                    {
-                        final Instance instance = model.getInstance( i.getIdentifier() );
-                        if ( instance == null )
-                        {
-                            if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
-
-                            }
-
-                            return null;
-                        }
-
-                        final Object o = this.getObject( scope, instance, classLoader );
-                        if ( o == null )
-                        {
-                            if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( Level.WARNING, this.getMissingObjectMessage(
-                                    i.getIdentifier(), i.getName() ), new Exception() );
-
-                            }
-                        }
-                        else
-                        {
-                            list.add( o );
-                        }
-                    }
-                }
-
-                return list.isEmpty()
-                       ? null : list.toArray( (Object[]) Array.newInstance( specification, list.size() ) );
-
+                @SuppressWarnings( "unchecked" )
+                final T array = (T) list.toArray( (Object[]) Array.newInstance( specificationClass, list.size() ) );
+                return array;
             }
-            else if ( this.isLoggable( Level.WARNING ) )
+            else if ( list.size() == 1 )
             {
-                this.log( Level.WARNING, this.getUnsupportedMultiplicityMessage(
-                    s.getMultiplicity() ), new Exception() );
-
+                @SuppressWarnings( "unchecked" )
+                final T object = (T) list.get( 0 );
+                return object;
             }
 
             return null;
@@ -325,7 +407,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
 
-    public Object getObject( final Class specification, final String implementationName )
+    public <T> T getObject( final Class<T> specification, final String implementationName )
     {
         if ( specification == null )
         {
@@ -348,8 +430,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                        specification.getName() ), new Exception() );
+                    this.log( Level.WARNING, getMissingSpecificationMessage(
+                        Locale.getDefault(), specification.getName() ), new Exception() );
 
                 }
 
@@ -365,7 +447,9 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingScopeMessage( s.getScope() ), null );
+                        this.log( Level.WARNING, getMissingScopeMessage(
+                            Locale.getDefault(), s.getScope() ), new Exception() );
+
                     }
 
                     return null;
@@ -373,12 +457,12 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             final Implementations available = model.getImplementations( s.getIdentifier() );
-            if ( available == null || available.getImplementation().isEmpty() )
+            if ( available == null )
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                        specification.getName() ), new Exception() );
+                    this.log( Level.WARNING, getMissingImplementationsMessage(
+                        Locale.getDefault(), specification.getName() ), new Exception() );
 
                 }
 
@@ -390,8 +474,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingImplementationMessage(
-                        implementationName, s.getIdentifier() ), new Exception() );
+                    this.log( Level.WARNING, getMissingImplementationMessage(
+                        Locale.getDefault(), s.getIdentifier(), implementationName ), new Exception() );
 
                 }
 
@@ -404,21 +488,23 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingSpecificationClassMessage( s ), new Exception() );
+                        this.log( Level.WARNING, getMissingSpecificationClassMessage(
+                            Locale.getDefault(), s.getIdentifier() ), new Exception() );
+
                     }
 
                     return null;
                 }
 
-                final Object object = this.getObject(
-                    Class.forName( s.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+                final T object = this.getObject( Class.forName( s.getClazz(), true, classLoader ).
+                    asSubclass( specification ), i.getLocationUri(), classLoader );
 
                 if ( object == null )
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                            i.getIdentifier(), i.getName() ), new Exception() );
+                        this.log( Level.WARNING, getMissingObjectMessage(
+                            Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                     }
 
@@ -434,8 +520,8 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingInstanceMessage(
-                            i.getIdentifier(), i.getName() ), new Exception() );
+                        this.log( Level.WARNING, getMissingInstanceMessage(
+                            Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                     }
 
@@ -447,15 +533,19 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                            i.getIdentifier(), i.getName() ), new Exception() );
+                        this.log( Level.WARNING, getMissingObjectMessage(
+                            Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                     }
 
                     return null;
                 }
-
-                return object;
+                else if ( specification.isAssignableFrom( object.getClass() ) )
+                {
+                    @SuppressWarnings( "unchecked" )
+                    final T o = (T) object;
+                    return o;
+                }
             }
 
             return null;
@@ -489,7 +579,9 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                    this.log( Level.WARNING, getMissingObjectInstanceMessage(
+                        Locale.getDefault(), object.toString() ), new Exception() );
+
                 }
 
                 return null;
@@ -504,8 +596,8 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingDependencyMessage(
-                            dependencyName, instance.getIdentifier() ), new Exception() );
+                        this.log( Level.WARNING, getMissingDependencyMessage(
+                            Locale.getDefault(), instance.getIdentifier(), dependencyName ), new Exception() );
 
                     }
 
@@ -520,8 +612,8 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                                dependency.getIdentifier() ), new Exception() );
+                            this.log( Level.WARNING, getMissingSpecificationMessage(
+                                Locale.getDefault(), dependency.getIdentifier() ), new Exception() );
 
                         }
 
@@ -537,7 +629,9 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             if ( this.isLoggable( Level.WARNING ) )
                             {
-                                this.log( Level.WARNING, this.getMissingScopeMessage( ds.getScope() ), null );
+                                this.log( Level.WARNING, getMissingScopeMessage(
+                                    Locale.getDefault(), ds.getScope() ), new Exception() );
+
                             }
 
                             return null;
@@ -545,12 +639,12 @@ public class DefaultObjectManager implements ObjectManager
                     }
 
                     final Implementations available = model.getImplementations( ds.getIdentifier() );
-                    if ( available == null || available.getImplementation().isEmpty() )
+                    if ( available == null )
                     {
                         if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                                dependency.getIdentifier() ), new Exception() );
+                            this.log( Level.WARNING, getMissingImplementationsMessage(
+                                Locale.getDefault(), dependency.getIdentifier() ), new Exception() );
 
                         }
 
@@ -566,8 +660,9 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             if ( !dependency.isOptional() && this.isLoggable( Level.WARNING ) )
                             {
-                                this.log( Level.WARNING, this.getMissingImplementationMessage(
-                                    dependency.getImplementationName(), dependency.getIdentifier() ), new Exception() );
+                                this.log( Level.WARNING, getMissingImplementationMessage(
+                                    Locale.getDefault(), dependency.getIdentifier(),
+                                    dependency.getImplementationName() ), new Exception() );
 
                             }
 
@@ -580,8 +675,8 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
-                                              new Exception() );
+                                    this.log( Level.WARNING, getMissingSpecificationClassMessage(
+                                        Locale.getDefault(), ds.getIdentifier() ), new Exception() );
 
                                 }
 
@@ -595,8 +690,8 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
+                                    this.log( Level.WARNING, getMissingObjectMessage(
+                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
 
@@ -610,8 +705,8 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
+                                    this.log( Level.WARNING, getMissingInstanceMessage(
+                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
 
@@ -623,8 +718,8 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
+                                    this.log( Level.WARNING, getMissingObjectMessage(
+                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
 
@@ -634,62 +729,74 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else if ( ds.getMultiplicity() == Multiplicity.ONE )
                     {
-                        final Implementation ref = available.getImplementation().get( 0 );
-                        if ( ref.getLocation() != null )
+                        if ( available.getImplementation().size() == 1 )
                         {
-                            if ( ds.getClazz() == null )
+                            final Implementation ref = available.getImplementation().get( 0 );
+
+                            if ( ref.getLocation() != null )
                             {
-                                if ( this.isLoggable( Level.WARNING ) )
+                                if ( ds.getClazz() == null )
                                 {
-                                    this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
-                                              new Exception() );
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, getMissingSpecificationClassMessage(
+                                            Locale.getDefault(), ds.getIdentifier() ), new Exception() );
+
+                                    }
+
+                                    return null;
                                 }
 
-                                return null;
+                                o = this.getObject( Class.forName( ds.getClazz(), true, classLoader ),
+                                                    ref.getLocationUri(), classLoader );
+
+                                if ( o == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, getMissingObjectMessage(
+                                            Locale.getDefault(), ref.getIdentifier(), ref.getName() ), new Exception() );
+
+                                    }
+
+                                    return null;
+                                }
                             }
-
-                            o = this.getObject(
-                                Class.forName( ds.getClazz(), true, classLoader ), ref.getLocationUri(), classLoader );
-
-                            if ( o == null )
+                            else if ( !ref.isAbstract() )
                             {
-                                if ( this.isLoggable( Level.WARNING ) )
+                                final Instance di = model.getInstance( ref.getIdentifier(), dependency );
+                                if ( di == null )
                                 {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        ref.getIdentifier(), ref.getName() ), new Exception() );
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, getMissingInstanceMessage(
+                                            Locale.getDefault(), ref.getIdentifier(), ref.getName() ), new Exception() );
 
+                                    }
+
+                                    return null;
                                 }
 
-                                return null;
+                                o = this.getObject( scope, di, classLoader );
+                                if ( o == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( Level.WARNING, getMissingObjectMessage(
+                                            Locale.getDefault(), ref.getIdentifier(), ref.getName() ), new Exception() );
+
+                                    }
+
+                                    return null;
+                                }
                             }
                         }
-                        else if ( !ref.isAbstract() )
+                        else
                         {
-                            final Instance di = model.getInstance( ref.getIdentifier(), dependency );
-                            if ( di == null )
-                            {
-                                if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        ref.getIdentifier(), ref.getName() ), new Exception() );
+                            this.log( Level.WARNING, getUnexpectedDependencyObjectsMessage(
+                                Locale.getDefault(), instance.getIdentifier(), dependencyName, BigInteger.ONE,
+                                available.getImplementation().size() ), new Exception() );
 
-                                }
-
-                                return null;
-                            }
-
-                            o = this.getObject( scope, di, classLoader );
-                            if ( o == null )
-                            {
-                                if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( Level.WARNING, this.getMissingObjectMessage(
-                                        ref.getIdentifier(), ref.getName() ), new Exception() );
-
-                                }
-
-                                return null;
-                            }
                         }
                     }
                     else
@@ -700,8 +807,8 @@ public class DefaultObjectManager implements ObjectManager
                         {
                             if ( this.isLoggable( Level.WARNING ) )
                             {
-                                this.log( Level.WARNING, this.getMissingSpecificationClassMessage( ds ),
-                                          new Exception() );
+                                this.log( Level.WARNING, getMissingSpecificationClassMessage(
+                                    Locale.getDefault(), ds.getIdentifier() ), new Exception() );
 
                             }
 
@@ -719,8 +826,8 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     if ( this.isLoggable( Level.WARNING ) )
                                     {
-                                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                                            a.getIdentifier(), a.getName() ), new Exception() );
+                                        this.log( Level.WARNING, getMissingObjectMessage(
+                                            Locale.getDefault(), a.getIdentifier(), a.getName() ), new Exception() );
 
                                     }
                                 }
@@ -736,8 +843,8 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     if ( this.isLoggable( Level.WARNING ) )
                                     {
-                                        this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                            a.getIdentifier(), a.getName() ), new Exception() );
+                                        this.log( Level.WARNING, getMissingInstanceMessage(
+                                            Locale.getDefault(), a.getIdentifier(), a.getName() ), new Exception() );
 
                                     }
 
@@ -749,8 +856,8 @@ public class DefaultObjectManager implements ObjectManager
                                 {
                                     if ( this.isLoggable( Level.WARNING ) )
                                     {
-                                        this.log( Level.WARNING, this.getMissingObjectMessage(
-                                            a.getIdentifier(), a.getName() ), new Exception() );
+                                        this.log( Level.WARNING, getMissingObjectMessage(
+                                            Locale.getDefault(), a.getIdentifier(), a.getName() ), new Exception() );
 
                                     }
                                 }
@@ -804,7 +911,9 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                    this.log( Level.WARNING, getMissingObjectInstanceMessage(
+                        Locale.getDefault(), object.toString() ), new Exception() );
+
                 }
 
                 return null;
@@ -822,8 +931,8 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingPropertyMessage(
-                                propertyName, object.getClass().getName() ), new Exception() );
+                            this.log( Level.WARNING, getMissingPropertyMessage(
+                                Locale.getDefault(), instance.getIdentifier(), propertyName ), new Exception() );
 
                         }
 
@@ -874,7 +983,9 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingObjectInstanceMessage( object ), new Exception() );
+                    this.log( Level.WARNING, getMissingObjectInstanceMessage(
+                        Locale.getDefault(), object.toString() ), new Exception() );
+
                 }
 
                 return null;
@@ -889,8 +1000,8 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingMessageMessage(
-                            messageName, object.getClass().getName() ), new Exception() );
+                        this.log( Level.WARNING, getMissingMessageMessage(
+                            Locale.getDefault(), instance.getIdentifier(), messageName ), new Exception() );
 
                     }
 
@@ -1084,10 +1195,8 @@ public class DefaultObjectManager implements ObjectManager
         if ( this.logLevel == null )
         {
             this.logLevel = getDefaultLogLevel();
-            this.log( Level.CONFIG, this.getMessage( "defaultLogLevelInfo", new Object[]
-                {
-                    this.getClass().getCanonicalName(), this.logLevel.getLocalizedName()
-                } ), null );
+            this.log( Level.CONFIG, getDefaultLogLevelInfoMessage(
+                Locale.getDefault(), this.getClass().getCanonicalName(), this.logLevel.getLocalizedName() ), null );
 
         }
 
@@ -1381,8 +1490,8 @@ public class DefaultObjectManager implements ObjectManager
                 }
                 else if ( object instanceof Instance )
                 {
-                    throw new ObjectManagementException( this.getDependencyCycleMessage(
-                        ( (Instance) object ).getIdentifier() ) );
+                    throw new ObjectManagementException( getDependencyCycleMessage(
+                        Locale.getDefault(), ( (Instance) object ).getIdentifier() ) );
 
                 }
             }
@@ -1445,7 +1554,9 @@ public class DefaultObjectManager implements ObjectManager
         }
         else if ( this.isLoggable( Level.WARNING ) )
         {
-            this.log( Level.WARNING, this.getMissingLocatorMessage( location ), new Exception() );
+            this.log( Level.WARNING, getMissingLocatorMessage(
+                Locale.getDefault(), location.getScheme() ), new Exception() );
+
         }
 
         return object;
@@ -1484,7 +1595,7 @@ public class DefaultObjectManager implements ObjectManager
             Map<String, Scope> cachedScopes = this.scopes.get( scopesLoader );
             if ( cachedScopes == null )
             {
-                cachedScopes = new HashMap();
+                cachedScopes = new HashMap<String, Scope>();
                 this.scopes.put( scopesLoader, cachedScopes );
             }
 
@@ -1514,18 +1625,17 @@ public class DefaultObjectManager implements ObjectManager
                                     cachedScopes.put( identifier, scope );
                                     if ( this.isLoggable( Level.CONFIG ) )
                                     {
-                                        this.log( Level.CONFIG, this.getMessage( "scopeInfo", new Object[]
-                                            {
-                                                i.getIdentifier(), identifier, scopesLoader.toString()
-                                            } ), null );
+                                        this.log( Level.CONFIG, getScopeInfoMessage(
+                                            Locale.getDefault(), i.getIdentifier(), identifier,
+                                            scopesLoader.toString() ), null );
 
                                     }
                                     break;
                                 }
                                 else if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
+                                    this.log( Level.WARNING, getMissingInstanceMessage(
+                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
@@ -1534,8 +1644,8 @@ public class DefaultObjectManager implements ObjectManager
                 }
                 else if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Scope.class.getName() ),
-                              new Exception() );
+                    this.log( Level.WARNING, getMissingSpecificationMessage(
+                        Locale.getDefault(), Scope.class.getName() ), new Exception() );
 
                 }
             }
@@ -1548,7 +1658,9 @@ public class DefaultObjectManager implements ObjectManager
                     cachedScopes.put( identifier, scope );
                     if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.CONFIG, this.getDefaultScopeInfoMessage( identifier, scopesLoader ), null );
+                        this.log( Level.CONFIG, getDefaultScopeInfoMessage(
+                            Locale.getDefault(), identifier, scopesLoader.toString() ), null );
+
                     }
                 }
             }
@@ -1567,7 +1679,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code identifier} is {@code null}.
      *
-     * @see #getScope(java.lang.ClassLoader, java.lang.String)
+     * @see #getScope(java.lang.String, java.lang.ClassLoader)
      */
     public Scope getDefaultScope( final String identifier )
     {
@@ -1623,7 +1735,7 @@ public class DefaultObjectManager implements ObjectManager
                 Map<String, Locator> cachedLocators = this.locators.get( locatorsLoader );
                 if ( cachedLocators == null )
                 {
-                    cachedLocators = new HashMap();
+                    cachedLocators = new HashMap<String, Locator>();
                     this.locators.put( locatorsLoader, cachedLocators );
                 }
 
@@ -1654,10 +1766,9 @@ public class DefaultObjectManager implements ObjectManager
 
                                         if ( this.isLoggable( Level.CONFIG ) )
                                         {
-                                            this.log( Level.CONFIG, this.getMessage( "locatorInfo", new Object[]
-                                                {
-                                                    i.getIdentifier(), scheme, locatorsLoader.toString()
-                                                } ), null );
+                                            this.log( Level.CONFIG, getLocatorInfoMessage(
+                                                Locale.getDefault(), i.getIdentifier(), scheme,
+                                                locatorsLoader.toString() ), null );
 
                                         }
 
@@ -1665,8 +1776,8 @@ public class DefaultObjectManager implements ObjectManager
                                     }
                                     else if ( this.isLoggable( Level.WARNING ) )
                                     {
-                                        this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                            i.getIdentifier(), i.getName() ), new Exception() );
+                                        this.log( Level.WARNING, getMissingInstanceMessage(
+                                            Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                     }
                                 }
@@ -1675,8 +1786,8 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingSpecificationMessage( Locator.class.getName() ),
-                                  new Exception() );
+                        this.log( Level.WARNING, getMissingSpecificationMessage(
+                            Locale.getDefault(), Locator.class.getName() ), new Exception() );
 
                     }
                 }
@@ -1689,7 +1800,9 @@ public class DefaultObjectManager implements ObjectManager
                         cachedLocators.put( scheme, locator );
                         if ( this.isLoggable( Level.CONFIG ) )
                         {
-                            this.log( Level.CONFIG, this.getDefaultLocatorInfoMessage( scheme, locatorsLoader ), null );
+                            this.log( Level.CONFIG, getDefaultLocatorInfoMessage(
+                                Locale.getDefault(), scheme, locatorsLoader.toString() ), null );
+
                         }
                     }
                 }
@@ -1711,7 +1824,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      *
-     * @see #getLocator(java.lang.ClassLoader, java.net.URI)
+     * @see #getLocator(java.net.URI, java.lang.ClassLoader)
      */
     public Locator getDefaultLocator( final URI location )
     {
@@ -1779,26 +1892,22 @@ public class DefaultObjectManager implements ObjectManager
 
                                     if ( this.isLoggable( Level.CONFIG ) )
                                     {
-                                        this.log( Level.CONFIG, this.getMessage( "invokerInfo", new Object[]
-                                            {
-                                                i.getIdentifier(), invokersLoader.toString()
-                                            } ), null );
+                                        this.log( Level.CONFIG, getInvokerInfoMessage(
+                                            Locale.getDefault(), i.getIdentifier(), invokersLoader.toString() ), null );
 
                                     }
                                 }
                                 else if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                        i.getIdentifier(), i.getName() ), new Exception() );
+                                    this.log( Level.WARNING, getMissingInstanceMessage(
+                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                                 }
                             }
                             else if ( this.isLoggable( Level.CONFIG ) )
                             {
-                                this.log( Level.CONFIG, this.getMessage( "ignoredInvoker", new Object[]
-                                    {
-                                        i.getIdentifier()
-                                    } ), null );
+                                this.log( Level.CONFIG, getIgnoredInvokerMessage(
+                                    Locale.getDefault(), i.getIdentifier() ), null );
 
                             }
                         }
@@ -1806,8 +1915,8 @@ public class DefaultObjectManager implements ObjectManager
                 }
                 else if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage( Invoker.class.getName() ),
-                              new Exception() );
+                    this.log( Level.WARNING, getMissingSpecificationMessage(
+                        Locale.getDefault(), Invoker.class.getName() ), new Exception() );
 
                 }
 
@@ -1817,10 +1926,8 @@ public class DefaultObjectManager implements ObjectManager
                     this.invokers.put( invokersLoader, invoker );
                     if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.CONFIG, this.getMessage( "defaultInvokerInfo", new Object[]
-                            {
-                                invokersLoader.toString()
-                            } ), null );
+                        this.log( Level.CONFIG, getDefaultInvokerInfoMessage(
+                            Locale.getDefault(), invokersLoader.toString() ), null );
 
                     }
                 }
@@ -1883,17 +1990,15 @@ public class DefaultObjectManager implements ObjectManager
                         }
                         else if ( this.isLoggable( Level.WARNING ) )
                         {
-                            this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                i.getIdentifier(), i.getName() ), new Exception() );
+                            this.log( Level.WARNING, getMissingInstanceMessage(
+                                Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                         }
                     }
                     else if ( this.isLoggable( Level.CONFIG ) )
                     {
-                        this.log( Level.CONFIG, this.getMessage( "ignoredInvocation", new Object[]
-                            {
-                                i.getIdentifier()
-                            } ), null );
+                        this.log( Level.CONFIG, getIgnoredInvocationMessage(
+                            Locale.getDefault(), i.getIdentifier() ), null );
 
                     }
                 }
@@ -1901,8 +2006,8 @@ public class DefaultObjectManager implements ObjectManager
         }
         else if ( this.isLoggable( Level.WARNING ) )
         {
-            this.log( Level.WARNING, this.getMissingSpecificationMessage( Invocation.class.getName() ),
-                      new Exception() );
+            this.log( Level.WARNING, getMissingSpecificationMessage(
+                Locale.getDefault(), Invocation.class.getName() ), new Exception() );
 
         }
 
@@ -1962,16 +2067,24 @@ public class DefaultObjectManager implements ObjectManager
                 final Specification objectManager = model.getSpecification( ObjectManager.class );
                 if ( objectManager == null )
                 {
-                    throw new InstantiationException( this.getMissingSpecificationMessage(
-                        ObjectManager.class.getName() ) );
+                    throw new InstantiationException( getMissingSpecificationMessage(
+                        Locale.getDefault(), ObjectManager.class.getName() ) );
+
+                }
+
+                final Implementation thisImplementation = model.getImplementation( this.getClass() );
+                if ( thisImplementation == null )
+                {
+                    throw new InstantiationException( getMissingImplementationMessage(
+                        Locale.getDefault(), objectManager.getIdentifier(), this.getClass().getName() ) );
 
                 }
 
                 final Instance thisInstance = model.getInstance( this );
                 if ( thisInstance == null )
                 {
-                    throw new InstantiationException( this.getMissingInstanceMessage(
-                        this.getClass().getName(), this.getArtifactNameMessage() ) );
+                    throw new InstantiationException( getMissingInstanceMessage(
+                        Locale.getDefault(), objectManager.getIdentifier(), thisImplementation.getName() ) );
 
                 }
 
@@ -1980,7 +2093,9 @@ public class DefaultObjectManager implements ObjectManager
                     final Scope scope = this.getScope( objectManager.getScope(), classLoader );
                     if ( scope == null )
                     {
-                        throw new InstantiationException( this.getMissingScopeMessage( objectManager.getScope() ) );
+                        throw new InstantiationException( getMissingScopeMessage(
+                            Locale.getDefault(), objectManager.getScope() ) );
+
                     }
 
                     scope.putObject( thisInstance.getIdentifier(), this );
@@ -2003,36 +2118,36 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 final Listener l = (Listener) model.createObject( listenerInstance, classLoader );
                                 providedListeners.add( l );
-                                this.log( Level.CONFIG, this.getRegisteredListenerMessage(
-                                    l.getClass().getName() ), null );
+                                this.log( Level.CONFIG, getListenerInfoMessage(
+                                    Locale.getDefault(), l.getClass().getName() ), null );
 
                             }
                             else if ( this.isLoggable( Level.WARNING ) )
                             {
-                                this.log( Level.WARNING, this.getMissingInstanceMessage(
-                                    i.getIdentifier(), i.getName() ), null );
+                                this.log( Level.WARNING, getMissingInstanceMessage(
+                                    Locale.getDefault(), i.getIdentifier(), i.getName() ), new Exception() );
 
                             }
                         }
                     }
                     else if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( Level.WARNING, this.getMissingImplementationsMessage(
-                            listenerSpecification.getIdentifier() ), new Exception() );
+                        this.log( Level.WARNING, getMissingImplementationsMessage(
+                            Locale.getDefault(), listenerSpecification.getIdentifier() ), new Exception() );
 
                     }
                 }
                 else if ( this.isLoggable( Level.WARNING ) )
                 {
-                    this.log( Level.WARNING, this.getMissingSpecificationMessage(
-                        Listener.class.getName() ), new Exception() );
+                    this.log( Level.WARNING, getMissingSpecificationMessage(
+                        Locale.getDefault(), Listener.class.getName() ), new Exception() );
 
                 }
 
                 if ( this.isLoggable( Level.FINE ) )
                 {
-                    this.log( Level.FINE, this.getImplementationInfoMessage(
-                        Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+                    this.log( Level.FINE, getImplementationInfoMessage(
+                        Locale.getDefault(), Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
 
                 }
 
@@ -2167,184 +2282,11 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
 
-    private String getMessage( final String key, final Object arguments )
-    {
-        final ResourceBundle bundle =
-            ResourceBundle.getBundle( DefaultObjectManager.class.getName().replace( '.', '/' ) );
-
-        return new MessageFormat( bundle.getString( key ) ).format( arguments );
-    }
-
-    private String getArtifactNameMessage()
-    {
-        return this.getMessage( "artifactName", null );
-    }
-
-    private String getMissingSpecificationMessage( final String specification )
-    {
-        return this.getMessage( "missingSpecification", new Object[]
-            {
-                specification
-            } );
-
-    }
-
-    private String getMissingImplementationsMessage( final String specification )
-    {
-        return this.getMessage( "missingImplementations", new Object[]
-            {
-                specification
-            } );
-
-    }
-
-    private String getMissingImplementationMessage( final String implementationName, final String specification )
-    {
-        return this.getMessage( "missingImplementation", new Object[]
-            {
-                implementationName, specification
-            } );
-
-    }
-
-    private String getMissingObjectInstanceMessage( final Object object )
-    {
-        return this.getMessage( "missingObjectInstance", new Object[]
-            {
-                object.toString()
-            } );
-
-    }
-
-    private String getMissingDependencyMessage( final String dependency, final String implementation )
-    {
-        return this.getMessage( "missingDependency", new Object[]
-            {
-                dependency, implementation
-            } );
-    }
-
-    private String getMissingPropertyMessage( final String property, final String implementation )
-    {
-        return this.getMessage( "missingProperty", new Object[]
-            {
-                property, implementation
-            } );
-
-    }
-
-    private String getMissingMessageMessage( final String message, final String implementation )
-    {
-        return this.getMessage( "missingMessage", new Object[]
-            {
-                message, implementation
-            } );
-
-    }
-
-    private String getMissingInstanceMessage( final String implementation, final String implementationName )
-    {
-        return this.getMessage( "missingInstance", new Object[]
-            {
-                implementation, implementationName
-            } );
-
-    }
-
-    private String getMissingObjectMessage( final String implementation, final String implementationName )
-    {
-        return this.getMessage( "missingObject", new Object[]
-            {
-                implementation, implementationName
-            } );
-
-    }
-
-    private String getDependencyCycleMessage( final String implementation )
-    {
-        return this.getMessage( "dependencyCycle", new Object[]
-            {
-                implementation
-            } );
-
-    }
-
-    private String getImplementationInfoMessage( final Long startMillis )
-    {
-        return this.getMessage( "implementationInfo", new Object[]
-            {
-                startMillis
-            } );
-
-    }
-
-    private String getDefaultScopeInfoMessage( final String modelScope, final ClassLoader classLoader )
-    {
-        return this.getMessage( "defaultScopeInfo", new Object[]
-            {
-                modelScope, classLoader.toString()
-            } );
-
-    }
-
-    private String getMissingScopeMessage( final String modelScope )
-    {
-        return this.getMessage( "missingScope", new Object[]
-            {
-                modelScope
-            } );
-
-    }
-
-    private String getRegisteredListenerMessage( final String listener )
-    {
-        return this.getMessage( "listenerInfo", new Object[]
-            {
-                listener
-            } );
-
-    }
-
-    private String getUnsupportedMultiplicityMessage( final Multiplicity multiplicity )
-    {
-        return this.getMessage( "unsupportedMultiplicity", new Object[]
-            {
-                multiplicity
-            } );
-    }
-
-    private String getDefaultLocatorInfoMessage( final String scheme, final ClassLoader classLoader )
-    {
-        return this.getMessage( "defaultLocatorInfo", new Object[]
-            {
-                scheme, classLoader.toString()
-            } );
-
-    }
-
-    private String getMissingLocatorMessage( final URI location )
-    {
-        return this.getMessage( "missingLocator", new Object[]
-            {
-                location.toString()
-            } );
-
-    }
-
-    private String getMissingSpecificationClassMessage( final Specification specification )
-    {
-        return this.getMessage( "missingSpecificationClass", new Object[]
-            {
-                specification.getIdentifier()
-            } );
-
-    }
-
     private void logModulesReport( final Modules mods, final ClassLoader classLoader )
     {
         final StringBuilder modulesInfo = new StringBuilder();
 
-        this.log( Level.FINEST, this.getMessage( "modulesReport", null ), null );
+        this.log( Level.FINEST, getModulesReportMessage( Locale.getDefault() ), null );
 
         modulesInfo.append( "\tClassLoader:" ).append( classLoader );
 
@@ -2569,5 +2511,557 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
+
+    /**
+     * Gets the text of the {@code defaultInvokerInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code defaultInvokerInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultInvokerInfo" ), classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code defaultLocatorInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param schemeInfo Format argument.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code defaultLocatorInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLocatorInfo" ), schemeInfo, classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code defaultLogLevelInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param className Format argument.
+     * @param logLevel Format argument.
+     * @return The text of the {@code defaultLogLevelInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String className, final java.lang.String logLevel )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfo" ), className, logLevel, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code defaultScopeInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param scopeIdentifier Format argument.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code defaultScopeInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultScopeInfo" ), scopeIdentifier, classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code dependencyCycle} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @return The text of the {@code dependencyCycle} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "dependencyCycle" ), implementationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code ignoredInvocation} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @return The text of the {@code ignoredInvocation} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvocation" ), implementationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code ignoredInvoker} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @return The text of the {@code ignoredInvoker} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvoker" ), implementationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code illegalArraySpecification} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @param specificationMultiplicity Format argument.
+     * @return The text of the {@code illegalArraySpecification} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalArraySpecification" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code illegalObjectSpecification} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @param specificationMultiplicity Format argument.
+     * @return The text of the {@code illegalObjectSpecification} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalObjectSpecification" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code implementationInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-19-SNAPSHOT Build 2010-03-27T20:08:54+0000 in {0,number}ms initialisiert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param initializationMillis Format argument.
+     * @return The text of the {@code implementationInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "implementationInfo" ), initializationMillis, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code invokerInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code invokerInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "invokerInfo" ), implementationIdentifier, classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code listenerInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @return The text of the {@code listenerInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "listenerInfo" ), implementationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code locatorInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param schemeInfo Format argument.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code locatorInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "locatorInfo" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingDependency} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param dependencyName Format argument.
+     * @return The text of the {@code missingDependency} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingDependency" ), implementationIdentifier, dependencyName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingImplementation} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @param implementationName Format argument.
+     * @return The text of the {@code missingImplementation} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementation" ), specificationIdentifier, implementationName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingImplementations} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @return The text of the {@code missingImplementations} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementations" ), specificationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingInstance} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param implementationName Format argument.
+     * @return The text of the {@code missingInstance} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingInstance" ), implementationIdentifier, implementationName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingLocator} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param locationInfo Format argument.
+     * @return The text of the {@code missingLocator} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingLocator" ), locationInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param messageName Format argument.
+     * @return The text of the {@code missingMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingMessage" ), implementationIdentifier, messageName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingObject} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param implementationName Format argument.
+     * @return The text of the {@code missingObject} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObject" ), implementationIdentifier, implementationName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingObjectInstance} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param objectInfo Format argument.
+     * @return The text of the {@code missingObjectInstance} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectInstance" ), objectInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingProperty} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param propertyName Format argument.
+     * @return The text of the {@code missingProperty} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingProperty" ), implementationIdentifier, propertyName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingScope} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param scopeIdentifier Format argument.
+     * @return The text of the {@code missingScope} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingScope" ), scopeIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingSpecification} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @return The text of the {@code missingSpecification} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecification" ), specificationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingSpecificationClass} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @return The text of the {@code missingSpecificationClass} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationClass" ), specificationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code modulesReport} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @return The text of the {@code modulesReport} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getModulesReportMessage( final java.util.Locale locale )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReport" ), (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code scopeInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param scopeIdentifier Format argument.
+     * @param classLoaderInfo Format argument.
+     * @return The text of the {@code scopeInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeInfo" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code unexpectedDependencyObjects} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param dependencyName Format argument.
+     * @param expectedNumber Format argument.
+     * @param computedNumber Format argument.
+     * @return The text of the {@code unexpectedDependencyObjects} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "unexpectedDependencyObjects" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
+    }
+    // </editor-fold>
     // SECTION-END
 }

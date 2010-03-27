@@ -41,14 +41,23 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * <p>This specification declares a multiplicity of {@code One}.
- * An application assembler is required to provide no more than one implementation of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * TestSpecificationOneMore object = (TestSpecificationOneMore) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOneMore.class );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code One}.
+ *   An application assembler may provide either no or one implementation of this specification.
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * TestSpecificationOneMore object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOneMore.class );
+ * TestSpecificationOneMore object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOneMore.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

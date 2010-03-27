@@ -42,16 +42,23 @@ import java.util.Map;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Scope a specification applies to.
- * <p>This specification declares a multiplicity of {@code Many}.
- * An application assembler may provide multiple implementations of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
- * selecting a single implementation.<pre>
- * Scope[] objects = (Scope[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class );
- * Scope object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code Many}.
+ *   An application assembler may provide multiple implementations of this specification (including none).
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * Scope[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope[].class );
+ * Scope object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

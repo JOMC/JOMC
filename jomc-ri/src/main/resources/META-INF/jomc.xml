@@ -58,6 +58,276 @@
       <specifications>
         <reference identifier="org.jomc.ObjectManager" version="1.0"/>
       </specifications>
+      <messages>
+        <message name="defaultInvokerInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered DefaultInvoker Version ${project.version} Build ${buildNumber} for ''{0}''.</text>
+            <text language="de">DefaultInvoker Version ${project.version} Build ${buildNumber} für ''{0}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="defaultLocatorInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered DefaultLocator Version ${project.version} Build ${buildNumber} Scheme ''{0}'' for ''{1}''.</text>
+            <text language="de">DefaultLocator Version ${project.version} Build ${buildNumber} Scheme ''{0}'' für ''{1}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="schemeInfo"/>
+            <argument index="1" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="defaultLogLevelInfo">
+          <template defaultLanguage="en">
+            <text language="en">{0} default log level: ''{1}''</text>
+            <text language="de">{0} Standard-Protokollierungsstufe: ''{1}''</text>
+          </template>
+          <arguments>
+            <argument index="0" name="className"/>
+            <argument index="1" name="logLevel"/>
+          </arguments>
+        </message>
+        <message name="defaultScopeInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered DefaultScope Version ${project.version} Build ${buildNumber} Scope ''{0}'' for ''{1}''.</text>
+            <text language="de">DefaultScope Version ${project.version} Build ${buildNumber} Scope ''{0}'' für ''{1}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="scopeIdentifier"/>
+            <argument index="1" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="dependencyCycle">
+          <template defaultLanguage="en">
+            <text language="en">A dependency of implementation ''{0}'' introduces a cycle.</text>
+            <text language="de">Zyklische Anforderung der Implementierung ''{0}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="ignoredInvocation">
+          <template defaultLanguage="en">
+            <text language="en">Invocation implementation ''{0}'' ignored.</text>
+            <text language="de">Invocation-Implementierung ''{0}'' ignoriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="ignoredInvoker">
+          <template defaultLanguage="en">
+            <text language="en">Invoker implementation ''{0}'' ignored.</text>
+            <text language="de">Invoker-Implementierung ''{0}'' ignoriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="illegalArraySpecification">
+          <template defaultLanguage="en">
+            <text language="en">Illegal array specification ''{0}''. Mutliplicity ''{1}''.</text>
+            <text language="de">Ungültige ''Array''-Spezifikation ''{0}''. Kardinalität ''{1}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+            <argument index="1" name="specificationMultiplicity"/>
+          </arguments>
+        </message>
+        <message name="illegalObjectSpecification">
+          <template defaultLanguage="en">
+            <text language="en">Illegal object specification ''{0}''. Multiplicity ''{1}''.</text>
+            <text language="de">Ungültige ''Object''-Spezifikation ''{0}''. Kardinalität ''{1}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+            <argument index="1" name="specificationMultiplicity"/>
+          </arguments>
+        </message>
+        <message name="implementationInfo">
+          <template defaultLanguage="en">
+            <text language="en">DefaultObjectManager Version ${project.version} Build ${buildNumber} initialized in {0,number}ms.</text>
+            <text language="de">DefaultObjectManager Version ${project.version} Build ${buildNumber} in {0,number}ms initialisiert.</text>
+          </template>
+          <arguments>
+            <argument index="0" type="Number" name="initializationMillis"/>
+          </arguments>
+        </message>
+        <message name="invokerInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered invoker implementation ''{0}'' for ''{1}''.</text>
+            <text language="de">Invoker-Implementierung ''{0}'' für ''{1}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="listenerInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered listener implementation ''{0}''.</text>
+            <text language="de">Listener-Implementierung ''{0}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="locatorInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</text>
+            <text language="de">''{1}''-Locator-URI-Schema-Implementierung ''{0}'' für ''{2}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="schemeInfo"/>
+            <argument index="2" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="missingDependency">
+          <template defaultLanguage="en">
+            <text language="en">Dependency ''{1}'' not found for implementation ''{0}''.</text>
+            <text language="de">''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="dependencyName"/>
+          </arguments>
+        </message>
+        <message name="missingImplementation">
+          <template defaultLanguage="en">
+            <text language="en">Implementation ''{1}'' not found for specification ''{0}''.</text>
+            <text language="de">Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+            <argument index="1" name="implementationName"/>
+          </arguments>
+        </message>
+        <message name="missingImplementations">
+          <template defaultLanguage="en">
+            <text language="en">No implementations found for specification ''{0}''.</text>
+            <text language="de">Keine Implementierungen der Spezifikation ''{0}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="missingInstance">
+          <template defaultLanguage="en">
+            <text language="en">No instance found for implementation ''{0}'' - ''{1}''.</text>
+            <text language="de">Keine Instanz für Implementierung ''{0}'' - ''{1}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="implementationName"/>
+          </arguments>
+        </message>
+        <message name="missingLocator">
+          <template defaultLanguage="en">
+            <text language="en">No locator found for location ''{0}''.</text>
+            <text language="de">Keinen Locator für Ort ''{0}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="locationInfo"/>
+          </arguments>
+        </message>
+        <message name="missingMessage">
+          <template defaultLanguage="en">
+            <text language="en">Message ''{1}'' not found for implementation ''{0}''.</text>
+            <text language="de">''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="messageName"/>
+          </arguments>
+        </message>
+        <message name="missingObject">
+          <template defaultLanguage="en">
+            <text language="en">No object found for implementation ''{0}'' - ''{1}''.</text>
+            <text language="de">Kein Objekt für Implementierung ''{0}'' - ''{1}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="implementationName"/>
+          </arguments>
+        </message>
+        <message name="missingObjectInstance">
+          <template defaultLanguage="en">
+            <text language="en">No instance found for object ''{0}''.</text>
+            <text language="de">Keine Instanz für Objekt ''{0}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="objectInfo"/>
+          </arguments>
+        </message>
+        <message name="missingProperty">
+          <template defaultLanguage="en">
+            <text language="en">Property ''{1}'' not found for implementation ''{0}''.</text>
+            <text language="de">''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="propertyName"/>
+          </arguments>
+        </message>
+        <message name="missingScope">
+          <template defaultLanguage="en">
+            <text language="en">Scope ''{0}'' not found.</text>
+            <text language="de">Gültigkeitsbereich ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="scopeIdentifier"/>
+          </arguments>
+        </message>
+        <message name="missingSpecification">
+          <template defaultLanguage="en">
+            <text language="en">Specification ''{0}'' not found.</text>
+            <text language="de">Spezifikation ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="missingSpecificationClass">
+          <template defaultLanguage="en">
+            <text language="en">Specification ''{0}'' does not define a class.</text>
+            <text language="de">Spezifikation ''{0}'' definiert keine Klasse.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="specificationIdentifier"/>
+          </arguments>
+        </message>
+        <message name="modulesReport">
+          <template defaultLanguage="en">
+            <text language="en">Modules report:</text>
+            <text language="de">Modulbericht:</text>
+          </template>
+        </message>
+        <message name="scopeInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</text>
+            <text language="de">''{1}''-Gültigkeitsbereich-Implementierung ''{0}'' für ''{2}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="scopeIdentifier"/>
+            <argument index="2" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="unexpectedDependencyObjects">
+          <template defaultLanguage="en">
+            <text language="en">Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</text>
+            <text language="de">Unerwartete Anzahl Objekte für ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="dependencyName"/>
+            <argument index="2" type="Number" name="expectedNumber"/>
+            <argument index="3" type="Number" name="computedNumber"/>
+          </arguments>
+        </message>
+      </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultLocator" class="org.jomc.ri.DefaultLocator" classDeclaration="true"
@@ -71,6 +341,17 @@
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
+      <messages>
+        <message name="unsupportedUriScheme">
+          <template defaultLanguage="en">
+            <text language="en">URI scheme ''{0}'' is not supported.</text>
+            <text language="de">Keine Unterstützung für URI Schema ''{0}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="schemeInfo"/>
+          </arguments>
+        </message>
+      </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultScope" class="org.jomc.ri.DefaultScope" classDeclaration="true"

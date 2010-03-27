@@ -64,7 +64,7 @@ public class ObjectManagerDummy
 {
     // SECTION-START[ObjectManager]
 
-    public Object getObject( final Class specification )
+    public <T> T getObject( final Class<T> specification )
     {
         throw new UnsupportedOperationException();
     }

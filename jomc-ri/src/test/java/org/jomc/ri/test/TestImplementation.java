@@ -495,11 +495,9 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
-    private String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument )
+    private static String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
-        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "testMessage", locale, testArgument );
-        assert _m != null : "'testMessage' message not found.";
-        return _m;
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/test/TestImplementation", locale ).getString( "testMessage" ), testArgument, (Object) null );
     }
     // </editor-fold>
     // SECTION-END

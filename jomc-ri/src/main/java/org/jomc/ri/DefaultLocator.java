@@ -38,8 +38,7 @@ package org.jomc.ri;
 
 import java.io.IOException;
 import java.net.URI;
-import java.text.MessageFormat;
-import java.util.ResourceBundle;
+import java.util.Locale;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -50,6 +49,12 @@ import org.jomc.spi.Locator;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default {@code Locator} implementation.
+ * <p><b>Messages</b><ul>
+ * <li>"{@link #getUnsupportedUriSchemeMessage unsupportedUriScheme}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
+ * </table>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -173,11 +178,7 @@ public class DefaultLocator implements Locator
             final String scheme = location.getScheme();
             if ( !this.isLocationSupported( location ) )
             {
-                throw new IOException( this.getMessage( "unsupportedUriScheme", new Object[]
-                    {
-                        location.getScheme()
-                    } ) );
-
+                throw new IOException( getUnsupportedUriSchemeMessage( Locale.getDefault(), location.getScheme() ) );
             }
 
             final Object jndiObject = this.getJndiContext().lookup( this.getJndiName( location ) );
@@ -197,13 +198,10 @@ public class DefaultLocator implements Locator
         {
             throw (IOException) new IOException( e.getMessage() ).initCause( e );
         }
-    }
-
-    private String getMessage( final String key, final Object args )
-    {
-        return new MessageFormat( ResourceBundle.getBundle( DefaultLocator.class.getName().replace( '.', '/' ) ).
-            getString( key ) ).format( args );
-
+        catch ( final ClassCastException e )
+        {
+            throw (IOException) new IOException( e.getMessage() ).initCause( e );
+        }
     }
 
     // SECTION-END
@@ -226,5 +224,26 @@ public class DefaultLocator implements Locator
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
+
+    /**
+     * Gets the text of the {@code unsupportedUriScheme} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param schemeInfo Format argument.
+     * @return The text of the {@code unsupportedUriScheme} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-19-SNAPSHOT/jomc-tools" )
+    private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "unsupportedUriScheme" ), schemeInfo, (Object) null );
+    }
+    // </editor-fold>
     // SECTION-END
 }

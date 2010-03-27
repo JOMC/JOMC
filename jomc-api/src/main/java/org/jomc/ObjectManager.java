@@ -42,14 +42,24 @@ import java.util.Locale;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Manages objects.
- * <p>This specification declares a multiplicity of {@code One}.
- * An application assembler is required to provide no more than one implementation of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * ObjectManager object = (ObjectManager) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( ObjectManager.class );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code One}.
+ *   An application assembler may provide either no or one implementation of this specification.
  * </p>
  *
- * <p>This specification applies to {@code Singleton} scope. The same singleton object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * ObjectManager object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( ObjectManager.class );
+ * ObjectManager object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( ObjectManager.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification applies to {@code Singleton} scope.
+ *   The same singleton object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -74,6 +84,7 @@ public interface ObjectManager
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
      * loader is recommended.</p>
      *
+     * @param <T> The type of the instance.
      * @param specification The specification class to return an implementation instance of.
      *
      * @return An instance of an implementation of the specification class {@code specification} or {@code null} if
@@ -82,7 +93,7 @@ public interface ObjectManager
      * @throws NullPointerException if {@code specification} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
      */
-    Object getObject( Class specification )
+    <T> T getObject( Class<T> specification )
         throws NullPointerException, ObjectManagementException;
 
     /**
@@ -93,9 +104,9 @@ public interface ObjectManager
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
      * loader is recommended.</p>
      *
+     * @param <T> The type of the instance.
      * @param specification The specification class to return an implementation instance of.
      * @param implementationName The name of the implementation to return an instance of.
-     * @param <T> The type of the instance.
      *
      * @return An instance of the implementation named {@code implementationName} of the specification class
      * {@code specification} or {@code null} if no such instance is available.

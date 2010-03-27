@@ -43,14 +43,23 @@ import java.util.Map;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Invocation of an object.
- * <p>This specification declares a multiplicity of {@code One}.
- * An application assembler is required to provide no more than one implementation of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting that implementation.<pre>
- * Invocation object = (Invocation) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invocation.class );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code One}.
+ *   An application assembler may provide either no or one implementation of this specification.
  * </p>
  *
- * <p>This specification does not apply to any scope. A new object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * Invocation object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invocation.class );
+ * Invocation object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invocation.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

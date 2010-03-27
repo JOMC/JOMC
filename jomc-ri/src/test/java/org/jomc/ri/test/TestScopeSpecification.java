@@ -41,16 +41,24 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * <p>This specification declares a multiplicity of {@code Many}.
- * An application assembler may provide multiple implementations of this specification (including none).
- * Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for getting these implementations or for
- * selecting a single implementation.<pre>
- * TestScopeSpecification[] objects = (TestScopeSpecification[]) ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification.class );
- * TestScopeSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification.class, "<i>implementation name</i>" );
- * </pre>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code Many}.
+ *   An application assembler may provide multiple implementations of this specification (including none).
  * </p>
  *
- * <p>This specification applies to {@code Test} scope. The same test object is returned whenever requested.</p>
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * TestScopeSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification[].class );
+ * TestScopeSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification applies to {@code Test} scope.
+ *   The same test object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

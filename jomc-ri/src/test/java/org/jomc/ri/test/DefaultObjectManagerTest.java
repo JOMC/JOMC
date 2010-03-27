@@ -232,7 +232,7 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getObject( (Class) null, null, null );
+            this.getObjectManager().getObject( (Class<?>) null, null, null );
             Assert.fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
@@ -322,9 +322,9 @@ public class DefaultObjectManagerTest
         Assert.assertNotNull( this.getObjectManager().getModules( this.getClass().getClassLoader() ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "TestImplementation" ) );
-        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany[].class ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class, "TestImplementation" ) );
-        Assert.assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class ) );
+        Assert.assertNotNull( this.getObjectManager().getObject( TestScopeSpecification[].class ) );
         Assert.assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class, "TestImplementation" ) );
     }
 
@@ -337,7 +337,9 @@ public class DefaultObjectManagerTest
     {
         Assert.assertNull( this.getObjectManager().getObject( Object.class ) );
         Assert.assertNull( this.getObjectManager().getObject( TestSpecification.class ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecificationOne[].class ) );
         Assert.assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class ) );
+        Assert.assertNull( this.getObjectManager().getObject( TestSpecificationMany.class ) );
         Assert.assertNull( this.getObjectManager().getObject( ObjectManager.class, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getObject( TestSpecification.class, "DOES NOT EXIST" ) );
         Assert.assertNull( this.getObjectManager().getDependency( this, "DOES NOT EXIST" ) );
