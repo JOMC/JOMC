@@ -48,7 +48,7 @@
                     vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
-        <text language="en"><![CDATA[${project.description}]]></text>
+        <text language="en">Default {@code ObjectManager} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -386,7 +386,7 @@
                     vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default invocation.</text>
+        <text language="en">Default {@code Invocation} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
