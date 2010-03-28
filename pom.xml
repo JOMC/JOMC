@@ -39,7 +39,7 @@
   <packaging>pom</packaging>
   <name>JOMC</name>
   <version>1.0-alpha-20-SNAPSHOT</version>
-  <description>Object management and configuration parent module.</description>
+  <description>JOMC is an object management and configuration application programming interface with corresponding reference implementations together with tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>http://jomc.sourceforge.net/jomc/${project.version}</url>
   <prerequisites>
     <maven>2.0.10</maven>
