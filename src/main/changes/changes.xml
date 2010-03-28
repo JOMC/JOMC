@@ -588,5 +588,13 @@
       of class <code>org.jomc.ri.DefaultObjectManager</code> for unsupported multiplicity values.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-20" date="2010-03-27">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated methods <code>getSpecifications(String)</code>,
+      <code>getDependencies(String)</code>, <code>getProperties(String)</code> and <code>getMessages(String)</code>
+      of class <code>org.jomc.model.Modules</code> to correctly collect model objects of class declaring
+      implementations based on attribute <code>classDeclaration</code>.]]>
+      </action>
+    </release>
   </body>
 </document>
