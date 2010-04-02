@@ -589,11 +589,24 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-20" date="2010-03-27">
+    <release version="1.0-alpha-20" date="2010-03-28">
       <action dev="schulte2005" type="fix"><![CDATA[Updated methods <code>getSpecifications(String)</code>,
       <code>getDependencies(String)</code>, <code>getProperties(String)</code> and <code>getMessages(String)</code>
       of class <code>org.jomc.model.Modules</code> to correctly collect model objects of class declaring
       implementations based on attribute <code>classDeclaration</code>.]]>
+      </action>
+    </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-alpha-21" date="2010-03-30">
+      <action dev="schulte2005" type="fix"><![CDATA[Added validation of the <code>implementationName</code> attribute
+      of dependencies to class <code>org.jomc.tools.ClassFileProcessor</code>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getJavaGetterMethodName(Message)</code>
+      of class <code>org.jomc.tools.JomcTool</code> to no longer append '<code>Message</code>' to the returned name.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated methods <code>getJavaGetterMethodName</code> of
+      class <code>org.jomc.tools.JomcTool</code> to allow names containing whitespace characters and illegal java
+      identifier characters.]]>
       </action>
     </release>
   </body>

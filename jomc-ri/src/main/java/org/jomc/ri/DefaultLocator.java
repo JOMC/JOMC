@@ -50,7 +50,7 @@ import org.jomc.spi.Locator;
 /**
  * Default {@code Locator} implementation.
  * <p><b>Messages</b><ul>
- * <li>"{@link #getUnsupportedUriSchemeMessage unsupportedUriScheme}"<table>
+ * <li>"{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
  * </table>
@@ -227,14 +227,14 @@ public class DefaultLocator implements Locator
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
 
     /**
-     * Gets the text of the {@code unsupportedUriScheme} message.
+     * Gets the text of the {@code unsupportedUriSchemeMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
-     * @return The text of the {@code unsupportedUriScheme} message.
+     * @return The text of the {@code unsupportedUriSchemeMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -242,7 +242,7 @@ public class DefaultLocator implements Locator
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "unsupportedUriScheme" ), schemeInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "unsupportedUriSchemeMessage" ), schemeInfo, (Object) null );
     }
     // </editor-fold>
     // SECTION-END

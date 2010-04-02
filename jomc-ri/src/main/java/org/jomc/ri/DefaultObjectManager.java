@@ -88,115 +88,115 @@ import org.jomc.util.WeakIdentityHashMap;
  * <li>{@code org.jomc.ObjectManager} {@code 1.0} {@code Singleton}</li>
  * </ul></p>
  * <p><b>Messages</b><ul>
- * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfo}"<table>
+ * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
  * </table>
- * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getDependencyCycleMessage dependencyCycle}"<table>
+ * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
  * </table>
- * <li>"{@link #getIgnoredInvocationMessage ignoredInvocation}"<table>
+ * <li>"{@link #getIgnoredInvocationMessage ignoredInvocationMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getIgnoredInvokerMessage ignoredInvoker}"<table>
+ * <li>"{@link #getIgnoredInvokerMessage ignoredInvokerMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getIllegalArraySpecificationMessage illegalArraySpecification}"<table>
+ * <li>"{@link #getIllegalArraySpecificationMessage illegalArraySpecificationMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
- * <li>"{@link #getIllegalObjectSpecificationMessage illegalObjectSpecification}"<table>
+ * <li>"{@link #getIllegalObjectSpecificationMessage illegalObjectSpecificationMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
- * <li>"{@link #getImplementationInfoMessage implementationInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 in {0,number}ms initialisiert.</pre></td></tr>
+ * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
- * <li>"{@link #getInvokerInfoMessage invokerInfo}"<table>
+ * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getListenerInfoMessage listenerInfo}"<table>
+ * <li>"{@link #getListenerInfoMessage listenerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getLocatorInfoMessage locatorInfo}"<table>
+ * <li>"{@link #getLocatorInfoMessage locatorInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingDependencyMessage missingDependency}"<table>
+ * <li>"{@link #getMissingDependencyMessage missingDependencyMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingImplementationMessage missingImplementation}"<table>
+ * <li>"{@link #getMissingImplementationMessage missingImplementationMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingImplementationsMessage missingImplementations}"<table>
+ * <li>"{@link #getMissingImplementationsMessage missingImplementationsMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingInstanceMessage missingInstance}"<table>
+ * <li>"{@link #getMissingInstanceMessage missingInstanceMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingLocatorMessage missingLocator}"<table>
+ * <li>"{@link #getMissingLocatorMessage missingLocatorMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingMessageMessage missingMessage}"<table>
+ * <li>"{@link #getMissingMessageMessage missingMessageMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingObjectMessage missingObject}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingObjectInstanceMessage missingObjectInstance}"<table>
+ * <li>"{@link #getMissingObjectInstanceMessage missingObjectInstanceMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingPropertyMessage missingProperty}"<table>
+ * <li>"{@link #getMissingObjectMessage missingObjectMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getMissingPropertyMessage missingPropertyMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingScopeMessage missingScope}"<table>
+ * <li>"{@link #getMissingScopeMessage missingScopeMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
  * </table>
- * <li>"{@link #getMissingSpecificationMessage missingSpecification}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingSpecificationClassMessage missingSpecificationClass}"<table>
+ * <li>"{@link #getMissingSpecificationClassMessage missingSpecificationClassMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
  * </table>
- * <li>"{@link #getModulesReportMessage modulesReport}"<table>
+ * <li>"{@link #getMissingSpecificationMessage missingSpecificationMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getModulesReportMessage modulesReportMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
  * </table>
- * <li>"{@link #getScopeInfoMessage scopeInfo}"<table>
+ * <li>"{@link #getScopeInfoMessage scopeInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
  * </table>
- * <li>"{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjects}"<table>
+ * <li>"{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjectsMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</pre></td></tr>
  * </table>
@@ -2514,14 +2514,14 @@ public class DefaultObjectManager implements ObjectManager
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
 
     /**
-     * Gets the text of the {@code defaultInvokerInfo} message.
+     * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultInvokerInfo} message.
+     * @return The text of the {@code defaultInvokerInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2529,19 +2529,19 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultInvokerInfo" ), classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultInvokerInfoMessage" ), classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code defaultLocatorInfo} message.
+     * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultLocatorInfo} message.
+     * @return The text of the {@code defaultLocatorInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2549,11 +2549,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLocatorInfo" ), schemeInfo, classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLocatorInfoMessage" ), schemeInfo, classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code defaultLogLevelInfo} message.
+     * Gets the text of the {@code defaultLogLevelInfoMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
@@ -2561,7 +2561,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param className Format argument.
      * @param logLevel Format argument.
-     * @return The text of the {@code defaultLogLevelInfo} message.
+     * @return The text of the {@code defaultLogLevelInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2569,19 +2569,19 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String className, final java.lang.String logLevel )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfo" ), className, logLevel, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfoMessage" ), className, logLevel, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code defaultScopeInfo} message.
+     * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultScopeInfo} message.
+     * @return The text of the {@code defaultScopeInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2589,18 +2589,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultScopeInfo" ), scopeIdentifier, classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultScopeInfoMessage" ), scopeIdentifier, classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code dependencyCycle} message.
+     * Gets the text of the {@code dependencyCycleMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code dependencyCycle} message.
+     * @return The text of the {@code dependencyCycleMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2608,18 +2608,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "dependencyCycle" ), implementationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "dependencyCycleMessage" ), implementationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code ignoredInvocation} message.
+     * Gets the text of the {@code ignoredInvocationMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code ignoredInvocation} message.
+     * @return The text of the {@code ignoredInvocationMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2627,18 +2627,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvocation" ), implementationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvocationMessage" ), implementationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code ignoredInvoker} message.
+     * Gets the text of the {@code ignoredInvokerMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code ignoredInvoker} message.
+     * @return The text of the {@code ignoredInvokerMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2646,11 +2646,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvoker" ), implementationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvokerMessage" ), implementationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code illegalArraySpecification} message.
+     * Gets the text of the {@code illegalArraySpecificationMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
@@ -2658,7 +2658,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code illegalArraySpecification} message.
+     * @return The text of the {@code illegalArraySpecificationMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2666,11 +2666,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalArraySpecification" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalArraySpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code illegalObjectSpecification} message.
+     * Gets the text of the {@code illegalObjectSpecificationMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
@@ -2678,7 +2678,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code illegalObjectSpecification} message.
+     * @return The text of the {@code illegalObjectSpecificationMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2686,18 +2686,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalObjectSpecification" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalObjectSpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code implementationInfo} message.
+     * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-03-31T16:53:37+0000 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-alpha-21-SNAPSHOT Build 2010-04-02T22:03:06+0000 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
-     * @return The text of the {@code implementationInfo} message.
+     * @return The text of the {@code implementationInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2705,11 +2705,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "implementationInfo" ), initializationMillis, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "implementationInfoMessage" ), initializationMillis, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code invokerInfo} message.
+     * Gets the text of the {@code invokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
@@ -2717,7 +2717,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code invokerInfo} message.
+     * @return The text of the {@code invokerInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2725,18 +2725,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "invokerInfo" ), implementationIdentifier, classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "invokerInfoMessage" ), implementationIdentifier, classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code listenerInfo} message.
+     * Gets the text of the {@code listenerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code listenerInfo} message.
+     * @return The text of the {@code listenerInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2744,11 +2744,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "listenerInfo" ), implementationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "listenerInfoMessage" ), implementationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code locatorInfo} message.
+     * Gets the text of the {@code locatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
@@ -2757,7 +2757,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code locatorInfo} message.
+     * @return The text of the {@code locatorInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2765,11 +2765,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "locatorInfo" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "locatorInfoMessage" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingDependency} message.
+     * Gets the text of the {@code missingDependencyMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
@@ -2777,7 +2777,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
-     * @return The text of the {@code missingDependency} message.
+     * @return The text of the {@code missingDependencyMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2785,11 +2785,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingDependency" ), implementationIdentifier, dependencyName, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingDependencyMessage" ), implementationIdentifier, dependencyName, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingImplementation} message.
+     * Gets the text of the {@code missingImplementationMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
@@ -2797,7 +2797,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code missingImplementation} message.
+     * @return The text of the {@code missingImplementationMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2805,18 +2805,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementation" ), specificationIdentifier, implementationName, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationMessage" ), specificationIdentifier, implementationName, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingImplementations} message.
+     * Gets the text of the {@code missingImplementationsMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingImplementations} message.
+     * @return The text of the {@code missingImplementationsMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2824,11 +2824,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementations" ), specificationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationsMessage" ), specificationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingInstance} message.
+     * Gets the text of the {@code missingInstanceMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
@@ -2836,7 +2836,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code missingInstance} message.
+     * @return The text of the {@code missingInstanceMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2844,18 +2844,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingInstance" ), implementationIdentifier, implementationName, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingInstanceMessage" ), implementationIdentifier, implementationName, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingLocator} message.
+     * Gets the text of the {@code missingLocatorMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
-     * @return The text of the {@code missingLocator} message.
+     * @return The text of the {@code missingLocatorMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2863,11 +2863,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingLocator" ), locationInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingLocatorMessage" ), locationInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingMessage} message.
+     * Gets the text of the {@code missingMessageMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
@@ -2875,7 +2875,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param messageName Format argument.
-     * @return The text of the {@code missingMessage} message.
+     * @return The text of the {@code missingMessageMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2883,38 +2883,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingMessage" ), implementationIdentifier, messageName, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingMessageMessage" ), implementationIdentifier, messageName, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingObject} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
-     * </table></p>
-     * @param locale The locale of the message to return.
-     * @param implementationIdentifier Format argument.
-     * @param implementationName Format argument.
-     * @return The text of the {@code missingObject} message.
-     *
-     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
-     */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
-    private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
-    {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObject" ), implementationIdentifier, implementationName, (Object) null );
-    }
-
-    /**
-     * Gets the text of the {@code missingObjectInstance} message.
+     * Gets the text of the {@code missingObjectInstanceMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
-     * @return The text of the {@code missingObjectInstance} message.
+     * @return The text of the {@code missingObjectInstanceMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2922,11 +2902,31 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectInstance" ), objectInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectInstanceMessage" ), objectInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingProperty} message.
+     * Gets the text of the {@code missingObjectMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param implementationIdentifier Format argument.
+     * @param implementationName Format argument.
+     * @return The text of the {@code missingObjectMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
+    private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectMessage" ), implementationIdentifier, implementationName, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code missingPropertyMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
@@ -2934,7 +2934,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param propertyName Format argument.
-     * @return The text of the {@code missingProperty} message.
+     * @return The text of the {@code missingPropertyMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2942,18 +2942,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingProperty" ), implementationIdentifier, propertyName, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingPropertyMessage" ), implementationIdentifier, propertyName, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingScope} message.
+     * Gets the text of the {@code missingScopeMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
-     * @return The text of the {@code missingScope} message.
+     * @return The text of the {@code missingScopeMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2961,37 +2961,18 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingScope" ), scopeIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingScopeMessage" ), scopeIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code missingSpecification} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
-     * @param locale The locale of the message to return.
-     * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingSpecification} message.
-     *
-     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
-     */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
-    private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
-    {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecification" ), specificationIdentifier, (Object) null );
-    }
-
-    /**
-     * Gets the text of the {@code missingSpecificationClass} message.
+     * Gets the text of the {@code missingSpecificationClassMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingSpecificationClass} message.
+     * @return The text of the {@code missingSpecificationClassMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -2999,17 +2980,36 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationClass" ), specificationIdentifier, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationClassMessage" ), specificationIdentifier, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code modulesReport} message.
+     * Gets the text of the {@code missingSpecificationMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param specificationIdentifier Format argument.
+     * @return The text of the {@code missingSpecificationMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
+                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
+    private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
+    {
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationMessage" ), specificationIdentifier, (Object) null );
+    }
+
+    /**
+     * Gets the text of the {@code modulesReportMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code modulesReport} message.
+     * @return The text of the {@code modulesReportMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3017,11 +3017,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getModulesReportMessage( final java.util.Locale locale )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReport" ), (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReportMessage" ), (Object) null );
     }
 
     /**
-     * Gets the text of the {@code scopeInfo} message.
+     * Gets the text of the {@code scopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
@@ -3030,7 +3030,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code scopeInfo} message.
+     * @return The text of the {@code scopeInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3038,11 +3038,11 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeInfo" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeInfoMessage" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
     }
 
     /**
-     * Gets the text of the {@code unexpectedDependencyObjects} message.
+     * Gets the text of the {@code unexpectedDependencyObjectsMessage} message.
      * <p><b>Templates</b><br/><table>
      * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
      * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</pre></td></tr>
@@ -3052,7 +3052,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param dependencyName Format argument.
      * @param expectedNumber Format argument.
      * @param computedNumber Format argument.
-     * @return The text of the {@code unexpectedDependencyObjects} message.
+     * @return The text of the {@code unexpectedDependencyObjectsMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3060,7 +3060,7 @@ public class DefaultObjectManager implements ObjectManager
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
     private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
     {
-        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "unexpectedDependencyObjects" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
+        return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "unexpectedDependencyObjectsMessage" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
     }
     // </editor-fold>
     // SECTION-END

@@ -77,7 +77,7 @@ import junit.framework.Assert;
  * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-alpha-21-SNAPSHOT.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
- * <li>"{@link #getTestMessageMessage testMessage}"<table>
+ * <li>"{@link #getTestMessage testMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
  * </table>
  * </ul></p>
@@ -247,7 +247,7 @@ public class TestImplementation
 
             public void run()
             {
-                getTestMessageMessage( Locale.getDefault(), "arg" );
+                getTestMessage( Locale.getDefault(), "arg" );
             }
 
         } );
@@ -495,7 +495,7 @@ public class TestImplementation
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
                                  comments = "See http://jomc.sourceforge.net/jomc/1.0-alpha-21-SNAPSHOT/jomc-tools" )
-    private static String getTestMessageMessage( final java.util.Locale locale, final java.lang.String testArgument )
+    private static String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
         return java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/test/TestImplementation", locale ).getString( "testMessage" ), testArgument, (Object) null );
     }
