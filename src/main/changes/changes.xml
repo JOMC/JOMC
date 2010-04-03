@@ -597,7 +597,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-alpha-21" date="2010-03-30">
+    <release version="1.0-beta-1" date="2010-04-03">
       <action dev="schulte2005" type="fix"><![CDATA[Added validation of the <code>implementationName</code> attribute
       of dependencies to class <code>org.jomc.tools.ClassFileProcessor</code>.]]>
       </action>
