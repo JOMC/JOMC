@@ -609,5 +609,12 @@
       identifier characters.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-beta-1">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createSchema</code> of class
+      <code>org.jomc.model.bootstrap.DefaultBootstrapContext</code> to correct a <code>NullPointerException</code>
+      thrown by sub-classes.]]>
+      </action>
+    </release>
   </body>
 </document>
