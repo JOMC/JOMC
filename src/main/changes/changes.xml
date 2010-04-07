@@ -613,7 +613,10 @@
     <release version="1.0-beta-1">
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createSchema</code> of class
       <code>org.jomc.model.bootstrap.DefaultBootstrapContext</code> to correct a <code>NullPointerException</code>
-      thrown by sub-classes.]]>
+      thrown when sub-classing.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected various inconsistencies between the command line
+      application and the <code>maven-jomc-plugin</code>.]]>
       </action>
     </release>
   </body>
