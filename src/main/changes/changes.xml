@@ -611,7 +611,7 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-beta-2" date="2010-04-08">
-      <action dev="schulte2005" type="update"><![CDATA[Corrected various inconsistencies between the command line
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected various inconsistencies between the command line
       application and the <code>maven-jomc-plugin</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createSchema</code> of class
