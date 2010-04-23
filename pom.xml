@@ -450,9 +450,11 @@
           <executions>
             <execution>
               <goals>
+                <goal>attach-main-module</goal>
                 <goal>manage-main-sources</goal>
                 <goal>commit-main-classes</goal>
                 <goal>validate-main-classes</goal>
+                <goal>attach-test-module</goal>
                 <goal>manage-test-sources</goal>
                 <goal>commit-test-classes</goal>
                 <goal>validate-test-classes</goal>

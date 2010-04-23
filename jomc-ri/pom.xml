@@ -59,24 +59,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach</id>
-            <phase>process-resources</phase>
-            <goals>
-              <goal>attach-artifact</goal>
-            </goals>
-            <configuration>
-              <artifacts>
-                <artifact>
-                  <file>${project.build.outputDirectory}/META-INF/jomc.xml</file>
-                  <type>xml</type>
-                  <classifier>jomc</classifier>
-                </artifact>
-              </artifacts>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.jomc</groupId>
@@ -84,10 +66,12 @@
         <executions>
           <execution>
             <goals>
+              <goal>attach-main-module</goal>
               <goal>write-main-resources</goal>
               <goal>manage-main-sources</goal>
               <goal>commit-main-classes</goal>
               <goal>validate-main-classes</goal>
+              <goal>attach-test-module</goal>
               <goal>write-test-resources</goal>
               <goal>manage-test-sources</goal>
               <goal>commit-test-classes</goal>

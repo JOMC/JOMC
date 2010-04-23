@@ -623,5 +623,11 @@
       <code>FileNotFoundException</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-beta-3">
+      <action dev="schulte2005" type="add"><![CDATA[Added goals <code>attach-main-module</code> and
+      <code>attach-test-module</code> to the <code>maven-jomc-plugin</code>.]]>
+      </action>
+    </release>
   </body>
 </document>
