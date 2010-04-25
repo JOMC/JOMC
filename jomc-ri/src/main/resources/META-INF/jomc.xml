@@ -318,7 +318,7 @@
         <message name="unexpectedDependencyObjectsMessage">
           <template defaultLanguage="en">
             <text language="en">Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</text>
-            <text language="de">Unerwartete Anzahl Objekte für ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - ''{3,number}'' gefunden.</text>
+            <text language="de">Unerwartete Anzahl Objekte für ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</text>
           </template>
           <arguments>
             <argument index="0" name="implementationIdentifier"/>
