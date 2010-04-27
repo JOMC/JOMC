@@ -38,7 +38,7 @@
   <artifactId>jomc-parent</artifactId>
   <packaging>pom</packaging>
   <name>JOMC</name>
-  <version>1.0-beta-3</version>
+  <version>1.0-beta-4-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementations together with tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>http://jomc.sourceforge.net/jomc/${project.version}</url>
   <prerequisites>
@@ -92,9 +92,9 @@
     </mailingList>
   </mailingLists>
   <scm>
-    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.0-beta-3</connection>
-    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.0-beta-3</developerConnection>
-    <url>http://jomc.svn.sourceforge.net/viewvc/jomc/jomc/tags/jomc-parent-1.0-beta-3</url>
+    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</connection>
+    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</developerConnection>
+    <url>http://jomc.svn.sourceforge.net/viewvc/jomc/jomc/trunk/</url>
   </scm>
   <build>
     <extensions>
@@ -446,7 +446,7 @@
         <plugin>
           <groupId>org.jomc</groupId>
           <artifactId>maven-jomc-plugin</artifactId>
-          <version>1.0-beta-3</version>
+          <version>1.0-beta-4-SNAPSHOT</version>
           <executions>
             <execution>
               <goals>
@@ -798,42 +798,42 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
-        <version>1.0-beta-3</version>
+        <version>1.0-beta-4-SNAPSHOT</version>
       </dependency>
 
       <!-- Test -->
