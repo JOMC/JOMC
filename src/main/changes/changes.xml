@@ -624,7 +624,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-beta-3">
+    <release version="1.0-beta-3" date="2010-04-27">
       <action dev="schulte2005" type="add"><![CDATA[Added goals <code>attach-main-module</code>,
       <code>attach-test-module</code>, <code>dump-main-instance</code> and <code>dump-test-instance</code> to the
       <code>maven-jomc-plugin</code>.]]>
