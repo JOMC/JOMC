@@ -630,5 +630,15 @@
       <code>maven-jomc-plugin</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-beta-4">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>implementation-messages.vm</code> template of the
+      <code>jomc-java-bundles</code> profile to support system line separators based on system property
+      <code>line.separator</code> and to correctly handle <code>java.util.MissingResourceException</code>s.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getMessage</code> of class
+      <code>org.jomc.ri.DefaultObjectManager</code> to translate line separators of formatted message texts.]]>
+      </action>
+    </release>
   </body>
 </document>
