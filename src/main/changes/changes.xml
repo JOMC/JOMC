@@ -632,6 +632,13 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-beta-4">
+      <action dev="schulte2005" type="update"><![CDATA[Marked goals <code>commit-main-classes</code>,
+      <code>validate-main-classes</code>, <code>dump-main-instance</code>, <code>validate-main-modules</code>,
+      <code>write-main-resources</code>, <code>manage-main-sources</code>, <code>commit-test-classes</code>,
+      <code>validate-test-classes</code>, <code>dump-test-instance</code>, <code>validate-test-modules</code>,
+      <code>write-test-resources</code> and <code>manage-test-sources</code> of the <code>maven-jomc-plugin</code>
+      thread safe.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>implementation-messages.vm</code> template of the
       <code>jomc-java-bundles</code> profile to support system line separators based on system property
       <code>line.separator</code> and to correctly handle <code>java.util.MissingResourceException</code>s.]]>
