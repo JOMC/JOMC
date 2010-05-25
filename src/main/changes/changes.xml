@@ -646,6 +646,9 @@
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getMessage</code> of class
       <code>org.jomc.ri.DefaultObjectManager</code> to translate line separators of formatted message texts.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated class <code>org.jomc.util.LineEditor</code> to use a
+      default line separator <code>\n</code> if system property <code>line.separator</code> is not set.]]>
+      </action>
     </release>
   </body>
 </document>
