@@ -65,8 +65,7 @@ package org.jomc.spi;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public interface Invoker

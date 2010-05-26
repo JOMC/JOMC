@@ -89,8 +89,7 @@ import junit.framework.Assert;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class TestImplementation
@@ -288,8 +287,7 @@ public class TestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code TestImplementation} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     public TestImplementation()
     {
         // SECTION-START[Default Constructor]
@@ -308,8 +306,7 @@ public class TestImplementation
      * @return The {@code BoundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getBoundMultitons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "BoundMultitons" );
@@ -324,8 +321,7 @@ public class TestImplementation
      * @return The {@code BoundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getBoundSingletons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "BoundSingletons" );
@@ -340,8 +336,7 @@ public class TestImplementation
      * @return The {@code InvokerTestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.InvokerTestSpecification getInvokerTestSpecification()
     {
         final org.jomc.ri.test.InvokerTestSpecification _d = (org.jomc.ri.test.InvokerTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "InvokerTestSpecification" );
@@ -357,8 +352,7 @@ public class TestImplementation
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private java.util.Locale getOptionalLocale()
     {
         return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "OptionalLocale" );
@@ -371,8 +365,7 @@ public class TestImplementation
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedBoundMultiton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedBoundMultiton" );
@@ -387,8 +380,7 @@ public class TestImplementation
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedBoundSingleton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedBoundSingleton" );
@@ -403,8 +395,7 @@ public class TestImplementation
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedUnboundMultiton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedUnboundMultiton" );
@@ -419,8 +410,7 @@ public class TestImplementation
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedUnboundSingleton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedUnboundSingleton" );
@@ -435,8 +425,7 @@ public class TestImplementation
      * @return The {@code UnboundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getUnboundMultitons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "UnboundMultitons" );
@@ -451,8 +440,7 @@ public class TestImplementation
      * @return The {@code UnboundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getUnboundSingletons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "UnboundSingletons" );
@@ -469,8 +457,7 @@ public class TestImplementation
      * @return The value of the {@code testProperty} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private java.lang.String getTestProperty()
     {
         final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getProperty( this, "testProperty" );
@@ -493,8 +480,7 @@ public class TestImplementation
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
         try

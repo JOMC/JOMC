@@ -89,20 +89,20 @@ import org.jomc.util.WeakIdentityHashMap;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -125,8 +125,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -209,8 +209,7 @@ import org.jomc.util.WeakIdentityHashMap;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                             comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class DefaultObjectManager implements ObjectManager
@@ -219,8 +218,7 @@ public class DefaultObjectManager implements ObjectManager
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code DefaultObjectManager} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     public DefaultObjectManager()
     {
         // SECTION-START[Default Constructor]
@@ -2505,8 +2503,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -2514,8 +2512,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
         try
@@ -2546,8 +2543,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -2556,8 +2553,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
         try
@@ -2598,8 +2594,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String className, final java.lang.String logLevel )
     {
         try
@@ -2630,8 +2625,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -2640,8 +2635,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
         try
@@ -2681,8 +2675,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         try
@@ -2722,8 +2715,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         try
@@ -2763,8 +2755,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         try
@@ -2805,8 +2796,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
         try
@@ -2847,8 +2837,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
         try
@@ -2879,8 +2868,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T01:08:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.0-beta-4-SNAPSHOT Build 2010-05-26T14:43:12+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
@@ -2888,8 +2877,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
     {
         try
@@ -2930,8 +2918,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
         try
@@ -2971,8 +2958,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
         try
@@ -3014,8 +3000,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
         try
@@ -3056,8 +3041,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
     {
         try
@@ -3098,8 +3082,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
     {
         try
@@ -3139,8 +3122,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         try
@@ -3181,8 +3163,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
         try
@@ -3222,8 +3203,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
     {
         try
@@ -3264,8 +3244,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
     {
         try
@@ -3305,8 +3284,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
     {
         try
@@ -3347,8 +3325,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
         try
@@ -3389,8 +3366,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
     {
         try
@@ -3430,8 +3406,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
     {
         try
@@ -3471,8 +3446,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         try
@@ -3512,8 +3486,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
         try
@@ -3552,8 +3525,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getModulesReportMessage( final java.util.Locale locale )
     {
         try
@@ -3595,8 +3567,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
         try
@@ -3639,8 +3610,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor",
-                                 comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
     private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
     {
         try
