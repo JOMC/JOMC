@@ -76,31 +76,31 @@ public class DefaultScope implements Scope
         return this.objects;
     }
 
-    public Object getObject( final String instance )
+    public Object getObject( final String identifier )
     {
         if ( this.getObjects() != null )
         {
-            return this.getObjects().get( instance );
+            return this.getObjects().get( identifier );
         }
 
         return null;
     }
 
-    public Object putObject( final String instance, final Object object )
+    public Object putObject( final String identifier, final Object object )
     {
         if ( this.getObjects() != null )
         {
-            return this.getObjects().put( instance, object );
+            return this.getObjects().put( identifier, object );
         }
 
         return null;
     }
 
-    public Object removeObject( final String instance )
+    public Object removeObject( final String identifier )
     {
         if ( this.getObjects() != null )
         {
-            return this.getObjects().remove( instance );
+            return this.getObjects().remove( identifier );
         }
 
         return null;
