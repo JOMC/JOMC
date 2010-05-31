@@ -677,6 +677,9 @@
       <action dev="schulte2005" type="fix"><![CDATA[Updated class <code>org.jomc.util.LineEditor</code> to use a
       default line separator <code>\n</code> if system property <code>line.separator</code> is not set.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>maven-jomc-plugin</code> to exclude all
+      project dependencies also dependencies of the plugin to avoid redundant classpath entries.]]>
+      </action>
     </release>
   </body>
 </document>
