@@ -666,7 +666,10 @@
       line application to <code>indentation</code>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[Added attribute <code>location</code> to
-      <code>SourceFileType</code> complex type of the <code>jomc-tools-1.0.xsd</code> schema.]]></action>
+      <code>SourceFileType</code> complex type of the <code>jomc-tools-1.0.xsd</code> schema.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated build prerequisites to maven version 2.2.1.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>implementation-messages.vm</code> template of the
       <code>jomc-java-bundles</code> profile to support system line separators based on system property
       <code>line.separator</code> and to correctly handle <code>java.util.MissingResourceException</code>s.]]>
