@@ -41,9 +41,6 @@
   <version>1.0-beta-4-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementations together with tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>http://jomc.sourceforge.net/jomc/${project.version}</url>
-  <prerequisites>
-    <maven>2.2.1</maven>
-  </prerequisites>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
