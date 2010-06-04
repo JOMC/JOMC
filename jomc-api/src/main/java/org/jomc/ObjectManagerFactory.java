@@ -54,7 +54,7 @@ import java.lang.reflect.Method;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
-public class ObjectManagerFactory
+public abstract class ObjectManagerFactory
 {
     // SECTION-START[ObjectManagerFactory]
 
