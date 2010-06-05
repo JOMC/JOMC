@@ -631,7 +631,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-beta-4">
+    <release version="1.0-beta-4" date="2010-06-06">
       <action dev="schulte2005" type="update"><![CDATA[Updated methods <code>get(Object)</code> and
       <code>containsKey(Object)</code> of class <code>org.jomc.util.WeakIdentityHashMap</code> to additionally purge any
       stale references.]]>
