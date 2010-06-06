@@ -1033,8 +1033,7 @@ public class DefaultObjectManager implements ObjectManager
     protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
 
     /** System's line separator. */
-    private static final String LINE_SEPARATOR =
-        System.getProperty( "line.separator" ) == null ? "\n" : System.getProperty( "line.separator" );
+    private static final String LINE_SEPARATOR = System.getProperty( "line.separator", "\n" );
 
     /**
      * Log level events are logged at by default.
