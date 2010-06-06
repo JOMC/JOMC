@@ -43,11 +43,11 @@ import junit.framework.Assert;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-beta-4-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code org.jomc.ri.test.TestScopeSpecification} {@code 1.0-beta-4-SNAPSHOT} {@code Test}</li>
- * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-beta-4-SNAPSHOT} {@code Singleton}</li>
- * <li>{@code org.jomc.ri.test.TestSpecificationMany} {@code 1.0-beta-4-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code org.jomc.ri.test.TestSpecificationOne} {@code 1.0-beta-4-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestMultitonSpecification} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestScopeSpecification} {@code 1.0-beta-5-SNAPSHOT} {@code Test}</li>
+ * <li>{@code org.jomc.ri.test.TestSingletonSpecification} {@code 1.0-beta-5-SNAPSHOT} {@code Singleton}</li>
+ * <li>{@code org.jomc.ri.test.TestSpecificationMany} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code org.jomc.ri.test.TestSpecificationOne} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"
@@ -56,25 +56,25 @@ import junit.framework.Assert;
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getBoundMultitons BoundMultitons}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-4-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-4-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getInvokerTestSpecification InvokerTestSpecification}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.InvokerTestSpecification} at specification level 1.0-beta-4-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.InvokerTestSpecification} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getOptionalLocale OptionalLocale}"<blockquote>
- * Dependency on {@code java.util.Locale} at specification level 1.0-beta-4-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code java.util.Locale} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-4-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedBoundSingleton SelectedBoundSingleton}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-4-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-4-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-4-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundMultitons UnboundMultitons}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-4-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestMultitonSpecification} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundSingletons UnboundSingletons}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-4-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code org.jomc.ri.test.TestSingletonSpecification} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getTestMessage testMessage}"<table>
@@ -89,7 +89,7 @@ import junit.framework.Assert;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class TestImplementation
@@ -287,7 +287,7 @@ public class TestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code TestImplementation} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     public TestImplementation()
     {
         // SECTION-START[Default Constructor]
@@ -301,12 +301,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code BoundMultitons} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getBoundMultitons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "BoundMultitons" );
@@ -316,12 +316,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code BoundSingletons} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getBoundSingletons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "BoundSingletons" );
@@ -331,12 +331,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code InvokerTestSpecification} dependency.
-     * <p>This method returns the "{@code InvokerTest}" object of the {@code org.jomc.ri.test.InvokerTestSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code InvokerTest}" object of the {@code org.jomc.ri.test.InvokerTestSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code InvokerTestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.InvokerTestSpecification getInvokerTestSpecification()
     {
         final org.jomc.ri.test.InvokerTestSpecification _d = (org.jomc.ri.test.InvokerTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "InvokerTestSpecification" );
@@ -346,13 +346,13 @@ public class TestImplementation
 
     /**
      * Gets the {@code OptionalLocale} dependency.
-     * <p>This method returns the "{@code DOES NOT EXIST}" object of the {@code java.util.Locale} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code DOES NOT EXIST}" object of the {@code java.util.Locale} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code OptionalLocale} dependency.
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private java.util.Locale getOptionalLocale()
     {
         return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "OptionalLocale" );
@@ -360,12 +360,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundMultiton} dependency.
-     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedBoundMultiton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedBoundMultiton" );
@@ -375,12 +375,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
-     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedBoundSingleton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedBoundSingleton" );
@@ -390,12 +390,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
-     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedUnboundMultiton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedUnboundMultiton" );
@@ -405,12 +405,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
-     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns the "{@code TestImplementation}" object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification getSelectedUnboundSingleton()
     {
         final org.jomc.ri.test.TestSpecification _d = (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "SelectedUnboundSingleton" );
@@ -420,12 +420,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code UnboundMultitons} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestMultitonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code UnboundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getUnboundMultitons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "UnboundMultitons" );
@@ -435,12 +435,12 @@ public class TestImplementation
 
     /**
      * Gets the {@code UnboundSingletons} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-4-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestSingletonSpecification} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code UnboundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.TestSpecification[] getUnboundSingletons()
     {
         final org.jomc.ri.test.TestSpecification[] _d = (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "UnboundSingletons" );
@@ -457,7 +457,7 @@ public class TestImplementation
      * @return The value of the {@code testProperty} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private java.lang.String getTestProperty()
     {
         final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getProperty( this, "testProperty" );
@@ -480,7 +480,7 @@ public class TestImplementation
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-4-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
     private static String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
         try
