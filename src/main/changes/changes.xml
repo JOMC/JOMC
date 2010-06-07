@@ -686,5 +686,12 @@
       project dependencies also dependencies of the plugin to avoid redundant classpath entries.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0-beta-5">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createObject(Instance,ClassLoader)</code>
+      of class <code>org.jomc.model.Modules</code> to provide messages with thrown <code>InstantiationException</code>s
+      when catching exceptions.]]>
+      </action>
+    </release>
   </body>
 </document>
