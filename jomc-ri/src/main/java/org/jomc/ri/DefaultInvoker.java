@@ -251,8 +251,8 @@ public class DefaultInvoker implements Invoker
     {
         if ( invocation != null && !( invocation.getResult() instanceof Throwable ) )
         {
-            if ( t instanceof InvocationTargetException &&
-                 ( (InvocationTargetException) t ).getTargetException() != null )
+            if ( t instanceof InvocationTargetException
+                 && ( (InvocationTargetException) t ).getTargetException() != null )
             {
                 invocation.setResult( ( (InvocationTargetException) t ).getTargetException() );
                 return;
