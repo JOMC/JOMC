@@ -36,20 +36,28 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import org.jomc.model.Instance;
-import org.jomc.ri.DefaultInvocation;
-import org.jomc.ri.DefaultInvoker;
-import org.jomc.spi.Invocation;
+import java.lang.*;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Test {@code Invoker} implementation.
- * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.spi.Invoker} {@code Multiton}</li>
- * </ul></p>
+ *
+ * <p>
+ *   This specification declares a multiplicity of {@code Many}.
+ *   An application assembler may provide multiple implementations of this specification (including none).
+ * </p>
+ *
+ * <p>
+ *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
+ *   <pre>
+ * OverrideTestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( OverrideTestSpecification[].class );
+ * OverrideTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( OverrideTestSpecification.class, "<i>implementation name</i>" );
+ *   </pre>
+ * </p>
+ *
+ * <p>
+ *   This specification does not apply to any scope. A new object is returned whenever requested.
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -61,62 +69,15 @@ import org.jomc.spi.Invocation;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
-public class TestInvoker extends DefaultInvoker
+public interface OverrideTestSpecification
 {
-    // SECTION-START[Invoker]
-    // SECTION-END
-    // SECTION-START[TestInvoker]
+    // SECTION-START[OverrideTestSpecification]
 
-    @Override
-    public Invocation postInvoke( final Invocation invocation )
-    {
-        final StringBuilder b = new StringBuilder();
-        b.append( invocation.getObject().toString() );
+    String getProperty();
 
-        if ( invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) != null )
-        {
-            b.append( "[" ).append( ( (Instance) invocation.getContext().get( DefaultInvocation.INSTANCE_KEY ) ).
-                getIdentifier() ).append( "]: " );
+    String getMessage();
 
-        }
+    OverrideTestSpecification getDependency();
 
-        b.append( invocation.getMethod().getName() ).append( "( " );
-
-        if ( invocation.getArguments() != null )
-        {
-            for ( Iterator it = Arrays.asList( invocation.getArguments() ).iterator(); it.hasNext(); )
-            {
-                b.append( it.next() );
-                if ( it.hasNext() )
-                {
-                    b.append( ", " );
-                }
-            }
-        }
-
-        b.append( " ): " ).append( invocation.getResult() );
-        System.out.println( b.toString() );
-        return invocation;
-    }
-
-    // SECTION-END
-    // SECTION-START[Constructors]
-    // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
-    /** Creates a new {@code TestInvoker} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
-    public TestInvoker()
-    {
-        // SECTION-START[Default Constructor]
-        super();
-        // SECTION-END
-    }
-    // </editor-fold>
-    // SECTION-END
-    // SECTION-START[Dependencies]
-    // SECTION-END
-    // SECTION-START[Properties]
-    // SECTION-END
-    // SECTION-START[Messages]
     // SECTION-END
 }

@@ -147,6 +147,16 @@
 
       </authors>
     </specification>
+    <!-- *********************************************************************************************************** -->
+    <specification identifier="Override Test Specification"
+                   class="org.jomc.ri.test.OverrideTestSpecification" classDeclaration="true"
+                   vendor="${project.organization.name}" version="${project.version}">
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </specification>
   </specifications>
   <implementations>
     <!-- *********************************************************************************************************** -->
@@ -374,6 +384,124 @@
       <specifications>
         <reference identifier="org.jomc.ri.test.InvokerTestSpecification"/>
       </specifications>
+    </implementation>
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="Override Test Implementation" name="Override Test Implementation"
+                    class="org.jomc.ri.test.OverrideTestImplementation" classDeclaration="true"
+                    version="${project.version}" vendor="${project.organization.name}">
+      <documentation defaultLanguage="en">
+        <text language="en">Override Test Implementation.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="Override Test Specification" version="${project.version}"/>
+      </specifications>
+      <dependencies>
+        <dependency identifier="Override Test Specification" name="dependencyImpl"
+                    implementationName="Override Test Implementation"/>
+      </dependencies>
+      <properties>
+        <property name="propertyImpl" value="Parent"/>
+      </properties>
+      <messages>
+        <message name="messageImpl">
+          <template defaultLanguage="en">
+            <text language="en">Parent</text>
+          </template>
+        </message>
+      </messages>
+    </implementation>
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="Override Test Implementation Tests" name="Override Test Implementation Tests"
+                    class="org.jomc.ri.test.OverrideTestImplementationTest" classDeclaration="true"
+                    version="${project.version}" vendor="${project.organization.name}">
+      <documentation defaultLanguage="en">
+        <text language="en">Override test cases.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+      <dependencies>
+        <dependency identifier="Override Test Specification" name="Override Test Specification"
+                    implementationName="Override Test Implementation" override="true">
+          <dependencies>
+            <dependency identifier="Override Test Specification" name="dependencyImpl"
+                        implementationName="Override Test Implementation" override="true">
+              <dependencies>
+                <dependency identifier="Override Test Specification" name="dependencyImpl"
+                            implementationName="Override Test Implementation" override="true">
+                  <dependencies>
+                    <dependency identifier="Override Test Specification" name="dependencyImpl"
+                                implementationName="Override Test Implementation" override="true">
+                      <dependencies>
+                        <dependency identifier="Override Test Specification" name="dependencyImpl"
+                                    implementationName="Override Test Implementation" override="true">
+                          <properties>
+                            <property name="propertyImpl" value="Recursion 4" override="true"/>
+                          </properties>
+                          <messages>
+                            <message name="messageImpl" override="true">
+                              <template defaultLanguage="en">
+                                <text language="en">Recursion 4</text>
+                              </template>
+                            </message>
+                          </messages>
+                        </dependency>
+                      </dependencies>
+                      <properties>
+                        <property name="propertyImpl" value="Recursion 3" override="true"/>
+                      </properties>
+                      <messages>
+                        <message name="messageImpl" override="true">
+                          <template defaultLanguage="en">
+                            <text language="en">Recursion 3</text>
+                          </template>
+                        </message>
+                      </messages>
+                    </dependency>
+                  </dependencies>
+                  <properties>
+                    <property name="propertyImpl" value="Recursion 2" override="true"/>
+                  </properties>
+                  <messages>
+                    <message name="messageImpl" override="true">
+                      <template defaultLanguage="en">
+                        <text language="en">Recursion 2</text>
+                      </template>
+                    </message>
+                  </messages>
+                </dependency>
+              </dependencies>
+              <properties>
+                <property name="propertyImpl" value="Recursion 1" override="true"/>
+              </properties>
+              <messages>
+                <message name="messageImpl" override="true">
+                  <template defaultLanguage="en">
+                    <text language="en">Recursion 1</text>
+                  </template>
+                </message>
+              </messages>
+            </dependency>
+          </dependencies>
+          <properties>
+            <property name="propertyImpl" value="Overriden" override="true"/>
+          </properties>
+          <messages>
+            <message name="messageImpl" override="true">
+              <template defaultLanguage="en">
+                <text language="en">Overriden</text>
+              </template>
+            </message>
+          </messages>
+        </dependency>
+      </dependencies>
     </implementation>
   </implementations>
 </module>

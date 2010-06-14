@@ -481,31 +481,11 @@ public class TestImplementation
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
-    private static String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
+    private String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {
-        try
-        {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/test/TestImplementation", locale ).getString( "testMessage" ), testArgument, (Object) null );
-            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
-            final String lineSeparator = System.getProperty( "line.separator", "\n" );
-
-            String line;
-            while ( ( line = reader.readLine() ) != null )
-            {
-                builder.append( lineSeparator ).append( line );
-            }
-
-            return builder.substring( lineSeparator.length() );
-        }
-        catch( final java.util.MissingResourceException e )
-        {
-            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-        }
-        catch( final java.io.IOException e )
-        {
-            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
-        }
+        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "testMessage", locale, testArgument );
+        assert _m != null : "'testMessage' message not found.";
+        return _m;
     }
     // </editor-fold>
     // SECTION-END
