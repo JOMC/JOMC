@@ -429,7 +429,7 @@
       </authors>
       <dependencies>
         <dependency identifier="Override Test Specification" name="Override Test Specification"
-                    implementationName="Override Test Implementation" override="true">
+                    implementationName="Override Test Implementation">
           <dependencies>
             <dependency identifier="Override Test Specification" name="dependencyImpl"
                         implementationName="Override Test Implementation" override="true">
