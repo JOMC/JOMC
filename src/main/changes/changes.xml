@@ -688,10 +688,24 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-beta-5">
-      <action dev="schulte2005" type="add"><![CDATA[Added <code>dependencies</code> and <code>messages</code>
+      <action dev="schulte2005" type="update"><![CDATA[Added <code>dependencies</code> and <code>messages</code>
       elements to <code>Dependency</code> complex type of the <code>jomc-1.0.xsd</code> schema supporting dependency and
-      message overrides in addition to property overrides.
+      message overrides in addition to property overrides. Refactored the <code>org.jomc.model.bootstrap</code>
+      package to the <code>org.jomc.model.modlet</code> package and added the <code>jomc-modlet-1.0.xsd</code> schema
+      replacing the <code>jomc-bootstrap-1.0.xsd</code> schema.
       See the <a href="http://jomc.sourceforge.net/jomc/1.0-beta-5/jomc-model/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Removed the <code>schemaLocation</code> and
+      <code>serviceLocation</code> parameters from the <code>maven-jomc-plugin</code> and added parameter
+      <code>modletLocation</code>. Removed the <code>schemasResource</code>, <code>schemaResources</code>,
+      <code>serviceResource</code> and <code>serviceResources</code> parameters from class
+      <code>org.jomc.mojo.JomcResourceTransformer</code> of the <code>maven-jomc-plugin</code> and added
+      parameters <code>modletResource</code> and <code>modletResources</code>.
+      See the <a href="http://jomc.sourceforge.net/jomc/1.0-beta-5/maven-jomc-plugin/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Removed the <code>schema-location</code> and
+      <code>service-location</code> options from the command line application and added option
+      <code>modlet-location</code>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createObject(Instance,ClassLoader)</code>
       of class <code>org.jomc.model.Modules</code> to provide messages with thrown <code>InstantiationException</code>s
