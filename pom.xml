@@ -885,8 +885,7 @@
     <site>
       <id>jomc.sourceforge.net</id>
       <name>JOMC Site</name>
-      <url>file:///tmp/jomc/${project.version}</url>
-      <!-- url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${project.version}</url -->
+      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${project.version}</url>
     </site>
   </distributionManagement>
   <profiles>
