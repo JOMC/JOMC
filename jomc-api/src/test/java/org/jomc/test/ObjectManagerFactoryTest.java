@@ -36,8 +36,10 @@
 // SECTION-END
 package org.jomc.test;
 
-import junit.framework.Assert;
 import org.jomc.ObjectManagerFactory;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertTrue;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -70,13 +72,13 @@ public class ObjectManagerFactoryTest
         {
             System.setProperty( SYS_FACTORY_CLASSNAME, ObjectManagerDummy.class.getName() );
             System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, ObjectManagerDummy.class.getName() );
-            Assert.assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
-            Assert.assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
-                               == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+            assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+            assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
+                        == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
 
-            Assert.assertNotNull( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
-            Assert.assertFalse( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() )
-                                == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+            assertNotNull( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+            assertFalse( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() )
+                         == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
 
         }
         finally

@@ -38,11 +38,42 @@ package org.jomc;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Locale;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Factory for the {@code ObjectManager} singleton.
+ * <p><b>Messages</b><ul>
+ * <li>"{@link #getFactoryClassNotFoundMessage factoryClassNotFoundMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Factory class ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fabrik-Klasse ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getFactoryMethodAccessDeniedMessage factoryMethodAccessDeniedMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Access to method ''public static {0}.getObjecManager(ClassLoader)'' denied.{1}</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zugriff auf Methode ''public static {0}.getObjecManager(ClassLoader)'' verweigert.{1}</pre></td></tr>
+ * </table>
+ * <li>"{@link #getFactoryMethodInvocationExceptionMessage factoryMethodInvocationExceptionMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Factory method ''public static {0}.getObjecManager(ClassLoader)'' invocation exception.{1}</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ausnahme bei der Ausf&uuml;hrung der Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)''.{1}</pre></td></tr>
+ * </table>
+ * <li>"{@link #getFactoryMethodNotFoundMessage factoryMethodNotFoundMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Factory method ''public static {0}.getObjecManager(ClassLoader)'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getImplementationAccessDeniedMessage implementationAccessDeniedMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Access to implementation ''{0}'' denied.{1}</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zugriff auf Implementierung ''{0}'' verweigert.{1}</pre></td></tr>
+ * </table>
+ * <li>"{@link #getImplementationClassNotFoundMessage implementationClassNotFoundMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation class ''{0}'' not found.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierungs-Klasse ''{0}'' nicht gefunden.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getImplementationExceptionMessage implementationExceptionMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{0}'' invocation exception.{1}</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ausnahme bei der Erstellung der Implementierung ''{0}''.{1}</pre></td></tr>
+ * </table>
+ * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -98,20 +129,31 @@ public abstract class ObjectManagerFactory
             final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
             return (ObjectManager) factoryMethod.invoke( null, classLoader );
         }
+        catch ( final ClassNotFoundException e )
+        {
+            throw new ObjectManagementException( getFactoryClassNotFoundMessage( Locale.getDefault(), factory ), e );
+        }
+        catch ( final NoSuchMethodException e )
+        {
+            throw new ObjectManagementException( getFactoryMethodNotFoundMessage( Locale.getDefault(), factory ), e );
+        }
+        catch ( final IllegalAccessException e )
+        {
+            throw new ObjectManagementException( getFactoryMethodAccessDeniedMessage(
+                Locale.getDefault(), factory, e.getMessage() != null ? e.getMessage() : "" ), e );
+
+        }
         catch ( final InvocationTargetException e )
         {
-            if ( e.getTargetException() != null )
+            String message = e.getMessage();
+            if ( message == null && e.getTargetException() != null )
             {
-                throw new ObjectManagementException( e.getTargetException().getMessage(), e.getTargetException() );
+                message = e.getTargetException().getMessage();
             }
-            else
-            {
-                throw new ObjectManagementException( e.getMessage(), e );
-            }
-        }
-        catch ( final Exception e )
-        {
-            throw new ObjectManagementException( e.getMessage(), e );
+
+            throw new ObjectManagementException( getFactoryMethodInvocationExceptionMessage(
+                Locale.getDefault(), factory, message != null ? message : "" ), e );
+
         }
     }
 
@@ -130,15 +172,30 @@ public abstract class ObjectManagerFactory
      */
     public static ObjectManager newObjectManager( final ClassLoader classLoader )
     {
-        final String impl = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
+        final String implementation =
+            System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
 
         try
         {
-            return Class.forName( impl, true, classLoader ).asSubclass( ObjectManager.class ).newInstance();
+            return Class.forName( implementation, true, classLoader ).asSubclass( ObjectManager.class ).newInstance();
         }
-        catch ( final Exception e )
+        catch ( final ClassNotFoundException e )
         {
-            throw new ObjectManagementException( e.getMessage(), e );
+            throw new ObjectManagementException( getImplementationClassNotFoundMessage(
+                Locale.getDefault(), implementation ), e );
+
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getImplementationExceptionMessage(
+                Locale.getDefault(), implementation, e.getMessage() != null ? e.getMessage() : "" ), e );
+
+        }
+        catch ( final IllegalAccessException e )
+        {
+            throw new ObjectManagementException( getImplementationAccessDeniedMessage(
+                Locale.getDefault(), implementation, e.getMessage() != null ? e.getMessage() : "" ), e );
+
         }
     }
 
@@ -161,5 +218,291 @@ public abstract class ObjectManagerFactory
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
+    // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
+
+    /**
+     * Gets the text of the {@code factoryClassNotFoundMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Factory class ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fabrik-Klasse ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @return The text of the {@code factoryClassNotFoundMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getFactoryClassNotFoundMessage( final java.util.Locale locale, final java.lang.String factoryName )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "factoryClassNotFoundMessage" ), factoryName, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code factoryMethodAccessDeniedMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Access to method ''public static {0}.getObjecManager(ClassLoader)'' denied.{1}</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zugriff auf Methode ''public static {0}.getObjecManager(ClassLoader)'' verweigert.{1}</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @param detail Format argument.
+     * @return The text of the {@code factoryMethodAccessDeniedMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getFactoryMethodAccessDeniedMessage( final java.util.Locale locale, final java.lang.String factoryName, final java.lang.String detail )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "factoryMethodAccessDeniedMessage" ), factoryName, detail, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code factoryMethodInvocationExceptionMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Factory method ''public static {0}.getObjecManager(ClassLoader)'' invocation exception.{1}</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ausnahme bei der Ausf&uuml;hrung der Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)''.{1}</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @param detail Format argument.
+     * @return The text of the {@code factoryMethodInvocationExceptionMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getFactoryMethodInvocationExceptionMessage( final java.util.Locale locale, final java.lang.String factoryName, final java.lang.String detail )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "factoryMethodInvocationExceptionMessage" ), factoryName, detail, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code factoryMethodNotFoundMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Factory method ''public static {0}.getObjecManager(ClassLoader)'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @return The text of the {@code factoryMethodNotFoundMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getFactoryMethodNotFoundMessage( final java.util.Locale locale, final java.lang.String factoryName )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "factoryMethodNotFoundMessage" ), factoryName, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code implementationAccessDeniedMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Access to implementation ''{0}'' denied.{1}</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zugriff auf Implementierung ''{0}'' verweigert.{1}</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @param detail Format argument.
+     * @return The text of the {@code implementationAccessDeniedMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getImplementationAccessDeniedMessage( final java.util.Locale locale, final java.lang.String factoryName, final java.lang.String detail )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "implementationAccessDeniedMessage" ), factoryName, detail, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code implementationClassNotFoundMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation class ''{0}'' not found.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierungs-Klasse ''{0}'' nicht gefunden.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @return The text of the {@code implementationClassNotFoundMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getImplementationClassNotFoundMessage( final java.util.Locale locale, final java.lang.String factoryName )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "implementationClassNotFoundMessage" ), factoryName, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code implementationExceptionMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{0}'' invocation exception.{1}</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ausnahme bei der Erstellung der Implementierung ''{0}''.{1}</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param factoryName Format argument.
+     * @param detail Format argument.
+     * @return The text of the {@code implementationExceptionMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    private static String getImplementationExceptionMessage( final java.util.Locale locale, final java.lang.String factoryName, final java.lang.String detail )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ObjectManagerFactory", locale ).getString( "implementationExceptionMessage" ), factoryName, detail, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+    // </editor-fold>
     // SECTION-END
 }

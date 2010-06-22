@@ -36,7 +36,7 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import junit.framework.Assert;
+import static junit.framework.Assert.assertNull;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -73,8 +73,8 @@ public class TestLocationImplementation
 
     public void testUnsupportedLocation() throws Exception
     {
-        Assert.assertNull( this.getTestScopeSpecificationOne() );
-        Assert.assertNull( this.getTestScopeSpecificationMany() );
+        assertNull( this.getTestScopeSpecificationOne() );
+        assertNull( this.getTestScopeSpecificationMany() );
     }
 
     // SECTION-END

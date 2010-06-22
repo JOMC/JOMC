@@ -73,6 +73,18 @@
       <plugin>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>main-default</id>
+            <goals>
+              <goal>write-main-resources</goal>
+            </goals>
+            <configuration>
+              <templateProfile>jomc-java-bundles</templateProfile>
+              <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

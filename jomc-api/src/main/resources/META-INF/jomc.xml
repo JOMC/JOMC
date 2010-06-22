@@ -85,6 +85,75 @@
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
+      <messages>
+        <message name="factoryClassNotFoundMessage">
+          <template defaultLanguage="en">
+            <text language="en">Factory class ''{0}'' not found.</text>
+            <text language="de">Fabrik-Klasse ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+          </arguments>
+        </message>
+        <message name="factoryMethodNotFoundMessage">
+          <template defaultLanguage="en">
+            <text language="en">Factory method ''public static {0}.getObjecManager(ClassLoader)'' not found.</text>
+            <text language="de">Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+          </arguments>
+        </message>
+        <message name="factoryMethodAccessDeniedMessage">
+          <template defaultLanguage="en">
+            <text language="en">Access to method ''public static {0}.getObjecManager(ClassLoader)'' denied.{1}</text>
+            <text language="de">Zugriff auf Methode ''public static {0}.getObjecManager(ClassLoader)'' verweigert.{1}</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+            <argument index="1" name="detail"/>
+          </arguments>
+        </message>
+        <message name="factoryMethodInvocationExceptionMessage">
+          <template defaultLanguage="en">
+            <text language="en">Factory method ''public static {0}.getObjecManager(ClassLoader)'' invocation exception.{1}</text>
+            <text language="de">Ausnahme bei der Ausführung der Fabrik-Methode ''public static {0}.getObjecManager(ClassLoader)''.{1}</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+            <argument index="1" name="detail"/>
+          </arguments>
+        </message>
+        <message name="implementationClassNotFoundMessage">
+          <template defaultLanguage="en">
+            <text language="en">Implementation class ''{0}'' not found.</text>
+            <text language="de">Implementierungs-Klasse ''{0}'' nicht gefunden.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+          </arguments>
+        </message>
+        <message name="implementationExceptionMessage">
+          <template defaultLanguage="en">
+            <text language="en">Implementation ''{0}'' invocation exception.{1}</text>
+            <text language="de">Ausnahme bei der Erstellung der Implementierung ''{0}''.{1}</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+            <argument index="1" name="detail"/>
+          </arguments>
+        </message>
+        <message name="implementationAccessDeniedMessage">
+          <template defaultLanguage="en">
+            <text language="en">Access to implementation ''{0}'' denied.{1}</text>
+            <text language="de">Zugriff auf Implementierung ''{0}'' verweigert.{1}</text>
+          </template>
+          <arguments>
+            <argument index="0" name="factoryName"/>
+            <argument index="1" name="detail"/>
+          </arguments>
+        </message>
+      </messages>
     </implementation>
   </implementations>
 </module>

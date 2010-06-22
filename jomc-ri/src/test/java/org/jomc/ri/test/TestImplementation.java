@@ -37,7 +37,7 @@
 package org.jomc.ri.test;
 
 import java.util.Locale;
-import junit.framework.Assert;
+import static junit.framework.Assert.assertNull;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -255,7 +255,7 @@ public class TestImplementation
 
     public void testOptionalDependency() throws Exception
     {
-        Assert.assertNull( this.getOptionalLocale() );
+        assertNull( this.getOptionalLocale() );
     }
 
     public void testInvoker() throws Exception

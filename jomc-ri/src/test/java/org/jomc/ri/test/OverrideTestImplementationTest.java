@@ -36,7 +36,7 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import junit.framework.Assert;
+import static junit.framework.Assert.assertEquals;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -64,23 +64,23 @@ public class OverrideTestImplementationTest
     public void testProperty() throws Exception
     {
         System.out.println( this.getOverrideTestSpecification().getProperty() );
-        Assert.assertEquals( "Overriden", this.getOverrideTestSpecification().getProperty() );
+        assertEquals( "Overriden", this.getOverrideTestSpecification().getProperty() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getProperty() );
-        Assert.assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getProperty() );
+        assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getProperty() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getProperty() );
-        Assert.assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
             getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getProperty() );
 
-        Assert.assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
             getDependency().getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getProperty() );
 
-        Assert.assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
             getDependency().getDependency().getProperty() );
 
     }
@@ -88,23 +88,23 @@ public class OverrideTestImplementationTest
     public void testMessage() throws Exception
     {
         System.out.println( this.getOverrideTestSpecification().getMessage() );
-        Assert.assertEquals( "Overriden", this.getOverrideTestSpecification().getMessage() );
+        assertEquals( "Overriden", this.getOverrideTestSpecification().getMessage() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getMessage() );
-        Assert.assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getMessage() );
+        assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getMessage() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getMessage() );
-        Assert.assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
             getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getMessage() );
 
-        Assert.assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
             getDependency().getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getMessage() );
 
-        Assert.assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
+        assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
             getDependency().getDependency().getMessage() );
 
     }

@@ -193,7 +193,7 @@
             <forkMode>once</forkMode>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <systemPropertyVariables>
-              <org.jomc.model.ModelContext.defaultLogLevel>ALL</org.jomc.model.ModelContext.defaultLogLevel>
+              <org.jomc.modlet.ModelContext.defaultLogLevel>ALL</org.jomc.modlet.ModelContext.defaultLogLevel>
               <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
               <org.jomc.tools.JomcTool.defaultLogLevel>ALL</org.jomc.tools.JomcTool.defaultLogLevel>
               <org.jomc.cli.Jomc.defaultLogLevel>ALL</org.jomc.cli.Jomc.defaultLogLevel>
@@ -598,6 +598,7 @@
   </build>
   <modules>
     <module>jomc-util</module>
+    <module>jomc-modlet</module>
     <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
@@ -794,6 +795,11 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
+        <version>1.0-beta-5-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-modlet</artifactId>
         <version>1.0-beta-5-SNAPSHOT</version>
       </dependency>
       <dependency>
