@@ -688,6 +688,9 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.0-beta-5">
+      <action dev="schulte2005" type="add"><![CDATA[Added a <code>merge-modlets</code> command to the command line
+      application.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Added <code>dependencies</code> and <code>messages</code>
       elements to <code>Dependency</code> complex type of the <code>jomc-1.0.xsd</code> schema supporting dependency and
       message overrides in addition to property overrides. Refactored the <code>org.jomc.model.bootstrap</code>
