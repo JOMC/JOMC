@@ -99,7 +99,7 @@ public abstract class ObjectManagerFactory
         }
         catch ( final Exception e )
         {
-            throw new ObjectManagementException( e.getMessage(), e );
+            throw new ObjectManagementException( getObjectManagementExceptionMessage( e ), e );
         }
     }
 
@@ -127,8 +127,18 @@ public abstract class ObjectManagerFactory
         }
         catch ( final Exception e )
         {
-            throw new ObjectManagementException( e.getMessage(), e );
+            throw new ObjectManagementException( getObjectManagementExceptionMessage( e ), e );
         }
+    }
+
+    private static String getObjectManagementExceptionMessage( final Throwable t )
+    {
+        if ( t != null )
+        {
+            return t.getMessage() != null ? t.getMessage() : getObjectManagementExceptionMessage( t.getCause() );
+        }
+
+        return null;
     }
 
     // SECTION-END
