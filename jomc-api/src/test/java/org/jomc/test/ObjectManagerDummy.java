@@ -44,7 +44,7 @@ import org.jomc.ObjectManager;
 /**
  * {@code ObjectManager} dummy implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ObjectManager'} ({@code org.jomc.ObjectManager}) {@code 1.0} {@code Singleton}</li>
+ * <li>{@code 'org.jomc.ObjectManager'} {@code (org.jomc.ObjectManager)} {@code 1.0} {@code Singleton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
