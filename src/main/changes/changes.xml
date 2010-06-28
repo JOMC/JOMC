@@ -715,6 +715,10 @@
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>schema-location</code> and
       <code>service-location</code> options from the command line application.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[Renamed the <code>validate-main-modules</code> and
+      <code>validate-test-modules</code> goals of the <code>maven-jomc-plugin</code> to <code>validate-main-model</code>
+      and <code>validate-test-model</code>.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Refactored the <code>org.jomc.model.bootstrap</code> package to
       the <code>jomc-modlet</code> artifact replacing the <code>jomc-bootstrap-1.0.xsd</code> schema with the
       <code>jomc-modlet-1.0.xsd</code> schema.
