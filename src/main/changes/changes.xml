@@ -687,7 +687,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.0-beta-5">
+    <release version="1.0" date="2010-06-29">
       <action dev="schulte2005" type="add"><![CDATA[Added a <code>merge-modlets</code> command to the command line
       application.]]>
       </action>
