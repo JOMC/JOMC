@@ -128,7 +128,7 @@ public class OverrideTestImplementationTest
 
     /**
      * Gets the {@code Override Test Specification} dependency.
-     * <p>This method returns the "{@code Override Test Implementation}" object of the {@code 'Override Test Specification'} specification.</p>
+     * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} ({@code org.jomc.ri.test.OverrideTestSpecification}) specification.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code propertyImpl}"</dt>

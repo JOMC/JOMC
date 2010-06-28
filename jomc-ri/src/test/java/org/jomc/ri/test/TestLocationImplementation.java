@@ -96,7 +96,7 @@ public class TestLocationImplementation
 
     /**
      * Gets the {@code TestScopeSpecificationMany} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code DOES_NOT_EXIST} scope. The does_not_exist object is returned whenever requested.</p>
      * @return The {@code TestScopeSpecificationMany} dependency.
      * {@code null} if no object is available.
@@ -110,7 +110,7 @@ public class TestLocationImplementation
 
     /**
      * Gets the {@code TestScopeSpecificationOne} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code DOES_NOT_EXIST} scope. The does_not_exist object is returned whenever requested.</p>
      * @return The {@code TestScopeSpecificationOne} dependency.
      * {@code null} if no object is available.
