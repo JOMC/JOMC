@@ -45,7 +45,7 @@ import org.jomc.ri.DefaultLocator;
 /**
  * Test {@code Locator} implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.spi.Locator'} ({@code org.jomc.spi.Locator}) {@code 1.0} {@code Multiton}</li>
+ * <li>{@code 'org.jomc.spi.Locator'} {@code (org.jomc.spi.Locator)} {@code 1.0} {@code Multiton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

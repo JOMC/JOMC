@@ -43,11 +43,11 @@ import static junit.framework.Assert.assertNull;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code 'org.jomc.ri.test.TestScopeSpecification'} ({@code org.jomc.ri.test.TestScopeSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code Test}</li>
- * <li>{@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code Singleton}</li>
- * <li>{@code 'org.jomc.ri.test.TestSpecificationMany'} ({@code org.jomc.ri.test.TestSpecificationMany}) {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code 'org.jomc.ri.test.TestSpecificationOne'} ({@code org.jomc.ri.test.TestSpecificationOne}) {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code 'org.jomc.ri.test.TestScopeSpecification'} {@code (org.jomc.ri.test.TestScopeSpecification)} {@code 1.0-beta-5-SNAPSHOT} {@code Test}</li>
+ * <li>{@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.0-beta-5-SNAPSHOT} {@code Singleton}</li>
+ * <li>{@code 'org.jomc.ri.test.TestSpecificationMany'} {@code (org.jomc.ri.test.TestSpecificationMany)} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code 'org.jomc.ri.test.TestSpecificationOne'} {@code (org.jomc.ri.test.TestSpecificationOne)} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getTestProperty testProperty}"
@@ -56,25 +56,25 @@ import static junit.framework.Assert.assertNull;
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getBoundMultitons BoundMultitons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getInvokerTestSpecification InvokerTestSpecification}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} ({@code org.jomc.ri.test.InvokerTestSpecification}) at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getOptionalLocale OptionalLocale}"<blockquote>
- * Dependency on {@code 'java.util.Locale'} ({@code java.util.Locale}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'java.util.Locale'} {@code (java.util.Locale)} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedBoundSingleton SelectedBoundSingleton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT bound to an instance.</blockquote></li>
  * <li>"{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundMultitons UnboundMultitons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getUnboundSingletons UnboundSingletons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getTestMessage testMessage}"<table>
@@ -301,7 +301,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code BoundMultitons} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -316,7 +316,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code BoundSingletons} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code BoundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -331,7 +331,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code InvokerTestSpecification} dependency.
-     * <p>This method returns the {@code 'InvokerTest'} object of the {@code 'org.jomc.ri.test.InvokerTestSpecification'} ({@code org.jomc.ri.test.InvokerTestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'InvokerTest'} object of the {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code InvokerTestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -346,7 +346,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code OptionalLocale} dependency.
-     * <p>This method returns the {@code 'DOES NOT EXIST'} object of the {@code 'java.util.Locale'} ({@code java.util.Locale}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'DOES NOT EXIST'} object of the {@code 'java.util.Locale'} {@code (java.util.Locale)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code OptionalLocale} dependency.
      * {@code null} if no object is available.
@@ -360,7 +360,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundMultiton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -375,7 +375,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -390,7 +390,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -405,7 +405,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -420,7 +420,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code UnboundMultitons} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code UnboundMultitons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -435,7 +435,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code UnboundSingletons} dependency.
-     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} ({@code org.jomc.ri.test.TestSpecification}) specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code UnboundSingletons} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.

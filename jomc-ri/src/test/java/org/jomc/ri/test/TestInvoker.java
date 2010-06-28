@@ -48,7 +48,7 @@ import org.jomc.spi.Invocation;
 /**
  * Test {@code Invoker} implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.spi.Invoker'} ({@code org.jomc.spi.Invoker}) {@code Multiton}</li>
+ * <li>{@code 'org.jomc.spi.Invoker'} {@code (org.jomc.spi.Invoker)} {@code Multiton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

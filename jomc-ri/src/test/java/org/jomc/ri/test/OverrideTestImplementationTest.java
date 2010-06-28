@@ -44,7 +44,7 @@ import static junit.framework.Assert.assertEquals;
  * Override test cases.
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getOverrideTestSpecification Override Test Specification}"<blockquote>
- * Dependency on {@code 'Override Test Specification'} ({@code org.jomc.ri.test.OverrideTestSpecification}) bound to an instance.</blockquote></li>
+ * Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
@@ -128,7 +128,7 @@ public class OverrideTestImplementationTest
 
     /**
      * Gets the {@code Override Test Specification} dependency.
-     * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} ({@code org.jomc.ri.test.OverrideTestSpecification}) specification.</p>
+     * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * <p><b>Properties</b><dl>
      * <dt>"{@code propertyImpl}"</dt>
