@@ -43,7 +43,7 @@ import java.util.Locale;
 /**
  * Override Test Implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code Override Test Specification} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code 'Override Test Specification'} ({@code org.jomc.ri.test.OverrideTestSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getPropertyImpl propertyImpl}"
@@ -52,7 +52,7 @@ import java.util.Locale;
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getDependencyImpl dependencyImpl}"<blockquote>
- * Dependency on {@code Override Test Specification} bound to an instance.</blockquote></li>
+ * Dependency on {@code 'Override Test Specification'} ({@code org.jomc.ri.test.OverrideTestSpecification}) bound to an instance.</blockquote></li>
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getMessageImpl messageImpl}"<table>
@@ -112,7 +112,7 @@ public class OverrideTestImplementation
 
     /**
      * Gets the {@code dependencyImpl} dependency.
-     * <p>This method returns the "{@code Override Test Implementation}" object of the {@code Override Test Specification} specification.</p>
+     * <p>This method returns the "{@code Override Test Implementation}" object of the {@code 'Override Test Specification'} specification.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code dependencyImpl} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.

@@ -43,7 +43,7 @@ import java.lang.*;
 /**
  * {@code Invoker} test cases.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ri.test.InvokerTestSpecification} {@code Singleton}</li>
+ * <li>{@code 'org.jomc.ri.test.InvokerTestSpecification'} ({@code org.jomc.ri.test.InvokerTestSpecification}) {@code Singleton}</li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

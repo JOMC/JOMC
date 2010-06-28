@@ -43,14 +43,14 @@ import static junit.framework.Assert.assertNull;
 /**
  * Test implementation with unsupported location.
  * <p><b>Specifications</b><ul>
- * <li>{@code org.jomc.ri.test.TestScopeSpecificationMany} {@code 1.0-beta-5-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
- * <li>{@code org.jomc.ri.test.TestScopeSpecificationOne2} {@code 1.0-beta-5-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
+ * <li>{@code 'org.jomc.ri.test.TestScopeSpecificationMany'} ({@code org.jomc.ri.test.TestSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
+ * <li>{@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} ({@code org.jomc.ri.test.TestSpecification}) {@code 1.0-beta-5-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
  * </ul></p>
  * <p><b>Dependencies</b><ul>
  * <li>"{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestScopeSpecificationMany} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * <li>"{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}"<blockquote>
- * Dependency on {@code org.jomc.ri.test.TestScopeSpecificationOne2} at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
+ * Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} ({@code org.jomc.ri.test.TestSpecification}) at specification level 1.0-beta-5-SNAPSHOT.</blockquote></li>
  * </ul></p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
@@ -96,7 +96,7 @@ public class TestLocationImplementation
 
     /**
      * Gets the {@code TestScopeSpecificationMany} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestScopeSpecificationMany} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code DOES_NOT_EXIST} scope. The does_not_exist object is returned whenever requested.</p>
      * @return The {@code TestScopeSpecificationMany} dependency.
      * {@code null} if no object is available.
@@ -110,7 +110,7 @@ public class TestLocationImplementation
 
     /**
      * Gets the {@code TestScopeSpecificationOne} dependency.
-     * <p>This method returns any available object of the {@code org.jomc.ri.test.TestScopeSpecificationOne2} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
+     * <p>This method returns any available object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} specification at specification level 1.0-beta-5-SNAPSHOT.</p>
      * <p>That specification applies to {@code DOES_NOT_EXIST} scope. The does_not_exist object is returned whenever requested.</p>
      * @return The {@code TestScopeSpecificationOne} dependency.
      * {@code null} if no object is available.
