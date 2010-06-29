@@ -741,6 +741,9 @@
       <code>validate-main-model</code> and <code>validate-test-model</code> goals of the <code>maven-jomc-plugin</code>
       when detecting invalid models.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>classes-dir</code> option of the command
+      line application to disallow multiple values.]]>
+      </action>
     </release>
   </body>
 </document>
