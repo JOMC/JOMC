@@ -726,9 +726,9 @@
       the <code>jomc-modlet</code> artifact replacing the <code>jomc-bootstrap-1.0.xsd</code> schema with the
       <code>jomc-modlet-1.0.xsd</code> schema.
       See the
-      <a href="http://jomc.sourceforge.net/jomc/1.0-beta-5/jomc-model/clirr-report.html">jomc-model CLIRR report</a>,
-      the <a href="http://jomc.sourceforge.net/jomc/1.0-beta-5/jomc-tools/clirr-report.html">jomc-tools CLIRR report</a>
-      and the <a href="http://jomc.sourceforge.net/jomc/1.0-beta-5/jomc-modlet/index.html">jomc-modlet</a> artifact.]]>
+      <a href="http://jomc.sourceforge.net/jomc/1.0/jomc-model/clirr-report.html">jomc-model CLIRR report</a>,
+      the <a href="http://jomc.sourceforge.net/jomc/1.0/jomc-tools/clirr-report.html">jomc-tools CLIRR report</a>
+      and the <a href="http://jomc.sourceforge.net/jomc/1.0/jomc-modlet/index.html">jomc-modlet</a> artifact.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>createObject(Instance,ClassLoader)</code>
       of class <code>org.jomc.model.Modules</code> to provide messages with thrown <code>InstantiationException</code>s
