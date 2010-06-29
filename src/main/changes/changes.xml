@@ -735,5 +735,12 @@
       when creating an object fails.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.0.1">
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>MissingResourceException</code> thrown by the
+      <code>validate-main-model</code> and <code>validate-test-model</code> goals of the <code>maven-jomc-plugin</code>
+      when detecting invalid models.]]>
+      </action>
+    </release>
   </body>
 </document>
