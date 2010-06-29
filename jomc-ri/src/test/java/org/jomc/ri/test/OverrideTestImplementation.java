@@ -43,7 +43,7 @@ import java.util.Locale;
 /**
  * Override Test Implementation.
  * <p><b>Specifications</b><ul>
- * <li>{@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} {@code 1.0-beta-5-SNAPSHOT} {@code Multiton}</li>
+ * <li>{@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} {@code 1.1-SNAPSHOT} {@code Multiton}</li>
  * </ul></p>
  * <p><b>Properties</b><ul>
  * <li>"{@link #getPropertyImpl propertyImpl}"
@@ -67,7 +67,7 @@ import java.util.Locale;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1-SNAPSHOT/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class OverrideTestImplementation
@@ -98,7 +98,7 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code OverrideTestImplementation} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1-SNAPSHOT/jomc-tools" )
     public OverrideTestImplementation()
     {
         // SECTION-START[Default Constructor]
@@ -117,7 +117,7 @@ public class OverrideTestImplementation
      * @return The {@code dependencyImpl} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1-SNAPSHOT/jomc-tools" )
     private org.jomc.ri.test.OverrideTestSpecification getDependencyImpl()
     {
         final org.jomc.ri.test.OverrideTestSpecification _d = (org.jomc.ri.test.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "dependencyImpl" );
@@ -134,7 +134,7 @@ public class OverrideTestImplementation
      * @return The value of the {@code propertyImpl} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1-SNAPSHOT/jomc-tools" )
     private java.lang.String getPropertyImpl()
     {
         final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getProperty( this, "propertyImpl" );
@@ -156,7 +156,7 @@ public class OverrideTestImplementation
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0-beta-5-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.0-beta-5-SNAPSHOT/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1-SNAPSHOT/jomc-tools" )
     private String getMessageImpl( final java.util.Locale locale )
     {
         final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "messageImpl", locale );
