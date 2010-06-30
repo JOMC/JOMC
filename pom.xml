@@ -40,7 +40,7 @@
   <name>JOMC</name>
   <version>1.1-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
-  <url>http://jomc.sourceforge.net/jomc/${project.version}</url>
+  <url>http://jomc.sourceforge.net/jomc/${jomc-parent.version}</url>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
@@ -320,7 +320,7 @@
             <dependency>
               <groupId>org.jomc</groupId>
               <artifactId>maven-jomc-plugin</artifactId>
-              <version>${project.version}</version>
+              <version>${maven-jomc-plugin.version}</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -438,9 +438,26 @@
           <version>1.0-beta-3</version>
         </plugin>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>clirr-maven-plugin</artifactId>
+          <version>${clirr-maven-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>check</id>
+              <goals>
+                <goal>check</goal>
+              </goals>
+              <configuration>
+                <logResults>true</logResults>
+                <minSeverity>info</minSeverity>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
           <groupId>org.jomc</groupId>
           <artifactId>maven-jomc-plugin</artifactId>
-          <version>1.1-SNAPSHOT</version>
+          <version>${maven-jomc-plugin.version}</version>
           <executions>
             <execution>
               <id>main-default</id>
@@ -725,7 +742,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>clirr-maven-plugin</artifactId>
-        <version>2.2.2</version>
+        <version>${clirr-maven-plugin.version}</version>
         <configuration>
           <minSeverity>info</minSeverity>
         </configuration>
@@ -891,7 +908,7 @@
     <site>
       <id>jomc.sourceforge.net</id>
       <name>JOMC Site</name>
-      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${project.version}</url>
+      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc-parent.version}</url>
     </site>
   </distributionManagement>
   <profiles>
@@ -981,7 +998,10 @@
     <maven-shade-plugin.version>1.3.3</maven-shade-plugin.version>
     <surefire.version>2.5</surefire.version>
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
+    <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
+    <maven-jomc-plugin.version>1.1-SNAPSHOT</maven-jomc-plugin.version>
     <jomc.version>1.0</jomc.version>
+    <jomc-parent.version>1.1</jomc-parent.version>
   </properties>
 </project>
