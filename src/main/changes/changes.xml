@@ -752,6 +752,10 @@
       <code>validate-test-classes</code> goals of the <code>maven-jomc-plugin</code> to display any validation report
       details and to fail the build when detecting invalid class files.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>validate-classes</code> command of the
+      command line application to display any validation report details and to exit with a failure code when detecting
+      invalid class files.]]>
+      </action>
     </release>
   </body>
 </document>
