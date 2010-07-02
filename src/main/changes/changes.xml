@@ -744,6 +744,10 @@
       <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>classes-dir</code> option of the command
       line application to disallow multiple values.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected method <code>getModlets</code> of class
+      <code>org.jomc.modlet.ModelContext</code> to correctly initialize the list of modlets for implementations in
+      packages other than <code>org.jomc.modlet</code>.]]>
+      </action>
     </release>
   </body>
 </document>
