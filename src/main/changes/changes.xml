@@ -756,6 +756,10 @@
       command line application to display any validation report details and to exit with a failure code when detecting
       invalid class files.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Added <code>schemas-system-id-key</code>,
+      <code>schemas-public-id-key</code> and <code>services-identifier-class-key</code> keys to the
+      <code>modlets</code> element of the <code>jomc-modlet-1.0.xsd</code> schema.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the <code>attach-main-module</code> goal of the
       <code>maven-jomc-plugin</code> to bind to the <code>package</code> phase by default instead of to the
       <code>process-resources</code> phase.]]>
