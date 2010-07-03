@@ -760,13 +760,15 @@
       <code>schemas-public-id-key</code> and <code>services-identifier-class-key</code> keys to the
       <code>modlets</code> element of the <code>jomc-modlet-1.0.xsd</code> schema.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Updated the <code>attach-main-module</code> goal of the
-      <code>maven-jomc-plugin</code> to bind to the <code>package</code> phase by default instead of to the
-      <code>process-resources</code> phase.]]>
+      <action dev="schulte2005" type="add"><![CDATA[Added parameter <code>mainModuleTimeoutMillis</code> to the
+      <code>attach-main-module</code> goal of the <code>maven-jomc-plugin</code>.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Updated the <code>attach-test-module</code> goal of the
-      <code>maven-jomc-plugin</code> to bind to the <code>package</code> phase by default instead of to the
-      <code>process-test-resources</code> phase.]]>
+      <action dev="schulte2005" type="add"><![CDATA[Added parameter <code>testModuleTimeoutMillis</code> to the
+      <code>attach-test-module</code> goal of the <code>maven-jomc-plugin</code>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated the <code>attach-main-module</code> and
+      <code>attach-test-module</code> goals of the <code>maven-jomc-plugin</code> to attach a copy of the module
+      once during a build.]]>
       </action>
     </release>
   </body>
