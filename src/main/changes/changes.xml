@@ -806,6 +806,12 @@
       <code>modletEncoding</code> to class <code>org.jomc.mojo.JomcResourceTransformer</code> of the
       <code>maven-jomc-plugin</code>.]]>
       </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added option <code>document-encoding</code> to the
+      <code>merge-modules</code> and <code>merge-modlets</code> commands of the command line application.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added the <code>show-model</code> command to the command line
+      application.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>MissingResourceException</code> thrown by the
       <code>validate-main-model</code> and <code>validate-test-model</code> goals of the <code>maven-jomc-plugin</code>
       when detecting invalid models.]]>
@@ -843,7 +849,7 @@
       <code>testClassesDirectory</code> of all goals of the <code>maven-jomc-plugin</code> in favour of parameters
       <code>outputDirectory</code> and <code>testOutputDirectory</code>.]]>
       </action>
-      <action dev="schulte2005" type="remove"><![CDATA[Deprecated goals <code>dump-main-instance</code> and
+      <action dev="schulte2005" type="remove"><![CDATA[Removed goals <code>dump-main-instance</code> and
       <code>dump-test-instance</code> of the <code>maven-jomc-plugin</code> in favour of goals
       <code>show-main-instance</code> and <code>show-test-instance</code>.]]>
       </action>
