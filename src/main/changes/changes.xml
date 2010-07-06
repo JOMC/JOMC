@@ -793,8 +793,10 @@
       the <code>dump-test-instance</code> goal of the <code>maven-jomc-plugin</code> and added support for execution
       strategies <code>always</code> and <code>once-per-session</code>.]]>
       </action>
-      <action dev="schulte2005" type="add"><![CDATA[Added goals <code>validate-main-classpath</code> and
-      <code>validate-test-classpath</code> to the <code>maven-jomc-plugin</code>.]]>
+      <action dev="schulte2005" type="add"><![CDATA[Added goals <code>validate-main-classpath</code>,
+      <code>validate-test-classpath</code>, <code>show-main-model</code>, <code>show-main-instance</code>,
+      <code>show-main-specification</code>, <code>show-test-model</code>, <code>show-test-instance</code> and
+      <code>show-test-specification</code> to the <code>maven-jomc-plugin</code>.]]>
       </action>
       <action dev="schulte2005" type="add"><![CDATA[Added parameters <code>sessionDirectory</code>,
       <code>sourceDirectory</code>, <code>testSourceDirectory</code>, <code>outputDirectory</code> and
@@ -836,6 +838,10 @@
       <action dev="schulte2005" type="remove"><![CDATA[Deprecated parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code> of all goals of the <code>maven-jomc-plugin</code> in favour of parameters
       <code>outputDirectory</code> and <code>testOutputDirectory</code>.]]>
+      </action>
+      <action dev="schulte2005" type="remove"><![CDATA[Deprecated goals <code>dump-main-instance</code> and
+      <code>dump-test-instance</code> of the <code>maven-jomc-plugin</code> in favour of goals
+      <code>show-main-instance</code> and <code>show-test-instance</code>.]]>
       </action>
     </release>
   </body>
