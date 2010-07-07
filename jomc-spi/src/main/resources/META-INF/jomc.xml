@@ -44,7 +44,7 @@
   <specifications>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.spi.Scope" class="org.jomc.spi.Scope" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${jomc.version}">
+                   vendor="${project.organization.name}" version="${jomc.api.version}">
 
       <documentation defaultLanguage="en">
         <text language="en">Scope a specification applies to.</text>
@@ -57,7 +57,7 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.spi.Listener" class="org.jomc.spi.Listener" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${jomc.version}">
+                   vendor="${project.organization.name}" version="${jomc.api.version}">
 
       <documentation defaultLanguage="en">
         <text language="en">Object management and configuration listener interface.</text>
@@ -70,7 +70,7 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.spi.Locator" class="org.jomc.spi.Locator" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${jomc.version}">
+                   vendor="${project.organization.name}" version="${jomc.api.version}">
 
       <documentation defaultLanguage="en">
         <text language="en">Locates objects.</text>
@@ -83,7 +83,7 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.spi.Invoker" class="org.jomc.spi.Invoker" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${jomc.version}" multiplicity="One">
+                   vendor="${project.organization.name}" version="${jomc.api.version}" multiplicity="One">
 
       <documentation defaultLanguage="en">
         <text language="en">Invokes objects.</text>
@@ -96,7 +96,7 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.spi.Invocation" class="org.jomc.spi.Invocation" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${jomc.version}" multiplicity="One">
+                   vendor="${project.organization.name}" version="${jomc.api.version}" multiplicity="One">
 
       <documentation defaultLanguage="en">
         <text language="en">Invocation of an object.</text>
