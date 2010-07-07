@@ -40,7 +40,7 @@
   <name>JOMC</name>
   <version>1.1-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
-  <url>http://jomc.sourceforge.net/jomc/${jomc.branch.version}</url>
+  <url>http://jomc.sourceforge.net/jomc/${jomc.site.version}</url>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
@@ -395,10 +395,12 @@
                 <goal>create</goal>
               </goals>
               <configuration>
+                <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
                 <format>{0,date,yyyy-MM-dd'T'HH:mm:ssZ}</format>
                 <items>
                   <item>timestamp</item>
                 </items>
+                <timestampFormat>{0,date,y.D}</timestampFormat>
               </configuration>
             </execution>
           </executions>
@@ -533,7 +535,7 @@
                     </parameter>
                     <parameter>
                       <name>project.version</name>
-                      <value>${project.version}</value>
+                      <value>${jomc.product.version}</value>
                     </parameter>
                     <parameter>
                       <name>build.number</name>
@@ -914,7 +916,7 @@
     <site>
       <id>jomc.sourceforge.net</id>
       <name>JOMC Site</name>
-      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc.branch.version}</url>
+      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc.site.version}</url>
     </site>
   </distributionManagement>
   <profiles>
@@ -1018,7 +1020,7 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.ri.version>1.0</jomc.ri.version>
-    <jomc.product.version>${jomc.api.version}.${project.version}</jomc.product.version>
-    <jomc.branch.version>1.1</jomc.branch.version>
+    <jomc.site.version>1.0</jomc.site.version>
+    <jomc.product.version>1.0.${timestamp}</jomc.product.version>
   </properties>
 </project>
