@@ -809,7 +809,7 @@
       <action dev="schulte2005" type="add"><![CDATA[Added option <code>document-encoding</code> to the
       <code>merge-modules</code> and <code>merge-modlets</code> commands of the command line application.]]>
       </action>
-      <action dev="schulte2005" type="add"><![CDATA[Added the <code>show-model</code> command to the command line
+      <action dev="schulte2005" type="add"><![CDATA[Added command <code>show-model</code> to the command line
       application.]]>
       </action>
       <action dev="schulte2005" type="add"><![CDATA[Added a <code>location</code> attribute to the
@@ -823,6 +823,10 @@
       <action dev="schulte2005" type="add"><![CDATA[Added a <code>location</code> attribute to the
       <code>@XmlSchema</code> annotation of the <code>org.jomc.tools.model</code> package. Added a <code>@XmlNs</code>
       annotation to the <code>@XmlSchema</code> annotation of the <code>org.jomc.tools.model</code> package.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added options <code>specification</code> and
+      <code>implementation</code> to the <code>generate-resources</code>, <code>manage-sources</code>,
+      <code>commit-classes</code> and <code>validate-classes</code> commands of the command line application.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected a <code>MissingResourceException</code> thrown by the
       <code>validate-main-model</code> and <code>validate-test-model</code> goals of the <code>maven-jomc-plugin</code>
