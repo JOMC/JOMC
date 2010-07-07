@@ -54,7 +54,7 @@ import static junit.framework.Assert.assertEquals;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0.10.188", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
 // </editor-fold>
 // SECTION-END
 public class OverrideTestImplementationTest
@@ -114,7 +114,7 @@ public class OverrideTestImplementationTest
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
     /** Creates a new {@code OverrideTestImplementationTest} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0.10.188", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
     public OverrideTestImplementationTest()
     {
         // SECTION-START[Default Constructor]
@@ -138,7 +138,7 @@ public class OverrideTestImplementationTest
      * @return The {@code Override Test Specification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.0.10.188", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools" )
     private org.jomc.ri.test.OverrideTestSpecification getOverrideTestSpecification()
     {
         final org.jomc.ri.test.OverrideTestSpecification _d = (org.jomc.ri.test.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Override Test Specification" );
