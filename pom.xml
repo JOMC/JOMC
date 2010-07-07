@@ -846,6 +846,12 @@
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
+        <artifactId>jomc-tools</artifactId>
+        <classifier>templates</classifier>
+        <version>1.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <version>1.1-SNAPSHOT</version>
       </dependency>
