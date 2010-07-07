@@ -1018,6 +1018,7 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.ri.version>1.0</jomc.ri.version>
+    <jomc.product.version>${jomc.api.version}.${project.version}</jomc.product.version>
     <jomc.branch.version>1.1</jomc.branch.version>
   </properties>
 </project>
