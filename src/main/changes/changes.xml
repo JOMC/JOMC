@@ -841,10 +841,6 @@
       <code>maven-jomc-plugin</code> to use parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code>.]]>
       </action>
-      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>dump-main-instance</code> and
-      <code>dump-test-instance</code> goals of the <code>maven-jomc-plugin</code> to fail the build when deleting
-      dump files fails.]]>
-      </action>
       <action dev="schulte2005" type="remove"><![CDATA[Deprecated parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code> of all goals of the <code>maven-jomc-plugin</code> in favour of parameters
       <code>outputDirectory</code> and <code>testOutputDirectory</code>.]]>
