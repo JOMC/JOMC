@@ -44,7 +44,7 @@
   <implementations>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultObjectManager" class="org.jomc.ri.DefaultObjectManager"
-                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    classDeclaration="true" name="${project.name}" version="${jomc.ri.version}"
                     vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
@@ -331,7 +331,7 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultLocator" class="org.jomc.ri.DefaultLocator" classDeclaration="true"
-                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
+                    name="${project.name}" version="${jomc.ri.version}" vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en">Default {@code Locator} implementation.</text>
@@ -355,7 +355,7 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultScope" class="org.jomc.ri.DefaultScope" classDeclaration="true"
-                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
+                    name="${project.name}" version="${jomc.ri.version}" vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en">Default {@code Scope} implementation.</text>
@@ -368,7 +368,7 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultInvoker" class="org.jomc.ri.DefaultInvoker" classDeclaration="true"
-                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
+                    name="${project.name}" version="${jomc.ri.version}" vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
         <text language="en">Default {@code Invoker} implementation.</text>
@@ -382,7 +382,7 @@
 
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultInvocation" class="org.jomc.ri.DefaultInvocation"
-                    classDeclaration="true" name="${project.name}" version="${project.version}"
+                    classDeclaration="true" name="${project.name}" version="${jomc.ri.version}"
                     vendor="${project.organization.name}">
 
       <documentation defaultLanguage="en">
