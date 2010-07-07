@@ -40,7 +40,7 @@
   <name>JOMC</name>
   <version>1.1-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
-  <url>http://jomc.sourceforge.net/jomc/${jomc-parent.version}</url>
+  <url>http://jomc.sourceforge.net/jomc/${jomc.branch.version}</url>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
@@ -908,7 +908,7 @@
     <site>
       <id>jomc.sourceforge.net</id>
       <name>JOMC Site</name>
-      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc-parent.version}</url>
+      <url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc.branch.version}</url>
     </site>
   </distributionManagement>
   <profiles>
@@ -1010,6 +1010,6 @@
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.1-SNAPSHOT</maven-jomc-plugin.version>
     <jomc.version>1.0</jomc.version>
-    <jomc-parent.version>1.1</jomc-parent.version>
+    <jomc.branch.version>1.1</jomc.branch.version>
   </properties>
 </project>
