@@ -375,9 +375,10 @@
               <configuration>
                 <arguments>-copy-constructor -mark-generated -Xinject-code</arguments>
                 <bindingDirectory>src/main/schemas</bindingDirectory>
-                <schemaDirectory>src/main/schemas</schemaDirectory>
                 <extension>true</extension>
+                <npa>true</npa>
                 <outputDirectory>${xjcOutputDirectory}</outputDirectory>
+                <schemaDirectory>src/main/schemas</schemaDirectory>
                 <staleFile>${project.build.directory}/xjc.staleFile</staleFile> <!-- See http://jira.codehaus.org/browse/MJAXB-34 -->
               </configuration>
             </execution>
