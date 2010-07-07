@@ -401,7 +401,6 @@
                 <items>
                   <item>timestamp</item>
                 </items>
-                <timestampFormat>{0,date,yy.DDDHH}</timestampFormat>
               </configuration>
             </execution>
           </executions>
@@ -536,7 +535,7 @@
                     </parameter>
                     <parameter>
                       <name>project.version</name>
-                      <value>${jomc.product.version}</value>
+                      <value>${project.version}</value>
                     </parameter>
                     <parameter>
                       <name>build.number</name>
@@ -1021,7 +1020,6 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.ri.version>1.0</jomc.ri.version>
-    <jomc.site.version>1.1</jomc.site.version>
-    <jomc.product.version>1.0.${timestamp}</jomc.product.version>
+    <jomc.site.version>1.1.x</jomc.site.version>
   </properties>
 </project>
