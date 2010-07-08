@@ -857,6 +857,9 @@
       <code>maven-jomc-plugin</code> to use parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code>.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>merge-modlets</code> command of the
+      command line application to exclude the applications' modlets when not included otherwise.]]>
+      </action>
       <action dev="schulte2005" type="remove"><![CDATA[Deprecated parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code> of all goals of the <code>maven-jomc-plugin</code> in favour of parameters
       <code>outputDirectory</code> and <code>testOutputDirectory</code>.]]>
