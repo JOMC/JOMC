@@ -857,6 +857,9 @@
       <code>maven-jomc-plugin</code> to use parameters <code>classesDirectory</code> and
       <code>testClassesDirectory</code>.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected method <code>getMergedModlet</code> of class
+      <code>org.jomc.modlet.Modlets</code> to correctly merge duplicate schemas and services.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>merge-modlets</code> command of the
       command line application to exclude the applications' modlets when not included otherwise.]]>
       </action>
