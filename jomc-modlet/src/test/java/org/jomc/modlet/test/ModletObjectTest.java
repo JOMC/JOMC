@@ -30,26 +30,26 @@
  *   $Id$
  *
  */
-package org.jomc.model.test;
+package org.jomc.modlet.test;
 
+import org.jomc.modlet.ModletObject;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
 import javax.xml.namespace.QName;
-import org.jomc.model.ModelObject;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.fail;
 
 /**
- * Test cases for class {@code org.jomc.model.ModelObject}.
+ * Test cases for class {@code org.jomc.modlet.ModletObject}.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
  */
-public class ModelObjectTest
+public class ModletObjectTest
 {
 
-    public static class TestModelObject extends ModelObject
+    public static class TestModletObject extends ModletObject
     {
 
         @Override
@@ -76,16 +76,16 @@ public class ModelObjectTest
 
     public void testGetAnyElement() throws Exception
     {
-        final TestModelObject modelObject = new TestModelObject();
+        final TestModletObject modletObject = new TestModletObject();
         final List<Object> any = new ArrayList<Object>( 10 );
-        final QName name = new QName( "http://jomc.org/model", "test" );
+        final QName name = new QName( "http://jomc.org/modlet", "test" );
         final JAXBElement<Object> element = new JAXBElement<Object>( name, Object.class, null, null );
         any.add( element );
         any.add( element );
 
         try
         {
-            modelObject.getAnyElement( any, "http://jomc.org/model", "test" );
+            modletObject.getAnyElement( any, "http://jomc.org/modlet", "test" );
             fail( "Expected 'IllegalStateException' not thrown." );
         }
         catch ( final IllegalStateException e )
@@ -96,7 +96,7 @@ public class ModelObjectTest
 
         try
         {
-            modelObject.getAnyElement( any, "http://jomc.org/model", "test", Object.class );
+            modletObject.getAnyElement( any, "http://jomc.org/modlet", "test", Object.class );
             fail( "Expected 'IllegalStateException' not thrown." );
         }
         catch ( final IllegalStateException e )
@@ -108,14 +108,14 @@ public class ModelObjectTest
 
     public void testGetAnyObject() throws Exception
     {
-        final TestModelObject modelObject = new TestModelObject();
+        final TestModletObject modletObject = new TestModletObject();
         final List<Object> any = new ArrayList<Object>( 10 );
         any.add( "TEST" );
         any.add( "TEST" );
 
         try
         {
-            modelObject.getAnyObject( any, String.class );
+            modletObject.getAnyObject( any, String.class );
             fail( "Expected 'IllegalStateException' not thrown." );
         }
         catch ( final IllegalStateException e )
