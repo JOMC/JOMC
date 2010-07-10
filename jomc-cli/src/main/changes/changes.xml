@@ -42,7 +42,26 @@
   <body>
     <!-- *********************************************************************************************************** -->
     <release version="1.1">
-      <action dev="schulte2005" type="update">Split parent changes document to a single document per artifact.</action>
+      <action dev="schulte2005" type="add"><![CDATA[Added option <code>document-encoding</code> to the
+      <code>merge-modules</code> and <code>merge-modlets</code> commands of the command line application.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added command <code>show-model</code> to the command line
+      application.]]>
+      </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added options <code>specification</code> and
+      <code>implementation</code> to the <code>generate-resources</code>, <code>manage-sources</code>,
+      <code>commit-classes</code> and <code>validate-classes</code> commands of the command line application.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>classes-dir</code> option of the command
+      line application to disallow multiple values.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>validate-classes</code> command of the
+      command line application to display any validation report details and to exit with a failure code when detecting
+      invalid class files.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>merge-modlets</code> command of the
+      command line application to exclude the applications' modlets when not included otherwise.]]>
+      </action>
     </release>
   </body>
 </document>
