@@ -42,6 +42,7 @@
   <artifactId>jomc-api</artifactId>
   <name>JOMC API</name>
   <description>Object management and configuration application programming interface.</description>
+  <url>${jomc.artifacts.url}/${project.artifactId}-${project.version}</url>
   <build>
     <resources>
       <resource>
@@ -73,6 +74,13 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <distributionManagement>
+    <site>
+      <id>jomc.sourceforge.net</id>
+      <name>JOMC Site</name>
+      <url>${jomc.artifacts.distribution.url}/${project.artifactId}-${project.version}</url>
+    </site>
+  </distributionManagement>
   <profiles>
     <profile>
       <id>jdk15</id>

@@ -42,6 +42,7 @@
   <artifactId>jomc-spi</artifactId>
   <name>JOMC SPI</name>
   <description>Object management and configuration implementation programming interface.</description>
+  <url>${jomc.artifacts.url}/${project.artifactId}-${project.version}</url>
   <build>
     <resources>
       <resource>
@@ -62,6 +63,13 @@
       </plugin>
     </plugins>
   </build>
+  <distributionManagement>
+    <site>
+      <id>jomc.sourceforge.net</id>
+      <name>JOMC Site</name>
+      <url>${jomc.artifacts.distribution.url}/${project.artifactId}-${project.version}</url>
+    </site>
+  </distributionManagement>
   <profiles>
     <profile>
       <id>jomc-ci</id>
