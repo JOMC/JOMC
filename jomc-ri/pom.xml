@@ -57,10 +57,6 @@
     </testResources>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <executions>
