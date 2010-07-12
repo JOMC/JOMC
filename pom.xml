@@ -512,6 +512,20 @@
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
+            <id>copy-changes</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <classifier>changes</classifier>
+              <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
+              <includeGroupIds>org.jomc</includeGroupIds>
+              <outputDirectory>${project.build.directory}/jomc-changes</outputDirectory>
+              <type>xhtml</type>
+            </configuration>
+          </execution>
+          <execution>
             <id>unpack-build-resources</id>
             <phase>generate-resources</phase>
             <goals>
@@ -1283,6 +1297,6 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.ri.version>1.0</jomc.ri.version>
-    <jomc.site.version>1.1.x</jomc.site.version>
+    <jomc.site.version>1.1</jomc.site.version>
   </properties>
 </project>
