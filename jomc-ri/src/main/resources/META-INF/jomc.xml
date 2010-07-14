@@ -79,12 +79,11 @@
         </message>
         <message name="defaultLogLevelInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">{0} default log level: ''{1}''</text>
-            <text language="de">{0} Standard-Protokollierungsstufe: ''{1}''</text>
+            <text language="en">Default log level: ''{0}''</text>
+            <text language="de">Standard-Protokollierungsstufe: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="className"/>
-            <argument index="1" name="logLevel"/>
+            <argument index="0" name="logLevel"/>
           </arguments>
         </message>
         <message name="defaultScopeInfoMessage">
@@ -328,32 +327,29 @@
         </message>
         <message name="defaultModelIdentifierInfo">
           <template defaultLanguage="en">
-            <text language="en">{0} default model identifier: ''{1}''</text>
-            <text language="de">{0} Standard Modellbezeichner: ''{1}''</text>
+            <text language="en">Default model identifier: ''{0}''</text>
+            <text language="de">Standard Modellbezeichner: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="className"/>
-            <argument index="1" name="defaultValue"/>
+            <argument index="0" name="defaultValue"/>
           </arguments>
         </message>
         <message name="defaultModelObjectClasspahResolutionEnabledInfo">
           <template defaultLanguage="en">
-            <text language="en">{0} default model object classpath resolution enabled: ''{1}''</text>
-            <text language="de">{0} Standard Modellobjekt-Klassenpfad-Auflösung aktiviert: ''{1}''</text>
+            <text language="en">Default model object classpath resolution enabled: ''{0}''</text>
+            <text language="de">Standard Modellobjekt-Klassenpfad-Auflösung aktiviert: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="className"/>
-            <argument index="1" name="defaultValue"/>
+            <argument index="0" name="defaultValue"/>
           </arguments>
         </message>
         <message name="defaultModelProcessingEnabledInfo">
           <template defaultLanguage="en">
-            <text language="en">{0} default model processing enabled: ''{1}''</text>
-            <text language="de">{0} Standard Modellverarbeitung aktiviert: ''{1}''</text>
+            <text language="en">Default model processing enabled: ''{0}''</text>
+            <text language="de">Standard Modellverarbeitung aktiviert: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="className"/>
-            <argument index="1" name="defaultValue"/>
+            <argument index="0" name="defaultValue"/>
           </arguments>
         </message>
       </messages>

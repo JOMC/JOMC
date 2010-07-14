@@ -93,32 +93,32 @@ import org.jomc.util.WeakIdentityHashMap;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard-Protokollierungsstufe: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultModelIdentifierInfo defaultModelIdentifierInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model identifier: ''{1}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellbezeichner: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Default model identifier: ''{0}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellbezeichner: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultModelObjectClasspahResolutionEnabledInfo defaultModelObjectClasspahResolutionEnabledInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model object classpath resolution enabled: ''{1}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Default model object classpath resolution enabled: ''{0}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultModelProcessingEnabledInfo defaultModelProcessingEnabledInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model processing enabled: ''{1}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellverarbeitung aktiviert: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Default model processing enabled: ''{0}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -141,8 +141,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -1234,7 +1234,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.logLevel = getDefaultLogLevel();
             this.log( Level.CONFIG, getDefaultLogLevelInfoMessage(
-                Locale.getDefault(), this.getClass().getCanonicalName(), this.logLevel.getLocalizedName() ), null );
+                Locale.getDefault(), this.logLevel.getLocalizedName() ), null );
 
         }
 
@@ -1333,9 +1333,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( this.modelIdentifier == null )
         {
             this.modelIdentifier = getDefaultModelIdentifier();
-            this.log( Level.CONFIG, getDefaultModelIdentifierInfo(
-                Locale.getDefault(), this.getClass().getCanonicalName(), this.modelIdentifier ), null );
-
+            this.log( Level.CONFIG, getDefaultModelIdentifierInfo( Locale.getDefault(), this.modelIdentifier ), null );
         }
 
         return this.modelIdentifier;
@@ -1413,8 +1411,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.modelObjectClasspathResolutionEnabled = isDefaultModelObjectClasspathResolutionEnabled();
             this.log( Level.CONFIG, getDefaultModelObjectClasspahResolutionEnabledInfo(
-                Locale.getDefault(), this.getClass().getCanonicalName(),
-                Boolean.toString( this.modelObjectClasspathResolutionEnabled ) ), null );
+                Locale.getDefault(), Boolean.toString( this.modelObjectClasspathResolutionEnabled ) ), null );
 
         }
 
@@ -1454,8 +1451,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( defaultModelProcessingEnabled == null )
         {
             defaultModelProcessingEnabled = Boolean.valueOf( System.getProperty(
-                "org.jomc.ri.DefaultObjectManager.defaultModelProcessingEnabled",
-                Boolean.toString( true ) ) );
+                "org.jomc.ri.DefaultObjectManager.defaultModelProcessingEnabled", Boolean.toString( true ) ) );
 
         }
 
@@ -1492,8 +1488,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.modelProcessingEnabled = isDefaultModelProcessingEnabled();
             this.log( Level.CONFIG, getDefaultModelProcessingEnabledInfo(
-                Locale.getDefault(), this.getClass().getCanonicalName(),
-                Boolean.toString( this.modelProcessingEnabled ) ), null );
+                Locale.getDefault(), Boolean.toString( this.modelProcessingEnabled ) ), null );
 
         }
 
@@ -2824,8 +2819,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -2864,8 +2859,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -2905,22 +2900,21 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLogLevelInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard-Protokollierungsstufe: ''{0}''</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param className Format argument.
      * @param logLevel Format argument.
      * @return The text of the {@code defaultLogLevelInfoMessage} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
-    private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String className, final java.lang.String logLevel )
+    private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String logLevel )
     {
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfoMessage" ), className, logLevel, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfoMessage" ), logLevel, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -2946,22 +2940,21 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultModelIdentifierInfo} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model identifier: ''{1}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellbezeichner: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model identifier: ''{0}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellbezeichner: ''{0}''</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param className Format argument.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelIdentifierInfo} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
-    private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelIdentifierInfo" ), className, defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelIdentifierInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -2987,22 +2980,21 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model object classpath resolution enabled: ''{1}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model object classpath resolution enabled: ''{0}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param className Format argument.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
-    private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelObjectClasspahResolutionEnabledInfo" ), className, defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelObjectClasspahResolutionEnabledInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3028,22 +3020,21 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultModelProcessingEnabledInfo} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model processing enabled: ''{1}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellverarbeitung aktiviert: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model processing enabled: ''{0}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
-     * @param className Format argument.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelProcessingEnabledInfo} message.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
-    private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelProcessingEnabledInfo" ), className, defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelProcessingEnabledInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3069,8 +3060,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -3312,8 +3303,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T11:23:21+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T17:08:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
