@@ -93,20 +93,32 @@ import org.jomc.util.WeakIdentityHashMap;
  * </ul></p>
  * <p><b>Messages</b><ul>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default log level: ''{1}''</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard-Protokollierungsstufe: ''{1}''</pre></td></tr>
  * </table>
+ * <li>"{@link #getDefaultModelIdentifierInfo defaultModelIdentifierInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model identifier: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellbezeichner: ''{1}''</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultModelObjectClasspahResolutionEnabledInfo defaultModelObjectClasspahResolutionEnabledInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model object classpath resolution enabled: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{1}''</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultModelProcessingEnabledInfo defaultModelProcessingEnabledInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model processing enabled: ''{1}''</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellverarbeitung aktiviert: ''{1}''</pre></td></tr>
+ * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -129,8 +141,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -1053,6 +1065,42 @@ public class DefaultObjectManager implements ObjectManager
 
     private static volatile boolean bootstrapClassLoaderClassNameInitialized;
 
+    /**
+     * Identifier of the model to search for modules by default.
+     * @since 1.1
+     */
+    private static volatile String defaultModelIdentifier;
+
+    /**
+     * Identifier of the model to search for modules.
+     * @since 1.1
+     */
+    private String modelIdentifier;
+
+    /**
+     * Flag indicating model object classpath resolution is enabled by default.
+     * @since 1.1
+     */
+    private static volatile Boolean defaultModelObjectClasspathResolutionEnabled;
+
+    /**
+     * Flag indicating model object classpath resolution is enabled.
+     * @since 1.1
+     */
+    private Boolean modelObjectClasspathResolutionEnabled;
+
+    /**
+     * Flag indicating model processing is enabled by default.
+     * @since 1.1
+     */
+    private static volatile Boolean defaultModelProcessingEnabled;
+
+    /**
+     * Flag indicating model processing is enabled.
+     * @since 1.1
+     */
+    private Boolean modelProcessingEnabled;
+
     /** {@code ClassLoader} instance representing the bootstrap class loader. */
     private static final ClassLoader BOOTSTRAP_CLASSLOADER = new ClassLoader( null )
     {
@@ -1231,6 +1279,242 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the identifier of the model to search for modules by default.
+     * <p>The identifier of the model to search for modules by default is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.defaultModelIdentifier} holding the identifier of the model to search for
+     * modules by default. If that property is not set, the {@code http://jomc.org/model} default is returned.</p>
+     *
+     * @return The identifier of the model to search for modules by default.
+     *
+     * @see #getModelIdentifier()
+     * @see #setDefaultModelIdentifier(java.lang.String)
+     * @see ModelObject#MODEL_PUBLIC_ID
+     *
+     * @since 1.1
+     */
+    public static String getDefaultModelIdentifier()
+    {
+        if ( defaultModelIdentifier == null )
+        {
+            defaultModelIdentifier = System.getProperty( "org.jomc.ri.DefaultObjectManager.defaultModelIdentifier",
+                                                         ModelObject.MODEL_PUBLIC_ID );
+
+        }
+
+        return defaultModelIdentifier;
+    }
+
+    /**
+     * Sets the identifier of the model to search for modules by default.
+     *
+     * @param value The new identifier of the model to search for modules by default or {@code null}.
+     *
+     * @see #getDefaultModelIdentifier()
+     *
+     * @since 1.1
+     */
+    public static void setDefaultModelIdentifier( final String value )
+    {
+        defaultModelIdentifier = value;
+    }
+
+    /**
+     * Gets the identifier of the model to search for modules.
+     *
+     * @return The identifier of the model to search for modules.
+     *
+     * @see #getDefaultModelIdentifier()
+     * @see #setModelIdentifier(java.lang.String)
+     *
+     * @since 1.1
+     */
+    public String getModelIdentifier()
+    {
+        if ( this.modelIdentifier == null )
+        {
+            this.modelIdentifier = getDefaultModelIdentifier();
+            this.log( Level.CONFIG, getDefaultModelIdentifierInfo(
+                Locale.getDefault(), this.getClass().getCanonicalName(), this.modelIdentifier ), null );
+
+        }
+
+        return this.modelIdentifier;
+    }
+
+    /**
+     * Sets the identifier of the model to search for modules.
+     *
+     * @param value The new identifier of the model to search for modules or {@code null}.
+     *
+     * @since 1.1
+     */
+    public void setModelIdentifier( final String value )
+    {
+        this.modelIdentifier = value;
+    }
+
+    /**
+     * Gets a flag indicating model object classpath resolution is enabled by default.
+     * <p>The default model object classpath resolution enabled flag is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.defaultModelObjectClasspathResolutionEnabled} holding a boolean
+     * indicating model object classpath resolution is enabled by default. If that property is not set, the
+     * {@code true} default is returned.</p>
+     *
+     * @return {@code true} if model object classpath resolution is enabled by default; {@code false} if model object
+     * classpath resolution is disabled by default.
+     *
+     * @see #isModelObjectClasspathResolutionEnabled()
+     * @see #setDefaultModelObjectClasspathResolutionEnabled(java.lang.Boolean)
+     *
+     * @since 1.1
+     */
+    public static boolean isDefaultModelObjectClasspathResolutionEnabled()
+    {
+        if ( defaultModelObjectClasspathResolutionEnabled == null )
+        {
+            defaultModelObjectClasspathResolutionEnabled = Boolean.valueOf( System.getProperty(
+                "org.jomc.ri.DefaultObjectManager.defaultModelObjectClasspathResolutionEnabled",
+                Boolean.toString( true ) ) );
+
+        }
+
+        return defaultModelObjectClasspathResolutionEnabled;
+    }
+
+    /**
+     * Sets the flag indicating model object classpath resolution is enabled by default.
+     *
+     * @param value The new value of the flag indicating model object classpath resolution is enabled by default or
+     * {@code null}.
+     *
+     * @see #isDefaultModelObjectClasspathResolutionEnabled()
+     *
+     * @since 1.1
+     */
+    public static void setDefaultModelObjectClasspathResolutionEnabled( final Boolean value )
+    {
+        defaultModelObjectClasspathResolutionEnabled = value;
+    }
+
+    /**
+     * Gets a flag indicating model object classpath resolution is enabled.
+     *
+     * @return {@code true} if model object classpath resolution is enabled; {@code false} if model object classpath
+     * resolution is disabled.
+     *
+     * @see #isDefaultModelObjectClasspathResolutionEnabled()
+     * @see #setModelObjectClasspathResolutionEnabled(java.lang.Boolean)
+     *
+     * @since 1.1
+     */
+    public boolean isModelObjectClasspathResolutionEnabled()
+    {
+        if ( this.modelObjectClasspathResolutionEnabled == null )
+        {
+            this.modelObjectClasspathResolutionEnabled = isDefaultModelObjectClasspathResolutionEnabled();
+            this.log( Level.CONFIG, getDefaultModelObjectClasspahResolutionEnabledInfo(
+                Locale.getDefault(), this.getClass().getCanonicalName(),
+                Boolean.toString( this.modelObjectClasspathResolutionEnabled ) ), null );
+
+        }
+
+        return this.modelObjectClasspathResolutionEnabled;
+    }
+
+    /**
+     * Sets the flag indicating model object classpath resolution is enabled.
+     *
+     * @param value The new value of the flag indicating model object classpath resolution is enabled or {@code null}.
+     *
+     * @see #isModelObjectClasspathResolutionEnabled()
+     *
+     * @since 1.1
+     */
+    public void setModelObjectClasspathResolutionEnabled( final Boolean value )
+    {
+        this.modelObjectClasspathResolutionEnabled = value;
+    }
+
+    /**
+     * Gets a flag indicating model processing is enabled by default.
+     * <p>The default model processing enabled flag is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.defaultModelProcessingEnabled} holding a boolean indicating model
+     * processing is enabled by default. If that property is not set, the {@code true} default is returned.</p>
+     *
+     * @return {@code true} if model processing is enabled by default; {@code false} if model processing is disabled by
+     * default.
+     *
+     * @see #isModelProcessingEnabled()
+     * @see #setDefaultModelProcessingEnabled(java.lang.Boolean)
+     *
+     * @since 1.1
+     */
+    public static boolean isDefaultModelProcessingEnabled()
+    {
+        if ( defaultModelProcessingEnabled == null )
+        {
+            defaultModelProcessingEnabled = Boolean.valueOf( System.getProperty(
+                "org.jomc.ri.DefaultObjectManager.defaultModelProcessingEnabled",
+                Boolean.toString( true ) ) );
+
+        }
+
+        return defaultModelProcessingEnabled;
+    }
+
+    /**
+     * Sets the flag indicating model processing is enabled by default.
+     *
+     * @param value The new value of the flag indicating model processing is enabled by default or {@code null}.
+     *
+     * @see #isDefaultModelProcessingEnabled()
+     *
+     * @since 1.1
+     */
+    public static void setDefaultModelProcessingEnabled( final Boolean value )
+    {
+        defaultModelProcessingEnabled = value;
+    }
+
+    /**
+     * Gets a flag indicating model processing is enabled.
+     *
+     * @return {@code true} if model processing is enabled; {@code false} if model processing is disabled .
+     *
+     * @see #isDefaultModelProcessingEnabled()
+     * @see #setModelProcessingEnabled(java.lang.Boolean)
+     *
+     * @since 1.1
+     */
+    public boolean isModelProcessingEnabled()
+    {
+        if ( this.modelProcessingEnabled == null )
+        {
+            this.modelProcessingEnabled = isDefaultModelProcessingEnabled();
+            this.log( Level.CONFIG, getDefaultModelProcessingEnabledInfo(
+                Locale.getDefault(), this.getClass().getCanonicalName(),
+                Boolean.toString( this.modelProcessingEnabled ) ), null );
+
+        }
+
+        return this.modelProcessingEnabled;
+    }
+
+    /**
+     * Sets the flag indicating model processing is enabled.
+     *
+     * @param value The new value of the flag indicating model processing is enabled or {@code null}.
+     *
+     * @see #isModelProcessingEnabled()
+     *
+     * @since 1.1
+     */
+    public void setModelProcessingEnabled( final Boolean value )
+    {
+        this.modelProcessingEnabled = value;
+    }
+
+    /**
      * Gets the name of the platform's bootstrap class loader class.
      * <p>The name of the platform's bootstrap class loader class is controlled by system property
      * {@code org.jomc.ri.DefaultObjectManager.bootstrapClassLoaderClassName} holding the name of the platform's
@@ -1274,7 +1558,11 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return The modules of the given class loader.
      *
-     * @throws NullPointerException if {@code classLoader} is {@code null},
+     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     *
+     * @see #getModelIdentifier()
+     * @see #isModelObjectClasspathResolutionEnabled()
+     * @see #isModelProcessingEnabled()
      */
     public Modules getModules( final ClassLoader classLoader )
     {
@@ -1303,20 +1591,27 @@ public class DefaultObjectManager implements ObjectManager
 
                     } );
 
-                    Model model = modelContext.findModel( ModelObject.MODEL_PUBLIC_ID );
+                    Model model = modelContext.findModel( this.getModelIdentifier() );
                     cachedModules = ModelHelper.getModules( model );
 
                     if ( cachedModules != null )
                     {
-                        final Module classpathModule =
-                            cachedModules.getClasspathModule( Modules.getDefaultClasspathModuleName(), classLoader );
-
-                        if ( classpathModule != null )
+                        if ( this.isModelObjectClasspathResolutionEnabled() )
                         {
-                            cachedModules.getModule().add( classpathModule );
+                            final Module classpathModule = cachedModules.getClasspathModule(
+                                Modules.getDefaultClasspathModuleName(), classLoader );
+
+                            if ( classpathModule != null )
+                            {
+                                cachedModules.getModule().add( classpathModule );
+                            }
                         }
 
-                        model = modelContext.processModel( model );
+                        if ( this.isModelProcessingEnabled() )
+                        {
+                            model = modelContext.processModel( model );
+                        }
+
                         final ModelValidationReport validationReport = modelContext.validateModel( model );
 
                         for ( ModelValidationReport.Detail d : validationReport.getDetails() )
@@ -2529,8 +2824,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -2569,8 +2864,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -2649,10 +2944,133 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the text of the {@code defaultModelIdentifierInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model identifier: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellbezeichner: ''{1}''</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param className Format argument.
+     * @param defaultValue Format argument.
+     * @return The text of the {@code defaultModelIdentifierInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
+    private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelIdentifierInfo" ), className, defaultValue, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model object classpath resolution enabled: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{1}''</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param className Format argument.
+     * @param defaultValue Format argument.
+     * @return The text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
+    private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelObjectClasspahResolutionEnabledInfo" ), className, defaultValue, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
+     * Gets the text of the {@code defaultModelProcessingEnabledInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>{0} default model processing enabled: ''{1}''</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>{0} Standard Modellverarbeitung aktiviert: ''{1}''</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param className Format argument.
+     * @param defaultValue Format argument.
+     * @return The text of the {@code defaultModelProcessingEnabledInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
+    private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String className, final java.lang.String defaultValue )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelProcessingEnabledInfo" ), className, defaultValue, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -2894,8 +3312,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-12T11:31:18+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-14T10:06:42+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
