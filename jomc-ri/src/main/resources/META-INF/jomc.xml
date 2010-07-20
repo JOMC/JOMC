@@ -164,11 +164,12 @@
         </message>
         <message name="listenerInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">Registered listener implementation ''{0}''.</text>
-            <text language="de">Listener-Implementierung ''{0}'' registriert.</text>
+            <text language="en">Registered listener implementation ''{0}'' for ''{1}''.</text>
+            <text language="de">Listener-Implementierung ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
             <argument index="0" name="implementationIdentifier"/>
+            <argument index="1" name="classLoaderInfo"/>
           </arguments>
         </message>
         <message name="locatorInfoMessage">

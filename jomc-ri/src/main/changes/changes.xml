@@ -46,6 +46,17 @@
       <code>org.jomc.ri.DefaultObjectManager</code>.
       See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
       </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected an endless loop when listeners are provided by a different
+      class loader than the class loader loading class <code>org.jomc.ri.DefaultObjectManager</code>.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected class <code>org.jomc.ri.DefaultObjectManager</code> to
+      manage listeners per class loader instead of per instance.
+      See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code> to
+      register a default listener writing to <code>System.out</code> and <code>System.err</code> if no listeners are
+      provided.]]>
+      </action>
     </release>
   </body>
 </document>

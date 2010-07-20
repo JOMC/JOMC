@@ -311,6 +311,36 @@ public class DefaultObjectManagerTest
         {
             assertNullPointerException( e );
         }
+
+        try
+        {
+            this.getObjectManager().log( null, null, null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().log( null, null, null, null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().log( this.getClass().getClassLoader(), null, null, null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
     }
 
     /**
