@@ -353,6 +353,15 @@
             <argument index="0" name="defaultValue"/>
           </arguments>
         </message>
+        <message name="creatingModulesInfo">
+          <template defaultLanguage="en">
+            <text language="en">Creating modules for ''{0}''.</text>
+            <text language="de">Erstellt Module für ''{0}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="classLoaderInfo"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
