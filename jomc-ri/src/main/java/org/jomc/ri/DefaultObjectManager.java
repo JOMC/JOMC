@@ -98,12 +98,12 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
@@ -122,8 +122,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -146,8 +146,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -2108,8 +2108,8 @@ public class DefaultObjectManager implements ObjectManager
      * @param identifier The identifier of the scope to get an implementation of.
      * @param classLoader The class loader to use for loading scope implementations.
      *
-     * @return The implementation of the scope identified by {@code identifier} or {@code null} if no such
-     * scope implementation is found.
+     * @return The implementation of the scope identified by {@code identifier} or {@code null} if no such scope
+     * implementation is found.
      *
      * @throws NullPointerException if {@code classLoader} or {@code identifier} is {@code null}.
      * @throws InstantiationException if instantiating a scope fails.
@@ -2210,12 +2210,12 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the default scope implementation for a given identifier.
+     * Gets a new default scope implementation instance for a given identifier.
      *
-     * @param identifier The identifier of the scope to get a default implementation of.
+     * @param identifier The identifier to get a new default scope implementation instance for.
      *
-     * @return The default implementation of the scope identified by {@code identifier} or {@code null} if no such
-     * default implementation is available.
+     * @return A new default scope implementation instance for {@code identifier} or {@code null} if no such instance is
+     * available.
      *
      * @throws NullPointerException if {@code identifier} is {@code null}.
      *
@@ -2355,12 +2355,12 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the default locator implementation for a given location URI.
+     * Gets a new default locator implementation instance for a given location URI.
      *
-     * @param location The location URI to get a default locator implementation for.
+     * @param location The location URI to get a new default locator implementation instance for.
      *
-     * @return The default locator implementation for {@code location} or {@code null} if no default implementation is
-     * available for {@code location}.
+     * @return A new default locator implementation instance for {@code location} or {@code null} if no such instance is
+     * available.
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      *
@@ -2385,7 +2385,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the invoker of the given class loader.
+     * Gets the invoker of a given class loader.
      *
      * @param classLoader The class loader to use for loading invoker implementations.
      *
@@ -2393,6 +2393,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a new invoker fails.
+     *
+     * @see #getDefaultInvoker()
      */
     public Invoker getInvoker( final ClassLoader classLoader ) throws InstantiationException
     {
@@ -2462,7 +2464,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( invoker == null )
                 {
-                    invoker = new DefaultInvoker();
+                    invoker = this.getDefaultInvoker();
                     this.invokers.put( invokersLoader, invoker );
                     if ( this.isLoggable( Level.CONFIG ) )
                     {
@@ -2478,6 +2480,20 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets a new default invoker implementation instance.
+     *
+     * @return A new default invoker implementation instance.
+     *
+     * @see #getInvoker(java.lang.ClassLoader)
+     *
+     * @since 1.1
+     */
+    public Invoker getDefaultInvoker()
+    {
+        return new DefaultInvoker();
+    }
+
+    /**
      * Gets an invocation for a given object, instance, method and arguments.
      *
      * @param object The object to invoke.
@@ -2489,6 +2505,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
      * @throws InstantiationException if instantiating a new invocation fails.
+     *
+     * @see #getDefaultInvocation()
      */
     public Invocation getInvocation( final Object object, final Instance instance, final Method method,
                                      final Object[] arguments ) throws InstantiationException
@@ -2553,7 +2571,7 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( invocation == null )
         {
-            invocation = new DefaultInvocation();
+            invocation = this.getDefaultInvocation();
         }
 
         invocation.getContext().put( DefaultInvocation.OBJECT_KEY, object );
@@ -2563,6 +2581,20 @@ public class DefaultObjectManager implements ObjectManager
         invocation.getContext().put( DefaultInvocation.MODULES_KEY, model );
         invocation.getContext().put( DefaultInvocation.CLASSLOADER_KEY, classLoader );
         return invocation;
+    }
+
+    /**
+     * Gets a new default invocation implementation instance.
+     *
+     * @return A new default invocation implementation instance.
+     *
+     * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
+     *
+     * @since 1.1
+     */
+    public Invocation getDefaultInvocation()
+    {
+        return new DefaultInvocation();
     }
 
     /**
@@ -3017,8 +3049,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3057,8 +3089,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3258,8 +3290,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -3501,8 +3533,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T08:07:27+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-20T10:10:25+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
