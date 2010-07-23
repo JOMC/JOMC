@@ -195,12 +195,17 @@ public class DefaultLocator implements Locator
         }
         catch ( final NamingException e )
         {
-            throw (IOException) new IOException( e.getMessage() ).initCause( e );
+            throw (IOException) new IOException( getMessage( e ) ).initCause( e );
         }
         catch ( final ClassCastException e )
         {
-            throw (IOException) new IOException( e.getMessage() ).initCause( e );
+            throw (IOException) new IOException( getMessage( e ) ).initCause( e );
         }
+    }
+
+    private static String getMessage( final Throwable t )
+    {
+        return t != null ? t.getMessage() != null ? t.getMessage() : getMessage( t.getCause() ) : null;
     }
 
     // SECTION-END
