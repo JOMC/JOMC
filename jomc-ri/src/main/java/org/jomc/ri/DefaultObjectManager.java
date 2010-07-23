@@ -98,12 +98,16 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * </table>
+ * <li>"{@link #getDefaultListenerInfo defaultListenerInfo}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>No 'Listener' implementation found. Printing messages to the standard output.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine 'Listener' Implementierung gefunden. Schreibt Meldungen auf die Standard-Ausgabe.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
@@ -122,8 +126,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -146,8 +150,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -1120,14 +1124,14 @@ public class DefaultObjectManager implements ObjectManager
 
     };
 
-    /** Listeners of the instance. */
-    private final Map<ClassLoader, List<Listener>> listeners = new WeakIdentityHashMap();
-
     /** Flag indicating that initialization has been performed. */
     private boolean initialized;
 
     /** Log level of the instance. */
     private Level logLevel;
+
+    /** Listeners of the instance. */
+    private final Map<ClassLoader, List<Listener>> listeners = new WeakIdentityHashMap();
 
     /** Modules of the instance. */
     private final Map<ClassLoader, Modules> modules = new WeakIdentityHashMap();
@@ -1211,13 +1215,15 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
+        final ClassLoader listenersLoader = getClassLoader( classLoader );
+
         synchronized ( this.listeners )
         {
-            List<Listener> cachedListeners = this.listeners.get( classLoader );
+            List<Listener> cachedListeners = this.listeners.get( listenersLoader );
 
             if ( cachedListeners == null )
             {
-                final List<LogRecord> bootstrapRecords = new ArrayList<LogRecord>();
+                final List<LogRecord> bootstrapRecords = new ArrayList<LogRecord>( 1024 );
                 final Listener bootstrapListener = new Listener()
                 {
 
@@ -1233,9 +1239,9 @@ public class DefaultObjectManager implements ObjectManager
 
                 cachedListeners = new LinkedList<Listener>();
                 cachedListeners.add( bootstrapListener );
-                this.listeners.put( classLoader, cachedListeners );
+                this.listeners.put( listenersLoader, cachedListeners );
 
-                final List<Listener> modelListeners = new ArrayList<Listener>();
+                final List<Listener> modelListeners = new LinkedList<Listener>();
                 final Modules model = this.getModules( classLoader );
                 final Specification listenerSpecification = model.getSpecification( Listener.class );
 
@@ -1336,6 +1342,10 @@ public class DefaultObjectManager implements ObjectManager
 
                         } );
 
+                        if ( this.isLoggable( Level.CONFIG ) )
+                        {
+                            this.log( classLoader, Level.CONFIG, getDefaultListenerInfo( Locale.getDefault() ), null );
+                        }
                     }
                 }
 
@@ -1815,7 +1825,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 try
                 {
-                    final List<LogRecord> logRecords = new ArrayList<LogRecord>();
+                    final List<LogRecord> logRecords = new ArrayList<LogRecord>( 1024 );
                     final ModelContext modelContext = ModelContext.createModelContext( classLoader );
                     modelContext.setLogLevel( this.getLogLevel() );
                     modelContext.getListeners().add( new ModelContext.Listener()
@@ -2623,8 +2633,8 @@ public class DefaultObjectManager implements ObjectManager
                 this.scopes.clear();
 
                 final ClassLoader classLoader = getClassLoader( this.getClass() );
-                final List<LogRecord> bootstrapLogRecords = new ArrayList<LogRecord>();
-                final List<Listener> bootstrapListeners = new ArrayList<Listener>();
+                final List<LogRecord> bootstrapLogRecords = new ArrayList<LogRecord>( 1024 );
+                final List<Listener> bootstrapListeners = new ArrayList<Listener>( 1 );
                 bootstrapListeners.add( new Listener()
                 {
 
@@ -2638,7 +2648,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 } );
 
-                this.listeners.put( classLoader, Collections.unmodifiableList( bootstrapListeners ) );
+                this.listeners.put( getClassLoader( classLoader ), Collections.unmodifiableList( bootstrapListeners ) );
 
                 final Modules model = this.getModules( classLoader );
                 final Specification objectManager = model.getSpecification( ObjectManager.class );
@@ -3046,8 +3056,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3084,10 +3094,49 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
+     * Gets the text of the {@code defaultListenerInfo} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>No 'Listener' implementation found. Printing messages to the standard output.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine 'Listener' Implementierung gefunden. Schreibt Meldungen auf die Standard-Ausgabe.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @return The text of the {@code defaultListenerInfo} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
+    private static String getDefaultListenerInfo( final java.util.Locale locale )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultListenerInfo" ), (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
+
+    /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3287,8 +3336,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -3530,8 +3579,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T03:12:28+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
