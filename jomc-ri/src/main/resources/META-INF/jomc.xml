@@ -392,6 +392,16 @@
             <argument index="0" name="schemeInfo"/>
           </arguments>
         </message>
+        <message name="illegalObjectMessage">
+          <template defaultLanguage="en">
+            <text language="en">Object ''{0}'' not an instance of class ''{1}''.</text>
+            <text language="de">Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="objectInfo"/>
+            <argument index="1" name="classInfo"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->

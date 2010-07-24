@@ -50,6 +50,10 @@ import org.jomc.spi.Locator;
 /**
  * Default {@code Locator} implementation.
  * <p><b>Messages</b><ul>
+ * <li>"{@link #getIllegalObjectMessage illegalObjectMessage}"<table>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Object ''{0}'' not an instance of class ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</pre></td></tr>
+ * </table>
  * <li>"{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
@@ -170,10 +174,10 @@ public class DefaultLocator implements Locator
             throw new NullPointerException( "location" );
         }
 
+        T object = null;
+
         try
         {
-            T object = null;
-
             final String scheme = location.getScheme();
             if ( !this.isLocationSupported( location ) )
             {
@@ -199,7 +203,10 @@ public class DefaultLocator implements Locator
         }
         catch ( final ClassCastException e )
         {
-            throw (IOException) new IOException( getMessage( e ) ).initCause( e );
+            throw (IOException) new IOException( getIllegalObjectMessage(
+                Locale.getDefault(), object != null ? object.toString() : null,
+                specification.getName() ) ).initCause( e );
+
         }
     }
 
@@ -228,6 +235,47 @@ public class DefaultLocator implements Locator
     // SECTION-END
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
+
+    /**
+     * Gets the text of the {@code illegalObjectMessage} message.
+     * <p><b>Templates</b><br/><table>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Object ''{0}'' not an instance of class ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</pre></td></tr>
+     * </table></p>
+     * @param locale The locale of the message to return.
+     * @param objectInfo Format argument.
+     * @param classInfo Format argument.
+     * @return The text of the {@code illegalObjectMessage} message.
+     *
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.1-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.1/jomc-tools-1.1-SNAPSHOT" )
+    private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
+    {
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "illegalObjectMessage" ), objectInfo, classInfo, (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+    }
 
     /**
      * Gets the text of the {@code unsupportedUriSchemeMessage} message.
