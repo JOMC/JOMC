@@ -90,11 +90,22 @@ public class DefaultObjectManagerTest
      *
      * @throws Exception if testing fails.
      */
+    @SuppressWarnings( "deprecation" )
     public void testNullPointerException() throws Exception
     {
         try
         {
             DefaultObjectManager.getClassLoader( (Class) null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+
+        try
+        {
+            this.getObjectManager().getDefaultClassLoader( (Class<?>) null );
             fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
