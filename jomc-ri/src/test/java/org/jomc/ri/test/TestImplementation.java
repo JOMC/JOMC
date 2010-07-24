@@ -111,7 +111,7 @@ public class TestImplementation
 
     private static final int NUM_REQUESTS = 25000;
 
-    private static final int NUM_RUNS = 5;
+    private static final int NUM_RUNS = 2;
 
     public void testBoundMultitons() throws Exception
     {

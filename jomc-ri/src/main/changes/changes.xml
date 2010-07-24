@@ -46,6 +46,10 @@
       <code>org.jomc.ri.DefaultObjectManager</code>.
       See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
       </action>
+      <action dev="schulte2005" type="add"><![CDATA[Added class <code>org.jomc.ri.DefaultListener</code> printing
+      log events to the standard system streams registered when no <code>org.jomc.spi.Listener</code> implementation is
+      found.]]>
+      </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected an endless loop when listeners are provided by a different
       class loader than the class loader loading class <code>org.jomc.ri.DefaultObjectManager</code>.]]>
       </action>

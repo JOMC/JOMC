@@ -386,6 +386,31 @@
       </specifications>
     </implementation>
     <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.ListenerTest" name="ListenerTest" class="org.jomc.ri.test.ListenerTest"
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
+      <documentation defaultLanguage="en">
+        <text language="en">{@code Listener} test cases.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.test.DefaultListenerTest" name="DefaultListenerTest"
+                    class="org.jomc.ri.test.DefaultListenerTest" classDeclaration="true" version="${project.version}"
+                    vendor="${project.organization.name}">
+      <documentation defaultLanguage="en">
+        <text language="en">{@code DefaultListener} test cases.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+    <!-- *********************************************************************************************************** -->
     <implementation identifier="Override Test Implementation" name="Override Test Implementation"
                     class="org.jomc.ri.test.OverrideTestImplementation" classDeclaration="true"
                     version="${project.version}" vendor="${project.organization.name}">

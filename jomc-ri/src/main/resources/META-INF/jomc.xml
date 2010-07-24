@@ -362,6 +362,15 @@
             <argument index="0" name="classLoaderInfo"/>
           </arguments>
         </message>
+        <message name="defaultListenerInfo">
+          <template defaultLanguage="en">
+            <text language="en">Registered DefaultListener Version ${project.version} Build ${buildNumber} for ''{0}''.</text>
+            <text language="de">DefaultListener Version ${project.version} Build ${buildNumber} für ''{0}'' registriert.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="classLoaderInfo"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
@@ -434,6 +443,20 @@
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.DefaultListener" class="org.jomc.ri.DefaultListener"
+                    classDeclaration="true" name="${project.name}" version="1.1" vendor="${project.organization.name}">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Default {@code Listener} implementation.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.1" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
