@@ -98,16 +98,16 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultListenerInfo defaultListenerInfo}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>No 'Listener' implementation found. Printing messages to the standard output.</pre></td></tr>
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine 'Listener' Implementierung gefunden. Schreibt Meldungen auf die Standard-Ausgabe.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
@@ -126,8 +126,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -150,8 +150,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -271,7 +271,7 @@ public class DefaultObjectManager implements ObjectManager
                 specificationClass = specification.getComponentType();
             }
 
-            final ClassLoader classLoader = getClassLoader( specificationClass );
+            final ClassLoader classLoader = this.getDefaultClassLoader( specificationClass );
             final Modules model = this.getModules( classLoader );
             final Specification s = model.getSpecification( specificationClass );
 
@@ -372,7 +372,7 @@ public class DefaultObjectManager implements ObjectManager
 
                         }
                     }
-                    else if ( specificationClass.isAssignableFrom( o.getClass() ) )
+                    else if ( specificationClass.isInstance( o ) )
                     {
                         list.add( o );
                     }
@@ -402,7 +402,7 @@ public class DefaultObjectManager implements ObjectManager
 
                         }
                     }
-                    else if ( specificationClass.isAssignableFrom( o.getClass() ) )
+                    else if ( specificationClass.isInstance( o ) )
                     {
                         list.add( o );
                     }
@@ -445,7 +445,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = getClassLoader( specification );
+            final ClassLoader classLoader = this.getDefaultClassLoader( specification );
             final Modules model = this.getModules( classLoader );
             final Specification s = model.getSpecification( specification );
 
@@ -563,7 +563,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     return null;
                 }
-                else if ( specification.isAssignableFrom( object.getClass() ) )
+                else if ( specification.isInstance( object ) )
                 {
                     @SuppressWarnings( "unchecked" )
                     final T o = (T) object;
@@ -594,7 +594,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = getClassLoader( object.getClass() );
+            final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -926,7 +926,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = getClassLoader( object.getClass() );
+            final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -998,7 +998,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             this.initialize();
 
-            final ClassLoader classLoader = getClassLoader( object.getClass() );
+            final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
             final Modules model = this.getModules( classLoader );
             final Instance instance = model.getInstance( object );
 
@@ -1191,7 +1191,7 @@ public class DefaultObjectManager implements ObjectManager
      */
     public List<Listener> getListeners()
     {
-        return this.getListeners( getClassLoader( this.getClass() ) );
+        return this.getListeners( this.getDefaultClassLoader( this.getClass() ) );
     }
 
     /**
@@ -1215,7 +1215,7 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        final ClassLoader listenersLoader = getClassLoader( classLoader );
+        final ClassLoader listenersLoader = this.getDefaultClassLoader( classLoader );
 
         synchronized ( this.listeners )
         {
@@ -1305,7 +1305,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( cachedListeners.isEmpty() )
                 {
-                    if ( !classLoader.equals( getClassLoader( this.getClass() ) ) )
+                    if ( !classLoader.equals( this.getDefaultClassLoader( this.getClass() ) ) )
                     {
                         cachedListeners.addAll( this.getListeners() );
                     }
@@ -1473,7 +1473,7 @@ public class DefaultObjectManager implements ObjectManager
      */
     public void log( final Level level, final String message, final Throwable throwable )
     {
-        this.log( getClassLoader( this.getClass() ), level, message, throwable );
+        this.log( this.getDefaultClassLoader( this.getClass() ), level, message, throwable );
     }
 
     /**
@@ -1876,7 +1876,7 @@ public class DefaultObjectManager implements ObjectManager
 
                             if ( cachedModules != null )
                             {
-                                final ClassLoader objectsLoader = getClassLoader( classLoader );
+                                final ClassLoader objectsLoader = this.getDefaultClassLoader( classLoader );
                                 Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
                                 if ( objectMap == null )
                                 {
@@ -1938,7 +1938,75 @@ public class DefaultObjectManager implements ObjectManager
      * @return The class loader of {@code clazz}.
      *
      * @throws NullPointerException if {@code clazz} is {@code null}.
+     *
+     * @since 1.1
      */
+    public ClassLoader getDefaultClassLoader( final Class<?> clazz )
+    {
+        if ( clazz == null )
+        {
+            throw new NullPointerException( "clazz" );
+        }
+
+        ClassLoader cl = clazz.getClassLoader();
+        if ( cl == null )
+        {
+            cl = BOOTSTRAP_CLASSLOADER;
+        }
+
+        return cl;
+    }
+
+    /**
+     * Gets the parent class loader of a given class loader recursively.
+     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
+     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
+     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
+     * current class loader's parent class loader is equal to the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
+     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
+     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
+     *
+     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
+     * {@code ClassLoader} instance representing the platform's bootstrap class loader.
+     *
+     * @return The parent class loader of {@code classLoader}.
+     *
+     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     *
+     * @see #getBootstrapClassLoaderClassName()
+     * @see ClassLoader#getParent()
+     *
+     * @since 1.1
+     */
+    public ClassLoader getDefaultClassLoader( final ClassLoader classLoader )
+    {
+        if ( classLoader == null )
+        {
+            return BOOTSTRAP_CLASSLOADER;
+        }
+
+        if ( classLoader.getParent() != null
+             && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+        {
+            return this.getDefaultClassLoader( classLoader.getParent() );
+        }
+
+        return classLoader;
+    }
+
+    /**
+     * Gets the class loader of a given class.
+     *
+     * @param clazz The class whose class loader to return.
+     *
+     * @return The class loader of {@code clazz}.
+     *
+     * @throws NullPointerException if {@code clazz} is {@code null}.
+     *
+     * @deprecated Replaced by {@link #getDefaultClassLoader(java.lang.Class)}.
+     */
+    @Deprecated
     public static ClassLoader getClassLoader( final Class<?> clazz )
     {
         if ( clazz == null )
@@ -1974,7 +2042,10 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @see #getBootstrapClassLoaderClassName()
      * @see ClassLoader#getParent()
+     *
+     * @deprecated Replaced by {@link #getDefaultClassLoader(java.lang.ClassLoader)}.
      */
+    @Deprecated
     public static ClassLoader getClassLoader( final ClassLoader classLoader )
     {
         if ( classLoader == null )
@@ -2142,7 +2213,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         final Modules model = this.getModules( classLoader );
-        final ClassLoader scopesLoader = getClassLoader( classLoader );
+        final ClassLoader scopesLoader = this.getDefaultClassLoader( classLoader );
 
         synchronized ( this.scopes )
         {
@@ -2282,7 +2353,7 @@ public class DefaultObjectManager implements ObjectManager
         if ( scheme != null )
         {
             final Modules model = this.getModules( classLoader );
-            final ClassLoader locatorsLoader = getClassLoader( classLoader );
+            final ClassLoader locatorsLoader = this.getDefaultClassLoader( classLoader );
 
             synchronized ( this.locators )
             {
@@ -2418,7 +2489,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         final Modules model = this.getModules( classLoader );
-        final ClassLoader invokersLoader = getClassLoader( classLoader );
+        final ClassLoader invokersLoader = this.getDefaultClassLoader( classLoader );
 
         synchronized ( this.invokers )
         {
@@ -2539,7 +2610,7 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Invocation invocation = null;
-        final ClassLoader classLoader = getClassLoader( object.getClass() );
+        final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
         final Modules model = this.getModules( classLoader );
         final Specification invocationSpecification = model.getSpecification( Invocation.class );
 
@@ -2632,7 +2703,7 @@ public class DefaultObjectManager implements ObjectManager
                 this.locators.clear();
                 this.scopes.clear();
 
-                final ClassLoader classLoader = getClassLoader( this.getClass() );
+                final ClassLoader classLoader = this.getDefaultClassLoader( this.getClass() );
                 final List<LogRecord> bootstrapLogRecords = new ArrayList<LogRecord>( 1024 );
                 final List<Listener> bootstrapListeners = new ArrayList<Listener>( 1 );
                 bootstrapListeners.add( new Listener()
@@ -2648,7 +2719,8 @@ public class DefaultObjectManager implements ObjectManager
 
                 } );
 
-                this.listeners.put( getClassLoader( classLoader ), Collections.unmodifiableList( bootstrapListeners ) );
+                this.listeners.put( this.getDefaultClassLoader( classLoader ),
+                                    Collections.unmodifiableList( bootstrapListeners ) );
 
                 final Modules model = this.getModules( classLoader );
                 final Specification objectManager = model.getSpecification( ObjectManager.class );
@@ -2730,8 +2802,10 @@ public class DefaultObjectManager implements ObjectManager
     {
         try
         {
-            final ClassLoader classLoader = getClassLoader( object.getClass() );
-            final Set<Class> interfaces = new HashSet<Class>();
+            final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
+            final Set<Class<?>> interfaces = new HashSet<Class<?>>(
+                instance.getSpecifications() != null ? instance.getSpecifications().getSpecification().size() : 0 );
+
             boolean canProxy = instance.getSpecifications() != null;
 
             if ( canProxy )
@@ -3056,8 +3130,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3135,8 +3209,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3336,8 +3410,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -3579,8 +3653,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-23T18:59:26+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-24T20:49:52+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
