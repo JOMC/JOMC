@@ -362,12 +362,6 @@
             <argument index="0" name="classLoaderInfo"/>
           </arguments>
         </message>
-        <message name="defaultListenerInfo">
-          <template defaultLanguage="en">
-            <text language="en">No 'Listener' implementation found. Printing messages to the standard output.</text>
-            <text language="de">Keine 'Listener' Implementierung gefunden. Schreibt Meldungen auf die Standard-Ausgabe.</text>
-          </template>
-        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
