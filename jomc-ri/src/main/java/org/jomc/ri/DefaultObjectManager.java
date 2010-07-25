@@ -1867,14 +1867,19 @@ public class DefaultObjectManager implements ObjectManager
                             if ( cachedModules != null )
                             {
                                 final ClassLoader objectsLoader = this.getDefaultClassLoader( classLoader );
-                                Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
-                                if ( objectMap == null )
+
+                                synchronized ( this.objects )
                                 {
-                                    objectMap = new WeakIdentityHashMap();
-                                    this.objects.put( objectsLoader, objectMap );
+                                    Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
+                                    if ( objectMap == null )
+                                    {
+                                        objectMap = new WeakIdentityHashMap();
+                                        this.objects.put( objectsLoader, objectMap );
+                                    }
+
+                                    cachedModules = new Modules( cachedModules, objectMap );
                                 }
 
-                                cachedModules = new Modules( cachedModules, objectMap );
                                 this.modules.put( classLoader, cachedModules );
 
                                 for ( LogRecord r : logRecords )
