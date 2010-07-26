@@ -3085,7 +3085,7 @@ public class DefaultObjectManager implements ObjectManager
 
     private static String getObjectInfo( final Object object )
     {
-        return "(" + Integer.toHexString( System.identityHashCode( object ) ) + ") " + object;
+        return "(" + Integer.toHexString( System.identityHashCode( object ) ) + ")" + object;
     }
 
     private static String getMessage( final Throwable t )
