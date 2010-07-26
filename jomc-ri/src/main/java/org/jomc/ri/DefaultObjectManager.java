@@ -98,16 +98,16 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultListenerInfo defaultListenerInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 for ''{0}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
@@ -126,8 +126,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
  * </table>
  * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
  * </table>
  * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
@@ -150,8 +150,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
  * </table>
  * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 in {0,number}ms initialisiert.</pre></td></tr>
+ * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 initialized in {0,number}ms.</pre></td></tr>
+ * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 in {0,number}ms initialisiert.</pre></td></tr>
  * </table>
  * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
  * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
@@ -1904,7 +1904,7 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     if ( this.isLoggable( Level.SEVERE ) )
                     {
-                        this.log( Level.SEVERE, getMessage( e ), e );
+                        this.log( Level.SEVERE, getMessage( e ), null );
                     }
 
                     cachedModules = null;
@@ -2099,7 +2099,7 @@ public class DefaultObjectManager implements ObjectManager
                     {
                         if ( object != null )
                         {
-                            object = this.createProxy( instance, object );
+                            object = this.createProxy( instance, object, classLoader );
                         }
 
                         scope.putObject( instance.getIdentifier(), object );
@@ -2123,7 +2123,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 if ( object != null )
                 {
-                    object = this.createProxy( instance, object );
+                    object = this.createProxy( instance, object, classLoader );
                 }
             }
         }
@@ -2584,11 +2584,43 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
      * @throws InstantiationException if instantiating a new invocation fails.
      *
-     * @see #getDefaultInvocation()
+     * @deprecated Replaced by {@link #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])}.
      */
+    @Deprecated
     public Invocation getInvocation( final Object object, final Instance instance, final Method method,
                                      final Object[] arguments ) throws InstantiationException
     {
+        return this.getInvocation( this.getDefaultClassLoader( object.getClass() ), object, instance, method,
+                                   arguments );
+
+    }
+
+    /**
+     * Gets an invocation for a given class loader, object, instance, method and arguments.
+     *
+     * @param classLoader The class loader of the invocation.
+     * @param object The object to invoke.
+     * @param instance The instance of the object to invoke.
+     * @param method The method to invoke on {@code object}.
+     * @param arguments The arguments of the invocation or {@code null}.
+     *
+     * @return An invocation with {@code object}, {@code instance}, {@code method} and {@code arguments}.
+     *
+     * @throws NullPointerException if {@code classLoader} {@code object}, {@code instance} or {@code method} is
+     * {@code null}.
+     * @throws InstantiationException if instantiating a new invocation fails.
+     *
+     * @see #getDefaultInvocation()
+     *
+     * @since 1.1
+     */
+    public Invocation getInvocation( final ClassLoader classLoader, final Object object, final Instance instance,
+                                     final Method method, final Object[] arguments ) throws InstantiationException
+    {
+        if ( classLoader == null )
+        {
+            throw new NullPointerException( "classLoader" );
+        }
         if ( object == null )
         {
             throw new NullPointerException( "object" );
@@ -2603,7 +2635,6 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Invocation invocation = null;
-        final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
         final Modules model = this.getModules( classLoader );
         final Specification invocationSpecification = model.getSpecification( Invocation.class );
 
@@ -2786,16 +2817,17 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param instance The instance of {@code object}.
      * @param object The object to create a proxy for.
+     * @param classLoader The class loader to create the proxy with.
      *
      * @return A proxy for {@code object}.
      *
      * @throws InstantiationException if creating a proxy fails.
      */
-    private Object createProxy( final Instance instance, final Object object ) throws InstantiationException
+    private Object createProxy( final Instance instance, final Object object, final ClassLoader classLoader )
+        throws InstantiationException
     {
         try
         {
-            final ClassLoader classLoader = this.getDefaultClassLoader( object.getClass() );
             final Set<Class<?>> interfaces = new HashSet<Class<?>>(
                 instance.getSpecifications() != null ? instance.getSpecifications().getSpecification().size() : 0 );
 
@@ -2829,7 +2861,9 @@ public class DefaultObjectManager implements ObjectManager
                     public Object invoke( final Object proxy, final Method method, final Object[] args )
                         throws Throwable
                     {
-                        return getInvoker( classLoader ).invoke( getInvocation( object, instance, method, args ) );
+                        return getInvoker( classLoader ).invoke( getInvocation(
+                            classLoader, object, instance, method, args ) );
+
                     }
 
                 } );
@@ -3144,8 +3178,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3184,8 +3218,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultListenerInfo} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 for ''{0}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 f&uuml;r ''{0}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3224,8 +3258,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3425,8 +3459,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scope ''{0}'' for ''{1}''.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -3668,8 +3702,8 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
      * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T05:09:39+0200 in {0,number}ms initialisiert.</pre></td></tr>
+     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 initialized in {0,number}ms.</pre></td></tr>
+     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.1-SNAPSHOT Build 2010-07-26T09:44:23+0200 in {0,number}ms initialisiert.</pre></td></tr>
      * </table></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
