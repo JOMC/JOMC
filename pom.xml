@@ -1328,11 +1328,11 @@
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
-    <maven-jomc-plugin.version>1.1</maven-jomc-plugin.version>
+    <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
-    <jomc.base.version>1.1</jomc.base.version>
+    <jomc.base.version>1.2</jomc.base.version>
     <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
     <jomc.artifacts.distribution.url>scp://shell.sourceforge.net/home/groups/j/jo/jomc/htdocs/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
   </properties>
