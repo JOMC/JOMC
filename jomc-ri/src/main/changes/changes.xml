@@ -41,7 +41,7 @@
   </properties>
   <body>
     <!-- *********************************************************************************************************** -->
-    <release version="1.1">
+    <release version="1.1" date="2010-07-28">
       <action dev="schulte2005" type="add"><![CDATA[Added support for configuring model processing to class
       <code>org.jomc.ri.DefaultObjectManager</code>.
       See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
