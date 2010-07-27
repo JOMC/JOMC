@@ -38,7 +38,7 @@
   <artifactId>jomc-parent</artifactId>
   <packaging>pom</packaging>
   <name>JOMC</name>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.1-SNAPSHOT</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>${jomc.artifacts.url}</url>
   <inceptionYear>2005</inceptionYear>
@@ -867,313 +867,313 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
         <classifier>schemas</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>schemas</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>templates</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
         <classifier>schemas</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <classifier>changes</classifier>
         <type>xhtml</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <classifier>javadoc</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <classifier>sources</classifier>
-        <version>1.2-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
       </dependency>
 
       <!-- Test -->
@@ -1328,7 +1328,7 @@
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
-    <maven-jomc-plugin.version>1.1</maven-jomc-plugin.version>
+    <maven-jomc-plugin.version>1.1-SNAPSHOT</maven-jomc-plugin.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
