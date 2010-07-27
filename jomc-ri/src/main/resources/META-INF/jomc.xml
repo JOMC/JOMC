@@ -371,6 +371,49 @@
             <argument index="0" name="classLoaderInfo"/>
           </arguments>
         </message>
+        <message name="defaultModulesWarning">
+          <template defaultLanguage="en">
+            <text language="en">Failure loading model ''{0}'' for ''{1}''. Creating default modules.</text>
+            <text language="de">Fehler beim Laden des Modells ''{0}'' für ''{1}''. Erstellt Standard-Module.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="modelInfo"/>
+            <argument index="1" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="defaultModulesDocumentation">
+          <template defaultLanguage="en">
+            <text language="en">Default modules for ''{0}''.</text>
+            <text language="de">Standard Module für ''{0}''.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="classLoaderInfo"/>
+          </arguments>
+        </message>
+        <message name="defaultModulesVendor">
+          <template defaultLanguage="en">
+            <text language="en">${project.organization.name}</text>
+            <text language="de">${project.organization.name}</text>
+          </template>
+        </message>
+        <message name="defaultModulesVersion">
+          <template defaultLanguage="en">
+            <text language="en">${project.version}</text>
+            <text language="de">${project.version}</text>
+          </template>
+        </message>
+        <message name="defaultModuleName">
+          <template defaultLanguage="en">
+            <text language="en">Default ${project.name}</text>
+            <text language="de">Default ${project.name}</text>
+          </template>
+        </message>
+        <message name="defaultImplementationName">
+          <template defaultLanguage="en">
+            <text language="en">Default ${project.name}</text>
+            <text language="de">Default ${project.name}</text>
+          </template>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
