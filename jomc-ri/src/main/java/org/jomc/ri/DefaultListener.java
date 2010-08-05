@@ -138,7 +138,7 @@ public class DefaultListener implements Listener
     }
 
     /**
-     * Get called on logging.
+     * Gets called on logging.
      * <p>This method prints messages to the "standard" system streams. Messages with a level greater than
      * {@code WARNING} are printed to the system error stream. All other messages are printed to the system output
      * stream.</p>
