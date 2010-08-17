@@ -1324,7 +1324,7 @@
     <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory> <!-- See http://netbeans.org/bugzilla/show_bug.cgi?id=187595 -->
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
     <maven-shade-plugin.version>1.4</maven-shade-plugin.version>
-    <surefire.version>2.5</surefire.version>
+    <surefire.version>2.6</surefire.version>
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
