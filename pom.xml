@@ -209,6 +209,7 @@
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>2.7</version>
           <configuration>
+            <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table>]]></bottom>
             <breakiterator>true</breakiterator>
             <keywords>true</keywords>
             <linksource>true</linksource>
@@ -700,6 +701,7 @@
               <report>test-javadoc</report>
             </reports>
             <configuration>
+              <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table>]]></bottom>
               <breakiterator>true</breakiterator>
               <keywords>true</keywords>
               <linksource>true</linksource>

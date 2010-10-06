@@ -53,6 +53,7 @@
       <li>Updated the <code>maven-surefire-report-plugin</code> from <code>2.5</code> to <code>2.6</code>.</li>
       <li>Updated the <code>maven-checkstyle-plugin</code> from <code>2.5</code> to <code>2.6</code>.</li>
       <li>Updated the <code>maven-compiler-plugin</code> from <code>2.3.1</code> to <code>2.3.2</code>.</li>
+      <li>Added a Sourceforge logo to the generated Javadoc.</li>
       </ul>]]>
       </action>
     </release>
