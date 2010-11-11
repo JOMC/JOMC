@@ -218,6 +218,24 @@
             <doctitle>${project.name} ${project.version}</doctitle>
             <windowtitle>${project.name} ${project.version}</windowtitle>
             <detectJavaApiLink>true</detectJavaApiLink>
+            <javaApiLinks>
+              <property>
+                <name>api_1.3</name>
+                <value>http://download.oracle.com/javase/1.3/docs/api/</value>
+              </property>
+              <property>
+                <name>api_1.4</name>
+                <value>http://download.oracle.com/javase/1.4.2/docs/api/</value>
+              </property>
+              <property>
+                <name>api_1.5</name>
+                <value>http://download.oracle.com/javase/1.5.0/docs/api/</value>
+              </property>
+              <property>
+                <name>api_1.6</name>
+                <value>http://download.oracle.com/javase/6/docs/api/</value>
+              </property>
+            </javaApiLinks>
             <detectOfflineLinks>false</detectOfflineLinks>
             <!-- detectLinks>true</detectLinks See http://jira.codehaus.org/browse/MJAVADOC-283 -->
             <groups>
@@ -314,7 +332,14 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>2.2</version>
+          <version>${maven-assembly-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.jomc</groupId>
+              <artifactId>maven-jomc-plugin</artifactId>
+              <version>${maven-jomc-plugin.version}</version>
+            </dependency>
+          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -483,6 +508,18 @@
                   <version>1.0</version>
                 </signature>
               </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.plexus</groupId>
+          <artifactId>plexus-maven-plugin</artifactId>
+          <version>1.3.8</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>descriptor</goal>
+              </goals>
             </execution>
           </executions>
         </plugin>
@@ -676,6 +713,7 @@
     <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
+    <module>jomc-ant-tasks</module>
     <module>jomc-api</module>
     <module>jomc-spi</module>
     <module>jomc-ri</module>
@@ -710,6 +748,24 @@
               <doctitle>${project.name} ${project.version}</doctitle>
               <windowtitle>${project.name} ${project.version}</windowtitle>
               <detectJavaApiLink>true</detectJavaApiLink>
+              <javaApiLinks>
+                <property>
+                  <name>api_1.3</name>
+                  <value>http://download.oracle.com/javase/1.3/docs/api/</value>
+                </property>
+                <property>
+                  <name>api_1.4</name>
+                  <value>http://download.oracle.com/javase/1.4.2/docs/api/</value>
+                </property>
+                <property>
+                  <name>api_1.5</name>
+                  <value>http://download.oracle.com/javase/1.5.0/docs/api/</value>
+                </property>
+                <property>
+                  <name>api_1.6</name>
+                  <value>http://download.oracle.com/javase/6/docs/api/</value>
+                </property>
+              </javaApiLinks>
               <!-- detectLinks>true</detectLinks See http://jira.codehaus.org/browse/MJAVADOC-283 -->
               <detectOfflineLinks>false</detectOfflineLinks>
               <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
@@ -852,6 +908,11 @@
         <artifactId>maven-shade-plugin</artifactId>
         <version>${maven-shade-plugin.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>${maven-assembly-plugin.version}</version>
+      </dependency>
 
       <!-- Apache Misc -->
       <dependency>
@@ -863,6 +924,16 @@
         <groupId>org.apache.bcel</groupId>
         <artifactId>bcel</artifactId>
         <version>5.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant</artifactId>
+        <version>${ant.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.ant</groupId>
+        <artifactId>ant-testutil</artifactId>
+        <version>${ant.version}</version>
       </dependency>
 
       <!-- JOMC -->
@@ -1178,6 +1249,38 @@
         <version>1.2-SNAPSHOT</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <classifier>changes</classifier>
+        <type>xhtml</type>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <classifier>license</classifier>
+        <type>txt</type>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <classifier>javadoc</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <classifier>sources</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+
       <!-- Test -->
       <dependency>
         <groupId>junit</groupId>
@@ -1326,11 +1429,14 @@
     <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory> <!-- See http://netbeans.org/bugzilla/show_bug.cgi?id=187595 -->
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
     <maven-shade-plugin.version>1.4</maven-shade-plugin.version>
+    <maven-assembly-plugin.version>2.2</maven-assembly-plugin.version>
     <surefire.version>2.6</surefire.version>
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
+    <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
+    <ant.version>1.8.1</ant.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
