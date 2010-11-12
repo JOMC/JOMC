@@ -80,6 +80,7 @@ piwikTracker.enableLinkTracking();
       <item name="JOMC SPI" href="jomc-spi/index.html"/>
       <item name="JOMC RI" href="jomc-ri/index.html"/>
       <item name="JOMC CLI" href="jomc-cli/index.html"/>
+      <item name="JOMC Ant Tasks" href="jomc-ant-tasks/index.html"/>
       <item name="Maven JOMC Plugin" href="maven-jomc-plugin/index.html"/>
     </menu>
     <menu name="Sourceforge" inherit="bottom" inheritAsRef="false">
