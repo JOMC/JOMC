@@ -36,15 +36,16 @@
 // SECTION-END
 package org.jomc.test;
 
+import org.junit.Test;
 import org.jomc.ObjectManagerFactory;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Testcases for class {@code org.jomc.ObjectManagerFactory}.
+ * Test cases for class {@code org.jomc.ObjectManagerFactory}.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -64,7 +65,8 @@ public class ObjectManagerFactoryTest
 
     private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
 
-    public void testObjectManagerFactory() throws Exception
+    @Test
+    public final void testObjectManagerFactory() throws Exception
     {
         final String objectManagerFactory = System.getProperty( SYS_FACTORY_CLASSNAME );
         final String objectManager = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME );

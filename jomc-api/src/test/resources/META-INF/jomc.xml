@@ -50,7 +50,7 @@
                     vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en">Testcases for class {@code org.jomc.ObjectManagementException}.</text>
+        <text language="en">Test cases for class {@code org.jomc.ObjectManagementException}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -64,7 +64,7 @@
                     vendor="${project.organization.name}" final="true">
 
       <documentation defaultLanguage="en">
-        <text language="en">Testcases for class {@code org.jomc.ObjectManagerFactory}.</text>
+        <text language="en">Test cases for class {@code org.jomc.ObjectManagerFactory}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"

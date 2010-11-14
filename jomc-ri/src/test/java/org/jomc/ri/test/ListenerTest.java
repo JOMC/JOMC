@@ -36,11 +36,12 @@
 // SECTION-END
 package org.jomc.ri.test;
 
+import org.junit.Test;
 import java.util.logging.Level;
 import org.jomc.ri.DefaultListener;
 import org.jomc.spi.Listener;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -61,19 +62,40 @@ public class ListenerTest
 {
     // SECTION-START[ListenerTest]
 
+    /** The {@code Listener} instance tests are performed with. */
     private Listener listener;
 
+    /**
+     * Gets the {@code Listener} instance tests are performed with.
+     *
+     * @return The {@code Listener} instance tests are performed with.
+     *
+     * @see #newListener()
+     */
     public Listener getListener()
     {
         if ( this.listener == null )
         {
-            this.listener = new DefaultListener();
+            this.listener = this.newListener();
         }
 
         return this.listener;
     }
 
-    public void testLog() throws Exception
+    /**
+     * Creates a new {@code Listener} instance to test.
+     *
+     * @return A new {@code Listener} instance to test.
+     *
+     * @see #getListener()
+     */
+    protected Listener newListener()
+    {
+        return new DefaultListener();
+    }
+
+    @Test
+    public final void testLog() throws Exception
     {
         try
         {

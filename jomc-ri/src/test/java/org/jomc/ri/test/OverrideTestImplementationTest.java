@@ -36,7 +36,8 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import static junit.framework.Assert.assertEquals;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -61,7 +62,8 @@ public class OverrideTestImplementationTest
 {
     // SECTION-START[OverrideTestImplementationTest]
 
-    public void testProperty() throws Exception
+    @Test
+    public final void testProperty() throws Exception
     {
         System.out.println( this.getOverrideTestSpecification().getProperty() );
         assertEquals( "Overriden", this.getOverrideTestSpecification().getProperty() );
@@ -85,7 +87,8 @@ public class OverrideTestImplementationTest
 
     }
 
-    public void testMessage() throws Exception
+    @Test
+    public final void testMessage() throws Exception
     {
         System.out.println( this.getOverrideTestSpecification().getMessage() );
         assertEquals( "Overriden", this.getOverrideTestSpecification().getMessage() );

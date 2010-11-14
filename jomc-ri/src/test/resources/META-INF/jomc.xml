@@ -160,8 +160,8 @@
   </specifications>
   <implementations>
     <!-- *********************************************************************************************************** -->
-    <implementation identifier="org.jomc.ri.test.TestImplementation" class="org.jomc.ri.test.TestImplementation"
-                    classDeclaration="true" name="TestImplementation" version="${project.version}"
+    <implementation identifier="org.jomc.ri.test.ImplementationTest" class="org.jomc.ri.test.ImplementationTest"
+                    classDeclaration="true" name="ImplementationTest" version="${project.version}"
                     vendor="${project.organization.name}">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -181,21 +181,21 @@
         <dependency name="UnboundMultitons" identifier="org.jomc.ri.test.TestMultitonSpecification"
                     version="${project.version}" bound="false"/>
         <dependency name="SelectedBoundMultiton" identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}" implementationName="TestImplementation" bound="true"/>
+                    version="${project.version}" implementationName="ImplementationTest" bound="true"/>
         <dependency name="SelectedUnboundMultiton" identifier="org.jomc.ri.test.TestMultitonSpecification"
-                    version="${project.version}" implementationName="TestImplementation" bound="false"/>
+                    version="${project.version}" implementationName="ImplementationTest" bound="false"/>
         <dependency name="BoundSingletons" identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${project.version}" bound="true"/>
         <dependency name="UnboundSingletons" identifier="org.jomc.ri.test.TestSingletonSpecification"
                     version="${project.version}" bound="false"/>
         <dependency name="SelectedBoundSingleton" identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}" implementationName="TestImplementation" bound="true"/>
+                    version="${project.version}" implementationName="ImplementationTest" bound="true"/>
         <dependency name="SelectedUnboundSingleton" identifier="org.jomc.ri.test.TestSingletonSpecification"
-                    version="${project.version}" implementationName="TestImplementation" bound="false"/>
+                    version="${project.version}" implementationName="ImplementationTest" bound="false"/>
         <dependency name="OptionalLocale" identifier="java.util.Locale" version="${project.version}"
                     implementationName="DOES NOT EXIST" bound="false" optional="true"/>
         <dependency name="InvokerTestSpecification" identifier="org.jomc.ri.test.InvokerTestSpecification"
-                    version="${project.version}" implementationName="InvokerTest" bound="true"/>
+                    version="${project.version}" implementationName="InvokerTestImplementation" bound="true"/>
       </dependencies>
       <properties>
         <property name="testProperty" type="java.lang.String" value="TEST"/>
@@ -242,9 +242,9 @@
       <!-- This implementation intentionally does not declare any dependencies, properties and messages. -->
     </implementation>
     <!-- *********************************************************************************************************** -->
-    <implementation identifier="org.jomc.ri.test.TestScopeImplementation"
-                    class="org.jomc.ri.test.TestScopeImplementation" classDeclaration="true"
-                    name="TestScopeImplementation" version="${project.version}" vendor="${project.organization.name}">
+    <implementation identifier="org.jomc.ri.test.ScopeImplementationTest"
+                    class="org.jomc.ri.test.ScopeImplementationTest" classDeclaration="true"
+                    name="ScopeImplementationTest" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
         <text language="en">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
@@ -265,9 +265,9 @@
       </dependencies>
     </implementation>
     <!-- *********************************************************************************************************** -->
-    <implementation identifier="org.jomc.ri.test.TestLocationImplementation"
-                    class="org.jomc.ri.test.TestLocationImplementation" classDeclaration="true"
-                    name="TestLocationImplementation" version="${project.version}" vendor="${project.organization.name}"
+    <implementation identifier="org.jomc.ri.test.LocationImplementationTest"
+                    class="org.jomc.ri.test.LocationImplementationTest" classDeclaration="true"
+                    name="LocationImplementationTest" version="${project.version}" vendor="${project.organization.name}"
                     location="UNSUPPORTED:DOES_NOT_EXIST">
       <documentation defaultLanguage="en">
         <text language="en">Test implementation with unsupported location.</text>
@@ -371,7 +371,8 @@
       </implementations>
     </implementation>
     <!-- *********************************************************************************************************** -->
-    <implementation identifier="org.jomc.ri.test.InvokerTest" name="InvokerTest" class="org.jomc.ri.test.InvokerTest"
+    <implementation identifier="org.jomc.ri.test.InvokerTestImplementation"
+                    name="InvokerTestImplementation" class="org.jomc.ri.test.InvokerTestImplementation"
                     classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
       <documentation defaultLanguage="en">
         <text language="en">{@code Invoker} test cases.</text>

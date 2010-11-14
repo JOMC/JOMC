@@ -195,6 +195,9 @@
           <configuration>
             <forkMode>once</forkMode>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
+            <includes>
+              <include>**/*Test.java</include>
+            </includes>
             <systemPropertyVariables>
               <org.jomc.modlet.ModelContext.defaultLogLevel>ALL</org.jomc.modlet.ModelContext.defaultLogLevel>
               <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
@@ -928,12 +931,7 @@
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
-        <version>${ant.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.ant</groupId>
-        <artifactId>ant-testutil</artifactId>
-        <version>${ant.version}</version>
+        <version>1.8.1</version>
       </dependency>
 
       <!-- JOMC -->
@@ -1285,7 +1283,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>3.8.2</version>
+        <version>4.8.2</version>
       </dependency>
 
       <!-- JAXB -->
@@ -1436,7 +1434,6 @@
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
-    <ant.version>1.8.1</ant.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>

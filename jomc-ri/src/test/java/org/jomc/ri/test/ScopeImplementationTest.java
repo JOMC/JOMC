@@ -36,7 +36,8 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import static junit.framework.Assert.assertNull;
+import org.junit.Test;
+import static org.junit.Assert.assertNull;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -63,15 +64,16 @@ import static junit.framework.Assert.assertNull;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class TestScopeImplementation
+public class ScopeImplementationTest
     implements
     org.jomc.ri.test.TestSpecification
 {
     // SECTION-START[TestSpecification]
     // SECTION-END
-    // SECTION-START[TestScopeImplementation]
+    // SECTION-START[ScopeImplementationTest]
 
-    public void testUnsupportedScope() throws Exception
+    @Test
+    public final void testUnsupportedScope() throws Exception
     {
         assertNull( this.getTestScopeSpecificationOne() );
         assertNull( this.getTestScopeSpecificationMany() );
@@ -81,9 +83,9 @@ public class TestScopeImplementation
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code TestScopeImplementation} instance. */
+    /** Creates a new {@code ScopeImplementationTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public TestScopeImplementation()
+    public ScopeImplementationTest()
     {
         // SECTION-START[Default Constructor]
         super();

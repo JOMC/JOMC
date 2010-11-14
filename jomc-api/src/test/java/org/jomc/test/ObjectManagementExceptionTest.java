@@ -38,11 +38,12 @@ package org.jomc.test;
 
 import java.io.ObjectInputStream;
 import org.jomc.ObjectManagementException;
+import org.junit.Test;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Testcases for class {@code org.jomc.ObjectManagementException}.
+ * Test cases for class {@code org.jomc.ObjectManagementException}.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -58,7 +59,8 @@ public class ObjectManagementExceptionTest
 {
     // SECTION-START[ObjectManagementExceptionTest]
 
-    public void testSerializable() throws Exception
+    @Test
+    public final void testSerializable() throws Exception
     {
         final ObjectInputStream in =
             new ObjectInputStream( this.getClass().getResourceAsStream( "ObjectManagementException.ser" ) );

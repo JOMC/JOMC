@@ -36,16 +36,17 @@
 // SECTION-END
 package org.jomc.ri.test;
 
+import org.junit.Test;
 import java.net.URI;
 import java.util.Locale;
 import org.jomc.ObjectManager;
 import org.jomc.model.Instance;
 import org.jomc.ri.DefaultObjectManager;
 import org.jomc.spi.Scope;
-import static junit.framework.Assert.assertNotNull;
-import static junit.framework.Assert.assertNull;
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.Assert.fail;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -66,32 +67,41 @@ public class DefaultObjectManagerTest
 {
     // SECTION-START[DefaultObjectManagerTest]
 
-    /** The instance tests are performed with. */
+    /** The {@code DefaultObjectManager} tests are performed with. */
     private DefaultObjectManager objectManager;
 
     /**
      * Gets the instance tests are performed with.
      *
      * @return The instance tests are performed with.
+     *
+     * @see #newObjectManager()
      */
-    protected DefaultObjectManager getObjectManager()
+    public DefaultObjectManager getObjectManager()
     {
         if ( this.objectManager == null )
         {
-            this.objectManager = new DefaultObjectManager();
+            this.objectManager = this.newObjectManager();
         }
 
         return this.objectManager;
     }
 
     /**
-     * Tests that the instance will throw a {@code NullPointerException} with non-null message for any
-     * {@code null} arguments.
+     * Creates a new {@code DefaultObjectManager} instance to test.
      *
-     * @throws Exception if testing fails.
+     * @return A new {@code DefaultObjectManager} instance to test.
+     *
+     * @see #getObjectManager()
      */
+    protected DefaultObjectManager newObjectManager()
+    {
+        return new DefaultObjectManager();
+    }
+
+    @Test
     @SuppressWarnings( "deprecation" )
-    public void testNullPointerException() throws Exception
+    public final void testNullPointerException() throws Exception
     {
         try
         {
@@ -354,29 +364,21 @@ public class DefaultObjectManagerTest
         }
     }
 
-    /**
-     * Tests that methods declared to not return {@code null} do not return {@code null}.
-     *
-     * @throws Exception if testing fails.
-     */
-    public void testNotNull() throws Exception
+    @Test
+    public final void testNotNull() throws Exception
     {
         assertNotNull( this.getObjectManager().getListeners() );
         assertNotNull( this.getObjectManager().getModules( this.getClass().getClassLoader() ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
-        assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "TestImplementation" ) );
+        assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "ImplementationTest" ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationMany[].class ) );
-        assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class, "TestImplementation" ) );
+        assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class, "ImplementationTest" ) );
         assertNotNull( this.getObjectManager().getObject( TestScopeSpecification[].class ) );
-        assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class, "TestImplementation" ) );
+        assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class, "ImplementationTest" ) );
     }
 
-    /**
-     * Tests that methods declared to return {@code null} for any missing model objects do not throw an exception.
-     *
-     * @throws Exception if testing fails.
-     */
-    public void testNull() throws Exception
+    @Test
+    public final void testNull() throws Exception
     {
         assertNull( this.getObjectManager().getObject( Object.class ) );
         assertNull( this.getObjectManager().getObject( TestSpecification.class ) );
@@ -396,13 +398,8 @@ public class DefaultObjectManagerTest
 
     }
 
-    /**
-     * Tests that the {@link DefaultObjectManager#getObjectManager(java.lang.ClassLoader)} method returns the same
-     * object on successive calls.
-     *
-     * @throws Exception if testing fails.
-     */
-    public void testGetObjectManager() throws Exception
+    @Test
+    public final void testGetObjectManager() throws Exception
     {
         final ObjectManager first = DefaultObjectManager.getObjectManager( this.getClass().getClassLoader() );
         final ObjectManager second = DefaultObjectManager.getObjectManager( this.getClass().getClassLoader() );

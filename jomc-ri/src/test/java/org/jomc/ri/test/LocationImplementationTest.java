@@ -36,7 +36,8 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import static junit.framework.Assert.assertNull;
+import org.junit.Test;
+import static org.junit.Assert.assertNull;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -63,15 +64,16 @@ import static junit.framework.Assert.assertNull;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class TestLocationImplementation
+public class LocationImplementationTest
     implements
     org.jomc.ri.test.TestSpecification
 {
     // SECTION-START[TestSpecification]
     // SECTION-END
-    // SECTION-START[TestLocationImplementation]
+    // SECTION-START[LocationImplementationTest]
 
-    public void testUnsupportedLocation() throws Exception
+    @Test
+    public final void testUnsupportedLocation() throws Exception
     {
         assertNull( this.getTestScopeSpecificationOne() );
         assertNull( this.getTestScopeSpecificationMany() );
@@ -81,9 +83,9 @@ public class TestLocationImplementation
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code TestLocationImplementation} instance. */
+    /** Creates a new {@code LocationImplementationTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public TestLocationImplementation()
+    public LocationImplementationTest()
     {
         // SECTION-START[Default Constructor]
         super();

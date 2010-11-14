@@ -36,8 +36,9 @@
 // SECTION-END
 package org.jomc.ri.test;
 
+import org.junit.Test;
 import java.util.Locale;
-import static junit.framework.Assert.assertNull;
+import static org.junit.Assert.assertNull;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -92,7 +93,7 @@ import static junit.framework.Assert.assertNull;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class TestImplementation
+public class ImplementationTest
     implements
     org.jomc.ri.test.TestSpecification,
     org.jomc.ri.test.TestSpecificationOne,
@@ -107,13 +108,14 @@ public class TestImplementation
     // SECTION-END
     // SECTION-START[TestSpecificationOne]
     // SECTION-END
-    // SECTION-START[TestImplementation]
+    // SECTION-START[ImplementationTest]
 
     private static final int NUM_REQUESTS = 25000;
 
     private static final int NUM_RUNS = 2;
 
-    public void testBoundMultitons() throws Exception
+    @Test
+    public final void testBoundMultitons() throws Exception
     {
         this.printEstimatedExecutionTime( "BoundMultitons", new Runnable()
         {
@@ -127,7 +129,8 @@ public class TestImplementation
 
     }
 
-    public void testUnboundMultitons() throws Exception
+    @Test
+    public final void testUnboundMultitons() throws Exception
     {
         this.printEstimatedExecutionTime( "UnboundMultitons", new Runnable()
         {
@@ -141,7 +144,8 @@ public class TestImplementation
 
     }
 
-    public void testSelectedBoundMultiton() throws Exception
+    @Test
+    public final void testSelectedBoundMultiton() throws Exception
     {
         this.printEstimatedExecutionTime( "SelectedBoundMultiton", new Runnable()
         {
@@ -155,7 +159,8 @@ public class TestImplementation
 
     }
 
-    public void testSelectedUnboundMultiton() throws Exception
+    @Test
+    public final void testSelectedUnboundMultiton() throws Exception
     {
         this.printEstimatedExecutionTime( "SelectedUnboundMultiton", new Runnable()
         {
@@ -169,7 +174,8 @@ public class TestImplementation
 
     }
 
-    public void testBoundSingletons() throws Exception
+    @Test
+    public final void testBoundSingletons() throws Exception
     {
         this.printEstimatedExecutionTime( "BoundSingletons", new Runnable()
         {
@@ -183,7 +189,8 @@ public class TestImplementation
 
     }
 
-    public void testUnboundSingletons() throws Exception
+    @Test
+    public final void testUnboundSingletons() throws Exception
     {
         this.printEstimatedExecutionTime( "UnboundSingletons", new Runnable()
         {
@@ -197,7 +204,8 @@ public class TestImplementation
 
     }
 
-    public void testSelectedBoundSingleton() throws Exception
+    @Test
+    public final void testSelectedBoundSingleton() throws Exception
     {
         this.printEstimatedExecutionTime( "SelectedBoundSingleton", new Runnable()
         {
@@ -211,7 +219,8 @@ public class TestImplementation
 
     }
 
-    public void testSelectedUnboundSingleton() throws Exception
+    @Test
+    public final void testSelectedUnboundSingleton() throws Exception
     {
         this.printEstimatedExecutionTime( "SelectedUnboundSingleton", new Runnable()
         {
@@ -225,7 +234,8 @@ public class TestImplementation
 
     }
 
-    public void testProperties() throws Exception
+    @Test
+    public final void testProperties() throws Exception
     {
         this.printEstimatedExecutionTime( "TestProperty", new Runnable()
         {
@@ -239,7 +249,8 @@ public class TestImplementation
 
     }
 
-    public void testMessages() throws Exception
+    @Test
+    public final void testMessages() throws Exception
     {
         this.printEstimatedExecutionTime( "TestMessage", new Runnable()
         {
@@ -253,12 +264,14 @@ public class TestImplementation
 
     }
 
-    public void testOptionalDependency() throws Exception
+    @Test
+    public final void testOptionalDependency() throws Exception
     {
         assertNull( this.getOptionalLocale() );
     }
 
-    public void testInvoker() throws Exception
+    @Test
+    public final void testInvoker() throws Exception
     {
         this.getInvokerTestSpecification().invoke( "TEST" );
     }
@@ -286,9 +299,9 @@ public class TestImplementation
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code TestImplementation} instance. */
+    /** Creates a new {@code ImplementationTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public TestImplementation()
+    public ImplementationTest()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -331,7 +344,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code InvokerTestSpecification} dependency.
-     * <p>This method returns the {@code 'InvokerTest'} object of the {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'InvokerTestImplementation'} object of the {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code InvokerTestSpecification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -360,7 +373,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundMultiton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'ImplementationTest'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -375,7 +388,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedBoundSingleton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'ImplementationTest'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested and bound to this instance.</p>
      * @return The {@code SelectedBoundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -390,7 +403,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundMultiton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'ImplementationTest'} object of the {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundMultiton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -405,7 +418,7 @@ public class TestImplementation
 
     /**
      * Gets the {@code SelectedUnboundSingleton} dependency.
-     * <p>This method returns the {@code 'TestImplementation'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
+     * <p>This method returns the {@code 'ImplementationTest'} object of the {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT.</p>
      * <p>That specification applies to {@code Singleton} scope. The singleton object is returned whenever requested.</p>
      * @return The {@code SelectedUnboundSingleton} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.

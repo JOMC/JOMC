@@ -36,9 +36,10 @@
 // SECTION-END
 package org.jomc.ri.test;
 
+import org.junit.Test;
 import org.jomc.ri.DefaultListener;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -59,20 +60,22 @@ public class DefaultListenerTest extends ListenerTest
 {
     // SECTION-START[DefaultListenerTest]
 
-    private DefaultListener defaultListener;
-
+    /** {@inheritDoc} */
     @Override
     public DefaultListener getListener()
     {
-        if ( this.defaultListener == null )
-        {
-            this.defaultListener = new DefaultListener();
-        }
-
-        return this.defaultListener;
+        return (DefaultListener) super.getListener();
     }
 
-    public void testDefaultEnabled() throws Exception
+    /** {@inheritDoc} */
+    @Override
+    protected DefaultListener newListener()
+    {
+        return new DefaultListener();
+    }
+
+    @Test
+    public final void testDefaultEnabled() throws Exception
     {
         assertTrue( DefaultListener.isDefaultEnabled() );
         System.setProperty( "org.jomc.ri.DefaultListener.defaultEnabled", Boolean.toString( false ) );
@@ -82,7 +85,8 @@ public class DefaultListenerTest extends ListenerTest
         DefaultListener.setDefaultEnabled( null );
     }
 
-    public void testEnabled() throws Exception
+    @Test
+    public final void testEnabled() throws Exception
     {
         DefaultListener.setDefaultEnabled( null );
         this.getListener().setEnabled( null );

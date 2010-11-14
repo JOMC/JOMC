@@ -56,7 +56,7 @@ import java.lang.*;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class InvokerTest
+public class InvokerTestImplementation
     implements
     org.jomc.ri.test.InvokerTestSpecification
 {
@@ -71,9 +71,9 @@ public class InvokerTest
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code InvokerTest} instance. */
+    /** Creates a new {@code InvokerTestImplementation} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public InvokerTest()
+    public InvokerTestImplementation()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -87,6 +87,6 @@ public class InvokerTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
-    // SECTION-START[InvokerTest]
+    // SECTION-START[InvokerTestImplementation]
     // SECTION-END
 }
