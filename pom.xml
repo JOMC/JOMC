@@ -454,6 +454,7 @@
               <configuration>
                 <jdkVersion>1.4</jdkVersion>
                 <forceLaCheck>true</forceLaCheck>
+                <outputDirectory>${javaccOutputDirectory}</outputDirectory>
               </configuration>
             </execution>
           </executions>
@@ -853,6 +854,11 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
         <version>${emma-maven-plugin.version}</version>
+        <configuration>
+          <dataFiles>
+            <dataFile>${project.build.directory}/coverage.ec</dataFile>
+          </dataFiles>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -1424,6 +1430,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
     <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory> <!-- See http://netbeans.org/bugzilla/show_bug.cgi?id=187595 -->
+    <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
     <maven-shade-plugin.version>1.4</maven-shade-plugin.version>
     <maven-assembly-plugin.version>2.2</maven-assembly-plugin.version>
