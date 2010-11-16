@@ -34,12 +34,17 @@
 -->
 <xsl:stylesheet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:xsd="http://www.w3.org/2001/XMLSchema"
                 xmlns:jomc="http://jomc.org/model"
                 xmlns:modlet="http://jomc.org/modlet"
-                version="1.0">
+                version="2.0">
 
   <xsl:output method="xml" indent="yes" omit-xml-declaration="no"
               encoding="UTF-8" standalone="no"/>
+
+  <xsl:param name="jomc.test.resourceEncoding" required="yes"/>
+  <xsl:param name="jomc.test.classesDirectory" required="yes"/>
+  <xsl:param name="jomc.test.outputDirectory" required="yes"/>
 
   <xsl:template match="node()|@*">
     <xsl:copy>
@@ -47,9 +52,23 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="jomc:specifications/jomc:specification/@multiplicity">
-    <xsl:attribute name="multiplicity">
-      <xsl:value-of select="'One'"/>
+  <xsl:template match="jomc:properties/jomc:property/@value">
+    <xsl:variable name="value" select="string(.)"/>
+    <xsl:attribute name="{name()}">
+      <xsl:choose>
+        <xsl:when test="starts-with($value, '${jomc.test.resourceEncoding}')">
+          <xsl:value-of select="concat($jomc.test.resourceEncoding, substring-after($value, '${jomc.test.resourceEncoding}'))"/>
+        </xsl:when>
+        <xsl:when test="starts-with($value, '${jomc.test.classesDirectory}')">
+          <xsl:value-of select="concat($jomc.test.classesDirectory, substring-after($value, '${jomc.test.classesDirectory}'))"/>
+        </xsl:when>
+        <xsl:when test="starts-with($value, '${jomc.test.outputDirectory}')">
+          <xsl:value-of select="concat($jomc.test.outputDirectory, substring-after($value, '${jomc.test.outputDirectory}'))"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:attribute>
   </xsl:template>
 

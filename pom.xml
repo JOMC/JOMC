@@ -193,8 +193,10 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${surefire.version}</version>
           <configuration>
+            <argLine>-Xmx256m</argLine>
             <forkMode>once</forkMode>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
+            <workingDirectory>${project.build.directory}</workingDirectory>
             <includes>
               <include>**/*Test.java</include>
             </includes>
@@ -204,6 +206,10 @@
               <org.jomc.tools.JomcTool.defaultLogLevel>ALL</org.jomc.tools.JomcTool.defaultLogLevel>
               <org.jomc.cli.Jomc.defaultLogLevel>ALL</org.jomc.cli.Jomc.defaultLogLevel>
               <org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>
+              <!-- Test properties. -->
+              <jomc.test.resourceEncoding>${project.build.sourceEncoding}</jomc.test.resourceEncoding>
+              <jomc.test.classesDirectory>${project.build.outputDirectory}</jomc.test.classesDirectory>
+              <jomc.test.outputDirectory>${project.build.directory}</jomc.test.outputDirectory>
             </systemPropertyVariables>
           </configuration>
         </plugin>
@@ -336,13 +342,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
           <version>${maven-assembly-plugin.version}</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.jomc</groupId>
-              <artifactId>maven-jomc-plugin</artifactId>
-              <version>${maven-jomc-plugin.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
