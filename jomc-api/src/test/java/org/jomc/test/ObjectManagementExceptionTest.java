@@ -59,11 +59,14 @@ public class ObjectManagementExceptionTest
 {
     // SECTION-START[ObjectManagementExceptionTest]
 
+    /** Constant to prefix relative resource names with. */
+    private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/test/";
+
     @Test
     public final void testSerializable() throws Exception
     {
-        final ObjectInputStream in =
-            new ObjectInputStream( this.getClass().getResourceAsStream( "ObjectManagementException.ser" ) );
+        final ObjectInputStream in = new ObjectInputStream( this.getClass().getResourceAsStream(
+            ABSOLUTE_RESOURCE_NAME_PREFIX + "ObjectManagementException.ser" ) );
 
         final ObjectManagementException e = (ObjectManagementException) in.readObject();
         in.close();
