@@ -208,7 +208,6 @@
               <org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>
               <!-- Test properties. -->
               <jomc.test.resourceEncoding>${project.build.sourceEncoding}</jomc.test.resourceEncoding>
-              <jomc.test.classesDirectory>${project.build.outputDirectory}</jomc.test.classesDirectory>
               <jomc.test.outputDirectory>${project.build.directory}</jomc.test.outputDirectory>
             </systemPropertyVariables>
           </configuration>
