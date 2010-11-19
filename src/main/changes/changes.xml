@@ -63,6 +63,7 @@
       <li>Added <code>jomc-ant-tasks</code> module.</li>
       <li>Added a Sourceforge logo to the generated Javadoc.</li>
       <li>Updated Javadoc Java API links to new location at Oracle.</li>
+      <li>Updated to attach test artifacts.</li>
       </ul>]]>
       </action>
     </release>
