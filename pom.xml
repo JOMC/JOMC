@@ -1429,6 +1429,7 @@
                 <id>attach-sources</id>
                 <goals>
                   <goal>jar-no-fork</goal>
+                  <goal>test-jar-no-fork</goal>
                 </goals>
               </execution>
             </executions>
@@ -1441,6 +1442,7 @@
                 <id>attach-javadocs</id>
                 <goals>
                   <goal>jar</goal>
+                  <goal>test-jar</goal>
                 </goals>
               </execution>
             </executions>
