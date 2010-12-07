@@ -2078,7 +2078,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code clazz} is {@code null}.
      *
-     * @deprecated Replaced by {@link #getDefaultClassLoader(java.lang.Class)}.
+     * @deprecated As of JOMC 1.1, please use method {@link #getDefaultClassLoader(java.lang.Class)}.
      */
     @Deprecated
     public static ClassLoader getClassLoader( final Class<?> clazz )
@@ -2117,7 +2117,7 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getBootstrapClassLoaderClassName()
      * @see ClassLoader#getParent()
      *
-     * @deprecated Replaced by {@link #getDefaultClassLoader(java.lang.ClassLoader)}.
+     * @deprecated As of JOMC 1.1, please use method {@link #getDefaultClassLoader(java.lang.ClassLoader)}.
      */
     @Deprecated
     public static ClassLoader getClassLoader( final ClassLoader classLoader )
@@ -2668,7 +2668,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
      * @throws InstantiationException if instantiating a new invocation fails.
      *
-     * @deprecated Replaced by {@link #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])}.
+     * @deprecated As of JOMC 1.1, please use method {@link #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])}.
      */
     @Deprecated
     public Invocation getInvocation( final Object object, final Instance instance, final Method method,
