@@ -63,6 +63,8 @@
       <li>Updated <code>commons-io</code> from <code>1.4</code> to <code>2.0</code>.</li>
       <li>Updated <code>junit</code> from <code>3.8.2</code> to <code>4.8.2</code>.</li>
       <li>Updated <code>velocity</code> from <code>1.6.4</code> to <code>1.7</code>.</li>
+      <li>Updated <code>jaxb-api</code> from <code>2.2.1</code> to <code>2.2.2</code>.</li>
+      <li>Updated <code>jaxb-impl</code> from <code>2.2.1.1</code> to <code>2.2.2</code>.</li>
       <li>Added <code>jomc-ant-tasks</code> module.</li>
       <li>Added a Sourceforge logo to the generated Javadoc.</li>
       <li>Updated Javadoc Java API links to new location at Oracle.</li>
