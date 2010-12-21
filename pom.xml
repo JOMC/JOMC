@@ -203,6 +203,7 @@
             <argLine>-Xmx256m</argLine>
             <forkMode>once</forkMode>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
+            <runOrder>random</runOrder>
             <workingDirectory>${project.build.directory}</workingDirectory>
             <includes>
               <include>**/*Test.java</include>
@@ -1502,7 +1503,7 @@
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
     <maven-shade-plugin.version>1.4</maven-shade-plugin.version>
     <maven-assembly-plugin.version>2.2</maven-assembly-plugin.version>
-    <surefire.version>2.6</surefire.version>
+    <surefire.version>2.7</surefire.version>
     <emma-maven-plugin.version>1.0-alpha-2</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.2.2</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
