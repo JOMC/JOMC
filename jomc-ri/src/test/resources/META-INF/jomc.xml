@@ -45,7 +45,8 @@
   <specifications>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecification" class="org.jomc.ri.test.TestSpecification"
-                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -55,7 +56,7 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecificationOne" class="org.jomc.ri.test.TestSpecificationOne"
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
-                   multiplicity="One">
+                   multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -65,7 +66,8 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecificationOneMore"
                    class="org.jomc.ri.test.TestSpecificationOneMore" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${project.version}" multiplicity="One">
+                   vendor="${project.organization.name}" version="${project.version}" multiplicity="One"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -74,7 +76,8 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSpecificationMany" class="org.jomc.ri.test.TestSpecificationMany"
-                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}">
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -83,7 +86,7 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestMultitonSpecification" class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}" version="${project.version}">
+                   vendor="${project.organization.name}" version="${project.version}" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -92,7 +95,8 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestSingletonSpecification" class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
+                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -101,7 +105,8 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationMany" class="org.jomc.ri.test.TestSpecification"
-                   vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST">
+                   vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -111,7 +116,7 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne1" class="org.jomc.ri.test.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
-                   multiplicity="One">
+                   multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -121,7 +126,7 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecificationOne2" class="org.jomc.ri.test.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
-                   multiplicity="One">
+                   multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -130,7 +135,8 @@
     </specification>
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.TestScopeSpecification" class="org.jomc.ri.test.TestScopeSpecification"
-                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}" scope="Test">
+                   classDeclaration="true" vendor="${project.organization.name}" version="${project.version}" scope="Test"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -140,7 +146,8 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="org.jomc.ri.test.InvokerTestSpecification"
                    class="org.jomc.ri.test.InvokerTestSpecification" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton">
+                   vendor="${project.organization.name}" version="${project.version}" scope="Singleton"
+                   createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -150,7 +157,7 @@
     <!-- *********************************************************************************************************** -->
     <specification identifier="Override Test Specification"
                    class="org.jomc.ri.test.OverrideTestSpecification" classDeclaration="true"
-                   vendor="${project.organization.name}" version="${project.version}">
+                   vendor="${project.organization.name}" version="${project.version}" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -162,7 +169,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.ImplementationTest" class="org.jomc.ri.test.ImplementationTest"
                     classDeclaration="true" name="ImplementationTest" version="${project.version}"
-                    vendor="${project.organization.name}">
+                    vendor="${project.organization.name}" createDate="2009-07-25T19:56:45Z">
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
                 createDate="2005-07-25T19:56:45Z"/>
@@ -214,7 +221,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestObjectManagementListener"
                     class="org.jomc.ri.test.TestObjectManagementListener" classDeclaration="true"
-                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
+                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">{@code ObjectManagementLister} logging to the console.</text>
       </documentation>
@@ -230,7 +238,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.DefaultObjectManagerTest"
                     class="org.jomc.ri.test.DefaultObjectManagerTest" classDeclaration="true"
-                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}">
+                    name="${project.name}" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test cases for the {@code DefaultObjectManager} class.</text>
       </documentation>
@@ -244,7 +253,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.ScopeImplementationTest"
                     class="org.jomc.ri.test.ScopeImplementationTest" classDeclaration="true"
-                    name="ScopeImplementationTest" version="${project.version}" vendor="${project.organization.name}">
+                    name="ScopeImplementationTest" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
@@ -268,7 +278,7 @@
     <implementation identifier="org.jomc.ri.test.LocationImplementationTest"
                     class="org.jomc.ri.test.LocationImplementationTest" classDeclaration="true"
                     name="LocationImplementationTest" version="${project.version}" vendor="${project.organization.name}"
-                    location="UNSUPPORTED:DOES_NOT_EXIST">
+                    location="UNSUPPORTED:DOES_NOT_EXIST" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test implementation with unsupported location.</text>
       </documentation>
@@ -291,7 +301,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.IllegalLocationImplementation"
                     name="IllegalLocationImplementation" version="${project.version}"
-                    vendor="${project.organization.name}" location="UNSUPPORTED:DOES_NOT_EXIST">
+                    vendor="${project.organization.name}" location="UNSUPPORTED:DOES_NOT_EXIST"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test implementation without class and with unsupported location.</text>
       </documentation>
@@ -307,7 +318,8 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestScope" class="org.jomc.ri.test.TestScope" classDeclaration="true"
-                    name="Test" version="${project.version}" vendor="${project.organization.name}">
+                    name="Test" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test {@code Scope} implementation.</text>
       </documentation>
@@ -323,7 +335,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestLocator" class="org.jomc.ri.test.TestLocator"
                     classDeclaration="true" name="Test" version="${project.version}"
-                    vendor="${project.organization.name}">
+                    vendor="${project.organization.name}" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
@@ -339,7 +351,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestLocatorImplementation"
                     name="TestLocatorImplementation" version="${project.version}" vendor="${project.organization.name}"
-                    location="Test:IGNORED">
+                    location="Test:IGNORED" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test {@code Locator} implementation.</text>
       </documentation>
@@ -354,7 +366,8 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.TestInvoker" name="TestInvoker" class="org.jomc.ri.test.TestInvoker"
-                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Test {@code Invoker} implementation.</text>
       </documentation>
@@ -373,7 +386,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.InvokerTestImplementation"
                     name="InvokerTestImplementation" class="org.jomc.ri.test.InvokerTestImplementation"
-                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">{@code Invoker} test cases.</text>
       </documentation>
@@ -388,7 +402,8 @@
     </implementation>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.ListenerTest" name="ListenerTest" class="org.jomc.ri.test.ListenerTest"
-                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}">
+                    classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">{@code Listener} test cases.</text>
       </documentation>
@@ -401,7 +416,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.test.DefaultListenerTest" name="DefaultListenerTest"
                     class="org.jomc.ri.test.DefaultListenerTest" classDeclaration="true" version="${project.version}"
-                    vendor="${project.organization.name}">
+                    vendor="${project.organization.name}" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">{@code DefaultListener} test cases.</text>
       </documentation>
@@ -414,7 +429,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="Override Test Implementation" name="Override Test Implementation"
                     class="org.jomc.ri.test.OverrideTestImplementation" classDeclaration="true"
-                    version="${project.version}" vendor="${project.organization.name}">
+                    version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Override Test Implementation.</text>
       </documentation>
@@ -444,7 +460,8 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="Override Test Implementation Tests" name="Override Test Implementation Tests"
                     class="org.jomc.ri.test.OverrideTestImplementationTest" classDeclaration="true"
-                    version="${project.version}" vendor="${project.organization.name}">
+                    version="${project.version}" vendor="${project.organization.name}"
+                    createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
         <text language="en">Override test cases.</text>
       </documentation>

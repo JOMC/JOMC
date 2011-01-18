@@ -47,7 +47,7 @@
     <implementation identifier="org.jomc.test.ObjectManagementExceptionTest"
                     class="org.jomc.test.ObjectManagementExceptionTest"
                     classDeclaration="true" name="${project.name}" version="${project.version}"
-                    vendor="${project.organization.name}" final="true">
+                    vendor="${project.organization.name}" final="true" createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
         <text language="en">Test cases for class {@code org.jomc.ObjectManagementException}.</text>
@@ -61,7 +61,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.test.ObjectManagerFactoryTest" class="org.jomc.test.ObjectManagerFactoryTest"
                     classDeclaration="true" name="${project.name}" version="${project.version}"
-                    vendor="${project.organization.name}" final="true">
+                    vendor="${project.organization.name}" final="true" createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
         <text language="en">Test cases for class {@code org.jomc.ObjectManagerFactory}.</text>
@@ -75,7 +75,7 @@
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.test.ObjectManagerDummy" class="org.jomc.test.ObjectManagerDummy"
                     classDeclaration="true" name="${project.name}" version="${project.version}"
-                    vendor="${project.organization.name}" final="true">
+                    vendor="${project.organization.name}" final="true" createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
         <text language="en">{@code ObjectManager} dummy implementation.</text>
