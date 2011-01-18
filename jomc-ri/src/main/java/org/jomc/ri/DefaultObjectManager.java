@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -90,163 +90,223 @@ import org.jomc.util.WeakIdentityHashMap;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default {@code ObjectManager} implementation.
- * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ObjectManager'} {@code (org.jomc.ObjectManager)} {@code 1.0} {@code Singleton}</li>
- * </ul></p>
- * <p><b>Messages</b><ul>
- * <li>"{@link #getCreatingModulesInfo creatingModulesInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Creating modules for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultImplementationName defaultImplementationName}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 f&uuml;r ''{0}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultListenerInfo defaultListenerInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 for ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 f&uuml;r ''{0}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard-Protokollierungsstufe: ''{0}''</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModelIdentifierInfo defaultModelIdentifierInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default model identifier: ''{0}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellbezeichner: ''{0}''</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModelObjectClasspahResolutionEnabledInfo defaultModelObjectClasspahResolutionEnabledInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default model object classpath resolution enabled: ''{0}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModelProcessingEnabledInfo defaultModelProcessingEnabledInfo}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default model processing enabled: ''{0}''</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModuleName defaultModuleName}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModulesVendor defaultModulesVendor}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>The JOMC Project</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>The JOMC Project</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModulesVersion defaultModulesVersion}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>1.2-SNAPSHOT</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>1.2-SNAPSHOT</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultModulesWarning defaultModulesWarning}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fehler beim Laden des Modells ''{0}'' f&uuml;r ''{1}''. Erstellt Standard-Module.</pre></td></tr>
- * </table>
- * <li>"{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scope ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getDependencyCycleMessage dependencyCycleMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
- * </table>
- * <li>"{@link #getIgnoredInvocationMessage ignoredInvocationMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getIgnoredInvokerMessage ignoredInvokerMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getIllegalArraySpecificationMessage illegalArraySpecificationMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
- * </table>
- * <li>"{@link #getIllegalObjectSpecificationMessage illegalObjectSpecificationMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
- * </table>
- * <li>"{@link #getImplementationInfoMessage implementationInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 initialized in {0,number}ms.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 in {0,number}ms initialisiert.</pre></td></tr>
- * </table>
- * <li>"{@link #getInvokerInfoMessage invokerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getListenerInfoMessage listenerInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}'' for ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getLocatorInfoMessage locatorInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingDependencyMessage missingDependencyMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingImplementationMessage missingImplementationMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingImplementationsMessage missingImplementationsMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingInstanceMessage missingInstanceMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingLocatorMessage missingLocatorMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingMessageMessage missingMessageMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingObjectInstanceMessage missingObjectInstanceMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingObjectMessage missingObjectMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingPropertyMessage missingPropertyMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingScopeMessage missingScopeMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingSpecificationClassMessage missingSpecificationClassMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
- * </table>
- * <li>"{@link #getMissingSpecificationMessage missingSpecificationMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
- * </table>
- * <li>"{@link #getModulesReportMessage modulesReportMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
- * </table>
- * <li>"{@link #getScopeInfoMessage scopeInfoMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
- * </table>
- * <li>"{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjectsMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</pre></td></tr>
- * </table>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Specifications</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
+ *       <td align="left" nowrap>{@code Singleton}}</td>
+ *       <td align="left" nowrap>{@code 1.0}</td>
+ *     </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Messages</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getCreatingModulesInfo creatingModulesInfo}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Creating modules for ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultImplementationName defaultImplementationName}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 for ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 for ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default log level: ''{0}''</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModelIdentifierInfo defaultModelIdentifierInfo}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model identifier: ''{0}''</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModelObjectClasspahResolutionEnabledInfo defaultModelObjectClasspahResolutionEnabledInfo}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model object classpath resolution enabled: ''{0}''</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModelProcessingEnabledInfo defaultModelProcessingEnabledInfo}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model processing enabled: ''{0}''</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModuleName defaultModuleName}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesVendor defaultModulesVendor}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>The JOMC Project</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesVersion defaultModulesVersion}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>1.2-SNAPSHOT</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesWarning defaultModulesWarning}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>A dependency of implementation ''{0}'' introduces a cycle.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getIgnoredInvocationMessage ignoredInvocationMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Invocation implementation ''{0}'' ignored.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getIgnoredInvokerMessage ignoredInvokerMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Invoker implementation ''{0}'' ignored.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getIllegalArraySpecificationMessage illegalArraySpecificationMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectSpecificationMessage illegalObjectSpecificationMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Illegal object specification ''{0}''. Multiplicity ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 initialized in {0,number}ms.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered invoker implementation ''{0}'' for ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getListenerInfoMessage listenerInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered listener implementation ''{0}'' for ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getLocatorInfoMessage locatorInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingDependencyMessage missingDependencyMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Dependency ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingImplementationMessage missingImplementationMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Implementation ''{1}'' not found for specification ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingImplementationsMessage missingImplementationsMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>No implementations found for specification ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingInstanceMessage missingInstanceMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>No instance found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingLocatorMessage missingLocatorMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>No locator found for location ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingMessageMessage missingMessageMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Message ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingObjectInstanceMessage missingObjectInstanceMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>No instance found for object ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingObjectMessage missingObjectMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>No object found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingPropertyMessage missingPropertyMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Property ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingScopeMessage missingScopeMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Scope ''{0}'' not found.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingSpecificationClassMessage missingSpecificationClassMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' does not define a class.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getMissingSpecificationMessage missingSpecificationMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' not found.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getModulesReportMessage modulesReportMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Modules report:</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getScopeInfoMessage scopeInfoMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjectsMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</code></pre></td>
+ *     </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -3264,13 +3324,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code creatingModulesInfo} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Creating modules for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Erstellt Module f&uuml;r ''{0}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Creating modules for ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Erstellt Module f&uuml;r ''{0}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code creatingModulesInfo} message.
+     * @return The text of the {@code creatingModulesInfo} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3304,12 +3377,25 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultImplementationName} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code defaultImplementationName} message.
+     * @return The text of the {@code defaultImplementationName} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3343,13 +3429,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultInvokerInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultInvoker Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 f&uuml;r ''{0}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 for ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultInvokerInfoMessage} message.
+     * @return The text of the {@code defaultInvokerInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3383,13 +3482,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultListenerInfo} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultListener Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 for ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultListener Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 f&uuml;r ''{0}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 for ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultListenerInfo} message.
+     * @return The text of the {@code defaultListenerInfo} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3423,14 +3535,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultLocatorInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scheme ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultLocator Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultLocatorInfoMessage} message.
+     * @return The text of the {@code defaultLocatorInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3464,13 +3589,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultLogLevelInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default log level: ''{0}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard-Protokollierungsstufe: ''{0}''</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default log level: ''{0}''</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Standard-Protokollierungsstufe: ''{0}''</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
-     * @return The text of the {@code defaultLogLevelInfoMessage} message.
+     * @return The text of the {@code defaultLogLevelInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3504,13 +3642,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModelIdentifierInfo} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model identifier: ''{0}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellbezeichner: ''{0}''</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default model identifier: ''{0}''</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Standard Modellbezeichner: ''{0}''</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code defaultModelIdentifierInfo} message.
+     * @return The text of the {@code defaultModelIdentifierInfo} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3544,13 +3695,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model object classpath resolution enabled: ''{0}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default model object classpath resolution enabled: ''{0}''</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message.
+     * @return The text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3584,13 +3748,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModelProcessingEnabledInfo} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default model processing enabled: ''{0}''</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Standard Modellverarbeitung aktiviert: ''{0}''</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default model processing enabled: ''{0}''</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Standard Modellverarbeitung aktiviert: ''{0}''</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code defaultModelProcessingEnabledInfo} message.
+     * @return The text of the {@code defaultModelProcessingEnabledInfo} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3624,12 +3801,25 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModuleName} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Default JOMC RI</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code defaultModuleName} message.
+     * @return The text of the {@code defaultModuleName} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3663,12 +3853,25 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModulesVendor} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>The JOMC Project</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>The JOMC Project</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>The JOMC Project</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>The JOMC Project</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code defaultModulesVendor} message.
+     * @return The text of the {@code defaultModulesVendor} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3702,12 +3905,25 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModulesVersion} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>1.2-SNAPSHOT</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>1.2-SNAPSHOT</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>1.2-SNAPSHOT</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>1.2-SNAPSHOT</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code defaultModulesVersion} message.
+     * @return The text of the {@code defaultModulesVersion} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3741,14 +3957,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultModulesWarning} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Fehler beim Laden des Modells ''{0}'' f&uuml;r ''{1}''. Erstellt Standard-Module.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Fehler beim Laden des Modells ''{0}'' f&uuml;r ''{1}''. Erstellt Standard-Module.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param modelInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultModulesWarning} message.
+     * @return The text of the {@code defaultModulesWarning} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3782,14 +4011,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code defaultScopeInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered DefaultScope Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scope ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultScope Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code defaultScopeInfoMessage} message.
+     * @return The text of the {@code defaultScopeInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3823,13 +4065,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code dependencyCycleMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>A dependency of implementation ''{0}'' introduces a cycle.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Zyklische Anforderung der Implementierung ''{0}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>A dependency of implementation ''{0}'' introduces a cycle.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Zyklische Anforderung der Implementierung ''{0}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code dependencyCycleMessage} message.
+     * @return The text of the {@code dependencyCycleMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3863,13 +4118,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code ignoredInvocationMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Invocation implementation ''{0}'' ignored.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invocation-Implementierung ''{0}'' ignoriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Invocation implementation ''{0}'' ignored.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Invocation-Implementierung ''{0}'' ignoriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code ignoredInvocationMessage} message.
+     * @return The text of the {@code ignoredInvocationMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3903,13 +4171,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code ignoredInvokerMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Invoker implementation ''{0}'' ignored.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' ignoriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Invoker implementation ''{0}'' ignored.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Invoker-Implementierung ''{0}'' ignoriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code ignoredInvokerMessage} message.
+     * @return The text of the {@code ignoredInvokerMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3943,14 +4224,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code illegalArraySpecificationMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code illegalArraySpecificationMessage} message.
+     * @return The text of the {@code illegalArraySpecificationMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -3984,14 +4278,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code illegalObjectSpecificationMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Illegal object specification ''{0}''. Multiplicity ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Illegal object specification ''{0}''. Multiplicity ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code illegalObjectSpecificationMessage} message.
+     * @return The text of the {@code illegalObjectSpecificationMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4025,13 +4332,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code implementationInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>DefaultObjectManager Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 initialized in {0,number}ms.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>DefaultObjectManager Version 1.2-SNAPSHOT Build 2010-11-16T17:15:05+0100 in {0,number}ms initialisiert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 initialized in {0,number}ms.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-18T08:51:29+0100 in {0,number}ms initialisiert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
-     * @return The text of the {@code implementationInfoMessage} message.
+     * @return The text of the {@code implementationInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4065,14 +4385,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code invokerInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered invoker implementation ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered invoker implementation ''{0}'' for ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code invokerInfoMessage} message.
+     * @return The text of the {@code invokerInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4106,14 +4439,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code listenerInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered listener implementation ''{0}'' for ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Listener-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered listener implementation ''{0}'' for ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Listener-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code listenerInfoMessage} message.
+     * @return The text of the {@code listenerInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4147,15 +4493,28 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code locatorInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code locatorInfoMessage} message.
+     * @return The text of the {@code locatorInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4189,14 +4548,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingDependencyMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Dependency ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Dependency ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
-     * @return The text of the {@code missingDependencyMessage} message.
+     * @return The text of the {@code missingDependencyMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4230,14 +4602,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingImplementationMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Implementation ''{1}'' not found for specification ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Implementation ''{1}'' not found for specification ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code missingImplementationMessage} message.
+     * @return The text of the {@code missingImplementationMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4271,13 +4656,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingImplementationsMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No implementations found for specification ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>No implementations found for specification ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingImplementationsMessage} message.
+     * @return The text of the {@code missingImplementationsMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4311,14 +4709,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingInstanceMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>No instance found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code missingInstanceMessage} message.
+     * @return The text of the {@code missingInstanceMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4352,13 +4763,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingLocatorMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No locator found for location ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>No locator found for location ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
-     * @return The text of the {@code missingLocatorMessage} message.
+     * @return The text of the {@code missingLocatorMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4392,14 +4816,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingMessageMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Message ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Message ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param messageName Format argument.
-     * @return The text of the {@code missingMessageMessage} message.
+     * @return The text of the {@code missingMessageMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4433,13 +4870,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingObjectInstanceMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No instance found for object ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>No instance found for object ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
-     * @return The text of the {@code missingObjectInstanceMessage} message.
+     * @return The text of the {@code missingObjectInstanceMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4473,14 +4923,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingObjectMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>No object found for implementation ''{0}'' - ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>No object found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code missingObjectMessage} message.
+     * @return The text of the {@code missingObjectMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4514,14 +4977,27 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingPropertyMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Property ''{1}'' not found for implementation ''{0}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Property ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param propertyName Format argument.
-     * @return The text of the {@code missingPropertyMessage} message.
+     * @return The text of the {@code missingPropertyMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4555,13 +5031,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingScopeMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Scope ''{0}'' not found.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Scope ''{0}'' not found.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
-     * @return The text of the {@code missingScopeMessage} message.
+     * @return The text of the {@code missingScopeMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4595,13 +5084,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingSpecificationClassMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' does not define a class.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' definiert keine Klasse.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' does not define a class.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Spezifikation ''{0}'' definiert keine Klasse.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingSpecificationClassMessage} message.
+     * @return The text of the {@code missingSpecificationClassMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4635,13 +5137,26 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code missingSpecificationMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Specification ''{0}'' not found.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Spezifikation ''{0}'' nicht gefunden.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' not found.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Spezifikation ''{0}'' nicht gefunden.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code missingSpecificationMessage} message.
+     * @return The text of the {@code missingSpecificationMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4675,12 +5190,25 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code modulesReportMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Modules report:</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Modulbericht:</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Modules report:</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Modulbericht:</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code modulesReportMessage} message.
+     * @return The text of the {@code modulesReportMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4714,15 +5242,28 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code scopeInfoMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code scopeInfoMessage} message.
+     * @return The text of the {@code scopeInfoMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -4756,16 +5297,29 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the text of the {@code unexpectedDependencyObjectsMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
      * @param expectedNumber Format argument.
      * @param computedNumber Format argument.
-     * @return The text of the {@code unexpectedDependencyObjectsMessage} message.
+     * @return The text of the {@code unexpectedDependencyObjectsMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */

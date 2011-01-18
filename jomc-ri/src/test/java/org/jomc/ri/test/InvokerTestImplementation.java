@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -42,9 +42,23 @@ import java.lang.*;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * {@code Invoker} test cases.
- * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} {@code Singleton}</li>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Specifications</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.InvokerTestSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.InvokerTestSpecification}</td>
+ *       <td align="left" nowrap>{@code Singleton}}</td>
+ *       <td align="left" nowrap></td>
+ *     </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

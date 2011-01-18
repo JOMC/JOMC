@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -49,16 +49,26 @@ import org.jomc.spi.Locator;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default {@code Locator} implementation.
- * <p><b>Messages</b><ul>
- * <li>"{@link #getIllegalObjectMessage illegalObjectMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Object ''{0}'' not an instance of class ''{1}''.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</pre></td></tr>
- * </table>
- * <li>"{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
- * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
- * </table>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Messages</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectMessage illegalObjectMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Object ''{0}'' not an instance of class ''{1}''.</code></pre></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
+ *       <td align="left" valign="top" nowrap><pre><code>URI scheme ''{0}'' is not supported.</code></pre></td>
+ *     </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -238,14 +248,27 @@ public class DefaultLocator implements Locator
 
     /**
      * Gets the text of the {@code illegalObjectMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Object ''{0}'' not an instance of class ''{1}''.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Object ''{0}'' not an instance of class ''{1}''.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
      * @param classInfo Format argument.
-     * @return The text of the {@code illegalObjectMessage} message.
+     * @return The text of the {@code illegalObjectMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
@@ -279,13 +302,26 @@ public class DefaultLocator implements Locator
 
     /**
      * Gets the text of the {@code unsupportedUriSchemeMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>URI scheme ''{0}'' is not supported.</pre></td></tr>
-     * <tr><td valign="top">Deutsch:</td><td valign="top"><pre>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>URI scheme ''{0}'' is not supported.</code></pre></td>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>Deutsch</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
-     * @return The text of the {@code unsupportedUriSchemeMessage} message.
+     * @return The text of the {@code unsupportedUriSchemeMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */

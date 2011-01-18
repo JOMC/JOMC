@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -43,10 +43,19 @@ import static org.junit.Assert.assertEquals;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Override test cases.
- * <p><b>Dependencies</b><ul>
- * <li>"{@link #getOverrideTestSpecification Override Test Specification}"<blockquote>
- * Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</blockquote></li>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Dependencies</caption>
+ *       <tr>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getOverrideTestSpecification Override Test Specification}</td>
+ *         <td align="left">Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</td>
+ *       </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$

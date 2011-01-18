@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -43,45 +43,126 @@ import static org.junit.Assert.assertNull;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.2-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code 'org.jomc.ri.test.TestScopeSpecification'} {@code (org.jomc.ri.test.TestScopeSpecification)} {@code 1.2-SNAPSHOT} {@code Test}</li>
- * <li>{@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.2-SNAPSHOT} {@code Singleton}</li>
- * <li>{@code 'org.jomc.ri.test.TestSpecificationMany'} {@code (org.jomc.ri.test.TestSpecificationMany)} {@code 1.2-SNAPSHOT} {@code Multiton}</li>
- * <li>{@code 'org.jomc.ri.test.TestSpecificationOne'} {@code (org.jomc.ri.test.TestSpecificationOne)} {@code 1.2-SNAPSHOT} {@code Multiton}</li>
- * </ul></p>
- * <p><b>Properties</b><ul>
- * <li>"{@link #getTestProperty testProperty}"
- * <blockquote>Property of type {@code java.lang.String}.
- * </blockquote></li>
- * </ul></p>
- * <p><b>Dependencies</b><ul>
- * <li>"{@link #getBoundMultitons BoundMultitons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getBoundSingletons BoundSingletons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getInvokerTestSpecification InvokerTestSpecification}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getOptionalLocale OptionalLocale}"<blockquote>
- * Dependency on {@code 'java.util.Locale'} {@code (java.util.Locale)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getSelectedBoundMultiton SelectedBoundMultiton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getSelectedBoundSingleton SelectedBoundSingleton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</blockquote></li>
- * <li>"{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getUnboundMultitons UnboundMultitons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getUnboundSingletons UnboundSingletons}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * </ul></p>
- * <p><b>Messages</b><ul>
- * <li>"{@link #getTestMessage testMessage}"<table>
- * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
- * </table>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Specifications</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestMultitonSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
+ *       <td align="left" nowrap>{@code Multiton}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
+ *       <td align="left" nowrap>{@code Test}}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSingletonSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
+ *       <td align="left" nowrap>{@code Singleton}}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
+ *       <td align="left" nowrap>{@code Multiton}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
+ *       <td align="left" nowrap>{@code Multiton}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Properties</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Type</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Documentation</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getTestProperty testProperty}</td>
+ *       <td align="left" nowrap>{@code java.lang.String}</td>
+ *       <td align="left" valign="top"></td>
+ *     </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Dependencies</caption>
+ *       <tr>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getBoundMultitons BoundMultitons}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getBoundSingletons BoundSingletons}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getInvokerTestSpecification InvokerTestSpecification}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getOptionalLocale OptionalLocale}</td>
+ *         <td align="left">Dependency on {@code 'java.util.Locale'} {@code (java.util.Locale)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getSelectedBoundMultiton SelectedBoundMultiton}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getSelectedBoundSingleton SelectedBoundSingleton}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getUnboundMultitons UnboundMultitons}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getUnboundSingletons UnboundSingletons}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Messages</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" valign="top" nowrap>{@link #getTestMessage testMessage}</td>
+ *       <td align="left" valign="top" nowrap>English (default)</td>
+ *       <td align="left" valign="top" nowrap><pre><code>Test message with {0} argument.</code></pre></td>
+ *     </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
@@ -484,12 +565,22 @@ public class ImplementationTest
 
     /**
      * Gets the text of the {@code testMessage} message.
-     * <p><b>Templates</b><br/><table>
-     * <tr><td valign="top">English:</td><td valign="top"><pre>Test message with {0} argument.</pre></td></tr>
-     * </table></p>
+     * <p><strong>Templates:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
+     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>English (default)</td>
+     *       <td align="left" valign="top" nowrap><pre><code>Test message with {0} argument.</code></pre></td>
+     *     </tr>
+     *   </table>
+     * </p>
+     *
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.
-     * @return The text of the {@code testMessage} message.
+     * @return The text of the {@code testMessage} message for {@code locale}.
      *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */

@@ -1,7 +1,7 @@
 // SECTION-START[License Header]
 // <editor-fold defaultstate="collapsed" desc=" Generated License ">
 /*
- *   Copyright (c) 2010 The JOMC Project
+ *   Copyright (c) 2011 The JOMC Project
  *   Copyright (c) 2005 Christian Schulte <schulte2005@users.sourceforge.net>
  *   All rights reserved.
  *
@@ -43,16 +43,46 @@ import static org.junit.Assert.assertNull;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Test implementation of the {@code ScopeTestSpecification}.
- * <p><b>Specifications</b><ul>
- * <li>{@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.2-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
- * <li>{@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} {@code 1.2-SNAPSHOT} {@code DOES_NOT_EXIST}</li>
- * </ul></p>
- * <p><b>Dependencies</b><ul>
- * <li>"{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * <li>"{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}"<blockquote>
- * Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</blockquote></li>
- * </ul></p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Specifications</caption>
+ *     <tr>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
+ *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationMany}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
+ *       <td align="left" nowrap>{@code DOES_NOT_EXIST}}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationOne1}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
+ *       <td align="left" nowrap>{@code DOES_NOT_EXIST}}</td>
+ *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
+ *     </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <caption class="TableCaption">Dependencies</caption>
+ *       <tr>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
+ *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *       <tr class="TableRowColor">
+ *         <td align="left" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
+ *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       </tr>
+ *   </table>
+ * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version $Id$
