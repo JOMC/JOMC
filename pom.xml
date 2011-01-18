@@ -213,7 +213,7 @@
               <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
               <org.jomc.tools.JomcTool.defaultLogLevel>ALL</org.jomc.tools.JomcTool.defaultLogLevel>
               <org.jomc.cli.Jomc.defaultLogLevel>ALL</org.jomc.cli.Jomc.defaultLogLevel>
-              <org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractJomcCommand.defaultLogLevel>
+              <org.jomc.cli.commands.AbstractCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractCommand.defaultLogLevel>
               <!-- Test properties. -->
               <jomc.test.resourceEncoding>${project.build.sourceEncoding}</jomc.test.resourceEncoding>
               <jomc.test.outputDirectory>${project.build.directory}</jomc.test.outputDirectory>
@@ -1297,6 +1297,12 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
         <classifier>tests</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-cli</artifactId>
+        <classifier>templates</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
 
