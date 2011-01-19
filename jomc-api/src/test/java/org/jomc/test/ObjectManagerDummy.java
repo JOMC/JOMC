@@ -55,7 +55,7 @@ import org.jomc.ObjectManager;
  *     <tr class="TableRowColor">
  *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
  *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
- *       <td align="left" nowrap>{@code Singleton}}</td>
+ *       <td align="left" nowrap>{@code Singleton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>
  *     </tr>
  *   </table>
