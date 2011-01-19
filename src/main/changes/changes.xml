@@ -62,7 +62,8 @@
       <li>Updated the <code>cc-xjc-plugin</code> from <code>1.3</code> to <code>1.4</code>.</li>
       <li>Added <code>ant</code> to dependecy management.</li>
       <li>Added <code>maven-assembly-plugin</code> to dependecy management.</li>
-      <li>Updated <code>commons-io</code> from <code>1.4</code> to <code>2.0</code>.</li>
+      <li>Updated <code>commons-io</code> from <code>1.4</code> to <code>2.0.1</code>.</li>
+      <li>Updated <code>commons-lang</code> from <code>2.5</code> to <code>2.6</code>.</li>
       <li>Updated <code>junit</code> from <code>3.8.2</code> to <code>4.8.2</code>.</li>
       <li>Updated <code>velocity</code> from <code>1.6.4</code> to <code>1.7</code>.</li>
       <li>Updated <code>jaxb-api</code> from <code>2.2.1</code> to <code>2.2.2</code>.</li>
