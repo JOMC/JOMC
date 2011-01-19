@@ -55,13 +55,13 @@ import static org.junit.Assert.assertNull;
  *     <tr class="TableRowColor">
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationMany}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
- *       <td align="left" nowrap>{@code DOES_NOT_EXIST}}</td>
+ *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationOne1}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
- *       <td align="left" nowrap>{@code DOES_NOT_EXIST}}</td>
+ *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *   </table>
