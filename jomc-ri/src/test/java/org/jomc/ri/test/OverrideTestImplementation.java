@@ -206,7 +206,6 @@ public class OverrideTestImplementation
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code messageImpl} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
