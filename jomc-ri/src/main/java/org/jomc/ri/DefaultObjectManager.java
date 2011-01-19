@@ -128,17 +128,17 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 for ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 for ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
@@ -183,7 +183,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
@@ -213,7 +213,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 initialized in {0,number}ms.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 initialized in {0,number}ms.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
@@ -3344,7 +3344,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code creatingModulesInfo} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3396,7 +3395,6 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code defaultImplementationName} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3437,11 +3435,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3449,7 +3447,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code defaultInvokerInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3490,11 +3487,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3502,7 +3499,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code defaultListenerInfo} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3543,11 +3539,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3556,7 +3552,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code defaultLocatorInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3609,7 +3604,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
      * @return The text of the {@code defaultLogLevelInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3662,7 +3656,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelIdentifierInfo} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3715,7 +3708,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelObjectClasspahResolutionEnabledInfo} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3768,7 +3760,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code defaultModelProcessingEnabledInfo} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3820,7 +3811,6 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code defaultModuleName} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3872,7 +3862,6 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code defaultModulesVendor} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3924,7 +3913,6 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code defaultModulesVersion} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -3978,7 +3966,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param modelInfo Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code defaultModulesWarning} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4019,11 +4006,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4032,7 +4019,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code defaultScopeInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4085,7 +4071,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code dependencyCycleMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4138,7 +4123,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code ignoredInvocationMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4191,7 +4175,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code ignoredInvokerMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4245,7 +4228,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
      * @return The text of the {@code illegalArraySpecificationMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4299,7 +4281,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
      * @return The text of the {@code illegalObjectSpecificationMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4340,11 +4321,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 initialized in {0,number}ms.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 initialized in {0,number}ms.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T11:19:21+0100 in {0,number}ms initialisiert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-19T16:06:23+0100 in {0,number}ms initialisiert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4352,7 +4333,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
      * @return The text of the {@code implementationInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4406,7 +4386,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code invokerInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4460,7 +4439,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code listenerInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4515,7 +4493,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code locatorInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4569,7 +4546,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
      * @return The text of the {@code missingDependencyMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4623,7 +4599,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param specificationIdentifier Format argument.
      * @param implementationName Format argument.
      * @return The text of the {@code missingImplementationMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4676,7 +4651,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code missingImplementationsMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4730,7 +4704,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
      * @return The text of the {@code missingInstanceMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4783,7 +4756,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
      * @return The text of the {@code missingLocatorMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4837,7 +4809,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param messageName Format argument.
      * @return The text of the {@code missingMessageMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4890,7 +4861,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
      * @return The text of the {@code missingObjectInstanceMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4944,7 +4914,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
      * @return The text of the {@code missingObjectMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -4998,7 +4967,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param propertyName Format argument.
      * @return The text of the {@code missingPropertyMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5051,7 +5019,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @return The text of the {@code missingScopeMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5104,7 +5071,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code missingSpecificationClassMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5157,7 +5123,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code missingSpecificationMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5209,7 +5174,6 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code modulesReportMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5264,7 +5228,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code scopeInfoMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -5320,7 +5283,6 @@ public class DefaultObjectManager implements ObjectManager
      * @param expectedNumber Format argument.
      * @param computedNumber Format argument.
      * @return The text of the {@code unexpectedDependencyObjectsMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )

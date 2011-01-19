@@ -269,7 +269,6 @@ public class DefaultLocator implements Locator
      * @param objectInfo Format argument.
      * @param classInfo Format argument.
      * @return The text of the {@code illegalObjectMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -322,7 +321,6 @@ public class DefaultLocator implements Locator
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @return The text of the {@code unsupportedUriSchemeMessage} message for {@code locale}.
-     *
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
