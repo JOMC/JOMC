@@ -232,7 +232,9 @@
             <serialwarn>true</serialwarn>
             <source>1.5</source>
             <doctitle>${project.name} ${project.version}</doctitle>
+            <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
             <windowtitle>${project.name} ${project.version}</windowtitle>
+            <testWindowtitle>${project.name} Tests ${project.version}</testWindowtitle>
             <detectJavaApiLink>true</detectJavaApiLink>
             <javaApiLinks>
               <property>
@@ -781,7 +783,9 @@
               <serialwarn>true</serialwarn>
               <source>1.5</source>
               <doctitle>${project.name} ${project.version}</doctitle>
+              <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
               <windowtitle>${project.name} ${project.version}</windowtitle>
+              <testWindowtitle>${project.name} Tests ${project.version}</testWindowtitle>
               <detectJavaApiLink>true</detectJavaApiLink>
               <javaApiLinks>
                 <property>
