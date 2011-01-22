@@ -92,15 +92,17 @@ import org.jomc.util.WeakIdentityHashMap;
  * Default {@code ObjectManager} implementation.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Specifications</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
+ *       <td align="left" scope="col" nowrap><b>Class</b></td>
+ *       <td align="left" scope="col" nowrap><b>Scope</b></td>
+ *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ObjectManager}</td>
  *       <td align="left" nowrap>{@code Singleton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>
@@ -109,11 +111,13 @@ import org.jomc.util.WeakIdentityHashMap;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Messages</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Languages</b></td>
+ *       <td align="left" scope="col" nowrap><b>Default Template</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getCreatingModulesInfo creatingModulesInfo}</td>
@@ -128,17 +132,17 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 for ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 for ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
@@ -183,7 +187,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
@@ -213,7 +217,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 initialized in {0,number}ms.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 initialized in {0,number}ms.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
@@ -3327,8 +3331,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3379,8 +3383,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3430,16 +3434,16 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3482,16 +3486,16 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3534,16 +3538,16 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3587,8 +3591,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3639,8 +3643,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3691,8 +3695,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3743,8 +3747,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3795,8 +3799,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3846,8 +3850,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3897,8 +3901,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -3948,8 +3952,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4001,16 +4005,16 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4054,8 +4058,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4106,8 +4110,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4158,8 +4162,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4210,8 +4214,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4263,8 +4267,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4316,16 +4320,16 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 initialized in {0,number}ms.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 initialized in {0,number}ms.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-21T10:54:17+0100 in {0,number}ms initialisiert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-22T18:50:06+0100 in {0,number}ms initialisiert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4368,8 +4372,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4421,8 +4425,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4474,8 +4478,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4528,8 +4532,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4581,8 +4585,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4634,8 +4638,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4686,8 +4690,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4739,8 +4743,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4791,8 +4795,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4844,8 +4848,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4896,8 +4900,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -4949,8 +4953,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5002,8 +5006,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5054,8 +5058,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5106,8 +5110,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5158,8 +5162,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5209,8 +5213,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -5263,8 +5267,8 @@ public class DefaultObjectManager implements ObjectManager
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>

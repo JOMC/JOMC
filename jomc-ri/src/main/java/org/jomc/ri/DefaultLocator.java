@@ -51,11 +51,13 @@ import org.jomc.spi.Locator;
  * Default {@code Locator} implementation.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Messages</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Languages</b></td>
+ *       <td align="left" scope="col" nowrap><b>Default Template</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectMessage illegalObjectMessage}</td>
@@ -251,8 +253,8 @@ public class DefaultLocator implements Locator
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
@@ -304,8 +306,8 @@ public class DefaultLocator implements Locator
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
