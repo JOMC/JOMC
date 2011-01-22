@@ -45,39 +45,41 @@ import static org.junit.Assert.assertNull;
 /**
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Specifications</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
+ *       <td align="left" scope="col" nowrap><b>Class</b></td>
+ *       <td align="left" scope="col" nowrap><b>Scope</b></td>
+ *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestMultitonSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestMultitonSpecification}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
  *       <td align="left" nowrap>{@code Test}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSingletonSpecification}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSingletonSpecification}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code Singleton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
@@ -86,11 +88,13 @@ import static org.junit.Assert.assertNull;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Properties</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Type</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Documentation</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Properties</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Type</b></td>
+ *       <td align="left" scope="col" nowrap><b>Documentation</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" nowrap>{@link #getTestProperty testProperty}</td>
@@ -101,60 +105,64 @@ import static org.junit.Assert.assertNull;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Dependencies</caption>
- *       <tr>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getBoundMultitons BoundMultitons}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getBoundSingletons BoundSingletons}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getInvokerTestSpecification InvokerTestSpecification}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getOptionalLocale OptionalLocale}</td>
- *         <td align="left">Dependency on {@code 'java.util.Locale'} {@code (java.util.Locale)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getSelectedBoundMultiton SelectedBoundMultiton}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getSelectedBoundSingleton SelectedBoundSingleton}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getUnboundMultitons UnboundMultitons}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getUnboundSingletons UnboundSingletons}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Dependencies</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Description</b></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getBoundMultitons BoundMultitons}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getBoundSingletons BoundSingletons}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getInvokerTestSpecification InvokerTestSpecification}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.InvokerTestSpecification'} {@code (org.jomc.ri.test.InvokerTestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getOptionalLocale OptionalLocale}</td>
+ *       <td align="left">Dependency on {@code 'java.util.Locale'} {@code (java.util.Locale)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getSelectedBoundMultiton SelectedBoundMultiton}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getSelectedBoundSingleton SelectedBoundSingleton}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT bound to an instance.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getSelectedUnboundMultiton SelectedUnboundMultiton}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getSelectedUnboundSingleton SelectedUnboundSingleton}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getUnboundMultitons UnboundMultitons}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestMultitonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getUnboundSingletons UnboundSingletons}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestSingletonSpecification'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
  *   </table>
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Messages</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Languages</b></td>
+ *       <td align="left" scope="col" nowrap><b>Default Template</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getTestMessage testMessage}</td>
@@ -568,8 +576,8 @@ public class ImplementationTest
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>

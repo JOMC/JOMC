@@ -45,15 +45,17 @@ import org.jomc.ri.DefaultScope;
  * Test {@code Scope} implementation.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Specifications</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
+ *       <td align="left" scope="col" nowrap><b>Class</b></td>
+ *       <td align="left" scope="col" nowrap><b>Scope</b></td>
+ *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</td>
+ *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>

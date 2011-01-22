@@ -44,15 +44,17 @@ import java.util.Locale;
  * Override Test Implementation.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Specifications</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
+ *       <td align="left" scope="col" nowrap><b>Class</b></td>
+ *       <td align="left" scope="col" nowrap><b>Scope</b></td>
+ *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code Override Test Specification}</td>
+ *       <td align="left" nowrap>{@code Override Test Specification}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.OverrideTestSpecification}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
@@ -61,11 +63,13 @@ import java.util.Locale;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Properties</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Type</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Documentation</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Properties</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Type</b></td>
+ *       <td align="left" scope="col" nowrap><b>Documentation</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" nowrap>{@link #getPropertyImpl propertyImpl}</td>
@@ -76,24 +80,28 @@ import java.util.Locale;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Dependencies</caption>
- *       <tr>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getDependencyImpl dependencyImpl}</td>
- *         <td align="left">Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</td>
- *       </tr>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Dependencies</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Description</b></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getDependencyImpl dependencyImpl}</td>
+ *       <td align="left">Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</td>
+ *     </tr>
  *   </table>
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Messages</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Languages</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Default Template</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Languages</b></td>
+ *       <td align="left" scope="col" nowrap><b>Default Template</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMessageImpl messageImpl}</td>
@@ -194,8 +202,8 @@ public class OverrideTestImplementation
      * <p><strong>Templates:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Language</th>
-     *       <th align="left" class="TableHeader" scope="col" nowrap>Template</th>
+     *       <th align="left" scope="col" nowrap><b>Language</b></th>
+     *       <th align="left" scope="col" nowrap><b>Template</b></th>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>

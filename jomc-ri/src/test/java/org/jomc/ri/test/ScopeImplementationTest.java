@@ -45,21 +45,23 @@ import static org.junit.Assert.assertNull;
  * Test implementation of the {@code ScopeTestSpecification}.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Specifications</caption>
- *     <tr>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Identifier</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Class</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Scope</th>
- *       <th align="left" class="TableHeader" scope="col" nowrap>Version</th>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
+ *       <td align="left" scope="col" nowrap><b>Class</b></td>
+ *       <td align="left" scope="col" nowrap><b>Scope</b></td>
+ *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationMany}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationMany}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationOne1}</td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationOne1}</font></td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
@@ -68,19 +70,21 @@ import static org.junit.Assert.assertNull;
  * </p>
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <caption class="TableCaption">Dependencies</caption>
- *       <tr>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Name</th>
- *         <th align="left" class="TableHeader" scope="col" nowrap>Description</th>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
- *       <tr class="TableRowColor">
- *         <td align="left" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
- *         <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
- *       </tr>
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Dependencies</font></th>
+ *     </tr>
+ *     <tr class="TableSubHeadingColor">
+ *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Description</b></td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
+ *     <tr class="TableRowColor">
+ *       <td align="left" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
+ *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *     </tr>
  *   </table>
  * </p>
  *
