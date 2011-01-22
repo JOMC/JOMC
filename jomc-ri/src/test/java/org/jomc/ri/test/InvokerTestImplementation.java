@@ -54,7 +54,7 @@ import java.lang.*;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.InvokerTestSpecification}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.InvokerTestSpecification}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.InvokerTestSpecification}</td>
  *       <td align="left" nowrap>{@code Singleton}</td>
  *       <td align="left" nowrap></td>

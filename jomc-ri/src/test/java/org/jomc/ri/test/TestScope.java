@@ -55,7 +55,7 @@ import org.jomc.ri.DefaultScope;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</td>
  *       <td align="left" nowrap>{@code org.jomc.spi.Scope}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>

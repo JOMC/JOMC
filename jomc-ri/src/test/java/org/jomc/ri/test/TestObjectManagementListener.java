@@ -56,7 +56,7 @@ import java.util.logging.Level;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.spi.Listener}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.spi.Listener}</td>
  *       <td align="left" nowrap>{@code org.jomc.spi.Listener}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>

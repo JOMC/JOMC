@@ -56,7 +56,7 @@ import org.jomc.ri.DefaultLocator;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.spi.Locator}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.spi.Locator}</td>
  *       <td align="left" nowrap>{@code org.jomc.spi.Locator}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.0}</td>

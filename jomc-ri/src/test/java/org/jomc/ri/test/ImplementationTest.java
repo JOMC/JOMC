@@ -55,31 +55,31 @@ import static org.junit.Assert.assertNull;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestMultitonSpecification}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestMultitonSpecification}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
  *       <td align="left" nowrap>{@code Test}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSingletonSpecification}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSingletonSpecification}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
  *       <td align="left" nowrap>{@code Singleton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationMany}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecificationOne}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>

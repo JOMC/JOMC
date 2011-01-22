@@ -54,7 +54,7 @@ import java.util.Locale;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code Override Test Specification}</font></td>
+ *       <td align="left" nowrap>{@code Override Test Specification}</td>
  *       <td align="left" nowrap>{@code org.jomc.ri.test.OverrideTestSpecification}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>

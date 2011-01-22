@@ -59,7 +59,7 @@ import org.jomc.spi.Invocation;
  *       <td align="left" scope="col" nowrap><b>Version</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.spi.Invoker}</font></td>
+ *       <td align="left" nowrap>{@code org.jomc.spi.Invoker}</td>
  *       <td align="left" nowrap>{@code org.jomc.spi.Invoker}</td>
  *       <td align="left" nowrap>{@code Multiton}</td>
  *       <td align="left" nowrap></td>
