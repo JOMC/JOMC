@@ -117,197 +117,197 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableSubHeadingColor">
  *       <td align="left" scope="col" nowrap><b>Name</b></td>
  *       <td align="left" scope="col" nowrap><b>Languages</b></td>
- *       <td align="left" scope="col" nowrap><b>Default Template</b></td>
+ *       <td align="left" scope="col" nowrap><b>Default Templates</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getCreatingModulesInfo creatingModulesInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Creating modules for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Creating modules for ''{0}''.</code></pre><hr/><pre><code>Erstellt Module f&uuml;r ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultImplementationName defaultImplementationName}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre><hr/><pre><code>Default JOMC RI</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 for ''{0}''.</code></pre><hr/><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 for ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 for ''{0}''.</code></pre><hr/><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scheme ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default log level: ''{0}''</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default log level: ''{0}''</code></pre><hr/><pre><code>Standard-Protokollierungsstufe: ''{0}''</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModelIdentifierInfo defaultModelIdentifierInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default model identifier: ''{0}''</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model identifier: ''{0}''</code></pre><hr/><pre><code>Standard Modellbezeichner: ''{0}''</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModelObjectClasspahResolutionEnabledInfo defaultModelObjectClasspahResolutionEnabledInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default model object classpath resolution enabled: ''{0}''</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model object classpath resolution enabled: ''{0}''</code></pre><hr/><pre><code>Standard Modellobjekt-Klassenpfad-Aufl&ouml;sung aktiviert: ''{0}''</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModelProcessingEnabledInfo defaultModelProcessingEnabledInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default model processing enabled: ''{0}''</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default model processing enabled: ''{0}''</code></pre><hr/><pre><code>Standard Modellverarbeitung aktiviert: ''{0}''</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModuleName defaultModuleName}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Default JOMC RI</code></pre><hr/><pre><code>Default JOMC RI</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesVendor defaultModulesVendor}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>The JOMC Project</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>The JOMC Project</code></pre><hr/><pre><code>The JOMC Project</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesVersion defaultModulesVersion}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>1.2-SNAPSHOT</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>1.2-SNAPSHOT</code></pre><hr/><pre><code>1.2-SNAPSHOT</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultModulesWarning defaultModulesWarning}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Failure loading model ''{0}'' for ''{1}''. Creating default modules.</code></pre><hr/><pre><code>Fehler beim Laden des Modells ''{0}'' f&uuml;r ''{1}''. Erstellt Standard-Module.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scope ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>A dependency of implementation ''{0}'' introduces a cycle.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>A dependency of implementation ''{0}'' introduces a cycle.</code></pre><hr/><pre><code>Zyklische Anforderung der Implementierung ''{0}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIgnoredInvocationMessage ignoredInvocationMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Invocation implementation ''{0}'' ignored.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Invocation implementation ''{0}'' ignored.</code></pre><hr/><pre><code>Invocation-Implementierung ''{0}'' ignoriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIgnoredInvokerMessage ignoredInvokerMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Invoker implementation ''{0}'' ignored.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Invoker implementation ''{0}'' ignored.</code></pre><hr/><pre><code>Invoker-Implementierung ''{0}'' ignoriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIllegalArraySpecificationMessage illegalArraySpecificationMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Illegal array specification ''{0}''. Mutliplicity ''{1}''.</code></pre><hr/><pre><code>Ung&uuml;ltige ''Array''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectSpecificationMessage illegalObjectSpecificationMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Illegal object specification ''{0}''. Multiplicity ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Illegal object specification ''{0}''. Multiplicity ''{1}''.</code></pre><hr/><pre><code>Ung&uuml;ltige ''Object''-Spezifikation ''{0}''. Kardinalit&auml;t ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 initialized in {0,number}ms.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 initialized in {0,number}ms.</code></pre><hr/><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 in {0,number}ms initialisiert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered invoker implementation ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered invoker implementation ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>Invoker-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getListenerInfoMessage listenerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered listener implementation ''{0}'' for ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered listener implementation ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>Listener-Implementierung ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getLocatorInfoMessage locatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</code></pre><hr/><pre><code>''{1}''-Locator-URI-Schema-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingDependencyMessage missingDependencyMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Dependency ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Dependency ''{1}'' not found for implementation ''{0}''.</code></pre><hr/><pre><code>''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingImplementationMessage missingImplementationMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Implementation ''{1}'' not found for specification ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Implementation ''{1}'' not found for specification ''{0}''.</code></pre><hr/><pre><code>Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingImplementationsMessage missingImplementationsMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>No implementations found for specification ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>No implementations found for specification ''{0}''.</code></pre><hr/><pre><code>Keine Implementierungen der Spezifikation ''{0}'' gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingInstanceMessage missingInstanceMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>No instance found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>No instance found for implementation ''{0}'' - ''{1}''.</code></pre><hr/><pre><code>Keine Instanz f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingLocatorMessage missingLocatorMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>No locator found for location ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>No locator found for location ''{0}''.</code></pre><hr/><pre><code>Keinen Locator f&uuml;r Ort ''{0}'' gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingMessageMessage missingMessageMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Message ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Message ''{1}'' not found for implementation ''{0}''.</code></pre><hr/><pre><code>''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingObjectInstanceMessage missingObjectInstanceMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>No instance found for object ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>No instance found for object ''{0}''.</code></pre><hr/><pre><code>Keine Instanz f&uuml;r Objekt ''{0}'' gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingObjectMessage missingObjectMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>No object found for implementation ''{0}'' - ''{1}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>No object found for implementation ''{0}'' - ''{1}''.</code></pre><hr/><pre><code>Kein Objekt f&uuml;r Implementierung ''{0}'' - ''{1}'' gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingPropertyMessage missingPropertyMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Property ''{1}'' not found for implementation ''{0}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Property ''{1}'' not found for implementation ''{0}''.</code></pre><hr/><pre><code>''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingScopeMessage missingScopeMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Scope ''{0}'' not found.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Scope ''{0}'' not found.</code></pre><hr/><pre><code>G&uuml;ltigkeitsbereich ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingSpecificationClassMessage missingSpecificationClassMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' does not define a class.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' does not define a class.</code></pre><hr/><pre><code>Spezifikation ''{0}'' definiert keine Klasse.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getMissingSpecificationMessage missingSpecificationMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' not found.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Specification ''{0}'' not found.</code></pre><hr/><pre><code>Spezifikation ''{0}'' nicht gefunden.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getModulesReportMessage modulesReportMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Modules report:</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Modules report:</code></pre><hr/><pre><code>Modulbericht:</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getScopeInfoMessage scopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</code></pre><hr/><pre><code>''{1}''-G&uuml;ltigkeitsbereich-Implementierung ''{0}'' f&uuml;r ''{2}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getUnexpectedDependencyObjectsMessage unexpectedDependencyObjectsMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</code></pre><hr/><pre><code>Unerwartete Anzahl Objekte f&uuml;r ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</code></pre></td>
  *     </tr>
  *   </table>
  * </p>
@@ -3439,11 +3439,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3491,11 +3491,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3543,11 +3543,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4010,11 +4010,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4325,11 +4325,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 initialized in {0,number}ms.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 initialized in {0,number}ms.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-24T21:41:24+0100 in {0,number}ms initialisiert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-01-26T20:11:07+0100 in {0,number}ms initialisiert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
