@@ -398,7 +398,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
-          <version>2.2</version>
+          <version>${maven-changes-plugin.version}</version>
+          <configuration>
+            <escapeHTML>false</escapeHTML>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -602,6 +605,7 @@
             <configuration>
               <failOnError>true</failOnError>
               <xmlPath>src/main/changes/changes.xml</xmlPath>
+              <escapeHTML>false</escapeHTML>
             </configuration>
           </execution>
         </executions>
@@ -862,8 +866,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
-        <version>2.2</version>
-        <!-- version>2.3</version Upgrade breaks changes report due to http://jira.codehaus.org/browse/MCHANGES-190 -->
+        <version>${maven-changes-plugin.version}</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -874,6 +877,7 @@
                 <MantisBT>http://apps.sourceforge.net/mantisbt/jomc/view.php?id=%ISSUE%</MantisBT>
               </issueLinkTemplatePerSystem>
               <xmlPath>src/main/changes/changes.xml</xmlPath>
+              <escapeHTML>false</escapeHTML>
             </configuration>
           </reportSet>
         </reportSets>
@@ -1543,6 +1547,7 @@
     <clirr-maven-plugin.version>2.3</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
+    <maven-changes-plugin.version>2.4</maven-changes-plugin.version>
     <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
