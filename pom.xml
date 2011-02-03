@@ -427,35 +427,6 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
-          <artifactId>jaxb2-maven-plugin</artifactId>
-          <version>1.3</version>
-          <dependencies>
-            <dependency>
-              <groupId>net.sourceforge.ccxjc</groupId>
-              <artifactId>cc-xjc-plugin</artifactId>
-              <version>1.4</version>
-            </dependency>
-          </dependencies>
-          <executions>
-            <execution>
-              <id>xjc</id>
-              <goals>
-                <goal>xjc</goal>
-              </goals>
-              <configuration>
-                <arguments>-copy-constructor -mark-generated -Xinject-code</arguments>
-                <bindingDirectory>src/main/schemas</bindingDirectory>
-                <extension>true</extension>
-                <npa>true</npa>
-                <outputDirectory>${xjcOutputDirectory}</outputDirectory>
-                <schemaDirectory>src/main/schemas</schemaDirectory>
-                <staleFile>${project.build.directory}/xjc.staleFile</staleFile> <!-- See http://jira.codehaus.org/browse/MJAXB-34 -->
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
           <artifactId>buildnumber-maven-plugin</artifactId>
           <version>1.0-beta-4</version>
           <executions>
@@ -557,6 +528,39 @@
               <goals>
                 <goal>descriptor</goal>
               </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.jvnet.jaxb2.maven2</groupId>
+          <artifactId>maven-jaxb21-plugin</artifactId>
+          <version>0.7.5</version>
+          <executions>
+            <execution>
+              <id>generate-main</id>
+              <goals>
+                <goal>generate</goal>
+              </goals>
+              <configuration>
+                <args>
+                  <arg>-npa</arg>
+                  <arg>-copy-constructor</arg>
+                  <arg>-mark-generated</arg>
+                  <arg>-Xinject-code</arg>
+                </args>
+                <bindingDirectory>src/main/schemas</bindingDirectory>
+                <extension>true</extension>
+                <generateDirectory>${xjcOutputDirectory}</generateDirectory>
+                <readOnly>true</readOnly>
+                <schemaDirectory>src/main/schemas</schemaDirectory>
+                <plugins>
+                  <plugin>
+                    <groupId>net.sourceforge.ccxjc</groupId>
+                    <artifactId>cc-xjc-plugin</artifactId>
+                    <version>${cc-xjc-plugin.version}</version>
+                  </plugin>
+                </plugins>
+              </configuration>
             </execution>
           </executions>
         </plugin>
@@ -1549,6 +1553,7 @@
     <maven-plugin-plugin.version>2.6</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <maven-changes-plugin.version>2.4</maven-changes-plugin.version>
+    <cc-xjc-plugin.version>1.4</cc-xjc-plugin.version>
     <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
     <jomc.build.version>1.5</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
