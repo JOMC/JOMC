@@ -78,12 +78,12 @@ import static org.junit.Assert.assertNull;
  *       <td align="left" scope="col" nowrap><b>Description</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
- *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
+ *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
- *       <td align="left">Dependency on {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} {@code (org.jomc.ri.test.TestSpecification)} at specification level 1.2-SNAPSHOT.</td>
+ *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
+ *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
  *     </tr>
  *   </table>
  * </p>

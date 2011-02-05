@@ -72,8 +72,8 @@ import java.util.Locale;
  *       <td align="left" scope="col" nowrap><b>Documentation</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@link #getPropertyImpl propertyImpl}</td>
- *       <td align="left" nowrap>{@code java.lang.String}</td>
+ *       <td align="left" valign="top" nowrap>{@link #getPropertyImpl propertyImpl}</td>
+ *       <td align="left" valign="top" nowrap>{@code java.lang.String}</td>
  *       <td align="left" valign="top"></td>
  *     </tr>
  *   </table>
@@ -88,8 +88,8 @@ import java.util.Locale;
  *       <td align="left" scope="col" nowrap><b>Description</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@link #getDependencyImpl dependencyImpl}</td>
- *       <td align="left">Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</td>
+ *       <td align="left" valign="top" nowrap>{@link #getDependencyImpl dependencyImpl}</td>
+ *       <td align="left" valign="top">Dependency on the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification bound to an instance.</td>
  *     </tr>
  *   </table>
  * </p>

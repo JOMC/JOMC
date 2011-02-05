@@ -53,8 +53,8 @@ import static org.junit.Assert.assertEquals;
  *       <td align="left" scope="col" nowrap><b>Description</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@link #getOverrideTestSpecification Override Test Specification}</td>
- *       <td align="left">Dependency on {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} bound to an instance.</td>
+ *       <td align="left" valign="top" nowrap>{@link #getOverrideTestSpecification Override Test Specification}</td>
+ *       <td align="left" valign="top">Dependency on the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification bound to an instance.</td>
  *     </tr>
  *   </table>
  * </p>
@@ -144,11 +144,20 @@ public class OverrideTestImplementationTest
      * Gets the {@code Override Test Specification} dependency.
      * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification.</p>
      * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
-     * <p><b>Properties</b><dl>
-     * <dt>"{@code propertyImpl}"</dt>
-     * <dd>Property of type {@code java.lang.String}.
-     * </dd>
-     * </dl>
+     * <p><strong>Properties:</strong>
+     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+     *     <tr class="TableSubHeadingColor">
+     *       <th align="left" scope="col" nowrap><b>Name</b></th>
+     *       <th align="left" scope="col" nowrap><b>Type</b></th>
+     *       <th align="left" scope="col" nowrap><b>Documentation</b></th>
+     *     </tr>
+     *     <tr class="TableRow">
+     *       <td align="left" valign="top" nowrap>{@code propertyImpl}</td>
+     *       <td align="left" valign="top" nowrap>{@code java.lang.String}</td>
+     *       <td align="left" valign="top"></td>
+     *     </tr>
+     *   </table>
+     * </p>
      * @return The {@code Override Test Specification} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
