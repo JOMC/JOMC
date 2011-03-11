@@ -1559,7 +1559,7 @@
     <maven-plugin-plugin.version>2.7</maven-plugin-plugin.version>
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <maven-changes-plugin.version>2.4</maven-changes-plugin.version>
-    <cc-xjc-plugin.version>1.4</cc-xjc-plugin.version>
+    <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
     <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
     <jomc.build.version>1.6</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
