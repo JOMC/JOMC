@@ -291,6 +291,14 @@ public class DefaultLocator implements Locator
 
             return builder.substring( lineSeparator.length() );
         }
+        catch( final java.lang.ClassCastException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.lang.IllegalArgumentException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
         catch( final java.util.MissingResourceException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
@@ -342,6 +350,14 @@ public class DefaultLocator implements Locator
             }
 
             return builder.substring( lineSeparator.length() );
+        }
+        catch( final java.lang.ClassCastException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.lang.IllegalArgumentException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
         }
         catch( final java.util.MissingResourceException e )
         {
