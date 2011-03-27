@@ -93,6 +93,29 @@ import org.jomc.util.WeakIdentityHashMap;
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
  *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Implementation</font></th>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ri.DefaultObjectManager}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Name:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code JOMC RI}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Flags:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code none}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code 1.1}</td>
+ *     </tr>
+ *   </table>
+ * </p>
+ * <p>
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <tr class="TableHeadingColor">
  *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
  *     </tr>
  *     <tr class="TableSubHeadingColor">
@@ -132,17 +155,17 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 for ''{0}''.</code></pre><hr/><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 for ''{0}''.</code></pre><hr/><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scheme ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scheme ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
@@ -187,7 +210,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scope ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scope ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
@@ -217,7 +240,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 initialized in {0,number}ms.</code></pre><hr/><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 in {0,number}ms initialisiert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 initialized in {0,number}ms.</code></pre><hr/><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 in {0,number}ms initialisiert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
@@ -3455,11 +3478,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3515,11 +3538,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3575,11 +3598,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scheme ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4114,11 +4137,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scope ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4477,11 +4500,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 initialized in {0,number}ms.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 initialized in {0,number}ms.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-24T17:53:46+0100 in {0,number}ms initialisiert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-03-27T16:12:46+0200 in {0,number}ms initialisiert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
