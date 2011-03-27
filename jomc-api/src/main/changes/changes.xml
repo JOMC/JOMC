@@ -42,5 +42,11 @@
   <body>
     <!-- *********************************************************************************************************** -->
     <release version="1.1" date="2010-07-28"/>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.2">
+      <action type="update" dev="schulte2005"><![CDATA[Updated methods <code>getObjectManager</code> and
+      <code>newObjectManager</code> of class <code>org.jomc.ObjectManagerFactory</code> to execute privileged.]]>
+      </action>
+    </release>
   </body>
 </document>

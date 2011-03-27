@@ -37,6 +37,8 @@
 package org.jomc;
 
 import java.lang.reflect.Method;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -57,7 +59,7 @@ import java.lang.reflect.Method;
  *     </tr>
  *     <tr>
  *       <td class="TableSubHeadingColor" align="left" nowrap><b>Flags:</b></td>
- *       <td class="TableRowColor" align="left" nowrap> {@code final}</td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code abstract} {@code final}</td>
  *     </tr>
  *     <tr>
  *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
@@ -112,18 +114,26 @@ public abstract class ObjectManagerFactory
      */
     public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
-        final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
+        return AccessController.doPrivileged( new PrivilegedAction<ObjectManager>()
+        {
 
-        try
-        {
-            final Class<?> factoryClass = Class.forName( factory, true, classLoader );
-            final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
-            return (ObjectManager) factoryMethod.invoke( null, classLoader );
-        }
-        catch ( final Exception e )
-        {
-            throw new ObjectManagementException( getMessage( e ), e );
-        }
+            public ObjectManager run()
+            {
+                final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
+
+                try
+                {
+                    final Class<?> factoryClass = Class.forName( factory, true, classLoader );
+                    final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
+                    return (ObjectManager) factoryMethod.invoke( null, classLoader );
+                }
+                catch ( final Exception e )
+                {
+                    throw new ObjectManagementException( getMessage( e ), e );
+                }
+            }
+
+        } );
     }
 
     /**
@@ -141,17 +151,27 @@ public abstract class ObjectManagerFactory
      */
     public static ObjectManager newObjectManager( final ClassLoader classLoader )
     {
-        final String implementation =
-            System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
+        return AccessController.doPrivileged( new PrivilegedAction<ObjectManager>()
+        {
 
-        try
-        {
-            return Class.forName( implementation, true, classLoader ).asSubclass( ObjectManager.class ).newInstance();
-        }
-        catch ( final Exception e )
-        {
-            throw new ObjectManagementException( getMessage( e ), e );
-        }
+            public ObjectManager run()
+            {
+                final String implementation =
+                    System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
+
+                try
+                {
+                    return Class.forName( implementation, true, classLoader ).asSubclass( ObjectManager.class ).
+                        newInstance();
+
+                }
+                catch ( final Exception e )
+                {
+                    throw new ObjectManagementException( getMessage( e ), e );
+                }
+            }
+
+        } );
     }
 
     private static String getMessage( final Throwable t )
