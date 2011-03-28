@@ -42,22 +42,28 @@ import java.util.Map;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Scope a specification applies to.
- *
  * <p>
- *   This specification declares a multiplicity of {@code Many}.
- *   An application assembler may provide multiple implementations of this specification (including none).
- * </p>
- *
- * <p>
- *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
- *   <pre>
- * Scope[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope[].class );
- * Scope object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
- *   </pre>
- * </p>
- *
- * <p>
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Specification</font></th>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.spi.Scope}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Multiplicity:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code Many}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Scope:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code Multiton}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code 1.0}</td>
+ *     </tr>
+ *   </table>
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
