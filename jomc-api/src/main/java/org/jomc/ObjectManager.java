@@ -42,23 +42,28 @@ import java.util.Locale;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Manages objects.
- *
  * <p>
- *   This specification declares a multiplicity of {@code One}.
- *   An application assembler may provide either no or one implementation of this specification.
- * </p>
- *
- * <p>
- *   Use of class {@link org.jomc.ObjectManager ObjectManager} is supported for accessing implementations.
- *   <pre>
- * ObjectManager object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( ObjectManager.class );
- * ObjectManager object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( ObjectManager.class, "<i>implementation name</i>" );
- *   </pre>
- * </p>
- *
- * <p>
- *   This specification applies to {@code Singleton} scope.
- *   The same singleton object is returned whenever requested.
+ *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
+ *     <tr class="TableHeadingColor">
+ *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Specification</font></th>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ObjectManager}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Multiplicity:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code One}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Scope:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code Singleton}</td>
+ *     </tr>
+ *     <tr>
+ *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code 1.0}</td>
+ *     </tr>
+ *   </table>
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
