@@ -140,10 +140,9 @@ public class DefaultLocator implements Locator
             throw new NullPointerException( "location" );
         }
 
-        final String scheme = location.getScheme();
-        for ( String s : SUPPORTED_URI_SCHEMES )
+        for ( int i = SUPPORTED_URI_SCHEMES.length - 1; i >= 0; i-- )
         {
-            if ( s.equals( scheme ) )
+            if ( SUPPORTED_URI_SCHEMES[i].equals( location.getScheme() ) )
             {
                 return true;
             }

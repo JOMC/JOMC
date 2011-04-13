@@ -155,17 +155,17 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultInvokerInfoMessage defaultInvokerInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultListenerInfo defaultListenerInfo}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 for ''{0}''.</code></pre><hr/><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLocatorInfoMessage defaultLocatorInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scheme ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scheme ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultLogLevelInfoMessage defaultLogLevelInfoMessage}</td>
@@ -210,7 +210,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDefaultScopeInfoMessage defaultScopeInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scope ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scope ''{0}'' for ''{1}''.</code></pre><hr/><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getDependencyCycleMessage dependencyCycleMessage}</td>
@@ -240,7 +240,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getImplementationInfoMessage implementationInfoMessage}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 initialized in {0,number}ms.</code></pre><hr/><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 in {0,number}ms initialisiert.</code></pre></td>
+ *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 initialized in {0,number}ms.</code></pre><hr/><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 in {0,number}ms initialisiert.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getInvokerInfoMessage invokerInfoMessage}</td>
@@ -452,9 +452,11 @@ public class DefaultObjectManager implements ObjectManager
 
             final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
 
-            for ( Implementation i : available.getImplementation() )
+            for ( int i = available.getImplementation().size() - 1; i >= 0; i-- )
             {
-                if ( i.getLocation() != null )
+                final Implementation impl = available.getImplementation().get( i );
+
+                if ( impl.getLocation() != null )
                 {
                     if ( s.getClazz() == null )
                     {
@@ -469,14 +471,14 @@ public class DefaultObjectManager implements ObjectManager
                     }
 
                     final Object o = this.getObject( Class.forName( s.getClazz(), true, classLoader ),
-                                                     i.getLocationUri(), classLoader );
+                                                     impl.getLocationUri(), classLoader );
 
                     if ( o == null )
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( classLoader, Level.WARNING, getMissingObjectMessage(
-                                Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                         }
                     }
@@ -485,15 +487,15 @@ public class DefaultObjectManager implements ObjectManager
                         list.add( o );
                     }
                 }
-                else if ( !i.isAbstract() )
+                else if ( !impl.isAbstract() )
                 {
-                    final Instance instance = model.getInstance( i.getIdentifier() );
+                    final Instance instance = model.getInstance( impl.getIdentifier() );
                     if ( instance == null )
                     {
                         if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                         }
 
@@ -506,7 +508,7 @@ public class DefaultObjectManager implements ObjectManager
                         if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( classLoader, Level.WARNING, getMissingObjectMessage(
-                                Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                         }
                     }
@@ -946,8 +948,9 @@ public class DefaultObjectManager implements ObjectManager
                             return null;
                         }
 
-                        for ( Implementation a : available.getImplementation() )
+                        for ( int i = available.getImplementation().size() - 1; i >= 0; i-- )
                         {
+                            final Implementation a = available.getImplementation().get( i );
                             if ( a.getLocation() != null )
                             {
                                 final Object o2 = this.getObject( Class.forName( ds.getClazz(), true, classLoader ),
@@ -1362,9 +1365,10 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( implementations != null && !implementations.getImplementation().isEmpty() )
                     {
-                        for ( Implementation i : implementations.getImplementation() )
+                        for ( int i = implementations.getImplementation().size() - 1; i >= 0; i-- )
                         {
-                            final Instance listenerInstance = model.getInstance( i.getIdentifier() );
+                            final Implementation impl = implementations.getImplementation().get( i );
+                            final Instance listenerInstance = model.getInstance( impl.getIdentifier() );
                             if ( listenerInstance != null )
                             {
                                 try
@@ -1391,7 +1395,7 @@ public class DefaultObjectManager implements ObjectManager
                             else if ( this.isLoggable( Level.WARNING ) )
                             {
                                 this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                    Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                    Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                             }
                         }
@@ -1599,9 +1603,11 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( this.isLoggable( level ) )
         {
-            for ( Listener l : this.getListeners( classLoader ) )
+            final List<Listener> l = this.getListeners( classLoader );
+
+            for ( int i = l.size() - 1; i >= 0; i-- )
             {
-                l.onLog( level, message, throwable );
+                l.get( i ).onLog( level, message, throwable );
             }
         }
     }
@@ -2399,11 +2405,13 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( implementations != null )
                     {
-                        for ( Implementation i : implementations.getImplementation() )
+                        for ( int i = implementations.getImplementation().size() - 1; i >= 0; i-- )
                         {
-                            if ( identifier.equals( i.getName() ) )
+                            final Implementation impl = implementations.getImplementation().get( i );
+
+                            if ( identifier.equals( impl.getName() ) )
                             {
-                                final Instance instance = model.getInstance( i.getIdentifier() );
+                                final Instance instance = model.getInstance( impl.getIdentifier() );
 
                                 if ( instance != null )
                                 {
@@ -2412,7 +2420,7 @@ public class DefaultObjectManager implements ObjectManager
                                     if ( this.isLoggable( Level.CONFIG ) )
                                     {
                                         this.log( classLoader, Level.CONFIG, getScopeInfoMessage(
-                                            Locale.getDefault(), i.getIdentifier(), identifier,
+                                            Locale.getDefault(), impl.getIdentifier(), identifier,
                                             this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
 
                                     }
@@ -2421,7 +2429,7 @@ public class DefaultObjectManager implements ObjectManager
                                 else if ( this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                        Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                                 }
                             }
@@ -2540,11 +2548,13 @@ public class DefaultObjectManager implements ObjectManager
 
                         if ( implementations != null )
                         {
-                            for ( Implementation i : implementations.getImplementation() )
+                            for ( int i = implementations.getImplementation().size() - 1; i >= 0; i-- )
                             {
-                                if ( scheme.equals( i.getName() ) )
+                                final Implementation impl = implementations.getImplementation().get( i );
+
+                                if ( scheme.equals( impl.getName() ) )
                                 {
-                                    final Instance instance = model.getInstance( i.getIdentifier() );
+                                    final Instance instance = model.getInstance( impl.getIdentifier() );
 
                                     if ( instance != null )
                                     {
@@ -2554,7 +2564,7 @@ public class DefaultObjectManager implements ObjectManager
                                         if ( this.isLoggable( Level.CONFIG ) )
                                         {
                                             this.log( classLoader, Level.CONFIG, getLocatorInfoMessage(
-                                                Locale.getDefault(), i.getIdentifier(), scheme,
+                                                Locale.getDefault(), impl.getIdentifier(), scheme,
                                                 this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
 
                                         }
@@ -2564,7 +2574,7 @@ public class DefaultObjectManager implements ObjectManager
                                     else if ( this.isLoggable( Level.WARNING ) )
                                     {
                                         this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                            Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                            Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                                     }
                                 }
@@ -2669,11 +2679,13 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( implementations != null && !implementations.getImplementation().isEmpty() )
                     {
-                        for ( Implementation i : implementations.getImplementation() )
+                        for ( int i = implementations.getImplementation().size() - 1; i >= 0; i-- )
                         {
+                            final Implementation impl = implementations.getImplementation().get( i );
+
                             if ( invoker == null )
                             {
-                                final Instance invokerInstance = model.getInstance( i.getIdentifier() );
+                                final Instance invokerInstance = model.getInstance( impl.getIdentifier() );
 
                                 if ( invokerInstance != null )
                                 {
@@ -2683,7 +2695,7 @@ public class DefaultObjectManager implements ObjectManager
                                     if ( this.isLoggable( Level.CONFIG ) )
                                     {
                                         this.log( classLoader, Level.CONFIG, getInvokerInfoMessage(
-                                            Locale.getDefault(), i.getIdentifier(),
+                                            Locale.getDefault(), impl.getIdentifier(),
                                             this.getClassLoaderInfo( classLoader, invokersLoader ) ), null );
 
                                     }
@@ -2691,14 +2703,14 @@ public class DefaultObjectManager implements ObjectManager
                                 else if ( this.isLoggable( Level.WARNING ) )
                                 {
                                     this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                        Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                        Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                                 }
                             }
                             else if ( this.isLoggable( Level.CONFIG ) )
                             {
                                 this.log( classLoader, Level.CONFIG, getIgnoredInvokerMessage(
-                                    Locale.getDefault(), i.getIdentifier() ), null );
+                                    Locale.getDefault(), impl.getIdentifier() ), null );
 
                             }
                         }
@@ -2817,11 +2829,13 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( implementations != null && !implementations.getImplementation().isEmpty() )
             {
-                for ( Implementation i : implementations.getImplementation() )
+                for ( int i = implementations.getImplementation().size() - 1; i >= 0; i-- )
                 {
+                    final Implementation impl = implementations.getImplementation().get( i );
+
                     if ( invocation == null )
                     {
-                        final Instance invocationInstance = model.getInstance( i.getIdentifier() );
+                        final Instance invocationInstance = model.getInstance( impl.getIdentifier() );
 
                         if ( invocationInstance != null )
                         {
@@ -2830,14 +2844,14 @@ public class DefaultObjectManager implements ObjectManager
                         else if ( this.isLoggable( Level.WARNING ) )
                         {
                             this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                Locale.getDefault(), i.getIdentifier(), i.getName() ), null );
+                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                         }
                     }
                     else if ( this.isLoggable( Level.CONFIG ) )
                     {
                         this.log( classLoader, Level.CONFIG, getIgnoredInvocationMessage(
-                            Locale.getDefault(), i.getIdentifier() ), null );
+                            Locale.getDefault(), impl.getIdentifier() ), null );
 
                     }
                 }
@@ -3007,8 +3021,9 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( canProxy )
             {
-                for ( Specification s : instance.getSpecifications().getSpecification() )
+                for ( int i = instance.getSpecifications().getSpecification().size() - 1; i >= 0; i-- )
                 {
+                    final Specification s = instance.getSpecifications().getSpecification().get( i );
                     if ( s.getClazz() != null )
                     {
                         final Class<?> clazz = Class.forName( s.getClazz(), true, classLoader );
@@ -3478,11 +3493,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultInvoker Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3538,11 +3553,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 for ''{0}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultListener Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 for ''{0}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultListener Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 f&uuml;r ''{0}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -3598,11 +3613,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scheme ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scheme ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultLocator Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scheme ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4137,11 +4152,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scope ''{0}'' for ''{1}''.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>Registered DefaultScope Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scope ''{0}'' for ''{1}''.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultScope Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 Scope ''{0}'' f&uuml;r ''{1}'' registriert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
@@ -4500,11 +4515,11 @@ public class DefaultObjectManager implements ObjectManager
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 initialized in {0,number}ms.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 initialized in {0,number}ms.</code></pre></td>
      *     </tr>
      *     <tr class="TableRow">
      *       <td align="left" valign="top" nowrap>Deutsch</td>
-     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-03T21:35:53+0200 in {0,number}ms initialisiert.</code></pre></td>
+     *       <td align="left" valign="top" nowrap><pre><code>DefaultObjectManager Version 1.2-SNAPSHOT Build 2011-04-14T01:25:36+0200 in {0,number}ms initialisiert.</code></pre></td>
      *     </tr>
      *   </table>
      * </p>
