@@ -2006,7 +2006,7 @@ public class DefaultObjectManager implements ObjectManager
                         this.objects.put( objectsLoader, objectMap );
                     }
 
-                    cachedModules = new DefaultModules( cachedModules, objectMap );
+                    cachedModules = new Modules( cachedModules, objectMap );
                 }
 
                 this.modules.put( classLoader, cachedModules );

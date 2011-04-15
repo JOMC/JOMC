@@ -63,10 +63,6 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.2">
-      <action dev="schulte2005" type="add"><![CDATA[Added class <code>org.jomc.ri.DefaultModules</code> to support
-      caching of model objects.]]>
-      </action>
-    </release>
+    <release version="1.2"/>
   </body>
 </document>
