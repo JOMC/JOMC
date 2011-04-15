@@ -501,5 +501,20 @@
 
       </authors>
     </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.DefaultModules" class="org.jomc.ri.DefaultModules"
+                    classDeclaration="true" name="${project.name}" version="1.2" vendor="${project.organization.name}"
+                    createDate="2011-04-15T19:56:45Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Default {@code Modules} implementation.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2005-07-25T19:56:45Z"/>
+
+      </authors>
+    </implementation>
   </implementations>
 </module>
