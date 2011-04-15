@@ -145,10 +145,9 @@ public class DefaultModules extends Modules
      * Creates a new {@code DefaultModules} instance by deeply copying a given {@code DefaultModules} instance taking a
      * map backing the instance.
      *
-     * @param o The instance to copy.
-     * @param objects The map backing the instance.
+     * @param modules The instance to copy.
      *
-     * @throws NullPointerException if {@code o} or {@code objects} is {@code null}.
+     * @throws NullPointerException if {@code modules} is {@code null}.
      */
     public DefaultModules( final DefaultModules modules )
     {
@@ -159,10 +158,10 @@ public class DefaultModules extends Modules
      * Creates a new {@code DefaultModules} instance by deeply copying a given {@code Modules} instance taking a map
      * backing the instance.
      *
-     * @param o The instance to copy.
+     * @param modules The instance to copy.
      * @param objects The map backing the instance.
      *
-     * @throws NullPointerException if {@code o} or {@code objects} is {@code null}.
+     * @throws NullPointerException if {@code modules} or {@code objects} is {@code null}.
      */
     public DefaultModules( final Modules modules, final Map<Object, Instance> objects )
     {
