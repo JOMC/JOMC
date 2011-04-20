@@ -1235,32 +1235,39 @@ public class DefaultObjectManager implements ObjectManager
 
     };
 
-    /** Flag indicating that initialization has been performed. */
+    /** Flag indicating that initialisation has been performed. */
     private boolean initialized;
 
     /** Log level of the instance. */
     private Level logLevel;
 
     /** Listeners of the instance. */
-    private final Map<ClassLoader, List<Listener>> listeners = new WeakIdentityHashMap();
+    private final Map<ClassLoader, List<Listener>> listeners =
+        new WeakIdentityHashMap<ClassLoader, List<Listener>>();
 
     /** Modules of the instance. */
-    private final Map<ClassLoader, Modules> modules = new WeakIdentityHashMap();
+    private final Map<ClassLoader, Modules> modules =
+        new WeakIdentityHashMap<ClassLoader, Modules>();
 
     /** Invokers of the instance. */
-    private final Map<ClassLoader, Invoker> invokers = new WeakIdentityHashMap();
+    private final Map<ClassLoader, Invoker> invokers =
+        new WeakIdentityHashMap<ClassLoader, Invoker>();
 
     /** Scopes of the instance. */
-    private final Map<ClassLoader, Map<String, Scope>> scopes = new WeakIdentityHashMap();
+    private final Map<ClassLoader, Map<String, Scope>> scopes =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Scope>>();
 
     /** Locators of the instance. */
-    private final Map<ClassLoader, Map<String, Locator>> locators = new WeakIdentityHashMap();
+    private final Map<ClassLoader, Map<String, Locator>> locators =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Locator>>();
 
     /** Objects of the instance. */
-    private final Map<ClassLoader, Map<Object, Instance>> objects = new WeakIdentityHashMap();
+    private final Map<ClassLoader, Map<Object, Instance>> objects =
+        new WeakIdentityHashMap<ClassLoader, Map<Object, Instance>>();
 
     /** {@code ObjectManager} singletons. */
-    private static final Map<ClassLoader, ObjectManager> singletons = new WeakIdentityHashMap();
+    private static final Map<ClassLoader, ObjectManager> singletons =
+        new WeakIdentityHashMap<ClassLoader, ObjectManager>();
 
     /**
      * Default {@link ObjectManagerFactory#getObjectManager(ClassLoader)} implementation.
@@ -2002,7 +2009,7 @@ public class DefaultObjectManager implements ObjectManager
                     Map<Object, Instance> objectMap = this.objects.get( objectsLoader );
                     if ( objectMap == null )
                     {
-                        objectMap = new WeakIdentityHashMap();
+                        objectMap = new WeakIdentityHashMap<Object, Instance>();
                         this.objects.put( objectsLoader, objectMap );
                     }
 
