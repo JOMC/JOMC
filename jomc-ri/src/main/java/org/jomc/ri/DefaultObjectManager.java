@@ -1941,8 +1941,10 @@ public class DefaultObjectManager implements ObjectManager
                     modelContext.getListeners().add( new ModelContext.Listener()
                     {
 
+                        @Override
                         public void onLog( final Level level, final String message, final Throwable t )
                         {
+                            super.onLog( level, message, t );
                             final LogRecord r = new LogRecord( level, message );
                             r.setThrown( t );
 
