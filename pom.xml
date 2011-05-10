@@ -1537,6 +1537,7 @@
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.2</jomc.base.version>
     <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
-    <jomc.artifacts.distribution.url>scp://shell.sourceforge.net/home/project-web/jomc/htdocs/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
+    <jomc.artifacts.distribution.base.url>sftp://web.sourceforge.net/home/project-web/jomc/htdocs</jomc.artifacts.distribution.base.url>
+    <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
   </properties>
 </project>
