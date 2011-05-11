@@ -251,24 +251,36 @@
                 <packages>org.jomc.spi*</packages>
               </group>
               <group>
-                <title>Command Line Interface</title>
-                <packages>org.jomc.cli*</packages>
+                <title>Utilities</title>
+                <packages>org.jomc.util*</packages>
+              </group>
+              <group>
+                <title>Modlet</title>
+                <packages>org.jomc.modlet*</packages>
               </group>
               <group>
                 <title>Model</title>
                 <packages>org.jomc.model*</packages>
               </group>
               <group>
+                <title>Reference Implementation</title>
+                <packages>org.jomc.ri*</packages>
+              </group>
+              <group>
+                <title>Command Line Interface</title>
+                <packages>org.jomc.cli*</packages>
+              </group>
+              <group>
                 <title>Tools</title>
                 <packages>org.jomc.tools*</packages>
               </group>
               <group>
-                <title>Maven 2 Goals</title>
-                <packages>org.jomc.tools.mojo*</packages>
+                <title>Maven Plugin</title>
+                <packages>org.jomc.mojo*</packages>
               </group>
               <group>
-                <title>Reference Implementation</title>
-                <packages>org.jomc.ri*</packages>
+                <title>Ant Tasks</title>
+                <packages>org.jomc.ant*</packages>
               </group>
             </groups>
             <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
