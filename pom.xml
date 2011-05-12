@@ -267,10 +267,6 @@
                 <packages>org.jomc.ri*</packages>
               </group>
               <group>
-                <title>Command Line Interface</title>
-                <packages>org.jomc.cli*</packages>
-              </group>
-              <group>
                 <title>Tools</title>
                 <packages>org.jomc.tools*</packages>
               </group>
@@ -281,6 +277,10 @@
               <group>
                 <title>Ant Tasks</title>
                 <packages>org.jomc.ant*</packages>
+              </group>
+              <group>
+                <title>Command Line Interface</title>
+                <packages>org.jomc.cli*</packages>
               </group>
             </groups>
             <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
