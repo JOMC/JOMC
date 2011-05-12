@@ -67,16 +67,16 @@ _gaq.push(['_trackPageview']);
     </head>
     <menu ref="parent" inherit="top" inheritAsRef="false"/>
     <menu name="Modules">
-      <item name="JOMC Utilities" href="jomc-util/index.html"/>
-      <item name="JOMC Modlet" href="jomc-modlet/index.html"/>
-      <item name="JOMC Model" href="jomc-model/index.html"/>
-      <item name="JOMC Tools" href="jomc-tools/index.html"/>
-      <item name="JOMC API" href="jomc-api/index.html"/>
-      <item name="JOMC SPI" href="jomc-spi/index.html"/>
-      <item name="JOMC RI" href="jomc-ri/index.html"/>
-      <item name="JOMC CLI" href="jomc-cli/index.html"/>
-      <item name="JOMC Ant Tasks" href="jomc-ant-tasks/index.html"/>
-      <item name="Maven JOMC Plugin" href="maven-jomc-plugin/index.html"/>
+      <item name="API" href="jomc-api/index.html"/>
+      <item name="SPI" href="jomc-spi/index.html"/>
+      <item name="Utilities" href="jomc-util/index.html"/>
+      <item name="Modlet" href="jomc-modlet/index.html"/>
+      <item name="Model" href="jomc-model/index.html"/>
+      <item name="RI" href="jomc-ri/index.html"/>
+      <item name="Tools" href="jomc-tools/index.html"/>
+      <item name="Ant Tasks" href="jomc-ant-tasks/index.html"/>
+      <item name="Maven Plugin" href="maven-jomc-plugin/index.html"/>
+      <item name="CLI" href="jomc-cli/index.html"/>
     </menu>
     <menu name="Sourceforge" inherit="bottom" inheritAsRef="false">
       <item name="Home" href="http://jomc.sourceforge.net/project/home"/>
