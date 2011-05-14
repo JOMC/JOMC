@@ -69,14 +69,16 @@ import static org.junit.Assert.assertEquals;
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
  *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Dependencies</font></th>
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Dependencies</font></th>
  *     </tr>
  *     <tr class="TableSubHeadingColor">
  *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Flags</b></td>
  *       <td align="left" scope="col" nowrap><b>Description</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getOverrideTestSpecification Override Test Specification}</td>
+ *       <td align="left" valign="top" nowrap>{@code none}</td>
  *       <td align="left" valign="top">Dependency on the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification bound to an instance.</td>
  *     </tr>
  *   </table>

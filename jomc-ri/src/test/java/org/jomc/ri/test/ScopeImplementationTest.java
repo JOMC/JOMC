@@ -94,18 +94,21 @@ import static org.junit.Assert.assertNull;
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
  *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Dependencies</font></th>
+ *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Dependencies</font></th>
  *     </tr>
  *     <tr class="TableSubHeadingColor">
  *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Flags</b></td>
  *       <td align="left" scope="col" nowrap><b>Description</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
+ *       <td align="left" valign="top" nowrap>{@code none}</td>
  *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
+ *       <td align="left" valign="top" nowrap>{@code none}</td>
  *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne1'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
  *     </tr>
  *   </table>
