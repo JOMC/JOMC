@@ -75,20 +75,23 @@ import org.jomc.spi.Locator;
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
  *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
+ *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Messages</font></th>
  *     </tr>
  *     <tr class="TableSubHeadingColor">
  *       <td align="left" scope="col" nowrap><b>Name</b></td>
+ *       <td align="left" scope="col" nowrap><b>Flags</b></td>
  *       <td align="left" scope="col" nowrap><b>Languages</b></td>
  *       <td align="left" scope="col" nowrap><b>Default Templates</b></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectMessage illegalObjectMessage}</td>
+ *       <td align="left" valign="top" nowrap>{@code none}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
  *       <td align="left" valign="top" nowrap><pre><code>Object ''{0}'' not an instance of class ''{1}''.</code></pre><hr/><pre><code>Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</code></pre></td>
  *     </tr>
  *     <tr class="TableRowColor">
  *       <td align="left" valign="top" nowrap>{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}</td>
+ *       <td align="left" valign="top" nowrap>{@code none}</td>
  *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
  *       <td align="left" valign="top" nowrap><pre><code>URI scheme ''{0}'' is not supported.</code></pre><hr/><pre><code>Keine Unterst&uuml;tzung f&uuml;r URI Schema ''{0}''.</code></pre></td>
  *     </tr>
