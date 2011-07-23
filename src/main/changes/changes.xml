@@ -70,6 +70,7 @@
       <li>Updated the <code>maven-deploy-plugin</code> from <code>2.5</code> to <code>2.6</code>.</li>
       <li>Updated the <code>maven-project-info-reports-plugin</code> from <code>2.2</code> to <code>2.4</code>.</li>
       <li>Updated the <code>maven-jxr-plugin</code> from <code>2.2</code> to <code>2.3</code>.</li>
+      <li>Updated the <code>maven-site-plugin</code> from <code>2.2</code> to <code>2.3</code>.</li>
       <li>Updated the <code>animal-sniffer-maven-plugin</code> from <code>1.6</code> to <code>1.7</code>.</li>
       <li>Updated the <code>build-helper-maven-plugin</code> from <code>1.5</code> to <code>1.7</code>.</li>
       <li>Updated the <code>buildnumber-maven-plugin</code> from <code>1.0-beta-4</code> to <code>1.0</code>.</li>
