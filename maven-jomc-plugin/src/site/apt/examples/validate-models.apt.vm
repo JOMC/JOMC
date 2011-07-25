@@ -1,5 +1,5 @@
  ------
- Usage
+ Validating models
  ------
  Christian Schulte
  ------
@@ -36,14 +36,10 @@
  ~~
  ~~ $Id$
 
-Usage
+Validating a project's main model
 
- Some brief examples on how to use this plugin.
-
-* Using the JOMC Plugin in a multi-module build.
-
-  If you need to perform object management and configuration tasks in a multi-module build, just configure the
-  JOMC Plugin in your parent <<<pom.xml>>> for performing the various tasks in theire corresponding phases.
+  If you need to validate a project's main model, just add the <<<validate-main-model>>> goal to the
+  <<<pom.xml>>>.
 
 +-----------------+
 <project>
@@ -53,26 +49,13 @@ Usage
       ...
       <plugin>
         <groupId>org.jomc</groupId>
-        <artifactId>jomc-maven-plugin</artifactId>
+        <artifactId>maven-jomc-plugin</artifactId>
         <version>${project.version}</version>
         <executions>
           <execution>
             <id>main-default</id>
             <goals>
-              <goal>attach-main-module</goal>
-              <goal>manage-main-sources</goal>
-              <goal>commit-main-classes</goal>
-              <goal>validate-main-classes</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>test-default</id>
-            <goals>
-              <goal>attach-test-module</goal>
-              <goal>manage-test-sources</goal>
-              <goal>commit-test-classes</goal>
-              <goal>validate-test-classes</goal>
-              <goal>validate-test-model</goal>
+              <goal>validate-main-model</goal>
             </goals>
           </execution>
         </executions>
@@ -84,8 +67,10 @@ Usage
 </project>
 +-----------------+
 
-  If your classes should be backed by Java resource bundles instead, just add two additional goals and specify a
-  different template profile.
+Validating a project's test model
+
+  If you need to validate a project's test model, just add the <<<validate-test-model>>> goal to the
+  <<<pom.xml>>>.
 
 +-----------------+
 <project>
@@ -95,35 +80,14 @@ Usage
       ...
       <plugin>
         <groupId>org.jomc</groupId>
-        <artifactId>jomc-maven-plugin</artifactId>
+        <artifactId>maven-jomc-plugin</artifactId>
         <version>${project.version}</version>
         <executions>
           <execution>
-            <id>main-default</id>
-            <goals>
-              <goal>attach-main-module</goal>
-              <goal>write-main-resources</goal>
-              <goal>manage-main-sources</goal>
-              <goal>commit-main-classes</goal>
-              <goal>validate-main-classes</goal>
-            </goals>
-            <configuration>
-              <templateProfile>jomc-java-bundles</templateProfile>
-            </configuration>
-          </execution>
-          <execution>
             <id>test-default</id>
             <goals>
-              <goal>attach-test-module</goal>
-              <goal>write-test-resources</goal>
-              <goal>manage-test-sources</goal>
-              <goal>commit-test-classes</goal>
-              <goal>validate-test-classes</goal>
               <goal>validate-test-model</goal>
             </goals>
-            <configuration>
-              <templateProfile>jomc-java-bundles</templateProfile>
-            </configuration>
           </execution>
         </executions>
       </plugin>
@@ -133,23 +97,3 @@ Usage
   ...
 </project>
 +-----------------+
-
-* How to disable resource file processing
-
-+-----------------+
-mvn ... -Djomc.resourceProcessing=false
-+-----------------+
-
-* How to disable source file processing
-
-+-----------------+
-mvn ... -Djomc.sourceProcessing=false
-+-----------------+
-
-* How to disable class file processing
-
-+-----------------+
-mvn ... -Djomc.classProcessing=false
-+-----------------+
-
-  For full documentation, please see the respective {{{./plugin-info.html}goal documentation}}.
