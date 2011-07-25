@@ -1,5 +1,5 @@
  ------
- Validating classpaths
+ Customizing code generation
  ------
  Christian Schulte
  ------
@@ -36,41 +36,23 @@
  ~~
  ~~ $Id$
 
-Validating a project's main classpath
+Customizing code generation
 
-  If you need to validate a project's main classpath, just add the <<<validate-main-classpath>>> goal to the
-  <<<pom.xml>>>.
+  If you need to customize the generated code, simply provide custom templates to the JOMC Plugin. This
+  is done by adding a template artifact as a plugin dependency and setting the <<<templateProfile>>> parameter of the
+  JOMC Plugin. As a starting point you can copy the default templates from the {{{./../../jomc-tools}JOMC Tools}}
+  artifact from directory
+  {{{${project.scm.url}/../jomc-tools/src/main/templates/org/jomc/tools/templates}org/jomc/tools/templates/jomc-java}}
+  to a <<<org/jomc/tools/templates/sub-directory>>> of your template artifact.
 
-+-----------------+
-<project>
-  ...
-  <build>
-    <plugins>
-      ...
-      <plugin>
-        <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
-        <version>${project.version}</version>
-        <executions>
-          <execution>
-            <id>main-default</id>
-            <goals>
-              <goal>validate-main-classpath</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      ...
-    </plugins>
-  </build>
-  ...
-</project>
-+-----------------+
+  For example, copying the default templates to directory <<<org/jomc/tools/templates/custom-profile>>>, you need to set
+  the <<<templateProfile>>> parameter to <<<custom-profile>>> and add your template artifact as a plugin dependency for
+  the templates to be found.
 
-Validating a project's test classpath
-
-  If you need to validate a project's test classpath, just add the <<<validate-test-classpath>>> goal to the
-  <<<pom.xml>>>.
+  See class {{{${project.url}/../jomc-tools/apidocs/org/jomc/tools/SourceFileProcessor.html}SourceFileProcessor}} for
+  details, especially the {{{${project.url}/../jomc-tools/apidocs/org/jomc/tools/JomcTool.html#getVelocityTemplate(java.lang.String)}getVelocityTemplate}}
+  method and the {{{${project.url}/../jomc-tools/apidocs/org/jomc/tools/SourceFileProcessor.html#getSourceFilesType(org.jomc.model.Implementation)}getSourceFilesType}}
+  methods.
 
 +-----------------+
 <project>
@@ -80,16 +62,21 @@ Validating a project's test classpath
       ...
       <plugin>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
         <version>${project.version}</version>
-        <executions>
-          <execution>
-            <id>test-default</id>
-            <goals>
-              <goal>validate-test-classpath</goal>
-            </goals>
-          </execution>
-        </executions>
+        ...
+        <dependencies>
+          <dependency>
+            <groupId>your.group.id</groupId>
+            <artifactId>your-custom-templates</artifactId>
+            <version>${project.version}</version>
+          </dependency>
+        </dependencies>
+        ...
+        <configuration>
+          <templateProfile>custom-profile</templateProfile>
+        </configuration>
+        ...
       </plugin>
       ...
     </plugins>

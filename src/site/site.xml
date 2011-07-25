@@ -75,7 +75,7 @@ _gaq.push(['_trackPageview']);
       <item name="RI" href="jomc-ri/index.html"/>
       <item name="Tools" href="jomc-tools/index.html"/>
       <item name="Ant Tasks" href="jomc-ant-tasks/index.html"/>
-      <item name="Maven Plugin" href="maven-jomc-plugin/index.html"/>
+      <item name="Maven Plugin" href="jomc-maven-plugin/index.html"/>
       <item name="CLI" href="jomc-cli/index.html"/>
     </menu>
     <menu name="Sourceforge" inherit="bottom" inheritAsRef="false">

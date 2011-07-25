@@ -63,7 +63,7 @@
     <plugins>
       <plugin>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -105,7 +105,7 @@
         <plugins>
           <plugin>
             <groupId>org.jomc</groupId>
-            <artifactId>maven-jomc-plugin</artifactId>
+            <artifactId>jomc-maven-plugin</artifactId>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>

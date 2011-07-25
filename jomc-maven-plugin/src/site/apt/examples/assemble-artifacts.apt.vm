@@ -54,7 +54,7 @@ Assembling JOMC artifacts
         <dependencies>
           <dependency>
             <groupId>org.jomc</groupId>
-            <artifactId>maven-jomc-plugin</artifactId>
+            <artifactId>jomc-maven-plugin</artifactId>
             <version>${project.version}</version>
           </dependency>
         </dependencies>

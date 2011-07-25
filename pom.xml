@@ -356,8 +356,8 @@
           <dependencies>
             <dependency>
               <groupId>org.jomc</groupId>
-              <artifactId>maven-jomc-plugin</artifactId>
-              <version>${maven-jomc-plugin.version}</version>
+              <artifactId>jomc-maven-plugin</artifactId>
+              <version>${jomc-maven-plugin.version}</version>
             </dependency>
           </dependencies>
         </plugin>
@@ -573,8 +573,8 @@
         </plugin>
         <plugin>
           <groupId>org.jomc</groupId>
-          <artifactId>maven-jomc-plugin</artifactId>
-          <version>${maven-jomc-plugin.version}</version>
+          <artifactId>jomc-maven-plugin</artifactId>
+          <version>${jomc-maven-plugin.version}</version>
           <executions>
             <execution>
               <id>main-default</id>
@@ -766,6 +766,7 @@
     <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
+    <module>jomc-maven-plugin</module>
     <module>jomc-ant-tasks</module>
     <module>jomc-api</module>
     <module>jomc-spi</module>
@@ -1329,21 +1330,41 @@
         <type>txt</type>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-maven-plugin</artifactId>
+        <classifier>changes</classifier>
+        <type>xhtml</type>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-maven-plugin</artifactId>
+        <classifier>license</classifier>
+        <type>txt</type>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-maven-plugin</artifactId>
         <classifier>javadoc</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
         <classifier>sources</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
       <dependency>
         <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
+        <artifactId>jomc-maven-plugin</artifactId>
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
@@ -1542,7 +1563,7 @@
     <emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.3</clirr-maven-plugin.version>
     <maven-plugin-plugin.version>2.8</maven-plugin-plugin.version>
-    <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
+    <jomc-maven-plugin.version>1.2-SNAPSHOT</jomc-maven-plugin.version>
     <maven-changes-plugin.version>2.6</maven-changes-plugin.version>
     <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
     <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>

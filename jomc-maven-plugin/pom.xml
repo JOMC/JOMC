@@ -39,9 +39,10 @@
     <version>1.2-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>jomc-ri</artifactId>
-  <name>JOMC RI</name>
-  <description>Object management and configuration reference implementation.</description>
+  <artifactId>jomc-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <name>JOMC Maven Plugin</name>
+  <description>Object management and configuration tools for Apache Maven.</description>
   <url>${jomc.artifacts.url}/${project.artifactId}-${project.version}</url>
   <build>
     <resources>
@@ -50,38 +51,14 @@
         <directory>src/main/resources</directory>
       </resource>
     </resources>
-    <testResources>
-      <testResource>
-        <filtering>true</filtering>
-        <directory>src/test/resources</directory>
-      </testResource>
-    </testResources>
     <plugins>
       <plugin>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>main-default</id>
-            <goals>
-              <goal>write-main-resources</goal>
-            </goals>
-            <configuration>
-              <templateProfile>jomc-java-bundles</templateProfile>
-              <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
-            </configuration>
-          </execution>
-        </executions>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-maven-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
   <dependencies>
-    <!-- Compile -->
-    <dependency>
-      <groupId>org.jomc</groupId>
-      <artifactId>jomc-util</artifactId>
-      <scope>compile</scope>
-    </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
       <artifactId>jomc-modlet</artifactId>
@@ -94,20 +71,76 @@
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
-      <artifactId>jomc-api</artifactId>
+      <artifactId>jomc-tools</artifactId>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.velocity</groupId>
+      <artifactId>velocity</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-project</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-core</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-shade-plugin</artifactId>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-io</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.jomc</groupId>
-      <artifactId>jomc-spi</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
+      <artifactId>jomc-tools</artifactId>
+      <classifier>templates</classifier>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <version>${maven-plugin-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </reporting>
   <distributionManagement>
     <site>
       <id>jomc.sourceforge.net</id>
@@ -123,55 +156,16 @@
       </activation>
       <dependencies>
         <dependency>
-          <groupId>javax.annotation</groupId>
-          <artifactId>jsr250-api</artifactId>
+          <groupId>javax.xml.bind</groupId>
+          <artifactId>jaxb-api</artifactId>
           <scope>compile</scope>
-          <optional>true</optional>
+        </dependency>
+        <dependency>
+          <groupId>com.sun.xml.bind</groupId>
+          <artifactId>jaxb-impl</artifactId>
+          <scope>runtime</scope>
         </dependency>
       </dependencies>
-    </profile>
-    <profile>
-      <id>jomc-ci</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.jomc</groupId>
-            <artifactId>jomc-maven-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-scm-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>initialize</id>
-                <phase>initialize</phase>
-                <goals>
-                  <goal>update</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>main-sources</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>update</goal>
-                  <goal>checkin</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>test-sources</id>
-                <phase>process-test-resources</phase>
-                <goals>
-                  <goal>update</goal>
-                  <goal>checkin</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
     </profile>
   </profiles>
 </project>
