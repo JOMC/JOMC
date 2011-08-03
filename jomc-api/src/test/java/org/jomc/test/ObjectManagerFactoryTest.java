@@ -95,8 +95,8 @@ public class ObjectManagerFactoryTest
         final String objectManager = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME );
         try
         {
-            System.setProperty( SYS_FACTORY_CLASSNAME, ObjectManagerDummy.class.getName() );
-            System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, ObjectManagerDummy.class.getName() );
+            System.setProperty( SYS_FACTORY_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
+            System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
             assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
             assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
                         == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );

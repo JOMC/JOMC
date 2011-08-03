@@ -73,12 +73,13 @@
       </authors>
     </implementation>
     <!-- *********************************************************************************************************** -->
-    <implementation identifier="org.jomc.test.ObjectManagerDummy" class="org.jomc.test.ObjectManagerDummy"
+    <implementation identifier="org.jomc.test.UnsupportedOperationExceptionObjectManager"
+                    class="org.jomc.test.UnsupportedOperationExceptionObjectManager"
                     classDeclaration="true" name="${project.name}" version="${project.version}"
                     vendor="${project.organization.name}" final="true" createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">{@code ObjectManager} dummy implementation.</text>
+        <text language="en">Test {@code ObjectManager} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"

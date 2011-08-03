@@ -42,7 +42,7 @@ import org.jomc.ObjectManager;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * {@code ObjectManager} dummy implementation.
+ * Test {@code ObjectManager} implementation.
  * <p>
  *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
  *     <tr class="TableHeadingColor">
@@ -50,7 +50,7 @@ import org.jomc.ObjectManager;
  *     </tr>
  *     <tr>
  *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.test.ObjectManagerDummy}</td>
+ *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.test.UnsupportedOperationExceptionObjectManager}</td>
  *     </tr>
  *     <tr>
  *       <td class="TableSubHeadingColor" align="left" nowrap><b>Name:</b></td>
@@ -96,7 +96,7 @@ import org.jomc.ObjectManager;
 @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
-public class ObjectManagerDummy
+public class UnsupportedOperationExceptionObjectManager
     implements
     org.jomc.ObjectManager
 {
@@ -130,7 +130,7 @@ public class ObjectManagerDummy
 
     // SECTION-END
     // SECTION-START[ObjectManagerDummy]
-    private static final ObjectManager objectManager = new ObjectManagerDummy();
+    private static final ObjectManager objectManager = new UnsupportedOperationExceptionObjectManager();
 
     public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
@@ -141,9 +141,9 @@ public class ObjectManagerDummy
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
 
-    /** Creates a new {@code ObjectManagerDummy} instance. */
+    /** Creates a new {@code UnsupportedOperationExceptionObjectManager} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    public ObjectManagerDummy()
+    public UnsupportedOperationExceptionObjectManager()
     {
         // SECTION-START[Default Constructor]
         super();
@@ -156,5 +156,9 @@ public class ObjectManagerDummy
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
+    // SECTION-END
+    // SECTION-START[UnsupportedOperationObjectManager]
+    // SECTION-END
+    // SECTION-START[UnsupportedOperationExceptionObjectManager]
     // SECTION-END
 }
