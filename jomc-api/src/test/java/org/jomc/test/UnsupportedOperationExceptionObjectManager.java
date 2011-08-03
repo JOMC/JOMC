@@ -129,7 +129,7 @@ public class UnsupportedOperationExceptionObjectManager
     }
 
     // SECTION-END
-    // SECTION-START[ObjectManagerDummy]
+    // SECTION-START[UnsupportedOperationExceptionObjectManager]
     private static final ObjectManager objectManager = new UnsupportedOperationExceptionObjectManager();
 
     public static ObjectManager getObjectManager( final ClassLoader classLoader )
@@ -156,9 +156,5 @@ public class UnsupportedOperationExceptionObjectManager
     // SECTION-START[Properties]
     // SECTION-END
     // SECTION-START[Messages]
-    // SECTION-END
-    // SECTION-START[UnsupportedOperationObjectManager]
-    // SECTION-END
-    // SECTION-START[UnsupportedOperationExceptionObjectManager]
     // SECTION-END
 }
