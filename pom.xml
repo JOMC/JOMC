@@ -97,6 +97,11 @@
   <build>
     <extensions>
       <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh</artifactId>
+        <version>1.0</version>
+      </extension>
+      <extension>
         <groupId>org.jomc.build</groupId>
         <artifactId>jomc-build-resources</artifactId>
         <version>${jomc.build.version}</version>
@@ -1475,13 +1480,6 @@ This project's site should be built using one of the following Apache Maven vers
         </file>
       </activation>
       <build>
-        <extensions>
-          <extension>
-            <groupId>org.apache.maven.wagon</groupId>
-            <artifactId>wagon-ssh</artifactId>
-            <version>1.0</version>
-          </extension>
-        </extensions>
         <plugins>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
