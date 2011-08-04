@@ -1480,6 +1480,7 @@ This project's site should be built using one of the following Apache Maven vers
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-site-plugin</artifactId>
+              <version>3.0</version>
               <dependencies>
                 <dependency>
                   <groupId>org.apache.maven.wagon</groupId>
