@@ -865,6 +865,7 @@ This project's site should be built using one of the following Apache Maven vers
         <artifactId>maven-pmd-plugin</artifactId>
         <version>2.5</version>
         <configuration>
+          <format>none</format>
           <targetJdk>1.5</targetJdk>
         </configuration>
       </plugin>
