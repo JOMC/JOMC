@@ -1567,6 +1567,23 @@ This project's site should be built using one of the following Apache Maven vers
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-project</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+                <configuration>
+                  <classesDirectory>${project.basedir}</classesDirectory>
+                  <classifier>project</classifier>
+                  <excludes>
+                    <exclude>**/.*/**</exclude>
+                    <exclude>**/target/**</exclude>
+                  </excludes>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
