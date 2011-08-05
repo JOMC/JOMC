@@ -65,20 +65,22 @@ _gaq.push(['_trackPageview']);
 })();
       </script>
     </head>
-    <menu ref="parent" inherit="top" inheritAsRef="false"/>
-    <menu name="Modules">
-      <item name="API" href="jomc-api/index.html"/>
-      <item name="SPI" href="jomc-spi/index.html"/>
-      <item name="Utilities" href="jomc-util/index.html"/>
-      <item name="Modlet" href="jomc-modlet/index.html"/>
-      <item name="Model" href="jomc-model/index.html"/>
-      <item name="RI" href="jomc-ri/index.html"/>
-      <item name="Tools" href="jomc-tools/index.html"/>
-      <item name="Ant Tasks" href="jomc-ant-tasks/index.html"/>
-      <item name="Maven Plugin" href="maven-jomc-plugin/index.html"/>
-      <item name="CLI" href="jomc-cli/index.html"/>
+    <menu name="JOMC" inherit="top">
+      <item name="Home" href="${project.url}/index.html"/>
     </menu>
-    <menu name="Sourceforge" inherit="bottom" inheritAsRef="false">
+    <menu name="Modules">
+      <item name="API" href="${project.url}/jomc-api/index.html"/>
+      <item name="SPI" href="${project.url}/jomc-spi/index.html"/>
+      <item name="Utilities" href="${project.url}/jomc-util/index.html"/>
+      <item name="Modlet" href="${project.url}/jomc-modlet/index.html"/>
+      <item name="Model" href="${project.url}/jomc-model/index.html"/>
+      <item name="RI" href="${project.url}/jomc-ri/index.html"/>
+      <item name="Tools" href="${project.url}/jomc-tools/index.html"/>
+      <item name="Ant Tasks" href="${project.url}/jomc-ant-tasks/index.html"/>
+      <item name="Maven Plugin" href="${project.url}/maven-jomc-plugin/index.html"/>
+      <item name="CLI" href="${project.url}/jomc-cli/index.html"/>
+    </menu>
+    <menu name="Sourceforge" inherit="bottom">
       <item name="Home" href="http://jomc.sourceforge.net/project/home"/>
       <item name="Files" href="http://jomc.sourceforge.net/project/files"/>
       <item name="Issues" href="http://jomc.sourceforge.net/project/issues"/>
@@ -86,6 +88,6 @@ _gaq.push(['_trackPageview']);
       <item name="Support" href="http://jomc.sourceforge.net/project/support"/>
       <item name="Statistics" href="http://jomc.sourceforge.net/project/statistics"/>
     </menu>
-    <menu ref="reports" inherit="bottom" inheritAsRef="false"/>
+    <menu ref="reports" inherit="bottom"/>
   </body>
 </project>
