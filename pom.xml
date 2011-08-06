@@ -455,7 +455,7 @@ This project should be built using one of the following Apache Maven versions.
           <executions>
             <execution>
               <id>create-buildnumber</id>
-              <phase>validate</phase>
+              <phase>initialize</phase>
               <goals>
                 <goal>create</goal>
               </goals>
