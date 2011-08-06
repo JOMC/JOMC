@@ -493,6 +493,8 @@ This project should be built using one of the following Apache Maven versions.
           <version>1.7</version>
           <executions>
             <execution>
+              <id>maven-version</id>
+              <phase>initialize</phase>
               <goals>
                 <goal>maven-version</goal>
               </goals>
