@@ -1608,7 +1608,7 @@ This project should be built using one of the following Apache Maven versions.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+    <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ssZ</maven.build.timestamp.format>
     <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
     <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory> <!-- See http://netbeans.org/bugzilla/show_bug.cgi?id=187595 -->
     <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
