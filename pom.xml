@@ -164,7 +164,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${maven.build.timestamp}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -307,7 +307,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${maven.build.timestamp}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -373,7 +373,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${maven.build.timestamp}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -384,7 +384,7 @@
           <artifactId>maven-scm-plugin</artifactId>
           <version>1.5</version>
           <configuration>
-            <message>[maven-scm-plugin] Build ${buildNumber}</message>
+            <message>[maven-scm-plugin] Build ${maven.build.timestamp}</message>
             <username>${jomc.scm.username}</username>
             <password>${jomc.scm.password}</password>
           </configuration>
@@ -447,27 +447,6 @@ This project should be built using one of the following Apache Maven versions.
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>wagon-maven-plugin</artifactId>
           <version>1.0-beta-3</version>
-        </plugin>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>buildnumber-maven-plugin</artifactId>
-          <version>1.0</version>
-          <executions>
-            <execution>
-              <id>create-buildnumber</id>
-              <phase>initialize</phase>
-              <goals>
-                <goal>create</goal>
-              </goals>
-              <configuration>
-                <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
-                <format>{0,date,yyyy-MM-dd'T'HH:mm:ssZ}</format>
-                <items>
-                  <item>timestamp</item>
-                </items>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -617,10 +596,6 @@ This project should be built using one of the following Apache Maven versions.
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changes-plugin</artifactId>
         <executions>
@@ -704,7 +679,7 @@ This project should be built using one of the following Apache Maven versions.
                     </parameter>
                     <parameter>
                       <name>build.number</name>
-                      <value>${buildNumber}</value>
+                      <value>${maven.build.timestamp}</value>
                     </parameter>
                   </parameters>
                 </transformationSet>
@@ -759,7 +734,7 @@ This project should be built using one of the following Apache Maven versions.
                 <resourceBundle>org.jomc.build:jomc-build-resources:${jomc.build.version}</resourceBundle>
               </resourceBundles>
               <properties>
-                <buildNumber>${buildNumber}</buildNumber>
+                <buildNumber>${maven.build.timestamp}</buildNumber>
               </properties>
               <outputDirectory>${remoteResourcesOutputDirectory}</outputDirectory>
             </configuration>
@@ -1633,6 +1608,7 @@ This project should be built using one of the following Apache Maven versions.
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
     <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
     <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory> <!-- See http://netbeans.org/bugzilla/show_bug.cgi?id=187595 -->
     <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>

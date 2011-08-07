@@ -72,7 +72,6 @@
       <li>Updated the <code>maven-jxr-plugin</code> from <code>2.2</code> to <code>2.3</code>.</li>
       <li>Updated the <code>animal-sniffer-maven-plugin</code> from <code>1.6</code> to <code>1.7</code>.</li>
       <li>Updated the <code>build-helper-maven-plugin</code> from <code>1.5</code> to <code>1.7</code>.</li>
-      <li>Updated the <code>buildnumber-maven-plugin</code> from <code>1.0-beta-4</code> to <code>1.0</code>.</li>
       <li>Updated the <code>clirr-maven-plugin</code> from <code>2.2.2</code> to <code>2.3</code>.</li>
       <li>Updated the <code>emma-maven-plugin</code> from <code>1.0-alpha-2</code> to <code>1.0-alpha-3</code>.</li>
       <li>Updated the <code>xml-maven-plugin</code> from <code>1.0-beta-3</code> to <code>1.0</code>.</li>
@@ -94,6 +93,7 @@
       <li>Updated to attach test artifacts.</li>
       <li>Updated <code>animal-sniffer-maven-plugin</code> configuration to support building with JDK 1.6+.</li>
       <li>Added <code>jomc-sourceforge-release</code> profile to upload assemblies to the Sourceforge file release system.</li>
+      <li>Removed the <code>buildnumber-maven-plugin</code>.</li>
       </ul>]]>
       </action>
     </release>
