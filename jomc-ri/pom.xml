@@ -56,22 +56,30 @@
         <directory>src/test/resources</directory>
       </testResource>
     </testResources>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.jomc</groupId>
+          <artifactId>maven-jomc-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>default-main</id>
+              <goals>
+                <goal>write-main-resources</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <templateProfile>jomc-java-bundles</templateProfile>
+            <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>main-default</id>
-            <goals>
-              <goal>write-main-resources</goal>
-            </goals>
-            <configuration>
-              <templateProfile>jomc-java-bundles</templateProfile>
-              <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -136,39 +144,43 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-scm-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>default-initialize</id>
+                  <phase>initialize</phase>
+                  <goals>
+                    <goal>update</goal>
+                  </goals>
+                </execution>
+                <execution>
+                  <id>default-process-resources</id>
+                  <phase>process-resources</phase>
+                  <goals>
+                    <goal>update</goal>
+                    <goal>checkin</goal>
+                  </goals>
+                </execution>
+                <execution>
+                  <id>default-process-test-resources</id>
+                  <phase>process-test-resources</phase>
+                  <goals>
+                    <goal>update</goal>
+                    <goal>checkin</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </pluginManagement>
         <plugins>
-          <plugin>
-            <groupId>org.jomc</groupId>
-            <artifactId>maven-jomc-plugin</artifactId>
-          </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-scm-plugin</artifactId>
-            <executions>
-              <execution>
-                <id>initialize</id>
-                <phase>initialize</phase>
-                <goals>
-                  <goal>update</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>main-sources</id>
-                <phase>process-resources</phase>
-                <goals>
-                  <goal>update</goal>
-                  <goal>checkin</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>test-sources</id>
-                <phase>process-test-resources</phase>
-                <goals>
-                  <goal>update</goal>
-                  <goal>checkin</goal>
-                </goals>
-              </execution>
-            </executions>
           </plugin>
         </plugins>
       </build>
