@@ -67,12 +67,12 @@
               <goals>
                 <goal>write-main-resources</goal>
               </goals>
+              <configuration>
+                <templateProfile>jomc-java-bundles</templateProfile>
+                <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
+              </configuration>
             </execution>
           </executions>
-          <configuration>
-            <templateProfile>jomc-java-bundles</templateProfile>
-            <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
-          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
