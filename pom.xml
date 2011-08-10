@@ -1627,6 +1627,7 @@ This project should be built using one of the following Apache Maven versions.
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-jar-plugin</artifactId>
+            <inherited>false</inherited>
           </plugin>
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
