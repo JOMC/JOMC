@@ -95,7 +95,6 @@
     <url>http://jomc.sourceforge.net/project/sources?jomc/trunk</url>
   </scm>
   <build>
-    <defaultGoal>compile</defaultGoal>
     <extensions>
       <extension>
         <groupId>org.jomc.build</groupId>
