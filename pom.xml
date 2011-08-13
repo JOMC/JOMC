@@ -1569,6 +1569,11 @@ This project should be built using one of the following Apache Maven versions.
                   <configuration>
                     <classesDirectory>${project.basedir}</classesDirectory>
                     <classifier>project</classifier>
+                    <includes>
+                      <include>LICENSE.txt</include>
+                      <include>pom.xml</include>
+                      <include>src/**</include>
+                    </includes>
                     <excludes>
                       <exclude>**/.*/**</exclude>
                       <exclude>**/target/**</exclude>
