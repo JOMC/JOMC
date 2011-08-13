@@ -1684,7 +1684,6 @@ This project should be built using one of the following Apache Maven versions.
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <maven-changes-plugin.version>2.6</maven-changes-plugin.version>
     <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
-    <jomc-ant-tasks.version>1.2-SNAPSHOT</jomc-ant-tasks.version>
     <jomc.build.version>1.6</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
