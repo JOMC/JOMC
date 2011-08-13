@@ -310,12 +310,12 @@
               <tagletArtifact>
                 <groupId>org.apache.maven.plugin-tools</groupId>
                 <artifactId>maven-plugin-tools-javadoc</artifactId>
-                <version>2.8</version>
+                <version>${plugintools.version}</version>
               </tagletArtifact>
               <tagletArtifact>
                 <groupId>org.codehaus.plexus</groupId>
-                <artifactId>plexus-javadoc</artifactId>
-                <version>1.0</version>
+                <artifactId>plexus-component-javadoc</artifactId>
+                <version>${plexuscontainers.version}</version>
               </tagletArtifact>
             </tagletArtifacts>
             <additionalparam>
@@ -384,7 +384,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>${maven-plugin-plugin.version}</version>
+          <version>${plugintools.version}</version>
           <executions>
             <execution>
               <id>default-helpmojo</id>
@@ -657,7 +657,7 @@ This project should be built using one of the following Apache Maven versions.
         <plugin>
           <groupId>org.codehaus.plexus</groupId>
           <artifactId>plexus-component-metadata</artifactId>
-          <version>1.5.5</version>
+          <version>${plexuscontainers.version}</version>
           <executions>
             <execution>
               <id>default-generate-metadata</id>
@@ -821,12 +821,12 @@ This project should be built using one of the following Apache Maven versions.
                 <tagletArtifact>
                   <groupId>org.apache.maven.plugin-tools</groupId>
                   <artifactId>maven-plugin-tools-javadoc</artifactId>
-                  <version>2.8</version>
+                  <version>${plugintools.version}</version>
                 </tagletArtifact>
                 <tagletArtifact>
                   <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-javadoc</artifactId>
-                  <version>1.0</version>
+                  <artifactId>plexus-component-javadoc</artifactId>
+                  <version>${plexuscontainers.version}</version>
                 </tagletArtifact>
               </tagletArtifacts>
               <additionalparam>
@@ -1677,9 +1677,10 @@ This project should be built using one of the following Apache Maven versions.
     <maven-shade-plugin.version>1.4</maven-shade-plugin.version>
     <maven-assembly-plugin.version>2.2.1</maven-assembly-plugin.version>
     <surefire.version>2.9</surefire.version>
+    <plugintools.version>2.8</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
+    <plexuscontainers.version>1.5.5</plexuscontainers.version>
     <emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
     <clirr-maven-plugin.version>2.3</clirr-maven-plugin.version>
-    <maven-plugin-plugin.version>2.8</maven-plugin-plugin.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <maven-changes-plugin.version>2.6</maven-changes-plugin.version>
     <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
