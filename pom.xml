@@ -120,6 +120,213 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0</version>
+          <configuration>
+            <reportPlugins>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <reports>
+                  <report>javadoc</report>
+                  <report>test-javadoc</report>
+                </reports>
+                <configuration>
+                  <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table>]]></bottom>
+                  <breakiterator>true</breakiterator>
+                  <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
+                  <keywords>true</keywords>
+                  <linksource>true</linksource>
+                  <serialwarn>true</serialwarn>
+                  <source>1.5</source>
+                  <doctitle>${project.name} ${project.version}</doctitle>
+                  <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
+                  <windowtitle>${project.name} ${project.version}</windowtitle>
+                  <testWindowtitle>${project.name} Tests ${project.version}</testWindowtitle>
+                  <detectOfflineLinks>false</detectOfflineLinks>
+                  <detectLinks>true</detectLinks>
+                  <validateLinks>true</validateLinks>
+                  <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+                  <docletArtifact>
+                    <groupId>org.umlgraph</groupId>
+                    <artifactId>doclet</artifactId>
+                    <version>${umlgraph.version}</version>
+                  </docletArtifact>
+                  <tagletArtifacts>
+                    <tagletArtifact>
+                      <groupId>org.apache.maven.plugin-tools</groupId>
+                      <artifactId>maven-plugin-tools-javadoc</artifactId>
+                      <version>${plugintools.version}</version>
+                    </tagletArtifact>
+                    <tagletArtifact>
+                      <groupId>org.codehaus.plexus</groupId>
+                      <artifactId>plexus-component-javadoc</artifactId>
+                      <version>${plexuscontainers.version}</version>
+                    </tagletArtifact>
+                  </tagletArtifacts>
+                  <additionalparam>-inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10 -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected</additionalparam>
+                  <groups>
+                    <group>
+                      <title>Application Programming Interface</title>
+                      <packages>org.jomc</packages>
+                    </group>
+                    <group>
+                      <title>Application Programming Interface Test Suite</title>
+                      <packages>org.jomc.test*</packages>
+                    </group>
+                    <group>
+                      <title>Implementation Programming Interface</title>
+                      <packages>org.jomc.spi*</packages>
+                    </group>
+                    <group>
+                      <title>Implementation Programming Interface Test Suite</title>
+                      <packages>org.jomc.spi.test*</packages>
+                    </group>
+                    <group>
+                      <title>Utilities</title>
+                      <packages>org.jomc.util*</packages>
+                    </group>
+                    <group>
+                      <title>Utilities Test Suite</title>
+                      <packages>org.jomc.util.test*</packages>
+                    </group>
+                    <group>
+                      <title>Modlet</title>
+                      <packages>org.jomc.modlet*</packages>
+                    </group>
+                    <group>
+                      <title>Modlet Test Suite</title>
+                      <packages>org.jomc.modlet.test*</packages>
+                    </group>
+                    <group>
+                      <title>Model</title>
+                      <packages>org.jomc.model*</packages>
+                    </group>
+                    <group>
+                      <title>Model Test Suite</title>
+                      <packages>org.jomc.model.test*</packages>
+                    </group>
+                    <group>
+                      <title>Reference Implementation</title>
+                      <packages>org.jomc.ri*</packages>
+                    </group>
+                    <group>
+                      <title>Reference Implementation Test Suite</title>
+                      <packages>org.jomc.ri.test*</packages>
+                    </group>
+                    <group>
+                      <title>Tools</title>
+                      <packages>org.jomc.tools*</packages>
+                    </group>
+                    <group>
+                      <title>Tools Test Suite</title>
+                      <packages>org.jomc.tools.test*</packages>
+                    </group>
+                    <group>
+                      <title>Maven Plugin</title>
+                      <packages>org.jomc.mojo*</packages>
+                    </group>
+                    <group>
+                      <title>Maven Plugin Test Suite</title>
+                      <packages>org.jomc.mojo.test*</packages>
+                    </group>
+                    <group>
+                      <title>Ant Tasks</title>
+                      <packages>org.jomc.ant*</packages>
+                    </group>
+                    <group>
+                      <title>Ant Tasks Test Suite</title>
+                      <packages>org.jomc.ant.test*</packages>
+                    </group>
+                    <group>
+                      <title>Command Line Interface</title>
+                      <packages>org.jomc.cli*</packages>
+                    </group>
+                    <group>
+                      <title>Command Line Interface Test Suite</title>
+                      <packages>org.jomc.cli.test*</packages>
+                    </group>
+                  </groups>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                  <format>none</format>
+                  <targetJdk>1.5</targetJdk>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                  <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changes-plugin</artifactId>
+                <reports>
+                  <report>changes-report</report>
+                </reports>
+                <configuration>
+                  <issueLinkTemplatePerSystem>
+                    <MantisBT>http://sourceforge.net/apps/mantisbt/jomc/view.php?id=%ISSUE%</MantisBT>
+                    <Trac>http://sourceforge.net/apps/trac/jomc/ticket/%ISSUE%</Trac>
+                  </issueLinkTemplatePerSystem>
+                  <xmlPath>src/main/changes/changes.xml</xmlPath>
+                  <escapeHTML>false</escapeHTML>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                  <maxHeap>256</maxHeap>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>emma-maven-plugin</artifactId>
+                <configuration>
+                  <dataFiles>
+                    <dataFile>${project.build.directory}/coverage.ec</dataFile>
+                  </dataFiles>
+                  <sourcePaths>
+                    <sourcePath>${project.build.sourceDirectory}</sourcePath>
+                    <sourcePath>${xjcOutputDirectory}</sourcePath>
+                    <sourcePath>${javaccOutputDirectory}</sourcePath>
+                  </sourcePaths>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>clirr-maven-plugin</artifactId>
+                <configuration>
+                  <minSeverity>info</minSeverity>
+                </configuration>
+              </plugin>
+              <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javacc-maven-plugin</artifactId>
+              </plugin>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-plugin-plugin</artifactId>
+              </plugin>
+            </reportPlugins>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -241,6 +448,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${surefire.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>2.8</version>
           <configuration>
@@ -264,47 +476,87 @@
                 <packages>org.jomc</packages>
               </group>
               <group>
+                <title>Application Programming Interface Test Suite</title>
+                <packages>org.jomc.test*</packages>
+              </group>
+              <group>
                 <title>Implementation Programming Interface</title>
                 <packages>org.jomc.spi*</packages>
+              </group>
+              <group>
+                <title>Implementation Programming Interface Test Suite</title>
+                <packages>org.jomc.spi.test*</packages>
               </group>
               <group>
                 <title>Utilities</title>
                 <packages>org.jomc.util*</packages>
               </group>
               <group>
+                <title>Utilities Test Suite</title>
+                <packages>org.jomc.util.test*</packages>
+              </group>
+              <group>
                 <title>Modlet</title>
                 <packages>org.jomc.modlet*</packages>
+              </group>
+              <group>
+                <title>Modlet Test Suite</title>
+                <packages>org.jomc.modlet.test*</packages>
               </group>
               <group>
                 <title>Model</title>
                 <packages>org.jomc.model*</packages>
               </group>
               <group>
+                <title>Model Test Suite</title>
+                <packages>org.jomc.model.test*</packages>
+              </group>
+              <group>
                 <title>Reference Implementation</title>
                 <packages>org.jomc.ri*</packages>
+              </group>
+              <group>
+                <title>Reference Implementation Test Suite</title>
+                <packages>org.jomc.ri.test*</packages>
               </group>
               <group>
                 <title>Tools</title>
                 <packages>org.jomc.tools*</packages>
               </group>
               <group>
+                <title>Tools Test Suite</title>
+                <packages>org.jomc.tools.test*</packages>
+              </group>
+              <group>
                 <title>Maven Plugin</title>
                 <packages>org.jomc.mojo*</packages>
+              </group>
+              <group>
+                <title>Maven Plugin Test Suite</title>
+                <packages>org.jomc.mojo.test*</packages>
               </group>
               <group>
                 <title>Ant Tasks</title>
                 <packages>org.jomc.ant*</packages>
               </group>
               <group>
+                <title>Ant Tasks Test Suite</title>
+                <packages>org.jomc.ant.test*</packages>
+              </group>
+              <group>
                 <title>Command Line Interface</title>
                 <packages>org.jomc.cli*</packages>
+              </group>
+              <group>
+                <title>Command Line Interface Test Suite</title>
+                <packages>org.jomc.cli.test*</packages>
               </group>
             </groups>
             <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
             <docletArtifact>
               <groupId>org.umlgraph</groupId>
               <artifactId>doclet</artifactId>
-              <version>5.1</version>
+              <version>${umlgraph.version}</version>
             </docletArtifact>
             <tagletArtifacts>
               <tagletArtifact>
@@ -445,7 +697,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
-          <version>${maven-changes-plugin.version}</version>
+          <version>2.6</version>
           <executions>
             <execution>
               <id>default-changes-validate</id>
@@ -453,14 +705,11 @@
               <goals>
                 <goal>changes-validate</goal>
               </goals>
-              <configuration>
-                <failOnError>true</failOnError>
-                <xmlPath>src/main/changes/changes.xml</xmlPath>
-                <escapeHTML>false</escapeHTML>
-              </configuration>
             </execution>
           </executions>
           <configuration>
+            <failOnError>true</failOnError>
+            <xmlPath>src/main/changes/changes.xml</xmlPath>
             <escapeHTML>false</escapeHTML>
           </configuration>
         </plugin>
@@ -507,6 +756,32 @@ This project should be built using one of the following Apache Maven versions.
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jxr-plugin</artifactId>
+          <version>2.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>2.5</version>
+          <configuration>
+            <targetJdk>1.5</targetJdk>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+            <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -625,7 +900,7 @@ This project should be built using one of the following Apache Maven versions.
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>clirr-maven-plugin</artifactId>
-          <version>${clirr-maven-plugin.version}</version>
+          <version>2.3</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -653,6 +928,29 @@ This project should be built using one of the following Apache Maven versions.
               </configuration>
             </execution>
           </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <maxHeap>256</maxHeap>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>emma-maven-plugin</artifactId>
+          <version>1.0-alpha-3</version>
+          <configuration>
+            <dataFiles>
+              <dataFile>${project.build.directory}/coverage.ec</dataFile>
+            </dataFiles>
+            <sourcePaths>
+              <sourcePath>${project.build.sourceDirectory}</sourcePath>
+              <sourcePath>${xjcOutputDirectory}</sourcePath>
+              <sourcePath>${javaccOutputDirectory}</sourcePath>
+            </sourcePaths>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.codehaus.plexus</groupId>
@@ -777,141 +1075,6 @@ This project should be built using one of the following Apache Maven versions.
     <module>jomc-ri</module>
     <module>jomc-cli</module>
   </modules>
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.4</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8</version>
-        <reportSets>
-          <reportSet>
-            <id>javadoc</id>
-            <inherited>true</inherited>
-            <reports>
-              <report>javadoc</report>
-              <report>test-javadoc</report>
-            </reports>
-            <configuration>
-              <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table>]]></bottom>
-              <breakiterator>true</breakiterator>
-              <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
-              <keywords>true</keywords>
-              <linksource>true</linksource>
-              <serialwarn>true</serialwarn>
-              <source>1.5</source>
-              <doctitle>${project.name} ${project.version}</doctitle>
-              <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
-              <windowtitle>${project.name} ${project.version}</windowtitle>
-              <testWindowtitle>${project.name} Tests ${project.version}</testWindowtitle>
-              <detectOfflineLinks>false</detectOfflineLinks>
-              <detectLinks>true</detectLinks>
-              <validateLinks>true</validateLinks>
-              <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
-              <docletArtifact>
-                <groupId>org.umlgraph</groupId>
-                <artifactId>doclet</artifactId>
-                <version>5.1</version>
-              </docletArtifact>
-              <tagletArtifacts>
-                <tagletArtifact>
-                  <groupId>org.apache.maven.plugin-tools</groupId>
-                  <artifactId>maven-plugin-tools-javadoc</artifactId>
-                  <version>${plugintools.version}</version>
-                </tagletArtifact>
-                <tagletArtifact>
-                  <groupId>org.codehaus.plexus</groupId>
-                  <artifactId>plexus-component-javadoc</artifactId>
-                  <version>${plexuscontainers.version}</version>
-                </tagletArtifact>
-              </tagletArtifacts>
-              <additionalparam>
-                -inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10
-                -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected
-              </additionalparam>
-            </configuration>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>2.5</version>
-        <configuration>
-          <format>none</format>
-          <targetJdk>1.5</targetJdk>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <version>${surefire.version}</version>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.7</version>
-        <configuration>
-          <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-        <version>${maven-changes-plugin.version}</version>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>changes-report</report>
-            </reports>
-            <configuration>
-              <issueLinkTemplatePerSystem>
-                <MantisBT>http://sourceforge.net/apps/mantisbt/jomc/view.php?id=%ISSUE%</MantisBT>
-                <Trac>http://sourceforge.net/apps/trac/jomc/ticket/%ISSUE%</Trac>
-              </issueLinkTemplatePerSystem>
-              <xmlPath>src/main/changes/changes.xml</xmlPath>
-              <escapeHTML>false</escapeHTML>
-            </configuration>
-          </reportSet>
-        </reportSets>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>findbugs-maven-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <maxHeap>256</maxHeap>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>emma-maven-plugin</artifactId>
-        <version>${emma-maven-plugin.version}</version>
-        <configuration>
-          <dataFiles>
-            <dataFile>${project.build.directory}/coverage.ec</dataFile>
-          </dataFiles>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>clirr-maven-plugin</artifactId>
-        <version>${clirr-maven-plugin.version}</version>
-        <configuration>
-          <minSeverity>info</minSeverity>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
   <dependencyManagement>
     <dependencies>
 
@@ -1679,15 +1842,13 @@ This project should be built using one of the following Apache Maven versions.
     <surefire.version>2.9</surefire.version>
     <plugintools.version>2.8</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
-    <emma-maven-plugin.version>1.0-alpha-3</emma-maven-plugin.version>
-    <clirr-maven-plugin.version>2.3</clirr-maven-plugin.version>
-    <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
-    <maven-changes-plugin.version>2.6</maven-changes-plugin.version>
+    <umlgraph.version>5.1</umlgraph.version>
     <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
     <jomc.build.version>1.6</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.2</jomc.base.version>
+    <maven-jomc-plugin.version>1.2-SNAPSHOT</maven-jomc-plugin.version>
     <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
     <jomc.artifacts.distribution.base.url>scp://shell.sourceforge.net/home/project-web/jomc/htdocs</jomc.artifacts.distribution.base.url>
     <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
