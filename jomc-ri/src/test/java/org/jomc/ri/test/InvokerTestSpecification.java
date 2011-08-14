@@ -47,8 +47,7 @@ import java.lang.*;
  *   An application assembler may provide multiple implementations of this specification (including none) due to
  *   multiplicity {@code Many}.
  *   This specification applies to {@code Singleton} scope.
- *   The same singleton object is
- *   returned whenever requested.
+ *   The same singleton object is returned whenever requested.
  * </p>
  *
  * <p>
