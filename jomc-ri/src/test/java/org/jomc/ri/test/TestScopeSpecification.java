@@ -41,32 +41,28 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
+ *
  * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Specification</font></th>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecification}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Multiplicity:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code Many}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Scope:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code Test}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
- *     </tr>
- *   </table>
+ *   This specification is identified by identifier {@code org.jomc.ri.test.TestScopeSpecification}.
+ *   An application assembler may provide multiple implementations of this specification (including none) due to
+ *   multiplicity {@code Many}.
+ *   This specification applies to {@code Test} scope.
+ *   The same test object is
+ *   returned whenever requested.
+ * </p>
+ *
+ * <p>
+ *   Use of class {@code ObjectManager} is supported for accessing implementations.
+ *   <blockquote><pre>
+ * TestScopeSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification[].class );
+ * TestScopeSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestScopeSpecification.class, "<i>implementation name</i>" );
+ *   </pre></blockquote>
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
- * @version $Id$
+ * @version 1.2-SNAPSHOT
+ * @see org.jomc.ObjectManagerFactory
+ * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END

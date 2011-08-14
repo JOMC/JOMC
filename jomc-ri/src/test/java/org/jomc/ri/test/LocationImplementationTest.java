@@ -43,79 +43,20 @@ import static org.junit.Assert.assertNull;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Test implementation with unsupported location.
+ *
  * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Implementation</font></th>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ri.test.LocationImplementationTest}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Name:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code LocationImplementationTest}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Flags:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code none}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
- *     </tr>
- *   </table>
- * </p>
- * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="4" nowrap><font size="+2">Specifications</font></th>
- *     </tr>
- *     <tr class="TableSubHeadingColor">
- *       <td align="left" scope="col" nowrap><b>Identifier</b></td>
- *       <td align="left" scope="col" nowrap><b>Class</b></td>
- *       <td align="left" scope="col" nowrap><b>Scope</b></td>
- *       <td align="left" scope="col" nowrap><b>Version</b></td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationMany}</td>
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
- *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
- *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestScopeSpecificationOne2}</td>
- *       <td align="left" nowrap>{@code org.jomc.ri.test.TestSpecification}</td>
- *       <td align="left" nowrap>{@code DOES_NOT_EXIST}</td>
- *       <td align="left" nowrap>{@code 1.2-SNAPSHOT}</td>
- *     </tr>
- *   </table>
- * </p>
- * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Dependencies</font></th>
- *     </tr>
- *     <tr class="TableSubHeadingColor">
- *       <td align="left" scope="col" nowrap><b>Name</b></td>
- *       <td align="left" scope="col" nowrap><b>Flags</b></td>
- *       <td align="left" scope="col" nowrap><b>Description</b></td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationMany TestScopeSpecificationMany}</td>
- *       <td align="left" valign="top" nowrap>{@code none}</td>
- *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationMany'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" valign="top" nowrap>{@link #getTestScopeSpecificationOne TestScopeSpecificationOne}</td>
- *       <td align="left" valign="top" nowrap>{@code none}</td>
- *       <td align="left" valign="top">Dependency on any object of the {@code 'org.jomc.ri.test.TestScopeSpecificationOne2'} {@code (org.jomc.ri.test.TestSpecification)} specification at specification level 1.2-SNAPSHOT applying to {@code DOES_NOT_EXIST} scope.</td>
- *     </tr>
- *   </table>
+ *   This implementation is identified by identifier {@code org.jomc.ri.test.LocationImplementationTest}.
+ *   It provides objects named {@code LocationImplementationTest} of the following specifications:
+ *
+ *   <ul>
+ *     <li>{@code org.jomc.ri.test.TestScopeSpecificationMany} at specification level {@code 1.2-SNAPSHOT}.</li>
+ *     <li>{@code org.jomc.ri.test.TestScopeSpecificationOne2} at specification level {@code 1.2-SNAPSHOT}.</li>
+ *   </ul>
+ *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
- * @version $Id$
+ * @version 1.2-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
