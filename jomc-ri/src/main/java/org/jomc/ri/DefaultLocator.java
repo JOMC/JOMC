@@ -49,54 +49,14 @@ import org.jomc.spi.Locator;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default {@code Locator} implementation.
+ *
  * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Implementation</font></th>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ri.DefaultLocator}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Name:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code JOMC RI}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Flags:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code none}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code 1.0}</td>
- *     </tr>
- *   </table>
- * </p>
- * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="3" nowrap><font size="+2">Messages</font></th>
- *     </tr>
- *     <tr class="TableSubHeadingColor">
- *       <td align="left" scope="col" nowrap><b>Name</b></td>
- *       <td align="left" scope="col" nowrap><b>Flags</b></td>
- *       <td align="left" scope="col" nowrap><b>Languages</b></td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" valign="top" nowrap>{@link #getIllegalObjectMessage illegalObjectMessage}</td>
- *       <td align="left" valign="top" nowrap>{@code none}</td>
- *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *     </tr>
- *     <tr class="TableRowColor">
- *       <td align="left" valign="top" nowrap>{@link #getUnsupportedUriSchemeMessage unsupportedUriSchemeMessage}</td>
- *       <td align="left" valign="top" nowrap>{@code none}</td>
- *       <td align="left" valign="top" nowrap>English (default),&nbsp;Deutsch</td>
- *     </tr>
- *   </table>
+ *   This implementation is identified by identifier {@code org.jomc.ri.DefaultLocator}.
+ *   It does not provide any specified objects.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
- * @version $Id$
+ * @version 1.0
  */
 // </editor-fold>
 // SECTION-END

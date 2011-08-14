@@ -49,32 +49,14 @@ import org.jomc.spi.Listener;
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
  * Default {@code Listener} implementation.
+ *
  * <p>
- *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
- *     <tr class="TableHeadingColor">
- *       <th align="left" scope="col" colspan="2" nowrap><font size="+2">Implementation</font></th>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Identifier:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code org.jomc.ri.DefaultListener}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Name:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code JOMC RI}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Flags:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code none}</td>
- *     </tr>
- *     <tr>
- *       <td class="TableSubHeadingColor" align="left" nowrap><b>Version:</b></td>
- *       <td class="TableRowColor" align="left" nowrap>{@code 1.1}</td>
- *     </tr>
- *   </table>
+ *   This implementation is identified by identifier {@code org.jomc.ri.DefaultListener}.
+ *   It does not provide any specified objects.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.1
- * @version $Id$
+ * @version 1.1
  */
 // </editor-fold>
 // SECTION-END
