@@ -120,22 +120,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>3.0</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.wagon</groupId>
-              <artifactId>wagon-ssh</artifactId>
-              <version>${wagon.version}</version>
-            </dependency>
-          </dependencies>
-          <executions>
-            <execution>
-              <id>default-attach-descriptor</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>attach-descriptor</goal>
-              </goals>
-            </execution>
-          </executions>
           <configuration>
             <reportPlugins>
               <plugin>
@@ -752,6 +736,7 @@ This project should be built using one of the following Apache Maven versions.
                     <version>[3.0.3]</version>
                   </requireMavenVersion>
                 </rules>
+                <fail>false</fail>
               </configuration>
             </execution>
             <execution>
@@ -771,6 +756,7 @@ This project should be built using one of the following Apache Maven versions.
                     <version>[3.0.3]</version>
                   </requireMavenVersion>
                 </rules>
+                <fail>false</fail>
               </configuration>
             </execution>
           </executions>
@@ -805,13 +791,6 @@ This project should be built using one of the following Apache Maven versions.
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>wagon-maven-plugin</artifactId>
           <version>1.0-beta-3</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.maven.wagon</groupId>
-              <artifactId>wagon-ssh</artifactId>
-              <version>${wagon.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -1085,10 +1064,6 @@ This project should be built using one of the following Apache Maven versions.
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
       </plugin>
     </plugins>
   </build>
@@ -1641,6 +1616,58 @@ This project should be built using one of the following Apache Maven versions.
     </site>
   </distributionManagement>
   <profiles>
+    <profile>
+      <id>maven-3</id>
+      <activation>
+        <file>
+          <!--  This employs that the basedir expression is only recognized by Maven 3.x (see MNG-2363) -->
+          <exists>${basedir}</exists>
+        </file>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-site-plugin</artifactId>
+              <dependencies>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-ssh</artifactId>
+                  <version>${wagon.version}</version>
+                </dependency>
+              </dependencies>
+              <executions>
+                <execution>
+                  <id>default-attach-descriptor</id>
+                  <phase>prepare-package</phase>
+                  <goals>
+                    <goal>attach-descriptor</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>wagon-maven-plugin</artifactId>
+              <dependencies>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-ssh</artifactId>
+                  <version>${wagon.version}</version>
+                </dependency>
+              </dependencies>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <profile>
       <id>jomc-release</id>
       <activation>
