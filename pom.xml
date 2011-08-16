@@ -1379,6 +1379,7 @@
     <!-- http://jira.codehaus.org/browse/MCHECKSTYLE-150 -->
     <!-- http://jira.codehaus.org/browse/SUREFIRE-683 -->
     <!-- http://jira.codehaus.org/browse/MFINDBUGS-145 -->
+    <!-- http://jira.codehaus.org/browse/MCLIRR-38 -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
