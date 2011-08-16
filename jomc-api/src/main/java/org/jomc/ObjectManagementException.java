@@ -42,7 +42,7 @@ package org.jomc;
  * Gets thrown whenever an unexpected error condition is detected.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ObjectManagementException}.
+ *   This implementation is identified by identifier {@code <org.jomc.ObjectManagementException>}.
  *   It does not provide any specified objects.
  * </p>
  *

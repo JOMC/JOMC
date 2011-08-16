@@ -46,7 +46,7 @@ import java.security.PrivilegedAction;
  * Factory for the {@code ObjectManager} singleton.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ObjectManagerFactory}.
+ *   This implementation is identified by identifier {@code <org.jomc.ObjectManagerFactory>}.
  *   It does not provide any specified objects.
  * </p>
  *

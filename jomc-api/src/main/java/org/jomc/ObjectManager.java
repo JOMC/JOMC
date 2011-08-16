@@ -44,10 +44,10 @@ import java.util.Locale;
  * Manages objects.
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.ObjectManager}.
+ *   This specification is identified by identifier {@code <org.jomc.ObjectManager>}.
  *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code One}.
- *   This specification applies to {@code Singleton} scope.
+ *   multiplicity {@code <One>}.
+ *   This specification applies to {@code <Singleton>} scope.
  *   The same singleton object is returned whenever requested.
  * </p>
  *
