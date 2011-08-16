@@ -45,11 +45,11 @@ import org.jomc.ObjectManager;
  * Test {@code ObjectManager} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.test.UnsupportedOperationExceptionObjectManager}.
- *   It provides objects named {@code JOMC API} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.test.UnsupportedOperationExceptionObjectManager>}.
+ *   It provides objects named {@code <JOMC API>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.ObjectManager} at specification level {@code 1.0}.</li>
+ *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0.</li>
  *   </ul>
  *
  * </p>

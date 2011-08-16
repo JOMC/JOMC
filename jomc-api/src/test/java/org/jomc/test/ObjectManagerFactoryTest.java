@@ -48,7 +48,7 @@ import static org.junit.Assert.assertTrue;
  * Test cases for class {@code org.jomc.ObjectManagerFactory}.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.test.ObjectManagerFactoryTest}.
+ *   This implementation is identified by identifier {@code <org.jomc.test.ObjectManagerFactoryTest>}.
  *   It does not provide any specified objects.
  * </p>
  *

@@ -46,7 +46,7 @@ import org.junit.Test;
  * Test cases for class {@code org.jomc.ObjectManagementException}.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.test.ObjectManagementExceptionTest}.
+ *   This implementation is identified by identifier {@code <org.jomc.test.ObjectManagementExceptionTest>}.
  *   It does not provide any specified objects.
  * </p>
  *
