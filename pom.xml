@@ -1721,6 +1721,7 @@
                     <classifier>project</classifier>
                     <includes>
                       <include>LICENSE.txt</include>
+                      <include>BUILDING.txt</include>
                       <include>pom.xml</include>
                       <include>src/**</include>
                     </includes>
