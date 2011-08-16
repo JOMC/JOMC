@@ -45,7 +45,7 @@ import org.jomc.spi.Scope;
  * Default {@code Scope} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.DefaultScope}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultScope>}.
  *   It does not provide any specified objects.
  * </p>
  *

@@ -51,7 +51,7 @@ import org.jomc.spi.Locator;
  * Default {@code Locator} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.DefaultLocator}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultLocator>}.
  *   It does not provide any specified objects.
  * </p>
  *

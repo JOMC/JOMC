@@ -49,7 +49,7 @@ import org.jomc.spi.Invocation;
  * Default {@code Invocation} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.DefaultInvocation}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultInvocation>}.
  *   It does not provide any specified objects.
  * </p>
  *

@@ -51,7 +51,7 @@ import org.jomc.spi.Listener;
  * Default {@code Listener} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.DefaultListener}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultListener>}.
  *   It does not provide any specified objects.
  * </p>
  *
