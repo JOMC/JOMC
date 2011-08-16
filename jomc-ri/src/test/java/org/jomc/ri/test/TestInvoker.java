@@ -49,11 +49,11 @@ import org.jomc.spi.Invocation;
  * Test {@code Invoker} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.TestInvoker}.
- *   It provides objects named {@code TestInvoker} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestInvoker>}.
+ *   It provides objects named {@code <TestInvoker>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.spi.Invoker} at any specification level.</li>
+ *     <li>{@code <org.jomc.spi.Invoker>} at any specification level.</li>
  *   </ul>
  *
  * </p>

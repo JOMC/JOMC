@@ -43,9 +43,9 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.ri.test.TestSpecificationOne}.
+ *   This specification is identified by identifier {@code <org.jomc.ri.test.TestSpecificationOne>}.
  *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code One}.
+ *   multiplicity {@code <One>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *

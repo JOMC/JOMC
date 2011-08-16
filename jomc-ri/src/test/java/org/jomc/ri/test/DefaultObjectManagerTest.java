@@ -54,7 +54,7 @@ import static org.junit.Assert.fail;
  * Test cases for the {@code DefaultObjectManager} class.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.DefaultObjectManagerTest}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.DefaultObjectManagerTest>}.
  *   It does not provide any specified objects.
  * </p>
  *

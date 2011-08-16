@@ -44,11 +44,11 @@ import java.lang.*;
  * {@code Invoker} test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.InvokerTestImplementation}.
- *   It provides objects named {@code InvokerTestImplementation} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.InvokerTestImplementation>}.
+ *   It provides objects named {@code <InvokerTestImplementation>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.ri.test.InvokerTestSpecification} at any specification level.</li>
+ *     <li>{@code <org.jomc.ri.test.InvokerTestSpecification>} at any specification level.</li>
  *   </ul>
  *
  * </p>

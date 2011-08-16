@@ -46,11 +46,11 @@ import org.jomc.ri.DefaultLocator;
  * Test {@code Locator} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.TestLocator}.
- *   It provides objects named {@code Test} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestLocator>}.
+ *   It provides objects named {@code <Test>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.spi.Locator} at specification level {@code 1.0}.</li>
+ *     <li>{@code <org.jomc.spi.Locator>} at specification level 1.0.</li>
  *   </ul>
  *
  * </p>

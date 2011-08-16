@@ -47,7 +47,7 @@ import static org.junit.Assert.assertTrue;
  * {@code DefaultListener} test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.DefaultListenerTest}.
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.DefaultListenerTest>}.
  *   It does not provide any specified objects.
  * </p>
  *

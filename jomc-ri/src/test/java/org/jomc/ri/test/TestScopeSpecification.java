@@ -43,10 +43,10 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.ri.test.TestScopeSpecification}.
+ *   This specification is identified by identifier {@code <org.jomc.ri.test.TestScopeSpecification>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code Many}.
- *   This specification applies to {@code Test} scope.
+ *   multiplicity {@code <Many>}.
+ *   This specification applies to {@code <Test>} scope.
  *   The same test object is returned whenever requested.
  * </p>
  *

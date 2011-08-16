@@ -46,11 +46,11 @@ import java.util.logging.Level;
  * {@code ObjectManagementLister} logging to the console.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.TestObjectManagementListener}.
- *   It provides objects named {@code JOMC RI} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestObjectManagementListener>}.
+ *   It provides objects named {@code <JOMC RI>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.spi.Listener} at specification level {@code 1.0}.</li>
+ *     <li>{@code <org.jomc.spi.Listener>} at specification level 1.0.</li>
  *   </ul>
  *
  * </p>

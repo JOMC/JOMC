@@ -45,7 +45,7 @@ import static org.junit.Assert.assertEquals;
  * Override test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code Override Test Implementation Tests}.
+ *   This implementation is identified by identifier {@code <Override Test Implementation Tests>}.
  *   It does not provide any specified objects.
  * </p>
  *
@@ -131,9 +131,11 @@ public class OverrideTestImplementationTest
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
 
     /**
-     * Gets the {@code Override Test Specification} dependency.
-     * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification.</p>
-     * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
+     * Gets the {@code <Override Test Specification>} dependency.
+     * <p>
+     *   This method returns the {@code <Override Test Implementation>} object of the {@code <Override Test Specification>} specification at any specification level.
+     *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
+     * </p>
      * <p><strong>Properties:</strong>
      *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
      *     <tr class="TableSubHeadingColor">
@@ -142,13 +144,13 @@ public class OverrideTestImplementationTest
      *       <th align="left" scope="col" nowrap><b>Documentation</b></th>
      *     </tr>
      *     <tr class="TableRow">
-     *       <td align="left" valign="top" nowrap>{@code propertyImpl}</td>
+     *       <td align="left" valign="top" nowrap>{@code <propertyImpl>}</td>
      *       <td align="left" valign="top" nowrap>{@code java.lang.String}</td>
      *       <td align="left" valign="top"></td>
      *     </tr>
      *   </table>
      * </p>
-     * @return The {@code Override Test Specification} dependency.
+     * @return The {@code <Override Test Specification>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )

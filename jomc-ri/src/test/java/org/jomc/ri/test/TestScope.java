@@ -45,11 +45,11 @@ import org.jomc.ri.DefaultScope;
  * Test {@code Scope} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code org.jomc.ri.test.TestScope}.
- *   It provides objects named {@code Test} of the following specifications:
+ *   This implementation is identified by identifier {@code <org.jomc.ri.test.TestScope>}.
+ *   It provides objects named {@code <Test>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code org.jomc.spi.Scope} at specification level {@code 1.0}.</li>
+ *     <li>{@code <org.jomc.spi.Scope>} at specification level 1.0.</li>
  *   </ul>
  *
  * </p>

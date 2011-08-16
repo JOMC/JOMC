@@ -43,10 +43,10 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.ri.test.InvokerTestSpecification}.
+ *   This specification is identified by identifier {@code <org.jomc.ri.test.InvokerTestSpecification>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code Many}.
- *   This specification applies to {@code Singleton} scope.
+ *   multiplicity {@code <Many>}.
+ *   This specification applies to {@code <Singleton>} scope.
  *   The same singleton object is returned whenever requested.
  * </p>
  *

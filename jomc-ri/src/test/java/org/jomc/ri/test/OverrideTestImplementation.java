@@ -44,11 +44,11 @@ import java.util.Locale;
  * Override Test Implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code Override Test Implementation}.
- *   It provides objects named {@code Override Test Implementation} of the following specifications:
+ *   This implementation is identified by identifier {@code <Override Test Implementation>}.
+ *   It provides objects named {@code <Override Test Implementation>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code Override Test Specification} at specification level {@code 1.2-SNAPSHOT}.</li>
+ *     <li>{@code <Override Test Specification>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
  *
  * </p>
@@ -104,10 +104,12 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
 
     /**
-     * Gets the {@code dependencyImpl} dependency.
-     * <p>This method returns the {@code 'Override Test Implementation'} object of the {@code 'Override Test Specification'} {@code (org.jomc.ri.test.OverrideTestSpecification)} specification.</p>
-     * <p>That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.</p>
-     * @return The {@code dependencyImpl} dependency.
+     * Gets the {@code <dependencyImpl>} dependency.
+     * <p>
+     *   This method returns the {@code <Override Test Implementation>} object of the {@code <Override Test Specification>} specification at any specification level.
+     *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
+     * </p>
+     * @return The {@code <dependencyImpl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -123,8 +125,8 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
 
     /**
-     * Gets the value of the {@code propertyImpl} property.
-     * @return The value of the {@code propertyImpl} property.
+     * Gets the value of the {@code <propertyImpl>} property.
+     * @return The value of the {@code <propertyImpl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
@@ -140,22 +142,15 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
 
     /**
-     * Gets the text of the {@code messageImpl} message.
-     * <p><strong>Templates:</strong>
-     *   <table border="1" width="100%" cellpadding="3" cellspacing="0">
-     *     <tr class="TableSubHeadingColor">
-     *       <th align="left" scope="col" nowrap><b>Language</b></th>
-     *       <th align="left" scope="col" nowrap><b>Template</b></th>
-     *     </tr>
-     *     <tr class="TableRow">
-     *       <td align="left" valign="top" nowrap>English (default)</td>
-     *       <td align="left" valign="top" nowrap><pre><code>Parent</code></pre></td>
-     *     </tr>
-     *   </table>
+     * Gets the text of the {@code <messageImpl>} message.
+     * <p><strong>Languages:</strong>
+     *   <ul>
+     *     <li>English (default)</li>
+     *   </ul>
      * </p>
      *
      * @param locale The locale of the message to return.
-     * @return The text of the {@code messageImpl} message for {@code locale}.
+     * @return The text of the {@code <messageImpl>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )

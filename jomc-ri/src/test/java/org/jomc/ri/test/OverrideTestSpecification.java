@@ -43,9 +43,9 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code Override Test Specification}.
+ *   This specification is identified by identifier {@code <Override Test Specification>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code Many}.
+ *   multiplicity {@code <Many>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
