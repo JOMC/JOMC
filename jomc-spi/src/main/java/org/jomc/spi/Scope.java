@@ -44,9 +44,9 @@ import java.util.Map;
  * Scope a specification applies to.
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.spi.Scope}.
+ *   This specification is identified by identifier {@code <org.jomc.spi.Scope>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code Many}.
+ *   multiplicity {@code <Many>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *

@@ -45,9 +45,9 @@ import java.net.URI;
  * Locates objects.
  *
  * <p>
- *   This specification is identified by identifier {@code org.jomc.spi.Locator}.
+ *   This specification is identified by identifier {@code <org.jomc.spi.Locator>}.
  *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code Many}.
+ *   multiplicity {@code <Many>}.
  *   This specification does not apply to any scope. A new object is returned whenever requested.
  * </p>
  *
