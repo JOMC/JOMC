@@ -47,7 +47,7 @@ import java.security.PrivilegedAction;
  *
  * <p>
  *   This implementation is identified by identifier {@code <org.jomc.ObjectManagerFactory>}.
- *   It does not provide any objects due to flag {@code <abstract>}.
+ *   It does not provide any specified objects due to flag {@code <abstract>}.
  *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
  * </p>
  *
