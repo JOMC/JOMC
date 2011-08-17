@@ -52,6 +52,7 @@ import org.jomc.ObjectManager;
  *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0.</li>
  *   </ul>
  *
+ *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

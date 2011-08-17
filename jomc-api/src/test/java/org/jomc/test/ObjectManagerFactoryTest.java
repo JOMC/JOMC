@@ -50,6 +50,7 @@ import static org.junit.Assert.assertTrue;
  * <p>
  *   This implementation is identified by identifier {@code <org.jomc.test.ObjectManagerFactoryTest>}.
  *   It does not provide any specified objects.
+ *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
