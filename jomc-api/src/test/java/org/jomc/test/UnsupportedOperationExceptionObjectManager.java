@@ -49,7 +49,7 @@ import org.jomc.ObjectManager;
  *   It provides objects named {@code <JOMC API>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0.</li>
+ *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
  *   </ul>
  *
  *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
