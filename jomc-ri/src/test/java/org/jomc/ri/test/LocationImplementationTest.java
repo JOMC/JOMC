@@ -49,8 +49,8 @@ import static org.junit.Assert.assertNull;
  *   It provides objects named {@code <LocationImplementationTest>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationMany>} at specification level 1.2-SNAPSHOT.</li>
- *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationOne2>} at specification level 1.2-SNAPSHOT.</li>
+ *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationMany>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
+ *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationOne2>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
  *   </ul>
  *
  * </p>

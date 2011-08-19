@@ -50,8 +50,8 @@ import static org.junit.Assert.assertNull;
  *
  *   <ul>
  *     <li>{@code <org.jomc.ri.test.TestMultitonSpecification>} at specification level 1.2-SNAPSHOT.</li>
- *     <li>{@code <org.jomc.ri.test.TestScopeSpecification>} at specification level 1.2-SNAPSHOT.</li>
- *     <li>{@code <org.jomc.ri.test.TestSingletonSpecification>} at specification level 1.2-SNAPSHOT.</li>
+ *     <li>{@code <org.jomc.ri.test.TestScopeSpecification>} at specification level 1.2-SNAPSHOT applying to {@code <Test>} scope.</li>
+ *     <li>{@code <org.jomc.ri.test.TestSingletonSpecification>} at specification level 1.2-SNAPSHOT applying to {@code <Singleton>} scope.</li>
  *     <li>{@code <org.jomc.ri.test.TestSpecificationMany>} at specification level 1.2-SNAPSHOT.</li>
  *     <li>{@code <org.jomc.ri.test.TestSpecificationOne>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>

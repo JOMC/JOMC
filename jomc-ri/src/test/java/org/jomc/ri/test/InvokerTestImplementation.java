@@ -48,7 +48,7 @@ import java.lang.*;
  *   It provides objects named {@code <InvokerTestImplementation>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ri.test.InvokerTestSpecification>} at any specification level.</li>
+ *     <li>{@code <org.jomc.ri.test.InvokerTestSpecification>} at any specification level applying to {@code <Singleton>} scope.</li>
  *   </ul>
  *
  * </p>
