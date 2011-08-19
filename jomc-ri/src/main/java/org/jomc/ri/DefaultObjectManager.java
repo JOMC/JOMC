@@ -96,7 +96,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *   It provides objects named {@code <JOMC RI>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0.</li>
+ *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
  *   </ul>
  *
  * </p>
