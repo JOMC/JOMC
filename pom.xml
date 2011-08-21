@@ -961,6 +961,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-util</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1005,6 +1011,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-modlet</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1041,6 +1053,12 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>tests</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-api</artifactId>
+        <classifier>project</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
 
@@ -1087,6 +1105,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-model</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1125,6 +1149,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-spi</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1161,6 +1191,12 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>tests</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ri</artifactId>
+        <classifier>project</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
 
@@ -1213,6 +1249,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-tools</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1257,6 +1299,12 @@
         <classifier>templates</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-cli</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1295,6 +1343,12 @@
         <classifier>tests</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>maven-jomc-plugin</artifactId>
+        <classifier>project</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
 
       <dependency>
         <groupId>org.jomc</groupId>
@@ -1331,6 +1385,12 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ant-tasks</artifactId>
         <classifier>tests</classifier>
+        <version>1.2-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-ant-tasks</artifactId>
+        <classifier>project</classifier>
         <version>1.2-SNAPSHOT</version>
       </dependency>
 
