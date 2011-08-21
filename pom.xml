@@ -1386,6 +1386,98 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
         <version>2.4</version>
+        <reportSets>
+          <reportSet>
+            <id>default-index</id>
+            <reports>
+              <report>index</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-cim</id>
+            <reports>
+              <report>cim</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-dependencies</id>
+            <reports>
+              <report>dependencies</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-dependency-convergence</id>
+            <reports>
+              <report>dependency-convergence</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-dependency-management</id>
+            <reports>
+              <report>dependency-management</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-issue-tracking</id>
+            <reports>
+              <report>issue-tracking</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-mailing-list</id>
+            <reports>
+              <report>mailing-list</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-plugin-management</id>
+            <reports>
+              <report>plugin-management</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-license</id>
+            <reports>
+              <report>license</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-modules</id>
+            <reports>
+              <report>modules</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-plugins</id>
+            <reports>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-plugin-management</id>
+            <reports>
+              <report>plugin-management</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-summary</id>
+            <reports>
+              <report>summary</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-project-team</id>
+            <reports>
+              <report>project-team</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-scm</id>
+            <reports>
+              <report>scm</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -1583,6 +1675,14 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.7</version>
+        <reportSets>
+          <reportSet>
+            <id>default-checkstyle</id>
+            <reports>
+              <report>checkstyle</report>
+            </reports>
+          </reportSet>
+        </reportSets>
         <configuration>
           <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
         </configuration>
@@ -1612,6 +1712,14 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
         <version>2.3.2</version>
+        <reportSets>
+          <reportSet>
+            <id>default-findbugs</id>
+            <reports>
+              <report>findbugs</report>
+            </reports>
+          </reportSet>
+        </reportSets>
         <configuration>
           <maxHeap>256</maxHeap>
         </configuration>
@@ -1620,6 +1728,14 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
         <version>1.0-alpha-3</version>
+        <reportSets>
+          <reportSet>
+            <id>default-emma</id>
+            <reports>
+              <report>emma</report>
+            </reports>
+          </reportSet>
+        </reportSets>
         <configuration>
           <dataFiles>
             <dataFile>${project.build.directory}/coverage.ec</dataFile>
@@ -1635,6 +1751,14 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>clirr-maven-plugin</artifactId>
         <version>2.3</version>
+        <reportSets>
+          <reportSet>
+            <id>default-clirr</id>
+            <reports>
+              <report>clirr</report>
+            </reports>
+          </reportSet>
+        </reportSets>
         <configuration>
           <minSeverity>info</minSeverity>
         </configuration>
@@ -1643,11 +1767,27 @@
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>javacc-maven-plugin</artifactId>
         <version>2.6</version>
+        <reportSets>
+          <reportSet>
+            <id>default-jjdoc</id>
+            <reports>
+              <report>jjdoc</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
         <version>${plugintools.version}</version>
+        <reportSets>
+          <reportSet>
+            <id>default-report</id>
+            <reports>
+              <report>report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
     </plugins>
   </reporting>
