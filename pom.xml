@@ -1441,12 +1441,12 @@
               <report>license</report>
             </reports>
           </reportSet>
-          <reportSet>
+          <!-- reportSet> http://jira.codehaus.org/browse/MPIR-229
             <id>default-modules</id>
             <reports>
               <report>modules</report>
             </reports>
-          </reportSet>
+          </reportSet -->
           <reportSet>
             <id>default-plugins</id>
             <reports>
