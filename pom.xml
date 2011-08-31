@@ -791,20 +791,32 @@
             <execution>
               <id>default-main</id>
               <goals>
-                <goal>attach-main-module</goal>
                 <goal>manage-main-sources</goal>
                 <goal>commit-main-classes</goal>
                 <goal>validate-main-classes</goal>
               </goals>
             </execution>
             <execution>
+              <id>default-attach-main-module</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>attach-main-module</goal>
+              </goals>
+            </execution>
+            <execution>
               <id>default-test</id>
               <goals>
-                <goal>attach-test-module</goal>
                 <goal>manage-test-sources</goal>
                 <goal>commit-test-classes</goal>
                 <goal>validate-test-classes</goal>
                 <goal>validate-test-model</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>default-attach-test-module</id>
+              <phase>prepare-package</phase>
+              <goals>
+                <goal>attach-test-module</goal>
               </goals>
             </execution>
           </executions>
