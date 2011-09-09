@@ -49,7 +49,7 @@ import static org.junit.Assert.fail;
  * {@code Listener} test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.ListenerTest>}.
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Listener Test>}.
  *   It does not provide any specified objects.
  * </p>
  *

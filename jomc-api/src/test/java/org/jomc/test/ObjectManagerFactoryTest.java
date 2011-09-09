@@ -36,8 +36,9 @@
 // SECTION-END
 package org.jomc.test;
 
-import org.junit.Test;
 import org.jomc.ObjectManagerFactory;
+import org.jomc.test.support.UnsupportedOperationExceptionObjectManager;
+import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;

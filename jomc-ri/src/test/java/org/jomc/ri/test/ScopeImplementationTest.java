@@ -45,12 +45,12 @@ import static org.junit.Assert.assertNull;
  * Test implementation of the {@code ScopeTestSpecification}.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.ScopeImplementationTest>}.
- *   It provides objects named {@code <ScopeImplementationTest>} of the following specifications:
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Scope Implementation Test>}.
+ *   It provides objects named {@code <JOMC :: RI :: Tests :: Scope Implementation Test>} of the following specifications:
  *
  *   <ul>
- *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationMany>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
- *     <li>{@code <org.jomc.ri.test.TestScopeSpecificationOne1>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
+ *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification Many>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
+ *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification One :: 1>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
  *   </ul>
  *
  * </p>
@@ -67,7 +67,7 @@ import static org.junit.Assert.assertNull;
 // SECTION-END
 public class ScopeImplementationTest
     implements
-    org.jomc.ri.test.TestSpecification
+    org.jomc.ri.test.support.TestSpecification
 {
     // SECTION-START[TestSpecification]
     // SECTION-END
@@ -100,7 +100,7 @@ public class ScopeImplementationTest
     /**
      * Gets the {@code <TestScopeSpecificationMany>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <org.jomc.ri.test.TestScopeSpecificationMany>} specification at specification level 1.2-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Scope Specification Many>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * @return The {@code <TestScopeSpecificationMany>} dependency.
@@ -108,15 +108,15 @@ public class ScopeImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    private org.jomc.ri.test.TestSpecification[] getTestScopeSpecificationMany()
+    private org.jomc.ri.test.support.TestSpecification[] getTestScopeSpecificationMany()
     {
-        return (org.jomc.ri.test.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationMany" );
+        return (org.jomc.ri.test.support.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationMany" );
     }
 
     /**
      * Gets the {@code <TestScopeSpecificationOne>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <org.jomc.ri.test.TestScopeSpecificationOne1>} specification at specification level 1.2-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Scope Specification One :: 1>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * @return The {@code <TestScopeSpecificationOne>} dependency.
@@ -124,9 +124,9 @@ public class ScopeImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    private org.jomc.ri.test.TestSpecification getTestScopeSpecificationOne()
+    private org.jomc.ri.test.support.TestSpecification getTestScopeSpecificationOne()
     {
-        return (org.jomc.ri.test.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationOne" );
+        return (org.jomc.ri.test.support.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationOne" );
     }
     // </editor-fold>
     // SECTION-END

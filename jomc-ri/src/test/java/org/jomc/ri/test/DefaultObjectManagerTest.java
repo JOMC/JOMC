@@ -36,13 +36,18 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import org.junit.Test;
 import java.net.URI;
 import java.util.Locale;
 import org.jomc.ObjectManager;
 import org.jomc.model.Instance;
 import org.jomc.ri.DefaultObjectManager;
+import org.jomc.ri.test.support.TestScopeSpecification;
+import org.jomc.ri.test.support.TestSpecification;
+import org.jomc.ri.test.support.TestSpecificationMany;
+import org.jomc.ri.test.support.TestSpecificationOne;
+import org.jomc.ri.test.support.TestSpecificationOneMore;
 import org.jomc.spi.Scope;
+import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -54,7 +59,7 @@ import static org.junit.Assert.fail;
  * Test cases for the {@code DefaultObjectManager} class.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.test.DefaultObjectManagerTest>}.
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Default Object Manager Test>}.
  *   It does not provide any specified objects.
  * </p>
  *
@@ -375,11 +380,17 @@ public class DefaultObjectManagerTest
         assertNotNull( this.getObjectManager().getListeners() );
         assertNotNull( this.getObjectManager().getModules( this.getClass().getClassLoader() ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
-        assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class, "ImplementationTest" ) );
+        assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class,
+                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+
         assertNotNull( this.getObjectManager().getObject( TestSpecificationMany[].class ) );
-        assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class, "ImplementationTest" ) );
+        assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class,
+                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+
         assertNotNull( this.getObjectManager().getObject( TestScopeSpecification[].class ) );
-        assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class, "ImplementationTest" ) );
+        assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class,
+                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+
     }
 
     @Test
@@ -396,10 +407,10 @@ public class DefaultObjectManagerTest
         assertNull( this.getObjectManager().getProperty( this, "DOES NOT EXIST" ) );
         assertNull( this.getObjectManager().getMessage( this, "DOES NOT EXIST", Locale.getDefault() ) );
         assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class,
-                                                       "IllegalLocationImplementation" ) );
+                                                       "JOMC :: RI :: Tests :: Illegal Location Implementation" ) );
 
         assertNull( this.getObjectManager().getObject( TestScopeSpecification.class,
-                                                       "TestLocatorImplementation" ) );
+                                                       "JOMC :: RI :: Tests :: Illegal Location Implementation" ) );
 
     }
 

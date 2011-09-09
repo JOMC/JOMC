@@ -45,7 +45,7 @@ import static org.junit.Assert.assertEquals;
  * Override test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code <Override Test Implementation Tests>}.
+ *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Implementation Tests>}.
  *   It does not provide any specified objects.
  * </p>
  *
@@ -133,7 +133,7 @@ public class OverrideTestImplementationTest
     /**
      * Gets the {@code <Override Test Specification>} dependency.
      * <p>
-     *   This method returns the {@code <Override Test Implementation>} object of the {@code <Override Test Specification>} specification at any specification level.
+     *   This method returns the {@code <JOMC :: RI :: Tests :: Override Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * <p><strong>Properties:</strong>
@@ -154,9 +154,9 @@ public class OverrideTestImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
-    private org.jomc.ri.test.OverrideTestSpecification getOverrideTestSpecification()
+    private org.jomc.ri.test.support.OverrideTestSpecification getOverrideTestSpecification()
     {
-        final org.jomc.ri.test.OverrideTestSpecification _d = (org.jomc.ri.test.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Override Test Specification" );
+        final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Override Test Specification" );
         assert _d != null : "'Override Test Specification' dependency not found.";
         return _d;
     }
