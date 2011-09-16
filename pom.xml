@@ -142,7 +142,6 @@
             <password>${jomc.scm.password}</password>
             <remoteTagging>false</remoteTagging>
             <suppressCommitBeforeTag>true</suppressCommitBeforeTag>
-            <useEditMode>true</useEditMode>
             <goals>deploy</goals>
             <useReleaseProfile>false</useReleaseProfile>
             <releaseProfiles>jomc-release</releaseProfiles>
@@ -2372,7 +2371,7 @@
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
     <wagon.version>1.0</wagon.version>
     <umlgraph.version>5.1</umlgraph.version>
-    <cc-xjc-plugin.version>1.5</cc-xjc-plugin.version>
+    <cc-xjc-plugin.version>2.0</cc-xjc-plugin.version>
     <jomc.build.version>1.6</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
