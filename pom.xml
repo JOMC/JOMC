@@ -436,6 +436,9 @@
               <goals>
                 <goal>helpmojo</goal>
               </goals>
+              <configuration>
+                <useJava5>true</useJava5>
+              </configuration>
             </execution>
           </executions>
         </plugin>
