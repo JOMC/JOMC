@@ -130,7 +130,6 @@
               <delimiter>${*}</delimiter>
             </delimiters>
             <useDefaultDelimiters>false</useDefaultDelimiters>
-            <escapeWindowsPaths>true</escapeWindowsPaths>
           </configuration>
         </plugin>
         <plugin>
@@ -695,12 +694,6 @@
                 <goal>check</goal>
               </goals>
               <configuration>
-                <ignoreDependencies>false</ignoreDependencies>
-                <ignores>
-                  <ignore>org.apache*</ignore>
-                  <ignore>org.codehaus*</ignore>
-                  <ignore>org.jomc*</ignore>
-                </ignores>
                 <signature>
                   <groupId>org.jomc.build</groupId>
                   <artifactId>jdk15-jaxb21-signature</artifactId>
