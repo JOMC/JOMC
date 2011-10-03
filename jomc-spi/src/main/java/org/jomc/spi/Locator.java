@@ -80,7 +80,7 @@ public interface Locator
      * @param location The location URI of the object to locate.
      * @param <T> The type of the object.
      *
-     * @return The object located at {@code location} or {@code null} if no object is found at {@code location}.
+     * @return The object located at {@code location} or {@code null}, if no object is found at {@code location}.
      *
      * @throws NullPointerException if {@code specification} or {@code location} is {@code null}.
      * @throws IOException if locating the object fails.

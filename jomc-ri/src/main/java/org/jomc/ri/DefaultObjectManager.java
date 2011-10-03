@@ -962,13 +962,13 @@ public class DefaultObjectManager implements ObjectManager
     private String modelIdentifier;
 
     /**
-     * Flag indicating model object classpath resolution is enabled by default.
+     * Flag indicating model object class path resolution is enabled by default.
      * @since 1.1
      */
     private static volatile Boolean defaultModelObjectClasspathResolutionEnabled;
 
     /**
-     * Flag indicating model object classpath resolution is enabled.
+     * Flag indicating model object class path resolution is enabled.
      * @since 1.1
      */
     private Boolean modelObjectClasspathResolutionEnabled;
@@ -999,7 +999,7 @@ public class DefaultObjectManager implements ObjectManager
 
     };
 
-    /** Flag indicating that initialisation has been performed. */
+    /** Flag indicating that initialization has been performed. */
     private boolean initialized;
 
     /** Log level of the instance. */
@@ -1311,8 +1311,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param level The level to test.
      *
-     * @return {@code true} if messages at {@code level} are provided to the listeners of the instance;
-     * {@code false} if messages at {@code level} are not provided to the listeners of the instance.
+     * @return {@code true}, if messages at {@code level} are provided to the listeners of the instance;
+     * {@code false}, if messages at {@code level} are not provided to the listeners of the instance.
      *
      * @throws NullPointerException if {@code level} is {@code null}.
      *
@@ -1463,14 +1463,14 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets a flag indicating model object classpath resolution is enabled by default.
-     * <p>The default model object classpath resolution enabled flag is controlled by system property
+     * Gets a flag indicating model object class path resolution is enabled by default.
+     * <p>The default model object class path resolution enabled flag is controlled by system property
      * {@code org.jomc.ri.DefaultObjectManager.defaultModelObjectClasspathResolutionEnabled} holding a boolean
-     * indicating model object classpath resolution is enabled by default. If that property is not set, the
+     * indicating model object class path resolution is enabled by default. If that property is not set, the
      * {@code true} default is returned.</p>
      *
-     * @return {@code true} if model object classpath resolution is enabled by default; {@code false} if model object
-     * classpath resolution is disabled by default.
+     * @return {@code true}, if model object class path resolution is enabled by default; {@code false}, if model object
+     * class path resolution is disabled by default.
      *
      * @see #isModelObjectClasspathResolutionEnabled()
      * @see #setDefaultModelObjectClasspathResolutionEnabled(java.lang.Boolean)
@@ -1491,9 +1491,9 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Sets the flag indicating model object classpath resolution is enabled by default.
+     * Sets the flag indicating model object class path resolution is enabled by default.
      *
-     * @param value The new value of the flag indicating model object classpath resolution is enabled by default or
+     * @param value The new value of the flag indicating model object class path resolution is enabled by default or
      * {@code null}.
      *
      * @see #isDefaultModelObjectClasspathResolutionEnabled()
@@ -1506,9 +1506,9 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets a flag indicating model object classpath resolution is enabled.
+     * Gets a flag indicating model object class path resolution is enabled.
      *
-     * @return {@code true} if model object classpath resolution is enabled; {@code false} if model object classpath
+     * @return {@code true}, if model object class path resolution is enabled; {@code false}, if model object class path
      * resolution is disabled.
      *
      * @see #isDefaultModelObjectClasspathResolutionEnabled()
@@ -1534,9 +1534,9 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Sets the flag indicating model object classpath resolution is enabled.
+     * Sets the flag indicating model object class path resolution is enabled.
      *
-     * @param value The new value of the flag indicating model object classpath resolution is enabled or {@code null}.
+     * @param value The new value of the flag indicating model object class path resolution is enabled or {@code null}.
      *
      * @see #isModelObjectClasspathResolutionEnabled()
      *
@@ -1553,8 +1553,8 @@ public class DefaultObjectManager implements ObjectManager
      * {@code org.jomc.ri.DefaultObjectManager.defaultModelProcessingEnabled} holding a boolean indicating model
      * processing is enabled by default. If that property is not set, the {@code true} default is returned.</p>
      *
-     * @return {@code true} if model processing is enabled by default; {@code false} if model processing is disabled by
-     * default.
+     * @return {@code true}, if model processing is enabled by default; {@code false}, if model processing is disabled
+     * by default.
      *
      * @see #isModelProcessingEnabled()
      * @see #setDefaultModelProcessingEnabled(java.lang.Boolean)
@@ -1590,7 +1590,7 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a flag indicating model processing is enabled.
      *
-     * @return {@code true} if model processing is enabled; {@code false} if model processing is disabled .
+     * @return {@code true}, if model processing is enabled; {@code false}, if model processing is disabled .
      *
      * @see #isDefaultModelProcessingEnabled()
      * @see #setModelProcessingEnabled(java.lang.Boolean)
@@ -1873,7 +1873,7 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the class loader of a given class.
      *
-     * @param clazz The class whose class loader to return.
+     * @param clazz The class whose class loader to get.
      *
      * @return The class loader of {@code clazz}.
      *
@@ -2011,7 +2011,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param instance The instance of the object to get.
      * @param classLoader The class loader to use for creating the object.
      *
-     * @return An object of {@code instance} from {@code scope} or {@code null} if no such object is found.
+     * @return An object of {@code instance} from {@code scope} or {@code null}, if no such object is found.
      *
      * @throws NullPointerException if {@code instance} or {@code classLoader} is {@code null}.
      * @throws InstantiationException if creating an object fails.
@@ -2089,7 +2089,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param classLoader The class loader to use for loading locator classes.
      * @param <T> The type of the object.
      *
-     * @return An object located at {@code location} or {@code null} if no such object is found.
+     * @return An object located at {@code location} or {@code null}, if no such object is found.
      *
      * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
@@ -2135,7 +2135,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param identifier The identifier of the scope to get an implementation of.
      * @param classLoader The class loader to use for loading scope implementations.
      *
-     * @return The implementation of the scope identified by {@code identifier} or {@code null} if no such scope
+     * @return The implementation of the scope identified by {@code identifier} or {@code null}, if no such scope
      * implementation is found.
      *
      * @throws NullPointerException if {@code classLoader} or {@code identifier} is {@code null}.
@@ -2244,8 +2244,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param identifier The identifier to get a new default scope implementation instance for.
      *
-     * @return A new default scope implementation instance for {@code identifier} or {@code null} if no such instance is
-     * available.
+     * @return A new default scope implementation instance for {@code identifier} or {@code null}, if no such instance
+     * is available.
      *
      * @throws NullPointerException if {@code identifier} is {@code null}.
      *
@@ -2274,7 +2274,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param location The location URI to get a locator for.
      * @param classLoader The class loader to use for loading locator implementations.
      *
-     * @return The locator to use for locating objects at {@code location} or {@code null} if no such locator is
+     * @return The locator to use for locating objects at {@code location} or {@code null}, if no such locator is
      * available.
      *
      * @throws NullPointerException if {@code classLoader} or {@code location} is {@code null}.
@@ -2392,8 +2392,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @param location The location URI to get a new default locator implementation instance for.
      *
-     * @return A new default locator implementation instance for {@code location} or {@code null} if no such instance is
-     * available.
+     * @return A new default locator implementation instance for {@code location} or {@code null}, if no such instance
+     * is available.
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      *

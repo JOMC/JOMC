@@ -87,7 +87,7 @@ public class DefaultLocator implements Locator
      *
      * @param location The location URI to test support for.
      *
-     * @return {@code true} if {@code location} is supported by this implementation; {@code false} else.
+     * @return {@code true}, if {@code location} is supported by this implementation; {@code false}, else.
      *
      * @throws NullPointerException if {@code location} is {@code null}.
      */

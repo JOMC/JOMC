@@ -84,8 +84,8 @@ public interface ObjectManager
      * @param <T> The type of the instance.
      * @param specification The specification class to return an implementation instance of.
      *
-     * @return An instance of an implementation of the specification class {@code specification} or {@code null} if
-     * no such instance is available.
+     * @return An instance of an implementation of the specification class {@code specification} or {@code null}, if no
+     * such instance is available.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
@@ -106,7 +106,7 @@ public interface ObjectManager
      * @param implementationName The name of the implementation to return an instance of.
      *
      * @return An instance of the implementation named {@code implementationName} of the specification class
-     * {@code specification} or {@code null} if no such instance is available.
+     * {@code specification} or {@code null}, if no such instance is available.
      *
      * @throws NullPointerException if {@code specification} or {@code implementationName} is {@code null}.
      * @throws ObjectManagementException if getting the object fails.
@@ -125,7 +125,7 @@ public interface ObjectManager
      * @param object The object to return a dependency instance of.
      * @param dependencyName The name of the dependency of {@code object} to return an instance of.
      *
-     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null} if no such
+     * @return An instance of the dependency named {@code dependencyName} of {@code object} or {@code null}, if no such
      * instance is available.
      *
      * @throws NullPointerException if {@code object} or {@code dependencyName} is {@code null}.
@@ -145,7 +145,7 @@ public interface ObjectManager
      * @param object The object to return a property instance of.
      * @param propertyName The name of the property of {@code object} to return an instance of.
      *
-     * @return An instance of the property named {@code propertyName} of {@code object} or {@code null} if no such
+     * @return An instance of the property named {@code propertyName} of {@code object} or {@code null}, if no such
      * instance is available.
      *
      * @throws NullPointerException if {@code object} or {@code propertyName} is {@code null}.
@@ -168,7 +168,7 @@ public interface ObjectManager
      * @param arguments Arguments to format the message instance with.
      *
      * @return An instance of the message named {@code messageName} of {@code object} formatted with {@code arguments}
-     * for {@code locale} or {@code null} if no such instance is available.
+     * for {@code locale} or {@code null}, if no such instance is available.
      *
      * @throws NullPointerException if {@code object}, {@code messageName} or {@code locale} is {@code null}.
      * @throws ObjectManagementException if getting the message instance fails.

@@ -84,7 +84,7 @@ public interface Scope
      *
      * @param identifier The identifier of the object to get from the scope.
      *
-     * @return The object identified by {@code identifier} or {@code null} if no such object exists in the scope.
+     * @return The object identified by {@code identifier} or {@code null}, if no such object exists in the scope.
      *
      * @throws NullPointerException if {@code identifier} is {@code null}.
      */
@@ -96,7 +96,7 @@ public interface Scope
      * @param identifier The identifier of the object to put into the scope.
      * @param object The object to put into the scope.
      *
-     * @return The previous object from the scope or {@code null} if there was no object in the scope.
+     * @return The previous object from the scope or {@code null}, if there was no object in the scope.
      *
      * @throws NullPointerException if {@code identifier} or {@code object} is {@code null}.
      */
@@ -107,7 +107,7 @@ public interface Scope
      *
      * @param identifier The identifier of the object to remove from the scope.
      *
-     * @return The removed object or {@code null} if there was no object in the scope.
+     * @return The removed object or {@code null}, if there was no object in the scope.
      *
      * @throws NullPointerException if {@code identifier} is {@code null}.
      */

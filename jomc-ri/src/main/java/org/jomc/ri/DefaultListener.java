@@ -82,7 +82,8 @@ public class DefaultListener implements Listener
      * {@code org.jomc.ri.DefaultListener.defaultEnabled} holding a value indicating the listener is enabled by default.
      * If that property is not set, the {@code true} default is returned.</p>
      *
-     * @return {@code true} if the listener is enabled by default; {@code false} if the listener is disabled by default.
+     * @return {@code true}, if the listener is enabled by default; {@code false}, if the listener is disabled by
+     * default.
      *
      * @see #setDefaultEnabled(java.lang.Boolean)
      */
@@ -113,7 +114,7 @@ public class DefaultListener implements Listener
     /**
      * Gets a flag indicating the listener is enabled.
      *
-     * @return {@code true} if the listener is enabled; {@code false} if the listener is disabled.
+     * @return {@code true}, if the listener is enabled; {@code false}, if the listener is disabled.
      *
      * @see #isDefaultEnabled()
      * @see #setEnabled(java.lang.Boolean)
