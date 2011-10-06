@@ -1061,9 +1061,6 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the list of listeners registered with the class loader of the instance.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
-     * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * listeners property.</p>
      * <p>Calling this method is the same as calling<blockquote><pre>
      * getListeners( getClassLoader( getClass() ) );</pre></blockquote>
      *
@@ -1078,9 +1075,6 @@ public class DefaultObjectManager implements ObjectManager
 
     /**
      * Gets the list of listeners registered with a given class loader.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
-     * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * listeners property.</p>
      *
      * @param classLoader The class loader to get registered listeners of.
      *
@@ -1666,7 +1660,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the modules of a given class loader.
+     * Gets the modules registered with a given class loader.
      *
      * @param classLoader The class loader to get the modules of.
      *
@@ -2130,7 +2124,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the scope implementation for a given scope identifier.
+     * Gets the scope implementation for a given scope identifier registered with a given class loader.
      *
      * @param identifier The identifier of the scope to get an implementation of.
      * @param classLoader The class loader to use for loading scope implementations.
@@ -2269,7 +2263,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets a locator to use with a given location URI.
+     * Gets a locator to use with a given location URI registered with a given class loader.
      *
      * @param location The location URI to get a locator for.
      * @param classLoader The class loader to use for loading locator implementations.
@@ -2418,7 +2412,7 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the invoker of a given class loader.
+     * Gets the invoker registered with a given class loader.
      *
      * @param classLoader The class loader to use for loading invoker implementations.
      *
