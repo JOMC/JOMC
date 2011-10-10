@@ -34,10 +34,10 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import org.junit.Test;
 import java.util.logging.Level;
 import org.jomc.ri.DefaultListener;
 import org.jomc.spi.Listener;
+import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 

@@ -34,8 +34,8 @@
 // SECTION-END
 package org.jomc.ri.test;
 
-import org.junit.Test;
 import org.jomc.ri.DefaultListener;
+import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
