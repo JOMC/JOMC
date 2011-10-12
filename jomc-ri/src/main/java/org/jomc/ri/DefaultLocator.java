@@ -258,6 +258,7 @@ public class DefaultLocator implements Locator
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -308,6 +309,7 @@ public class DefaultLocator implements Locator
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }

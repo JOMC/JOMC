@@ -202,6 +202,7 @@ public class DefaultListener implements Listener
         {
             b.append( linePrefix ).append( line ).append( LINE_SEPARATOR );
         }
+        reader.close();
 
         return b;
     }

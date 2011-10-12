@@ -936,6 +936,7 @@ public class DefaultObjectManager implements ObjectManager
                 {
                     builder.append( LINE_SEPARATOR ).append( line );
                 }
+                reader.close();
 
                 return builder.substring( LINE_SEPARATOR.length() );
             }
@@ -3223,6 +3224,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3272,6 +3274,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3322,6 +3325,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3372,6 +3376,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3423,6 +3428,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3473,6 +3479,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3523,6 +3530,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3573,6 +3581,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3623,6 +3632,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3672,6 +3682,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3721,6 +3732,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3770,6 +3782,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3821,6 +3834,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3872,6 +3886,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3922,6 +3937,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -3972,6 +3988,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4022,6 +4039,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4073,6 +4091,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4124,6 +4143,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4174,6 +4194,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4225,6 +4246,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4276,6 +4298,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4328,6 +4351,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4379,6 +4403,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4430,6 +4455,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4480,6 +4506,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4531,6 +4558,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4581,6 +4609,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4632,6 +4661,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4682,6 +4712,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4733,6 +4764,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4784,6 +4816,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4834,6 +4867,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4884,6 +4918,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4934,6 +4969,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -4983,6 +5019,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -5035,6 +5072,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
@@ -5088,6 +5126,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
+            reader.close();
 
             return builder.substring( lineSeparator.length() );
         }
