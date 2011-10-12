@@ -52,6 +52,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import org.jomc.ObjectManagementException;
@@ -120,6 +122,23 @@ public class DefaultObjectManager implements ObjectManager
     {
         // SECTION-START[Default Constructor]
         super();
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.listeners ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.modules ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.invokers ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.scopes ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.locators ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.objects ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
         // SECTION-END
     }
     // </editor-fold>
@@ -1034,6 +1053,19 @@ public class DefaultObjectManager implements ObjectManager
         new WeakIdentityHashMap<ClassLoader, ObjectManager>();
 
     /**
+     * Reference handler timer.
+     * @since 1.2
+     */
+    private static final Timer referenceHandlerTimer = new Timer( "ObjectManager Reference Handler", true );
+
+    static
+    {
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( singletons ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+    }
+
+    /**
      * Default {@link ObjectManagerFactory#getObjectManager(ClassLoader)} implementation.
      *
      * @param classLoader The class loader to use for getting the singleton instance; {@code null} to use the platform's
@@ -1770,6 +1802,10 @@ public class DefaultObjectManager implements ObjectManager
                     if ( objectMap == null )
                     {
                         objectMap = new WeakIdentityHashMap<Object, Instance>();
+                        referenceHandlerTimer.schedule( new ReferenceHandlerTask( objectMap ),
+                                                        getReferenceHandlerTaskDelay(),
+                                                        getReferenceHandlerTaskPeriod() );
+
                         this.objects.put( objectsLoader, objectMap );
                     }
 
@@ -3124,6 +3160,30 @@ public class DefaultObjectManager implements ObjectManager
         i.setVendor( getDefaultModulesVendor( Locale.getDefault() ) );
         i.setVersion( getDefaultModulesVersion( Locale.getDefault() ) );
         return i;
+    }
+
+    private static long getReferenceHandlerTaskDelay()
+    {
+        Long delay = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay", 300000L );
+
+        if ( delay < 0L )
+        {
+            delay = 300000L;
+        }
+
+        return delay;
+    }
+
+    private static long getReferenceHandlerTaskPeriod()
+    {
+        Long period = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod", 300000L );
+
+        if ( period <= 0L )
+        {
+            period = 300000L;
+        }
+
+        return period;
     }
 
     // SECTION-END
@@ -5050,4 +5110,39 @@ public class DefaultObjectManager implements ObjectManager
     }
     // </editor-fold>
     // SECTION-END
+}
+
+/**
+ * {@code TimerTask} polling a {@code Map} for stale references.
+ *
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
+ * @version $JOMC$
+ * @since 1.2
+ */
+final class ReferenceHandlerTask extends TimerTask
+{
+
+    /** Map to poll. */
+    private final Map<?, ?> map;
+
+    /**
+     * Creates a new {@code ReferenceHandlerTask} taking a {@code Map} to poll for stale references.
+     *
+     * @param map The {@code Map} to poll for stale references.
+     */
+    ReferenceHandlerTask( final Map<?, ?> map )
+    {
+        super();
+        this.map = map;
+    }
+
+    /** Polls the map of the instance for stale references. */
+    public void run()
+    {
+        synchronized ( this.map )
+        {
+            this.map.size();
+        }
+    }
+
 }

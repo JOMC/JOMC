@@ -61,6 +61,10 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.2"/>
+    <release version="1.2">
+      <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code> to
+      handle stale references asynchronously.]]>
+      </action>
+    </release>
   </body>
 </document>
