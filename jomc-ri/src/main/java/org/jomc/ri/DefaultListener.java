@@ -164,6 +164,7 @@ public class DefaultListener implements Listener
 
         if ( this.isEnabled() )
         {
+            // JDK: As of JDK 6, "System.console().writer()".
             final PrintStream out = level.intValue() > Level.WARNING.intValue() ? System.err : System.out;
 
             try

@@ -729,6 +729,26 @@
           </configuration>
         </plugin>
         <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>taglist-maven-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+            <tagListOptions>
+              <tagClasses>
+                <tagClass>
+                  <displayName>JDK Tags</displayName>
+                  <tags>
+                    <tag>
+                      <matchString>JDK:</matchString>
+                      <matchType>exact</matchType>
+                    </tag>
+                  </tags>
+                </tagClass>
+              </tagClasses>
+            </tagListOptions>
+          </configuration>
+        </plugin>
+        <plugin>
           <groupId>org.codehaus.plexus</groupId>
           <artifactId>plexus-component-metadata</artifactId>
           <version>${plexuscontainers.version}</version>
@@ -1964,6 +1984,34 @@
             <reports>
               <report>test-jxr</report>
             </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <version>2.4</version>
+        <reportSets>
+          <reportSet>
+            <id>default-taglist</id>
+            <reports>
+              <report>taglist</report>
+            </reports>
+            <configuration>
+              <tagListOptions>
+                <tagClasses>
+                  <tagClass>
+                    <displayName>JDK Tags</displayName>
+                    <tags>
+                      <tag>
+                        <matchString>JDK:</matchString>
+                        <matchType>exact</matchType>
+                      </tag>
+                    </tags>
+                  </tagClass>
+                </tagClasses>
+              </tagListOptions>
+            </configuration>
           </reportSet>
         </reportSets>
       </plugin>
