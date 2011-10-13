@@ -3165,11 +3165,11 @@ public class DefaultObjectManager implements ObjectManager
 
     private static long getReferenceHandlerTaskDelay()
     {
-        Long delay = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay", 300000L );
+        Long delay = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay", 60000L );
 
         if ( delay < 0L )
         {
-            delay = 300000L;
+            delay = 60000L;
         }
 
         return delay;
@@ -3177,11 +3177,11 @@ public class DefaultObjectManager implements ObjectManager
 
     private static long getReferenceHandlerTaskPeriod()
     {
-        Long period = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod", 300000L );
+        Long period = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod", 1800000L );
 
         if ( period <= 0L )
         {
-            period = 300000L;
+            period = 1800000L;
         }
 
         return period;
