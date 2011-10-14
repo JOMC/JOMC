@@ -194,18 +194,41 @@ public class DefaultListener implements Listener
 
     private StringBuilder splitLines( final Level level, final String message ) throws IOException
     {
-        final String linePrefix = "[" + level.getLocalizedName() + "] ";
-        final StringBuilder b = new StringBuilder( message.length() );
-        final BufferedReader reader = new BufferedReader( new StringReader( message ) );
+        BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
 
-        String line;
-        while ( ( line = reader.readLine() ) != null )
+        try
         {
-            b.append( linePrefix ).append( line ).append( LINE_SEPARATOR );
-        }
-        reader.close();
+            final String linePrefix = "[" + level.getLocalizedName() + "] ";
+            final StringBuilder b = new StringBuilder( message.length() );
+            reader = new BufferedReader( new StringReader( message ) );
 
-        return b;
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                b.append( linePrefix ).append( line ).append( LINE_SEPARATOR );
+            }
+
+            suppressExceptionOnClose = false;
+            return b;
+        }
+        finally
+        {
+            try
+            {
+                if ( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch ( final IOException e )
+            {
+                if ( !suppressExceptionOnClose )
+                {
+                    throw e;
+                }
+            }
+        }
     }
 
     // SECTION-END

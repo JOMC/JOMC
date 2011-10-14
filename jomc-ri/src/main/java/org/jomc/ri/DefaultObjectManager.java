@@ -888,6 +888,9 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "locale" );
         }
 
+        BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             this.initialize();
@@ -929,21 +932,42 @@ public class DefaultObjectManager implements ObjectManager
                     locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), arguments );
 
                 final StringBuilder builder = new StringBuilder( text.length() );
-                final BufferedReader reader = new BufferedReader( new StringReader( text ) );
+                reader = new BufferedReader( new StringReader( text ) );
 
                 String line;
                 while ( ( line = reader.readLine() ) != null )
                 {
                     builder.append( LINE_SEPARATOR ).append( line );
                 }
-                reader.close();
 
+                suppressExceptionOnClose = false;
                 return builder.substring( LINE_SEPARATOR.length() );
             }
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( getMessage( e ), e );
+        }
+        finally
+        {
+            try
+            {
+                if ( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch ( final IOException e )
+            {
+                if ( suppressExceptionOnClose )
+                {
+                    this.log( Level.SEVERE, getMessage( e ), e );
+                }
+                else
+                {
+                    throw new ObjectManagementException( getMessage( e ), e );
+                }
+            }
         }
     }
 
@@ -3212,11 +3236,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getCreatingModulesInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "creatingModulesInfo" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3224,8 +3251,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3243,6 +3270,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3262,11 +3306,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultImplementationName( final java.util.Locale locale )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultImplementationName" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3274,8 +3321,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3293,6 +3340,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3313,11 +3377,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultInvokerInfoMessage" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3325,8 +3392,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3344,6 +3411,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3364,11 +3448,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultListenerInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultListenerInfo" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3376,8 +3463,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3395,6 +3482,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3416,11 +3520,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLocatorInfoMessage" ), schemeInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3428,8 +3535,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3447,6 +3554,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3467,11 +3591,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String logLevel )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfoMessage" ), logLevel, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3479,8 +3606,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3498,6 +3625,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3518,11 +3662,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelIdentifierInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3530,8 +3677,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3549,6 +3696,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3569,11 +3733,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelObjectClasspahResolutionEnabledInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3581,8 +3748,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3600,6 +3767,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3620,11 +3804,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelProcessingEnabledInfo" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3632,8 +3819,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3651,6 +3838,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3670,11 +3874,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModuleName( final java.util.Locale locale )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModuleName" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3682,8 +3889,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3701,6 +3908,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3720,11 +3944,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModulesVendor( final java.util.Locale locale )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesVendor" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3732,8 +3959,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3751,6 +3978,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3770,11 +4014,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModulesVersion( final java.util.Locale locale )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesVersion" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3782,8 +4029,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3801,6 +4048,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3822,11 +4086,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultModulesWarning( final java.util.Locale locale, final java.lang.String modelInfo, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesWarning" ), modelInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3834,8 +4101,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3853,6 +4120,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3874,11 +4158,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultScopeInfoMessage" ), scopeIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3886,8 +4173,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3905,6 +4192,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3925,11 +4229,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "dependencyCycleMessage" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3937,8 +4244,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -3956,6 +4263,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -3976,11 +4300,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvocationMessage" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -3988,8 +4315,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4007,6 +4334,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4027,11 +4371,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvokerMessage" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4039,8 +4386,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4058,6 +4405,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4079,11 +4443,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalArraySpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4091,8 +4458,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4110,6 +4477,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4131,11 +4515,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalObjectSpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4143,8 +4530,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4162,6 +4549,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4182,11 +4586,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "implementationInfoMessage" ), initializationMillis, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4194,8 +4601,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4213,6 +4620,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4234,11 +4658,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "invokerInfoMessage" ), implementationIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4246,8 +4673,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4265,6 +4692,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4286,11 +4730,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "listenerInfoMessage" ), implementationIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4298,8 +4745,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4317,6 +4764,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4339,11 +4803,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "locatorInfoMessage" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4351,8 +4818,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4370,6 +4837,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4391,11 +4875,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingDependencyMessage" ), implementationIdentifier, dependencyName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4403,8 +4890,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4422,6 +4909,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4443,11 +4947,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationMessage" ), specificationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4455,8 +4962,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4474,6 +4981,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4494,11 +5018,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationsMessage" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4506,8 +5033,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4525,6 +5052,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4546,11 +5090,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingInstanceMessage" ), implementationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4558,8 +5105,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4577,6 +5124,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4597,11 +5161,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingLocatorMessage" ), locationInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4609,8 +5176,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4628,6 +5195,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4649,11 +5233,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingMessageMessage" ), implementationIdentifier, messageName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4661,8 +5248,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4680,6 +5267,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4700,11 +5304,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectInstanceMessage" ), objectInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4712,8 +5319,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4731,6 +5338,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4752,11 +5376,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectMessage" ), implementationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4764,8 +5391,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4783,6 +5410,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4804,11 +5448,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingPropertyMessage" ), implementationIdentifier, propertyName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4816,8 +5463,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4835,6 +5482,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4855,11 +5519,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingScopeMessage" ), scopeIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4867,8 +5534,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4886,6 +5553,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4906,11 +5590,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationClassMessage" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4918,8 +5605,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4937,6 +5624,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -4957,11 +5661,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationMessage" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -4969,8 +5676,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -4988,6 +5695,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -5007,11 +5731,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getModulesReportMessage( final java.util.Locale locale )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReportMessage" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -5019,8 +5746,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -5038,6 +5765,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -5060,11 +5804,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeInfoMessage" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -5072,8 +5819,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -5091,6 +5838,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -5114,11 +5878,14 @@ public class DefaultObjectManager implements ObjectManager
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "unexpectedDependencyObjectsMessage" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -5126,8 +5893,8 @@ public class DefaultObjectManager implements ObjectManager
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -5145,6 +5912,23 @@ public class DefaultObjectManager implements ObjectManager
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
     // </editor-fold>

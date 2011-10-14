@@ -246,11 +246,14 @@ public class DefaultLocator implements Locator
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "illegalObjectMessage" ), objectInfo, classInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -258,8 +261,8 @@ public class DefaultLocator implements Locator
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -277,6 +280,23 @@ public class DefaultLocator implements Locator
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
 
@@ -297,11 +317,14 @@ public class DefaultLocator implements Locator
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "unsupportedUriSchemeMessage" ), schemeInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
-            final java.io.BufferedReader reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
 
             String line;
@@ -309,8 +332,8 @@ public class DefaultLocator implements Locator
             {
                 builder.append( lineSeparator ).append( line );
             }
-            reader.close();
 
+            suppressExceptionOnClose = false;
             return builder.substring( lineSeparator.length() );
         }
         catch( final java.lang.ClassCastException e )
@@ -328,6 +351,23 @@ public class DefaultLocator implements Locator
         catch( final java.io.IOException e )
         {
             throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
         }
     }
     // </editor-fold>

@@ -34,6 +34,7 @@
 // SECTION-END
 package org.jomc.test;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import org.jomc.ObjectManagementException;
 import org.junit.Test;
@@ -69,13 +70,35 @@ public class ObjectManagementExceptionTest
     @Test
     public final void testSerializable() throws Exception
     {
-        final ObjectInputStream in = new ObjectInputStream( this.getClass().getResourceAsStream(
-            ABSOLUTE_RESOURCE_NAME_PREFIX + "ObjectManagementException.ser" ) );
+        ObjectInputStream in = null;
+        boolean suppressExceptionOnClose = true;
 
-        final ObjectManagementException e = (ObjectManagementException) in.readObject();
-        in.close();
+        try
+        {
+            in = new ObjectInputStream( this.getClass().getResourceAsStream(
+                ABSOLUTE_RESOURCE_NAME_PREFIX + "ObjectManagementException.ser" ) );
 
-        System.out.println( e.toString() );
+            final ObjectManagementException e = (ObjectManagementException) in.readObject();
+            System.out.println( e.toString() );
+            suppressExceptionOnClose = false;
+        }
+        finally
+        {
+            try
+            {
+                if ( in != null )
+                {
+                    in.close();
+                }
+            }
+            catch ( final IOException e )
+            {
+                if ( !suppressExceptionOnClose )
+                {
+                    throw e;
+                }
+            }
+        }
     }
 
     // SECTION-END
