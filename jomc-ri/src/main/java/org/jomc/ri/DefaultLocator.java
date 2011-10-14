@@ -191,10 +191,12 @@ public class DefaultLocator implements Locator
         }
         catch ( final NamingException e )
         {
+            // JDK: As of JDK 6, "new IOException( message, cause )".
             throw (IOException) new IOException( getMessage( e ) ).initCause( e );
         }
         catch ( final ClassCastException e )
         {
+            // JDK: As of JDK 6, "new IOException( message, cause )".
             throw (IOException) new IOException( getIllegalObjectMessage(
                 Locale.getDefault(), object != null ? object.toString() : null,
                 specification.getName() ) ).initCause( e );
