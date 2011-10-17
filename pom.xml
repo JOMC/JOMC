@@ -225,8 +225,10 @@
             </includes>
             <systemPropertyVariables>
               <org.jomc.modlet.ModelContext.defaultLogLevel>ALL</org.jomc.modlet.ModelContext.defaultLogLevel>
-              <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
               <org.jomc.tools.JomcTool.defaultLogLevel>ALL</org.jomc.tools.JomcTool.defaultLogLevel>
+              <org.jomc.ri.DefaultObjectManager.defaultLogLevel>ALL</org.jomc.ri.DefaultObjectManager.defaultLogLevel>
+              <org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay>0</org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay>
+              <org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod>1000</org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod>
               <org.jomc.cli.Jomc.defaultLogLevel>ALL</org.jomc.cli.Jomc.defaultLogLevel>
               <org.jomc.cli.commands.AbstractCommand.defaultLogLevel>ALL</org.jomc.cli.commands.AbstractCommand.defaultLogLevel>
               <!-- Test properties. -->
