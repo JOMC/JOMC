@@ -115,7 +115,6 @@ public class DefaultObjectManager implements ObjectManager
 {
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
     /** Creates a new {@code DefaultObjectManager} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     public DefaultObjectManager()
@@ -3218,7 +3217,6 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-END
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
-
     /**
      * Gets the text of the {@code <creatingModulesInfo>} message.
      * <p><strong>Languages:</strong>
@@ -3289,7 +3287,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultImplementationName>} message.
      * <p><strong>Languages:</strong>
@@ -3359,7 +3356,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultInvokerInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -3430,7 +3426,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultListenerInfo>} message.
      * <p><strong>Languages:</strong>
@@ -3501,7 +3496,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultLocatorInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -3573,7 +3567,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultLogLevelInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -3644,7 +3637,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModelIdentifierInfo>} message.
      * <p><strong>Languages:</strong>
@@ -3715,7 +3707,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModelObjectClasspahResolutionEnabledInfo>} message.
      * <p><strong>Languages:</strong>
@@ -3786,7 +3777,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModelProcessingEnabledInfo>} message.
      * <p><strong>Languages:</strong>
@@ -3857,7 +3847,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModuleName>} message.
      * <p><strong>Languages:</strong>
@@ -3927,7 +3916,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModulesVendor>} message.
      * <p><strong>Languages:</strong>
@@ -3997,7 +3985,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModulesVersion>} message.
      * <p><strong>Languages:</strong>
@@ -4067,7 +4054,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultModulesWarning>} message.
      * <p><strong>Languages:</strong>
@@ -4139,7 +4125,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <defaultScopeInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4211,7 +4196,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <dependencyCycleMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4282,7 +4266,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <ignoredInvocationMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4353,7 +4336,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <ignoredInvokerMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4424,7 +4406,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <illegalArraySpecificationMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4496,7 +4477,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <illegalObjectSpecificationMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4568,7 +4548,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <implementationInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4639,7 +4618,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <invokerInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4711,7 +4689,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <listenerInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4783,7 +4760,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <locatorInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4856,7 +4832,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingDependencyMessage>} message.
      * <p><strong>Languages:</strong>
@@ -4928,7 +4903,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingImplementationMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5000,7 +4974,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingImplementationsMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5071,7 +5044,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingInstanceMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5143,7 +5115,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingLocatorMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5214,7 +5185,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingMessageMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5286,7 +5256,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingObjectInstanceMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5357,7 +5326,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingObjectMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5429,7 +5397,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingPropertyMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5501,7 +5468,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingScopeMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5572,7 +5538,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingSpecificationClassMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5643,7 +5608,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <missingSpecificationMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5714,7 +5678,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <modulesReportMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5784,7 +5747,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <scopeInfoMessage>} message.
      * <p><strong>Languages:</strong>
@@ -5857,7 +5819,6 @@ public class DefaultObjectManager implements ObjectManager
             }
         }
     }
-
     /**
      * Gets the text of the {@code <unexpectedDependencyObjectsMessage>} message.
      * <p><strong>Languages:</strong>

@@ -212,7 +212,6 @@ public class DefaultLocator implements Locator
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
     /** Creates a new {@code DefaultLocator} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     public DefaultLocator()
@@ -229,7 +228,6 @@ public class DefaultLocator implements Locator
     // SECTION-END
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
-
     /**
      * Gets the text of the {@code <illegalObjectMessage>} message.
      * <p><strong>Languages:</strong>
@@ -301,7 +299,6 @@ public class DefaultLocator implements Locator
             }
         }
     }
-
     /**
      * Gets the text of the {@code <unsupportedUriSchemeMessage>} message.
      * <p><strong>Languages:</strong>
