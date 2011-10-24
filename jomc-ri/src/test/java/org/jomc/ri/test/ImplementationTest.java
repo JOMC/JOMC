@@ -271,7 +271,6 @@ public class ImplementationTest
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
     /** Creates a new {@code ImplementationTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     public ImplementationTest()
@@ -284,7 +283,6 @@ public class ImplementationTest
     // SECTION-END
     // SECTION-START[Dependencies]
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
-
     /**
      * Gets the {@code <BoundMultitons>} dependency.
      * <p>
@@ -301,7 +299,6 @@ public class ImplementationTest
         assert _d != null : "'BoundMultitons' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <BoundSingletons>} dependency.
      * <p>
@@ -318,7 +315,6 @@ public class ImplementationTest
         assert _d != null : "'BoundSingletons' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <InvokerTestSpecification>} dependency.
      * <p>
@@ -335,7 +331,6 @@ public class ImplementationTest
         assert _d != null : "'InvokerTestSpecification' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <OptionalLocale>} dependency.
      * <p>
@@ -351,7 +346,6 @@ public class ImplementationTest
     {
         return (java.util.Locale) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "OptionalLocale" );
     }
-
     /**
      * Gets the {@code <SelectedBoundMultiton>} dependency.
      * <p>
@@ -368,7 +362,6 @@ public class ImplementationTest
         assert _d != null : "'SelectedBoundMultiton' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <SelectedBoundSingleton>} dependency.
      * <p>
@@ -385,7 +378,6 @@ public class ImplementationTest
         assert _d != null : "'SelectedBoundSingleton' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <SelectedUnboundMultiton>} dependency.
      * <p>
@@ -402,7 +394,6 @@ public class ImplementationTest
         assert _d != null : "'SelectedUnboundMultiton' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <SelectedUnboundSingleton>} dependency.
      * <p>
@@ -419,7 +410,6 @@ public class ImplementationTest
         assert _d != null : "'SelectedUnboundSingleton' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <UnboundMultitons>} dependency.
      * <p>
@@ -436,7 +426,6 @@ public class ImplementationTest
         assert _d != null : "'UnboundMultitons' dependency not found.";
         return _d;
     }
-
     /**
      * Gets the {@code <UnboundSingletons>} dependency.
      * <p>
@@ -457,7 +446,6 @@ public class ImplementationTest
     // SECTION-END
     // SECTION-START[Properties]
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
-
     /**
      * Gets the value of the {@code <testProperty>} property.
      * @return The value of the {@code <testProperty>} property.
@@ -474,7 +462,6 @@ public class ImplementationTest
     // SECTION-END
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
-
     /**
      * Gets the text of the {@code <testMessage>} message.
      * <p><strong>Languages:</strong>

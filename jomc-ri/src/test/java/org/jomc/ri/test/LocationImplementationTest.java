@@ -81,7 +81,6 @@ public class LocationImplementationTest
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
-
     /** Creates a new {@code LocationImplementationTest} instance. */
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.2-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.2/jomc-tools-1.2-SNAPSHOT" )
     public LocationImplementationTest()
@@ -94,7 +93,6 @@ public class LocationImplementationTest
     // SECTION-END
     // SECTION-START[Dependencies]
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
-
     /**
      * Gets the {@code <TestScopeSpecificationMany>} dependency.
      * <p>
@@ -110,7 +108,6 @@ public class LocationImplementationTest
     {
         return (org.jomc.ri.test.support.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationMany" );
     }
-
     /**
      * Gets the {@code <TestScopeSpecificationOne>} dependency.
      * <p>
