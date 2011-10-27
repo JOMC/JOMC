@@ -1426,7 +1426,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             final List<Listener> l = this.getListeners( classLoader );
 
-            for ( int i = l.size() - 1; i >= 0; i-- )
+            for ( int i = l.size(), s0 = l.size(); i < s0; i++ )
             {
                 l.get( i ).onLog( level, message, throwable );
             }
