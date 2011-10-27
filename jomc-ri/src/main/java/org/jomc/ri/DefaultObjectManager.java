@@ -5897,7 +5897,7 @@ public class DefaultObjectManager implements ObjectManager
 }
 
 /**
- * {@code TimerTask} polling a {@code Map} for stale references.
+ * {@code TimerTask} polling a {@code Map} for pending references.
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
  * @version $JOMC$
@@ -5910,9 +5910,9 @@ final class ReferenceHandlerTask extends TimerTask
     private final Map<?, ?> map;
 
     /**
-     * Creates a new {@code ReferenceHandlerTask} taking a {@code Map} to poll for stale references.
+     * Creates a new {@code ReferenceHandlerTask} taking a {@code Map} to poll for pending references.
      *
-     * @param map The {@code Map} to poll for stale references.
+     * @param map The {@code Map} to poll for pending references.
      */
     ReferenceHandlerTask( final Map<?, ?> map )
     {
@@ -5920,7 +5920,7 @@ final class ReferenceHandlerTask extends TimerTask
         this.map = map;
     }
 
-    /** Polls the map of the instance for stale references. */
+    /** Polls the map of the instance for pending references. */
     public void run()
     {
         synchronized ( this.map )
