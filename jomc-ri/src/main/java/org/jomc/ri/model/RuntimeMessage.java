@@ -34,7 +34,12 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.text.MessageFormat;
+import java.util.Locale;
+import java.util.Map;
+import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Message;
+import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -65,6 +70,10 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
 {
     // SECTION-START[RuntimeMessage]
 
+    /** Java messages by locale cache.*/
+    @XmlTransient
+    private final Map<Locale, MessageFormat> javaMessagesByLocaleCache = createMap();
+
     /**
      * Creates a new {@code RuntimeMessage} instance by deeply copying a given {@code Message} instance.
      *
@@ -94,6 +103,45 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
         }
     }
 
+    /**
+     * Gets a Java {@code MessageFormat} instance for a given locale.
+     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * cached result object is available, this method queries the super-class for a result object to return and caches
+     * the outcome of that query for use on successive calls.</p>
+     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.</p>
+     *
+     * @param locale The locale to get a Java {@code MessageFormat} instance for.
+     *
+     * @return A Java {@code MessageFormat} instance for {@code locale}.
+     *
+     * @throws NullPointerException if {@code locale} is {@code null}.
+     *
+     * @see #getTemplate()
+     * @see #clear()
+     */
+    @Override
+    public MessageFormat getJavaMessage( final Locale locale )
+    {
+        if ( locale == null )
+        {
+            throw new NullPointerException( "locale" );
+        }
+
+        synchronized ( this.javaMessagesByLocaleCache )
+        {
+            MessageFormat javaMessage = this.javaMessagesByLocaleCache.get( locale );
+
+            if ( javaMessage == null && !this.javaMessagesByLocaleCache.containsKey( locale ) )
+            {
+                javaMessage = super.getJavaMessage( locale );
+                this.javaMessagesByLocaleCache.put( locale, javaMessage );
+            }
+
+            return javaMessage;
+        }
+    }
+
     // SECTION-END
     // SECTION-START[RuntimeModelObject]
     public void gc()
@@ -103,6 +151,11 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
 
     public void clear()
     {
+        synchronized ( this.javaMessagesByLocaleCache )
+        {
+            this.javaMessagesByLocaleCache.clear();
+        }
+
         this.gcOrClear( false, true );
     }
 
