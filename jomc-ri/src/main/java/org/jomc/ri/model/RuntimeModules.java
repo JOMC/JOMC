@@ -1375,11 +1375,14 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     private static void gcMap( final Map<?, ?> map )
     {
-        for ( Map.Entry<?, ?> e : map.entrySet() )
+        synchronized ( map )
         {
-            if ( e.getValue() instanceof RuntimeModelObject )
+            for ( Map.Entry<?, ?> e : map.entrySet() )
             {
-                ( (RuntimeModelObject) e.getValue() ).gc();
+                if ( e.getValue() instanceof RuntimeModelObject )
+                {
+                    ( (RuntimeModelObject) e.getValue() ).gc();
+                }
             }
         }
     }
