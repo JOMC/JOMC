@@ -34,24 +34,21 @@
 // SECTION-END
 package org.jomc.ri;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.StringReader;
 import java.lang.reflect.Array;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.math.BigInteger;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -138,6 +135,7 @@ public class DefaultObjectManager implements ObjectManager
 
         referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.objects ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
+
         // SECTION-END
     }
     // </editor-fold>
@@ -252,8 +250,8 @@ public class DefaultObjectManager implements ObjectManager
                         return null;
                     }
 
-                    final Object o = this.getObject( Class.forName( s.getClazz(), true, classLoader ),
-                                                     impl.getLocationUri(), classLoader );
+                    final Object o =
+                        this.getObject( s.getJavaClass( classLoader ), impl.getLocationUri(), classLoader );
 
                     if ( o == null )
                     {
@@ -411,8 +409,8 @@ public class DefaultObjectManager implements ObjectManager
                     return null;
                 }
 
-                final T object = this.getObject( Class.forName( s.getClazz(), true, classLoader ).
-                    asSubclass( specification ), i.getLocationUri(), classLoader );
+                final T object = this.getObject( s.getJavaClass( classLoader ).asSubclass( specification ),
+                                                 i.getLocationUri(), classLoader );
 
                 if ( object == null )
                 {
@@ -598,8 +596,7 @@ public class DefaultObjectManager implements ObjectManager
                                 return null;
                             }
 
-                            o = this.getObject(
-                                Class.forName( ds.getClazz(), true, classLoader ), i.getLocationUri(), classLoader );
+                            o = this.getObject( ds.getJavaClass( classLoader ), i.getLocationUri(), classLoader );
 
                             if ( o == null )
                             {
@@ -662,8 +659,7 @@ public class DefaultObjectManager implements ObjectManager
                                     return null;
                                 }
 
-                                o = this.getObject( Class.forName( ds.getClazz(), true, classLoader ),
-                                                    ref.getLocationUri(), classLoader );
+                                o = this.getObject( ds.getJavaClass( classLoader ), ref.getLocationUri(), classLoader );
 
                                 if ( o == null )
                                 {
@@ -735,8 +731,8 @@ public class DefaultObjectManager implements ObjectManager
                             final Implementation a = available.getImplementation().get( i );
                             if ( a.getLocation() != null )
                             {
-                                final Object o2 = this.getObject( Class.forName( ds.getClazz(), true, classLoader ),
-                                                                  a.getLocationUri(), classLoader );
+                                final Object o2 =
+                                    this.getObject( ds.getJavaClass( classLoader ), a.getLocationUri(), classLoader );
 
                                 if ( o2 == null )
                                 {
@@ -784,8 +780,8 @@ public class DefaultObjectManager implements ObjectManager
                             }
                         }
 
-                        o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance( Class.forName(
-                            ds.getClazz(), true, classLoader ), list.size() ) );
+                        o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance(
+                            ds.getJavaClass( classLoader ), list.size() ) );
 
                     }
                 }
@@ -887,9 +883,6 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "locale" );
         }
 
-        BufferedReader reader = null;
-        boolean suppressExceptionOnClose = true;
-
         try
         {
             this.initialize();
@@ -912,61 +905,46 @@ public class DefaultObjectManager implements ObjectManager
 
             synchronized ( instance )
             {
-                final Message message =
-                    instance.getMessages() != null ? instance.getMessages().getMessage( messageName ) : null;
+                Map<Locale, MessageFormat> messageFormats = instance.getMessageObjects().get( messageName );
 
-                if ( message == null || message.getTemplate() == null )
+                if ( messageFormats == null )
                 {
-                    if ( this.isLoggable( Level.WARNING ) )
-                    {
-                        this.log( classLoader, Level.WARNING, getMissingMessageMessage(
-                            Locale.getDefault(), instance.getIdentifier(), messageName ), null );
+                    messageFormats = new HashMap<Locale, MessageFormat>();
+                    instance.getMessageObjects().put( messageName, messageFormats );
+                }
 
+                MessageFormat messageFormat = messageFormats.get( locale );
+
+                if ( messageFormat == null && !messageFormats.containsKey( locale ) )
+                {
+                    final Message message =
+                        instance.getMessages() != null ? instance.getMessages().getMessage( messageName ) : null;
+
+                    if ( message == null || message.getTemplate() == null )
+                    {
+                        if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( classLoader, Level.WARNING, getMissingMessageMessage(
+                                Locale.getDefault(), instance.getIdentifier(), messageName ), null );
+
+                        }
+
+                        return null;
                     }
 
-                    return null;
+                    messageFormat = message.getMessageFormat( locale );
+                    messageFormats.put( locale, messageFormat );
                 }
 
-                final String text = MessageFormat.format( message.getTemplate().getText(
-                    locale.getLanguage().toLowerCase( Locale.ENGLISH ) ).getValue(), arguments );
-
-                final StringBuilder builder = new StringBuilder( text.length() );
-                reader = new BufferedReader( new StringReader( text ) );
-
-                String line;
-                while ( ( line = reader.readLine() ) != null )
+                synchronized ( messageFormat )
                 {
-                    builder.append( LINE_SEPARATOR ).append( line );
+                    return messageFormat.format( arguments );
                 }
-
-                suppressExceptionOnClose = false;
-                return builder.substring( LINE_SEPARATOR.length() );
             }
         }
         catch ( final Exception e )
         {
             throw new ObjectManagementException( getMessage( e ), e );
-        }
-        finally
-        {
-            try
-            {
-                if ( reader != null )
-                {
-                    reader.close();
-                }
-            }
-            catch ( final IOException e )
-            {
-                if ( suppressExceptionOnClose )
-                {
-                    this.log( Level.SEVERE, getMessage( e ), e );
-                }
-                else
-                {
-                    throw new ObjectManagementException( getMessage( e ), e );
-                }
-            }
         }
     }
 
@@ -975,8 +953,14 @@ public class DefaultObjectManager implements ObjectManager
     /** Constant for the {@code Singleton} scope identifier. */
     protected static final String SINGLETON_SCOPE_IDENTIFIER = "Singleton";
 
-    /** System's line separator. */
-    private static final String LINE_SEPARATOR = System.getProperty( "line.separator", "\n" );
+    /**
+     * Array holding a single {@code InvocationHandler} class.
+     * @since 1.2
+     */
+    private static final Class<?>[] INVOCATION_HANDLER_ARGUMENTS =
+    {
+        InvocationHandler.class
+    };
 
     /**
      * Log level events are logged at by default.
@@ -2829,69 +2813,61 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Creates a proxy for a given object.
+     * Creates a proxy object for a given object.
      *
      * @param instance The instance of {@code object}.
-     * @param object The object to create a proxy for.
-     * @param classLoader The class loader to create the proxy with.
+     * @param object The object to create a proxy object for.
+     * @param classLoader The class loader to create the proxy object with.
      *
-     * @return A proxy for {@code object}.
+     * @return A new proxy object for {@code object}.
      *
-     * @throws InstantiationException if creating a proxy fails.
+     * @throws InstantiationException if creating a proxy object fails.
      */
     private Object createProxy( final Instance instance, final Object object, final ClassLoader classLoader )
         throws InstantiationException
     {
         try
         {
-            final Set<Class<?>> interfaces = new HashSet<Class<?>>(
-                instance.getSpecifications() != null ? instance.getSpecifications().getSpecification().size() : 0 );
+            final Class<?> proxyClass = instance.getJavaProxyClass( classLoader );
+            Object proxyObject = object;
 
-            boolean canProxy = instance.getSpecifications() != null;
-
-            if ( canProxy )
+            if ( proxyClass != null )
             {
-                for ( int i = 0, s0 = instance.getSpecifications().getSpecification().size(); i < s0; i++ )
-                {
-                    final Specification s = instance.getSpecifications().getSpecification().get( i );
-                    if ( s.getClazz() != null )
+                proxyObject = proxyClass.getConstructor( INVOCATION_HANDLER_ARGUMENTS ).newInstance( new Object[]
                     {
-                        final Class<?> clazz = Class.forName( s.getClazz(), true, classLoader );
-
-                        if ( !clazz.isInterface() )
+                        new InvocationHandler()
                         {
-                            canProxy = false;
-                            break;
+
+                            public Object invoke( final Object proxy, final Method method, final Object[] args )
+                                throws Throwable
+                            {
+                                return getInvoker( classLoader ).invoke(
+                                    getInvocation( classLoader, object, instance, method, args ) );
+
+                            }
+
                         }
-
-                        interfaces.add( clazz );
-                    }
-                }
-            }
-
-            if ( canProxy && !interfaces.isEmpty() )
-            {
-                return Proxy.newProxyInstance( classLoader, interfaces.toArray( new Class<?>[ interfaces.size() ] ),
-                                               new java.lang.reflect.InvocationHandler()
-                {
-
-                    public Object invoke( final Object proxy, final Method method, final Object[] args )
-                        throws Throwable
-                    {
-                        return getInvoker( classLoader ).invoke( getInvocation(
-                            classLoader, object, instance, method, args ) );
-
-                    }
-
-                } );
+                    } );
 
             }
 
-            return object;
+            return proxyObject;
         }
         catch ( final ClassNotFoundException e )
         {
             throw (InstantiationException) new InstantiationException( getMessage( e ) ).initCause( e );
+        }
+        catch ( final NoSuchMethodException e )
+        {
+            throw new AssertionError( e );
+        }
+        catch ( final IllegalAccessException e )
+        {
+            throw new AssertionError( e );
+        }
+        catch ( final InvocationTargetException e )
+        {
+            throw new AssertionError( e );
         }
     }
 
