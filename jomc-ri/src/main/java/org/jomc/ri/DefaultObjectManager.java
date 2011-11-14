@@ -942,7 +942,7 @@ public class DefaultObjectManager implements ObjectManager
                         return null;
                     }
 
-                    messageFormat = message.getMessageFormat( locale );
+                    messageFormat = message.getJavaMessage( locale );
                     messageFormats.put( locale, messageFormat );
                 }
 
