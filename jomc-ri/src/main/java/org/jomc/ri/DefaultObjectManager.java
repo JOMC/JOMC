@@ -36,6 +36,7 @@ package org.jomc.ri;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -230,7 +231,8 @@ public class DefaultObjectManager implements ObjectManager
                 return null;
             }
 
-            final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
+            int idx = 0;
+            final Object[] array = new Object[ available.getImplementation().size() ];
 
             for ( int i = 0, s0 = available.getImplementation().size(); i < s0; i++ )
             {
@@ -264,7 +266,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else if ( specificationClass.isInstance( o ) )
                     {
-                        list.add( o );
+                        array[idx++] = o;
                     }
                 }
                 else if ( !impl.isAbstract() )
@@ -294,7 +296,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else if ( specificationClass.isInstance( o ) )
                     {
-                        list.add( o );
+                        array[idx++] = o;
                     }
                 }
             }
@@ -302,13 +304,14 @@ public class DefaultObjectManager implements ObjectManager
             if ( specification.isArray() )
             {
                 @SuppressWarnings( "unchecked" )
-                final T array = (T) list.toArray( (Object[]) Array.newInstance( specificationClass, list.size() ) );
-                return array;
+                final T copy = (T) Array.newInstance( specificationClass, idx );
+                System.arraycopy( array, 0, copy, 0, idx );
+                return copy;
             }
-            else if ( list.size() == 1 )
+            else if ( idx == 1 )
             {
                 @SuppressWarnings( "unchecked" )
-                final T object = (T) list.get( 0 );
+                final T object = (T) array[0];
                 return object;
             }
 
@@ -712,7 +715,8 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else
                     {
-                        final List<Object> list = new ArrayList<Object>( available.getImplementation().size() );
+                        int idx = 0;
+                        final Object[] array = new Object[ available.getImplementation().size() ];
 
                         if ( !available.getImplementation().isEmpty() && ds.getClazz() == null )
                         {
@@ -745,7 +749,7 @@ public class DefaultObjectManager implements ObjectManager
                                 }
                                 else
                                 {
-                                    list.add( o2 );
+                                    array[idx++] = o2;
                                 }
                             }
                             else if ( !a.isAbstract() )
@@ -775,18 +779,24 @@ public class DefaultObjectManager implements ObjectManager
                                 }
                                 else
                                 {
-                                    list.add( o2 );
+                                    array[idx++] = o2;
                                 }
                             }
                         }
 
-                        o = list.isEmpty() ? null : list.toArray( (Object[]) Array.newInstance(
-                            ds.getJavaClass( classLoader ), list.size() ) );
-
+                        if ( idx > 0 )
+                        {
+                            o = Array.newInstance( ds.getJavaClass( classLoader ), idx );
+                            System.arraycopy( array, 0, o, 0, idx );
+                        }
+                        else
+                        {
+                            o = null;
+                        }
                     }
                 }
 
-                if ( o != null && dependency.isBound() )
+                if ( dependency.isBound() )
                 {
                     instance.getDependencyObjects().put( dependencyName, o );
                 }
@@ -1061,6 +1071,20 @@ public class DefaultObjectManager implements ObjectManager
         new WeakIdentityHashMap<ClassLoader, ObjectManager>();
 
     /**
+     * Default class loaders.
+     * @since 1.2
+     */
+    private static final Map<ClassLoader, ClassLoader> defaultClassLoaders =
+        new WeakIdentityHashMap<ClassLoader, ClassLoader>();
+
+    /**
+     * Proxy class constructors by class loader any instance cache.
+     * @since 1.2
+     */
+    private static final Map<ClassLoader, Map<String, Constructor<?>>> proxyClassConstructors =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Constructor<?>>>();
+
+    /**
      * Reference handler timer.
      * @since 1.2
      */
@@ -1071,6 +1095,11 @@ public class DefaultObjectManager implements ObjectManager
         referenceHandlerTimer.schedule( new ReferenceHandlerTask( singletons ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( defaultClassLoaders ), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new ReferenceHandlerTask( proxyClassConstructors ),
+                                        getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
     }
 
     /**
@@ -1964,13 +1993,27 @@ public class DefaultObjectManager implements ObjectManager
             return BOOTSTRAP_CLASSLOADER;
         }
 
-        if ( classLoader.getParent() != null
-             && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+        synchronized ( defaultClassLoaders )
         {
-            return this.getDefaultClassLoader( classLoader.getParent() );
-        }
+            ClassLoader loader = defaultClassLoaders.get( classLoader );
 
-        return classLoader;
+            if ( loader == null )
+            {
+                if ( classLoader.getParent() != null
+                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                {
+                    loader = getClassLoader( classLoader.getParent() );
+                }
+                else
+                {
+                    loader = classLoader;
+                }
+
+                defaultClassLoaders.put( classLoader, loader );
+            }
+
+            return loader;
+        }
     }
 
     /**
@@ -2033,13 +2076,27 @@ public class DefaultObjectManager implements ObjectManager
             return BOOTSTRAP_CLASSLOADER;
         }
 
-        if ( classLoader.getParent() != null
-             && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+        synchronized ( defaultClassLoaders )
         {
-            return getClassLoader( classLoader.getParent() );
-        }
+            ClassLoader loader = defaultClassLoaders.get( classLoader );
 
-        return classLoader;
+            if ( loader == null )
+            {
+                if ( classLoader.getParent() != null
+                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                {
+                    loader = getClassLoader( classLoader.getParent() );
+                }
+                else
+                {
+                    loader = classLoader;
+                }
+
+                defaultClassLoaders.put( classLoader, loader );
+            }
+
+            return loader;
+        }
     }
 
     /**
@@ -2067,7 +2124,6 @@ public class DefaultObjectManager implements ObjectManager
         }
 
         Object object = null;
-        final Modules model = this.getModules( classLoader );
 
         if ( scope != null )
         {
@@ -2081,7 +2137,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     try
                     {
-                        object = model.createObject( instance, classLoader );
+                        object = this.getModules( classLoader ).createObject( instance, classLoader );
                     }
                     finally
                     {
@@ -2105,7 +2161,7 @@ public class DefaultObjectManager implements ObjectManager
         {
             try
             {
-                object = model.createObject( instance, classLoader );
+                object = this.getModules( classLoader ).createObject( instance, classLoader );
             }
             finally
             {
@@ -2192,7 +2248,6 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "identifier" );
         }
 
-        final Modules model = this.getModules( classLoader );
         final ClassLoader scopesLoader = this.getDefaultClassLoader( classLoader );
 
         synchronized ( this.scopes )
@@ -2209,6 +2264,7 @@ public class DefaultObjectManager implements ObjectManager
             if ( scope == null )
             {
                 // Bootstrap scope loading.
+                final Modules model = this.getModules( classLoader );
                 final Specification scopeSpecification = model.getSpecification( Scope.class );
 
                 if ( scopeSpecification != null )
@@ -2335,7 +2391,6 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( scheme != null )
         {
-            final Modules model = this.getModules( classLoader );
             final ClassLoader locatorsLoader = this.getDefaultClassLoader( classLoader );
 
             synchronized ( this.locators )
@@ -2352,6 +2407,7 @@ public class DefaultObjectManager implements ObjectManager
                 if ( locator == null )
                 {
                     // Bootstrap locator loading.
+                    final Modules model = this.getModules( classLoader );
                     final Specification locatorSpecification = model.getSpecification( Locator.class );
 
                     if ( locatorSpecification != null )
@@ -2474,7 +2530,6 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        final Modules model = this.getModules( classLoader );
         final ClassLoader invokersLoader = this.getDefaultClassLoader( classLoader );
 
         synchronized ( this.invokers )
@@ -2483,6 +2538,7 @@ public class DefaultObjectManager implements ObjectManager
 
             if ( invoker == null )
             {
+                final Modules model = this.getModules( classLoader );
                 final Specification invokerSpecification = model.getSpecification( Invoker.class );
 
                 if ( invokerSpecification != null )
@@ -2828,21 +2884,49 @@ public class DefaultObjectManager implements ObjectManager
     {
         try
         {
-            final Class<?> proxyClass = instance.getJavaProxyClass( classLoader );
+            Constructor<?> proxyClassConstructor = null;
+
+            synchronized ( proxyClassConstructors )
+            {
+                Map<String, Constructor<?>> map = proxyClassConstructors.get( classLoader );
+
+                if ( map == null )
+                {
+                    map = new HashMap<String, Constructor<?>>();
+                    proxyClassConstructors.put( classLoader, map );
+                }
+
+                proxyClassConstructor = map.get( instance.getIdentifier() );
+
+                if ( proxyClassConstructor == null && !map.containsKey( instance.getIdentifier() ) )
+                {
+                    final Class<?> proxyClass = instance.getJavaProxyClass( classLoader );
+
+                    if ( proxyClass != null )
+                    {
+                        proxyClassConstructor = proxyClass.getConstructor( INVOCATION_HANDLER_ARGUMENTS );
+                    }
+
+                    map.put( instance.getIdentifier(), proxyClassConstructor );
+                }
+            }
+
             Object proxyObject = object;
 
-            if ( proxyClass != null )
+            if ( proxyClassConstructor != null )
             {
-                proxyObject = proxyClass.getConstructor( INVOCATION_HANDLER_ARGUMENTS ).newInstance( new Object[]
+                proxyObject = proxyClassConstructor.newInstance( new Object[]
                     {
                         new InvocationHandler()
                         {
 
+                            private final Invoker invoker = getInvoker( classLoader );
+
                             public Object invoke( final Object proxy, final Method method, final Object[] args )
                                 throws Throwable
                             {
-                                return getInvoker( classLoader ).invoke(
-                                    getInvocation( classLoader, object, instance, method, args ) );
+                                return this.invoker.invoke( getInvocation(
+                                    classLoader, object, instance, method, args ) );
 
                             }
 
