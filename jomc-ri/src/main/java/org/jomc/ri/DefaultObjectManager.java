@@ -122,22 +122,40 @@ public class DefaultObjectManager implements ObjectManager
     {
         // SECTION-START[Default Constructor]
         super();
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.listeners ), getReferenceHandlerTaskDelay(),
+
+        final TimerTask listenersHandlerTask = new MapReferenceHandlerTask( this.listeners );
+        final TimerTask modulesHandlerTask = new MapReferenceHandlerTask( this.modules );
+        final TimerTask invokersHandlerTask = new MapReferenceHandlerTask( this.invokers );
+        final TimerTask scopesHandlerTask = new MapReferenceHandlerTask( this.scopes );
+        final TimerTask locatorsHandlerTask = new MapReferenceHandlerTask( this.locators );
+        final TimerTask objectsHandlerTask = new MapReferenceHandlerTask( this.objects );
+
+        synchronized ( this.referenceHandlerTimerTasks )
+        {
+            this.referenceHandlerTimerTasks.add( listenersHandlerTask );
+            this.referenceHandlerTimerTasks.add( modulesHandlerTask );
+            this.referenceHandlerTimerTasks.add( invokersHandlerTask );
+            this.referenceHandlerTimerTasks.add( scopesHandlerTask );
+            this.referenceHandlerTimerTasks.add( locatorsHandlerTask );
+            this.referenceHandlerTimerTasks.add( objectsHandlerTask );
+        }
+
+        referenceHandlerTimer.schedule( listenersHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.modules ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( modulesHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.invokers ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( invokersHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.scopes ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( scopesHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.locators ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( locatorsHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.objects ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( objectsHandlerTask, getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
         // SECTION-END
     }
@@ -1066,6 +1084,12 @@ public class DefaultObjectManager implements ObjectManager
     private final Map<ClassLoader, Map<Object, Instance>> objects =
         new WeakIdentityHashMap<ClassLoader, Map<Object, Instance>>();
 
+    /**
+     * {@code TimerTask}s of the instance.
+     * @since 1.2
+     */
+    private final List<TimerTask> referenceHandlerTimerTasks = new ArrayList<TimerTask>();
+
     /** {@code ObjectManager} singletons. */
     private static final Map<ClassLoader, ObjectManager> singletons =
         new WeakIdentityHashMap<ClassLoader, ObjectManager>();
@@ -1844,8 +1868,14 @@ public class DefaultObjectManager implements ObjectManager
                     if ( objectMap == null )
                     {
                         objectMap = new WeakIdentityHashMap<Object, Instance>();
-                        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( objectMap ),
-                                                        getReferenceHandlerTaskDelay(),
+                        final TimerTask objectMapHandlerTask = new MapReferenceHandlerTask( objectMap );
+
+                        synchronized ( this.referenceHandlerTimerTasks )
+                        {
+                            this.referenceHandlerTimerTasks.add( objectMapHandlerTask );
+                        }
+
+                        referenceHandlerTimer.schedule( objectMapHandlerTask, getReferenceHandlerTaskDelay(),
                                                         getReferenceHandlerTaskPeriod() );
 
                         this.objects.put( objectsLoader, objectMap );
@@ -1855,9 +1885,16 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( cachedModules instanceof RuntimeModelObject )
                     {
-                        referenceHandlerTimer.schedule(
-                            new RuntimeModelObjectHandlerTask( (RuntimeModelObject) cachedModules ),
-                            getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
+                        final TimerTask runtimeModelObjectHandlerTask =
+                            new RuntimeModelObjectHandlerTask( (RuntimeModelObject) cachedModules );
+
+                        synchronized ( this.referenceHandlerTimerTasks )
+                        {
+                            this.referenceHandlerTimerTasks.add( runtimeModelObjectHandlerTask );
+                        }
+
+                        referenceHandlerTimer.schedule( runtimeModelObjectHandlerTask, getReferenceHandlerTaskDelay(),
+                                                        getReferenceHandlerTaskPeriod() );
 
                         ( (RuntimeModelObject) cachedModules ).clear();
                     }
@@ -2996,6 +3033,22 @@ public class DefaultObjectManager implements ObjectManager
         {
             throw new AssertionError( e );
         }
+    }
+
+    @Override
+    protected void finalize() throws Throwable
+    {
+        super.finalize();
+
+        synchronized ( this.referenceHandlerTimerTasks )
+        {
+            for ( int i = 0, s0 = this.referenceHandlerTimerTasks.size(); i < s0; i++ )
+            {
+                this.referenceHandlerTimerTasks.get( i ).cancel();
+            }
+        }
+
+        referenceHandlerTimer.purge();
     }
 
     private void logModulesReport( final Modules mods, final ClassLoader classLoader )
