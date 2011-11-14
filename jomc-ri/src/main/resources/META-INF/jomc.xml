@@ -39,10 +39,25 @@
     <text language="en">${project.description}</text>
   </documentation>
 
+  <specifications>
+    <specification identifier="org.jomc.ri.model.RuntimeModelObject" class="org.jomc.ri.model.RuntimeModelObject"
+                   classDeclaration="true" version="1.2" vendor="${project.organization.name}"
+                   createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime model object.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+    </specification>
+  </specifications>
   <implementations>
     <!-- *********************************************************************************************************** -->
     <implementation identifier="org.jomc.ri.DefaultObjectManager" class="org.jomc.ri.DefaultObjectManager"
-                    classDeclaration="true" name="${project.name}" version="1.1" vendor="${project.organization.name}"
+                    classDeclaration="true" name="${project.name}" version="1.2" vendor="${project.organization.name}"
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
@@ -499,5 +514,494 @@
 
       </authors>
     </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeModelObjects" class="org.jomc.ri.model.RuntimeModelObjects"
+                    classDeclaration="true" name="${project.name}" version="1.2" vendor="${project.organization.name}"
+                    createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime model objects.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeArgument" class="org.jomc.ri.model.RuntimeArgument"
+                    classDeclaration="true" name="${project.name} RuntimeArgument" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Argument}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeArguments" class="org.jomc.ri.model.RuntimeArguments"
+                    classDeclaration="true" name="${project.name} RuntimeArguments" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Arguments}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeAuthors" class="org.jomc.ri.model.RuntimeAuthors"
+                    classDeclaration="true" name="${project.name} RuntimeAuthors" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Authors}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeAuthor" class="org.jomc.ri.model.RuntimeAuthor"
+                    classDeclaration="true" name="${project.name} RuntimeAuthor" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Author}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeDependencies" class="org.jomc.ri.model.RuntimeDependencies"
+                    classDeclaration="true" name="${project.name} RuntimeDependencies" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Dependencies}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeDependency" class="org.jomc.ri.model.RuntimeDependency"
+                    classDeclaration="true" name="${project.name} RuntimeDependency" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Dependency}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeImplementations"
+                    class="org.jomc.ri.model.RuntimeImplementations"
+                    classDeclaration="true" name="${project.name} RuntimeImplementations" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Implementations}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeImplementation" class="org.jomc.ri.model.RuntimeImplementation"
+                    classDeclaration="true" name="${project.name} RuntimeImplementation" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Implementation}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeImplementationReference"
+                    class="org.jomc.ri.model.RuntimeImplementationReference"
+                    classDeclaration="true" name="${project.name} RuntimeImplementationReference" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code ImplementationReference}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeInstances" class="org.jomc.ri.model.RuntimeInstances"
+                    classDeclaration="true" name="${project.name} RuntimeInstances" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Instances}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeInstance" class="org.jomc.ri.model.RuntimeInstance"
+                    classDeclaration="true" name="${project.name} RuntimeInstance" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Instance}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeMessages" class="org.jomc.ri.model.RuntimeMessages"
+                    classDeclaration="true" name="${project.name} RuntimeMessages" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Messages}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeMessage" class="org.jomc.ri.model.RuntimeMessage"
+                    classDeclaration="true" name="${project.name} RuntimeMessage" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Message}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeMessageReference"
+                    class="org.jomc.ri.model.RuntimeMessageReference"
+                    classDeclaration="true" name="${project.name} RuntimeMessageReference" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code MessageReference}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeModules" class="org.jomc.ri.model.RuntimeModules"
+                    classDeclaration="true" name="${project.name} RuntimeModules" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Modules}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeModule" class="org.jomc.ri.model.RuntimeModule"
+                    classDeclaration="true" name="${project.name} RuntimeModule" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Module}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimePersons" class="org.jomc.ri.model.RuntimePersons"
+                    classDeclaration="true" name="${project.name} RuntimePersons" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Persons}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimePerson" class="org.jomc.ri.model.RuntimePerson"
+                    classDeclaration="true" name="${project.name} RuntimePerson" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Person}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeProperties" class="org.jomc.ri.model.RuntimeProperties"
+                    classDeclaration="true" name="${project.name} RuntimeProperties" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Properties}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeProperty" class="org.jomc.ri.model.RuntimeProperty"
+                    classDeclaration="true" name="${project.name} RuntimeProperty" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Property}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimePropertyReference"
+                    class="org.jomc.ri.model.RuntimePropertyReference"
+                    classDeclaration="true" name="${project.name} RuntimePropertyReference" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code PropertyReference}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeSpecifications" class="org.jomc.ri.model.RuntimeSpecifications"
+                    classDeclaration="true" name="${project.name} RuntimeSpecifications" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Specifications}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeSpecification" class="org.jomc.ri.model.RuntimeSpecification"
+                    classDeclaration="true" name="${project.name} RuntimeSpecification" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Specification}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeSpecificationReference"
+                    class="org.jomc.ri.model.RuntimeSpecificationReference"
+                    classDeclaration="true" name="${project.name} RuntimeSpecificationReference" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code SpecificationReference}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeTexts" class="org.jomc.ri.model.RuntimeTexts"
+                    classDeclaration="true" name="${project.name} RuntimeTexts" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Texts}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
+    <!-- *********************************************************************************************************** -->
+    <implementation identifier="org.jomc.ri.model.RuntimeText" class="org.jomc.ri.model.RuntimeText"
+                    classDeclaration="true" name="${project.name} RuntimeText" version="1.2"
+                    vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
+
+      <documentation defaultLanguage="en">
+        <text language="en">Runtime {@code Text}.</text>
+      </documentation>
+      <authors>
+        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+                createDate="2011-11-09T10:39:21Z"/>
+
+      </authors>
+      <specifications>
+        <reference identifier="org.jomc.ri.model.RuntimeModelObject" version="1.2"/>
+      </specifications>
+    </implementation>
+
   </implementations>
 </module>

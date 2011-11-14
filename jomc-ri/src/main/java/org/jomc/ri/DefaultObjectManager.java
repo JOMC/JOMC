@@ -77,6 +77,9 @@ import org.jomc.modlet.Model;
 import org.jomc.modlet.ModelContext;
 import org.jomc.modlet.ModelException;
 import org.jomc.modlet.ModelValidationReport;
+import org.jomc.ri.model.RuntimeModelObject;
+import org.jomc.ri.model.RuntimeModelObjects;
+import org.jomc.ri.model.RuntimeModules;
 import org.jomc.spi.Invocation;
 import org.jomc.spi.Invoker;
 import org.jomc.spi.Listener;
@@ -100,7 +103,7 @@ import org.jomc.util.WeakIdentityHashMap;
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
- * @version 1.1
+ * @version 1.2
  */
 // </editor-fold>
 // SECTION-END
@@ -119,24 +122,23 @@ public class DefaultObjectManager implements ObjectManager
     {
         // SECTION-START[Default Constructor]
         super();
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.listeners ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.listeners ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.modules ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.modules ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.invokers ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.invokers ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.scopes ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.scopes ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.locators ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.locators ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( this.objects ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( this.objects ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
-
         // SECTION-END
     }
     // </editor-fold>
@@ -521,7 +523,7 @@ public class DefaultObjectManager implements ObjectManager
                 }
 
                 Object o = instance.getDependencyObjects().get( dependencyName );
-                if ( o == null )
+                if ( o == null && !instance.getDependencyObjects().containsKey( dependencyName ) )
                 {
                     final Specification ds = model.getSpecification( dependency.getIdentifier() );
                     if ( ds == null )
@@ -844,7 +846,8 @@ public class DefaultObjectManager implements ObjectManager
             synchronized ( instance )
             {
                 Object value = instance.getPropertyObjects().get( propertyName );
-                if ( value == null )
+
+                if ( value == null && !instance.getPropertyObjects().containsKey( propertyName ) )
                 {
                     final Property property =
                         instance.getProperties() != null ? instance.getProperties().getProperty( propertyName ) : null;
@@ -862,10 +865,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
 
                     value = property.getJavaValue( classLoader );
-                    if ( value != null )
-                    {
-                        instance.getPropertyObjects().put( propertyName, value );
-                    }
+                    instance.getPropertyObjects().put( propertyName, value );
                 }
 
                 return value;
@@ -1092,14 +1092,18 @@ public class DefaultObjectManager implements ObjectManager
 
     static
     {
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( singletons ), getReferenceHandlerTaskDelay(),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( singletons ), getReferenceHandlerTaskDelay(),
                                         getReferenceHandlerTaskPeriod() );
 
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( defaultClassLoaders ), getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( new ReferenceHandlerTask( proxyClassConstructors ),
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( defaultClassLoaders ),
                                         getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( proxyClassConstructors ),
+                                        getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
+
+        referenceHandlerTimer.schedule( new RuntimeModelObjectsHandlerTask(), getReferenceHandlerTaskDelay(),
+                                        getReferenceHandlerTaskPeriod() );
+
     }
 
     /**
@@ -1741,6 +1745,7 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getModelIdentifier()
      * @see #isModelObjectClasspathResolutionEnabled()
      * @see #isModelProcessingEnabled()
+     * @see #getRuntimeModules(org.jomc.model.Modules, java.util.Map)
      */
     public Modules getModules( final ClassLoader classLoader )
     {
@@ -1839,14 +1844,23 @@ public class DefaultObjectManager implements ObjectManager
                     if ( objectMap == null )
                     {
                         objectMap = new WeakIdentityHashMap<Object, Instance>();
-                        referenceHandlerTimer.schedule( new ReferenceHandlerTask( objectMap ),
+                        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( objectMap ),
                                                         getReferenceHandlerTaskDelay(),
                                                         getReferenceHandlerTaskPeriod() );
 
                         this.objects.put( objectsLoader, objectMap );
                     }
 
-                    cachedModules = new Modules( cachedModules, objectMap );
+                    cachedModules = this.getRuntimeModules( cachedModules, objectMap );
+
+                    if ( cachedModules instanceof RuntimeModelObject )
+                    {
+                        referenceHandlerTimer.schedule(
+                            new RuntimeModelObjectHandlerTask( (RuntimeModelObject) cachedModules ),
+                            getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
+
+                        ( (RuntimeModelObject) cachedModules ).clear();
+                    }
                 }
 
                 this.modules.put( classLoader, cachedModules );
@@ -1935,6 +1949,35 @@ public class DefaultObjectManager implements ObjectManager
 
         defaultModule.getImplementations().getImplementation().add( defaultObjectManager );
         return defaultModules;
+    }
+
+    /**
+     * Gets a new {@code Modules} instance to register with a class loader.
+     *
+     * @param modules The modules prepared for registration with a class loader.
+     * @param objectMap The object map to associate with the given modules.
+     *
+     * @return The instance to register with a class loader.
+     *
+     * @throws NullPointerException if {@code modules} or {@code objectMap} is {@code null}.
+     *
+     * @see #getModules(java.lang.ClassLoader)
+     * @see RuntimeModules
+     *
+     * @since 1.2
+     */
+    public Modules getRuntimeModules( final Modules modules, final Map<Object, Instance> objectMap )
+    {
+        if ( modules == null )
+        {
+            throw new NullPointerException( "modules" );
+        }
+        if ( objectMap == null )
+        {
+            throw new NullPointerException( "objectMap" );
+        }
+
+        return new RuntimeModules( modules, objectMap );
     }
 
     /**
@@ -5963,18 +6006,18 @@ public class DefaultObjectManager implements ObjectManager
  * @version $JOMC$
  * @since 1.2
  */
-final class ReferenceHandlerTask extends TimerTask
+final class MapReferenceHandlerTask extends TimerTask
 {
 
     /** Map to poll. */
     private final Map<?, ?> map;
 
     /**
-     * Creates a new {@code ReferenceHandlerTask} taking a {@code Map} to poll for pending references.
+     * Creates a new {@code MapReferenceHandlerTask} taking a {@code Map} to poll for pending references.
      *
      * @param map The {@code Map} to poll for pending references.
      */
-    ReferenceHandlerTask( final Map<?, ?> map )
+    MapReferenceHandlerTask( final Map<?, ?> map )
     {
         super();
         this.map = map;
@@ -5987,6 +6030,70 @@ final class ReferenceHandlerTask extends TimerTask
         {
             this.map.size();
         }
+    }
+
+}
+
+/**
+ * {@code TimerTask} handling a {@code RuntimeModelObject}.
+ *
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
+ * @version $JOMC$
+ * @since 1.2
+ */
+final class RuntimeModelObjectHandlerTask extends TimerTask
+{
+
+    /** {@code RuntimeModelObject} to handle. */
+    private final RuntimeModelObject runtimeModelObject;
+
+    /**
+     * Creates a new {@code RuntimeModelObjectHandlerTask} taking a {@code RuntimeModelObject} to handle.
+     *
+     * @param runtimeModelObject The {@code RuntimeModelObject} to handle.
+     */
+    RuntimeModelObjectHandlerTask( final RuntimeModelObject runtimeModelObject )
+    {
+        super();
+        this.runtimeModelObject = runtimeModelObject;
+    }
+
+    /**
+     * Calls method {@code handle()} on the {@code RuntimeModelObject} of the instance.
+     *
+     * @see RuntimeModelObject#handle()
+     */
+    public void run()
+    {
+        this.runtimeModelObject.gc();
+    }
+
+}
+
+/**
+ * {@code TimerTask} handling {@code RuntimeModelObjects}.
+ *
+ * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
+ * @version $JOMC$
+ * @since 1.2
+ */
+final class RuntimeModelObjectsHandlerTask extends TimerTask
+{
+
+    /** Creates a new {@code RuntimeModelObjectsHandlerTask}. */
+    RuntimeModelObjectsHandlerTask()
+    {
+        super();
+    }
+
+    /**
+     * Calls method {@code gc()} on the {@code RuntimeModelObjects} singleton instance.
+     *
+     * @see RuntimeModelObjects#gc()
+     */
+    public void run()
+    {
+        RuntimeModelObjects.getInstance().gc();
     }
 
 }
