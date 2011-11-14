@@ -34,9 +34,10 @@
 // SECTION-END
 package org.jomc;
 
-import java.lang.reflect.Method;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -75,6 +76,9 @@ public abstract class ObjectManagerFactory
     /** Constant for the name of the system property holding the {@code ObjectManager} implementation class name. */
     private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
 
+    /** {@code ObjectManager}s by class loader. */
+    private static final Map<ClassLoader, ObjectManager> objectManagers = new WeakHashMap<ClassLoader, ObjectManager>();
+
     /**
      * Gets the {@code ObjectManager} singleton instance.
      * <p>This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
@@ -100,13 +104,23 @@ public abstract class ObjectManagerFactory
 
             public ObjectManager run()
             {
-                final String factory = System.getProperty( SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME );
-
                 try
                 {
-                    final Class<?> factoryClass = Class.forName( factory, true, classLoader );
-                    final Method factoryMethod = factoryClass.getMethod( "getObjectManager", ClassLoader.class );
-                    return (ObjectManager) factoryMethod.invoke( null, classLoader );
+                    synchronized ( objectManagers )
+                    {
+                        ObjectManager objectManager = objectManagers.get( classLoader );
+
+                        if ( objectManager == null )
+                        {
+                            objectManager = (ObjectManager) Class.forName( System.getProperty(
+                                SYS_FACTORY_CLASSNAME, DEFAULT_FACTORY_CLASSNAME ), false, classLoader ).
+                                getMethod( "getObjectManager", ClassLoader.class ).invoke( null, classLoader );
+
+                            objectManagers.put( classLoader, objectManager );
+                        }
+
+                        return objectManager;
+                    }
                 }
                 catch ( final Exception e )
                 {
@@ -137,13 +151,11 @@ public abstract class ObjectManagerFactory
 
             public ObjectManager run()
             {
-                final String implementation =
-                    System.getProperty( SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME );
-
                 try
                 {
-                    return Class.forName( implementation, true, classLoader ).asSubclass( ObjectManager.class ).
-                        newInstance();
+                    return Class.forName( System.getProperty(
+                        SYS_IMPLEMENTATION_CLASSNAME, DEFAULT_IMPLEMENTATION_CLASSNAME ), false, classLoader ).
+                        asSubclass( ObjectManager.class ).newInstance();
 
                 }
                 catch ( final Exception e )
