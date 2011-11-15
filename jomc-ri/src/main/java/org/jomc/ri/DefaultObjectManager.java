@@ -2948,6 +2948,25 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
 
+    /** Finalizes the instance by canceling timer tasks. */
+    @Override
+    protected void finalize() throws Throwable
+    {
+        super.finalize();
+
+        synchronized ( this.referenceHandlerTimerTasks )
+        {
+            for ( int i = 0, s0 = this.referenceHandlerTimerTasks.size(); i < s0; i++ )
+            {
+                this.referenceHandlerTimerTasks.get( i ).cancel();
+            }
+
+            this.referenceHandlerTimerTasks.clear();
+        }
+
+        referenceHandlerTimer.purge();
+    }
+
     /**
      * Creates a proxy object for a given object.
      *
@@ -3033,22 +3052,6 @@ public class DefaultObjectManager implements ObjectManager
         {
             throw new AssertionError( e );
         }
-    }
-
-    @Override
-    protected void finalize() throws Throwable
-    {
-        super.finalize();
-
-        synchronized ( this.referenceHandlerTimerTasks )
-        {
-            for ( int i = 0, s0 = this.referenceHandlerTimerTasks.size(); i < s0; i++ )
-            {
-                this.referenceHandlerTimerTasks.get( i ).cancel();
-            }
-        }
-
-        referenceHandlerTimer.purge();
     }
 
     private void logModulesReport( final Modules mods, final ClassLoader classLoader )
