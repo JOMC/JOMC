@@ -61,6 +61,7 @@ import org.jomc.model.SpecificationReference;
 import org.jomc.model.Specifications;
 import org.jomc.model.Text;
 import org.jomc.model.Texts;
+import org.jomc.util.WeakIdentityHashMap;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -85,6 +86,10 @@ import org.jomc.model.Texts;
 public class RuntimeModelObjects
 {
     // SECTION-START[RuntimeModelObjects]
+
+    /** Classes by class loader any name cache. */
+    static final Map<ClassLoader, Map<String, Class<?>>> classesByClassLoaderAndNameCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>>>();
 
     /** Singleton instance. */
     private static final RuntimeModelObjects instance = new RuntimeModelObjects();
@@ -407,9 +412,9 @@ public class RuntimeModelObjects
     /** Handles shared runtime state. */
     public void gc()
     {
-        synchronized ( RuntimeImplementation.classesByClassLoaderAndNameCache )
+        synchronized ( classesByClassLoaderAndNameCache )
         {
-            RuntimeImplementation.classesByClassLoaderAndNameCache.size();
+            classesByClassLoaderAndNameCache.size();
         }
         synchronized ( RuntimeInstance.assignableFlagsByClassLoaderAndInstanceCache )
         {
@@ -418,10 +423,6 @@ public class RuntimeModelObjects
         synchronized ( RuntimeInstance.classesByClassLoaderAndInstanceCache )
         {
             RuntimeInstance.classesByClassLoaderAndInstanceCache.size();
-        }
-        synchronized ( RuntimeInstance.classesByClassLoaderAndNameCache )
-        {
-            RuntimeInstance.classesByClassLoaderAndNameCache.size();
         }
         synchronized ( RuntimeInstance.constructorsByClassLoaderAndInstanceCache )
         {
@@ -435,18 +436,14 @@ public class RuntimeModelObjects
         {
             RuntimeInstance.proxyClassesByClassLoaderAndInstanceCache.size();
         }
-        synchronized ( RuntimeSpecification.classesByClassLoaderAndNameCache )
-        {
-            RuntimeSpecification.classesByClassLoaderAndNameCache.size();
-        }
     }
 
     /**  Clears shared runtime state. */
     public void clear()
     {
-        synchronized ( RuntimeImplementation.classesByClassLoaderAndNameCache )
+        synchronized ( classesByClassLoaderAndNameCache )
         {
-            RuntimeImplementation.classesByClassLoaderAndNameCache.clear();
+            classesByClassLoaderAndNameCache.clear();
         }
         synchronized ( RuntimeInstance.assignableFlagsByClassLoaderAndInstanceCache )
         {
@@ -455,10 +452,6 @@ public class RuntimeModelObjects
         synchronized ( RuntimeInstance.classesByClassLoaderAndInstanceCache )
         {
             RuntimeInstance.classesByClassLoaderAndInstanceCache.clear();
-        }
-        synchronized ( RuntimeInstance.classesByClassLoaderAndNameCache )
-        {
-            RuntimeInstance.classesByClassLoaderAndNameCache.clear();
         }
         synchronized ( RuntimeInstance.constructorsByClassLoaderAndInstanceCache )
         {
@@ -471,10 +464,6 @@ public class RuntimeModelObjects
         synchronized ( RuntimeInstance.proxyClassesByClassLoaderAndInstanceCache )
         {
             RuntimeInstance.proxyClassesByClassLoaderAndInstanceCache.clear();
-        }
-        synchronized ( RuntimeSpecification.classesByClassLoaderAndNameCache )
-        {
-            RuntimeSpecification.classesByClassLoaderAndNameCache.clear();
         }
     }
 

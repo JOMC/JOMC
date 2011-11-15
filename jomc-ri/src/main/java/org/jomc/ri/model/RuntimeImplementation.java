@@ -36,10 +36,9 @@ package org.jomc.ri.model;
 
 import java.net.URI;
 import java.util.Map;
-import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Implementation;
-import org.jomc.util.WeakIdentityHashMap;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
+import static org.jomc.ri.model.RuntimeModelObjects.classesByClassLoaderAndNameCache;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 
 // SECTION-START[Documentation]
@@ -70,11 +69,6 @@ import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 public class RuntimeImplementation extends Implementation implements RuntimeModelObject
 {
     // SECTION-START[RuntimeImplementation]
-
-    /** Classes by class loader any name cache. */
-    @XmlTransient
-    static final Map<ClassLoader, Map<String, Class<?>>> classesByClassLoaderAndNameCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>>>();
 
     /** Cached location URI. */
     private volatile URI locationUri;

@@ -42,6 +42,7 @@ import org.jomc.model.Instance;
 import org.jomc.model.Specification;
 import org.jomc.util.WeakIdentityHashMap;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
+import static org.jomc.ri.model.RuntimeModelObjects.classesByClassLoaderAndNameCache;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 
 // SECTION-START[Documentation]
@@ -72,11 +73,6 @@ import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 public class RuntimeInstance extends Instance implements RuntimeModelObject
 {
     // SECTION-START[RuntimeInstance]
-
-    /** Classes by class loader any name cache. */
-    @XmlTransient
-    static final Map<ClassLoader, Map<String, Class<?>>> classesByClassLoaderAndNameCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>>>();
 
     /** Classes by class loader any instance cache. */
     @XmlTransient
