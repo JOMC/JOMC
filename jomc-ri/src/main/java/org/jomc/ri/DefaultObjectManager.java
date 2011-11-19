@@ -956,19 +956,25 @@ public class DefaultObjectManager implements ObjectManager
                                 Locale.getDefault(), instance.getIdentifier(), messageName ), null );
 
                         }
-
-                        return null;
+                    }
+                    else
+                    {
+                        messageFormat = message.getJavaMessage( locale );
                     }
 
-                    messageFormat = message.getJavaMessage( locale );
                     messageFormats.put( locale, messageFormat );
                 }
 
-                synchronized ( messageFormat )
+                if ( messageFormat != null )
                 {
-                    return messageFormat.format( arguments );
+                    synchronized ( messageFormat )
+                    {
+                        return messageFormat.format( arguments );
+                    }
                 }
             }
+
+            return null;
         }
         catch ( final Exception e )
         {
