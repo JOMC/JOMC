@@ -62,6 +62,9 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.2">
+      <action dev="schulte2005" type="add"><![CDATA[Added package <code>org.jomc.ri.model</code> providing runtime
+      model classes.]]>
+      </action>
       <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code> to
       handle pending references asynchronously.]]>
       </action>
