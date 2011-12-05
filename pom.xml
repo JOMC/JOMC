@@ -795,6 +795,7 @@
                   <arg>-copy-constructor</arg>
                   <arg>-mark-generated</arg>
                   <arg>-Xinject-code</arg>
+                  <arg>-Xinheritance</arg>
                 </args>
                 <bindingDirectory>src/main/schemas</bindingDirectory>
                 <extension>true</extension>
@@ -802,6 +803,11 @@
                 <readOnly>true</readOnly>
                 <schemaDirectory>src/main/schemas</schemaDirectory>
                 <plugins>
+                  <plugin>
+                    <groupId>org.jvnet.jaxb2_commons</groupId>
+                    <artifactId>jaxb2-basics</artifactId>
+                    <version>${jaxb2-basics.version}</version>
+                  </plugin>
                   <plugin>
                     <groupId>net.sourceforge.ccxjc</groupId>
                     <artifactId>cc-xjc-plugin</artifactId>
@@ -1734,7 +1740,7 @@
         <version>2.2.3-2</version>
         <exclusions>
           <exclusion>
-            <groupId>javax.xml.bind</groupId>  
+            <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
           </exclusion>
         </exclusions>
@@ -2449,6 +2455,7 @@
     <wagon.version>1.0</wagon.version>
     <umlgraph.version>5.1</umlgraph.version>
     <cc-xjc-plugin.version>2.0</cc-xjc-plugin.version>
+    <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
     <jomc.build.version>1.6</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
