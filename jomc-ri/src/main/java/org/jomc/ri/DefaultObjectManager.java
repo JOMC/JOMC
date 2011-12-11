@@ -93,13 +93,14 @@ import org.jomc.util.WeakIdentityHashMap;
  * Default {@code ObjectManager} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultObjectManager>}.
+ *   This implementation is identified by {@code <org.jomc.ri.DefaultObjectManager>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC RI>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

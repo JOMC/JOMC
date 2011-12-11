@@ -45,8 +45,7 @@ import org.jomc.spi.Invoker;
  * Default {@code Invoker} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.DefaultInvoker>}.
- *   It does not provide any specified objects.
+ *   This implementation is identified by {@code <org.jomc.ri.DefaultInvoker>}.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

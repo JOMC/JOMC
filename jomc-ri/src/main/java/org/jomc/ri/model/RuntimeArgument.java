@@ -42,13 +42,14 @@ import org.jomc.model.Argument;
  * Runtime {@code Argument}.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.model.RuntimeArgument>}.
+ *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeArgument>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC RI RuntimeArgument>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.ri.model.RuntimeModelObject>} at specification level 1.2.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2

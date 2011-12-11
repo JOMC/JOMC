@@ -47,13 +47,14 @@ import static org.jomc.ri.model.RuntimeModelObjects.createMap;
  * Runtime {@code Message}.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.model.RuntimeMessage>}.
+ *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeMessage>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC RI RuntimeMessage>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.ri.model.RuntimeModelObject>} at specification level 1.2.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2

@@ -40,12 +40,8 @@ package org.jomc.ri.model;
  * Runtime model object.
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.ri.model.RuntimeModelObject>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   This specification is identified by {@code <org.jomc.ri.model.RuntimeModelObject>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -53,6 +49,10 @@ package org.jomc.ri.model;
  * RuntimeModelObject object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( RuntimeModelObject.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
+ *   <dt><b>Scope:</b></dt><dd>None</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2
  * @version 1.2

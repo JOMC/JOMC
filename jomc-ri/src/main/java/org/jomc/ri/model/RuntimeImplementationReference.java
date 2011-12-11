@@ -42,13 +42,14 @@ import org.jomc.model.ImplementationReference;
  * Runtime {@code ImplementationReference}.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.ri.model.RuntimeImplementationReference>}.
+ *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeImplementationReference>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC RI RuntimeImplementationReference>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.ri.model.RuntimeModelObject>} at specification level 1.2.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2
