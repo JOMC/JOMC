@@ -260,7 +260,7 @@
                     classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">{@code ObjectManagementLister} logging to the console.</text>
+        <text language="en" type="text/x-javadoc">{@code ObjectManagementLister} logging to the console.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -278,7 +278,7 @@
                     class="org.jomc.ri.test.DefaultObjectManagerTest" vendor="${project.organization.name}"
                     version="${project.version}" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test cases for the {@code DefaultObjectManager} class.</text>
+        <text language="en" type="text/x-javadoc">Test cases for the {@code DefaultObjectManager} class.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -294,7 +294,7 @@
                     classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test implementation of the {@code ScopeTestSpecification}.</text>
+        <text language="en" type="text/x-javadoc">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -370,7 +370,7 @@
                     classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test {@code Scope} implementation.</text>
+        <text language="en" type="text/x-javadoc">Test {@code Scope} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -388,7 +388,7 @@
                     classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test {@code Locator} implementation.</text>
+        <text language="en" type="text/x-javadoc">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -405,7 +405,7 @@
                     vendor="${project.organization.name}" version="${project.version}"
                     location="Test:IGNORED" createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test {@code Locator} implementation.</text>
+        <text language="en" type="text/x-javadoc">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -423,7 +423,7 @@
                     classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">Test {@code Invoker} implementation.</text>
+        <text language="en" type="text/x-javadoc">Test {@code Invoker} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -444,7 +444,7 @@
                     classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">{@code Invoker} test cases.</text>
+        <text language="en" type="text/x-javadoc">{@code Invoker} test cases.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -462,7 +462,7 @@
                     classDeclaration="true" version="${project.version}" vendor="${project.organization.name}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">{@code Listener} test cases.</text>
+        <text language="en" type="text/x-javadoc">{@code Listener} test cases.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -477,7 +477,7 @@
                     classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                     createDate="2009-07-25T19:56:45Z">
       <documentation defaultLanguage="en">
-        <text language="en">{@code DefaultListener} test cases.</text>
+        <text language="en" type="text/x-javadoc">{@code DefaultListener} test cases.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"

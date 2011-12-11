@@ -61,7 +61,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code ObjectManager} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code ObjectManager} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -427,7 +427,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code Locator} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code Locator} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -462,7 +462,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code Scope} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code Scope} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -476,7 +476,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code Invoker} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code Invoker} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -491,7 +491,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code Invocation} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code Invocation} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
@@ -506,7 +506,7 @@
                     createDate="2009-07-25T19:56:45Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Default {@code Listener} implementation.</text>
+        <text language="en" type="text/x-javadoc">Default {@code Listener} implementation.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.1" mail="schulte2005@users.sourceforge.net"
@@ -536,7 +536,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Argument}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Argument}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -554,7 +554,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Arguments}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Arguments}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -572,7 +572,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Authors}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Authors}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -590,7 +590,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Author}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Author}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -608,7 +608,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Dependencies}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Dependencies}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -626,7 +626,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Dependency}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Dependency}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -645,7 +645,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Implementations}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Implementations}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -663,7 +663,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Implementation}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Implementation}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -682,7 +682,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code ImplementationReference}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code ImplementationReference}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -700,7 +700,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Instances}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Instances}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -718,7 +718,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Instance}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Instance}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -736,7 +736,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Messages}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Messages}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -754,7 +754,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Message}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Message}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -773,7 +773,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code MessageReference}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code MessageReference}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -791,7 +791,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Modules}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Modules}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -809,7 +809,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Module}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Module}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -827,7 +827,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Persons}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Persons}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -845,7 +845,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Person}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Person}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -863,7 +863,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Properties}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Properties}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -881,7 +881,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Property}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Property}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -900,7 +900,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code PropertyReference}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code PropertyReference}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -918,7 +918,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Specifications}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Specifications}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -936,7 +936,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Specification}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Specification}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -955,7 +955,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code SpecificationReference}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code SpecificationReference}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -973,7 +973,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Texts}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Texts}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
@@ -991,7 +991,7 @@
                     vendor="${project.organization.name}" createDate="2011-11-09T10:39:21Z">
 
       <documentation defaultLanguage="en">
-        <text language="en">Runtime {@code Text}.</text>
+        <text language="en" type="text/x-javadoc">Runtime {@code Text}.</text>
       </documentation>
       <authors>
         <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
