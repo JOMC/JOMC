@@ -43,12 +43,8 @@ import java.util.Map;
  * Invocation of an object.
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.spi.Invocation>}.
- *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code <One>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   This specification is identified by {@code <org.jomc.spi.Invocation>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -56,6 +52,10 @@ import java.util.Map;
  * Invocation object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invocation.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>One</dd>
+ *   <dt><b>Scope:</b></dt><dd>None</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0

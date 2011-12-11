@@ -42,12 +42,8 @@ import java.util.Map;
  * Scope a specification applies to.
  *
  * <p>
- *   This specification is identified by identifier {@code <org.jomc.spi.Scope>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   This specification is identified by {@code <org.jomc.spi.Scope>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -55,6 +51,10 @@ import java.util.Map;
  * Scope object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Scope.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
+ *   <dt><b>Scope:</b></dt><dd>None</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0
