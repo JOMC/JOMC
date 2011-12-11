@@ -45,10 +45,11 @@ import org.junit.Test;
  * Test cases for class {@code org.jomc.ObjectManagementException}.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.test.ObjectManagementExceptionTest>}.
- *   It does not provide any specified objects.
- *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
+ *   This implementation is identified by {@code <org.jomc.test.ObjectManagementExceptionTest>}.
  * </p>
+ * <dl>
+ *   <dt><b>Final:</b></dt><dd>Model objects are not inheritable.</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT

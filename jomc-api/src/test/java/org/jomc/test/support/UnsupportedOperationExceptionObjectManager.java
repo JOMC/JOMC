@@ -43,15 +43,18 @@ import org.jomc.ObjectManager;
  * Test {@code ObjectManager} implementation throwing {@code UnsupportedOperationException}s.
  *
  * <p>
- *   This implementation is identified by identifier {@code <org.jomc.test.support.UnsupportedOperationExceptionObjectManager>}.
+ *   This implementation is identified by {@code <org.jomc.test.support.UnsupportedOperationExceptionObjectManager>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC API>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
  *   </ul>
- *
- *   This implementation is flagged the {@code <final>} node in an inheritance hierarchy.
  * </p>
+ * <dl>
+ *   <dt><b>Final:</b></dt><dd>Model objects are not inheritable.</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
