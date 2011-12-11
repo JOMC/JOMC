@@ -43,13 +43,14 @@ import org.jomc.ri.DefaultScope;
  * Test {@code Scope} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Test Scope>}.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Test Scope>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <Test>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.spi.Scope>} at specification level 1.0.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

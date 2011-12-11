@@ -41,13 +41,8 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Invoker Test Specification>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification applies to {@code <Singleton>} scope.
- *   The same singleton object is returned whenever requested.
+ *   This specification is identified by {@code <JOMC :: RI :: Tests :: Invoker Test Specification>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -55,6 +50,10 @@ import java.lang.*;
  * InvokerTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
+ *   <dt><b>Scope:</b></dt><dd>Singleton</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT

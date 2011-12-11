@@ -41,12 +41,8 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Specification>}.
- *   An application assembler may provide multiple implementations of this specification (including none) due to
- *   multiplicity {@code <Many>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   This specification is identified by {@code <JOMC :: RI :: Tests :: Override Test Specification>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -54,6 +50,10 @@ import java.lang.*;
  * OverrideTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( OverrideTestSpecification.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
+ *   <dt><b>Scope:</b></dt><dd>None</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT

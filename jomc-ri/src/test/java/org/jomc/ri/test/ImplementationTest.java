@@ -43,7 +43,9 @@ import static org.junit.Assert.assertNull;
 /**
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Implementation Test>}.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Implementation Test>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC :: RI :: Tests :: Implementation Test>} of the following specifications:
  *
  *   <ul>
@@ -53,7 +55,6 @@ import static org.junit.Assert.assertNull;
  *     <li>{@code <JOMC :: RI :: Tests :: Test Specification Many>} at specification level 1.2-SNAPSHOT.</li>
  *     <li>{@code <JOMC :: RI :: Tests :: Test Specification One>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

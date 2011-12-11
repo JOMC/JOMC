@@ -43,8 +43,7 @@ import static org.junit.Assert.assertEquals;
  * Override test cases.
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Implementation Tests>}.
- *   It does not provide any specified objects.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Override Test Implementation Tests>}.
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

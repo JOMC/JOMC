@@ -44,13 +44,14 @@ import org.jomc.ri.DefaultLocator;
  * Test {@code Locator} implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Test Locator>}.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Test Locator>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <Test>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <org.jomc.spi.Locator>} at specification level 1.0.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

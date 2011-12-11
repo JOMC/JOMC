@@ -42,13 +42,14 @@ import java.util.Locale;
  * Override Test Implementation.
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Override Test Implementation>}.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Override Test Implementation>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC :: RI :: Tests :: Override Test Implementation>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <JOMC :: RI :: Tests :: Override Test Specification>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

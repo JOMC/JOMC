@@ -43,14 +43,15 @@ import static org.junit.Assert.assertNull;
  * Test implementation with unsupported location.
  *
  * <p>
- *   This implementation is identified by identifier {@code <JOMC :: RI :: Tests :: Location Implementation Test>}.
+ *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Location Implementation Test>}.
+ * </p>
+ * <p>
  *   It provides objects named {@code <JOMC :: RI :: Tests :: Location Implementation Test>} of the following specifications:
  *
  *   <ul>
  *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification Many>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
  *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification One :: 2>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
  *   </ul>
- *
  * </p>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0

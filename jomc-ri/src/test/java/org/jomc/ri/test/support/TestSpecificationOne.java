@@ -41,12 +41,8 @@ import java.lang.*;
 /**
  *
  * <p>
- *   This specification is identified by identifier {@code <JOMC :: RI :: Tests :: Test Specification One>}.
- *   An application assembler may provide either no or one implementation of this specification due to
- *   multiplicity {@code <One>}.
- *   This specification does not apply to any scope. A new object is returned whenever requested.
+ *   This specification is identified by {@code <JOMC :: RI :: Tests :: Test Specification One>}.
  * </p>
- *
  * <p>
  *   Use of class {@code ObjectManager} is supported for accessing implementations.
  *   <blockquote><pre>
@@ -54,6 +50,10 @@ import java.lang.*;
  * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class, "<i>implementation name</i>" );
  *   </pre></blockquote>
  * </p>
+ * <dl>
+ *   <dt><b>Multiplicity:</b></dt><dd>One</dd>
+ *   <dt><b>Scope:</b></dt><dd>None</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
