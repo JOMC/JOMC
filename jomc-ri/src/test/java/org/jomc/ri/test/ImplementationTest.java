@@ -56,6 +56,11 @@ import static org.junit.Assert.assertNull;
  *     <li>{@code <JOMC :: RI :: Tests :: Test Specification One>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
  * </p>
+ * <dl>
+ *   <dt><b>Abstract:</b></dt><dd>No</dd>
+ *   <dt><b>Final:</b></dt><dd>No</dd>
+ *   <dt><b>Stateless:</b></dt><dd>No</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
@@ -290,6 +295,9 @@ public class ImplementationTest
      *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <BoundMultitons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -306,6 +314,9 @@ public class ImplementationTest
      *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <BoundSingletons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -322,6 +333,9 @@ public class ImplementationTest
      *   This method returns the {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Invoker Test Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <InvokerTestSpecification>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -338,6 +352,9 @@ public class ImplementationTest
      *   This method returns the {@code <DOES NOT EXIST>} object of the {@code <java.util.Locale>} specification at specification level 1.2-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <OptionalLocale>} dependency.
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
@@ -353,6 +370,9 @@ public class ImplementationTest
      *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <SelectedBoundMultiton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -369,6 +389,9 @@ public class ImplementationTest
      *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <SelectedBoundSingleton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -385,6 +408,9 @@ public class ImplementationTest
      *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <SelectedUnboundMultiton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -401,6 +427,9 @@ public class ImplementationTest
      *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <SelectedUnboundSingleton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -417,6 +446,9 @@ public class ImplementationTest
      *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <UnboundMultitons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -433,6 +465,9 @@ public class ImplementationTest
      *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 1.2-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <UnboundSingletons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -449,6 +484,11 @@ public class ImplementationTest
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
     /**
      * Gets the value of the {@code <testProperty>} property.
+     * <p>
+     *   <dl>
+     *     <dt><b>Final:</b></dt><dd>No</dd>
+     *   </dl>
+     * </p>
      * @return The value of the {@code <testProperty>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
@@ -470,6 +510,9 @@ public class ImplementationTest
      *     <li>English (default)</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.

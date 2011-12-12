@@ -51,6 +51,11 @@ import java.util.Locale;
  *     <li>{@code <JOMC :: RI :: Tests :: Override Test Specification>} at specification level 1.2-SNAPSHOT.</li>
  *   </ul>
  * </p>
+ * <dl>
+ *   <dt><b>Abstract:</b></dt><dd>No</dd>
+ *   <dt><b>Final:</b></dt><dd>No</dd>
+ *   <dt><b>Stateless:</b></dt><dd>No</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
@@ -106,6 +111,9 @@ public class OverrideTestImplementation
      *   This method returns the {@code <JOMC :: RI :: Tests :: Override Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      * @return The {@code <dependencyImpl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -122,6 +130,11 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
     /**
      * Gets the value of the {@code <propertyImpl>} property.
+     * <p>
+     *   <dl>
+     *     <dt><b>Final:</b></dt><dd>No</dd>
+     *   </dl>
+     * </p>
      * @return The value of the {@code <propertyImpl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
@@ -143,6 +156,9 @@ public class OverrideTestImplementation
      *     <li>English (default)</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <messageImpl>} message for {@code locale}.
