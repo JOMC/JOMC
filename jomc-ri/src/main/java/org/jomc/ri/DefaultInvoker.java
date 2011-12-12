@@ -47,6 +47,11 @@ import org.jomc.spi.Invoker;
  * <p>
  *   This implementation is identified by {@code <org.jomc.ri.DefaultInvoker>}.
  * </p>
+ * <dl>
+ *   <dt><b>Abstract:</b></dt><dd>No</dd>
+ *   <dt><b>Final:</b></dt><dd>No</dd>
+ *   <dt><b>Stateless:</b></dt><dd>No</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0

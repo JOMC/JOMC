@@ -102,6 +102,11 @@ import org.jomc.util.WeakIdentityHashMap;
  *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
  *   </ul>
  * </p>
+ * <dl>
+ *   <dt><b>Abstract:</b></dt><dd>No</dd>
+ *   <dt><b>Final:</b></dt><dd>No</dd>
+ *   <dt><b>Stateless:</b></dt><dd>No</dd>
+ * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2
