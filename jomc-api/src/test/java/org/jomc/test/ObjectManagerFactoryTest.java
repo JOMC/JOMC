@@ -50,7 +50,9 @@ import static org.junit.Assert.assertTrue;
  *   This implementation is identified by {@code <org.jomc.test.ObjectManagerFactoryTest>}.
  * </p>
  * <dl>
- *   <dt><b>Final:</b></dt><dd>Model objects are not inheritable.</dd>
+ *   <dt><b>Abstract:</b></dt><dd>No</dd>
+ *   <dt><b>Final:</b></dt><dd>Yes</dd>
+ *   <dt><b>Stateless:</b></dt><dd>No</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
