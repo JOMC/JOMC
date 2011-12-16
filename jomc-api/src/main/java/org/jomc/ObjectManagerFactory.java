@@ -44,10 +44,9 @@ import java.util.WeakHashMap;
 /**
  * Factory for the {@code ObjectManager} singleton.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ObjectManagerFactory>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ObjectManagerFactory</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
  *   <dt><b>Abstract:</b></dt><dd>Yes</dd>
  *   <dt><b>Final:</b></dt><dd>Yes</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

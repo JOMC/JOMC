@@ -44,10 +44,9 @@ import org.junit.Test;
 /**
  * Test cases for class {@code org.jomc.ObjectManagementException}.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.test.ObjectManagementExceptionTest>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.test.ObjectManagementExceptionTest</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>Yes</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

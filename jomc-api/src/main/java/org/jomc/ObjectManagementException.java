@@ -39,10 +39,9 @@ package org.jomc;
 /**
  * Gets thrown whenever an unexpected error condition is detected.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ObjectManagementException>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ObjectManagementException</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>Yes</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

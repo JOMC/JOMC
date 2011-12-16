@@ -42,17 +42,12 @@ import org.jomc.ObjectManager;
 /**
  * Test {@code ObjectManager} implementation throwing {@code UnsupportedOperationException}s.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.test.support.UnsupportedOperationExceptionObjectManager>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC API>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.test.support.UnsupportedOperationExceptionObjectManager</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>org.jomc.ObjectManager @ 1.0</dd>
+ *   </dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>Yes</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
