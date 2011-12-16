@@ -41,25 +41,17 @@ import java.util.logging.Level;
 /**
  * Object management and configuration listener interface.
  *
- * <p>
- *   This specification is identified by {@code <org.jomc.spi.Listener>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * Listener[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Listener[].class );
- * Listener object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Listener.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.spi.Listener</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(Listener[].class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(Listener.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END

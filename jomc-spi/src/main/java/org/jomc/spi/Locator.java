@@ -42,25 +42,17 @@ import java.net.URI;
 /**
  * Locates objects.
  *
- * <p>
- *   This specification is identified by {@code <org.jomc.spi.Locator>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * Locator[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator[].class );
- * Locator object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Locator.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.spi.Locator</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(Locator[].class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(Locator.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END

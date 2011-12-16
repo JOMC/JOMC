@@ -39,25 +39,17 @@ package org.jomc.spi;
 /**
  * Invokes objects.
  *
- * <p>
- *   This specification is identified by {@code <org.jomc.spi.Invoker>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * Invoker object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class );
- * Invoker object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( Invoker.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.spi.Invoker</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>One</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.0
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(Invoker.class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(Invoker.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END
