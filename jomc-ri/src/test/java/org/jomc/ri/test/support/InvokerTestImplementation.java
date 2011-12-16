@@ -44,9 +44,7 @@ import java.lang.*;
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Implementation</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Implementation</dd>
- *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC :: RI :: Tests :: Invoker Test Specification</dd>
- *   </dt>
+ *   <dt><b>Implements:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Specification</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

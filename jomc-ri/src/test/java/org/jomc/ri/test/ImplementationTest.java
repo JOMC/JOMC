@@ -44,13 +44,7 @@ import static org.junit.Assert.assertNull;
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
- *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC :: RI :: Tests :: Test Multiton Specification @ 1.2-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Scope Specification @ 1.2-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Singleton Specification @ 1.2-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Specification Many @ 1.2-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Specification One @ 1.2-SNAPSHOT</dd>
- *   </dt>
+ *   <dt><b>Implements:</b></dt><dd>JOMC :: RI :: Tests :: Test Multiton Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Scope Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Singleton Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Specification Many@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Specification One@1.2-SNAPSHOT</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

@@ -46,9 +46,7 @@ import org.jomc.ri.DefaultLocator;
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Test Locator</dd>
  *   <dt><b>Name:</b></dt><dd>Test</dd>
- *   <dt><b>Specifications:</b></dt>
- *     <dd>org.jomc.spi.Locator @ 1.0</dd>
- *   </dt>
+ *   <dt><b>Implements:</b></dt><dd>org.jomc.spi.Locator@1.0</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
