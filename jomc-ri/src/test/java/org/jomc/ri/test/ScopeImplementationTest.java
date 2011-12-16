@@ -42,18 +42,13 @@ import static org.junit.Assert.assertNull;
 /**
  * Test implementation of the {@code ScopeTestSpecification}.
  *
- * <p>
- *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Scope Implementation Test>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC :: RI :: Tests :: Scope Implementation Test>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification Many>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
- *     <li>{@code <JOMC :: RI :: Tests :: Test Scope Specification One :: 1>} at specification level 1.2-SNAPSHOT applying to {@code <DOES_NOT_EXIST>} scope.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Scope Implementation Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Scope Implementation Test</dd>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>JOMC :: RI :: Tests :: Test Scope Specification Many @ 1.2-SNAPSHOT</dd>
+ *     <dd>JOMC :: RI :: Tests :: Test Scope Specification One :: 1 @ 1.2-SNAPSHOT</dd>
+ *   </dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

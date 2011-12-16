@@ -48,10 +48,9 @@ import org.jomc.spi.Listener;
 /**
  * Default {@code Listener} implementation.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.DefaultListener>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultListener</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

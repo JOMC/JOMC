@@ -46,17 +46,10 @@ import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
 /**
  * Runtime {@code Property}.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeProperty>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC RI RuntimeProperty>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <org.jomc.ri.model.RuntimeModelObject>} at specification level 1.2.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeProperty</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI RuntimeProperty</dd>
+ *   <dt><b>Implements:</b></dt><dd>org.jomc.ri.model.RuntimeModelObject@1.2</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

@@ -39,26 +39,17 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- *
- * <p>
- *   This specification is identified by {@code <JOMC :: RI :: Tests :: Invoker Test Specification>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * InvokerTestSpecification[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification[].class );
- * InvokerTestSpecification object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( InvokerTestSpecification.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Specification</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
  *   <dt><b>Scope:</b></dt><dd>Singleton</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(InvokerTestSpecification[].class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(InvokerTestSpecification.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END

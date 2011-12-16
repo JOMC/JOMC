@@ -41,17 +41,10 @@ import org.jomc.model.Dependency;
 /**
  * Runtime {@code Dependency}.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeDependency>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC RI RuntimeDependency>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <org.jomc.ri.model.RuntimeModelObject>} at specification level 1.2.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeDependency</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI RuntimeDependency</dd>
+ *   <dt><b>Implements:</b></dt><dd>org.jomc.ri.model.RuntimeModelObject@1.2</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

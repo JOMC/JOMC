@@ -39,26 +39,17 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- *
- * <p>
- *   This specification is identified by {@code <JOMC :: RI :: Tests :: Test Specification One>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class );
- * TestSpecificationOne object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( TestSpecificationOne.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Test Specification One</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>One</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.0
  * @version 1.2-SNAPSHOT
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(TestSpecificationOne.class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(TestSpecificationOne.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END

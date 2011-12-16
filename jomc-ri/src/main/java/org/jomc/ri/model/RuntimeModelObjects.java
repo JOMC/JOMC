@@ -68,10 +68,9 @@ import org.jomc.util.WeakIdentityHashMap;
 /**
  * Runtime model objects.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.model.RuntimeModelObjects>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeModelObjects</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

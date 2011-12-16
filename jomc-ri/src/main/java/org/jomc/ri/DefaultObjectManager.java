@@ -92,17 +92,10 @@ import org.jomc.util.WeakIdentityHashMap;
 /**
  * Default {@code ObjectManager} implementation.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.DefaultObjectManager>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC RI>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <org.jomc.ObjectManager>} at specification level 1.0 applying to {@code <Singleton>} scope.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultObjectManager</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
+ *   <dt><b>Implements:</b></dt><dd>org.jomc.ObjectManager@1.0</dd></dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -3396,6 +3389,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3466,6 +3462,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultImplementationName>} message for {@code locale}.
@@ -3535,6 +3534,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3605,6 +3607,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3675,6 +3680,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3746,6 +3754,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
@@ -3816,6 +3827,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -3886,6 +3900,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -3956,6 +3973,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -4026,6 +4046,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModuleName>} message for {@code locale}.
@@ -4095,6 +4118,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVendor>} message for {@code locale}.
@@ -4164,6 +4190,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVersion>} message for {@code locale}.
@@ -4233,6 +4262,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param modelInfo Format argument.
@@ -4304,6 +4336,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -4375,6 +4410,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4445,6 +4483,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4515,6 +4556,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4585,6 +4629,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -4656,6 +4703,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -4727,6 +4777,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
@@ -4797,6 +4850,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4868,6 +4924,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4939,6 +4998,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5011,6 +5073,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5082,6 +5147,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5153,6 +5221,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5223,6 +5294,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5294,6 +5368,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
@@ -5364,6 +5441,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5435,6 +5515,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
@@ -5505,6 +5588,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5576,6 +5662,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5647,6 +5736,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -5717,6 +5809,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5787,6 +5882,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5857,6 +5955,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <modulesReportMessage>} message for {@code locale}.
@@ -5926,6 +6027,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5998,6 +6102,9 @@ public class DefaultObjectManager implements ObjectManager
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.

@@ -48,10 +48,9 @@ import org.jomc.spi.Locator;
 /**
  * Default {@code Locator} implementation.
  *
- * <p>
- *   This implementation is identified by {@code <org.jomc.ri.DefaultLocator>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultLocator</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -240,6 +239,9 @@ public class DefaultLocator implements Locator
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
@@ -311,6 +313,9 @@ public class DefaultLocator implements Locator
      *     <li>Deutsch</li>
      *   </ul>
      * </p>
+     * <dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl>
      *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.

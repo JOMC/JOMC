@@ -41,17 +41,12 @@ import java.lang.*;
 /**
  * {@code Invoker} test cases.
  *
- * <p>
- *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <JOMC :: RI :: Tests :: Invoker Test Specification>} at any specification level applying to {@code <Singleton>} scope.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Implementation</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Invoker Test Implementation</dd>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>JOMC :: RI :: Tests :: Invoker Test Specification</dd>
+ *   </dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

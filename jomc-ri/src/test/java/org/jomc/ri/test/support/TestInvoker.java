@@ -46,17 +46,12 @@ import org.jomc.spi.Invocation;
 /**
  * Test {@code Invoker} implementation.
  *
- * <p>
- *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Test Invoker>}.
- * </p>
- * <p>
- *   It provides objects named {@code <JOMC :: RI :: Tests :: Test Invoker>} of the following specifications:
- *
- *   <ul>
- *     <li>{@code <org.jomc.spi.Invoker>} at any specification level.</li>
- *   </ul>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Test Invoker</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Test Invoker</dd>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>org.jomc.spi.Invoker</dd>
+ *   </dt>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

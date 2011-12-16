@@ -42,10 +42,9 @@ import static org.junit.Assert.assertEquals;
 /**
  * Override test cases.
  *
- * <p>
- *   This implementation is identified by {@code <JOMC :: RI :: Tests :: Override Test Implementation Tests>}.
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation Tests</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation Tests</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

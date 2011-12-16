@@ -39,25 +39,17 @@ package org.jomc.ri.model;
 /**
  * Runtime model object.
  *
- * <p>
- *   This specification is identified by {@code <org.jomc.ri.model.RuntimeModelObject>}.
- * </p>
- * <p>
- *   Use of class {@code ObjectManager} is supported for accessing implementations.
- *   <blockquote><pre>
- * RuntimeModelObject[] objects = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( RuntimeModelObject[].class );
- * RuntimeModelObject object = ObjectManagerFactory.getObjectManager( getClass().getClassLoader() ).getObject( RuntimeModelObject.class, "<i>implementation name</i>" );
- *   </pre></blockquote>
- * </p>
  * <dl>
+ *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeModelObject</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
  * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2
  * @version 1.2
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(RuntimeModelObject[].class)
+ * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(RuntimeModelObject.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
- * @see org.jomc.ObjectManager
  */
 // </editor-fold>
 // SECTION-END
