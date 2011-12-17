@@ -3390,7 +3390,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code <creatingModulesInfo>} message for {@code locale}.
@@ -3460,7 +3459,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultImplementationName>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -3529,7 +3527,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code <defaultInvokerInfoMessage>} message for {@code locale}.
@@ -3599,7 +3596,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
      * @return The text of the {@code <defaultListenerInfo>} message for {@code locale}.
@@ -3669,7 +3665,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
@@ -3740,7 +3735,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
      * @return The text of the {@code <defaultLogLevelInfoMessage>} message for {@code locale}.
@@ -3810,7 +3804,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code <defaultModelIdentifierInfo>} message for {@code locale}.
@@ -3880,7 +3873,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code <defaultModelObjectClasspahResolutionEnabledInfo>} message for {@code locale}.
@@ -3950,7 +3942,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
      * @return The text of the {@code <defaultModelProcessingEnabledInfo>} message for {@code locale}.
@@ -4020,7 +4011,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModuleName>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -4089,7 +4079,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVendor>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -4158,7 +4147,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVersion>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -4227,7 +4215,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param modelInfo Format argument.
      * @param classLoaderInfo Format argument.
@@ -4298,7 +4285,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
@@ -4369,7 +4355,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code <dependencyCycleMessage>} message for {@code locale}.
@@ -4439,7 +4424,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code <ignoredInvocationMessage>} message for {@code locale}.
@@ -4509,7 +4493,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @return The text of the {@code <ignoredInvokerMessage>} message for {@code locale}.
@@ -4579,7 +4562,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
@@ -4650,7 +4632,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
@@ -4721,7 +4702,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
      * @return The text of the {@code <implementationInfoMessage>} message for {@code locale}.
@@ -4791,7 +4771,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
@@ -4862,7 +4841,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
@@ -4933,7 +4911,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param schemeInfo Format argument.
@@ -5005,7 +4982,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
@@ -5076,7 +5052,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param implementationName Format argument.
@@ -5147,7 +5122,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code <missingImplementationsMessage>} message for {@code locale}.
@@ -5217,7 +5191,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
@@ -5288,7 +5261,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
      * @return The text of the {@code <missingLocatorMessage>} message for {@code locale}.
@@ -5358,7 +5330,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param messageName Format argument.
@@ -5429,7 +5400,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
      * @return The text of the {@code <missingObjectInstanceMessage>} message for {@code locale}.
@@ -5499,7 +5469,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
@@ -5570,7 +5539,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param propertyName Format argument.
@@ -5641,7 +5609,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @return The text of the {@code <missingScopeMessage>} message for {@code locale}.
@@ -5711,7 +5678,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code <missingSpecificationClassMessage>} message for {@code locale}.
@@ -5781,7 +5747,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @return The text of the {@code <missingSpecificationMessage>} message for {@code locale}.
@@ -5851,7 +5816,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <modulesReportMessage>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
@@ -5920,7 +5884,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param scopeIdentifier Format argument.
@@ -5992,7 +5955,6 @@ public class DefaultObjectManager implements ObjectManager
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.

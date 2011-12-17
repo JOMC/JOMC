@@ -239,7 +239,6 @@ public class DefaultLocator implements Locator
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
      * @param classInfo Format argument.
@@ -310,7 +309,6 @@ public class DefaultLocator implements Locator
      *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @return The text of the {@code <unsupportedUriSchemeMessage>} message for {@code locale}.
