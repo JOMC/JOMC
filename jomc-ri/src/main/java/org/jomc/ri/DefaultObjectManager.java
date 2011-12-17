@@ -95,7 +95,8 @@ import org.jomc.util.WeakIdentityHashMap;
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultObjectManager</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
- *   <dt><b>Implements:</b></dt><dd>org.jomc.ObjectManager@1.0</dd></dt>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>org.jomc.ObjectManager @ 1.0</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -3383,15 +3384,12 @@ public class DefaultObjectManager implements ObjectManager
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
      * Gets the text of the {@code <creatingModulesInfo>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3456,15 +3454,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultImplementationName>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultImplementationName>} message for {@code locale}.
@@ -3528,15 +3523,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultInvokerInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3601,15 +3593,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultListenerInfo>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
@@ -3674,15 +3663,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultLocatorInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
@@ -3748,15 +3734,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultLogLevelInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
@@ -3821,15 +3804,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModelIdentifierInfo>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -3894,15 +3874,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModelObjectClasspahResolutionEnabledInfo>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -3967,15 +3944,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModelProcessingEnabledInfo>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
@@ -4040,15 +4014,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModuleName>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModuleName>} message for {@code locale}.
@@ -4112,15 +4083,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModulesVendor>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVendor>} message for {@code locale}.
@@ -4184,15 +4152,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModulesVersion>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <defaultModulesVersion>} message for {@code locale}.
@@ -4256,15 +4221,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultModulesWarning>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param modelInfo Format argument.
@@ -4330,15 +4292,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <defaultScopeInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -4404,15 +4363,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <dependencyCycleMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4477,15 +4433,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <ignoredInvocationMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4550,15 +4503,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <ignoredInvokerMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4623,15 +4573,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <illegalArraySpecificationMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -4697,15 +4644,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <illegalObjectSpecificationMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -4771,15 +4715,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <implementationInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
@@ -4844,15 +4785,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <invokerInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4918,15 +4856,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <listenerInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -4992,15 +4927,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <locatorInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5067,15 +4999,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingDependencyMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5141,15 +5070,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingImplementationMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5215,15 +5141,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingImplementationsMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5288,15 +5211,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingInstanceMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5362,15 +5282,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingLocatorMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
@@ -5435,15 +5352,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingMessageMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5509,15 +5423,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingObjectInstanceMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
@@ -5582,15 +5493,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingObjectMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5656,15 +5564,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingPropertyMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -5730,15 +5635,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingScopeMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
@@ -5803,15 +5705,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingSpecificationClassMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5876,15 +5775,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <missingSpecificationMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
@@ -5949,15 +5845,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <modulesReportMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <modulesReportMessage>} message for {@code locale}.
@@ -6021,15 +5914,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <scopeInfoMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
@@ -6096,15 +5986,12 @@ public class DefaultObjectManager implements ObjectManager
     }
     /**
      * Gets the text of the {@code <unexpectedDependencyObjectsMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *     <li>Deutsch</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
