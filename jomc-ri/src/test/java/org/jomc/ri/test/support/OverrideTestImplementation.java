@@ -44,7 +44,8 @@ import java.util.Locale;
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation</dd>
- *   <dt><b>Implements:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Specification@1.2-SNAPSHOT</dd></dt>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>JOMC :: RI :: Tests :: Override Test Specification @ 1.2-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -123,11 +124,9 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
     /**
      * Gets the value of the {@code <propertyImpl>} property.
-     * <p>
-     *   <dl>
-     *     <dt><b>Final:</b></dt><dd>No</dd>
-     *   </dl>
-     * </p>
+     * <p><dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl></p>
      * @return The value of the {@code <propertyImpl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
@@ -144,14 +143,11 @@ public class OverrideTestImplementation
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
      * Gets the text of the {@code <messageImpl>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <messageImpl>} message for {@code locale}.

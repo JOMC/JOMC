@@ -41,10 +41,17 @@ import static org.junit.Assert.assertNull;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
+ * Implementation {@code <JOMC :: RI :: Tests :: Implementation Test>}.
+ *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
- *   <dt><b>Implements:</b></dt><dd>JOMC :: RI :: Tests :: Test Multiton Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Scope Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Singleton Specification@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Specification Many@1.2-SNAPSHOT, JOMC :: RI :: Tests :: Test Specification One@1.2-SNAPSHOT</dd></dt>
+ *   <dt><b>Specifications:</b></dt>
+ *     <dd>JOMC :: RI :: Tests :: Test Multiton Specification @ 1.2-SNAPSHOT</dd>
+ *     <dd>JOMC :: RI :: Tests :: Test Scope Specification @ 1.2-SNAPSHOT</dd>
+ *     <dd>JOMC :: RI :: Tests :: Test Singleton Specification @ 1.2-SNAPSHOT</dd>
+ *     <dd>JOMC :: RI :: Tests :: Test Specification Many @ 1.2-SNAPSHOT</dd>
+ *     <dd>JOMC :: RI :: Tests :: Test Specification One @ 1.2-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -472,11 +479,9 @@ public class ImplementationTest
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
     /**
      * Gets the value of the {@code <testProperty>} property.
-     * <p>
-     *   <dl>
-     *     <dt><b>Final:</b></dt><dd>No</dd>
-     *   </dl>
-     * </p>
+     * <p><dl>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl></p>
      * @return The value of the {@code <testProperty>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
@@ -493,14 +498,11 @@ public class ImplementationTest
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
      * Gets the text of the {@code <testMessage>} message.
-     * <p><strong>Languages:</strong>
-     *   <ul>
-     *     <li>English (default)</li>
-     *   </ul>
-     * </p>
-     * <dl>
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
-     * </dl>
+     * </dl></p>
      *
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.

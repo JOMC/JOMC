@@ -39,6 +39,8 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
+ * Specification {@code <JOMC :: RI :: Tests :: Test Scope Specification>}.
+ *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Test Scope Specification</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
