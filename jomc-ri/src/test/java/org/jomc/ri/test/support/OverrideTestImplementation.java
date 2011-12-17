@@ -148,7 +148,6 @@ public class OverrideTestImplementation
      *     <dd>English (default)</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @return The text of the {@code <messageImpl>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.

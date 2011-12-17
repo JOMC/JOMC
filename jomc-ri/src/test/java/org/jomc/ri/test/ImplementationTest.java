@@ -503,7 +503,6 @@ public class ImplementationTest
      *     <dd>English (default)</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     *
      * @param locale The locale of the message to return.
      * @param testArgument Format argument.
      * @return The text of the {@code <testMessage>} message for {@code locale}.
