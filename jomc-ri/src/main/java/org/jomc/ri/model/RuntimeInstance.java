@@ -261,7 +261,7 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Constructor<?> getJavaClassConstructor( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Constructor<?> getJavaConstructor( final ClassLoader classLoader ) throws ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -283,7 +283,7 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
             if ( javaClassConstructor == null && !map.containsKey( this.getIdentifier() ) )
             {
-                javaClassConstructor = super.getJavaClassConstructor( classLoader );
+                javaClassConstructor = super.getJavaConstructor( classLoader );
                 map.put( this.getIdentifier(), javaClassConstructor );
             }
 
@@ -306,11 +306,11 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @see #clear()
      */
     @Override
-    public String getJavaClassFactoryMethodName()
+    public String getJavaFactoryMethodName()
     {
         if ( this.javaClassFactoryMethodName == null )
         {
-            this.javaClassFactoryMethodName = super.getJavaClassFactoryMethodName();
+            this.javaClassFactoryMethodName = super.getJavaFactoryMethodName();
         }
 
         return this.javaClassFactoryMethodName;
@@ -334,11 +334,11 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @throws ClassNotFoundException if the Java class is not found.
      *
      * @see #getJavaClass(java.lang.ClassLoader)
-     * @see #getJavaClassFactoryMethodName()
+     * @see #getJavaFactoryMethodName()
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Method getJavaClassFactoryMethod( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Method getJavaFactoryMethod( final ClassLoader classLoader ) throws ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -360,7 +360,7 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
             if ( javaClassFactoryMethod == null && !map.containsKey( this.getIdentifier() ) )
             {
-                javaClassFactoryMethod = super.getJavaClassFactoryMethod( classLoader );
+                javaClassFactoryMethod = super.getJavaFactoryMethod( classLoader );
                 map.put( this.getIdentifier(), javaClassFactoryMethod );
             }
 
