@@ -720,6 +720,7 @@
           <artifactId>emma-maven-plugin</artifactId>
           <version>1.0-alpha-3</version>
           <configuration>
+            <!-- xml>false</xml See http://jira.codehaus.org/browse/MEMMA-19 -->
             <dataFiles>
               <dataFile>${project.build.directory}/coverage.ec</dataFile>
             </dataFiles>
@@ -2132,6 +2133,7 @@
           </reportSet>
         </reportSets>
         <configuration>
+          <!-- xml>false</xml See http://jira.codehaus.org/browse/MEMMA-19 -->
           <dataFiles>
             <dataFile>${project.build.directory}/coverage.ec</dataFile>
           </dataFiles>
