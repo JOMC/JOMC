@@ -304,7 +304,7 @@
               </group>
               <group>
                 <title>Model Test Suite</title>
-                <packages>org.jomc.model.test*</packages>
+                <packages>org.jomc.model.test*:org.jomc.model.modlet.test*</packages>
               </group>
               <group>
                 <title>Reference Implementation</title>
@@ -320,7 +320,7 @@
               </group>
               <group>
                 <title>Tools Test Suite</title>
-                <packages>org.jomc.tools.test*</packages>
+                <packages>org.jomc.tools.test*:org.jomc.tools.model.test*:org.jomc.tools.modlet.test*</packages>
               </group>
               <group>
                 <title>Maven Plugin</title>
@@ -336,7 +336,7 @@
               </group>
               <group>
                 <title>Ant Tasks Test Suite</title>
-                <packages>org.jomc.ant.test*</packages>
+                <packages>org.jomc.ant.test*:org.jomc.ant.types.test*</packages>
               </group>
               <group>
                 <title>Command Line Interface</title>
@@ -1938,7 +1938,7 @@
             </group>
             <group>
               <title>Model Test Suite</title>
-              <packages>org.jomc.model.test*</packages>
+              <packages>org.jomc.model.test*:org.jomc.model.modlet.test*</packages>
             </group>
             <group>
               <title>Reference Implementation</title>
@@ -1954,7 +1954,7 @@
             </group>
             <group>
               <title>Tools Test Suite</title>
-              <packages>org.jomc.tools.test*</packages>
+              <packages>org.jomc.tools.test*:org.jomc.tools.model.test*:org.jomc.tools.modlet.test*</packages>
             </group>
             <group>
               <title>Maven Plugin</title>
@@ -1970,7 +1970,7 @@
             </group>
             <group>
               <title>Ant Tasks Test Suite</title>
-              <packages>org.jomc.ant.test*</packages>
+              <packages>org.jomc.ant.test*:org.jomc.ant.types.test*</packages>
             </group>
             <group>
               <title>Command Line Interface</title>
