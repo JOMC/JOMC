@@ -565,6 +565,7 @@
           <version>2.8</version>
           <configuration>
             <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
+            <enableRulesSummary>false</enableRulesSummary>
           </configuration>
         </plugin>
         <plugin>
@@ -2081,6 +2082,7 @@
         </reportSets>
         <configuration>
           <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
+          <enableRulesSummary>false</enableRulesSummary>
         </configuration>
       </plugin>
       <plugin>
@@ -2448,6 +2450,7 @@
       <properties>
         <jomc.verbose>true</jomc.verbose>
         <jomc.sourceProcessing>false</jomc.sourceProcessing>
+        <checkstyle.enable.rss>false</checkstyle.enable.rss>
       </properties>
     </profile>
   </profiles>
