@@ -154,7 +154,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${build.date}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -196,7 +196,7 @@
                   <resourceBundle>org.jomc.build:jomc-build-resources:${jomc.build.version}</resourceBundle>
                 </resourceBundles>
                 <properties>
-                  <buildNumber>${buildNumber}</buildNumber>
+                  <buildNumber>${build.date}</buildNumber>
                 </properties>
                 <outputDirectory>${remoteResourcesOutputDirectory}</outputDirectory>
               </configuration>
@@ -362,7 +362,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${build.date}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -464,7 +464,7 @@
               <addMavenDescriptor>false</addMavenDescriptor>
               <compress>true</compress>
               <manifestEntries>
-                <Build-Date>${buildNumber}</Build-Date>
+                <Build-Date>${build.date}</Build-Date>
                 <Maven-Version>${maven.version}</Maven-Version>
               </manifestEntries>
             </archive>
@@ -475,7 +475,7 @@
           <artifactId>maven-scm-plugin</artifactId>
           <version>1.6</version>
           <configuration>
-            <message>[maven-scm-plugin] Build ${buildNumber}</message>
+            <message>[maven-scm-plugin] Build ${build.date}</message>
             <username>${jomc.scm.username}</username>
             <password>${jomc.scm.password}</password>
           </configuration>
@@ -594,7 +594,7 @@
                 <goal>timestamp-property</goal>
               </goals>
               <configuration>
-                <name>buildNumber</name>
+                <name>build.date</name>
                 <locale>en</locale>
                 <pattern>yyyy-MM-dd'T'HH:mm:ssZ</pattern>
               </configuration>
@@ -657,7 +657,7 @@
                       </parameter>
                       <parameter>
                         <name>build.number</name>
-                        <value>${buildNumber}</value>
+                        <value>${build.date}</value>
                       </parameter>
                     </parameters>
                   </transformationSet>

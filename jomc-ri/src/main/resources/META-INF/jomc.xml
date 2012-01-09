@@ -74,8 +74,8 @@
       <messages>
         <message name="defaultInvokerInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">Registered DefaultInvoker Version ${project.version} Build ${buildNumber} for ''{0}''.</text>
-            <text language="de">DefaultInvoker Version ${project.version} Build ${buildNumber} für ''{0}'' registriert.</text>
+            <text language="en">Registered DefaultInvoker ${project.version} (${build.date}) for ''{0}''.</text>
+            <text language="de">DefaultInvoker ${project.version} (${build.date}) für ''{0}'' registriert.</text>
           </template>
           <arguments>
             <argument index="0" name="classLoaderInfo"/>
@@ -83,8 +83,8 @@
         </message>
         <message name="defaultLocatorInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">Registered DefaultLocator Version ${project.version} Build ${buildNumber} Scheme ''{0}'' for ''{1}''.</text>
-            <text language="de">DefaultLocator Version ${project.version} Build ${buildNumber} Scheme ''{0}'' für ''{1}'' registriert.</text>
+            <text language="en">Registered DefaultLocator ${project.version} (${build.date}) Scheme ''{0}'' for ''{1}''.</text>
+            <text language="de">DefaultLocator ${project.version} (${build.date}) Scheme ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
             <argument index="0" name="schemeInfo"/>
@@ -102,8 +102,8 @@
         </message>
         <message name="defaultScopeInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">Registered DefaultScope Version ${project.version} Build ${buildNumber} Scope ''{0}'' for ''{1}''.</text>
-            <text language="de">DefaultScope Version ${project.version} Build ${buildNumber} Scope ''{0}'' für ''{1}'' registriert.</text>
+            <text language="en">Registered DefaultScope ${project.version} (${build.date}) Scope ''{0}'' for ''{1}''.</text>
+            <text language="de">DefaultScope ${project.version} (${build.date}) Scope ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
             <argument index="0" name="scopeIdentifier"/>
@@ -159,8 +159,8 @@
         </message>
         <message name="implementationInfoMessage">
           <template defaultLanguage="en">
-            <text language="en">DefaultObjectManager Version ${project.version} Build ${buildNumber} initialized in {0,number}ms.</text>
-            <text language="de">DefaultObjectManager Version ${project.version} Build ${buildNumber} in {0,number}ms initialisiert.</text>
+            <text language="en">DefaultObjectManager ${project.version} (${build.date}) initialized in {0,number}ms.</text>
+            <text language="de">DefaultObjectManager ${project.version} (${build.date}) in {0,number}ms initialisiert.</text>
           </template>
           <arguments>
             <argument index="0" type="Number" name="initializationMillis"/>
@@ -378,8 +378,8 @@
         </message>
         <message name="defaultListenerInfo">
           <template defaultLanguage="en">
-            <text language="en">Registered DefaultListener Version ${project.version} Build ${buildNumber} for ''{0}''.</text>
-            <text language="de">DefaultListener Version ${project.version} Build ${buildNumber} für ''{0}'' registriert.</text>
+            <text language="en">Registered DefaultListener ${project.version} (${build.date}) for ''{0}''.</text>
+            <text language="de">DefaultListener ${project.version} (${build.date}) für ''{0}'' registriert.</text>
           </template>
           <arguments>
             <argument index="0" name="classLoaderInfo"/>
