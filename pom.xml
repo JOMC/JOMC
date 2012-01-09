@@ -588,13 +588,6 @@
           <version>1.7</version>
           <executions>
             <execution>
-              <id>default-maven-version</id>
-              <phase>initialize</phase>
-              <goals>
-                <goal>maven-version</goal>
-              </goals>
-            </execution>
-            <execution>
               <id>default-timestamp-property</id>
               <phase>initialize</phase>
               <goals>
@@ -2250,6 +2243,34 @@
             <artifactId>maven-site-plugin</artifactId>
           </plugin>
         </plugins>
+      </build>
+    </profile>
+    <profile>
+      <!-- See http://jira.codehaus.org/browse/MNG-4112 -->
+      <id>maven-version</id>
+      <activation>
+        <property>
+          <name>!maven.version</name>
+        </property>
+      </activation>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <executions>
+                <execution>
+                  <id>default-maven-version</id>
+                  <phase>initialize</phase>
+                  <goals>
+                    <goal>maven-version</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+          </plugins>
+        </pluginManagement>
       </build>
     </profile>
     <profile>
