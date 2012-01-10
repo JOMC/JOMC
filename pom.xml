@@ -196,7 +196,8 @@
                   <resourceBundle>org.jomc.build:jomc-build-resources:${jomc.build.version}</resourceBundle>
                 </resourceBundles>
                 <properties>
-                  <buildNumber>${build.date}</buildNumber>
+                  <buildDate>${build.date}</buildDate>
+                  <with-developer-copyright>true</with-developer-copyright>
                 </properties>
                 <outputDirectory>${remoteResourcesOutputDirectory}</outputDirectory>
               </configuration>
@@ -656,7 +657,7 @@
                         <value>${project.version}</value>
                       </parameter>
                       <parameter>
-                        <name>build.number</name>
+                        <name>project.date</name>
                         <value>${build.date}</value>
                       </parameter>
                     </parameters>
@@ -2493,7 +2494,7 @@
     <umlgraph.version>5.1</umlgraph.version>
     <cc-xjc-plugin.version>2.0</cc-xjc-plugin.version>
     <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
-    <jomc.build.version>1.6</jomc.build.version>
+    <jomc.build.version>1.7</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.2</jomc.base.version>
