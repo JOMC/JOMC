@@ -138,9 +138,6 @@
     </profile>
     <profile>
       <id>jomc-ci</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
       <build>
         <pluginManagement>
           <plugins>
