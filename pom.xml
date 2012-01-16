@@ -1722,7 +1722,7 @@
         <groupId>javax.annotation</groupId>
         <artifactId>jsr250-api</artifactId>
         <version>1.0</version>
-        <optional>true</optional>
+        <optional>true</optional> <!-- See http://jira.codehaus.org/browse/MNG-5227 -->
       </dependency>
 
     </dependencies>
