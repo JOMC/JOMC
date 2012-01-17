@@ -1845,23 +1845,9 @@
             </reports>
           </reportSet>
           <reportSet>
-            <id>default-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
-          <reportSet>
             <id>default-test-javadoc</id>
             <reports>
               <report>test-javadoc</report>
-            </reports>
-          </reportSet>
-          <reportSet>
-            <id>default-test-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>test-aggregate</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -1996,23 +1982,9 @@
             </reports>
           </reportSet>
           <reportSet>
-            <id>default-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>aggregate</report>
-            </reports>
-          </reportSet>
-          <reportSet>
             <id>default-test-jxr</id>
             <reports>
               <report>test-jxr</report>
-            </reports>
-          </reportSet>
-          <reportSet>
-            <id>default-test-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>test-aggregate</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -2027,16 +1999,6 @@
             <reports>
               <report>taglist</report>
             </reports>
-          </reportSet>
-          <reportSet>
-            <id>default-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>taglist</report>
-            </reports>
-            <configuration>
-              <aggregate>true</aggregate>
-            </configuration>
           </reportSet>
         </reportSets>
         <configuration>
@@ -2067,30 +2029,10 @@
             </reports>
           </reportSet>
           <reportSet>
-            <id>default-pmd-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>pmd</report>
-            </reports>
-            <configuration>
-              <aggregate>true</aggregate>
-            </configuration>
-          </reportSet>
-          <reportSet>
             <id>default-cpd</id>
             <reports>
               <report>cpd</report>
             </reports>
-          </reportSet>
-          <reportSet>
-            <id>default-cpd-aggregate</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>cpd</report>
-            </reports>
-            <configuration>
-              <aggregate>true</aggregate>
-            </configuration>
           </reportSet>
         </reportSets>
         <configuration>
@@ -2108,16 +2050,6 @@
             <reports>
               <report>report</report>
             </reports>
-          </reportSet>
-          <reportSet>
-            <id>default-aggregate-report</id>
-            <inherited>false</inherited>
-            <reports>
-              <report>report</report>
-            </reports>
-            <configuration>
-              <aggregate>true</aggregate>
-            </configuration>
           </reportSet>
         </reportSets>
       </plugin>
