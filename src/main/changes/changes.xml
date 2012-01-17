@@ -44,7 +44,6 @@
     </release>
     <!-- *********************************************************************************************************** -->
     <release version="1.2">
-      <action dev="schulte2005" type="add"><![CDATA[Added the <code>plexus-maven-plugin</code> for generating plexus component descriptors.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-enforcer-plugin</code> for enforcing the Maven and Java version.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-jaxb21-plugin</code> replacing the <code>jaxb2-maven-plugin</code>.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>wagon-maven-plugin</code> for uploading XML schemas and release archives.]]></action>
@@ -67,7 +66,7 @@
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-site-plugin</code> from <code>2.1.1</code> to <code>3.0</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-plugin-plugin</code> from <code>2.6</code> to <code>2.9</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-dependency-plugin</code> from <code>2.1</code> to <code>2.4</code>.]]></action>
-      <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-remote-resources-plugin</code> from <code>1.1</code> to <code>1.2</code>.]]></action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-remote-resources-plugin</code> from <code>1.1</code> to <code>1.2.1</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-resources-plugin</code> from <code>2.4.3</code> to <code>2.5</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-gpg-plugin</code> from <code>1.1</code> to <code>1.4</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-javadoc-plugin</code> from <code>2.7</code> to <code>2.8.1</code>.]]></action>
