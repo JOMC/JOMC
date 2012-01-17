@@ -525,10 +525,10 @@
               <requireMavenVersion>
                 <message>
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!! This project should be built using Apache Maven 3.0.3 (r1075438; 2011-02-28 18:31:09+0100) !!
+!! This project should be built using Apache Maven 3.0.4 (r1232337; 2012-01-17 09:44:56+0100) !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 </message>
-                <version>[3.0.3]</version>
+                <version>[3.0.4]</version>
               </requireMavenVersion>
             </rules>
           </configuration>
@@ -1845,9 +1845,23 @@
             </reports>
           </reportSet>
           <reportSet>
+            <id>default-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+          <reportSet>
             <id>default-test-javadoc</id>
             <reports>
               <report>test-javadoc</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-test-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>test-aggregate</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -1982,9 +1996,23 @@
             </reports>
           </reportSet>
           <reportSet>
+            <id>default-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>aggregate</report>
+            </reports>
+          </reportSet>
+          <reportSet>
             <id>default-test-jxr</id>
             <reports>
               <report>test-jxr</report>
+            </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-test-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>test-aggregate</report>
             </reports>
           </reportSet>
         </reportSets>
@@ -1999,23 +2027,33 @@
             <reports>
               <report>taglist</report>
             </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>taglist</report>
+            </reports>
             <configuration>
-              <tagListOptions>
-                <tagClasses>
-                  <tagClass>
-                    <displayName>JDK Tags</displayName>
-                    <tags>
-                      <tag>
-                        <matchString>JDK:</matchString>
-                        <matchType>exact</matchType>
-                      </tag>
-                    </tags>
-                  </tagClass>
-                </tagClasses>
-              </tagListOptions>
+              <aggregate>true</aggregate>
             </configuration>
           </reportSet>
         </reportSets>
+        <configuration>
+          <tagListOptions>
+            <tagClasses>
+              <tagClass>
+                <displayName>JDK Tags</displayName>
+                <tags>
+                  <tag>
+                    <matchString>JDK:</matchString>
+                    <matchType>exact</matchType>
+                  </tag>
+                </tags>
+              </tagClass>
+            </tagClasses>
+          </tagListOptions>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -2029,10 +2067,30 @@
             </reports>
           </reportSet>
           <reportSet>
+            <id>default-pmd-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>pmd</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
+          </reportSet>
+          <reportSet>
             <id>default-cpd</id>
             <reports>
               <report>cpd</report>
             </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-cpd-aggregate</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>cpd</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
           </reportSet>
         </reportSets>
         <configuration>
@@ -2050,6 +2108,16 @@
             <reports>
               <report>report</report>
             </reports>
+          </reportSet>
+          <reportSet>
+            <id>default-aggregate-report</id>
+            <inherited>false</inherited>
+            <reports>
+              <report>report</report>
+            </reports>
+            <configuration>
+              <aggregate>true</aggregate>
+            </configuration>
           </reportSet>
         </reportSets>
       </plugin>
@@ -2296,10 +2364,10 @@
                   <requireMavenVersion>
                     <message>
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!! This project must be released using Apache Maven 3.0.3 (r1075438; 2011-02-28 18:31:09+0100)!!
+!! This project must be released using Apache Maven 3.0.4 (r1232337; 2012-01-17 09:44:56+0100)!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     </message>
-                    <version>[3.0.3]</version>
+                    <version>[3.0.4]</version>
                   </requireMavenVersion>
                 </rules>
               </configuration>
