@@ -336,7 +336,7 @@
               </group>
               <group>
                 <title>Command Line Interface Test Suite</title>
-                <packages>org.jomc.cli.test*</packages>
+                <packages>org.jomc.cli.test*:org.jomc.cli.commands.test*</packages>
               </group>
             </groups>
             <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
@@ -1965,7 +1965,7 @@
             </group>
             <group>
               <title>Command Line Interface Test Suite</title>
-              <packages>org.jomc.cli.test*</packages>
+              <packages>org.jomc.cli.test*:org.jomc.cli.commands.test*</packages>
             </group>
           </groups>
         </configuration>
