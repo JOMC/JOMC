@@ -47,8 +47,8 @@
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>plexus-maven-plugin</code> for generating plexus component descriptors.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-enforcer-plugin</code> for enforcing the Maven and Java version.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-jaxb21-plugin</code> replacing the <code>jaxb2-maven-plugin</code>.]]></action>
-      <action dev="schulte2005" type="add"><![CDATA[Added the <code>wagon-maven-plugin</code> to plugin management.]]></action>
-      <action dev="schulte2005" type="add"><![CDATA[Added the <code>plexus-component-metadata</code> plugin to plugin management.]]></action>
+      <action dev="schulte2005" type="add"><![CDATA[Added the <code>wagon-maven-plugin</code> for uploading XML schemas and release archives.]]></action>
+      <action dev="schulte2005" type="add"><![CDATA[Added the <code>plexus-component-metadata</code> replacing the <code>plexus-maven-plugin</code>.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>taglist-maven-plugin</code> plugin to plugin management and reporting section.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>jaxb2-basics</code> XJC plugin to the <code>maven-jaxb21-plugin</code> plugin.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added <code>ant</code> to dependecy management.]]></action>
@@ -91,8 +91,9 @@
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>velocity</code> from <code>1.6.4</code> to <code>1.7</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>jaxb-api</code> from <code>2.2.1</code> to <code>2.2.3</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>jaxb-impl</code> from <code>2.2.1.1</code> to <code>2.2.4-1</code>.]]></action>
-      <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>jomc-build-resources</code> from <code>1.5</code> to <code>1.6</code>.]]></action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>jomc-build-resources</code> from <code>1.5</code> to <code>1.7</code>.]]></action>
       <action dev="schulte2005" type="update"><![CDATA[Updated the configuration of the <code>maven-jar-plugin</code> to attach test and project artifacts.]]></action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated the configuration of the <code>maven-site-plugin</code> to attach site artifacts.]]></action>
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>buildnumber-maven-plugin</code> plugin.]]></action>
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>jaxb2-maven-plugin</code> plugin.]]></action>
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>plexus-maven-plugin</code> plugin.]]></action>
