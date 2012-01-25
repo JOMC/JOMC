@@ -75,6 +75,7 @@ import org.jomc.model.Specifications;
 import org.jomc.model.modlet.ModelHelper;
 import org.jomc.modlet.Model;
 import org.jomc.modlet.ModelContext;
+import org.jomc.modlet.ModelContextFactory;
 import org.jomc.modlet.ModelException;
 import org.jomc.modlet.ModelValidationReport;
 import org.jomc.ri.model.RuntimeModelObject;
@@ -1794,7 +1795,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 try
                 {
-                    final ModelContext modelContext = ModelContext.createModelContext( classLoader );
+                    final ModelContext modelContext = ModelContextFactory.newInstance().newModelContext( classLoader );
 
                     logRecords.add( new LogRecord( Level.FINER, getCreatingModulesInfo(
                         Locale.getDefault(), this.getClassLoaderInfo( classLoader, null ) ) ) );
