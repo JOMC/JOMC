@@ -36,7 +36,7 @@
   <artifactId>jomc-parent</artifactId>
   <packaging>pom</packaging>
   <name>JOMC</name>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>${jomc.artifacts.url}</url>
   <inceptionYear>2005</inceptionYear>
@@ -88,9 +88,9 @@
     </mailingList>
   </mailingLists>
   <scm>
-    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</connection>
-    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</developerConnection>
-    <url>http://jomc.sourceforge.net/project/sources?jomc/trunk</url>
+    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.2</connection>
+    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.2</developerConnection>
+    <url>http://jomc.sourceforge.net/project/sources?jomc/tags/jomc-parent-1.2?jomc/trunk</url>
   </scm>
   <build>
     <extensions>
@@ -235,7 +235,7 @@
                 </reportSets>
                 <configuration>
                   <quiet>true</quiet>
-                  <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
+                  <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
                   <breakiterator>true</breakiterator>
                   <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
                   <keywords>true</keywords>
@@ -669,7 +669,7 @@
           <version>2.8.1</version>
           <configuration>
             <quiet>true</quiet>
-            <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads"/></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
+            <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
             <breakiterator>true</breakiterator>
             <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
             <keywords>true</keywords>
@@ -972,7 +972,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-pmd-plugin</artifactId>
-          <version>2.7</version>
+          <version>2.7.1</version>
           <configuration>
             <targetJdk>1.5</targetJdk>
           </configuration>
@@ -2302,7 +2302,7 @@
                 </rules>
               </configuration>
             </plugin>
-            <!-- plugin>
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-changes-plugin</artifactId>
               <executions>
@@ -2312,12 +2312,12 @@
                   <goals>
                     <goal>changes-check</goal>
                   </goals>
-                  <configuration>
+                  <!-- configuration>
                     <skipSnapshots>true</skipSnapshots> See http://jira.codehaus.org/browse/MCHANGES-272
-                  </configuration>
+                  </configuration -->
                 </execution>
               </executions>
-            </plugin -->
+            </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-deploy-plugin</artifactId>
@@ -2509,16 +2509,16 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.2</jomc.base.version>
-    <jomc-util.artifact.version>1.2-SNAPSHOT</jomc-util.artifact.version>
-    <jomc-modlet.artifact.version>1.2-SNAPSHOT</jomc-modlet.artifact.version>
-    <jomc-model.artifact.version>1.2-SNAPSHOT</jomc-model.artifact.version>
-    <jomc-tools.artifact.version>1.2-SNAPSHOT</jomc-tools.artifact.version>
-    <maven-jomc-plugin.artifact.version>1.2-SNAPSHOT</maven-jomc-plugin.artifact.version>
-    <jomc-ant-tasks.artifact.version>1.2-SNAPSHOT</jomc-ant-tasks.artifact.version>
-    <jomc-api.artifact.version>1.2-SNAPSHOT</jomc-api.artifact.version>
-    <jomc-spi.artifact.version>1.2-SNAPSHOT</jomc-spi.artifact.version>
-    <jomc-ri.artifact.version>1.2-SNAPSHOT</jomc-ri.artifact.version>
-    <jomc-cli.artifact.version>1.2-SNAPSHOT</jomc-cli.artifact.version>
+    <jomc-util.artifact.version>1.2</jomc-util.artifact.version>
+    <jomc-modlet.artifact.version>1.2</jomc-modlet.artifact.version>
+    <jomc-model.artifact.version>1.2</jomc-model.artifact.version>
+    <jomc-tools.artifact.version>1.2</jomc-tools.artifact.version>
+    <maven-jomc-plugin.artifact.version>1.2</maven-jomc-plugin.artifact.version>
+    <jomc-ant-tasks.artifact.version>1.2</jomc-ant-tasks.artifact.version>
+    <jomc-api.artifact.version>1.2</jomc-api.artifact.version>
+    <jomc-spi.artifact.version>1.2</jomc-spi.artifact.version>
+    <jomc-ri.artifact.version>1.2</jomc-ri.artifact.version>
+    <jomc-cli.artifact.version>1.2</jomc-cli.artifact.version>
     <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
     <jomc.artifacts.distribution.base.url>scp://shell.sourceforge.net/home/project-web/jomc/htdocs</jomc.artifacts.distribution.base.url>
     <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
