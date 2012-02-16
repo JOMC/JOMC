@@ -61,7 +61,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.2">
+    <release version="1.2" date="2012-02-16">
       <action dev="schulte2005" type="add"><![CDATA[Added package <code>org.jomc.ri.model</code> providing runtime
       model classes.]]>
       </action>

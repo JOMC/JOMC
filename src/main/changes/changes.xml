@@ -43,7 +43,7 @@
       <action dev="schulte2005" type="update">Split parent changes document to a single document per artifact.</action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.2">
+    <release version="1.2" date="2012-02-16">
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-enforcer-plugin</code> for enforcing the Maven and Java version.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>maven-jaxb21-plugin</code> replacing the <code>jaxb2-maven-plugin</code>.]]></action>
       <action dev="schulte2005" type="add"><![CDATA[Added the <code>wagon-maven-plugin</code> for uploading XML schemas and release archives.]]></action>
