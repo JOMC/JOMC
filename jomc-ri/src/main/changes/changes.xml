@@ -65,8 +65,10 @@
       <action dev="schulte2005" type="add"><![CDATA[Added package <code>org.jomc.ri.model</code> providing runtime
       model classes.]]>
       </action>
-      <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code> to
-      handle pending references asynchronously.]]>
+      <action dev="schulte2005" type="add"><![CDATA[Added methods <code>getDefaultListener</code>,
+      <code>getDefaultScope</code>, <code>getDefaultLocator</code>, <code>getDefaultInvoker</code> and
+      <code>getDefaultInvocation</code> to class <code>org.jomc.ri.DefaultObjectManager</code> taking a model.
+      See the <a href="http://jomc.sourceforge.net/jomc/1.2/jomc-ri-1.2/clirr-report.html">CLIRR report</a>.]]>
       </action>
     </release>
   </body>

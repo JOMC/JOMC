@@ -35,6 +35,8 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
 import java.util.Map;
 import org.jomc.model.Specification;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
@@ -128,7 +130,7 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
                     classLoaderKey = BOOTSTRAP_CLASSLOADER_KEY;
                 }
 
-                Map<String, Class<?>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
+                Map<String, Reference<Class<?>>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
 
                 if ( map == null )
                 {
@@ -136,12 +138,17 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
                     classesByClassLoaderAndNameCache.put( classLoaderKey, map );
                 }
 
-                javaClass = map.get( this.getClazz() );
+                final Reference<Class<?>> reference = map.get( this.getClazz() );
+
+                if ( reference != null )
+                {
+                    javaClass = reference.get();
+                }
 
                 if ( javaClass == null )
                 {
                     javaClass = super.getJavaClass( classLoader );
-                    map.put( this.getClazz(), javaClass );
+                    map.put( this.getClazz(), new WeakReference<Class<?>>( javaClass ) );
                 }
             }
         }

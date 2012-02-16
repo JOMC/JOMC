@@ -36,6 +36,8 @@
 package org.jomc.ri;
 
 import java.io.IOException;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
@@ -51,8 +53,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import org.jomc.ObjectManagementException;
@@ -80,7 +80,6 @@ import org.jomc.modlet.ModelContextFactory;
 import org.jomc.modlet.ModelException;
 import org.jomc.modlet.ModelValidationReport;
 import org.jomc.ri.model.RuntimeModelObject;
-import org.jomc.ri.model.RuntimeModelObjects;
 import org.jomc.ri.model.RuntimeModules;
 import org.jomc.spi.Invocation;
 import org.jomc.spi.Invoker;
@@ -124,41 +123,6 @@ public class DefaultObjectManager implements ObjectManager
     {
         // SECTION-START[Default Constructor]
         super();
-
-        final TimerTask listenersHandlerTask = new MapReferenceHandlerTask( this.listeners );
-        final TimerTask modulesHandlerTask = new MapReferenceHandlerTask( this.modules );
-        final TimerTask invokersHandlerTask = new MapReferenceHandlerTask( this.invokers );
-        final TimerTask scopesHandlerTask = new MapReferenceHandlerTask( this.scopes );
-        final TimerTask locatorsHandlerTask = new MapReferenceHandlerTask( this.locators );
-        final TimerTask objectsHandlerTask = new MapReferenceHandlerTask( this.objects );
-
-        synchronized ( this.referenceHandlerTimerTasks )
-        {
-            this.referenceHandlerTimerTasks.add( listenersHandlerTask );
-            this.referenceHandlerTimerTasks.add( modulesHandlerTask );
-            this.referenceHandlerTimerTasks.add( invokersHandlerTask );
-            this.referenceHandlerTimerTasks.add( scopesHandlerTask );
-            this.referenceHandlerTimerTasks.add( locatorsHandlerTask );
-            this.referenceHandlerTimerTasks.add( objectsHandlerTask );
-        }
-
-        referenceHandlerTimer.schedule( listenersHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( modulesHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( invokersHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( scopesHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( locatorsHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( objectsHandlerTask, getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
         // SECTION-END
     }
     // </editor-fold>
@@ -1092,51 +1056,23 @@ public class DefaultObjectManager implements ObjectManager
     private final Map<ClassLoader, Map<Object, Instance>> objects =
         new WeakIdentityHashMap<ClassLoader, Map<Object, Instance>>();
 
-    /**
-     * {@code TimerTask}s of the instance.
-     * @since 1.2
-     */
-    private final List<TimerTask> referenceHandlerTimerTasks = new ArrayList<TimerTask>();
-
     /** {@code ObjectManager} singletons. */
     private static final Map<ClassLoader, ObjectManager> singletons =
         new WeakIdentityHashMap<ClassLoader, ObjectManager>();
 
     /**
-     * Default class loaders.
+     * Default class loaders cache.
      * @since 1.2
      */
-    private static final Map<ClassLoader, ClassLoader> defaultClassLoaders =
-        new WeakIdentityHashMap<ClassLoader, ClassLoader>();
+    private static final Map<ClassLoader, Reference<ClassLoader>> defaultClassLoaders =
+        new WeakIdentityHashMap<ClassLoader, Reference<ClassLoader>>();
 
     /**
      * Proxy class constructors by class loader any instance cache.
      * @since 1.2
      */
-    private static final Map<ClassLoader, Map<String, Constructor<?>>> proxyClassConstructors =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Constructor<?>>>();
-
-    /**
-     * Reference handler timer.
-     * @since 1.2
-     */
-    private static final Timer referenceHandlerTimer = new Timer( "ObjectManager Reference Handler", true );
-
-    static
-    {
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( singletons ), getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( defaultClassLoaders ),
-                                        getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( new MapReferenceHandlerTask( proxyClassConstructors ),
-                                        getReferenceHandlerTaskDelay(), getReferenceHandlerTaskPeriod() );
-
-        referenceHandlerTimer.schedule( new RuntimeModelObjectsHandlerTask(), getReferenceHandlerTaskDelay(),
-                                        getReferenceHandlerTaskPeriod() );
-
-    }
+    private static final Map<ClassLoader, Map<String, Reference<Constructor<?>>>> proxyClassConstructors =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Constructor<?>>>>();
 
     /**
      * Default {@link ObjectManagerFactory#getObjectManager(ClassLoader)} implementation.
@@ -1295,7 +1231,7 @@ public class DefaultObjectManager implements ObjectManager
                     }
                     else
                     {
-                        cachedListeners.add( this.getDefaultListener() );
+                        cachedListeners.add( this.getDefaultListener( model ) );
 
                         if ( this.isLoggable( Level.CONFIG ) )
                         {
@@ -1325,10 +1261,40 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getListeners(java.lang.ClassLoader)
      *
      * @since 1.1
+     *
+     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultListener(org.jomc.model.Modules)}. This method
+     * will be removed in version 2.0.
      */
+    @Deprecated
     public Listener getDefaultListener()
     {
         return new DefaultListener();
+    }
+
+    /**
+     * Gets a new default listener implementation instance.
+     *
+     * @param model The model to get a new default listener implementation instance of.
+     *
+     * @return A new default listener implementation instance.
+     *
+     * @throws NullPointerException if {@code model} is {@code null}.
+     *
+     * @see #getListeners()
+     * @see #getListeners(java.lang.ClassLoader)
+     *
+     * @since 1.2
+     */
+    public Listener getDefaultListener( final Modules model )
+    {
+        if ( model == null )
+        {
+            throw new NullPointerException( "model" );
+        }
+
+        final Listener defaultListener = this.getDefaultListener();
+        model.getInstance( defaultListener );
+        return defaultListener;
     }
 
     /**
@@ -1876,16 +1842,6 @@ public class DefaultObjectManager implements ObjectManager
                     if ( objectMap == null )
                     {
                         objectMap = new WeakIdentityHashMap<Object, Instance>();
-                        final TimerTask objectMapHandlerTask = new MapReferenceHandlerTask( objectMap );
-
-                        synchronized ( this.referenceHandlerTimerTasks )
-                        {
-                            this.referenceHandlerTimerTasks.add( objectMapHandlerTask );
-                        }
-
-                        referenceHandlerTimer.schedule( objectMapHandlerTask, getReferenceHandlerTaskDelay(),
-                                                        getReferenceHandlerTaskPeriod() );
-
                         this.objects.put( objectsLoader, objectMap );
                     }
 
@@ -1893,17 +1849,6 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( cachedModules instanceof RuntimeModelObject )
                     {
-                        final TimerTask runtimeModelObjectHandlerTask =
-                            new RuntimeModelObjectHandlerTask( (RuntimeModelObject) cachedModules );
-
-                        synchronized ( this.referenceHandlerTimerTasks )
-                        {
-                            this.referenceHandlerTimerTasks.add( runtimeModelObjectHandlerTask );
-                        }
-
-                        referenceHandlerTimer.schedule( runtimeModelObjectHandlerTask, getReferenceHandlerTaskDelay(),
-                                                        getReferenceHandlerTaskPeriod() );
-
                         ( (RuntimeModelObject) cachedModules ).clear();
                     }
                 }
@@ -2083,7 +2028,13 @@ public class DefaultObjectManager implements ObjectManager
 
         synchronized ( defaultClassLoaders )
         {
-            ClassLoader loader = defaultClassLoaders.get( classLoader );
+            ClassLoader loader = null;
+            Reference<ClassLoader> reference = defaultClassLoaders.get( classLoader );
+
+            if ( reference != null )
+            {
+                loader = reference.get();
+            }
 
             if ( loader == null )
             {
@@ -2097,7 +2048,7 @@ public class DefaultObjectManager implements ObjectManager
                     loader = classLoader;
                 }
 
-                defaultClassLoaders.put( classLoader, loader );
+                defaultClassLoaders.put( classLoader, new WeakReference<ClassLoader>( loader ) );
             }
 
             return loader;
@@ -2166,7 +2117,13 @@ public class DefaultObjectManager implements ObjectManager
 
         synchronized ( defaultClassLoaders )
         {
-            ClassLoader loader = defaultClassLoaders.get( classLoader );
+            ClassLoader loader = null;
+            Reference<ClassLoader> reference = defaultClassLoaders.get( classLoader );
+
+            if ( reference != null )
+            {
+                loader = reference.get();
+            }
 
             if ( loader == null )
             {
@@ -2180,7 +2137,7 @@ public class DefaultObjectManager implements ObjectManager
                     loader = classLoader;
                 }
 
-                defaultClassLoaders.put( classLoader, loader );
+                defaultClassLoaders.put( classLoader, new WeakReference<ClassLoader>( loader ) );
             }
 
             return loader;
@@ -2399,20 +2356,20 @@ public class DefaultObjectManager implements ObjectManager
                         Locale.getDefault(), Scope.class.getName() ), null );
 
                 }
-            }
 
-            if ( scope == null )
-            {
-                scope = this.getDefaultScope( identifier );
-                if ( scope != null )
+                if ( scope == null )
                 {
-                    cachedScopes.put( identifier, scope );
-                    if ( this.isLoggable( Level.CONFIG ) )
+                    scope = this.getDefaultScope( model, identifier );
+                    if ( scope != null )
                     {
-                        this.log( classLoader, Level.CONFIG, getDefaultScopeInfoMessage(
-                            Locale.getDefault(), identifier,
-                            this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
+                        cachedScopes.put( identifier, scope );
+                        if ( this.isLoggable( Level.CONFIG ) )
+                        {
+                            this.log( classLoader, Level.CONFIG, getDefaultScopeInfoMessage(
+                                Locale.getDefault(), identifier,
+                                this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
 
+                        }
                     }
                 }
             }
@@ -2432,7 +2389,11 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code identifier} is {@code null}.
      *
      * @see #getScope(java.lang.String, java.lang.ClassLoader)
+     *
+     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultScope(org.jomc.model.Modules,java.lang.String)}.
+     * This method will be removed in version 2.0.
      */
+    @Deprecated
     public Scope getDefaultScope( final String identifier )
     {
         if ( identifier == null )
@@ -2445,6 +2406,40 @@ public class DefaultObjectManager implements ObjectManager
         if ( identifier.equals( SINGLETON_SCOPE_IDENTIFIER ) )
         {
             defaultScope = new DefaultScope( new HashMap<String, Object>() );
+        }
+
+        return defaultScope;
+    }
+
+    /**
+     * Gets a new default scope implementation instance for a given identifier.
+     *
+     * @param model The model to get a new default scope implementation instance of.
+     * @param identifier The identifier to get a new default scope implementation instance for.
+     *
+     * @return A new default scope implementation instance for {@code identifier} or {@code null}, if no such instance
+     * is available.
+     *
+     * @throws NullPointerException if {@code model} or {@code identifier} is {@code null}.
+     *
+     * @see #getScope(java.lang.String, java.lang.ClassLoader)
+     */
+    public Scope getDefaultScope( final Modules model, final String identifier )
+    {
+        if ( model == null )
+        {
+            throw new NullPointerException( "model" );
+        }
+        if ( identifier == null )
+        {
+            throw new NullPointerException( "identifier" );
+        }
+
+        final Scope defaultScope = this.getDefaultScope( identifier );
+
+        if ( defaultScope != null )
+        {
+            model.getInstance( defaultScope );
         }
 
         return defaultScope;
@@ -2544,20 +2539,20 @@ public class DefaultObjectManager implements ObjectManager
                             Locale.getDefault(), Locator.class.getName() ), null );
 
                     }
-                }
 
-                if ( locator == null )
-                {
-                    locator = this.getDefaultLocator( location );
-                    if ( locator != null )
+                    if ( locator == null )
                     {
-                        cachedLocators.put( scheme, locator );
-                        if ( this.isLoggable( Level.CONFIG ) )
+                        locator = this.getDefaultLocator( model, location );
+                        if ( locator != null )
                         {
-                            this.log( classLoader, Level.CONFIG, getDefaultLocatorInfoMessage(
-                                Locale.getDefault(), scheme,
-                                this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
+                            cachedLocators.put( scheme, locator );
+                            if ( this.isLoggable( Level.CONFIG ) )
+                            {
+                                this.log( classLoader, Level.CONFIG, getDefaultLocatorInfoMessage(
+                                    Locale.getDefault(), scheme,
+                                    this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
 
+                            }
                         }
                     }
                 }
@@ -2580,7 +2575,11 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code location} is {@code null}.
      *
      * @see #getLocator(java.net.URI, java.lang.ClassLoader)
+     *
+     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultLocator(org.jomc.model.Modules, java.net.URI)}.
+     * This method will be removed in version 2.0.
      */
+    @Deprecated
     public Locator getDefaultLocator( final URI location )
     {
         if ( location == null )
@@ -2594,6 +2593,41 @@ public class DefaultObjectManager implements ObjectManager
         if ( defaultLocator.isLocationSupported( location ) )
         {
             locator = defaultLocator;
+        }
+
+        return locator;
+    }
+
+    /**
+     * Gets a new default locator implementation instance for a given location URI.
+     *
+     * @param model The model to get a new default location implementation instance of.
+     * @param location The location URI to get a new default locator implementation instance for.
+     *
+     * @return A new default locator implementation instance for {@code location} or {@code null}, if no such instance
+     * is available.
+     *
+     * @throws NullPointerException if {@code model} or {@code location} is {@code null}.
+     *
+     * @see #getLocator(java.net.URI, java.lang.ClassLoader)
+     *
+     * @since 1.2
+     */
+    public Locator getDefaultLocator( final Modules model, final URI location )
+    {
+        if ( model == null )
+        {
+            throw new NullPointerException( "model" );
+        }
+        if ( location == null )
+        {
+            throw new NullPointerException( "location" );
+        }
+
+        final Locator locator = this.getDefaultLocator( location );
+        if ( locator != null )
+        {
+            model.getInstance( locator );
         }
 
         return locator;
@@ -2682,7 +2716,7 @@ public class DefaultObjectManager implements ObjectManager
 
                 if ( invoker == null )
                 {
-                    invoker = this.getDefaultInvoker();
+                    invoker = this.getDefaultInvoker( model );
                     this.invokers.put( invokersLoader, invoker );
                     if ( this.isLoggable( Level.CONFIG ) )
                     {
@@ -2705,10 +2739,39 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getInvoker(java.lang.ClassLoader)
      *
      * @since 1.1
+     *
+     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultInvoker(org.jomc.model.Modules)}. This method
+     * will be removed in version 2.0.
      */
+    @Deprecated
     public Invoker getDefaultInvoker()
     {
         return new DefaultInvoker();
+    }
+
+    /**
+     * Gets a new default invoker implementation instance.
+     *
+     * @param model The model to get a new default invoker implementation instance of.
+     *
+     * @return A new default invoker implementation instance.
+     *
+     * @throws NullPointerException if {@code model} is {@code null}.
+     *
+     * @see #getInvoker(java.lang.ClassLoader)
+     *
+     * @since 1.2
+     */
+    public Invoker getDefaultInvoker( final Modules model )
+    {
+        if ( model == null )
+        {
+            throw new NullPointerException( "model" );
+        }
+
+        final Invoker defaultInvoker = this.getDefaultInvoker();
+        model.getInstance( defaultInvoker );
+        return defaultInvoker;
     }
 
     /**
@@ -2824,7 +2887,7 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( invocation == null )
         {
-            invocation = this.getDefaultInvocation();
+            invocation = this.getDefaultInvocation( model );
         }
 
         invocation.getContext().put( DefaultInvocation.OBJECT_KEY, object );
@@ -2844,10 +2907,39 @@ public class DefaultObjectManager implements ObjectManager
      * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
      *
      * @since 1.1
+     *
+     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultInvocation(org.jomc.model.Modules)}. This method
+     * will be removed in version 2.0.
      */
+    @Deprecated
     public Invocation getDefaultInvocation()
     {
         return new DefaultInvocation();
+    }
+
+    /**
+     * Gets a new default invocation implementation instance.
+     *
+     * @param model The model to get a new default invocation implementation instance of.
+     *
+     * @return A new default invocation implementation instance.
+     *
+     * @throws NullPointerException if {@code model} is {@code null}.
+     *
+     * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
+     *
+     * @since 1.2
+     */
+    public Invocation getDefaultInvocation( final Modules model )
+    {
+        if ( model == null )
+        {
+            throw new NullPointerException( "model" );
+        }
+
+        final Invocation defaultInvocation = this.getDefaultInvocation();
+        model.getInstance( defaultInvocation );
+        return defaultInvocation;
     }
 
     /**
@@ -2956,25 +3048,6 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
 
-    /** Finalizes the instance by canceling timer tasks. */
-    @Override
-    protected void finalize() throws Throwable
-    {
-        super.finalize();
-
-        synchronized ( this.referenceHandlerTimerTasks )
-        {
-            for ( int i = 0, s0 = this.referenceHandlerTimerTasks.size(); i < s0; i++ )
-            {
-                this.referenceHandlerTimerTasks.get( i ).cancel();
-            }
-
-            this.referenceHandlerTimerTasks.clear();
-        }
-
-        referenceHandlerTimer.purge();
-    }
-
     /**
      * Creates a proxy object for a given object.
      *
@@ -2995,17 +3068,23 @@ public class DefaultObjectManager implements ObjectManager
 
             synchronized ( proxyClassConstructors )
             {
-                Map<String, Constructor<?>> map = proxyClassConstructors.get( classLoader );
+                Map<String, Reference<Constructor<?>>> map = proxyClassConstructors.get( classLoader );
 
                 if ( map == null )
                 {
-                    map = new HashMap<String, Constructor<?>>();
+                    map = new HashMap<String, Reference<Constructor<?>>>();
                     proxyClassConstructors.put( classLoader, map );
                 }
 
-                proxyClassConstructor = map.get( instance.getIdentifier() );
+                Reference<Constructor<?>> reference = map.get( instance.getIdentifier() );
 
-                if ( proxyClassConstructor == null && !map.containsKey( instance.getIdentifier() ) )
+                if ( reference != null )
+                {
+                    proxyClassConstructor = reference.get();
+                }
+
+                if ( proxyClassConstructor == null
+                     && ( reference != null || !map.containsKey( instance.getIdentifier() ) ) )
                 {
                     final Class<?> proxyClass = instance.getJavaProxyClass( classLoader );
 
@@ -3014,7 +3093,7 @@ public class DefaultObjectManager implements ObjectManager
                         proxyClassConstructor = proxyClass.getConstructor( INVOCATION_HANDLER_ARGUMENTS );
                     }
 
-                    map.put( instance.getIdentifier(), proxyClassConstructor );
+                    map.put( instance.getIdentifier(), new WeakReference<Constructor<?>>( proxyClassConstructor ) );
                 }
             }
 
@@ -3351,30 +3430,6 @@ public class DefaultObjectManager implements ObjectManager
         i.setVendor( getDefaultModulesVendor( Locale.getDefault() ) );
         i.setVersion( getDefaultModulesVersion( Locale.getDefault() ) );
         return i;
-    }
-
-    private static long getReferenceHandlerTaskDelay()
-    {
-        Long delay = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskDelay", 60000L );
-
-        if ( delay < 0L )
-        {
-            delay = 60000L;
-        }
-
-        return delay;
-    }
-
-    private static long getReferenceHandlerTaskPeriod()
-    {
-        Long period = Long.getLong( "org.jomc.ri.DefaultObjectManager.referenceHandlerTaskPeriod", 1800000L );
-
-        if ( period <= 0L )
-        {
-            period = 1800000L;
-        }
-
-        return period;
     }
 
     // SECTION-END
@@ -6023,103 +6078,4 @@ public class DefaultObjectManager implements ObjectManager
     }
     // </editor-fold>
     // SECTION-END
-}
-
-/**
- * {@code TimerTask} polling a {@code Map} for pending references.
- *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
- * @version $JOMC$
- * @since 1.2
- */
-final class MapReferenceHandlerTask extends TimerTask
-{
-
-    /** Map to poll. */
-    private final Map<?, ?> map;
-
-    /**
-     * Creates a new {@code MapReferenceHandlerTask} taking a {@code Map} to poll for pending references.
-     *
-     * @param map The {@code Map} to poll for pending references.
-     */
-    MapReferenceHandlerTask( final Map<?, ?> map )
-    {
-        super();
-        this.map = map;
-    }
-
-    /** Polls the map of the instance for pending references. */
-    public void run()
-    {
-        synchronized ( this.map )
-        {
-            this.map.size();
-        }
-    }
-
-}
-
-/**
- * {@code TimerTask} handling a {@code RuntimeModelObject}.
- *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
- * @version $JOMC$
- * @since 1.2
- */
-final class RuntimeModelObjectHandlerTask extends TimerTask
-{
-
-    /** {@code RuntimeModelObject} to handle. */
-    private final RuntimeModelObject runtimeModelObject;
-
-    /**
-     * Creates a new {@code RuntimeModelObjectHandlerTask} taking a {@code RuntimeModelObject} to handle.
-     *
-     * @param runtimeModelObject The {@code RuntimeModelObject} to handle.
-     */
-    RuntimeModelObjectHandlerTask( final RuntimeModelObject runtimeModelObject )
-    {
-        super();
-        this.runtimeModelObject = runtimeModelObject;
-    }
-
-    /**
-     * Calls method {@code handle()} on the {@code RuntimeModelObject} of the instance.
-     *
-     * @see RuntimeModelObject#handle()
-     */
-    public void run()
-    {
-        this.runtimeModelObject.gc();
-    }
-
-}
-
-/**
- * {@code TimerTask} handling {@code RuntimeModelObjects}.
- *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a>
- * @version $JOMC$
- * @since 1.2
- */
-final class RuntimeModelObjectsHandlerTask extends TimerTask
-{
-
-    /** Creates a new {@code RuntimeModelObjectsHandlerTask}. */
-    RuntimeModelObjectsHandlerTask()
-    {
-        super();
-    }
-
-    /**
-     * Calls method {@code gc()} on the {@code RuntimeModelObjects} singleton instance.
-     *
-     * @see RuntimeModelObjects#gc()
-     */
-    public void run()
-    {
-        RuntimeModelObjects.getInstance().gc();
-    }
-
 }

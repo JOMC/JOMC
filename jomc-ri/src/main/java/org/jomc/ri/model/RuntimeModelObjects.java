@@ -35,6 +35,7 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.lang.ref.Reference;
 import java.util.HashMap;
 import java.util.Map;
 import org.jomc.model.Argument;
@@ -92,8 +93,8 @@ public class RuntimeModelObjects
     // SECTION-START[RuntimeModelObjects]
 
     /** Classes by class loader any name cache. */
-    static final Map<ClassLoader, Map<String, Class<?>>> classesByClassLoaderAndNameCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>>>();
+    static final Map<ClassLoader, Map<String, Reference<Class<?>>>> classesByClassLoaderAndNameCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>>>>();
 
     /** Singleton instance. */
     private static final RuntimeModelObjects instance = new RuntimeModelObjects();

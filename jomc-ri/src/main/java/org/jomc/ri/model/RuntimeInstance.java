@@ -35,6 +35,8 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -77,18 +79,18 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /** Classes by class loader any instance cache. */
     @XmlTransient
-    static final Map<ClassLoader, Map<String, Class<?>[]>> classesByClassLoaderAndInstanceCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>[]>>();
+    static final Map<ClassLoader, Map<String, Reference<Class<?>[]>>> classesByClassLoaderAndInstanceCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>[]>>>();
 
     /** Constructors by class loader any instance cache. */
     @XmlTransient
-    static final Map<ClassLoader, Map<String, Constructor<?>>> constructorsByClassLoaderAndInstanceCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Constructor<?>>>();
+    static final Map<ClassLoader, Map<String, Reference<Constructor<?>>>> constructorsByClassLoaderAndInstanceCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Constructor<?>>>>();
 
     /** Methods by class loader any instance cache. */
     @XmlTransient
-    static final Map<ClassLoader, Map<String, Method>> methodsByClassLoaderAndInstanceCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Method>>();
+    static final Map<ClassLoader, Map<String, Reference<Method>>> methodsByClassLoaderAndInstanceCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Method>>>();
 
     /** Assignable flags by class loader any instance cache. */
     @XmlTransient
@@ -97,8 +99,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /** Proxy classes by class loader any instance cache. */
     @XmlTransient
-    static final Map<ClassLoader, Map<String, Class<?>>> proxyClassesByClassLoaderAndInstanceCache =
-        new WeakIdentityHashMap<ClassLoader, Map<String, Class<?>>>();
+    static final Map<ClassLoader, Map<String, Reference<Class<?>>>> proxyClassesByClassLoaderAndInstanceCache =
+        new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>>>>();
 
     /** Method name. */
     @XmlTransient
@@ -170,7 +172,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
         synchronized ( classesByClassLoaderAndNameCache )
         {
-            Map<String, Class<?>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
+            Class<?> javaClass = null;
+            Map<String, Reference<Class<?>>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
 
             if ( map == null )
             {
@@ -178,12 +181,17 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
                 classesByClassLoaderAndNameCache.put( classLoaderKey, map );
             }
 
-            Class<?> javaClass = map.get( this.getClazz() );
+            final Reference<Class<?>> reference = map.get( this.getClazz() );
+
+            if ( reference != null )
+            {
+                javaClass = reference.get();
+            }
 
             if ( javaClass == null )
             {
                 javaClass = super.getJavaClass( classLoader );
-                map.put( this.getClazz(), javaClass );
+                map.put( this.getClazz(), new WeakReference<Class<?>>( javaClass ) );
             }
 
             return javaClass;
@@ -221,7 +229,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
         synchronized ( classesByClassLoaderAndInstanceCache )
         {
-            Map<String, Class<?>[]> map = classesByClassLoaderAndInstanceCache.get( classLoaderKey );
+            Class<?>[] javaClasses = null;
+            Map<String, Reference<Class<?>[]>> map = classesByClassLoaderAndInstanceCache.get( classLoaderKey );
 
             if ( map == null )
             {
@@ -229,12 +238,17 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
                 classesByClassLoaderAndInstanceCache.put( classLoaderKey, map );
             }
 
-            Class<?>[] javaClasses = map.get( this.getIdentifier() );
+            final Reference<Class<?>[]> reference = map.get( this.getIdentifier() );
 
-            if ( javaClasses == null && !map.containsKey( this.getIdentifier() ) )
+            if ( reference != null )
+            {
+                javaClasses = reference.get();
+            }
+
+            if ( javaClasses == null && ( reference != null || !map.containsKey( this.getIdentifier() ) ) )
             {
                 javaClasses = super.getJavaClasses( classLoader );
-                map.put( this.getIdentifier(), javaClasses );
+                map.put( this.getIdentifier(), new WeakReference<Class<?>[]>( javaClasses ) );
             }
 
             return javaClasses;
@@ -272,7 +286,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
         synchronized ( constructorsByClassLoaderAndInstanceCache )
         {
-            Map<String, Constructor<?>> map = constructorsByClassLoaderAndInstanceCache.get( classLoaderKey );
+            Constructor<?> javaClassConstructor = null;
+            Map<String, Reference<Constructor<?>>> map = constructorsByClassLoaderAndInstanceCache.get( classLoaderKey );
 
             if ( map == null )
             {
@@ -280,12 +295,17 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
                 constructorsByClassLoaderAndInstanceCache.put( classLoaderKey, map );
             }
 
-            Constructor<?> javaClassConstructor = map.get( this.getIdentifier() );
+            final Reference<Constructor<?>> reference = map.get( this.getIdentifier() );
 
-            if ( javaClassConstructor == null && !map.containsKey( this.getIdentifier() ) )
+            if ( reference != null )
+            {
+                javaClassConstructor = reference.get();
+            }
+
+            if ( javaClassConstructor == null && ( reference != null || !map.containsKey( this.getIdentifier() ) ) )
             {
                 javaClassConstructor = super.getJavaConstructor( classLoader );
-                map.put( this.getIdentifier(), javaClassConstructor );
+                map.put( this.getIdentifier(), new WeakReference<Constructor<?>>( javaClassConstructor ) );
             }
 
             return javaClassConstructor;
@@ -349,7 +369,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
         synchronized ( methodsByClassLoaderAndInstanceCache )
         {
-            Map<String, Method> map = methodsByClassLoaderAndInstanceCache.get( classLoaderKey );
+            Method javaClassFactoryMethod = null;
+            Map<String, Reference<Method>> map = methodsByClassLoaderAndInstanceCache.get( classLoaderKey );
 
             if ( map == null )
             {
@@ -357,12 +378,17 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
                 methodsByClassLoaderAndInstanceCache.put( classLoaderKey, map );
             }
 
-            Method javaClassFactoryMethod = map.get( this.getIdentifier() );
+            final Reference<Method> reference = map.get( this.getIdentifier() );
 
-            if ( javaClassFactoryMethod == null && !map.containsKey( this.getIdentifier() ) )
+            if ( reference != null )
+            {
+                javaClassFactoryMethod = reference.get();
+            }
+
+            if ( javaClassFactoryMethod == null && ( reference != null || !map.containsKey( this.getIdentifier() ) ) )
             {
                 javaClassFactoryMethod = super.getJavaFactoryMethod( classLoader );
-                map.put( this.getIdentifier(), javaClassFactoryMethod );
+                map.put( this.getIdentifier(), new WeakReference<Method>( javaClassFactoryMethod ) );
             }
 
             return javaClassFactoryMethod;
@@ -453,7 +479,8 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
         synchronized ( proxyClassesByClassLoaderAndInstanceCache )
         {
-            Map<String, Class<?>> map = proxyClassesByClassLoaderAndInstanceCache.get( classLoaderKey );
+            Class<?> javaProxyClass = null;
+            Map<String, Reference<Class<?>>> map = proxyClassesByClassLoaderAndInstanceCache.get( classLoaderKey );
 
             if ( map == null )
             {
@@ -461,12 +488,17 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
                 proxyClassesByClassLoaderAndInstanceCache.put( classLoaderKey, map );
             }
 
-            Class<?> javaProxyClass = map.get( this.getIdentifier() );
+            final Reference<Class<?>> reference = map.get( this.getIdentifier() );
 
-            if ( javaProxyClass == null && !map.containsKey( this.getIdentifier() ) )
+            if ( reference != null )
+            {
+                javaProxyClass = reference.get();
+            }
+
+            if ( javaProxyClass == null && ( reference != null || !map.containsKey( this.getIdentifier() ) ) )
             {
                 javaProxyClass = super.getJavaProxyClass( classLoader );
-                map.put( this.getIdentifier(), javaProxyClass );
+                map.put( this.getIdentifier(), new WeakReference<Class<?>>( javaProxyClass ) );
             }
 
             return javaProxyClass;

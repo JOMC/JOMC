@@ -35,6 +35,8 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
 import java.net.URI;
 import java.util.Map;
 import org.jomc.model.Implementation;
@@ -173,7 +175,7 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 
             synchronized ( classesByClassLoaderAndNameCache )
             {
-                Map<String, Class<?>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
+                Map<String, Reference<Class<?>>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
 
                 if ( map == null )
                 {
@@ -181,12 +183,17 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
                     classesByClassLoaderAndNameCache.put( classLoaderKey, map );
                 }
 
-                javaClass = map.get( this.getClazz() );
+                final Reference<Class<?>> reference = map.get( this.getClazz() );
+
+                if ( reference != null )
+                {
+                    javaClass = reference.get();
+                }
 
                 if ( javaClass == null )
                 {
                     javaClass = super.getJavaClass( classLoader );
-                    map.put( this.getClazz(), javaClass );
+                    map.put( this.getClazz(), new WeakReference<Class<?>>( javaClass ) );
                 }
             }
         }
