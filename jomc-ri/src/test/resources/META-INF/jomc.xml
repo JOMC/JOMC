@@ -231,7 +231,7 @@
         <dependency name="OptionalLocale"
                     identifier="java.util.Locale"
                     implementationName="DOES NOT EXIST"
-                    version="${project.version}" bound="false" optional="true"/>
+                    version="1.1" bound="false" optional="true"/>
 
         <dependency name="InvokerTestSpecification"
                     identifier="JOMC :: RI :: Tests :: Invoker Test Specification"
