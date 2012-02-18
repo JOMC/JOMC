@@ -98,5 +98,7 @@
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>jaxb2-maven-plugin</code> plugin.]]></action>
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>plexus-maven-plugin</code> plugin.]]></action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="2.0"/>
   </body>
 </document>
