@@ -1255,25 +1255,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a new default listener implementation instance.
      *
-     * @return A new default listener implementation instance.
-     *
-     * @see #getListeners()
-     * @see #getListeners(java.lang.ClassLoader)
-     *
-     * @since 1.1
-     *
-     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultListener(org.jomc.model.Modules)}. This method
-     * will be removed in version 2.0.
-     */
-    @Deprecated
-    public Listener getDefaultListener()
-    {
-        return new DefaultListener();
-    }
-
-    /**
-     * Gets a new default listener implementation instance.
-     *
      * @param model The model to get a new default listener implementation instance of.
      *
      * @return A new default listener implementation instance.
@@ -1292,7 +1273,7 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Listener defaultListener = this.getDefaultListener();
+        final Listener defaultListener = new DefaultListener();
         model.getInstance( defaultListener );
         return defaultListener;
     }
@@ -2041,96 +2022,7 @@ public class DefaultObjectManager implements ObjectManager
                 if ( classLoader.getParent() != null
                      && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
                 {
-                    loader = getClassLoader( classLoader.getParent() );
-                }
-                else
-                {
-                    loader = classLoader;
-                }
-
-                defaultClassLoaders.put( classLoader, new WeakReference<ClassLoader>( loader ) );
-            }
-
-            return loader;
-        }
-    }
-
-    /**
-     * Gets the class loader of a given class.
-     *
-     * @param clazz The class whose class loader to return.
-     *
-     * @return The class loader of {@code clazz}.
-     *
-     * @throws NullPointerException if {@code clazz} is {@code null}.
-     *
-     * @deprecated As of JOMC 1.1, please use method {@link #getDefaultClassLoader(java.lang.Class)}. This method will
-     * be removed in version 2.0.
-     */
-    @Deprecated
-    public static ClassLoader getClassLoader( final Class<?> clazz )
-    {
-        if ( clazz == null )
-        {
-            throw new NullPointerException( "clazz" );
-        }
-
-        ClassLoader cl = clazz.getClassLoader();
-        if ( cl == null )
-        {
-            cl = BOOTSTRAP_CLASSLOADER;
-        }
-
-        return cl;
-    }
-
-    /**
-     * Gets the parent class loader of a given class loader recursively.
-     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
-     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
-     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
-     * current class loader's parent class loader is equal to the name returned by method
-     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
-     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
-     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
-     *
-     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
-     * {@code ClassLoader} instance representing the platform's bootstrap class loader.
-     *
-     * @return The parent class loader of {@code classLoader}.
-     *
-     * @throws NullPointerException if {@code classLoader} is {@code null}.
-     *
-     * @see #getBootstrapClassLoaderClassName()
-     * @see ClassLoader#getParent()
-     *
-     * @deprecated As of JOMC 1.1, please use method {@link #getDefaultClassLoader(java.lang.ClassLoader)}. This method
-     * will be removed in version 2.0.
-     */
-    @Deprecated
-    public static ClassLoader getClassLoader( final ClassLoader classLoader )
-    {
-        if ( classLoader == null )
-        {
-            return BOOTSTRAP_CLASSLOADER;
-        }
-
-        synchronized ( defaultClassLoaders )
-        {
-            ClassLoader loader = null;
-            Reference<ClassLoader> reference = defaultClassLoaders.get( classLoader );
-
-            if ( reference != null )
-            {
-                loader = reference.get();
-            }
-
-            if ( loader == null )
-            {
-                if ( classLoader.getParent() != null
-                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
-                {
-                    loader = getClassLoader( classLoader.getParent() );
+                    loader = this.getDefaultClassLoader( classLoader.getParent() );
                 }
                 else
                 {
@@ -2381,39 +2273,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a new default scope implementation instance for a given identifier.
      *
-     * @param identifier The identifier to get a new default scope implementation instance for.
-     *
-     * @return A new default scope implementation instance for {@code identifier} or {@code null}, if no such instance
-     * is available.
-     *
-     * @throws NullPointerException if {@code identifier} is {@code null}.
-     *
-     * @see #getScope(java.lang.String, java.lang.ClassLoader)
-     *
-     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultScope(org.jomc.model.Modules,java.lang.String)}.
-     * This method will be removed in version 2.0.
-     */
-    @Deprecated
-    public Scope getDefaultScope( final String identifier )
-    {
-        if ( identifier == null )
-        {
-            throw new NullPointerException( "identifier" );
-        }
-
-        DefaultScope defaultScope = null;
-
-        if ( identifier.equals( SINGLETON_SCOPE_IDENTIFIER ) )
-        {
-            defaultScope = new DefaultScope( new HashMap<String, Object>() );
-        }
-
-        return defaultScope;
-    }
-
-    /**
-     * Gets a new default scope implementation instance for a given identifier.
-     *
      * @param model The model to get a new default scope implementation instance of.
      * @param identifier The identifier to get a new default scope implementation instance for.
      *
@@ -2435,10 +2294,11 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "identifier" );
         }
 
-        final Scope defaultScope = this.getDefaultScope( identifier );
+        Scope defaultScope = null;
 
-        if ( defaultScope != null )
+        if ( identifier.equals( SINGLETON_SCOPE_IDENTIFIER ) )
         {
+            defaultScope = new DefaultScope( new HashMap<String, Object>() );
             model.getInstance( defaultScope );
         }
 
@@ -2567,40 +2427,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a new default locator implementation instance for a given location URI.
      *
-     * @param location The location URI to get a new default locator implementation instance for.
-     *
-     * @return A new default locator implementation instance for {@code location} or {@code null}, if no such instance
-     * is available.
-     *
-     * @throws NullPointerException if {@code location} is {@code null}.
-     *
-     * @see #getLocator(java.net.URI, java.lang.ClassLoader)
-     *
-     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultLocator(org.jomc.model.Modules, java.net.URI)}.
-     * This method will be removed in version 2.0.
-     */
-    @Deprecated
-    public Locator getDefaultLocator( final URI location )
-    {
-        if ( location == null )
-        {
-            throw new NullPointerException( "location" );
-        }
-
-        Locator locator = null;
-        final DefaultLocator defaultLocator = new DefaultLocator();
-
-        if ( defaultLocator.isLocationSupported( location ) )
-        {
-            locator = defaultLocator;
-        }
-
-        return locator;
-    }
-
-    /**
-     * Gets a new default locator implementation instance for a given location URI.
-     *
      * @param model The model to get a new default location implementation instance of.
      * @param location The location URI to get a new default locator implementation instance for.
      *
@@ -2624,9 +2450,12 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "location" );
         }
 
-        final Locator locator = this.getDefaultLocator( location );
-        if ( locator != null )
+        Locator locator = null;
+        final DefaultLocator defaultLocator = new DefaultLocator();
+
+        if ( defaultLocator.isLocationSupported( location ) )
         {
+            locator = defaultLocator;
             model.getInstance( locator );
         }
 
@@ -2734,24 +2563,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a new default invoker implementation instance.
      *
-     * @return A new default invoker implementation instance.
-     *
-     * @see #getInvoker(java.lang.ClassLoader)
-     *
-     * @since 1.1
-     *
-     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultInvoker(org.jomc.model.Modules)}. This method
-     * will be removed in version 2.0.
-     */
-    @Deprecated
-    public Invoker getDefaultInvoker()
-    {
-        return new DefaultInvoker();
-    }
-
-    /**
-     * Gets a new default invoker implementation instance.
-     *
      * @param model The model to get a new default invoker implementation instance of.
      *
      * @return A new default invoker implementation instance.
@@ -2769,34 +2580,9 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Invoker defaultInvoker = this.getDefaultInvoker();
+        final Invoker defaultInvoker = new DefaultInvoker();
         model.getInstance( defaultInvoker );
         return defaultInvoker;
-    }
-
-    /**
-     * Gets an invocation for a given object, instance, method and arguments.
-     *
-     * @param object The object to invoke.
-     * @param instance The instance of the object to invoke.
-     * @param method The method to invoke on {@code object}.
-     * @param arguments The arguments of the invocation or {@code null}.
-     *
-     * @return An invocation with {@code object}, {@code instance}, {@code method} and {@code arguments}.
-     *
-     * @throws NullPointerException if {@code object}, {@code instance} or {@code method} is {@code null}.
-     * @throws InstantiationException if instantiating a new invocation fails.
-     *
-     * @deprecated As of JOMC 1.1, please use method {@link #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])}.
-     * This method will be removed in version 2.0.
-     */
-    @Deprecated
-    public Invocation getInvocation( final Object object, final Instance instance, final Method method,
-                                     final Object[] arguments ) throws InstantiationException
-    {
-        return this.getInvocation( this.getDefaultClassLoader( object.getClass() ), object, instance, method,
-                                   arguments );
-
     }
 
     /**
@@ -2902,24 +2688,6 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets a new default invocation implementation instance.
      *
-     * @return A new default invocation implementation instance.
-     *
-     * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
-     *
-     * @since 1.1
-     *
-     * @deprecated As of JOMC 1.2, replaced by method {@link #getDefaultInvocation(org.jomc.model.Modules)}. This method
-     * will be removed in version 2.0.
-     */
-    @Deprecated
-    public Invocation getDefaultInvocation()
-    {
-        return new DefaultInvocation();
-    }
-
-    /**
-     * Gets a new default invocation implementation instance.
-     *
      * @param model The model to get a new default invocation implementation instance of.
      *
      * @return A new default invocation implementation instance.
@@ -2937,7 +2705,7 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Invocation defaultInvocation = this.getDefaultInvocation();
+        final Invocation defaultInvocation = new DefaultInvocation();
         model.getInstance( defaultInvocation );
         return defaultInvocation;
     }
@@ -3430,6 +3198,62 @@ public class DefaultObjectManager implements ObjectManager
         i.setVendor( getDefaultModulesVendor( Locale.getDefault() ) );
         i.setVersion( getDefaultModulesVersion( Locale.getDefault() ) );
         return i;
+    }
+
+    /**
+     * Gets the parent class loader of a given class loader recursively.
+     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
+     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
+     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
+     * current class loader's parent class loader is equal to the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
+     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
+     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
+     *
+     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
+     * {@code ClassLoader} instance representing the platform's bootstrap class loader.
+     *
+     * @return The parent class loader of {@code classLoader}.
+     *
+     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     *
+     * @see #getBootstrapClassLoaderClassName()
+     * @see ClassLoader#getParent()
+     */
+    private static ClassLoader getClassLoader( final ClassLoader classLoader )
+    {
+        if ( classLoader == null )
+        {
+            return BOOTSTRAP_CLASSLOADER;
+        }
+
+        synchronized ( defaultClassLoaders )
+        {
+            ClassLoader loader = null;
+            Reference<ClassLoader> reference = defaultClassLoaders.get( classLoader );
+
+            if ( reference != null )
+            {
+                loader = reference.get();
+            }
+
+            if ( loader == null )
+            {
+                if ( classLoader.getParent() != null
+                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                {
+                    loader = getClassLoader( classLoader.getParent() );
+                }
+                else
+                {
+                    loader = classLoader;
+                }
+
+                defaultClassLoaders.put( classLoader, new WeakReference<ClassLoader>( loader ) );
+            }
+
+            return loader;
+        }
     }
 
     // SECTION-END

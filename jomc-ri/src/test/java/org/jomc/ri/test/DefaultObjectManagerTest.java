@@ -39,6 +39,7 @@ import java.net.URI;
 import java.util.Locale;
 import org.jomc.ObjectManager;
 import org.jomc.model.Instance;
+import org.jomc.model.Modules;
 import org.jomc.ri.DefaultObjectManager;
 import org.jomc.ri.test.support.TestScopeSpecification;
 import org.jomc.ri.test.support.TestSpecification;
@@ -112,19 +113,8 @@ public class DefaultObjectManagerTest
     }
 
     @Test
-    @SuppressWarnings( "deprecation" )
     public final void testNullPointerException() throws Exception
     {
-        try
-        {
-            DefaultObjectManager.getClassLoader( (Class) null );
-            fail( "Expected NullPointerException not thrown." );
-        }
-        catch ( final NullPointerException e )
-        {
-            assertNullPointerException( e );
-        }
-
         try
         {
             this.getObjectManager().getDefaultClassLoader( (Class<?>) null );
@@ -137,7 +127,25 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getDefaultLocator( null );
+            this.getObjectManager().getDefaultLocator( null, null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+        try
+        {
+            this.getObjectManager().getDefaultLocator( new Modules(), null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+        try
+        {
+            this.getObjectManager().getDefaultLocator( null, new URI( "file:///tmp" ) );
             fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
@@ -147,7 +155,25 @@ public class DefaultObjectManagerTest
 
         try
         {
-            this.getObjectManager().getDefaultScope( null );
+            this.getObjectManager().getDefaultScope( null, null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+        try
+        {
+            this.getObjectManager().getDefaultScope( new Modules(), null );
+            fail( "Expected NullPointerException not thrown." );
+        }
+        catch ( final NullPointerException e )
+        {
+            assertNullPointerException( e );
+        }
+        try
+        {
+            this.getObjectManager().getDefaultScope( null, "Singleton" );
             fail( "Expected NullPointerException not thrown." );
         }
         catch ( final NullPointerException e )
