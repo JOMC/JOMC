@@ -99,6 +99,8 @@
       <action dev="schulte2005" type="remove"><![CDATA[Removed the <code>plexus-maven-plugin</code> plugin.]]></action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="2.0"/>
+    <release version="2.0">
+      <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>maven-checkstyle-plugin</code> from <code>2.9</code> to <code>2.9.1</code>.]]></action>
+    </release>
   </body>
 </document>
