@@ -345,7 +345,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <OptionalLocale>} dependency.
      * <p>
-     *   This method returns the {@code <DOES NOT EXIST>} object of the {@code <java.util.Locale>} specification at specification level 1.3-SNAPSHOT.
+     *   This method returns the {@code <DOES NOT EXIST>} object of the {@code <java.util.Locale>} specification at specification level 1.1.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
      * <dl>

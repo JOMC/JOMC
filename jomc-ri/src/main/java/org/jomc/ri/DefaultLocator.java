@@ -266,7 +266,7 @@ public class DefaultLocator implements Locator
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -335,7 +335,7 @@ public class DefaultLocator implements Locator
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {

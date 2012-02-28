@@ -143,6 +143,27 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.3"/>
+    <release version="1.3">
+      <action dev="schulte2005" type="fix"><![CDATA[Updated method <code>getVelocityContext</code> of class
+      <code>org.jomc.tools.JomcTool</code> to correctly parse template profile property values ending in <code>|</code>
+      to support adding objects to the context created using the public default constructor.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated methods <code>edit(Specification,SourceFileType,File)</code>
+      and <code>edit(Implementation,SourceFileType,File)</code> of class
+      <code>org.jomc.tools.SourceFileProcessor.SourceFileEditor</code> to provide a single <code>VelocityContext</code>
+      instance to all templates involved in rendering a source code file.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated class <code>org.jomc.tools.modlet.ToolsModelProvider</code>
+      to add missing support for overwriting source file models of specifications.]]>
+      </action>
+      <action dev="schulte2005" type="fix"><![CDATA[Updated the <code>implementation-messages.vm</code> template of the
+      <code>jomc-java-bundles</code> template profile to correct a
+      <code>java.lang.StringIndexOutOfBoundsException: String index out of range: -1</code> exception thrown for
+      empty messages.]]>
+      </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated method <code>getVelocityContext</code> of class
+      <code>org.jomc.tools.JomcTool</code> adding <code>java.io.Exception</code> to the list exceptions.]]>
+      </action>
+    </release>
   </body>
 </document>

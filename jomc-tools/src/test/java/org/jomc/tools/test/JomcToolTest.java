@@ -32,6 +32,7 @@ package org.jomc.tools.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.logging.Level;
@@ -58,6 +59,7 @@ import org.jomc.tools.JomcTool;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -1136,6 +1138,23 @@ public class JomcToolTest
     }
 
     @Test
+    public final void testVelocityContext() throws Exception
+    {
+        assertNotNull( this.getJomcTool().getVelocityContext() );
+        this.getJomcTool().setTemplateProfile( "test" );
+        assertNotNull( this.getJomcTool().getVelocityContext() );
+        assertNotNull( this.getJomcTool().getVelocityContext().get( "test-object" ) );
+        assertTrue( this.getJomcTool().getVelocityContext().get( "test-object" ) instanceof JomcTool );
+        assertNotNull( this.getJomcTool().getVelocityContext().get( "test-url" ) );
+        assertTrue( this.getJomcTool().getVelocityContext().get( "test-url" ) instanceof URL );
+        assertEquals( new URL( "file:///tmp" ), this.getJomcTool().getVelocityContext().get( "test-url" ) );
+        assertNotNull( this.getJomcTool().getVelocityContext().get( "test-string" ) );
+        assertTrue( this.getJomcTool().getVelocityContext().get( "test-string" ) instanceof String );
+        assertEquals( "Test", this.getJomcTool().getVelocityContext().get( "test-string" ) );
+        this.getJomcTool().setTemplateProfile( null );
+    }
+
+    @Test
     public final void testTemplateEncoding() throws Exception
     {
         this.getJomcTool().setTemplateEncoding( null );
@@ -1165,6 +1184,32 @@ public class JomcToolTest
         this.getJomcTool().setLineSeparator( null );
         assertNotNull( this.getJomcTool().getLineSeparator() );
         this.getJomcTool().setLineSeparator( null );
+    }
+
+    @Test
+    public final void testJomcToolModelObjectsNotFound() throws Exception
+    {
+        final SpecificationReference ref = new SpecificationReference();
+        ref.setIdentifier( "DOES_NOT_EXIST" );
+
+        final Implementation i = new Implementation();
+        i.setIdentifier( "DOES_NOT_EXSIST" );
+
+        final Dependency d = new Dependency();
+        d.setIdentifier( "DOES_NOT_EXIST" );
+
+        final Property p = new Property();
+        p.setName( "DOES_NOT_EXIST" );
+
+        assertNull( this.getJomcTool().getJavaPackageName( ref ) );
+        assertNull( this.getJomcTool().getJavaTypeName( ref, false ) );
+        assertNull( this.getJomcTool().getJavaTypeName( d ) );
+
+        final Model oldModel = this.getJomcTool().getModel();
+        this.getJomcTool().setModel( null );
+        assertTrue( this.getJomcTool().getImplementedJavaTypeNames( i, true ).isEmpty() );
+        assertEquals( "private", this.getJomcTool().getJavaModifierName( i, p ) );
+        this.getJomcTool().setModel( oldModel );
     }
 
     public static void assertNullPointerException( final NullPointerException e )

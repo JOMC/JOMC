@@ -150,14 +150,21 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "specification" );
         }
 
-        assert this.getModules().getSpecification( specification.getIdentifier() ) != null :
-            "Specification '" + specification.getIdentifier() + "' not found.";
+        SourceFileType sourceFileType = null;
 
-        SourceFileType sourceFileType = this.getSourceFilesType().getSourceFile( specification.getIdentifier() );
-
-        if ( sourceFileType == null )
+        if ( this.getModules() != null
+             && this.getModules().getSpecification( specification.getIdentifier() ) != null )
         {
-            sourceFileType = specification.getAnyObject( SourceFileType.class );
+            sourceFileType = this.getSourceFilesType().getSourceFile( specification.getIdentifier() );
+
+            if ( sourceFileType == null )
+            {
+                sourceFileType = specification.getAnyObject( SourceFileType.class );
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "specificationNotFound", specification.getIdentifier() ), null );
         }
 
         return sourceFileType;
@@ -181,20 +188,26 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "specification" );
         }
 
-        assert this.getModules().getSpecification( specification.getIdentifier() ) != null :
-            "Specification '" + specification.getIdentifier() + "' not found.";
-
         SourceFilesType model = null;
-        final SourceFileType sourceFileType = this.getSourceFileType( specification );
 
-        if ( sourceFileType != null )
+        if ( this.getModules() != null
+             && this.getModules().getSpecification( specification.getIdentifier() ) != null )
         {
-            model = new SourceFilesType();
-            model.getSourceFile().add( sourceFileType );
+            final SourceFileType sourceFileType = this.getSourceFileType( specification );
+
+            if ( sourceFileType != null )
+            {
+                model = new SourceFilesType();
+                model.getSourceFile().add( sourceFileType );
+            }
+            else
+            {
+                model = specification.getAnyObject( SourceFilesType.class );
+            }
         }
-        else
+        else if ( this.isLoggable( Level.WARNING ) )
         {
-            model = specification.getAnyObject( SourceFilesType.class );
+            this.log( Level.WARNING, getMessage( "specificationNotFound", specification.getIdentifier() ), null );
         }
 
         return model;
@@ -221,14 +234,21 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "implementation" );
         }
 
-        assert this.getModules().getImplementation( implementation.getIdentifier() ) != null :
-            "Implementation '" + implementation.getIdentifier() + "' not found.";
+        SourceFileType sourceFileType = null;
 
-        SourceFileType sourceFileType = this.getSourceFilesType().getSourceFile( implementation.getIdentifier() );
-
-        if ( sourceFileType == null )
+        if ( this.getModules() != null
+             && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
         {
-            sourceFileType = implementation.getAnyObject( SourceFileType.class );
+            sourceFileType = this.getSourceFilesType().getSourceFile( implementation.getIdentifier() );
+
+            if ( sourceFileType == null )
+            {
+                sourceFileType = implementation.getAnyObject( SourceFileType.class );
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "implementationNotFound", implementation.getIdentifier() ), null );
         }
 
         return sourceFileType;
@@ -252,22 +272,28 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "implementation" );
         }
 
-        assert this.getModules().getImplementation( implementation.getIdentifier() ) != null :
-            "Implementation '" + implementation.getIdentifier() + "' not found.";
-
         SourceFilesType model = null;
-        final SourceFileType sourceFileType = this.getSourceFileType( implementation );
 
-        if ( sourceFileType != null )
+        if ( this.getModules() != null
+             && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
         {
-            model = new SourceFilesType();
-            model.getSourceFile().add( sourceFileType );
+            final SourceFileType sourceFileType = this.getSourceFileType( implementation );
+
+            if ( sourceFileType != null )
+            {
+                model = new SourceFilesType();
+                model.getSourceFile().add( sourceFileType );
+            }
+            else
+            {
+                final Instance instance = this.getModules().getInstance( implementation.getIdentifier() );
+                assert instance != null : "Instance '" + implementation.getIdentifier() + "' not found.";
+                model = instance.getAnyObject( SourceFilesType.class );
+            }
         }
-        else
+        else if ( this.isLoggable( Level.WARNING ) )
         {
-            final Instance instance = this.getModules().getInstance( implementation.getIdentifier() );
-            assert instance != null : "Instance '" + implementation.getIdentifier() + "' not found.";
-            model = instance.getAnyObject( SourceFilesType.class );
+            this.log( Level.WARNING, getMessage( "implementationNotFound", implementation.getIdentifier() ), null );
         }
 
         return model;
@@ -331,9 +357,6 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "specification" );
         }
 
-        assert this.getModules().getSpecification( specification.getIdentifier() ) != null :
-            "Specification '" + specification.getIdentifier() + "' not found.";
-
         return this.getSourceFileEditor();
     }
 
@@ -359,9 +382,6 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "implementation" );
         }
 
-        assert this.getModules().getImplementation( implementation.getIdentifier() ) != null :
-            "Implementation '" + implementation.getIdentifier() + "' not found.";
-
         return this.getSourceFileEditor();
     }
 
@@ -382,9 +402,16 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "sourcesDirectory" );
         }
 
-        for ( int i = this.getModules().getModule().size() - 1; i >= 0; i-- )
+        if ( this.getModules() != null )
         {
-            this.manageSourceFiles( this.getModules().getModule().get( i ), sourcesDirectory );
+            for ( int i = this.getModules().getModule().size() - 1; i >= 0; i-- )
+            {
+                this.manageSourceFiles( this.getModules().getModule().get( i ), sourcesDirectory );
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "modulesNotFound", this.getModel().getIdentifier() ), null );
         }
     }
 
@@ -411,21 +438,26 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "sourcesDirectory" );
         }
 
-        assert this.getModules().getModule( module.getName() ) != null : "Module '" + module.getName() + "' not found.";
-
-        if ( module.getSpecifications() != null )
+        if ( this.getModules() != null && this.getModules().getModule( module.getName() ) != null )
         {
-            for ( int i = 0, s0 = module.getSpecifications().getSpecification().size(); i < s0; i++ )
+            if ( module.getSpecifications() != null )
             {
-                this.manageSourceFiles( module.getSpecifications().getSpecification().get( i ), sourcesDirectory );
+                for ( int i = 0, s0 = module.getSpecifications().getSpecification().size(); i < s0; i++ )
+                {
+                    this.manageSourceFiles( module.getSpecifications().getSpecification().get( i ), sourcesDirectory );
+                }
+            }
+            if ( module.getImplementations() != null )
+            {
+                for ( int i = 0, s0 = module.getImplementations().getImplementation().size(); i < s0; i++ )
+                {
+                    this.manageSourceFiles( module.getImplementations().getImplementation().get( i ), sourcesDirectory );
+                }
             }
         }
-        if ( module.getImplementations() != null )
+        else if ( this.isLoggable( Level.WARNING ) )
         {
-            for ( int i = 0, s0 = module.getImplementations().getImplementation().size(); i < s0; i++ )
-            {
-                this.manageSourceFiles( module.getImplementations().getImplementation().get( i ), sourcesDirectory );
-            }
+            this.log( Level.WARNING, getMessage( "moduleNotFound", module.getName() ), null );
         }
     }
 
@@ -452,42 +484,48 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "sourcesDirectory" );
         }
 
-        assert this.getModules().getSpecification( specification.getIdentifier() ) != null :
-            "Specification '" + specification.getIdentifier() + "' not found.";
-
-        if ( specification.isClassDeclaration() )
+        if ( this.getModules() != null
+             && this.getModules().getSpecification( specification.getIdentifier() ) != null )
         {
-            boolean manage = true;
-            final Implementations implementations = this.getModules().getImplementations();
-
-            if ( implementations != null )
+            if ( specification.isClassDeclaration() )
             {
-                for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
-                {
-                    final Implementation impl = implementations.getImplementation().get( i );
+                boolean manage = true;
+                final Implementations implementations = this.getModules().getImplementations();
 
-                    if ( impl.isClassDeclaration() && specification.getClazz().equals( impl.getClazz() ) )
+                if ( implementations != null )
+                {
+                    for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
                     {
-                        this.manageSourceFiles( impl, sourcesDirectory );
-                        manage = false;
-                        break;
+                        final Implementation impl = implementations.getImplementation().get( i );
+
+                        if ( impl.isClassDeclaration() && specification.getClazz().equals( impl.getClazz() ) )
+                        {
+                            this.manageSourceFiles( impl, sourcesDirectory );
+                            manage = false;
+                            break;
+                        }
+                    }
+                }
+
+                if ( manage )
+                {
+                    final SourceFilesType model = this.getSourceFilesType( specification );
+
+                    if ( model != null )
+                    {
+                        for ( int i = 0, s0 = model.getSourceFile().size(); i < s0; i++ )
+                        {
+                            this.getSourceFileEditor().edit(
+                                specification, model.getSourceFile().get( i ), sourcesDirectory );
+
+                        }
                     }
                 }
             }
-
-            if ( manage )
-            {
-                final SourceFileProcessor.SourceFileEditor editor = this.getSourceFileEditor( specification );
-                final SourceFilesType model = this.getSourceFilesType( specification );
-
-                if ( editor != null && model != null )
-                {
-                    for ( int i = 0, s0 = model.getSourceFile().size(); i < s0; i++ )
-                    {
-                        editor.edit( specification, model.getSourceFile().get( i ), sourcesDirectory );
-                    }
-                }
-            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "specificationNotFound", specification.getIdentifier() ), null );
         }
     }
 
@@ -515,21 +553,27 @@ public class SourceFileProcessor extends JomcTool
             throw new NullPointerException( "sourcesDirectory" );
         }
 
-        assert this.getModules().getImplementation( implementation.getIdentifier() ) != null :
-            "Implementation '" + implementation.getIdentifier() + "' not found.";
-
-        if ( implementation.isClassDeclaration() )
+        if ( this.getModules() != null
+             && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
         {
-            final SourceFileProcessor.SourceFileEditor editor = this.getSourceFileEditor( implementation );
-            final SourceFilesType model = this.getSourceFilesType( implementation );
-
-            if ( editor != null && model != null )
+            if ( implementation.isClassDeclaration() )
             {
-                for ( int i = 0, s0 = model.getSourceFile().size(); i < s0; i++ )
+                final SourceFilesType model = this.getSourceFilesType( implementation );
+
+                if ( model != null )
                 {
-                    editor.edit( implementation, model.getSourceFile().get( i ), sourcesDirectory );
+                    for ( int i = 0, s0 = model.getSourceFile().size(); i < s0; i++ )
+                    {
+                        this.getSourceFileEditor().edit(
+                            implementation, model.getSourceFile().get( i ), sourcesDirectory );
+
+                    }
                 }
             }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "implementationNotFound", implementation.getIdentifier() ), null );
         }
     }
 
@@ -570,6 +614,9 @@ public class SourceFileProcessor extends JomcTool
 
         /** The source code file to edit. */
         private SourceFileType sourceFileType;
+
+        /** The {@code VelocityContext} of the instance. */
+        private VelocityContext velocityContext;
 
         /** List of sections added to the input. */
         @Deprecated
@@ -796,12 +843,26 @@ public class SourceFileProcessor extends JomcTool
                 throw new NullPointerException( "sourcesDirectory" );
             }
 
-            assert getModules().getSpecification( specification.getIdentifier() ) != null :
-                "Specification '" + specification.getIdentifier() + "' not found.";
+            if ( getModules() != null
+                 && getModules().getSpecification( specification.getIdentifier() ) != null )
+            {
+                this.specification = specification;
+                this.sourceFileType = sourceFileType;
+                this.velocityContext = SourceFileProcessor.this.getVelocityContext();
+                this.velocityContext.put( "specification", specification );
+                this.velocityContext.put( "smodel", sourceFileType );
 
-            this.specification = specification;
-            this.sourceFileType = sourceFileType;
-            this.editSourceFile( sourcesDirectory );
+                this.editSourceFile( sourcesDirectory );
+
+                this.implementation = null;
+                this.specification = null;
+                this.sourceFileType = null;
+                this.velocityContext = null;
+            }
+            else
+            {
+                throw new IOException( getMessage( "specificationNotFound", specification.getIdentifier() ) );
+            }
         }
 
         /**
@@ -833,12 +894,26 @@ public class SourceFileProcessor extends JomcTool
                 throw new NullPointerException( "sourcesDirectory" );
             }
 
-            assert getModules().getImplementation( implementation.getIdentifier() ) != null :
-                "Implementation '" + implementation.getIdentifier() + "' not found.";
+            if ( getModules() != null
+                 && getModules().getImplementation( implementation.getIdentifier() ) != null )
+            {
+                this.implementation = implementation;
+                this.sourceFileType = sourceFileType;
+                this.velocityContext = SourceFileProcessor.this.getVelocityContext();
+                this.velocityContext.put( "implementation", implementation );
+                this.velocityContext.put( "smodel", sourceFileType );
 
-            this.implementation = implementation;
-            this.sourceFileType = sourceFileType;
-            this.editSourceFile( sourcesDirectory );
+                this.editSourceFile( sourcesDirectory );
+
+                this.implementation = null;
+                this.specification = null;
+                this.sourceFileType = null;
+                this.velocityContext = null;
+            }
+            else
+            {
+                throw new IOException( getMessage( "implementationNotFound", implementation.getIdentifier() ) );
+            }
         }
 
         /**
@@ -914,24 +989,31 @@ public class SourceFileProcessor extends JomcTool
          *
          * @return A new velocity context used for merging templates.
          *
+         * @throws IOException if creating a new context instance fails.
+         * 
          * @deprecated As of JOMC 1.2, deprecated without replacement. This method will be removed in version 2.0.
          */
         @Deprecated
-        protected VelocityContext getVelocityContext()
+        protected VelocityContext getVelocityContext() throws IOException
         {
-            final VelocityContext ctx = SourceFileProcessor.this.getVelocityContext();
-
-            if ( this.specification != null )
+            if ( this.velocityContext == null )
             {
-                ctx.put( "specification", this.specification );
+                final VelocityContext ctx = SourceFileProcessor.this.getVelocityContext();
+
+                if ( this.specification != null )
+                {
+                    ctx.put( "specification", this.specification );
+                }
+
+                if ( this.implementation != null )
+                {
+                    ctx.put( "implementation", this.implementation );
+                }
+
+                return ctx;
             }
 
-            if ( this.implementation != null )
-            {
-                ctx.put( "implementation", this.implementation );
-            }
-
-            return ctx;
+            return this.velocityContext;
         }
 
         /**

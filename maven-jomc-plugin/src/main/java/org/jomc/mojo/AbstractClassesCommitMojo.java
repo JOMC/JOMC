@@ -231,7 +231,8 @@ public abstract class AbstractClassesCommitMojo extends AbstractJomcMojo
 
             if ( validationReport.isModelValid() )
             {
-                final Module module = tool.getModules().getModule( this.getClassesModuleName() );
+                final Module module =
+                    tool.getModules() != null ? tool.getModules().getModule( this.getClassesModuleName() ) : null;
 
                 if ( module != null )
                 {

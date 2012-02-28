@@ -463,9 +463,20 @@ public class JomcTool
             throw new NullPointerException( "reference" );
         }
 
-        final Specification s = this.getModules().getSpecification( reference.getIdentifier() );
-        assert s != null : "Specification '" + reference.getIdentifier() + "' not found.";
-        return s.getClazz() != null ? this.getJavaPackageName( s ) : null;
+        Specification s = null;
+        String javaPackageName = null;
+
+        if ( this.getModules() != null
+             && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
+        {
+            javaPackageName = s.getClazz() != null ? this.getJavaPackageName( s ) : null;
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "specificationNotFound", reference.getIdentifier() ), null );
+        }
+
+        return javaPackageName;
     }
 
     /**
@@ -486,9 +497,20 @@ public class JomcTool
             throw new NullPointerException( "reference" );
         }
 
-        final Specification s = this.getModules().getSpecification( reference.getIdentifier() );
-        assert s != null : "Specification '" + reference.getIdentifier() + "' not found.";
-        return s.getClazz() != null ? this.getJavaTypeName( s, qualified ) : null;
+        Specification s = null;
+        String javaTypeName = null;
+
+        if ( this.getModules() != null
+             && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
+        {
+            javaTypeName = s.getClazz() != null ? this.getJavaTypeName( s, qualified ) : null;
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "specificationNotFound", reference.getIdentifier() ), null );
+        }
+
+        return javaTypeName;
     }
 
     /**
@@ -615,27 +637,37 @@ public class JomcTool
             throw new NullPointerException( "implementation" );
         }
 
-        final Specifications specs = this.getModules().getSpecifications( implementation.getIdentifier() );
-        final List<String> col = new ArrayList<String>( specs == null ? 0 : specs.getSpecification().size() );
+        List<String> col = null;
 
-        if ( specs != null )
+        if ( this.getModules() != null )
         {
-            for ( int i = 0, s0 = specs.getSpecification().size(); i < s0; i++ )
-            {
-                final Specification s = specs.getSpecification().get( i );
+            final Specifications specs = this.getModules().getSpecifications( implementation.getIdentifier() );
+            col = new ArrayList<String>( specs == null ? 0 : specs.getSpecification().size() );
 
-                if ( s.getClazz() != null )
+            if ( specs != null )
+            {
+                for ( int i = 0, s0 = specs.getSpecification().size(); i < s0; i++ )
                 {
-                    final String typeName = this.getJavaTypeName( s, qualified );
-                    if ( !col.contains( typeName ) )
+                    final Specification s = specs.getSpecification().get( i );
+
+                    if ( s.getClazz() != null )
                     {
-                        col.add( typeName );
+                        final String typeName = this.getJavaTypeName( s, qualified );
+
+                        if ( !col.contains( typeName ) )
+                        {
+                            col.add( typeName );
+                        }
                     }
                 }
             }
         }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "modulesNotFound", this.getModel().getIdentifier() ), null );
+        }
 
-        return Collections.unmodifiableList( col );
+        return Collections.unmodifiableList( col != null ? col : Collections.<String>emptyList() );
     }
 
     /**
@@ -857,21 +889,31 @@ public class JomcTool
             throw new NullPointerException( "dependency" );
         }
 
-        final Specification s = this.getModules().getSpecification( dependency.getIdentifier() );
+        Specification s = null;
+        String javaTypeName = null;
 
-        if ( s != null && s.getClazz() != null )
+        if ( this.getModules() != null
+             && ( s = this.getModules().getSpecification( dependency.getIdentifier() ) ) != null )
         {
-            final StringBuilder typeName = new StringBuilder( s.getClazz().length() );
-            typeName.append( this.getJavaTypeName( s, true ) );
-            if ( s.getMultiplicity() == Multiplicity.MANY && dependency.getImplementationName() == null )
+            if ( s.getClazz() != null )
             {
-                typeName.append( "[]" );
-            }
+                final StringBuilder typeName = new StringBuilder( s.getClazz().length() );
+                typeName.append( this.getJavaTypeName( s, true ) );
 
-            return typeName.toString();
+                if ( s.getMultiplicity() == Multiplicity.MANY && dependency.getImplementationName() == null )
+                {
+                    typeName.append( "[]" );
+                }
+
+                javaTypeName = typeName.toString();
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "specificationNotFound", dependency.getIdentifier() ), null );
         }
 
-        return null;
+        return javaTypeName;
     }
 
     /**
@@ -1065,15 +1107,23 @@ public class JomcTool
             throw new NullPointerException( "property" );
         }
 
-        String modifier = "private";
-        final Properties specified = this.getModules().getSpecifiedProperties( implementation.getIdentifier() );
+        String javaModifierName = "private";
 
-        if ( specified != null && specified.getProperty( property.getName() ) != null )
+        if ( this.getModules() != null )
         {
-            modifier = "public";
+            final Properties specified = this.getModules().getSpecifiedProperties( implementation.getIdentifier() );
+
+            if ( specified != null && specified.getProperty( property.getName() ) != null )
+            {
+                javaModifierName = "public";
+            }
+        }
+        else if ( this.isLoggable( Level.WARNING ) )
+        {
+            this.log( Level.WARNING, getMessage( "modulesNotFound", this.getModel().getIdentifier() ), null );
         }
 
-        return modifier;
+        return javaModifierName;
     }
 
     /**
@@ -1775,28 +1825,16 @@ public class JomcTool
     }
 
     /**
-     * Gets the modules of the instance.
+     * Gets the modules of the model of the instance.
      *
-     * @return The modules of the instance.
+     * @return The modules of the model of the instance or {@code null}, if no modules are found.
      *
      * @see #getModel()
      * @see #setModel(org.jomc.modlet.Model)
-     *
-     * @deprecated As of JOMC 1.2, please use method {@link #getModel()} and {@link ModelHelper#getModules(org.jomc.modlet.Model)}.
-     * This method will be removed in version 2.0.
      */
-    @Deprecated
-    public Modules getModules()
+    public final Modules getModules()
     {
-        Modules modules = ModelHelper.getModules( this.getModel() );
-
-        if ( modules == null )
-        {
-            modules = new Modules();
-            ModelHelper.setModules( this.getModel(), modules );
-        }
-
-        return modules;
+        return ModelHelper.getModules( this.getModel() );
     }
 
     /**
@@ -1884,9 +1922,11 @@ public class JomcTool
      *
      * @return A new velocity context used for merging templates.
      *
+     * @throws IOException if creating a new context instance fails.
+     *
      * @see #getTemplateParameters()
      */
-    public VelocityContext getVelocityContext()
+    public VelocityContext getVelocityContext() throws IOException
     {
         final Calendar now = Calendar.getInstance();
         final VelocityContext ctx = new VelocityContext( Collections.synchronizedMap(
@@ -1897,14 +1937,13 @@ public class JomcTool
         this.mergeTemplateProfileProperties( getDefaultTemplateProfile(), this.getLocale().getLanguage(), ctx );
         this.mergeTemplateProfileProperties( getDefaultTemplateProfile(), null, ctx );
 
-        this.getModules(); // Initialization prior to cloning.
         final Model clonedModel = this.getModel().clone();
         final Modules clonedModules = ModelHelper.getModules( clonedModel );
         assert clonedModules != null : "Unexpected missing modules for model '" + clonedModel.getIdentifier() + "'.";
 
         ctx.put( "model", clonedModel );
         ctx.put( "modules", clonedModules );
-        ctx.put( "imodel", new InheritanceModel( this.getModules() ) );
+        ctx.put( "imodel", new InheritanceModel( clonedModules ) );
         ctx.put( "tool", this );
         ctx.put( "toolName", this.getClass().getName() );
         ctx.put( "toolVersion", getMessage( "projectVersion" ) );
@@ -2489,6 +2528,7 @@ public class JomcTool
     }
 
     private java.util.Properties getTemplateProfileProperties( final String profileName, final String language )
+        throws IOException
     {
         Map<String, java.util.Properties> map =
             this.templateProfilePropertiesCache == null ? null : this.templateProfilePropertiesCache.get();
@@ -2501,6 +2541,7 @@ public class JomcTool
 
         final String key = profileName + "|" + language;
         java.util.Properties profileProperties = map.get( key );
+        boolean suppressExceptionOnClose = true;
 
         if ( profileProperties == null )
         {
@@ -2528,10 +2569,7 @@ public class JomcTool
                 }
 
                 map.put( key, profileProperties );
-            }
-            catch ( final IOException e )
-            {
-                this.log( Level.SEVERE, getMessage( e ), e );
+                suppressExceptionOnClose = false;
             }
             finally
             {
@@ -2544,7 +2582,14 @@ public class JomcTool
                 }
                 catch ( final IOException e )
                 {
-                    this.log( Level.SEVERE, getMessage( e ), e );
+                    if ( suppressExceptionOnClose )
+                    {
+                        this.log( Level.SEVERE, getMessage( e ), e );
+                    }
+                    else
+                    {
+                        throw e;
+                    }
                 }
             }
         }
@@ -2553,7 +2598,7 @@ public class JomcTool
     }
 
     private void mergeTemplateProfileProperties( final String profileName, final String language,
-                                                 final VelocityContext velocityContext )
+                                                 final VelocityContext velocityContext ) throws IOException
     {
         final java.util.Properties templateProfileProperties =
             this.getTemplateProfileProperties( profileName, language );
@@ -2566,47 +2611,63 @@ public class JomcTool
 
             if ( !velocityContext.containsKey( name ) )
             {
-                if ( values.length > 1 )
+                final String className = values[0];
+
+                try
                 {
-                    try
+                    if ( values.length > 1 )
                     {
-                        final Class<?> valueClass = Class.forName( values[0] );
-
-                        if ( values[1].length() > 0 )
-                        {
-                            velocityContext.put(
-                                name, valueClass.getConstructor( String.class ).newInstance( values[1] ) );
-
-                        }
-                        else
-                        {
-                            velocityContext.put( name, valueClass.newInstance() );
-                        }
+                        final Class<?> valueClass = Class.forName( className );
+                        velocityContext.put( name, valueClass.getConstructor( String.class ).newInstance( values[1] ) );
                     }
-                    catch ( final InstantiationException ex )
+                    else if ( value.contains( "|" ) )
                     {
-                        this.log( Level.SEVERE, getMessage( ex ), ex );
+                        velocityContext.put( name, Class.forName( values[0] ).newInstance() );
                     }
-                    catch ( final IllegalAccessException ex )
+                    else
                     {
-                        this.log( Level.SEVERE, getMessage( ex ), ex );
-                    }
-                    catch ( final InvocationTargetException ex )
-                    {
-                        this.log( Level.SEVERE, getMessage( ex ), ex );
-                    }
-                    catch ( final NoSuchMethodException ex )
-                    {
-                        this.log( Level.SEVERE, getMessage( ex ), ex );
-                    }
-                    catch ( final ClassNotFoundException ex )
-                    {
-                        this.log( Level.SEVERE, getMessage( ex ), ex );
+                        velocityContext.put( name, value );
                     }
                 }
-                else
+                catch ( final InstantiationException ex )
                 {
-                    velocityContext.put( name, value );
+                    // JDK: As of JDK 6, "new IOException( message, cause )".
+                    throw (IOException) new IOException( getMessage(
+                        "contextPropertiesException", profileName + ( language != null ? ", " + language : "" ) ) ).
+                        initCause( ex );
+
+                }
+                catch ( final IllegalAccessException ex )
+                {
+                    // JDK: As of JDK 6, "new IOException( message, cause )".
+                    throw (IOException) new IOException( getMessage(
+                        "contextPropertiesException", profileName + ( language != null ? ", " + language : "" ) ) ).
+                        initCause( ex );
+
+                }
+                catch ( final InvocationTargetException ex )
+                {
+                    // JDK: As of JDK 6, "new IOException( message, cause )".
+                    throw (IOException) new IOException( getMessage(
+                        "contextPropertiesException", profileName + ( language != null ? ", " + language : "" ) ) ).
+                        initCause( ex );
+
+                }
+                catch ( final NoSuchMethodException ex )
+                {
+                    // JDK: As of JDK 6, "new IOException( message, cause )".
+                    throw (IOException) new IOException( getMessage(
+                        "contextPropertiesException", profileName + ( language != null ? ", " + language : "" ) ) ).
+                        initCause( ex );
+
+                }
+                catch ( final ClassNotFoundException ex )
+                {
+                    // JDK: As of JDK 6, "new IOException( message, cause )".
+                    throw (IOException) new IOException( getMessage(
+                        "contextPropertiesException", profileName + ( language != null ? ", " + language : "" ) ) ).
+                        initCause( ex );
+
                 }
             }
         }

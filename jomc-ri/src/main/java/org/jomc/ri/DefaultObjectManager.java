@@ -2041,7 +2041,7 @@ public class DefaultObjectManager implements ObjectManager
                 if ( classLoader.getParent() != null
                      && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
                 {
-                    loader = getClassLoader( classLoader.getParent() );
+                    loader = this.getDefaultClassLoader( classLoader.getParent() );
                 }
                 else
                 {
@@ -3472,7 +3472,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3540,7 +3540,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3609,7 +3609,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3678,7 +3678,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3748,7 +3748,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3817,7 +3817,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3886,7 +3886,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -3955,7 +3955,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4024,7 +4024,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4092,7 +4092,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4160,7 +4160,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4228,7 +4228,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4298,7 +4298,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4368,7 +4368,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4437,7 +4437,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4506,7 +4506,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4575,7 +4575,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4645,7 +4645,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4715,7 +4715,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4784,7 +4784,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4854,7 +4854,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4924,7 +4924,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -4995,7 +4995,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5065,7 +5065,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5135,7 +5135,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5204,7 +5204,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5274,7 +5274,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5343,7 +5343,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5413,7 +5413,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5482,7 +5482,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5552,7 +5552,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5622,7 +5622,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5691,7 +5691,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5760,7 +5760,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5829,7 +5829,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5897,7 +5897,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -5968,7 +5968,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
@@ -6040,7 +6040,7 @@ public class DefaultObjectManager implements ObjectManager
             }
 
             suppressExceptionOnClose = false;
-            return builder.substring( lineSeparator.length() );
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
         }
         catch( final java.lang.ClassCastException e )
         {
