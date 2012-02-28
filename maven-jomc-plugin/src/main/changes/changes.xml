@@ -208,5 +208,7 @@
       <code>commit-test-classes</code> to add system properties to transformers as parameters.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.3"/>
   </body>
 </document>
