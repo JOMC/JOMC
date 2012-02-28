@@ -565,8 +565,6 @@
           <configuration>
             <username>${jomc.scm.username}</username>
             <password>${jomc.scm.password}</password>
-            <remoteTagging>false</remoteTagging>
-            <suppressCommitBeforeTag>true</suppressCommitBeforeTag>
             <goals>deploy</goals>
             <useReleaseProfile>false</useReleaseProfile>
             <releaseProfiles>jomc-release</releaseProfiles>
@@ -980,7 +978,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.9</version> <!-- See http://sourceforge.net/tracker/?func=detail&aid=3486876&group_id=29721&atid=397078 -->
+          <version>2.9.1</version> <!-- See http://sourceforge.net/tracker/?func=detail&aid=3486876&group_id=29721&atid=397078 -->
           <configuration>
             <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
             <enableRulesSummary>false</enableRulesSummary>
