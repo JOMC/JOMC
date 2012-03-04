@@ -72,6 +72,15 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
+    <release version="1.2.1" date="2012-03-05">
+      <action dev="schulte2005" type="fix"><![CDATA[Upgraded to build using <code>maven-jomc-plugin</code> version
+      <code>1.2.2</code> to prevent
+      <code>java.lang.StringIndexOutOfBoundsException: String index out of range: -1</code> exceptions from getting
+      thrown when updating message resources to contain empty messages.
+      See the <a href="http://jomc.sourceforge.net/jomc/1.2/maven-jomc-plugin-1.2.2/changes-report.html">Changes report</a>.]]>
+      </action>
+    </release>
+    <!-- *********************************************************************************************************** -->
     <release version="2.0"/>
   </body>
 </document>
