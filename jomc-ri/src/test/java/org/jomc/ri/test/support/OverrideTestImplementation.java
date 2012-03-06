@@ -112,6 +112,7 @@ public class OverrideTestImplementation
      * @return The {@code <dependencyImpl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.OverrideTestSpecification getDependencyImpl()
     {
@@ -131,6 +132,7 @@ public class OverrideTestImplementation
      * @return The value of the {@code <propertyImpl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private java.lang.String getPropertyImpl()
     {
@@ -153,6 +155,7 @@ public class OverrideTestImplementation
      * @return The text of the {@code <messageImpl>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private String getMessageImpl( final java.util.Locale locale )
     {

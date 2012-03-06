@@ -297,6 +297,7 @@ public class ImplementationTest
      * @return The {@code <BoundMultitons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getBoundMultitons()
     {
@@ -316,6 +317,7 @@ public class ImplementationTest
      * @return The {@code <BoundSingletons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getBoundSingletons()
     {
@@ -335,6 +337,7 @@ public class ImplementationTest
      * @return The {@code <InvokerTestSpecification>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.InvokerTestSpecification getInvokerTestSpecification()
     {
@@ -355,6 +358,7 @@ public class ImplementationTest
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private java.util.Locale getOptionalLocale()
     {
@@ -372,6 +376,7 @@ public class ImplementationTest
      * @return The {@code <SelectedBoundMultiton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getSelectedBoundMultiton()
     {
@@ -391,6 +396,7 @@ public class ImplementationTest
      * @return The {@code <SelectedBoundSingleton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getSelectedBoundSingleton()
     {
@@ -410,6 +416,7 @@ public class ImplementationTest
      * @return The {@code <SelectedUnboundMultiton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getSelectedUnboundMultiton()
     {
@@ -429,6 +436,7 @@ public class ImplementationTest
      * @return The {@code <SelectedUnboundSingleton>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getSelectedUnboundSingleton()
     {
@@ -448,6 +456,7 @@ public class ImplementationTest
      * @return The {@code <UnboundMultitons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getUnboundMultitons()
     {
@@ -467,6 +476,7 @@ public class ImplementationTest
      * @return The {@code <UnboundSingletons>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getUnboundSingletons()
     {
@@ -486,6 +496,7 @@ public class ImplementationTest
      * @return The value of the {@code <testProperty>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private java.lang.String getTestProperty()
     {
@@ -509,6 +520,7 @@ public class ImplementationTest
      * @return The text of the {@code <testMessage>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private String getTestMessage( final java.util.Locale locale, final java.lang.String testArgument )
     {

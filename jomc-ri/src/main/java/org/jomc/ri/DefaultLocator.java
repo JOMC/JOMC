@@ -246,6 +246,7 @@ public class DefaultLocator implements Locator
      * @return The text of the {@code <illegalObjectMessage>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
@@ -315,6 +316,7 @@ public class DefaultLocator implements Locator
      * @return The text of the {@code <unsupportedUriSchemeMessage>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
