@@ -49,8 +49,8 @@
   </bannerRight>
   <body>
     <head>
-      <meta name="keywords" lang="de" content="objekt, behälter, java, quelltext, generator, quelltextgenerator, konfiguration, verwaltung, konfigurationsverwaltung"/>
-      <meta name="keywords" lang="en" content="object, container, java, source, code, sourcecode, generator, sourcecodegenerator, configuration, management"/>
+      <meta name="keywords" lang="de" content="objekt, behälter, java, quelltext, generator, generierung, quelltextgenerator, konfiguration, verwaltung, konfigurationsverwaltung, vorlage, vorlagen"/>
+      <meta name="keywords" lang="en" content="object, container, java, source, code, sourcecode, generator, generation, sourcecodegenerator, configuration, management, template, templates"/>
       <script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-23230934-1']);
