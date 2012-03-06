@@ -156,6 +156,7 @@ public class OverrideTestImplementationTest
      * @return The {@code <Override Test Specification>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
+    @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.3-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.3/jomc-tools-1.3-SNAPSHOT" )
     private org.jomc.ri.test.support.OverrideTestSpecification getOverrideTestSpecification()
     {
