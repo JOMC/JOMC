@@ -404,6 +404,8 @@ public class JomcTool
      * @return The Java type name of {@code specification} or {@code null}.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
+     *
+     * @see #getJavaPackageName(org.jomc.model.Specification)
      */
     public String getJavaTypeName( final Specification specification, final boolean qualified )
     {
@@ -440,6 +442,9 @@ public class JomcTool
      * @return The Java class path location of {@code specification} or {@code null}.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
+     *
+     * @see #getJavaTypeName(org.jomc.model.Specification, boolean)
+     * @see #getJavaClasspathLocation(java.lang.String)
      */
     public String getJavaClasspathLocation( final Specification specification )
     {
@@ -449,7 +454,7 @@ public class JomcTool
         }
 
         return specification.getClazz() != null
-               ? ( this.getJavaTypeName( specification, true ) ).replace( '.', '/' )
+               ? ( this.getJavaClasspathLocation( this.getJavaTypeName( specification, true ), false ) )
                : null;
 
     }
@@ -462,6 +467,8 @@ public class JomcTool
      * @return The Java package name of {@code reference} or {@code null}.
      *
      * @throws NullPointerException if {@code reference} is {@code null}.
+     *
+     * @see #getJavaPackageName(org.jomc.model.Specification)
      */
     public String getJavaPackageName( final SpecificationReference reference )
     {
@@ -496,6 +503,8 @@ public class JomcTool
      * @return The Java type name of {@code reference} or {@code null}.
      *
      * @throws NullPointerException if {@code reference} is {@code null}.
+     *
+     * @see #getJavaTypeName(org.jomc.model.Specification, boolean)
      */
     public String getJavaTypeName( final SpecificationReference reference, final boolean qualified )
     {
@@ -549,6 +558,8 @@ public class JomcTool
      * @return The Java type name of {@code implementation} or {@code null}.
      *
      * @throws NullPointerException if {@code implementation} is {@code null}.
+     *
+     * @see #getJavaPackageName(org.jomc.model.Implementation)
      */
     public String getJavaTypeName( final Implementation implementation, final boolean qualified )
     {
@@ -585,6 +596,8 @@ public class JomcTool
      * @return The Java class path location of {@code implementation} or {@code null}.
      *
      * @throws NullPointerException if {@code implementation} is {@code null}.
+     *
+     * @see #getJavaClasspathLocation(java.lang.String)
      */
     public String getJavaClasspathLocation( final Implementation implementation )
     {
@@ -594,7 +607,7 @@ public class JomcTool
         }
 
         return implementation.getClazz() != null
-               ? ( this.getJavaTypeName( implementation, true ) ).replace( '.', '/' )
+               ? ( this.getJavaClasspathLocation( this.getJavaTypeName( implementation, true ), false ) )
                : null;
 
     }
@@ -636,6 +649,8 @@ public class JomcTool
      * @throws NullPointerException if {@code implementation} is {@code null}.
      *
      * @since 1.2
+     *
+     * @see #getJavaTypeName(org.jomc.model.Specification, boolean)
      */
     public List<String> getImplementedJavaTypeNames( final Implementation implementation, final boolean qualified )
     {
@@ -802,6 +817,8 @@ public class JomcTool
      * @return {@code true}, if the Java type of {@code property} is primitive; {@code false}, if not.
      *
      * @throws NullPointerException if {@code property} is {@code null}.
+     *
+     * @see #getJavaTypeName(org.jomc.model.Property, boolean)
      */
     public boolean isJavaPrimitiveType( final Property property )
     {
@@ -919,6 +936,8 @@ public class JomcTool
      * @return The Java type name of {@code dependency} or {@code null}.
      *
      * @throws NullPointerException if {@code dependency} is {@code null}.
+     *
+     * @see #getJavaTypeName(org.jomc.model.Specification, boolean)
      */
     public String getJavaTypeName( final Dependency dependency )
     {
@@ -1363,6 +1382,34 @@ public class JomcTool
     public String getJavaString( final String str )
     {
         return StringEscapeUtils.escapeJava( str );
+    }
+
+    /**
+     * Formats a string to a Java class path location.
+     *
+     * @param str The string to format or {@code null}.
+     * @param absolute {@code true} to return an absolute class path location; {@code false} to return a relative
+     * class path location.
+     *
+     * @return {@code str} formatted to a Java class path location.
+     *
+     * @since 1.3
+     */
+    public String getJavaClasspathLocation( final String str, final boolean absolute )
+    {
+        String classpathLocation = null;
+
+        if ( str != null )
+        {
+            classpathLocation = str.replace( '.', '/' );
+
+            if ( absolute )
+            {
+                classpathLocation = "/" + classpathLocation;
+            }
+        }
+
+        return classpathLocation;
     }
 
     /**
