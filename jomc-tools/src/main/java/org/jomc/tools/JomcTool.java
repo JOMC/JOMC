@@ -444,7 +444,7 @@ public class JomcTool
      * @throws NullPointerException if {@code specification} is {@code null}.
      *
      * @see #getJavaTypeName(org.jomc.model.Specification, boolean)
-     * @see #getJavaClasspathLocation(java.lang.String)
+     * @see #getJavaClasspathLocation(java.lang.String, boolean)
      */
     public String getJavaClasspathLocation( final Specification specification )
     {
@@ -597,7 +597,7 @@ public class JomcTool
      *
      * @throws NullPointerException if {@code implementation} is {@code null}.
      *
-     * @see #getJavaClasspathLocation(java.lang.String)
+     * @see #getJavaClasspathLocation(java.lang.String, boolean)
      */
     public String getJavaClasspathLocation( final Implementation implementation )
     {
