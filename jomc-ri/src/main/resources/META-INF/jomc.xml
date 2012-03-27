@@ -419,6 +419,15 @@
             <text language="de">Default ${project.name}</text>
           </template>
         </message>
+        <message name="scopeContentionFailure">
+          <template defaultLanguage="en">
+            <text language="en">Failure during instantiation of object ''{0}''. The same object got concurrently created in the same scope.</text>
+            <text language="de">Fehler während der Instanziierung des Objekts ''{0}''. Dasselbe Objekt wurde zwischenzeitlich in demselben Gültigkeitsbereich erstellt.</text>
+          </template>
+          <arguments>
+            <argument index="0" name="objectIdentifier"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->
