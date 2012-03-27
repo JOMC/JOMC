@@ -51,7 +51,7 @@
     <head>
       <meta name="keywords" lang="de" content="objekt, behälter, java, quelltext, generator, generierung, quelltextgenerator, konfiguration, verwaltung, konfigurationsverwaltung, vorlage, vorlagen"/>
       <meta name="keywords" lang="en" content="object, container, java, source, code, sourcecode, generator, generation, sourcecodegenerator, configuration, management, template, templates"/>
-      <script type="text/javascript">
+      <script type="text/javascript"><![CDATA[<!--
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-23230934-1']);
 _gaq.push(['_trackPageview']);
@@ -61,6 +61,15 @@ _gaq.push(['_trackPageview']);
   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
+//-->]]>
+      </script>
+      <script type="text/javascript"><![CDATA[<!--
+google_ad_client = "ca-pub-2363332114228707";
+/* JOMC */
+google_ad_slot = "0169973943";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->]]>
       </script>
     </head>
     <menu name="JOMC" inherit="top">

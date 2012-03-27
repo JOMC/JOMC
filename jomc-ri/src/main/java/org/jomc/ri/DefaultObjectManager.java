@@ -1086,18 +1086,27 @@ public class DefaultObjectManager implements ObjectManager
      */
     public static ObjectManager getObjectManager( final ClassLoader classLoader )
     {
+        ObjectManager manager;
+        final ClassLoader singletonsLoader = getClassLoader( classLoader );
+
         synchronized ( singletons )
         {
-            final ClassLoader singletonsLoader = getClassLoader( classLoader );
-            ObjectManager manager = singletons.get( singletonsLoader );
+            manager = singletons.get( singletonsLoader );
+
             if ( manager == null )
             {
                 manager = ObjectManagerFactory.newObjectManager( classLoader );
-                singletons.put( singletonsLoader, manager );
-            }
 
-            return manager.getObject( ObjectManager.class );
+                if ( singletons.put( singletonsLoader, manager ) != null )
+                {
+                    throw new AssertionError( getScopeContentionFailure(
+                        Locale.getDefault(), manager.getClass().getName() ) );
+
+                }
+            }
         }
+
+        return manager.getObject( ObjectManager.class );
     }
 
     /**
@@ -2172,48 +2181,84 @@ public class DefaultObjectManager implements ObjectManager
 
         if ( scope != null )
         {
-            synchronized ( scope )
+            synchronized ( instance )
             {
-                object = scope.getObject( instance.getIdentifier() );
+                boolean created = true;
 
-                if ( object == null )
+                synchronized ( scope )
                 {
-                    scope.putObject( instance.getIdentifier(), instance );
+                    object = scope.getObject( instance.getIdentifier() );
 
+                    if ( object == null )
+                    {
+                        scope.putObject( instance.getIdentifier(), instance );
+                        created = false;
+                    }
+                }
+
+                if ( object instanceof Instance )
+                {
+                    synchronized ( object )
+                    {
+                        synchronized ( scope )
+                        {
+                            object = scope.getObject( instance.getIdentifier() );
+
+                            if ( object instanceof Instance )
+                            {
+                                throw new ObjectManagementException( getDependencyCycleMessage(
+                                    Locale.getDefault(), instance.getIdentifier() ) );
+
+                            }
+                        }
+                    }
+                }
+
+                if ( !created )
+                {
                     try
                     {
                         object = this.getModules( classLoader ).createObject( instance, classLoader );
-                    }
-                    finally
-                    {
+
                         if ( object != null )
                         {
                             object = this.createProxy( instance, object, classLoader );
                         }
 
-                        scope.putObject( instance.getIdentifier(), object );
+                        created = true;
                     }
-                }
-                else if ( object instanceof Instance )
-                {
-                    throw new ObjectManagementException( getDependencyCycleMessage(
-                        Locale.getDefault(), ( (Instance) object ).getIdentifier() ) );
+                    finally
+                    {
+                        synchronized ( scope )
+                        {
+                            if ( created && object != null )
+                            {
+                                final Object o = scope.putObject( instance.getIdentifier(), object );
 
+                                if ( o != instance )
+                                {
+                                    scope.putObject( instance.getIdentifier(), o );
+                                    throw new AssertionError( getScopeContentionFailure(
+                                        Locale.getDefault(), instance.getIdentifier() ) );
+
+                                }
+                            }
+                            else
+                            {
+                                scope.removeObject( instance.getIdentifier() );
+                            }
+                        }
+                    }
                 }
             }
         }
         else
         {
-            try
+            object = this.getModules( classLoader ).createObject( instance, classLoader );
+
+            if ( object != null )
             {
-                object = this.getModules( classLoader ).createObject( instance, classLoader );
-            }
-            finally
-            {
-                if ( object != null )
-                {
-                    object = this.createProxy( instance, object, classLoader );
-                }
+                object = this.createProxy( instance, object, classLoader );
             }
         }
 
@@ -5922,6 +5967,76 @@ public class DefaultObjectManager implements ObjectManager
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReportMessage" ), (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            suppressExceptionOnClose = false;
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
+        }
+        catch( final java.lang.ClassCastException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.lang.IllegalArgumentException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
+        }
+    }
+    /**
+     * Gets the text of the {@code <scopeContentionFailure>} message.
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl></p>
+     * @param locale The locale of the message to return.
+     * @param objectIdentifier Format argument.
+     * @return The text of the {@code <scopeContentionFailure>} message for {@code locale}.
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @SuppressWarnings("unused")
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
+    private static String getScopeContentionFailure( final java.util.Locale locale, final java.lang.String objectIdentifier )
+    {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeContentionFailure" ), objectIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
