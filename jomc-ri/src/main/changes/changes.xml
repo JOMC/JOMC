@@ -81,12 +81,14 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="2.0">
+    <release version="1.2.2" date="2012-03-28">
       <action dev="schulte2005" type="fix"><![CDATA[Updated methods <code>getObjectManager(java.lang.ClassLoader)</code>
       and <code>getObject(org.jomc.spi.Scope,org.jomc.model.Instance,java.lang.ClassLoader)</code> of class
       <code>org.jomc.ri.DefaultObjectManager</code> to correct a synchronization issue causing deadlocks when
       an object is requested from a scope another object is currently created in by another thread.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="2.0"/>
   </body>
 </document>
