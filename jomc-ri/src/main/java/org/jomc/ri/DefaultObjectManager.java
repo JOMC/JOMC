@@ -2924,8 +2924,30 @@ public class DefaultObjectManager implements ObjectManager
                             public Object invoke( final Object proxy, final Method method, final Object[] args )
                                 throws Throwable
                             {
+                                if ( args != null )
+                                {
+                                    Object[] clonedArgs = args;
+
+                                    for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
+                                    {
+                                        if ( clonedArgs[i] == proxy )
+                                        {
+                                            if ( clonedArgs == args )
+                                            {
+                                                clonedArgs = clonedArgs.clone();
+                                            }
+
+                                            clonedArgs[i] = object;
+                                        }
+                                    }
+
+                                    return this.invoker.invoke( getInvocation(
+                                        classLoader, object, instance, method, clonedArgs ) );
+
+                                }
+
                                 return this.invoker.invoke( getInvocation(
-                                    classLoader, object, instance, method, args ) );
+                                    classLoader, object, instance, method, null ) );
 
                             }
 
