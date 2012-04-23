@@ -104,6 +104,10 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.3"/>
+    <release version="1.3">
+      <action dev="schulte2005" type="fix"><![CDATA[Corrected the <code>InvocationHandler</code> of proxy objects
+      returned by class <code>org.jomc.ri.DefaultObjectManager</code> to unwrap proxy object arguments.]]>
+      </action>
+    </release>
   </body>
 </document>
