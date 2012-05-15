@@ -35,7 +35,7 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd"
          name="JOMC">
   <poweredBy>
-    <logo href="http://sourceforge.net/donate/index.php?group_id=257507" img="http://images.sourceforge.net/images/project-support.jpg" name="Support This Project"/>
+    <logo img="http://www.schulte.it/resources/schulte.it.png" href="#" name=""/>
   </poweredBy>
   <skin>
     <groupId>org.apache.maven.skins</groupId>

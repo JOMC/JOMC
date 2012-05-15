@@ -235,7 +235,8 @@
                 </reportSets>
                 <configuration>
                   <quiet>true</quiet>
-                  <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
+                  <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://www.schulte.it/resources/schulte.it.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
+                  <bottom>Copyright © {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</bottom>
                   <breakiterator>true</breakiterator>
                   <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
                   <keywords>true</keywords>
@@ -545,6 +546,17 @@
                 </reportSets>
               </reportPlugin>
             </reportPlugins>
+            <archive>
+              <index>true</index>
+              <addMavenDescriptor>false</addMavenDescriptor>
+              <compress>true</compress>
+              <manifestEntries>
+                <Build-Date>${build.date}</Build-Date>
+              </manifestEntries>
+            </archive>
+            <archiveExcludes>
+              <archiveExclude>**/coverage.xml</archiveExclude>
+            </archiveExcludes>
           </configuration>
         </plugin>
         <plugin>
@@ -667,7 +679,8 @@
           <version>${maven-javadoc-plugin.artifact.version}</version>
           <configuration>
             <quiet>true</quiet>
-            <bottom><![CDATA[<table border="0" width="100%"><tr><td align="left">Copyright &#169; {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</td><td align="right"><a href="http://sourceforge.net/projects/jomc"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=257507&type=10" width="80" height="15" border="0" alt="Get JOMC at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></td></tr></table><small>Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.</small>]]></bottom>
+            <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://www.schulte.it/resources/schulte.it.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
+            <bottom>Copyright © {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</bottom>
             <breakiterator>true</breakiterator>
             <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
             <keywords>true</keywords>
@@ -1336,7 +1349,7 @@
       <dependency>
         <groupId>commons-io</groupId>
         <artifactId>commons-io</artifactId>
-        <version>2.1</version> <!-- See https://issues.apache.org/jira/browse/IO-298 -->
+        <version>2.3</version>
       </dependency>
 
       <!-- Maven -->
@@ -1385,7 +1398,7 @@
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
-        <version>1.8.2</version>
+        <version>1.8.3</version>
       </dependency>
 
       <!-- JAXB -->
@@ -2167,7 +2180,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
-        <version>2.3</version>
+        <version>${maven-jxr-plugin.artifact.version}</version>
       </plugin>
     </plugins>
   </reporting>
@@ -2300,7 +2313,7 @@
                 </rules>
               </configuration>
             </plugin>
-            <!-- plugin>
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-changes-plugin</artifactId>
               <executions>
@@ -2311,11 +2324,11 @@
                     <goal>changes-check</goal>
                   </goals>
                   <configuration>
-                    <skipSnapshots>true</skipSnapshots> See http://jira.codehaus.org/browse/MCHANGES-272
+                    <skipSnapshots>true</skipSnapshots>
                   </configuration>
                 </execution>
               </executions>
-            </plugin -->
+            </plugin>
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-deploy-plugin</artifactId>
@@ -2494,38 +2507,38 @@
     -->
     <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
-    <maven-compiler-plugin.artifact.version>2.3.2</maven-compiler-plugin.artifact.version>
-    <maven-site-plugin.artifact.version>3.0</maven-site-plugin.artifact.version>
+    <maven-compiler-plugin.artifact.version>2.4</maven-compiler-plugin.artifact.version>
+    <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.5</maven-resources-plugin.artifact.version>
-    <maven-release-plugin.artifact.version>2.2.2</maven-release-plugin.artifact.version>
+    <maven-release-plugin.artifact.version>2.3</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
     <maven-gpg-plugin.artifact.version>1.4</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.2</maven-jarsigner-plugin.artifact.version>
-    <maven-remote-resources-plugin.artifact.version>1.2.1</maven-remote-resources-plugin.artifact.version>
+    <maven-remote-resources-plugin.artifact.version>1.3</maven-remote-resources-plugin.artifact.version>
     <maven-javadoc-plugin.artifact.version>2.8.1</maven-javadoc-plugin.artifact.version>
     <maven-clean-plugin.artifact.version>2.4.1</maven-clean-plugin.artifact.version>
     <maven-deploy-plugin.artifact.version>2.7</maven-deploy-plugin.artifact.version>
     <maven-dependency-plugin.artifact.version>2.4</maven-dependency-plugin.artifact.version>
     <maven-install-plugin.artifact.version>2.3.1</maven-install-plugin.artifact.version>
     <maven-source-plugin.artifact.version>2.1.2</maven-source-plugin.artifact.version>
-    <maven-scm-plugin.artifact.version>1.6</maven-scm-plugin.artifact.version>
-    <maven-changes-plugin.artifact.version>2.6</maven-changes-plugin.artifact.version>
-    <maven-enforcer-plugin.artifact.version>1.0.1</maven-enforcer-plugin.artifact.version>
+    <maven-scm-plugin.artifact.version>1.7</maven-scm-plugin.artifact.version>
+    <maven-changes-plugin.artifact.version>2.7.1</maven-changes-plugin.artifact.version>
+    <maven-enforcer-plugin.artifact.version>1.1</maven-enforcer-plugin.artifact.version>
     <maven-project-info-reports-plugin.artifact.version>2.4</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.3</maven-jxr-plugin.artifact.version>
     <maven-pmd-plugin.artifact.version>2.7.1</maven-pmd-plugin.artifact.version>
     <maven-checkstyle-plugin.artifact.version>2.9.1</maven-checkstyle-plugin.artifact.version>
-    <wagon-maven-plugin.artifact.version>1.0-beta-3</wagon-maven-plugin.artifact.version>
+    <wagon-maven-plugin.artifact.version>1.0-beta-4</wagon-maven-plugin.artifact.version>
     <javacc-maven-plugin.artifact.version>2.6</javacc-maven-plugin.artifact.version>
     <build-helper-maven-plugin.artifact.version>1.7</build-helper-maven-plugin.artifact.version>
     <xml-maven-plugin.artifact.version>1.0</xml-maven-plugin.artifact.version>
-    <clirr-maven-plugin.artifact.version>2.3</clirr-maven-plugin.artifact.version>
+    <clirr-maven-plugin.artifact.version>2.4</clirr-maven-plugin.artifact.version>
     <animal-sniffer-maven-plugin.artifact.version>1.7</animal-sniffer-maven-plugin.artifact.version>
     <findbugs-maven-plugin.artifact.version>2.4.0</findbugs-maven-plugin.artifact.version>
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.8.1</maven-jaxb21-plugin.artifact.version>
-    <maven-shade-plugin.artifact.version>1.5</maven-shade-plugin.artifact.version>
+    <maven-shade-plugin.artifact.version>1.6</maven-shade-plugin.artifact.version>
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
     <surefire.version>2.12</surefire.version>
     <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
