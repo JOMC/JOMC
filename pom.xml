@@ -235,8 +235,7 @@
                 </reportSets>
                 <configuration>
                   <quiet>true</quiet>
-                  <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://www.schulte.it/resources/schulte.it.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
-                  <bottom>Copyright © {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</bottom>
+                  <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://jomc.sourceforge.net/jomc.org.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
                   <breakiterator>true</breakiterator>
                   <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
                   <keywords>true</keywords>
@@ -557,6 +556,7 @@
             <archiveExcludes>
               <archiveExclude>**/coverage.xml</archiveExclude>
             </archiveExcludes>
+            <validate>true</validate>
           </configuration>
         </plugin>
         <plugin>
@@ -679,8 +679,7 @@
           <version>${maven-javadoc-plugin.artifact.version}</version>
           <configuration>
             <quiet>true</quiet>
-            <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://www.schulte.it/resources/schulte.it.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
-            <bottom>Copyright © {inceptionYear}-{currentYear} {organizationName}. All Rights Reserved.</bottom>
+            <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://jomc.sourceforge.net/jomc.org.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
             <breakiterator>true</breakiterator>
             <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
             <keywords>true</keywords>
