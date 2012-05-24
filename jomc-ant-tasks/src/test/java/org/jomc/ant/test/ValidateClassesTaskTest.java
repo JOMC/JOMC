@@ -199,6 +199,13 @@ public class ValidateClassesTaskTest extends ClassFileProcessorTaskTest
     }
 
     @Test
+    public final void testValidateAntTasksDeprecatedAttributes() throws Exception
+    {
+        final AntExecutionResult r = this.executeTarget( "test-validate-ant-tasks-deprecated-attributes" );
+        assertNoException( r );
+    }
+
+    @Test
     public final void testValidateAntTasksAllAttributes() throws Exception
     {
         final AntExecutionResult r = this.executeTarget( "test-validate-ant-tasks-all-attributes" );

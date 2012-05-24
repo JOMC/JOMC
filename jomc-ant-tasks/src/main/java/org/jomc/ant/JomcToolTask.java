@@ -63,6 +63,9 @@ import org.jomc.tools.JomcTool;
 public class JomcToolTask extends JomcModelTask
 {
 
+    /** The default encoding to use for reading templates. */
+    private String defaultTemplateEncoding;
+
     /** The default template profile to use when accessing templates. */
     private String defaultTemplateProfile;
 
@@ -171,7 +174,11 @@ public class JomcToolTask extends JomcModelTask
      * @return The encoding to use for reading templates or {@code null}.
      *
      * @see #setTemplateEncoding(java.lang.String)
+     *
+     * @deprecated As of JOMC 1.3, replaced by method {@link #getDefaultTemplateEncoding()}. This method will be removed
+     * in JOMC 2.0.
      */
+    @Deprecated
     public final String getTemplateEncoding()
     {
         return this.templateEncoding;
@@ -183,10 +190,42 @@ public class JomcToolTask extends JomcModelTask
      * @param value The new encoding to use for reading templates or {@code null}.
      *
      * @see #getTemplateEncoding()
+     *
+     * @deprecated As of JOMC 1.3, replaced by method {@link #setDefaultTemplateEncoding(java.lang.String)}. This method
+     * will be removed in JOMC 2.0.
      */
+    @Deprecated
     public final void setTemplateEncoding( final String value )
     {
         this.templateEncoding = value;
+    }
+
+    /**
+     * Gets the encoding to use for reading templates.
+     *
+     * @return The encoding to use for reading templates or {@code null}.
+     *
+     * @see #setDefaultTemplateEncoding(java.lang.String)
+     *
+     * @since 1.3
+     */
+    public final String getDefaultTemplateEncoding()
+    {
+        return this.defaultTemplateEncoding;
+    }
+
+    /**
+     * Sets the encoding to use for reading templates.
+     *
+     * @param value The new encoding to use for reading templates or {@code null}.
+     *
+     * @see #getDefaultTemplateEncoding()
+     *
+     * @since 1.3
+     */
+    public final void setDefaultTemplateEncoding( final String value )
+    {
+        this.defaultTemplateEncoding = value;
     }
 
     /**
@@ -721,7 +760,6 @@ public class JomcToolTask extends JomcModelTask
             tool.setInputEncoding( this.getInputEncoding() );
             tool.setLineSeparator( StringEscapeUtils.unescapeJava( this.getLineSeparator() ) );
             tool.setOutputEncoding( this.getOutputEncoding() );
-            tool.setTemplateEncoding( this.getTemplateEncoding() );
             tool.setDefaultTemplateProfile( this.getDefaultTemplateProfile() );
             tool.setTemplateProfile( this.getTemplateProfile() );
             tool.getListeners().add( new JomcTool.Listener()
@@ -751,6 +789,18 @@ public class JomcToolTask extends JomcModelTask
                 }
 
             } );
+
+            if ( this.getTemplateEncoding() != null )
+            {
+                this.log( Messages.getMessage( "deprecationWarning", "templateEncoding", "defaultTemplateEncoding" ),
+                          null, Project.MSG_WARN );
+
+                tool.setDefaultTemplateEncoding( this.getTemplateEncoding() );
+            }
+            else
+            {
+                tool.setDefaultTemplateEncoding( this.getDefaultTemplateEncoding() );
+            }
 
             for ( int i = 0, s0 = this.getVelocityPropertyResources().size(); i < s0; i++ )
             {

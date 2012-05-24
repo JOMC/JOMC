@@ -108,10 +108,22 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
     /**
      * The encoding to use for reading templates.
+     * <p><strong>Deprecated:</strong> As of JOMC 1.3, please use the 'defaultTemplateEncoding' parameter. This
+     * parameter will be removed in version 2.0.</p>
      *
      * @parameter expression="${jomc.templateEncoding}"
      */
+    @Deprecated
     private String templateEncoding;
+
+    /**
+     * The encoding to use for reading templates.
+     *
+     * @parameter expression="${jomc.defaultTemplateEncoding}"
+     *
+     * @since 1.3
+     */
+    private String defaultTemplateEncoding;
 
     /**
      * Location to search for templates in addition to searching the class path of the plugin.
@@ -2572,7 +2584,22 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             } );
 
-            tool.setTemplateEncoding( this.templateEncoding );
+            if ( this.templateEncoding != null )
+            {
+                if ( this.isLoggable( Level.WARNING ) )
+                {
+                    this.log( Level.WARNING, Messages.getMessage(
+                        "deprecationWarning", "templateEncoding", "defaultTemplateEncoding" ), null );
+
+                }
+
+                tool.setDefaultTemplateEncoding( this.templateEncoding );
+            }
+            else
+            {
+                tool.setDefaultTemplateEncoding( this.defaultTemplateEncoding );
+            }
+
             tool.setInputEncoding( this.sourceEncoding );
             tool.setOutputEncoding( this.sourceEncoding );
             tool.setDefaultTemplateProfile( this.defaultTemplateProfile );

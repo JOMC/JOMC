@@ -175,6 +175,14 @@ public class ManageSourcesTaskTest extends SourceFileProcessorTaskTest
     }
 
     @Test
+    public final void testManageAntTaskSourcesDeprecatedAttributes() throws Exception
+    {
+        final AntExecutionResult r = this.executeTarget( "test-manage-ant-task-sources-deprecated-attributes" );
+        assertNoException( r );
+        assertMessageLogged( r, "Source file processing successful.", Project.MSG_INFO );
+    }
+
+    @Test
     public final void testManageAntTaskSourcesAllAttributes() throws Exception
     {
         final AntExecutionResult r = this.executeTarget( "test-manage-ant-task-sources-all-attributes" );

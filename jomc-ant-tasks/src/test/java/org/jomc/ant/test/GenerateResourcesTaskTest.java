@@ -178,6 +178,14 @@ public class GenerateResourcesTaskTest extends ResourceFileProcessorTaskTest
     }
 
     @Test
+    public final void testGenerateAntTaskResourcesDeprecatedAttributes() throws Exception
+    {
+        final AntExecutionResult r = this.executeTarget( "test-generate-ant-task-resources-deprecated-attributes" );
+        assertNoException( r );
+        assertMessageLogged( r, "Resource file processing successful.", Project.MSG_INFO );
+    }
+
+    @Test
     public final void testGenerateAntTaskResourcesAllAttributes() throws Exception
     {
         final AntExecutionResult r = this.executeTarget( "test-generate-ant-task-resources-all-attributes" );

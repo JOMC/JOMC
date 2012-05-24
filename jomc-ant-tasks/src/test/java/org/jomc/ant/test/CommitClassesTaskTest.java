@@ -237,6 +237,14 @@ public class CommitClassesTaskTest extends ClassFileProcessorTaskTest
     }
 
     @Test
+    public final void testCommitAntTasksDeprecatedAttributes() throws Exception
+    {
+        final AntExecutionResult r = this.executeTarget( "test-commit-ant-tasks-deprecated-attributes" );
+        assertNoException( r );
+        assertMessageLogged( r, "Class file processing successful.", Project.MSG_INFO );
+    }
+
+    @Test
     public final void testCommitAntTasksAllAttributes() throws Exception
     {
         final AntExecutionResult r = this.executeTarget( "test-commit-ant-tasks-all-attributes" );

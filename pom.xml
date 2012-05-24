@@ -1101,6 +1101,20 @@
                 </transformationSets>
               </configuration>
             </execution>
+            <execution>
+              <id>default-validate</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>validate</goal>
+              </goals>
+              <configuration>
+                <validationSets>
+                  <validationSet>
+                    <dir>${project.build.directory}/generated-resources/xml/xslt</dir>
+                  </validationSet>
+                </validationSets>
+              </configuration>
+            </execution>
           </executions>
         </plugin>
         <plugin>

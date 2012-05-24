@@ -206,13 +206,49 @@
   </target>
 
   <!-- ************************************************************************************************************* -->
-  <target name="test-generate-ant-task-resources-all-attributes">
+  <target name="test-generate-ant-task-resources-deprecated-attributes">
     <jomc:generate-resources resourcesDirectory="${empty.dir}"
                              resourceBundleDefaultLanguage="de"
                              defaultTemplateProfile="TEST"
                              inputEncoding="UTF-8"
                              outputEncoding="UTF-8"
                              templateEncoding="UTF-8"
+                             templateProfile="TEST"
+                             indentation="\t"
+                             lineSeparator="\r\n"
+                             modelProcessingEnabled="false"
+                             modelObjectClasspathResolutionEnabled="false"
+                             moduleLocation="TEST"
+                             transformerLocation="TEST"
+                             specification="TEST"
+                             implementation="TEST"
+                             module="TEST"
+                             model="http://jomc.org/model"
+                             modletLocation="META-INF/jomc-modlet.xml"
+                             providerLocation="META-INF/services"
+                             platformProviderLocation="TEST"
+                             if="${jomc.enabled}"
+                             resourceFileProcessorClass="org.jomc.tools.ResourceFileProcessor"
+                             templateLocation="${empty.dir}"
+                             modletResourceValidationEnabled="false"
+                             modelResourceValidationEnabled="false">
+      <jomc:classpath>
+        <pathelement path="${empty.dir}"/>
+      </jomc:classpath>
+      <jomc:velocityProperty key="test" value="test"/>
+      <jomc:templateParameter key="test" value="test"/>
+      <jomc:locale language="de" country="de" variant="ISO8859-1"/>
+    </jomc:generate-resources>
+  </target>
+
+  <!-- ************************************************************************************************************* -->
+  <target name="test-generate-ant-task-resources-all-attributes">
+    <jomc:generate-resources resourcesDirectory="${empty.dir}"
+                             resourceBundleDefaultLanguage="de"
+                             defaultTemplateProfile="TEST"
+                             inputEncoding="UTF-8"
+                             outputEncoding="UTF-8"
+                             defaultTemplateEncoding="UTF-8"
                              templateProfile="TEST"
                              indentation="\t"
                              lineSeparator="\r\n"
