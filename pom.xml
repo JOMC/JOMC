@@ -2523,7 +2523,7 @@
     <maven-compiler-plugin.artifact.version>2.4</maven-compiler-plugin.artifact.version>
     <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.5</maven-resources-plugin.artifact.version>
-    <maven-release-plugin.artifact.version>2.3</maven-release-plugin.artifact.version>
+    <maven-release-plugin.artifact.version>2.3.1</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
     <maven-gpg-plugin.artifact.version>1.4</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.2</maven-jarsigner-plugin.artifact.version>
