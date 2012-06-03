@@ -2575,7 +2575,7 @@
     <jomc.build.version>1.7</jomc.build.version>
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
-    <jomc.base.version>1.3</jomc.base.version>
+    <jomc.base.version>1.4</jomc.base.version>
     <jomc-util.artifact.version>1.4-SNAPSHOT</jomc-util.artifact.version>
     <jomc-modlet.artifact.version>1.4-SNAPSHOT</jomc-modlet.artifact.version>
     <jomc-model.artifact.version>1.4-SNAPSHOT</jomc-model.artifact.version>

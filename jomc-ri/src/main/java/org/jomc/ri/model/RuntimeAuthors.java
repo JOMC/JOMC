@@ -60,7 +60,7 @@ import org.jomc.model.Authors;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.3-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.3/jomc-tools-1.3-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeAuthors extends Authors implements RuntimeModelObject
@@ -162,7 +162,7 @@ public class RuntimeAuthors extends Authors implements RuntimeModelObject
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeAuthors} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.3-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.3/jomc-tools-1.3-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     public RuntimeAuthors()
     {
         // SECTION-START[Default Constructor]
