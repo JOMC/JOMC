@@ -272,5 +272,7 @@
       goals deprecating parameter <code>templateEncoding</code>.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.4"/>
   </body>
 </document>

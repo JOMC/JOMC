@@ -255,5 +255,7 @@
       to use file-locking when writing resource files.]]>
       </action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.4"/>
   </body>
 </document>

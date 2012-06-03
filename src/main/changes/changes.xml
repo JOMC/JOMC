@@ -117,5 +117,7 @@
       <action dev="schulte2005" type="update"><![CDATA[Updated the version of <code>ant</code> from <code>1.8.2</code> to <code>1.8.4</code>.]]></action>
       <action dev="schulte2005" type="update">Updated to enforce JDK 7 for building.</action>
     </release>
+    <!-- *********************************************************************************************************** -->
+    <release version="1.4"/>
   </body>
 </document>
