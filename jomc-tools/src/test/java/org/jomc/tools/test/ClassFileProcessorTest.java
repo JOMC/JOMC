@@ -67,6 +67,7 @@ import org.jomc.modlet.Model;
 import org.jomc.modlet.ModelContext;
 import org.jomc.modlet.ModelContextFactory;
 import org.jomc.modlet.ModelException;
+import org.jomc.modlet.ModelValidationReport;
 import org.jomc.tools.ClassFileProcessor;
 import org.jomc.tools.ResourceFileProcessor;
 import org.jomc.tools.SourceFileProcessor;
@@ -131,6 +132,20 @@ public class ClassFileProcessorTest extends JomcToolTest
                 }
 
                 m = this.getModelContext().processModel( m );
+
+                if ( m != null )
+                {
+                    final ModelValidationReport validationReport = this.getModelContext().validateModel( m );
+
+                    for ( int i = 0, s0 = validationReport.getDetails().size(); i < s0; i++ )
+                    {
+                        System.out.println( validationReport.getDetails().get( i ) );
+                    }
+
+                    assertTrue( "Unexpected invalid '" + m.getIdentifier() + "' model.",
+                                validationReport.isModelValid() );
+
+                }
             }
 
             return m;
@@ -1530,7 +1545,7 @@ public class ClassFileProcessorTest extends JomcToolTest
         dependency.setImplementationName( null );
         dependency.setVersion( Integer.toString( Integer.MAX_VALUE ) );
 
-        dependency = classFileProcessorImpl.getDependencies().getDependency( "JavaClasses" );
+        dependency = classFileProcessorImpl.getDependencies().getDependency( "ClassFileProcessor" );
         assertNotNull( dependency );
         assertNotNull( classFileProcessorImpl.getDependencies().getDependency().remove( dependency ) );
 
@@ -1539,7 +1554,7 @@ public class ClassFileProcessorTest extends JomcToolTest
         dependency.setImplementationName( null );
         dependency.setVersion( Integer.toString( Integer.MAX_VALUE ) );
 
-        dependency = resourceFileProcessorImpl.getDependencies().getDependency( "JavaBundles" );
+        dependency = resourceFileProcessorImpl.getDependencies().getDependency( "ResourceFileProcessor" );
         assertNotNull( dependency );
         assertNotNull( resourceFileProcessorImpl.getDependencies().getDependency().remove( dependency ) );
 
@@ -1548,7 +1563,7 @@ public class ClassFileProcessorTest extends JomcToolTest
         dependency.setImplementationName( null );
         dependency.setVersion( Integer.toString( Integer.MAX_VALUE ) );
 
-        dependency = sourceFileProcessorImpl.getDependencies().getDependency( "JavaSources" );
+        dependency = sourceFileProcessorImpl.getDependencies().getDependency( "SourceFileProcessor" );
         assertNotNull( dependency );
         assertNotNull( sourceFileProcessorImpl.getDependencies().getDependency().remove( dependency ) );
 
@@ -1729,6 +1744,7 @@ public class ClassFileProcessorTest extends JomcToolTest
     @Test
     public final void testClassFileProcessorModelObjectsNotFound() throws Exception
     {
+        final File tmpDir = new File( System.getProperty( "java.io.tmpdir", "/tmp" ) );
         final JavaClass object = new ClassParser(
             ClassLoader.getSystemResourceAsStream( "java/lang/Object.class" ), "Object.class" ).parse();
 
@@ -1744,10 +1760,10 @@ public class ClassFileProcessorTest extends JomcToolTest
         final Model oldModel = this.getJomcTool().getModel();
         this.getJomcTool().setModel( null );
 
-        this.getJomcTool().commitModelObjects( this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().commitModelObjects( m, this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().commitModelObjects( s, this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().commitModelObjects( i, this.getModelContext(), new File( "/tmp" ) );
+        this.getJomcTool().commitModelObjects( this.getModelContext(), tmpDir );
+        this.getJomcTool().commitModelObjects( m, this.getModelContext(), tmpDir );
+        this.getJomcTool().commitModelObjects( s, this.getModelContext(), tmpDir );
+        this.getJomcTool().commitModelObjects( i, this.getModelContext(), tmpDir );
 
         this.getJomcTool().commitModelObjects(
             s, this.getModelContext().createMarshaller( ModelObject.MODEL_PUBLIC_ID ), object );
@@ -1760,10 +1776,10 @@ public class ClassFileProcessorTest extends JomcToolTest
         this.getJomcTool().validateModelObjects( s, this.getModelContext() );
         this.getJomcTool().validateModelObjects( i, this.getModelContext() );
 
-        this.getJomcTool().validateModelObjects( this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().validateModelObjects( m, this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().validateModelObjects( s, this.getModelContext(), new File( "/tmp" ) );
-        this.getJomcTool().validateModelObjects( i, this.getModelContext(), new File( "/tmp" ) );
+        this.getJomcTool().validateModelObjects( this.getModelContext(), tmpDir );
+        this.getJomcTool().validateModelObjects( m, this.getModelContext(), tmpDir );
+        this.getJomcTool().validateModelObjects( s, this.getModelContext(), tmpDir );
+        this.getJomcTool().validateModelObjects( i, this.getModelContext(), tmpDir );
 
         this.getJomcTool().validateModelObjects(
             s, this.getModelContext().createUnmarshaller( ModelObject.MODEL_PUBLIC_ID ), object );
@@ -1771,16 +1787,16 @@ public class ClassFileProcessorTest extends JomcToolTest
         this.getJomcTool().validateModelObjects(
             i, this.getModelContext().createUnmarshaller( ModelObject.MODEL_PUBLIC_ID ), object );
 
-        this.getJomcTool().transformModelObjects( this.getModelContext(), new File( "/tmp" ),
+        this.getJomcTool().transformModelObjects( this.getModelContext(), tmpDir,
                                                   Collections.<Transformer>emptyList() );
 
-        this.getJomcTool().transformModelObjects( m, this.getModelContext(), new File( "/tmp" ),
+        this.getJomcTool().transformModelObjects( m, this.getModelContext(), tmpDir,
                                                   Collections.<Transformer>emptyList() );
 
-        this.getJomcTool().transformModelObjects( s, this.getModelContext(), new File( "/tmp" ),
+        this.getJomcTool().transformModelObjects( s, this.getModelContext(), tmpDir,
                                                   Collections.<Transformer>emptyList() );
 
-        this.getJomcTool().transformModelObjects( i, this.getModelContext(), new File( "/tmp" ),
+        this.getJomcTool().transformModelObjects( i, this.getModelContext(), tmpDir,
                                                   Collections.<Transformer>emptyList() );
 
         this.getJomcTool().transformModelObjects(

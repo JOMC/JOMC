@@ -32,10 +32,15 @@ package org.jomc.tools;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -2157,9 +2162,9 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "committing", classFile.getAbsolutePath() ), null );
             }
 
-            final JavaClass javaClass = new ClassParser( classFile.getAbsolutePath() ).parse();
+            final JavaClass javaClass = this.readJavaClass( classFile );
             this.commitModelObjects( specification, marshaller, javaClass );
-            javaClass.dump( classFile );
+            this.writeJavaClass( javaClass, classFile );
         }
     }
 
@@ -2189,9 +2194,9 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "committing", classFile.getAbsolutePath() ), null );
             }
 
-            final JavaClass javaClass = new ClassParser( classFile.getAbsolutePath() ).parse();
+            final JavaClass javaClass = this.readJavaClass( classFile );
             this.commitModelObjects( implementation, marshaller, javaClass );
-            javaClass.dump( classFile );
+            this.writeJavaClass( javaClass, classFile );
         }
     }
 
@@ -2256,10 +2261,11 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "validating", classFile.getAbsolutePath() ), null );
             }
 
-            final ModelValidationReport current = this.validateModelObjects(
-                specification, unmarshaller, new ClassParser( classFile.getAbsolutePath() ).parse() );
+            final JavaClass javaClass = this.readJavaClass( classFile );
 
-            report.getDetails().addAll( current.getDetails() );
+            report.getDetails().addAll(
+                this.validateModelObjects( specification, unmarshaller, javaClass ).getDetails() );
+
         }
 
         return report;
@@ -2294,10 +2300,11 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "validating", classFile.getAbsolutePath() ), null );
             }
 
-            final ModelValidationReport current = this.validateModelObjects(
-                implementation, unmarshaller, new ClassParser( classFile.getAbsolutePath() ).parse() );
+            final JavaClass javaClass = this.readJavaClass( classFile );
 
-            report.getDetails().addAll( current.getDetails() );
+            report.getDetails().addAll(
+                this.validateModelObjects( implementation, unmarshaller, javaClass ).getDetails() );
+
         }
 
         return report;
@@ -2389,8 +2396,9 @@ public class ClassFileProcessor extends JomcTool
                 }
             }
 
-            final ModelValidationReport current = this.validateModelObjects( specification, unmarshaller, javaClass );
-            report.getDetails().addAll( current.getDetails() );
+            report.getDetails().addAll(
+                this.validateModelObjects( specification, unmarshaller, javaClass ).getDetails() );
+
         }
 
         return report;
@@ -2450,8 +2458,9 @@ public class ClassFileProcessor extends JomcTool
                 }
             }
 
-            final ModelValidationReport current = this.validateModelObjects( implementation, unmarshaller, javaClass );
-            report.getDetails().addAll( current.getDetails() );
+            report.getDetails().addAll(
+                this.validateModelObjects( implementation, unmarshaller, javaClass ).getDetails() );
+
         }
 
         return report;
@@ -2510,9 +2519,9 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "transforming", classFile.getAbsolutePath() ), null );
             }
 
-            final JavaClass javaClass = new ClassParser( classFile.getAbsolutePath() ).parse();
+            final JavaClass javaClass = this.readJavaClass( classFile );
             this.transformModelObjects( specification, marshaller, unmarshaller, javaClass, transformers );
-            javaClass.dump( classFile );
+            this.writeJavaClass( javaClass, classFile );
         }
     }
 
@@ -2543,9 +2552,119 @@ public class ClassFileProcessor extends JomcTool
                 this.log( Level.INFO, getMessage( "transforming", classFile.getAbsolutePath() ), null );
             }
 
-            final JavaClass javaClass = new ClassParser( classFile.getAbsolutePath() ).parse();
+            final JavaClass javaClass = this.readJavaClass( classFile );
             this.transformModelObjects( implementation, marshaller, unmarshaller, javaClass, transformers );
-            javaClass.dump( classFile );
+            this.writeJavaClass( javaClass, classFile );
+        }
+    }
+
+    private JavaClass readJavaClass( final File classFile ) throws IOException
+    {
+        FileInputStream in = null;
+        FileChannel fileChannel = null;
+        FileLock fileLock = null;
+        boolean suppressExceptionOnClose = true;
+
+        try
+        {
+            in = new FileInputStream( classFile );
+            fileChannel = in.getChannel();
+            fileLock = fileChannel.lock( 0, classFile.length(), true );
+
+            final JavaClass javaClass = new ClassParser( in, classFile.getAbsolutePath() ).parse();
+            suppressExceptionOnClose = false;
+            return javaClass;
+        }
+        finally
+        {
+            this.releaseAndClose( fileLock, fileChannel, in, suppressExceptionOnClose );
+        }
+    }
+
+    private void writeJavaClass( final JavaClass javaClass, final File classFile ) throws IOException
+    {
+        FileOutputStream out = null;
+        FileChannel fileChannel = null;
+        FileLock fileLock = null;
+        boolean suppressExceptionOnClose = true;
+
+        try
+        {
+            out = new FileOutputStream( classFile );
+            fileChannel = out.getChannel();
+            fileLock = fileChannel.lock();
+            javaClass.dump( out );
+            suppressExceptionOnClose = false;
+        }
+        finally
+        {
+            this.releaseAndClose( fileLock, fileChannel, out, suppressExceptionOnClose );
+        }
+    }
+
+    private void releaseAndClose( final FileLock fileLock, final FileChannel fileChannel,
+                                  final Closeable closeable, final boolean suppressExceptions )
+        throws IOException
+    {
+        try
+        {
+            if ( fileLock != null )
+            {
+                fileLock.release();
+            }
+        }
+        catch ( final IOException e )
+        {
+            if ( suppressExceptions )
+            {
+                this.log( Level.SEVERE, null, e );
+            }
+            else
+            {
+                throw e;
+            }
+        }
+        finally
+        {
+            try
+            {
+                if ( fileChannel != null )
+                {
+                    fileChannel.close();
+                }
+            }
+            catch ( final IOException e )
+            {
+                if ( suppressExceptions )
+                {
+                    this.log( Level.SEVERE, null, e );
+                }
+                else
+                {
+                    throw e;
+                }
+            }
+            finally
+            {
+                try
+                {
+                    if ( closeable != null )
+                    {
+                        closeable.close();
+                    }
+                }
+                catch ( final IOException e )
+                {
+                    if ( suppressExceptions )
+                    {
+                        this.log( Level.SEVERE, null, e );
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
+            }
         }
     }
 

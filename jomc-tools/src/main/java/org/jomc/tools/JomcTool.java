@@ -2989,7 +2989,6 @@ public class JomcTool
             InputStream in = null;
             URL url = null;
             profileProperties = new java.util.Properties();
-            map.put( key, profileProperties );
 
             final String resourceName = TEMPLATE_PREFIX + profileName + ( language == null ? "" : "/" + language )
                                         + "/context.properties";
@@ -3042,6 +3041,8 @@ public class JomcTool
             }
             finally
             {
+                map.put( key, profileProperties );
+
                 try
                 {
                     if ( in != null )
@@ -3168,7 +3169,6 @@ public class JomcTool
         {
             InputStream in = null;
             profileProperties = new java.util.Properties();
-            map.put( profileName, profileProperties );
 
             final String resourceName = TEMPLATE_PREFIX + profileName + "/profile.properties";
             URL url = null;
@@ -3227,6 +3227,8 @@ public class JomcTool
             }
             finally
             {
+                map.put( profileName, profileProperties );
+
                 try
                 {
                     if ( in != null )
