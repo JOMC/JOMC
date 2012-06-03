@@ -235,9 +235,8 @@
                 </reportSets>
                 <configuration>
                   <quiet>true</quiet>
-                  <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://jomc.sourceforge.net/jomc.org.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
                   <breakiterator>true</breakiterator>
-                  <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
+                  <top><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></top>
                   <keywords>true</keywords>
                   <linksource>true</linksource>
                   <serialwarn>true</serialwarn>
@@ -679,9 +678,8 @@
           <version>${maven-javadoc-plugin.artifact.version}</version>
           <configuration>
             <quiet>true</quiet>
-            <top>&lt;table border="0" width="100%"&gt;&lt;tr&gt;&lt;td align="left"&gt;&lt;small&gt;Please note that this documentation is maintained by non-native english speaking authors. As such, you may encounter phrases or wordings which seem imprecise or may even have a totally different meaning to native english speaking readers than what the individual author was trying to express. If you are a native english speaking reader and find any such phrases or wordings we kindly ask you to send an email to the corresponding author and help us improve this documentation in order to avoid misunderstandings. You will find the authors' email addresses at the top of each class. Please accept our apologies for any inconvenience caused.&lt;/small&gt;&lt;/td&gt;&lt;td align="right"&gt;&lt;img src="http://jomc.sourceforge.net/jomc.org.png"/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</top>
             <breakiterator>true</breakiterator>
-            <header><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></header>
+            <top><![CDATA[<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-23230934-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>]]></top>
             <keywords>true</keywords>
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
@@ -958,6 +956,14 @@
           <configuration>
             <fail>false</fail>
             <rules>
+              <requireJavaVersion>
+                <message>
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! This project should be built using JDK 7 or any later version.                             !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                </message>
+                <version>[1.7.0,)</version>
+              </requireJavaVersion>
               <requireMavenVersion>
                 <message>
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1125,7 +1131,7 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>animal-sniffer-maven-plugin</artifactId>
-          <version>${animal-sniffer-maven-plugin.artifact.version}</version>
+          <version>${animal-sniffer.version}</version>
           <executions>
             <execution>
               <id>default-check</id>
@@ -1411,7 +1417,7 @@
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
-        <version>1.8.3</version>
+        <version>1.8.4</version>
       </dependency>
 
       <!-- JAXB -->
@@ -1441,6 +1447,12 @@
         <groupId>javax.annotation</groupId>
         <artifactId>jsr250-api</artifactId>
         <version>1.0</version>
+        <optional>true</optional> <!-- See http://jira.codehaus.org/browse/MNG-5227 -->
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>animal-sniffer-annotations</artifactId>
+        <version>${animal-sniffer.version}</version>
         <optional>true</optional> <!-- See http://jira.codehaus.org/browse/MNG-5227 -->
       </dependency>
 
@@ -2310,10 +2322,10 @@
                   <requireJavaVersion>
                     <message>
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!! This project must be released using JDK 6 or any later version.                            !!
+!! This project must be released using JDK 7 or any later version.                            !!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     </message>
-                    <version>[1.6.0,)</version>
+                    <version>[1.7.0,)</version>
                   </requireJavaVersion>
                   <requireMavenVersion>
                     <message>
@@ -2546,13 +2558,13 @@
     <build-helper-maven-plugin.artifact.version>1.7</build-helper-maven-plugin.artifact.version>
     <xml-maven-plugin.artifact.version>1.0</xml-maven-plugin.artifact.version>
     <clirr-maven-plugin.artifact.version>2.4</clirr-maven-plugin.artifact.version>
-    <animal-sniffer-maven-plugin.artifact.version>1.7</animal-sniffer-maven-plugin.artifact.version>
     <findbugs-maven-plugin.artifact.version>2.4.0</findbugs-maven-plugin.artifact.version>
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.8.1</maven-jaxb21-plugin.artifact.version>
-    <maven-shade-plugin.artifact.version>1.6</maven-shade-plugin.artifact.version>
+    <maven-shade-plugin.artifact.version>1.6</maven-shade-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSHADE-121 -->
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
+    <animal-sniffer.version>1.7</animal-sniffer.version>
     <surefire.version>2.12</surefire.version>
     <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
