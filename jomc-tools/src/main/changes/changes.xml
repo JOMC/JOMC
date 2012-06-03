@@ -251,6 +251,9 @@
       <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.tools.ClassFileProcessor</code>
       to use file-locking when operating on file system class files.]]>
       </action>
+      <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.tools.ResourceFileProcessor</code>
+      to use file-locking when writing resource files.]]>
+      </action>
     </release>
   </body>
 </document>
