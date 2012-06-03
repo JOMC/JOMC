@@ -118,6 +118,8 @@
       <action dev="schulte2005" type="update">Updated to enforce JDK 7 for building.</action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.4"/>
+    <release version="1.4">
+      <action dev="schulte2005" type="update"><![CDATA[Updated the version of the <code>umlgraph</code> doclet from <code>5.1</code> to <code>5.6</code>.]]></action>
+    </release>
   </body>
 </document>
