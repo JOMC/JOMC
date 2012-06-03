@@ -90,7 +90,7 @@
   <scm>
     <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.3</connection>
     <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/tags/jomc-parent-1.3</developerConnection>
-    <url>http://jomc.sourceforge.net/project/sources?jomc/tags/jomc-parent-1.3?jomc/branches/jomc-1.x</url>
+    <url>http://jomc.sourceforge.net/project/sources?jomc/tags/jomc-parent-1.3</url>
   </scm>
   <build>
     <extensions>
