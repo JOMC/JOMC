@@ -223,7 +223,7 @@
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
-    <release version="1.3">
+    <release version="1.3" date="2012-06-03">
       <action dev="schulte2005" type="add"><![CDATA[Added <code>getJavaFieldName</code> methods, method
       <code>getJavaConstantName</code>, method <code>getJavaMethodParameterName(java.lang.String)</code> and method
       <code>getJavaClasspathLocation(java.lang.String,boolean)</code> to class <code>org.jomc.tools.JomcTool</code>.
