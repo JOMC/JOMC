@@ -2532,10 +2532,10 @@
     -->
     <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
-    <maven-compiler-plugin.artifact.version>2.5</maven-compiler-plugin.artifact.version>
+    <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
     <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.5</maven-resources-plugin.artifact.version>
-    <maven-release-plugin.artifact.version>2.3.1</maven-release-plugin.artifact.version>
+    <maven-release-plugin.artifact.version>2.3.2</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
     <maven-gpg-plugin.artifact.version>1.4</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.2</maven-jarsigner-plugin.artifact.version>
@@ -2558,13 +2558,13 @@
     <build-helper-maven-plugin.artifact.version>1.7</build-helper-maven-plugin.artifact.version>
     <xml-maven-plugin.artifact.version>1.0</xml-maven-plugin.artifact.version>
     <clirr-maven-plugin.artifact.version>2.4</clirr-maven-plugin.artifact.version>
-    <findbugs-maven-plugin.artifact.version>2.4.0</findbugs-maven-plugin.artifact.version>
+    <findbugs-maven-plugin.artifact.version>2.5</findbugs-maven-plugin.artifact.version>
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.8.1</maven-jaxb21-plugin.artifact.version>
     <maven-shade-plugin.artifact.version>1.6</maven-shade-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSHADE-121 -->
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
-    <animal-sniffer.version>1.7</animal-sniffer.version>
+    <animal-sniffer.version>1.8</animal-sniffer.version>
     <surefire.version>2.12</surefire.version>
     <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
