@@ -47,7 +47,7 @@
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -58,7 +58,7 @@
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -69,7 +69,7 @@
                    vendor="${project.organization.name}" version="${project.version}" multiplicity="One"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -80,7 +80,7 @@
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -90,7 +90,7 @@
                    class="org.jomc.ri.test.support.TestSpecification"
                    vendor="${project.organization.name}" version="${project.version}" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -101,7 +101,7 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="Singleton"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -112,7 +112,7 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -123,7 +123,7 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -134,7 +134,7 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="DOES_NOT_EXIST"
                    multiplicity="One" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -145,7 +145,7 @@
                    classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                    scope="Test" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -156,7 +156,7 @@
                    vendor="${project.organization.name}" version="${project.version}" scope="Singleton"
                    createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -166,7 +166,7 @@
                    class="org.jomc.ri.test.support.OverrideTestSpecification" classDeclaration="true"
                    vendor="${project.organization.name}" version="${project.version}" createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -180,7 +180,7 @@
                     classDeclaration="true" vendor="${project.organization.name}" version="${project.version}"
                     createDate="2009-07-25T19:56:45Z">
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -263,7 +263,7 @@
         <text language="en" type="text/x-javadoc">{@code ObjectManagementLister} logging to the console.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -281,7 +281,7 @@
         <text language="en" type="text/x-javadoc">Test cases for the {@code DefaultObjectManager} class.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -297,7 +297,7 @@
         <text language="en" type="text/x-javadoc">Test implementation of the {@code ScopeTestSpecification}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -326,7 +326,7 @@
         <text language="en">Test implementation with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -354,7 +354,7 @@
         <text language="en">Test implementation without class and with unsupported location.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -373,7 +373,7 @@
         <text language="en" type="text/x-javadoc">Test {@code Scope} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -391,7 +391,7 @@
         <text language="en" type="text/x-javadoc">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -408,7 +408,7 @@
         <text language="en" type="text/x-javadoc">Test {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -426,7 +426,7 @@
         <text language="en" type="text/x-javadoc">Test {@code Invoker} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -447,7 +447,7 @@
         <text language="en" type="text/x-javadoc">{@code Invoker} test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -465,7 +465,7 @@
         <text language="en" type="text/x-javadoc">{@code Listener} test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -480,7 +480,7 @@
         <text language="en" type="text/x-javadoc">{@code DefaultListener} test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -495,7 +495,7 @@
         <text language="en">Override Test Implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -527,7 +527,7 @@
         <text language="en">Override test cases.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>

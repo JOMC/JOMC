@@ -48,7 +48,7 @@
         <text language="en">Scope a specification applies to.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -61,7 +61,7 @@
         <text language="en">Object management and configuration listener interface.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -74,7 +74,7 @@
         <text language="en">Locates objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -88,7 +88,7 @@
         <text language="en">Invokes objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -102,7 +102,7 @@
         <text language="en">Invocation of an object.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>

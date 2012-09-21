@@ -42,55 +42,32 @@
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
-    <url>http://jomc.sourceforge.net</url>
+    <url>http://www.jomc.org</url>
   </organization>
   <licenses>
     <license>
       <name>The JOMC Project Copyright</name>
-      <url>http://jomc.sourceforge.net/LICENSE.txt</url>
+      <url>http://www.jomc.org/LICENSE.txt</url>
       <distribution>repo</distribution>
       <comments>Simplified BSD License.</comments>
     </license>
   </licenses>
   <developers>
     <developer>
-      <id>schulte2005</id>
+      <id>schulte</id>
       <name>Christian Schulte</name>
       <timezone>Europe/Berlin</timezone>
-      <email>schulte2005@users.sourceforge.net</email>
+      <email>cs@schulte.it</email>
     </developer>
   </developers>
   <issueManagement>
     <system>Trac</system>
-    <url>http://sourceforge.net/apps/trac/jomc</url>
+    <url>http://www.jomc.org/trac</url>
   </issueManagement>
-  <mailingLists>
-    <mailingList>
-      <name>jomc-users</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-users</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-users</unsubscribe>
-      <post>jomc-users@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-users</archive>
-    </mailingList>
-    <mailingList>
-      <name>jomc-svn</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-svn</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-svn</unsubscribe>
-      <post>jomc-svn@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-svn</archive>
-    </mailingList>
-    <mailingList>
-      <name>jomc-notifications</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-notifications</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-notifications</unsubscribe>
-      <post>jomc-notifications@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-notifications</archive>
-    </mailingList>
-  </mailingLists>
   <scm>
-    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</connection>
-    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/trunk</developerConnection>
-    <url>http://jomc.sourceforge.net/project/sources?jomc/trunk</url>
+    <connection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/trunk</connection>
+    <developerConnection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/trunk</developerConnection>
+    <url>http://svn.jomc.org/jomc/trunk</url>
   </scm>
   <build>
     <extensions>
@@ -457,11 +434,21 @@
                     </reports>
                     <configuration>
                       <issueLinkTemplatePerSystem>
-                        <MantisBT>http://sourceforge.net/apps/mantisbt/jomc/view.php?id=%ISSUE%</MantisBT>
-                        <Trac>http://sourceforge.net/apps/trac/jomc/ticket/%ISSUE%</Trac>
+                        <Trac>http://www.jomc.org/trac/ticket/%ISSUE%</Trac>
                       </issueLinkTemplatePerSystem>
                       <xmlPath>src/main/changes/changes.xml</xmlPath>
                       <escapeHTML>false</escapeHTML>
+                    </configuration>
+                  </reportSet>
+                  <reportSet>
+                    <id>default-trac-report</id>
+                    <reports>
+                      <report>trac-report</report>
+                    </reports>
+                    <configuration>
+                      <query>order=id&amp;version=${project.version}&amp;component=${project.name}</query>
+                      <tracUser>${jomc.trac.username}</tracUser>
+                      <tracPassword>${jomc.trac.password}</tracPassword>
                     </configuration>
                   </reportSet>
                 </reportSets>
@@ -2562,7 +2549,7 @@
     <maven-install-plugin.artifact.version>2.3.1</maven-install-plugin.artifact.version>
     <maven-source-plugin.artifact.version>2.1.2</maven-source-plugin.artifact.version>
     <maven-scm-plugin.artifact.version>1.7</maven-scm-plugin.artifact.version>
-    <maven-changes-plugin.artifact.version>2.7.1</maven-changes-plugin.artifact.version>
+    <maven-changes-plugin.artifact.version>2.7.1</maven-changes-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MCHANGES-289 -->
     <maven-enforcer-plugin.artifact.version>1.1</maven-enforcer-plugin.artifact.version>
     <maven-project-info-reports-plugin.artifact.version>2.4</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.3</maven-jxr-plugin.artifact.version>

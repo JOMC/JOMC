@@ -49,7 +49,7 @@
         <text language="en">Manages objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -66,7 +66,7 @@
         <text language="en">Gets thrown whenever an unexpected error condition is detected.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -80,7 +80,7 @@
         <text language="en" type="text/x-javadoc">Factory for the {@code ObjectManager} singleton.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>

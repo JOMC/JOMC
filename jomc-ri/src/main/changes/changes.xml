@@ -42,7 +42,7 @@
     <release version="1.1" date="2010-07-28">
       <action dev="schulte2005" type="add"><![CDATA[Added support for configuring model processing to class
       <code>org.jomc.ri.DefaultObjectManager</code>.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="add"><![CDATA[Added class <code>org.jomc.ri.DefaultListener</code> printing
       log events to the standard system streams registered when no <code>org.jomc.spi.Listener</code> implementation is
@@ -53,7 +53,7 @@
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Corrected class <code>org.jomc.ri.DefaultObjectManager</code> to
       manage listeners per class loader instead of per instance.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.1/jomc-ri-1.1/clirr-report.html">CLIRR report</a>.]]>
       </action>
       <action dev="schulte2005" type="update"><![CDATA[Updated class <code>org.jomc.ri.DefaultObjectManager</code> to
       register a default listener writing to <code>System.out</code> and <code>System.err</code> if no listeners are
@@ -68,7 +68,7 @@
       <action dev="schulte2005" type="add"><![CDATA[Added methods <code>getDefaultListener</code>,
       <code>getDefaultScope</code>, <code>getDefaultLocator</code>, <code>getDefaultInvoker</code> and
       <code>getDefaultInvocation</code> to class <code>org.jomc.ri.DefaultObjectManager</code> taking a model.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.2/jomc-ri-1.2/clirr-report.html">CLIRR report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.2/jomc-ri-1.2/clirr-report.html">CLIRR report</a>.]]>
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
@@ -77,7 +77,7 @@
       <code>1.2.2</code> to prevent
       <code>java.lang.StringIndexOutOfBoundsException: String index out of range: -1</code> exceptions from getting
       thrown when updating message resources to contain empty messages.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.2/maven-jomc-plugin-1.2.2/changes-report.html">Changes report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.2/maven-jomc-plugin-1.2.2/changes-report.html">Changes report</a>.]]>
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
@@ -92,15 +92,15 @@
     <release version="1.2.3" date="2012-04-01">
       <action dev="schulte2005" type="fix"><![CDATA[Updated the version of the <code>jomc-modlet</code> dependency from
       <code>1.2</code> to <code>1.2.1</code>.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.2/jomc-modlet-1.2.1/changes-report.html">Changes report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.2/jomc-modlet-1.2.1/changes-report.html">Changes report</a>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the version of the <code>jomc-model</code> dependency from
       <code>1.2.2</code> to <code>1.2.3</code>.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.2/jomc-model-1.2.3/changes-report.html">Changes report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.2/jomc-model-1.2.3/changes-report.html">Changes report</a>.]]>
       </action>
       <action dev="schulte2005" type="fix"><![CDATA[Updated the version of the <code>maven-jomc-plugin</code> plugin
       from <code>1.2.3</code> to <code>1.2.4</code>.
-      See the <a href="http://jomc.sourceforge.net/jomc/1.2/maven-jomc-tools-1.2.4/changes-report.html">Changes report</a>.]]>
+      See the <a href="http://www.jomc.org/jomc/1.2/maven-jomc-tools-1.2.4/changes-report.html">Changes report</a>.]]>
       </action>
     </release>
     <!-- *********************************************************************************************************** -->
