@@ -2222,8 +2222,8 @@
       <url>http://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <site>
-      <id>jomc.sourceforge.net</id>
-      <name>JOMC Site</name>
+      <id>${jomc.artifacts.distribution.id}</id>
+      <name>${jomc.artifacts.distribution.name}</name>
       <url>${jomc.artifacts.distribution.url}</url>
     </site>
   </distributionManagement>
@@ -2247,6 +2247,21 @@
                   <groupId>org.apache.maven.wagon</groupId>
                   <artifactId>wagon-ssh</artifactId>
                   <version>${wagon.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-webdav-jackrabbit</artifactId>
+                  <version>${wagon.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>jcl-over-slf4j</artifactId>
+                  <version>${slf4j.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-simple</artifactId>
+                  <version>${slf4j.version}</version>
                 </dependency>
               </dependencies>
               <executions>
@@ -2569,6 +2584,7 @@
     <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
     <wagon.version>2.2</wagon.version>
+    <slf4j.version>1.6.4</slf4j.version>
     <umlgraph.version>5.6</umlgraph.version>
     <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
     <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
@@ -2586,8 +2602,14 @@
     <jomc-spi.artifact.version>2.0-SNAPSHOT</jomc-spi.artifact.version>
     <jomc-ri.artifact.version>2.0-SNAPSHOT</jomc-ri.artifact.version>
     <jomc-cli.artifact.version>2.0-SNAPSHOT</jomc-cli.artifact.version>
-    <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
-    <jomc.artifacts.distribution.base.url>scp://shell.sourceforge.net/home/project-web/jomc/htdocs</jomc.artifacts.distribution.base.url>
+    <jomc.frs.distribution.id>jomc.org</jomc.frs.distribution.id>
+    <jomc.frs.distribution.url>dav:http://www.jomc.org/frs</jomc.frs.distribution.url>
+    <jomc.xsd.distribution.id>jomc.org</jomc.xsd.distribution.id>
+    <jomc.xsd.distribution.url>dav:http://xml.jomc.org/</jomc.xsd.distribution.url>
+    <jomc.artifacts.url>http://www.jomc.org/jomc/${jomc.base.version}</jomc.artifacts.url>
+    <jomc.artifacts.distribution.id>jomc.org</jomc.artifacts.distribution.id>
+    <jomc.artifacts.distribution.name>JOMC Site</jomc.artifacts.distribution.name>
+    <jomc.artifacts.distribution.base.url>dav:http://www.jomc.org/</jomc.artifacts.distribution.base.url>
     <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
   </properties>
 </project>
