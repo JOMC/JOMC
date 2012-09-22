@@ -42,55 +42,32 @@
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>The JOMC Project</name>
-    <url>http://jomc.sourceforge.net</url>
+    <url>http://www.jomc.org</url>
   </organization>
   <licenses>
     <license>
       <name>The JOMC Project Copyright</name>
-      <url>http://jomc.sourceforge.net/LICENSE.txt</url>
+      <url>http://www.jomc.org/LICENSE.txt</url>
       <distribution>repo</distribution>
       <comments>Simplified BSD License.</comments>
     </license>
   </licenses>
   <developers>
     <developer>
-      <id>schulte2005</id>
+      <id>schulte</id>
       <name>Christian Schulte</name>
       <timezone>Europe/Berlin</timezone>
-      <email>schulte2005@users.sourceforge.net</email>
+      <email>cs@schulte.it</email>
     </developer>
   </developers>
   <issueManagement>
     <system>Trac</system>
-    <url>http://sourceforge.net/apps/trac/jomc</url>
+    <url>http://www.jomc.org/trac</url>
   </issueManagement>
-  <mailingLists>
-    <mailingList>
-      <name>jomc-users</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-users</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-users</unsubscribe>
-      <post>jomc-users@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-users</archive>
-    </mailingList>
-    <mailingList>
-      <name>jomc-svn</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-svn</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-svn</unsubscribe>
-      <post>jomc-svn@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-svn</archive>
-    </mailingList>
-    <mailingList>
-      <name>jomc-notifications</name>
-      <subscribe>http://jomc.sourceforge.net/project/listinfo?jomc-notifications</subscribe>
-      <unsubscribe>http://jomc.sourceforge.net/project/listinfo?jomc-notifications</unsubscribe>
-      <post>jomc-notifications@lists.sourceforge.net</post>
-      <archive>http://jomc.sourceforge.net/project/listarchive?jomc-notifications</archive>
-    </mailingList>
-  </mailingLists>
   <scm>
-    <connection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/branches/jomc-1.x</connection>
-    <developerConnection>scm:svn:https://jomc.svn.sourceforge.net/svnroot/jomc/jomc/branches/jomc-1.x</developerConnection>
-    <url>http://jomc.sourceforge.net/project/sources?jomc/branches/jomc-1.x</url>
+    <connection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/branches/jomc-1.x</connection>
+    <developerConnection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/branches/jomc-1.x</developerConnection>
+    <url>http://svn.jomc.org/jomc/branches/jomc-1.x</url>
   </scm>
   <build>
     <extensions>
@@ -451,17 +428,14 @@
                 <artifactId>maven-changes-plugin</artifactId>
                 <reportSets>
                   <reportSet>
-                    <id>default-changes-report</id>
+                    <id>default-trac-report</id>
                     <reports>
-                      <report>changes-report</report>
+                      <report>trac-report</report>
                     </reports>
                     <configuration>
-                      <issueLinkTemplatePerSystem>
-                        <MantisBT>http://sourceforge.net/apps/mantisbt/jomc/view.php?id=%ISSUE%</MantisBT>
-                        <Trac>http://sourceforge.net/apps/trac/jomc/ticket/%ISSUE%</Trac>
-                      </issueLinkTemplatePerSystem>
-                      <xmlPath>src/main/changes/changes.xml</xmlPath>
-                      <escapeHTML>false</escapeHTML>
+                      <query>order=id&amp;version=${project.version}&amp;component=${project.name}</query>
+                      <tracUser>${jomc.trac.username}</tracUser>
+                      <tracPassword>${jomc.trac.password}</tracPassword>
                     </configuration>
                   </reportSet>
                 </reportSets>
@@ -817,39 +791,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
           <version>${maven-dependency-plugin.artifact.version}</version>
-          <executions>
-            <execution>
-              <id>default-copy-dependencies</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>copy-dependencies</goal>
-              </goals>
-              <configuration>
-                <classifier>changes</classifier>
-                <failOnMissingClassifierArtifact>false</failOnMissingClassifierArtifact>
-                <includeGroupIds>org.jomc</includeGroupIds>
-                <outputDirectory>${project.build.directory}/jomc-changes</outputDirectory>
-                <type>xhtml</type>
-              </configuration>
-            </execution>
-            <execution>
-              <id>default-unpack</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>unpack</goal>
-              </goals>
-              <configuration>
-                <artifactItems>
-                  <artifactItem>
-                    <groupId>org.jomc.build</groupId>
-                    <artifactId>jomc-build-resources</artifactId>
-                    <version>${jomc.build.version}</version>
-                    <outputDirectory>${project.build.directory}/jomc-build-resources</outputDirectory>
-                  </artifactItem>
-                </artifactItems>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -919,20 +860,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-changes-plugin</artifactId>
           <version>${maven-changes-plugin.artifact.version}</version>
-          <executions>
-            <execution>
-              <id>default-changes-validate</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>changes-validate</goal>
-              </goals>
-            </execution>
-          </executions>
-          <configuration>
-            <failOnError>true</failOnError>
-            <xmlPath>src/main/changes/changes.xml</xmlPath>
-            <escapeHTML>false</escapeHTML>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -1051,19 +978,9 @@
               <configuration>
                 <artifacts>
                   <artifact>
-                    <file>src/main/changes/changes.xml</file>
-                    <type>xml</type>
-                    <classifier>changes</classifier>
-                  </artifact>
-                  <artifact>
                     <file>${basedir}/LICENSE.txt</file>
                     <type>txt</type>
                     <classifier>license</classifier>
-                  </artifact>
-                  <artifact>
-                    <file>${project.build.directory}/generated-resources/xml/xslt/changes.xml</file>
-                    <type>xhtml</type>
-                    <classifier>changes</classifier>
                   </artifact>
                 </artifacts>
               </configuration>
@@ -1074,54 +991,6 @@
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>xml-maven-plugin</artifactId>
           <version>${xml-maven-plugin.artifact.version}</version>
-          <executions>
-            <execution>
-              <id>default-transform</id>
-              <phase>prepare-package</phase>
-              <goals>
-                <goal>transform</goal>
-              </goals>
-              <configuration>
-                <transformationSets>
-                  <transformationSet>
-                    <stylesheet>${project.build.directory}/jomc-build-resources/org/jomc/build/resources/changes-report-1.0.0.xslt</stylesheet>
-                    <dir>src/main/changes</dir>
-                    <includes>
-                      <include>changes.xml</include>
-                    </includes>
-                    <parameters>
-                      <parameter>
-                        <name>project.name</name>
-                        <value>${project.name}</value>
-                      </parameter>
-                      <parameter>
-                        <name>project.version</name>
-                        <value>${project.version}</value>
-                      </parameter>
-                      <parameter>
-                        <name>project.date</name>
-                        <value>${build.date}</value>
-                      </parameter>
-                    </parameters>
-                  </transformationSet>
-                </transformationSets>
-              </configuration>
-            </execution>
-            <execution>
-              <id>default-validate</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>validate</goal>
-              </goals>
-              <configuration>
-                <validationSets>
-                  <validationSet>
-                    <dir>${project.build.directory}/generated-resources/xml/xslt</dir>
-                  </validationSet>
-                </validationSets>
-              </configuration>
-            </execution>
-          </executions>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -1314,18 +1183,6 @@
         <artifactId>maven-enforcer-plugin</artifactId>
       </plugin>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>xml-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
       </plugin>
@@ -1515,20 +1372,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-util</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-util.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-util</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-util.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-util</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-util.artifact.version}</version>
@@ -1590,20 +1433,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-modlet</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-modlet.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-modlet</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-modlet.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-modlet</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-modlet.artifact.version}</version>
@@ -1660,20 +1489,6 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-model</artifactId>
         <classifier>site</classifier>
-        <version>${jomc-model.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-model</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-model.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-model</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
         <version>${jomc-model.artifact.version}</version>
       </dependency>
       <dependency>
@@ -1746,20 +1561,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-tools</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-tools.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-tools</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-tools.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-tools</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-tools.artifact.version}</version>
@@ -1810,20 +1611,6 @@
         <groupId>org.jomc</groupId>
         <artifactId>maven-jomc-plugin</artifactId>
         <classifier>site</classifier>
-        <version>${maven-jomc-plugin.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${maven-jomc-plugin.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>maven-jomc-plugin</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
         <version>${maven-jomc-plugin.artifact.version}</version>
       </dependency>
       <dependency>
@@ -1891,20 +1678,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ant-tasks</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-ant-tasks.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-ant-tasks</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-ant-tasks.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-ant-tasks</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-ant-tasks.artifact.version}</version>
@@ -1955,20 +1728,6 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-api</artifactId>
         <classifier>site</classifier>
-        <version>${jomc-api.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-api</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-api.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-api</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
         <version>${jomc-api.artifact.version}</version>
       </dependency>
       <dependency>
@@ -2029,20 +1788,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-spi</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-spi.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-spi</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-spi.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-spi</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-spi.artifact.version}</version>
@@ -2093,20 +1838,6 @@
         <groupId>org.jomc</groupId>
         <artifactId>jomc-ri</artifactId>
         <classifier>site</classifier>
-        <version>${jomc-ri.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-ri</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-ri.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-ri</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
         <version>${jomc-ri.artifact.version}</version>
       </dependency>
       <dependency>
@@ -2173,20 +1904,6 @@
       <dependency>
         <groupId>org.jomc</groupId>
         <artifactId>jomc-cli</artifactId>
-        <classifier>changes</classifier>
-        <type>xhtml</type>
-        <version>${jomc-cli.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-cli</artifactId>
-        <classifier>changes</classifier>
-        <type>xml</type>
-        <version>${jomc-cli.artifact.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.jomc</groupId>
-        <artifactId>jomc-cli</artifactId>
         <classifier>license</classifier>
         <type>txt</type>
         <version>${jomc-cli.artifact.version}</version>
@@ -2222,8 +1939,8 @@
       <url>http://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
     <site>
-      <id>jomc.sourceforge.net</id>
-      <name>JOMC Site</name>
+      <id>${jomc.artifacts.distribution.id}</id>
+      <name>${jomc.artifacts.distribution.name}</name>
       <url>${jomc.artifacts.distribution.url}</url>
     </site>
   </distributionManagement>
@@ -2248,6 +1965,21 @@
                   <artifactId>wagon-ssh</artifactId>
                   <version>${wagon.version}</version>
                 </dependency>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-webdav-jackrabbit</artifactId>
+                  <version>${wagon.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>jcl-over-slf4j</artifactId>
+                  <version>${slf4j.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-simple</artifactId>
+                  <version>${slf4j.version}</version>
+                </dependency>
               </dependencies>
               <executions>
                 <execution>
@@ -2267,6 +1999,21 @@
                   <groupId>org.apache.maven.wagon</groupId>
                   <artifactId>wagon-ssh</artifactId>
                   <version>${wagon.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-webdav-jackrabbit</artifactId>
+                  <version>${wagon.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>jcl-over-slf4j</artifactId>
+                  <version>${slf4j.version}</version>
+                </dependency>
+                <dependency>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>slf4j-simple</artifactId>
+                  <version>${slf4j.version}</version>
                 </dependency>
               </dependencies>
             </plugin>
@@ -2532,10 +2279,10 @@
     -->
     <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
-    <maven-compiler-plugin.artifact.version>2.5</maven-compiler-plugin.artifact.version>
+    <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
     <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.5</maven-resources-plugin.artifact.version>
-    <maven-release-plugin.artifact.version>2.3.1</maven-release-plugin.artifact.version>
+    <maven-release-plugin.artifact.version>2.3.2</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
     <maven-gpg-plugin.artifact.version>1.4</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.2</maven-jarsigner-plugin.artifact.version>
@@ -2547,7 +2294,7 @@
     <maven-install-plugin.artifact.version>2.3.1</maven-install-plugin.artifact.version>
     <maven-source-plugin.artifact.version>2.1.2</maven-source-plugin.artifact.version>
     <maven-scm-plugin.artifact.version>1.7</maven-scm-plugin.artifact.version>
-    <maven-changes-plugin.artifact.version>2.7.1</maven-changes-plugin.artifact.version>
+    <maven-changes-plugin.artifact.version>2.7.1</maven-changes-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MCHANGES-289 -->
     <maven-enforcer-plugin.artifact.version>1.1</maven-enforcer-plugin.artifact.version>
     <maven-project-info-reports-plugin.artifact.version>2.4</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.3</maven-jxr-plugin.artifact.version>
@@ -2558,17 +2305,18 @@
     <build-helper-maven-plugin.artifact.version>1.7</build-helper-maven-plugin.artifact.version>
     <xml-maven-plugin.artifact.version>1.0</xml-maven-plugin.artifact.version>
     <clirr-maven-plugin.artifact.version>2.4</clirr-maven-plugin.artifact.version>
-    <findbugs-maven-plugin.artifact.version>2.4.0</findbugs-maven-plugin.artifact.version>
+    <findbugs-maven-plugin.artifact.version>2.5</findbugs-maven-plugin.artifact.version>
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.8.1</maven-jaxb21-plugin.artifact.version>
     <maven-shade-plugin.artifact.version>1.6</maven-shade-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSHADE-121 -->
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
-    <animal-sniffer.version>1.7</animal-sniffer.version>
+    <animal-sniffer.version>1.8</animal-sniffer.version>
     <surefire.version>2.12</surefire.version>
     <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
     <wagon.version>2.2</wagon.version>
+    <slf4j.version>1.6.4</slf4j.version>
     <umlgraph.version>5.6</umlgraph.version>
     <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
     <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
@@ -2586,8 +2334,14 @@
     <jomc-spi.artifact.version>1.4-SNAPSHOT</jomc-spi.artifact.version>
     <jomc-ri.artifact.version>1.4-SNAPSHOT</jomc-ri.artifact.version>
     <jomc-cli.artifact.version>1.4-SNAPSHOT</jomc-cli.artifact.version>
-    <jomc.artifacts.url>http://jomc.sourceforge.net/jomc/${jomc.base.version}</jomc.artifacts.url>
-    <jomc.artifacts.distribution.base.url>scp://shell.sourceforge.net/home/project-web/jomc/htdocs</jomc.artifacts.distribution.base.url>
+    <jomc.frs.distribution.id>jomc.org</jomc.frs.distribution.id>
+    <jomc.frs.distribution.url>dav:http://frs.jomc.org/</jomc.frs.distribution.url>
+    <jomc.xsd.distribution.id>jomc.org</jomc.xsd.distribution.id>
+    <jomc.xsd.distribution.url>dav:http://xml.jomc.org/</jomc.xsd.distribution.url>
+    <jomc.artifacts.url>http://www.jomc.org/jomc/${jomc.base.version}</jomc.artifacts.url>
+    <jomc.artifacts.distribution.id>jomc.org</jomc.artifacts.distribution.id>
+    <jomc.artifacts.distribution.name>JOMC Site</jomc.artifacts.distribution.name>
+    <jomc.artifacts.distribution.base.url>dav:http://www.jomc.org/</jomc.artifacts.distribution.base.url>
     <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
   </properties>
 </project>

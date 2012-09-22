@@ -46,7 +46,7 @@ package org.jomc.ri.model;
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>
  *
- * @author <a href="mailto:schulte2005@users.sourceforge.net">Christian Schulte</a> 1.2
+ * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.2
  * @version 1.2
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(RuntimeModelObject[].class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(RuntimeModelObject.class, "<i>implementation name</i>")
@@ -56,7 +56,7 @@ package org.jomc.ri.model;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://jomc.sourceforge.net/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public interface RuntimeModelObject

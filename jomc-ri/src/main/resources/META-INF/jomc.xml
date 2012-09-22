@@ -32,7 +32,7 @@
 -->
 <module xmlns="http://jomc.org/model"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://jomc.org/model http://jomc.sourceforge.net/model/jomc-1.2.xsd"
+        xsi:schemaLocation="http://jomc.org/model http://xml.jomc.org/model/jomc-1.2.xsd"
         name="${project.name}" version="${project.version}" vendor="${project.organization.name}" modelVersion="1.2">
 
   <documentation defaultLanguage="en">
@@ -48,7 +48,7 @@
         <text language="en">Runtime model object.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -64,7 +64,7 @@
         <text language="en" type="text/x-javadoc">Default {@code ObjectManager} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -439,7 +439,7 @@
         <text language="en" type="text/x-javadoc">Default {@code Locator} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -474,7 +474,7 @@
         <text language="en" type="text/x-javadoc">Default {@code Scope} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -488,7 +488,7 @@
         <text language="en" type="text/x-javadoc">Default {@code Invoker} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -503,7 +503,7 @@
         <text language="en" type="text/x-javadoc">Default {@code Invocation} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.0" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.0" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -518,7 +518,7 @@
         <text language="en" type="text/x-javadoc">Default {@code Listener} implementation.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.1" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.1" mail="cs@schulte.it"
                 createDate="2005-07-25T19:56:45Z"/>
 
       </authors>
@@ -533,7 +533,7 @@
         <text language="en">Runtime model objects.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -548,7 +548,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Argument}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -566,7 +566,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Arguments}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -584,7 +584,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Authors}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -602,7 +602,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Author}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -620,7 +620,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Dependencies}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -638,7 +638,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Dependency}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -657,7 +657,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Implementations}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -675,7 +675,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Implementation}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -694,7 +694,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code ImplementationReference}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -712,7 +712,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Instances}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -730,7 +730,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Instance}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -748,7 +748,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Messages}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -766,7 +766,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Message}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -785,7 +785,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code MessageReference}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -803,7 +803,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Modules}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -821,7 +821,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Module}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -839,7 +839,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Persons}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -857,7 +857,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Person}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -875,7 +875,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Properties}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -893,7 +893,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Property}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -912,7 +912,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code PropertyReference}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -930,7 +930,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Specifications}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -948,7 +948,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Specification}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -967,7 +967,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code SpecificationReference}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -985,7 +985,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Texts}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
@@ -1003,7 +1003,7 @@
         <text language="en" type="text/x-javadoc">Runtime {@code Text}.</text>
       </documentation>
       <authors>
-        <author name="Christian Schulte" version="1.2" mail="schulte2005@users.sourceforge.net"
+        <author name="Christian Schulte" version="1.2" mail="cs@schulte.it"
                 createDate="2011-11-09T10:39:21Z"/>
 
       </authors>
