@@ -2325,7 +2325,7 @@
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.8.2</maven-jaxb21-plugin.artifact.version>
-    <maven-shade-plugin.artifact.version>1.7.1</maven-shade-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSHADE-121 -->
+    <maven-shade-plugin.artifact.version>2.0</maven-shade-plugin.artifact.version>
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
     <animal-sniffer.version>1.8</animal-sniffer.version>
     <surefire.version>2.12.3</surefire.version>
