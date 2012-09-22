@@ -72,8 +72,8 @@ _gaq.push(['_trackPageview']);
     </head>
     <menu name="JOMC" inherit="top">
       <item name="Home" href="${project.url}/index.html"/>
-      <item name="Download" href="${project.url}/project/files"/>
-      <item name="Issues" href="${project.url}/project/issues"/>
+      <item name="Download" href="http://www.jomc.org/project/files"/>
+      <item name="Issues" href="http://www.jomc.org/project/issues"/>
     </menu>
     <menu name="Modules">
       <item name="API" href="${project.url}/jomc-api/index.html"/>
