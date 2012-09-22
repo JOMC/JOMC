@@ -2605,7 +2605,7 @@
     <jomc-ri.artifact.version>2.0-SNAPSHOT</jomc-ri.artifact.version>
     <jomc-cli.artifact.version>2.0-SNAPSHOT</jomc-cli.artifact.version>
     <jomc.frs.distribution.id>jomc.org</jomc.frs.distribution.id>
-    <jomc.frs.distribution.url>dav:http://www.jomc.org/frs</jomc.frs.distribution.url>
+    <jomc.frs.distribution.url>dav:http://frs.jomc.org/</jomc.frs.distribution.url>
     <jomc.xsd.distribution.id>jomc.org</jomc.xsd.distribution.id>
     <jomc.xsd.distribution.url>dav:http://xml.jomc.org/</jomc.xsd.distribution.url>
     <jomc.artifacts.url>http://www.jomc.org/jomc/${jomc.base.version}</jomc.artifacts.url>
