@@ -38,7 +38,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-spi</artifactId>
-  <name>JOMC SPI</name>
+  <name>JOMC :: SPI</name>
   <description>Object management and configuration implementation programming interface.</description>
   <url>${jomc.artifacts.url}/${project.artifactId}-${project.version}</url>
   <build>
