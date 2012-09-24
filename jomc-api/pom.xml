@@ -38,7 +38,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-api</artifactId>
-  <name>JOMC API</name>
+  <name>JOMC :: API</name>
   <description>Object management and configuration application programming interface.</description>
   <url>${jomc.artifacts.url}/${project.artifactId}-${project.version}</url>
   <build>
