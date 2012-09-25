@@ -433,7 +433,7 @@
                       <report>trac-report</report>
                     </reports>
                     <configuration>
-                      <query>order=id&amp;version=${project.version}&amp;component=${project.name}</query>
+                      <query>order=id&amp;version=${project.version}&amp;component=JOMC|${project.name}</query>
                       <tracUser>${jomc.trac.username}</tracUser>
                       <tracPassword>${jomc.trac.password}</tracPassword>
                     </configuration>
