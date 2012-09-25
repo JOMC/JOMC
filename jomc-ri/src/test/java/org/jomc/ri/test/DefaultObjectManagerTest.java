@@ -60,7 +60,7 @@ import static org.junit.Assert.fail;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Default Object Manager Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
