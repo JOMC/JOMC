@@ -42,7 +42,7 @@ package org.jomc;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ObjectManagementException</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: API</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>Yes</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
