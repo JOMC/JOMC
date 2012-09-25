@@ -95,7 +95,7 @@ import org.jomc.util.WeakIdentityHashMap;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultObjectManager</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.ObjectManager @ 1.0</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>

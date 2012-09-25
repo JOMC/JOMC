@@ -44,7 +44,7 @@ import org.jomc.model.Module;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeModule</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI RuntimeModule</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI RuntimeModule</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.ri.model.RuntimeModelObject @ 1.2</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>

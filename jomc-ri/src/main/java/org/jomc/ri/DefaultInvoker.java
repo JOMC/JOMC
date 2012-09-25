@@ -47,7 +47,7 @@ import org.jomc.spi.Invoker;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultInvoker</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC :: RI</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
