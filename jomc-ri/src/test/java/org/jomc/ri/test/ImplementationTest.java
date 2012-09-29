@@ -42,17 +42,17 @@ import static org.junit.Assert.assertNull;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Implementation {@code <JOMC :: RI :: Tests :: Implementation Test>}.
+ * Implementation {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>}.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Implementation Test</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Implementation Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC :: RI :: Tests :: Test Multiton Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Scope Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Singleton Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Specification Many @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC :: RI :: Tests :: Test Specification One @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Multiton Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Singleton Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Specification Many @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Specification One @ 2.0-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -288,7 +288,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <BoundMultitons>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
@@ -308,7 +308,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <BoundSingletons>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
@@ -328,7 +328,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <InvokerTestSpecification>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Invoker Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Invoker Test Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Invoker Test Implementation>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Invoker Test Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
@@ -367,7 +367,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <SelectedBoundMultiton>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
@@ -387,7 +387,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <SelectedBoundSingleton>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
@@ -407,7 +407,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <SelectedUnboundMultiton>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
      * <dl>
@@ -427,7 +427,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <SelectedUnboundSingleton>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Implementation Test>} object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested.
      * </p>
      * <dl>
@@ -447,7 +447,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <UnboundMultitons>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Multiton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification does not apply to any scope. A new object is returned whenever requested.
      * </p>
      * <dl>
@@ -467,7 +467,7 @@ public class ImplementationTest
     /**
      * Gets the {@code <UnboundSingletons>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC :: RI :: Tests :: Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Singleton Specification>} specification at specification level 2.0-SNAPSHOT.
      *   That specification applies to {@code <Singleton>} scope. The singleton object is returned whenever requested.
      * </p>
      * <dl>

@@ -1165,6 +1165,7 @@
             </execution>
           </executions>
           <configuration>
+            <testModuleName>${project.name} ⁑ Tests</testModuleName>
             <templateParameters>
               <templateParameter>
                 <key>with-project-name</key>

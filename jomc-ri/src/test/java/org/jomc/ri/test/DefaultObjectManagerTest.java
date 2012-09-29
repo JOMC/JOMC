@@ -59,8 +59,8 @@ import static org.junit.Assert.fail;
  * Test cases for the {@code DefaultObjectManager} class.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Default Object Manager Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC :: RI</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Default Object Manager Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Default Object Manager Test</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -409,15 +409,15 @@ public class DefaultObjectManagerTest
         assertNotNull( this.getObjectManager().getModules( this.getClass().getClassLoader() ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationOne.class,
-                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+                                                          "JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test" ) );
 
         assertNotNull( this.getObjectManager().getObject( TestSpecificationMany[].class ) );
         assertNotNull( this.getObjectManager().getObject( TestSpecificationMany.class,
-                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+                                                          "JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test" ) );
 
         assertNotNull( this.getObjectManager().getObject( TestScopeSpecification[].class ) );
         assertNotNull( this.getObjectManager().getObject( TestScopeSpecification.class,
-                                                          "JOMC :: RI :: Tests :: Implementation Test" ) );
+                                                          "JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test" ) );
 
     }
 
@@ -435,10 +435,10 @@ public class DefaultObjectManagerTest
         assertNull( this.getObjectManager().getProperty( this, "DOES NOT EXIST" ) );
         assertNull( this.getObjectManager().getMessage( this, "DOES NOT EXIST", Locale.getDefault() ) );
         assertNull( this.getObjectManager().getObject( TestSpecificationOneMore.class,
-                                                       "JOMC :: RI :: Tests :: Illegal Location Implementation" ) );
+                                                       "JOMC ⁑ RI ⁑ Tests ⁑ Illegal Location Implementation" ) );
 
         assertNull( this.getObjectManager().getObject( TestScopeSpecification.class,
-                                                       "JOMC :: RI :: Tests :: Illegal Location Implementation" ) );
+                                                       "JOMC ⁑ RI ⁑ Tests ⁑ Illegal Location Implementation" ) );
 
     }
 

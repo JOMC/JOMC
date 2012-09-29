@@ -44,8 +44,8 @@ import static org.junit.Assert.assertEquals;
  * Override test cases.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation Tests</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation Tests</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation Tests</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation Tests</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -133,7 +133,7 @@ public class OverrideTestImplementationTest
     /**
      * Gets the {@code <Override Test Specification>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Override Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Override Test Specification>} specification at any specification level.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * <p><strong>Properties:</strong>

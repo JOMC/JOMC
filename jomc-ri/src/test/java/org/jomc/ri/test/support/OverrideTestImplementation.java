@@ -43,10 +43,10 @@ import java.util.Locale;
  * Override Test Implementation.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Override Test Implementation</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC :: RI :: Tests :: Override Test Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Specification @ 2.0-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
@@ -103,7 +103,7 @@ public class OverrideTestImplementation
     /**
      * Gets the {@code <dependencyImpl>} dependency.
      * <p>
-     *   This method returns the {@code <JOMC :: RI :: Tests :: Override Test Implementation>} object of the {@code <JOMC :: RI :: Tests :: Override Test Specification>} specification at any specification level.
+     *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
      * </p>
      * <dl>
