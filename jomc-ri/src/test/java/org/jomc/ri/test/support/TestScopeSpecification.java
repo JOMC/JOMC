@@ -40,12 +40,12 @@ import java.lang.*;
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
- * Specification {@code <JOMC :: RI :: Tests :: Test Scope Specification>}.
+ * Specification {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification>}.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Test Scope Specification</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>Many</dd>
- *   <dt><b>Scope:</b></dt><dd>Test</dd>
+ *   <dt><b>Scope:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope</dd>
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0

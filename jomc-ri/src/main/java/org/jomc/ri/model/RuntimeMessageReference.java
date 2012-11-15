@@ -44,7 +44,7 @@ import org.jomc.model.MessageReference;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeMessageReference</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI RuntimeMessageReference</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; RuntimeMessageReference</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.ri.model.RuntimeModelObject @ 1.2</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>

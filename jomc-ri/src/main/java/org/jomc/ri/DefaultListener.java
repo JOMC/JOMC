@@ -51,7 +51,7 @@ import org.jomc.spi.Listener;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultListener</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; DefaultListener</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

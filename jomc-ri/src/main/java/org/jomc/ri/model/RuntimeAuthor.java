@@ -44,7 +44,7 @@ import org.jomc.model.Author;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.model.RuntimeAuthor</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC RI RuntimeAuthor</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; RuntimeAuthor</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.ri.model.RuntimeModelObject @ 1.2</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>

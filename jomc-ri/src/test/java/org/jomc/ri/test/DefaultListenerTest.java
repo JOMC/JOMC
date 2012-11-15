@@ -46,8 +46,8 @@ import static org.junit.Assert.assertTrue;
  * {@code DefaultListener} test cases.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC :: RI :: Tests :: Default Listener Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC :: RI :: Tests :: Default Listener Test</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Default Listener Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Default Listener Test</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

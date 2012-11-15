@@ -45,7 +45,7 @@ import org.jomc.ObjectManager;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.test.support.UnsupportedOperationExceptionObjectManager</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC API</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC &#8273; API</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.ObjectManager @ 1.0</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
