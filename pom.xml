@@ -83,13 +83,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven-compiler-plugin.artifact.version}</version>
-          <configuration>
-            <optimize>true</optimize>
-            <showDeprecation>true</showDeprecation>
-            <showWarnings>true</showWarnings>
-            <source>1.5</source>
-            <target>1.5</target>
-          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -217,7 +210,7 @@
                   <keywords>true</keywords>
                   <linksource>true</linksource>
                   <serialwarn>true</serialwarn>
-                  <source>1.5</source>
+                  <source>${maven.compiler.source}</source>
                   <doctitle>${project.name} ${project.version}</doctitle>
                   <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
                   <windowtitle>${project.name} ${project.version}</windowtitle>
@@ -243,6 +236,7 @@
                       <version>${plexuscontainers.version}</version>
                     </tagletArtifact>
                   </tagletArtifacts>
+                  <additionalJOption>${maven.javadoc.additionalJOption}</additionalJOption>
                   <additionalparam>-inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10 -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected</additionalparam>
                   <groups>
                     <group>
@@ -392,7 +386,7 @@
                 </reportSets>
                 <configuration>
                   <format>none</format>
-                  <targetJdk>1.5</targetJdk>
+                  <targetJdk>${maven.compiler.target}</targetJdk>
                 </configuration>
               </reportPlugin>
               <reportPlugin>
@@ -452,7 +446,7 @@
                   </reportSet>
                 </reportSets>
                 <configuration>
-                  <maxHeap>256</maxHeap>
+                  <jvmArgs>${mojo.findbugs.jvmArgs}</jvmArgs>
                 </configuration>
               </reportPlugin>
               <reportPlugin>
@@ -553,6 +547,8 @@
             <goals>deploy</goals>
             <useReleaseProfile>false</useReleaseProfile>
             <releaseProfiles>jomc-release</releaseProfiles>
+            <remoteTagging>false</remoteTagging>
+            <suppressCommitBeforeTag>true</suppressCommitBeforeTag>
           </configuration>
         </plugin>
         <plugin>
@@ -585,6 +581,9 @@
               <excludeClassifier>bin</excludeClassifier>
             </excludeClassifiers>
             <arguments>
+              <argument>-J-client</argument>
+              <argument>-J-Dfile.encoding=${file.encoding}</argument>
+              <argument>-J-Djsse.enableSNIExtension=false</argument>
               <argument>-digestalg</argument>
               <argument>SHA-256</argument>
               <argument>-tsa</argument>
@@ -620,7 +619,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>${surefire.version}</version>
           <configuration>
-            <argLine>-client -Xmx256m</argLine>
+            <argLine>${maven.surefire.argLine}</argLine>
             <forkMode>once</forkMode>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <runOrder>random</runOrder>
@@ -657,7 +656,7 @@
             <keywords>true</keywords>
             <linksource>true</linksource>
             <serialwarn>true</serialwarn>
-            <source>1.5</source>
+            <source>${maven.compiler.source}</source>
             <doctitle>${project.name} ${project.version}</doctitle>
             <testDoctitle>${project.name} Tests ${project.version}</testDoctitle>
             <windowtitle>${project.name} ${project.version}</windowtitle>
@@ -765,6 +764,7 @@
                 <version>${plexuscontainers.version}</version>
               </tagletArtifact>
             </tagletArtifacts>
+            <additionalJOption>${maven.javadoc.additionalJOption}</additionalJOption>
             <additionalparam>-inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10 -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected</additionalparam>
             <archive>
               <index>true</index>
@@ -924,7 +924,7 @@
           <artifactId>maven-pmd-plugin</artifactId>
           <version>${maven-pmd-plugin.artifact.version}</version>
           <configuration>
-            <targetJdk>1.5</targetJdk>
+            <targetJdk>${maven.compiler.target}</targetJdk>
           </configuration>
         </plugin>
         <plugin>
@@ -1030,7 +1030,7 @@
           <artifactId>findbugs-maven-plugin</artifactId>
           <version>${findbugs-maven-plugin.artifact.version}</version>
           <configuration>
-            <maxHeap>256</maxHeap>
+            <jvmArgs>${mojo.findbugs.jvmArgs}</jvmArgs>
           </configuration>
         </plugin>
         <plugin>
@@ -2268,18 +2268,18 @@
     </profile>
   </profiles>
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
-    <xjcTestOutputDirectory>${project.build.directory}/generated-test-sources/jaxb</xjcTestOutputDirectory>
-    <!--
-    Netbeans IDE earlier than 7.1: http://netbeans.org/bugzilla/show_bug.cgi?id=187595
-    <xjcTestOutputDirectory>${project.build.directory}/generated-sources/jaxb-test</xjcTestOutputDirectory>
-    -->
-    <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
-    <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
-    <assembly.useJvmChmod>true</assembly.useJvmChmod>
-    <dependency.useJvmChmod>true</dependency.useJvmChmod>
+    <!-- Artifact versions. -->
+    <animal-sniffer.version>1.9</animal-sniffer.version>
+    <surefire.version>2.12.4</surefire.version>
+    <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
+    <plexuscontainers.version>1.5.5</plexuscontainers.version>
+    <wagon.version>2.2</wagon.version>
+    <slf4j.version>1.6.4</slf4j.version>
+    <umlgraph.version>5.6</umlgraph.version>
+    <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
+    <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
+    <jomc.build.version>1.8</jomc.build.version>
+    <!-- Plugin versions. -->
     <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
     <maven-site-plugin.artifact.version>3.2</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.6</maven-resources-plugin.artifact.version>
@@ -2312,16 +2312,25 @@
     <maven-jaxb21-plugin.artifact.version>0.8.2</maven-jaxb21-plugin.artifact.version>
     <maven-shade-plugin.artifact.version>2.0</maven-shade-plugin.artifact.version>
     <maven-assembly-plugin.artifact.version>2.3</maven-assembly-plugin.artifact.version>
-    <animal-sniffer.version>1.9</animal-sniffer.version>
-    <surefire.version>2.12.4</surefire.version>
-    <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
-    <plexuscontainers.version>1.5.5</plexuscontainers.version>
-    <wagon.version>2.2</wagon.version>
-    <slf4j.version>1.6.4</slf4j.version>
-    <umlgraph.version>5.6</umlgraph.version>
-    <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
-    <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
-    <jomc.build.version>1.8</jomc.build.version>
+    <!-- Plugin parameters. -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <xjcOutputDirectory>${project.build.directory}/generated-sources/jaxb</xjcOutputDirectory>
+    <xjcTestOutputDirectory>${project.build.directory}/generated-test-sources/jaxb</xjcTestOutputDirectory>
+    <javaccOutputDirectory>${project.build.directory}/generated-sources/javacc</javaccOutputDirectory>
+    <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
+    <assembly.useJvmChmod>true</assembly.useJvmChmod>
+    <dependency.useJvmChmod>true</dependency.useJvmChmod>
+    <jarsigner.maxMemory>256m</jarsigner.maxMemory>
+    <maven.compiler.optimize>true</maven.compiler.optimize>
+    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+    <maven.compiler.source>1.5</maven.compiler.source>
+    <maven.compiler.target>1.5</maven.compiler.target>
+    <maven.javadoc.additionalJOption>-J-client -J-Xms256m -J-Xmx256m -J-Dfile.encoding=${file.encoding}</maven.javadoc.additionalJOption>
+    <maven.surefire.argLine>-client -Xms256m -Xmx256m -Dfile.encoding=${file.encoding}</maven.surefire.argLine>
+    <mojo.findbugs.jvmArgs>-client -Xms256m -Xmx256m -Dfile.encoding=${file.encoding}</mojo.findbugs.jvmArgs>
+    <!-- Parent -->
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.4</jomc.base.version>
@@ -2335,12 +2344,12 @@
     <jomc-spi.artifact.version>1.4-SNAPSHOT</jomc-spi.artifact.version>
     <jomc-ri.artifact.version>1.4-SNAPSHOT</jomc-ri.artifact.version>
     <jomc-cli.artifact.version>1.4-SNAPSHOT</jomc-cli.artifact.version>
-    <jomc.frs.distribution.id>jomc.org</jomc.frs.distribution.id>
+    <jomc.frs.distribution.id>frs.jomc.org</jomc.frs.distribution.id>
     <jomc.frs.distribution.url>dav:http://frs.jomc.org/</jomc.frs.distribution.url>
-    <jomc.xsd.distribution.id>jomc.org</jomc.xsd.distribution.id>
-    <jomc.xsd.distribution.url>dav:http://xml.jomc.org/</jomc.xsd.distribution.url>
+    <jomc.xml.distribution.id>xml.jomc.org</jomc.xml.distribution.id>
+    <jomc.xml.distribution.url>dav:http://xml.jomc.org/</jomc.xml.distribution.url>
     <jomc.artifacts.url>http://www.jomc.org/jomc/${jomc.base.version}</jomc.artifacts.url>
-    <jomc.artifacts.distribution.id>jomc.org</jomc.artifacts.distribution.id>
+    <jomc.artifacts.distribution.id>www.jomc.org</jomc.artifacts.distribution.id>
     <jomc.artifacts.distribution.name>JOMC Site</jomc.artifacts.distribution.name>
     <jomc.artifacts.distribution.base.url>dav:http://www.jomc.org/</jomc.artifacts.distribution.base.url>
     <jomc.artifacts.distribution.url>${jomc.artifacts.distribution.base.url}/jomc/${jomc.base.version}</jomc.artifacts.distribution.url>
