@@ -2266,7 +2266,7 @@
     <jomc.build.version>1.8</jomc.build.version>
     <!-- Plugin versions. -->
     <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
-    <maven-site-plugin.artifact.version>3.2</maven-site-plugin.artifact.version>
+    <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSITE-665 -->
     <maven-resources-plugin.artifact.version>2.6</maven-resources-plugin.artifact.version>
     <maven-release-plugin.artifact.version>2.3.2</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
