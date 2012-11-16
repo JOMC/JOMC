@@ -582,6 +582,9 @@
             </excludeClassifiers>
             <arguments>
               <argument>-J-client</argument>
+              <argument>-J-Xms32m</argument>
+              <argument>-J-Xmx32m</argument>
+              <argument>-J-Xss2m</argument>
               <argument>-J-Dfile.encoding=${file.encoding}</argument>
               <argument>-J-Djsse.enableSNIExtension=false</argument>
               <argument>-digestalg</argument>
@@ -2263,7 +2266,7 @@
     <jomc.build.version>1.8</jomc.build.version>
     <!-- Plugin versions. -->
     <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
-    <maven-site-plugin.artifact.version>3.2</maven-site-plugin.artifact.version>
+    <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSITE-665 -->
     <maven-resources-plugin.artifact.version>2.6</maven-resources-plugin.artifact.version>
     <maven-release-plugin.artifact.version>2.3.2</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.4</maven-jar-plugin.artifact.version>
@@ -2303,15 +2306,14 @@
     <remoteResourcesOutputDirectory>${project.build.directory}/maven-shared-archive-resources</remoteResourcesOutputDirectory>
     <assembly.useJvmChmod>true</assembly.useJvmChmod>
     <dependency.useJvmChmod>true</dependency.useJvmChmod>
-    <jarsigner.maxMemory>256m</jarsigner.maxMemory>
     <maven.compiler.optimize>true</maven.compiler.optimize>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.compiler.source>1.5</maven.compiler.source>
     <maven.compiler.target>1.5</maven.compiler.target>
-    <maven.javadoc.additionalJOption>-J-client -J-Xms256m -J-Xmx256m -J-Dfile.encoding=${file.encoding}</maven.javadoc.additionalJOption>
-    <maven.surefire.argLine>-client -Xms256m -Xmx256m -Dfile.encoding=${file.encoding}</maven.surefire.argLine>
-    <mojo.findbugs.jvmArgs>-client -Xms256m -Xmx256m -Dfile.encoding=${file.encoding}</mojo.findbugs.jvmArgs>
+    <maven.javadoc.additionalJOption>-J-client -J-Xms32m -J-Xmx32m -J-Xss2m -J-Dfile.encoding=${file.encoding}</maven.javadoc.additionalJOption>
+    <maven.surefire.argLine>-client -Xms32m -Xmx32m -Xss2m -Dfile.encoding=${file.encoding}</maven.surefire.argLine>
+    <mojo.findbugs.jvmArgs>-client -Xms32m -Xmx32m -Xss2m -Dfile.encoding=${file.encoding}</mojo.findbugs.jvmArgs>
     <!-- Parent -->
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
