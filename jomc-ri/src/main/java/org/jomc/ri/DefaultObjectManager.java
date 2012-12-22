@@ -1132,7 +1132,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code classLoader} is {@code null}.
      *
-     * @see #getDefaultListener()
+     * @see #getDefaultListener(org.jomc.model.Modules)
      *
      * @since 1.1
      */
@@ -2217,7 +2217,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code classLoader} or {@code identifier} is {@code null}.
      * @throws InstantiationException if instantiating a scope fails.
      *
-     * @see #getDefaultScope(java.lang.String)
+     * @see #getDefaultScope(org.jomc.model.Modules, java.lang.String)
      */
     public Scope getScope( final String identifier, final ClassLoader classLoader ) throws InstantiationException
     {
@@ -2362,7 +2362,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code classLoader} or {@code location} is {@code null}.
      * @throws InstantiationException if instantiating a locator fails.
      *
-     * @see #getDefaultLocator(java.net.URI)
+     * @see #getDefaultLocator(org.jomc.model.Modules, java.net.URI)
      */
     public Locator getLocator( final URI location, final ClassLoader classLoader ) throws InstantiationException
     {
@@ -2517,7 +2517,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws NullPointerException if {@code classLoader} is {@code null}.
      * @throws InstantiationException if instantiating a new invoker fails.
      *
-     * @see #getDefaultInvoker()
+     * @see #getDefaultInvoker(org.jomc.model.Modules)
      */
     public Invoker getInvoker( final ClassLoader classLoader ) throws InstantiationException
     {
@@ -2646,7 +2646,7 @@ public class DefaultObjectManager implements ObjectManager
      * {@code null}.
      * @throws InstantiationException if instantiating a new invocation fails.
      *
-     * @see #getDefaultInvocation()
+     * @see #getDefaultInvocation(org.jomc.model.Modules)
      *
      * @since 1.1
      */
@@ -2739,7 +2739,7 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code model} is {@code null}.
      *
-     * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
+     * @see #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
      *
      * @since 1.2
      */
