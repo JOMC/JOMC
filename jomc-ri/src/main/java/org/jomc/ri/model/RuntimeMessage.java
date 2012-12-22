@@ -40,6 +40,7 @@ import java.util.Locale;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Message;
+import org.jomc.model.ModelObjectException;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 
 // SECTION-START[Documentation]
@@ -117,12 +118,14 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
      * @return A Java {@code MessageFormat} instance for {@code locale}.
      *
      * @throws NullPointerException if {@code locale} is {@code null}.
+     * @throws ModelObjectException if compiling the template of the message for {@code locale} to a
+     * {@code MessageFormat} fails.
      *
      * @see #getTemplate()
      * @see #clear()
      */
     @Override
-    public MessageFormat getJavaMessage( final Locale locale )
+    public MessageFormat getJavaMessage( final Locale locale ) throws ModelObjectException
     {
         if ( locale == null )
         {

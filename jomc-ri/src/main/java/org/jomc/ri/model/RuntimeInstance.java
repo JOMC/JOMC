@@ -42,6 +42,8 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Instance;
+import org.jomc.model.JavaTypeName;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Specification;
 import org.jomc.util.WeakIdentityHashMap;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
@@ -106,6 +108,10 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
     @XmlTransient
     private volatile String javaClassFactoryMethodName;
 
+    /** Java type name. */
+    @XmlTransient
+    private volatile JavaTypeName javaTypeName;
+
     /**
      * Creates a new {@code RuntimeInstance} instance by deeply copying a given {@code Instance} instance.
      *
@@ -157,45 +163,51 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @return The Java class of the instance.
      *
      * @throws ClassNotFoundException if the Java class is not found.
+     * @throws ModelObjectException if parsing the name of the referenced type fails.
      *
      * @see #getClazz()
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Class<?> getJavaClass( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Class<?> getJavaClass( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
-        ClassLoader classLoaderKey = classLoader;
-        if ( classLoaderKey == null )
+        Class<?> javaClass = null;
+
+        if ( this.getJavaTypeName() != null )
         {
-            classLoaderKey = BOOTSTRAP_CLASSLOADER_KEY;
+            ClassLoader classLoaderKey = classLoader;
+            if ( classLoaderKey == null )
+            {
+                classLoaderKey = BOOTSTRAP_CLASSLOADER_KEY;
+            }
+
+            synchronized ( classesByClassLoaderAndNameCache )
+            {
+                Map<String, Reference<Class<?>>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
+
+                if ( map == null )
+                {
+                    map = createMap();
+                    classesByClassLoaderAndNameCache.put( classLoaderKey, map );
+                }
+
+                final Reference<Class<?>> reference = map.get( this.getJavaTypeName().getClassName() );
+
+                if ( reference != null )
+                {
+                    javaClass = reference.get();
+                }
+
+                if ( javaClass == null )
+                {
+                    javaClass = super.getJavaClass( classLoader );
+                    map.put( this.getJavaTypeName().getClassName(), new WeakReference<Class<?>>( javaClass ) );
+                }
+            }
         }
 
-        synchronized ( classesByClassLoaderAndNameCache )
-        {
-            Class<?> javaClass = null;
-            Map<String, Reference<Class<?>>> map = classesByClassLoaderAndNameCache.get( classLoaderKey );
-
-            if ( map == null )
-            {
-                map = createMap();
-                classesByClassLoaderAndNameCache.put( classLoaderKey, map );
-            }
-
-            final Reference<Class<?>> reference = map.get( this.getClazz() );
-
-            if ( reference != null )
-            {
-                javaClass = reference.get();
-            }
-
-            if ( javaClass == null )
-            {
-                javaClass = super.getJavaClass( classLoader );
-                map.put( this.getClazz(), new WeakReference<Class<?>>( javaClass ) );
-            }
-
-            return javaClass;
-        }
+        return javaClass;
     }
 
     /**
@@ -213,13 +225,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @return The Java classes of all specifications of the instance.
      *
      * @throws ClassNotFoundException if a Java class is not found.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getSpecifications()
      * @see Specification#getClazz()
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Class<?>[] getJavaClasses( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Class<?>[] getJavaClasses( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -271,12 +285,14 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * does not declare such a constructor, is abstract or is not public.
      *
      * @throws ClassNotFoundException if the Java class is not found.
+     * @throws ModelObjectException if parsing the name of the type referenced by the instance fails.
      *
      * @see #getJavaClass(java.lang.ClassLoader)
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Constructor<?> getJavaConstructor( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Constructor<?> getJavaConstructor( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -323,11 +339,13 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * @return The name of the Java method to use for creating objects of the instance or {@code null}, if no such
      * method name is supported.
      *
+     * @throws ModelObjectException if compiling the name of the instance to a {@code JavaIdentifier} fails.
+     *
      * @see #getName()
      * @see #clear()
      */
     @Override
-    public String getJavaFactoryMethodName()
+    public String getJavaFactoryMethodName() throws ModelObjectException
     {
         if ( this.javaClassFactoryMethodName == null )
         {
@@ -353,13 +371,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * {@code null}, if that class does not declare such a method.
      *
      * @throws ClassNotFoundException if the Java class is not found.
+     * @throws ModelObjectException if parsing the name of the type referenced by the instance fails.
      *
      * @see #getJavaClass(java.lang.ClassLoader)
      * @see #getJavaFactoryMethodName()
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Method getJavaFactoryMethod( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Method getJavaFactoryMethod( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -413,13 +433,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * specifications of the instance.
      *
      * @throws ClassNotFoundException if a Java class is not found.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getJavaClass(java.lang.ClassLoader)
      * @see #getJavaClasses(java.lang.ClassLoader)
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public boolean isJavaClassAssignable( final ClassLoader classLoader ) throws ClassNotFoundException
+    public boolean isJavaClassAssignable( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -464,12 +486,14 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
      * proxy class.
      *
      * @throws ClassNotFoundException if a Java class is not found.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getJavaClasses(java.lang.ClassLoader)
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Class<?> getJavaProxyClass( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Class<?> getJavaProxyClass( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )
@@ -505,6 +529,35 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
         }
     }
 
+    /**
+     * Gets the Java type name of the type referenced by the instance.
+     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * this method queries the super-class for a result object to return and caches the outcome of that query for use on
+     * successive calls.</p>
+     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.</p>
+     *
+     * @return The Java type name of the type referenced by the instance or {@code null}, if the instance does not
+     * reference a type.
+     *
+     * @throws ModelObjectException if compiling the name of the referenced type to a {@code JavaTypeName} fails.
+     *
+     * @since 1.4
+     *
+     * @see Instance#getJavaTypeName()
+     * @see #clear()
+     */
+    @Override
+    public JavaTypeName getJavaTypeName() throws ModelObjectException
+    {
+        if ( this.javaTypeName == null )
+        {
+            this.javaTypeName = super.getJavaTypeName();
+        }
+
+        return this.javaTypeName;
+    }
+
     // SECTION-END
     // SECTION-START[RuntimeModelObject]
     public void gc()
@@ -515,6 +568,7 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
     public void clear()
     {
         this.javaClassFactoryMethodName = null;
+        this.javaTypeName = null;
         this.gcOrClear( false, true );
     }
 

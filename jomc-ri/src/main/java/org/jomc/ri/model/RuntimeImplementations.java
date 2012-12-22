@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Implementation;
 import org.jomc.model.ImplementationReference;
 import org.jomc.model.Implementations;
+import org.jomc.model.ModelObjectException;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;
 
 // SECTION-START[Documentation]
@@ -164,6 +165,7 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
      * @return The first matching implementation or {@code null}, if no such implementation is found.
      *
      * @throws NullPointerException if {@code implementation} is {@code null}.
+     * @throws ModelObjectException if parsing the name of a referenced type fails.
      *
      * @see #getImplementation()
      * @see Implementation#isClassDeclaration()
@@ -171,7 +173,7 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
      * @see #clear()
      */
     @Override
-    public Implementation getImplementation( final Class<?> implementation )
+    public Implementation getImplementation( final Class<?> implementation ) throws ModelObjectException
     {
         if ( implementation == null )
         {

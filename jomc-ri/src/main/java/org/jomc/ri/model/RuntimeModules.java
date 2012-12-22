@@ -45,6 +45,7 @@ import org.jomc.model.Implementations;
 import org.jomc.model.Instance;
 import org.jomc.model.Message;
 import org.jomc.model.Messages;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Properties;
@@ -450,6 +451,7 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
      * @return The first matching specification or {@code null}, if no such specification is found.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getModule()
      * @see Module#getSpecifications()
@@ -457,7 +459,7 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
      * @see #clear()
      */
     @Override
-    public Specification getSpecification( final Class<?> specification )
+    public Specification getSpecification( final Class<?> specification ) throws ModelObjectException
     {
         if ( specification == null )
         {
@@ -581,6 +583,7 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
      * @return The first matching implementation or {@code null}, if no such implementation is found.
      *
      * @throws NullPointerException if {@code implementation} is {@code null}.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getModule()
      * @see Module#getImplementations()
@@ -588,7 +591,7 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
      * @see #clear()
      */
     @Override
-    public Implementation getImplementation( final Class<?> implementation )
+    public Implementation getImplementation( final Class<?> implementation ) throws ModelObjectException
     {
         if ( implementation == null )
         {
@@ -622,13 +625,14 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
      * @return The first matching implementation or {@code null}, if no such implementation is found.
      *
      * @throws NullPointerException if {@code object} is {@code null}.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getModule()
      * @see #getImplementation( java.lang.Class )
      * @see #clear()
      */
     @Override
-    public Implementation getImplementation( final Object object )
+    public Implementation getImplementation( final Object object ) throws ModelObjectException
     {
         if ( object == null )
         {

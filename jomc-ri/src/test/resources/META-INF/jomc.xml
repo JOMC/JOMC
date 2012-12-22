@@ -192,63 +192,63 @@
         <reference identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="BoundMultitons"
+        <dependency name="Bound Multitons"
                     identifier="${project.name} ⁑ Tests ⁑ Test Multiton Specification"
                     version="${project.version}" bound="true"/>
 
-        <dependency name="UnboundMultitons"
+        <dependency name="Unbound Multitons"
                     identifier="${project.name} ⁑ Tests ⁑ Test Multiton Specification"
                     version="${project.version}" bound="false"/>
 
-        <dependency name="SelectedBoundMultiton"
+        <dependency name="Selected Bound Multiton"
                     identifier="${project.name} ⁑ Tests ⁑ Test Multiton Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Implementation Test"
                     version="${project.version}" bound="true"/>
 
-        <dependency name="SelectedUnboundMultiton"
+        <dependency name="Selected Unbound Multiton"
                     identifier="${project.name} ⁑ Tests ⁑ Test Multiton Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Implementation Test"
                     version="${project.version}" bound="false"/>
 
-        <dependency name="BoundSingletons"
+        <dependency name="Bound Singletons"
                     identifier="${project.name} ⁑ Tests ⁑ Test Singleton Specification"
                     version="${project.version}" bound="true"/>
 
-        <dependency name="UnboundSingletons"
+        <dependency name="Unbound Singletons"
                     identifier="${project.name} ⁑ Tests ⁑ Test Singleton Specification"
                     version="${project.version}" bound="false"/>
 
-        <dependency name="SelectedBoundSingleton"
+        <dependency name="Selected Bound Singleton"
                     identifier="${project.name} ⁑ Tests ⁑ Test Singleton Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Implementation Test"
                     version="${project.version}" bound="true"/>
 
-        <dependency name="SelectedUnboundSingleton"
+        <dependency name="Selected Unbound Singleton"
                     identifier="${project.name} ⁑ Tests ⁑ Test Singleton Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Implementation Test"
                     version="${project.version}" bound="false"/>
 
-        <dependency name="OptionalLocale"
+        <dependency name="Optional Locale"
                     identifier="java.util.Locale"
                     implementationName="DOES NOT EXIST"
                     version="1.1" bound="false" optional="true"/>
 
-        <dependency name="InvokerTestSpecification"
+        <dependency name="Invoker Test Specification"
                     identifier="${project.name} ⁑ Tests ⁑ Invoker Test Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Invoker Test Implementation"
                     version="${project.version}" bound="true"/>
 
       </dependencies>
       <properties>
-        <property name="testProperty" type="java.lang.String" value="TEST"/>
+        <property name="Test Property" type="java.lang.String" value="TEST"/>
       </properties>
       <messages>
-        <message name="testMessage">
+        <message name="Test Message">
           <template defaultLanguage="en">
             <text language="en">Test message with {0} argument.</text>
           </template>
           <arguments>
-            <argument index="0" name="testArgument" type="Text"/>
+            <argument index="0" name="Test Argument" type="Text"/>
           </arguments>
         </message>
       </messages>
@@ -306,11 +306,11 @@
         <reference identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification Many" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="TestScopeSpecificationMany"
+        <dependency name="Test Scope Specification Many"
                     identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification Many"
                     version="${project.version}" bound="false" optional="true"/>
 
-        <dependency name="TestScopeSpecificationOne"
+        <dependency name="Test Scope Specification One"
                     identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification One ⁑ 1"
                     version="${project.version}" bound="false" optional="true"/>
 
@@ -335,11 +335,11 @@
         <reference identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification Many" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency name="TestScopeSpecificationMany"
+        <dependency name="Test Scope Specification Many"
                     identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification Many"
                     version="${project.version}" bound="false" optional="true"/>
 
-        <dependency name="TestScopeSpecificationOne"
+        <dependency name="Test Scope Specification One"
                     identifier="${project.name} ⁑ Tests ⁑ Test Scope Specification One ⁑ 2"
                     version="${project.version}" bound="false" optional="true"/>
 
@@ -503,14 +503,14 @@
         <reference identifier="${project.name} ⁑ Tests ⁑ Override Test Specification" version="${project.version}"/>
       </specifications>
       <dependencies>
-        <dependency identifier="${project.name} ⁑ Tests ⁑ Override Test Specification" name="dependencyImpl"
+        <dependency identifier="${project.name} ⁑ Tests ⁑ Override Test Specification" name="Dependency Impl"
                     implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation"/>
       </dependencies>
       <properties>
-        <property name="propertyImpl" value="Parent"/>
+        <property name="Property Impl" value="Parent"/>
       </properties>
       <messages>
-        <message name="messageImpl">
+        <message name="Message Impl">
           <template defaultLanguage="en">
             <text language="en">Parent</text>
           </template>
@@ -536,30 +536,30 @@
                     identifier="${project.name} ⁑ Tests ⁑ Override Test Specification"
                     implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation">
           <dependencies>
-            <dependency name="dependencyImpl"
+            <dependency name="Dependency Impl"
                         identifier="${project.name} ⁑ Tests ⁑ Override Test Specification"
                         implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation"
                         override="true">
               <dependencies>
-                <dependency name="dependencyImpl"
+                <dependency name="Dependency Impl"
                             identifier="${project.name} ⁑ Tests ⁑ Override Test Specification"
                             implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation"
                             override="true">
                   <dependencies>
-                    <dependency name="dependencyImpl"
+                    <dependency name="Dependency Impl"
                                 identifier="${project.name} ⁑ Tests ⁑ Override Test Specification"
                                 implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation"
                                 override="true">
                       <dependencies>
-                        <dependency name="dependencyImpl"
+                        <dependency name="Dependency Impl"
                                     identifier="${project.name} ⁑ Tests ⁑ Override Test Specification"
                                     implementationName="${project.name} ⁑ Tests ⁑ Override Test Implementation"
                                     override="true">
                           <properties>
-                            <property name="propertyImpl" value="Recursion 4" override="true"/>
+                            <property name="Property Impl" value="Recursion 4" override="true"/>
                           </properties>
                           <messages>
-                            <message name="messageImpl" override="true">
+                            <message name="Message Impl" override="true">
                               <template defaultLanguage="en">
                                 <text language="en">Recursion 4</text>
                               </template>
@@ -568,10 +568,10 @@
                         </dependency>
                       </dependencies>
                       <properties>
-                        <property name="propertyImpl" value="Recursion 3" override="true"/>
+                        <property name="Property Impl" value="Recursion 3" override="true"/>
                       </properties>
                       <messages>
-                        <message name="messageImpl" override="true">
+                        <message name="Message Impl" override="true">
                           <template defaultLanguage="en">
                             <text language="en">Recursion 3</text>
                           </template>
@@ -580,10 +580,10 @@
                     </dependency>
                   </dependencies>
                   <properties>
-                    <property name="propertyImpl" value="Recursion 2" override="true"/>
+                    <property name="Property Impl" value="Recursion 2" override="true"/>
                   </properties>
                   <messages>
-                    <message name="messageImpl" override="true">
+                    <message name="Message Impl" override="true">
                       <template defaultLanguage="en">
                         <text language="en">Recursion 2</text>
                       </template>
@@ -592,10 +592,10 @@
                 </dependency>
               </dependencies>
               <properties>
-                <property name="propertyImpl" value="Recursion 1" override="true"/>
+                <property name="Property Impl" value="Recursion 1" override="true"/>
               </properties>
               <messages>
-                <message name="messageImpl" override="true">
+                <message name="Message Impl" override="true">
                   <template defaultLanguage="en">
                     <text language="en">Recursion 1</text>
                   </template>
@@ -604,10 +604,10 @@
             </dependency>
           </dependencies>
           <properties>
-            <property name="propertyImpl" value="Overriden" override="true"/>
+            <property name="Property Impl" value="Overriden" override="true"/>
           </properties>
           <messages>
-            <message name="messageImpl" override="true">
+            <message name="Message Impl" override="true">
               <template defaultLanguage="en">
                 <text language="en">Overriden</text>
               </template>

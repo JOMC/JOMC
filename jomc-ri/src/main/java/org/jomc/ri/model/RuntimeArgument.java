@@ -35,7 +35,11 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Argument;
+import org.jomc.model.ArgumentType;
+import org.jomc.model.JavaTypeName;
+import org.jomc.model.ModelObjectException;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
@@ -66,6 +70,10 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
 {
     // SECTION-START[RuntimeArgument]
 
+    /** Java type name. */
+    @XmlTransient
+    private volatile JavaTypeName javaTypeName;
+
     /**
      * Creates a new {@code RuntimeArgument} instance by deeply copying a given {@code Argument} instance.
      *
@@ -86,9 +94,38 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
             this.setDocumentation( RuntimeModelObjects.getInstance().copyOf( this.getDocumentation() ) );
         }
     }
+
+    /**
+     * Gets the Java type name of the type referenced by the argument.
+     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * this method queries the super-class for a result object to return and caches the outcome of that query for use on
+     * successive calls.</p>
+     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.</p>
+     *
+     * @return The Java type name of the type referenced by the argument or {@code null}, if the argument does not
+     * reference a type.
+     *
+     * @throws ModelObjectException if compiling the name of the referenced type to a {@code JavaTypeName} fails.
+     *
+     * @since 1.4
+     *
+     * @see #getType()
+     * @see #clear()
+     */
+    @Override
+    public JavaTypeName getJavaTypeName() throws ModelObjectException
+    {
+        if ( this.javaTypeName == null )
+        {
+            this.javaTypeName = super.getJavaTypeName();
+        }
+
+        return this.javaTypeName;
+    }
+
     // SECTION-END
     // SECTION-START[RuntimeModelObject]
-
     public void gc()
     {
         this.gcOrClear( true, false );
@@ -96,6 +133,7 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
 
     public void clear()
     {
+        this.javaTypeName = null;
         this.gcOrClear( false, true );
     }
 

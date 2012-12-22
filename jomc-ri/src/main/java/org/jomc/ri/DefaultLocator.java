@@ -233,7 +233,7 @@ public class DefaultLocator implements Locator
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
-     * Gets the text of the {@code <illegalObjectMessage>} message.
+     * Gets the text of the {@code <Illegal Object Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -243,7 +243,7 @@ public class DefaultLocator implements Locator
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
      * @param classInfo Format argument.
-     * @return The text of the {@code <illegalObjectMessage>} message for {@code locale}.
+     * @return The text of the {@code <Illegal Object Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -255,7 +255,7 @@ public class DefaultLocator implements Locator
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "illegalObjectMessage" ), objectInfo, classInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultLocator", locale ).getString( "Illegal Object Message" ), objectInfo, classInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -304,7 +304,7 @@ public class DefaultLocator implements Locator
         }
     }
     /**
-     * Gets the text of the {@code <unsupportedUriSchemeMessage>} message.
+     * Gets the text of the {@code <Unsupported URI Scheme Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -313,7 +313,7 @@ public class DefaultLocator implements Locator
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
-     * @return The text of the {@code <unsupportedUriSchemeMessage>} message for {@code locale}.
+     * @return The text of the {@code <Unsupported URI Scheme Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -325,7 +325,7 @@ public class DefaultLocator implements Locator
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultLocator", locale ).getString( "unsupportedUriSchemeMessage" ), schemeInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultLocator", locale ).getString( "Unsupported URI Scheme Message" ), schemeInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );

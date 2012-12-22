@@ -72,360 +72,360 @@
         <reference identifier="org.jomc.ObjectManager" version="1.0"/>
       </specifications>
       <messages>
-        <message name="defaultInvokerInfoMessage">
+        <message name="Default Invoker Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered DefaultInvoker ${project.version} (${build.date}) for ''{0}''.</text>
             <text language="de">DefaultInvoker ${project.version} (${build.date}) für ''{0}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="classLoaderInfo"/>
+            <argument index="0" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="defaultLocatorInfoMessage">
+        <message name="Default Locator Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered DefaultLocator ${project.version} (${build.date}) Scheme ''{0}'' for ''{1}''.</text>
             <text language="de">DefaultLocator ${project.version} (${build.date}) Scheme ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="schemeInfo"/>
-            <argument index="1" name="classLoaderInfo"/>
+            <argument index="0" name="Scheme Info"/>
+            <argument index="1" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="defaultLogLevelInfoMessage">
+        <message name="Default Log Level Info Message">
           <template defaultLanguage="en">
             <text language="en">Default log level: ''{0}''</text>
             <text language="de">Standard-Protokollierungsstufe: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="logLevel"/>
+            <argument index="0" name="Log Level"/>
           </arguments>
         </message>
-        <message name="defaultScopeInfoMessage">
+        <message name="Default Scope Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered DefaultScope ${project.version} (${build.date}) Scope ''{0}'' for ''{1}''.</text>
             <text language="de">DefaultScope ${project.version} (${build.date}) Scope ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="scopeIdentifier"/>
-            <argument index="1" name="classLoaderInfo"/>
+            <argument index="0" name="Scope Identifier"/>
+            <argument index="1" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="dependencyCycleMessage">
+        <message name="Dependency Cycle Message">
           <template defaultLanguage="en">
             <text language="en">A dependency of implementation ''{0}'' introduces a cycle.</text>
             <text language="de">Zyklische Anforderung der Implementierung ''{0}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
+            <argument index="0" name="Implementation Identifier"/>
           </arguments>
         </message>
-        <message name="ignoredInvocationMessage">
+        <message name="Ignored Invocation Message">
           <template defaultLanguage="en">
             <text language="en">Invocation implementation ''{0}'' ignored.</text>
             <text language="de">Invocation-Implementierung ''{0}'' ignoriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
+            <argument index="0" name="Implementation Identifier"/>
           </arguments>
         </message>
-        <message name="ignoredInvokerMessage">
+        <message name="Ignored Invoker Message">
           <template defaultLanguage="en">
             <text language="en">Invoker implementation ''{0}'' ignored.</text>
             <text language="de">Invoker-Implementierung ''{0}'' ignoriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
+            <argument index="0" name="Implementation Identifier"/>
           </arguments>
         </message>
-        <message name="illegalArraySpecificationMessage">
+        <message name="Illegal Array Specification Message">
           <template defaultLanguage="en">
             <text language="en">Illegal array specification ''{0}''. Mutliplicity ''{1}''.</text>
             <text language="de">Ungültige ''Array''-Spezifikation ''{0}''. Kardinalität ''{1}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
-            <argument index="1" name="specificationMultiplicity"/>
+            <argument index="0" name="Specification Identifier"/>
+            <argument index="1" name="Specification Multiplicity"/>
           </arguments>
         </message>
-        <message name="illegalObjectSpecificationMessage">
+        <message name="Illegal Object Specification Message">
           <template defaultLanguage="en">
             <text language="en">Illegal object specification ''{0}''. Multiplicity ''{1}''.</text>
             <text language="de">Ungültige ''Object''-Spezifikation ''{0}''. Kardinalität ''{1}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
-            <argument index="1" name="specificationMultiplicity"/>
+            <argument index="0" name="Specification Identifier"/>
+            <argument index="1" name="Specification Multiplicity"/>
           </arguments>
         </message>
-        <message name="implementationInfoMessage">
+        <message name="Implementation Info Message">
           <template defaultLanguage="en">
             <text language="en">DefaultObjectManager ${project.version} (${build.date}) initialized in {0,number}ms.</text>
             <text language="de">DefaultObjectManager ${project.version} (${build.date}) in {0,number}ms initialisiert.</text>
           </template>
           <arguments>
-            <argument index="0" type="Number" name="initializationMillis"/>
+            <argument index="0" type="Number" name="Initialization Millis"/>
           </arguments>
         </message>
-        <message name="invokerInfoMessage">
+        <message name="Invoker Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered invoker implementation ''{0}'' for ''{1}''.</text>
             <text language="de">Invoker-Implementierung ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="classLoaderInfo"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="ClassLoader Info"/>
           </arguments>
         </message>
-        <message name="listenerInfoMessage">
+        <message name="Listener Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered listener implementation ''{0}'' for ''{1}''.</text>
             <text language="de">Listener-Implementierung ''{0}'' für ''{1}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="classLoaderInfo"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="locatorInfoMessage">
+        <message name="Locator Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered ''{1}'' location URI scheme locator implementation ''{0}'' for ''{2}''.</text>
             <text language="de">''{1}''-Locator-URI-Schema-Implementierung ''{0}'' für ''{2}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="schemeInfo"/>
-            <argument index="2" name="classLoaderInfo"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Scheme Info"/>
+            <argument index="2" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="missingDependencyMessage">
+        <message name="Missing Dependency Message">
           <template defaultLanguage="en">
             <text language="en">Dependency ''{1}'' not found for implementation ''{0}''.</text>
             <text language="de">''{1}''-Anforderung der Implementierung ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="dependencyName"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Dependency Name"/>
           </arguments>
         </message>
-        <message name="missingImplementationMessage">
+        <message name="Missing Implementation Message">
           <template defaultLanguage="en">
             <text language="en">Implementation ''{1}'' not found for specification ''{0}''.</text>
             <text language="de">Implementierung ''{1}'' der Spezifikation ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
-            <argument index="1" name="implementationName"/>
+            <argument index="0" name="Specification Identifier"/>
+            <argument index="1" name="Implementation Name"/>
           </arguments>
         </message>
-        <message name="missingImplementationsMessage">
+        <message name="Missing Implementations Message">
           <template defaultLanguage="en">
             <text language="en">No implementations found for specification ''{0}''.</text>
             <text language="de">Keine Implementierungen der Spezifikation ''{0}'' gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
+            <argument index="0" name="Specification Identifier"/>
           </arguments>
         </message>
-        <message name="missingInstanceMessage">
+        <message name="Missing Instance Message">
           <template defaultLanguage="en">
             <text language="en">No instance found for implementation ''{0}'' - ''{1}''.</text>
             <text language="de">Keine Instanz für Implementierung ''{0}'' - ''{1}'' gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="implementationName"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Implementation Name"/>
           </arguments>
         </message>
-        <message name="missingLocatorMessage">
+        <message name="Missing Locator Message">
           <template defaultLanguage="en">
             <text language="en">No locator found for location ''{0}''.</text>
             <text language="de">Keinen Locator für Ort ''{0}'' gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="locationInfo"/>
+            <argument index="0" name="Location Info"/>
           </arguments>
         </message>
-        <message name="missingMessageMessage">
+        <message name="Missing Message Message">
           <template defaultLanguage="en">
             <text language="en">Message ''{1}'' not found for implementation ''{0}''.</text>
             <text language="de">''{1}''-Meldung der Implementierung ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="messageName"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Message Name"/>
           </arguments>
         </message>
-        <message name="missingObjectMessage">
+        <message name="Missing Object Message">
           <template defaultLanguage="en">
             <text language="en">No object found for implementation ''{0}'' - ''{1}''.</text>
             <text language="de">Kein Objekt für Implementierung ''{0}'' - ''{1}'' gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="implementationName"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Implementation Name"/>
           </arguments>
         </message>
-        <message name="missingObjectInstanceMessage">
+        <message name="Missing Object Instance Message">
           <template defaultLanguage="en">
             <text language="en">No instance found for object ''{0}''.</text>
             <text language="de">Keine Instanz für Objekt ''{0}'' gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="objectInfo"/>
+            <argument index="0" name="Object Info"/>
           </arguments>
         </message>
-        <message name="missingPropertyMessage">
+        <message name="Missing Property Message">
           <template defaultLanguage="en">
             <text language="en">Property ''{1}'' not found for implementation ''{0}''.</text>
             <text language="de">''{1}''-Eigenschaft der Implementierung ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="propertyName"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Property Name"/>
           </arguments>
         </message>
-        <message name="missingScopeMessage">
+        <message name="Missing Scope Message">
           <template defaultLanguage="en">
             <text language="en">Scope ''{0}'' not found.</text>
-            <text language="de">Gültigkeitsbereich ''{0}'' nicht gefunden.</text>
+            <text language="de">Geltungsbereich ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="scopeIdentifier"/>
+            <argument index="0" name="Scope Identifier"/>
           </arguments>
         </message>
-        <message name="missingSpecificationMessage">
+        <message name="Missing Specification Message">
           <template defaultLanguage="en">
             <text language="en">Specification ''{0}'' not found.</text>
             <text language="de">Spezifikation ''{0}'' nicht gefunden.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
+            <argument index="0" name="Specification Identifier"/>
           </arguments>
         </message>
-        <message name="missingSpecificationClassMessage">
+        <message name="Missing Specification Class Message">
           <template defaultLanguage="en">
             <text language="en">Specification ''{0}'' does not define a class.</text>
             <text language="de">Spezifikation ''{0}'' definiert keine Klasse.</text>
           </template>
           <arguments>
-            <argument index="0" name="specificationIdentifier"/>
+            <argument index="0" name="Specification Identifier"/>
           </arguments>
         </message>
-        <message name="modulesReportMessage">
+        <message name="Modules Report Message">
           <template defaultLanguage="en">
             <text language="en">Modules report:</text>
             <text language="de">Modulbericht:</text>
           </template>
         </message>
-        <message name="scopeInfoMessage">
+        <message name="Scope Info Message">
           <template defaultLanguage="en">
             <text language="en">Registered ''{1}'' scope implementation ''{0}'' for ''{2}''.</text>
-            <text language="de">''{1}''-Gültigkeitsbereich-Implementierung ''{0}'' für ''{2}'' registriert.</text>
+            <text language="de">''{1}''-Geltungsbereichs-Implementierung ''{0}'' für ''{2}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="scopeIdentifier"/>
-            <argument index="2" name="classLoaderInfo"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Scope Identifier"/>
+            <argument index="2" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="unexpectedDependencyObjectsMessage">
+        <message name="Unexpected Dependency Objects Message">
           <template defaultLanguage="en">
             <text language="en">Unexpected number of objects for dependency ''{1}'' of implementation ''{0}''. Expected ''{2,number}'' - found ''{3,number}''.</text>
             <text language="de">Unerwartete Anzahl Objekte für ''{1}''-Anforderung der Implementierung ''{0}''. Erwartet ''{2,number}'' - gefunden ''{3,number}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="implementationIdentifier"/>
-            <argument index="1" name="dependencyName"/>
-            <argument index="2" type="Number" name="expectedNumber"/>
-            <argument index="3" type="Number" name="computedNumber"/>
+            <argument index="0" name="Implementation Identifier"/>
+            <argument index="1" name="Dependency Name"/>
+            <argument index="2" type="Number" name="Expected Number"/>
+            <argument index="3" type="Number" name="Computed Number"/>
           </arguments>
         </message>
-        <message name="defaultModelIdentifierInfo">
+        <message name="Default Model Identifier Info">
           <template defaultLanguage="en">
             <text language="en">Default model identifier: ''{0}''</text>
             <text language="de">Standard Modellbezeichner: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="defaultValue"/>
+            <argument index="0" name="Default Value"/>
           </arguments>
         </message>
-        <message name="defaultModelObjectClasspahResolutionEnabledInfo">
+        <message name="Default Model Object Classpah Resolution Enabled Info">
           <template defaultLanguage="en">
             <text language="en">Default model object classpath resolution enabled: ''{0}''</text>
             <text language="de">Standard Modellobjekt-Klassenpfad-Auflösung aktiviert: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="defaultValue"/>
+            <argument index="0" name="Default Value"/>
           </arguments>
         </message>
-        <message name="defaultModelProcessingEnabledInfo">
+        <message name="Default Model Processing Enabled Info">
           <template defaultLanguage="en">
             <text language="en">Default model processing enabled: ''{0}''</text>
             <text language="de">Standard Modellverarbeitung aktiviert: ''{0}''</text>
           </template>
           <arguments>
-            <argument index="0" name="defaultValue"/>
+            <argument index="0" name="Default Value"/>
           </arguments>
         </message>
-        <message name="creatingModulesInfo">
+        <message name="Creating Modules Info">
           <template defaultLanguage="en">
             <text language="en">Creating modules for ''{0}''.</text>
             <text language="de">Erstellt Module für ''{0}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="classLoaderInfo"/>
+            <argument index="0" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="defaultListenerInfo">
+        <message name="Default Listener Info">
           <template defaultLanguage="en">
             <text language="en">Registered DefaultListener ${project.version} (${build.date}) for ''{0}''.</text>
             <text language="de">DefaultListener ${project.version} (${build.date}) für ''{0}'' registriert.</text>
           </template>
           <arguments>
-            <argument index="0" name="classLoaderInfo"/>
+            <argument index="0" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="defaultModulesWarning">
+        <message name="Default Modules Warning">
           <template defaultLanguage="en">
             <text language="en">Failure loading model ''{0}'' for ''{1}''. Creating default modules.</text>
             <text language="de">Fehler beim Laden des Modells ''{0}'' für ''{1}''. Erstellt Standard-Module.</text>
           </template>
           <arguments>
-            <argument index="0" name="modelInfo"/>
-            <argument index="1" name="classLoaderInfo"/>
+            <argument index="0" name="Model Info"/>
+            <argument index="1" name="Class Loader Info"/>
           </arguments>
         </message>
-        <message name="defaultModulesVendor">
+        <message name="Default Modules Vendor">
           <template defaultLanguage="en">
             <text language="en">${project.organization.name}</text>
             <text language="de">${project.organization.name}</text>
           </template>
         </message>
-        <message name="defaultModulesVersion">
+        <message name="Default Modules Version">
           <template defaultLanguage="en">
             <text language="en">${project.version}</text>
             <text language="de">${project.version}</text>
           </template>
         </message>
-        <message name="defaultModuleName">
+        <message name="Default Module Name">
           <template defaultLanguage="en">
             <text language="en">Default ${project.name}</text>
             <text language="de">Default ${project.name}</text>
           </template>
         </message>
-        <message name="defaultImplementationName">
+        <message name="Default Implementation Name">
           <template defaultLanguage="en">
             <text language="en">Default ${project.name}</text>
             <text language="de">Default ${project.name}</text>
           </template>
         </message>
-        <message name="scopeContentionFailure">
+        <message name="Scope Contention Failure">
           <template defaultLanguage="en">
             <text language="en">Failure during instantiation of object ''{0}''. The same object got concurrently created in the same scope.</text>
-            <text language="de">Fehler während der Instanziierung des Objekts ''{0}''. Dasselbe Objekt wurde zwischenzeitlich in demselben Gültigkeitsbereich erstellt.</text>
+            <text language="de">Fehler während der Instanziierung des Objekts ''{0}''. Dasselbe Objekt wurde zwischenzeitlich in demselben Geltungsbereich erstellt.</text>
           </template>
           <arguments>
-            <argument index="0" name="objectIdentifier"/>
+            <argument index="0" name="Object Identifier"/>
           </arguments>
         </message>
       </messages>
@@ -444,23 +444,23 @@
 
       </authors>
       <messages>
-        <message name="unsupportedUriSchemeMessage">
+        <message name="Unsupported URI Scheme Message">
           <template defaultLanguage="en">
             <text language="en">URI scheme ''{0}'' is not supported.</text>
             <text language="de">Keine Unterstützung für URI Schema ''{0}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="schemeInfo"/>
+            <argument index="0" name="Scheme Info"/>
           </arguments>
         </message>
-        <message name="illegalObjectMessage">
+        <message name="Illegal Object Message">
           <template defaultLanguage="en">
             <text language="en">Object ''{0}'' not an instance of class ''{1}''.</text>
             <text language="de">Objekt ''{0}'' ist keine Instanz der Klasse ''{1}''.</text>
           </template>
           <arguments>
-            <argument index="0" name="objectInfo"/>
-            <argument index="1" name="classInfo"/>
+            <argument index="0" name="Object Info"/>
+            <argument index="1" name="Class Info"/>
           </arguments>
         </message>
       </messages>

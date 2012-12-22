@@ -35,8 +35,10 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.text.ParseException;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
 import org.jomc.model.Specifications;
@@ -160,6 +162,7 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
      * @return The first matching specification or {@code null}, if no such specification is found.
      *
      * @throws NullPointerException if {@code specification} is {@code null}.
+     * @throws ModelObjectException if parsing a name of a referenced type fails.
      *
      * @see #getSpecification()
      * @see Specification#isClassDeclaration()
@@ -167,7 +170,7 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
      * @see #clear()
      */
     @Override
-    public Specification getSpecification( final Class<?> specification )
+    public Specification getSpecification( final Class<?> specification ) throws ModelObjectException
     {
         if ( specification == null )
         {
