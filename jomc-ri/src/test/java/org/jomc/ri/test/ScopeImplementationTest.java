@@ -95,7 +95,7 @@ public class ScopeImplementationTest
     // SECTION-START[Dependencies]
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
     /**
-     * Gets the {@code <TestScopeSpecificationMany>} dependency.
+     * Gets the {@code <Test Scope Specification Many>} dependency.
      * <p>
      *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many>} specification at specification level 1.4-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
@@ -103,7 +103,7 @@ public class ScopeImplementationTest
      * <dl>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl>
-     * @return The {@code <TestScopeSpecificationMany>} dependency.
+     * @return The {@code <Test Scope Specification Many>} dependency.
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -111,10 +111,10 @@ public class ScopeImplementationTest
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getTestScopeSpecificationMany()
     {
-        return (org.jomc.ri.test.support.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationMany" );
+        return (org.jomc.ri.test.support.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Test Scope Specification Many" );
     }
     /**
-     * Gets the {@code <TestScopeSpecificationOne>} dependency.
+     * Gets the {@code <Test Scope Specification One>} dependency.
      * <p>
      *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 1>} specification at specification level 1.4-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
@@ -122,7 +122,7 @@ public class ScopeImplementationTest
      * <dl>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl>
-     * @return The {@code <TestScopeSpecificationOne>} dependency.
+     * @return The {@code <Test Scope Specification One>} dependency.
      * {@code null} if no object is available.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
@@ -130,7 +130,7 @@ public class ScopeImplementationTest
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getTestScopeSpecificationOne()
     {
-        return (org.jomc.ri.test.support.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "TestScopeSpecificationOne" );
+        return (org.jomc.ri.test.support.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Test Scope Specification One" );
     }
     // </editor-fold>
     // SECTION-END

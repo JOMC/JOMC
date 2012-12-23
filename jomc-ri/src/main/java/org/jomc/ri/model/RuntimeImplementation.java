@@ -39,7 +39,10 @@ import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.net.URI;
 import java.util.Map;
+import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Implementation;
+import org.jomc.model.JavaTypeName;
+import org.jomc.model.ModelObjectException;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
 import static org.jomc.ri.model.RuntimeModelObjects.classesByClassLoaderAndNameCache;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;
@@ -75,6 +78,10 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 
     /** Cached location URI. */
     private volatile URI locationUri;
+
+    /** Java type name. */
+    @XmlTransient
+    private volatile JavaTypeName javaTypeName;
 
     /**
      * Creates a new {@code RuntimeImplementation} instance by deeply copying a given {@code Implementation} instance.
@@ -128,11 +135,13 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
      * @return The location URI used for locating instances of this implementation or {@code null}, if instances of this
      * implementation do not need to be located.
      *
+     * @throws ModelObjectException if parsing the location to an {@code URI} object fails.
+     *
      * @see #getLocation()
      * @see #clear()
      */
     @Override
-    public URI getLocationUri()
+    public URI getLocationUri() throws ModelObjectException
     {
         if ( this.locationUri == null )
         {
@@ -156,16 +165,18 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
      * @return The Java class of the implementation or {@code null}, if the implementation does not declare a class.
      *
      * @throws ClassNotFoundException if the Java class is not found.
+     * @throws ModelObjectException if parsing the name of the referenced type fails.
      *
      * @see #getClazz()
      * @see RuntimeModelObjects#clear()
      */
     @Override
-    public Class<?> getJavaClass( final ClassLoader classLoader ) throws ClassNotFoundException
+    public Class<?> getJavaClass( final ClassLoader classLoader )
+        throws ModelObjectException, ClassNotFoundException
     {
         Class<?> javaClass = null;
 
-        if ( this.getClazz() != null )
+        if ( this.getJavaTypeName() != null )
         {
             ClassLoader classLoaderKey = classLoader;
             if ( classLoaderKey == null )
@@ -183,7 +194,7 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
                     classesByClassLoaderAndNameCache.put( classLoaderKey, map );
                 }
 
-                final Reference<Class<?>> reference = map.get( this.getClazz() );
+                final Reference<Class<?>> reference = map.get( this.getJavaTypeName().getClassName() );
 
                 if ( reference != null )
                 {
@@ -193,12 +204,41 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
                 if ( javaClass == null )
                 {
                     javaClass = super.getJavaClass( classLoader );
-                    map.put( this.getClazz(), new WeakReference<Class<?>>( javaClass ) );
+                    map.put( this.getJavaTypeName().getClassName(), new WeakReference<Class<?>>( javaClass ) );
                 }
             }
         }
 
         return javaClass;
+    }
+
+    /**
+     * Gets the Java type name of the type referenced by the implementation.
+     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * this method queries the super-class for a result object to return and caches the outcome of that query for use on
+     * successive calls.</p>
+     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.</p>
+     *
+     * @return The Java type name of the type referenced by the implementation or {@code null}, if the implementation
+     * does not reference a type.
+     *
+     * @throws ModelObjectException if compiling the name of the referenced type to a {@code JavaTypeName} fails.
+     *
+     * @since 1.4
+     *
+     * @see #getJavaTypeName()
+     * @see #clear()
+     */
+    @Override
+    public JavaTypeName getJavaTypeName() throws ModelObjectException
+    {
+        if ( this.javaTypeName == null )
+        {
+            this.javaTypeName = super.getJavaTypeName();
+        }
+
+        return this.javaTypeName;
     }
 
     // SECTION-END
@@ -211,6 +251,7 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
     public void clear()
     {
         this.locationUri = null;
+        this.javaTypeName = null;
         this.gcOrClear( false, true );
     }
 

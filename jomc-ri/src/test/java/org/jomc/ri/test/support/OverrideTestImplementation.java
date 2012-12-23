@@ -101,7 +101,7 @@ public class OverrideTestImplementation
     // SECTION-START[Dependencies]
     // <editor-fold defaultstate="collapsed" desc=" Generated Dependencies ">
     /**
-     * Gets the {@code <dependencyImpl>} dependency.
+     * Gets the {@code <Dependency Impl>} dependency.
      * <p>
      *   This method returns the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation>} object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Override Test Specification>} specification at any specification level.
      *   That specification does not apply to any scope. A new object is returned whenever requested and bound to this instance.
@@ -109,15 +109,15 @@ public class OverrideTestImplementation
      * <dl>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl>
-     * @return The {@code <dependencyImpl>} dependency.
+     * @return The {@code <Dependency Impl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     private org.jomc.ri.test.support.OverrideTestSpecification getDependencyImpl()
     {
-        final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "dependencyImpl" );
-        assert _d != null : "'dependencyImpl' dependency not found.";
+        final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Dependency Impl" );
+        assert _d != null : "'Dependency Impl' dependency not found.";
         return _d;
     }
     // </editor-fold>
@@ -125,19 +125,19 @@ public class OverrideTestImplementation
     // SECTION-START[Properties]
     // <editor-fold defaultstate="collapsed" desc=" Generated Properties ">
     /**
-     * Gets the value of the {@code <propertyImpl>} property.
+     * Gets the value of the {@code <Property Impl>} property.
      * <p><dl>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
-     * @return The value of the {@code <propertyImpl>} property.
+     * @return The value of the {@code <Property Impl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
     @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     private java.lang.String getPropertyImpl()
     {
-        final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getProperty( this, "propertyImpl" );
-        assert _p != null : "'propertyImpl' property not found.";
+        final java.lang.String _p = (java.lang.String) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getProperty( this, "Property Impl" );
+        assert _p != null : "'Property Impl' property not found.";
         return _p;
     }
     // </editor-fold>
@@ -145,22 +145,22 @@ public class OverrideTestImplementation
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
-     * Gets the text of the {@code <messageImpl>} message.
+     * Gets the text of the {@code <Message Impl>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <messageImpl>} message for {@code locale}.
+     * @return The text of the {@code <Message Impl>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
     private String getMessageImpl( final java.util.Locale locale )
     {
-        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "messageImpl", locale );
-        assert _m != null : "'messageImpl' message not found.";
+        final String _m = org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getMessage( this, "Message Impl", locale );
+        assert _m != null : "'Message Impl' message not found.";
         return _m;
     }
     // </editor-fold>

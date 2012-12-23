@@ -144,7 +144,7 @@ public class OverrideTestImplementationTest
      *       <th align="left" scope="col" nowrap><b>Documentation</b></th>
      *     </tr>
      *     <tr class="TableRow">
-     *       <td align="left" valign="top" nowrap>{@code <propertyImpl>}</td>
+     *       <td align="left" valign="top" nowrap>{@code <Property Impl>}</td>
      *       <td align="left" valign="top" nowrap>{@code java.lang.String}</td>
      *       <td align="left" valign="top"></td>
      *     </tr>

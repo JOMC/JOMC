@@ -35,6 +35,7 @@
 // SECTION-END
 package org.jomc.ri.model;
 
+import java.util.Locale;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Text;
@@ -73,6 +74,10 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
     /** Cache map. */
     @XmlTransient
     private transient final Map<String, Text> textsByLanguageCache = createMap();
+
+    /** Cache map. */
+    @XmlTransient
+    private transient final Map<Locale, Text> textsByLocaleCache = createMap();
 
     /**
      * Creates a new {@code RuntimeTexts} instance by deeply copying a given {@code Texts} instance.
@@ -128,6 +133,49 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
         }
     }
 
+    /**
+     * Gets a text for a given language from the list of texts.
+     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * cached result object is available, this method queries the super-class for a result object to return and caches
+     * the outcome of that query for use on successive calls.</p>
+     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.</p>
+     *
+     * @param locale The locale of the text to return.
+     *
+     * @return The first matching text or the default text, if no such text is found.
+     *
+     * @throws NullPointerException if {@code locale} is {@code null}.
+     *
+     * @see #getText()
+     * @see #getDefaultLanguage()
+     * @see Text#getLanguage()
+     * @see #clear()
+     *
+     * @since 1.4
+     */
+    @Override
+    public Text getText( final Locale locale )
+    {
+        if ( locale == null )
+        {
+            throw new NullPointerException( "locale" );
+        }
+
+        synchronized ( this.textsByLocaleCache )
+        {
+            Text t = this.textsByLocaleCache.get( locale );
+
+            if ( t == null && !this.textsByLocaleCache.containsKey( locale ) )
+            {
+                t = super.getText( locale );
+                this.textsByLocaleCache.put( locale, t );
+            }
+
+            return t;
+        }
+    }
+
     private void copyTexts()
     {
         for ( int i = 0, s0 = this.getText().size(); i < s0; i++ )
@@ -149,6 +197,10 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
         synchronized ( this.textsByLanguageCache )
         {
             this.textsByLanguageCache.clear();
+        }
+        synchronized ( this.textsByLocaleCache )
+        {
+            this.textsByLocaleCache.clear();
         }
 
         this.gcOrClear( false, true );

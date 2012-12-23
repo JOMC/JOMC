@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Properties;
@@ -44,6 +45,7 @@ import org.apache.commons.io.FileUtils;
 import org.jomc.model.Argument;
 import org.jomc.model.Dependency;
 import org.jomc.model.Implementation;
+import org.jomc.model.JavaIdentifier;
 import org.jomc.model.Message;
 import org.jomc.model.ModelObject;
 import org.jomc.model.Module;
@@ -1265,6 +1267,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testJomcToolModelObjectsNotFound() throws Exception
     {
         final SpecificationReference ref = new SpecificationReference();
@@ -1291,6 +1294,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testJavaIdentifier() throws Exception
     {
         assertEquals( "", this.getJomcTool().getJavaIdentifier( "", true ) );
@@ -1308,6 +1312,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testJavaConstantName() throws Exception
     {
         assertEquals( "", this.getJomcTool().getJavaConstantName( "" ) );
@@ -1320,6 +1325,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testJavaFieldName() throws Exception
     {
         assertEquals( "", this.getJomcTool().getJavaFieldName( "" ) );
@@ -1333,6 +1339,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testJavaMethodParameterName() throws Exception
     {
         assertEquals( "", this.getJomcTool().getJavaMethodParameterName( "" ) );
@@ -1347,7 +1354,117 @@ public class JomcToolTest
     }
 
     @Test
-    @SuppressWarnings( "deprecation" )
+    public final void testToJavaConstantName() throws Exception
+    {
+        try
+        {
+            this.getJomcTool().toJavaConstantName( "" );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+        try
+        {
+            this.getJomcTool().toJavaConstantName( "  " );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+
+        assertEquals( JavaIdentifier.valueOf( "TEST_TEST_TEST" ),
+                      this.getJomcTool().toJavaConstantName( "  test test test  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "TEST_TEST_TEST_TEST" ),
+                      this.getJomcTool().toJavaConstantName( "  Test tEst teSt tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "TEST_TEST_TEST_TEST" ),
+                      this.getJomcTool().toJavaConstantName( "  Test  tEst  teSt  tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "PACKAGE" ), this.getJomcTool().toJavaConstantName( "  Package " ) );
+        assertEquals( JavaIdentifier.valueOf( "NEW" ), this.getJomcTool().toJavaConstantName( "  New " ) );
+    }
+
+    @Test
+    public final void testToJavaMethodName() throws Exception
+    {
+        try
+        {
+            this.getJomcTool().toJavaMethodName( "" );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+        try
+        {
+            this.getJomcTool().toJavaMethodName( "  " );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTest" ),
+                      this.getJomcTool().toJavaMethodName( "  test test test  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTestTest" ),
+                      this.getJomcTool().toJavaMethodName( "  Test tEst teSt tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTestTest" ),
+                      this.getJomcTool().toJavaMethodName( "  Test  tEst  teSt  tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "_package" ), this.getJomcTool().toJavaMethodName( "  Package " ) );
+        assertEquals( JavaIdentifier.valueOf( "_new" ), this.getJomcTool().toJavaMethodName( "  New " ) );
+    }
+
+    @Test
+    public final void testToJavaVariableName() throws Exception
+    {
+        try
+        {
+            this.getJomcTool().toJavaVariableName( "" );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+        try
+        {
+            this.getJomcTool().toJavaVariableName( "  " );
+            fail( "Expected 'ParseException' not thrown." );
+        }
+        catch ( final ParseException e )
+        {
+            System.out.println( e.toString() );
+            assertNotNull( e.getMessage() );
+        }
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTest" ),
+                      this.getJomcTool().toJavaVariableName( "  test test test  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTestTest" ),
+                      this.getJomcTool().toJavaVariableName( "  Test tEst teSt tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "testTestTestTest" ),
+                      this.getJomcTool().toJavaVariableName( "  Test  tEst  teSt  tesT  " ) );
+
+        assertEquals( JavaIdentifier.valueOf( "_package" ), this.getJomcTool().toJavaVariableName( "  Package " ) );
+        assertEquals( JavaIdentifier.valueOf( "_new" ), this.getJomcTool().toJavaVariableName( "  New " ) );
+    }
+
+    @Test
     public final void testParentTemplateProfile() throws Exception
     {
         final File templateLocation = this.getNextOutputDirectory();

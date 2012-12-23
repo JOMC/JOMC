@@ -37,6 +37,7 @@ package org.jomc.ri.model;
 
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Property;
 import org.jomc.model.PropertyException;
 import org.jomc.util.WeakIdentityHashMap;
@@ -110,12 +111,13 @@ public class RuntimeProperty extends Property implements RuntimeModelObject
      *
      * @return The Java value of the property or {@code null}.
      *
+     * @throws ModelObjectException if parsing the name of the type of the property fails.
      * @throws PropertyException if getting the Java value of the property fails unexpectedly.
      *
      * @see #clear()
      */
     @Override
-    public Object getJavaValue( final ClassLoader classLoader ) throws PropertyException
+    public Object getJavaValue( final ClassLoader classLoader ) throws ModelObjectException, PropertyException
     {
         ClassLoader classLoaderKey = classLoader;
         if ( classLoaderKey == null )

@@ -65,6 +65,7 @@ import org.jomc.model.Implementations;
 import org.jomc.model.Instance;
 import org.jomc.model.Message;
 import org.jomc.model.ModelObject;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
@@ -238,8 +239,8 @@ public class DefaultObjectManager implements ObjectManager
                         return null;
                     }
 
-                    final Object o =
-                        this.getObject( s.getJavaClass( classLoader ), impl.getLocationUri(), classLoader );
+                    final Object o = this.getObject( s.getJavaTypeName().getClass( classLoader, true ),
+                                                     impl.getLocationUri(), classLoader );
 
                     if ( o == null )
                     {
@@ -398,8 +399,8 @@ public class DefaultObjectManager implements ObjectManager
                     return null;
                 }
 
-                final T object = this.getObject( s.getJavaClass( classLoader ).asSubclass( specification ),
-                                                 i.getLocationUri(), classLoader );
+                final T object = this.getObject( s.getJavaTypeName().getClass( classLoader, true ).
+                    asSubclass( specification ), i.getLocationUri(), classLoader );
 
                 if ( object == null )
                 {
@@ -585,7 +586,8 @@ public class DefaultObjectManager implements ObjectManager
                                 return null;
                             }
 
-                            o = this.getObject( ds.getJavaClass( classLoader ), i.getLocationUri(), classLoader );
+                            o = this.getObject( ds.getJavaTypeName().getClass( classLoader, true ), i.getLocationUri(),
+                                                classLoader );
 
                             if ( o == null )
                             {
@@ -648,7 +650,8 @@ public class DefaultObjectManager implements ObjectManager
                                     return null;
                                 }
 
-                                o = this.getObject( ds.getJavaClass( classLoader ), ref.getLocationUri(), classLoader );
+                                o = this.getObject( ds.getJavaTypeName().getClass( classLoader, true ),
+                                                    ref.getLocationUri(), classLoader );
 
                                 if ( o == null )
                                 {
@@ -721,8 +724,20 @@ public class DefaultObjectManager implements ObjectManager
                             final Implementation a = available.getImplementation().get( i );
                             if ( a.getLocation() != null )
                             {
-                                final Object o2 =
-                                    this.getObject( ds.getJavaClass( classLoader ), a.getLocationUri(), classLoader );
+                                if ( ds.getClazz() == null )
+                                {
+                                    if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( classLoader, Level.WARNING, getMissingSpecificationClassMessage(
+                                            Locale.getDefault(), ds.getIdentifier() ), null );
+
+                                    }
+
+                                    return null;
+                                }
+
+                                final Object o2 = this.getObject( ds.getJavaTypeName().getClass( classLoader, true ),
+                                                                  a.getLocationUri(), classLoader );
 
                                 if ( o2 == null )
                                 {
@@ -772,7 +787,7 @@ public class DefaultObjectManager implements ObjectManager
 
                         if ( idx > 0 )
                         {
-                            o = Array.newInstance( ds.getJavaClass( classLoader ), idx );
+                            o = Array.newInstance( ds.getJavaTypeName().getClass( classLoader, true ), idx );
                             System.arraycopy( array, 0, o, 0, idx );
                         }
                         else
@@ -1116,6 +1131,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return The list of registered listeners.
      *
+     * @throws ObjectManagementException if getting the list of listeners fails.
+     *
      * @see #getListeners(java.lang.ClassLoader)
      */
     public List<Listener> getListeners()
@@ -1131,8 +1148,9 @@ public class DefaultObjectManager implements ObjectManager
      * @return The list of listeners registered with {@code classLoader}.
      *
      * @throws NullPointerException if {@code classLoader} is {@code null}.
+     * @throws ObjectManagementException if getting the list of listeners fails.
      *
-     * @see #getDefaultListener()
+     * @see #getDefaultListener(org.jomc.model.Modules)
      *
      * @since 1.1
      */
@@ -1143,121 +1161,131 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        final ClassLoader listenersLoader = this.getDefaultClassLoader( classLoader );
-
-        synchronized ( this.listeners )
+        try
         {
-            List<Listener> cachedListeners = this.listeners.get( listenersLoader );
+            final ClassLoader listenersLoader = this.getDefaultClassLoader( classLoader );
 
-            if ( cachedListeners == null )
+            synchronized ( this.listeners )
             {
-                final List<LogRecord> bootstrapRecords = new ArrayList<LogRecord>( 1024 );
-                final Listener bootstrapListener = new Listener()
+                List<Listener> cachedListeners = this.listeners.get( listenersLoader );
+
+                if ( cachedListeners == null )
                 {
-
-                    public void onLog( final Level level, final String message, final Throwable throwable )
+                    final List<LogRecord> bootstrapRecords = new ArrayList<LogRecord>( 1024 );
+                    final Listener bootstrapListener = new Listener()
                     {
-                        final LogRecord r = new LogRecord( level, message );
-                        r.setThrown( throwable );
 
-                        bootstrapRecords.add( r );
-                    }
-
-                };
-
-                cachedListeners = new LinkedList<Listener>();
-                cachedListeners.add( bootstrapListener );
-                this.listeners.put( listenersLoader, cachedListeners );
-
-                final List<Listener> modelListeners = new LinkedList<Listener>();
-                final Modules model = this.getModules( classLoader );
-                final Specification listenerSpecification = model.getSpecification( Listener.class );
-
-                if ( listenerSpecification != null )
-                {
-                    final Implementations implementations =
-                        model.getImplementations( listenerSpecification.getIdentifier() );
-
-                    if ( implementations != null && !implementations.getImplementation().isEmpty() )
-                    {
-                        for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
+                        public void onLog( final Level level, final String message, final Throwable throwable )
                         {
-                            final Implementation impl = implementations.getImplementation().get( i );
-                            final Instance listenerInstance = model.getInstance( impl.getIdentifier() );
-                            if ( listenerInstance != null )
+                            final LogRecord r = new LogRecord( level, message );
+                            r.setThrown( throwable );
+
+                            bootstrapRecords.add( r );
+                        }
+
+                    };
+
+                    cachedListeners = new LinkedList<Listener>();
+                    cachedListeners.add( bootstrapListener );
+                    this.listeners.put( listenersLoader, cachedListeners );
+
+                    final List<Listener> modelListeners = new LinkedList<Listener>();
+                    final Modules model = this.getModules( classLoader );
+                    final Specification listenerSpecification = model.getSpecification( Listener.class );
+
+                    if ( listenerSpecification != null )
+                    {
+                        final Implementations implementations =
+                            model.getImplementations( listenerSpecification.getIdentifier() );
+
+                        if ( implementations != null && !implementations.getImplementation().isEmpty() )
+                        {
+                            for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
                             {
-                                try
+                                final Implementation impl = implementations.getImplementation().get( i );
+                                final Instance listenerInstance = model.getInstance( impl.getIdentifier() );
+                                if ( listenerInstance != null )
                                 {
-                                    final Listener l = (Listener) model.createObject( listenerInstance, classLoader );
-                                    modelListeners.add( l );
-
-                                    if ( this.isLoggable( Level.CONFIG ) )
+                                    try
                                     {
-                                        this.log( classLoader, Level.CONFIG, getListenerInfoMessage(
-                                            Locale.getDefault(), l.getClass().getName(),
-                                            this.getClassLoaderInfo( classLoader, listenersLoader ) ), null );
+                                        final Listener l =
+                                            (Listener) model.createObject( listenerInstance, classLoader );
 
+                                        modelListeners.add( l );
+
+                                        if ( this.isLoggable( Level.CONFIG ) )
+                                        {
+                                            this.log( classLoader, Level.CONFIG, getListenerInfoMessage(
+                                                Locale.getDefault(), l.getClass().getName(),
+                                                this.getClassLoaderInfo( classLoader, listenersLoader ) ), null );
+
+                                        }
+                                    }
+                                    catch ( final InstantiationException e )
+                                    {
+                                        if ( this.isLoggable( Level.SEVERE ) )
+                                        {
+                                            this.log( classLoader, Level.SEVERE, getMessage( e ), e );
+                                        }
                                     }
                                 }
-                                catch ( final InstantiationException e )
+                                else if ( this.isLoggable( Level.WARNING ) )
                                 {
-                                    if ( this.isLoggable( Level.SEVERE ) )
-                                    {
-                                        this.log( classLoader, Level.SEVERE, getMessage( e ), e );
-                                    }
+                                    this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
+                                        Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
+
                                 }
                             }
-                            else if ( this.isLoggable( Level.WARNING ) )
-                            {
-                                this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                    Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
+                        }
+                        else if ( this.isLoggable( Level.WARNING ) )
+                        {
+                            this.log( classLoader, Level.WARNING, getMissingImplementationsMessage(
+                                Locale.getDefault(), listenerSpecification.getIdentifier() ), null );
 
-                            }
                         }
                     }
                     else if ( this.isLoggable( Level.WARNING ) )
                     {
-                        this.log( classLoader, Level.WARNING, getMissingImplementationsMessage(
-                            Locale.getDefault(), listenerSpecification.getIdentifier() ), null );
+                        this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
+                            Locale.getDefault(), Listener.class.getName() ), null );
 
                     }
-                }
-                else if ( this.isLoggable( Level.WARNING ) )
-                {
-                    this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
-                        Locale.getDefault(), Listener.class.getName() ), null );
 
-                }
+                    cachedListeners.remove( bootstrapListener );
+                    cachedListeners.addAll( modelListeners );
 
-                cachedListeners.remove( bootstrapListener );
-                cachedListeners.addAll( modelListeners );
-
-                if ( cachedListeners.isEmpty() )
-                {
-                    if ( !classLoader.equals( this.getDefaultClassLoader( this.getClass() ) ) )
+                    if ( cachedListeners.isEmpty() )
                     {
-                        cachedListeners.addAll( this.getListeners() );
-                    }
-                    else
-                    {
-                        cachedListeners.add( this.getDefaultListener( model ) );
-
-                        if ( this.isLoggable( Level.CONFIG ) )
+                        if ( !classLoader.equals( this.getDefaultClassLoader( this.getClass() ) ) )
                         {
-                            this.log( Level.CONFIG, getDefaultListenerInfo(
-                                Locale.getDefault(), this.getClassLoaderInfo( classLoader, listenersLoader ) ), null );
+                            cachedListeners.addAll( this.getListeners() );
+                        }
+                        else
+                        {
+                            cachedListeners.add( this.getDefaultListener( model ) );
 
+                            if ( this.isLoggable( Level.CONFIG ) )
+                            {
+                                this.log( Level.CONFIG, getDefaultListenerInfo(
+                                    Locale.getDefault(), this.getClassLoaderInfo( classLoader, listenersLoader ) ),
+                                          null );
+
+                            }
                         }
                     }
+
+                    for ( LogRecord r : bootstrapRecords )
+                    {
+                        this.log( classLoader, r.getLevel(), r.getMessage(), r.getThrown() );
+                    }
                 }
 
-                for ( LogRecord r : bootstrapRecords )
-                {
-                    this.log( classLoader, r.getLevel(), r.getMessage(), r.getThrown() );
-                }
+                return cachedListeners;
             }
-
-            return cachedListeners;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
         }
     }
 
@@ -1288,6 +1316,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return A new default listener implementation instance.
      *
      * @throws NullPointerException if {@code model} is {@code null}.
+     * @throws ObjectManagementException if getting a new default listener implementation instance fails.
      *
      * @see #getListeners()
      * @see #getListeners(java.lang.ClassLoader)
@@ -1301,9 +1330,16 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Listener defaultListener = this.getDefaultListener();
-        model.getInstance( defaultListener );
-        return defaultListener;
+        try
+        {
+            final Listener defaultListener = new DefaultListener();
+            model.getInstance( defaultListener );
+            return defaultListener;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -1415,6 +1451,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param throwable The throwable of the event or {@code null}.
      *
      * @throws NullPointerException if {@code level} is {@code null}.
+     * @throws ObjectManagementException if notifying listeners fails.
      *
      * @see #log(java.lang.ClassLoader, java.util.logging.Level, java.lang.String, java.lang.Throwable)
      */
@@ -1432,6 +1469,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param throwable The throwable of the event or {@code null}.
      *
      * @throws NullPointerException if {@code classLoader} or {@code level} is {@code null}.
+     * @throws ObjectManagementException if notifying listeners fails.
      *
      * @since 1.1
      */
@@ -1747,6 +1785,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The modules of the given class loader.
      *
      * @throws NullPointerException if {@code classLoader} is {@code null}.
+     * @throws ObjectManagementException if getting the modules fails.
      *
      * @see #getDefaultModules()
      * @see #getModelIdentifier()
@@ -1883,6 +1922,8 @@ public class DefaultObjectManager implements ObjectManager
      * Gets a new default modules instance.
      *
      * @return A new default modules instance.
+     *
+     * @throws ObjectManagementException if getting a new default modules instance fails.
      *
      * @see #getModules(java.lang.ClassLoader)
      *
@@ -2163,10 +2204,9 @@ public class DefaultObjectManager implements ObjectManager
      * @return An object of {@code instance} from {@code scope} or {@code null}, if no such object is found.
      *
      * @throws NullPointerException if {@code instance} or {@code classLoader} is {@code null}.
-     * @throws InstantiationException if creating an object fails.
+     * @throws ObjectManagementException if getting an object fails.
      */
     public Object getObject( final Scope scope, final Instance instance, final ClassLoader classLoader )
-        throws InstantiationException
     {
         if ( instance == null )
         {
@@ -2177,92 +2217,103 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        Object object = null;
-
-        if ( scope != null )
+        try
         {
-            synchronized ( instance )
+            Object object = null;
+
+            if ( scope != null )
             {
-                boolean created = true;
-
-                synchronized ( scope )
+                synchronized ( instance )
                 {
-                    object = scope.getObject( instance.getIdentifier() );
+                    boolean created = true;
 
-                    if ( object == null )
+                    synchronized ( scope )
                     {
-                        scope.putObject( instance.getIdentifier(), instance );
-                        created = false;
-                    }
-                }
+                        object = scope.getObject( instance.getIdentifier() );
 
-                if ( object instanceof Instance )
-                {
-                    synchronized ( object )
-                    {
-                        synchronized ( scope )
+                        if ( object == null )
                         {
-                            object = scope.getObject( instance.getIdentifier() );
-
-                            if ( object instanceof Instance )
-                            {
-                                throw new ObjectManagementException( getDependencyCycleMessage(
-                                    Locale.getDefault(), instance.getIdentifier() ) );
-
-                            }
+                            scope.putObject( instance.getIdentifier(), instance );
+                            created = false;
                         }
                     }
-                }
 
-                if ( !created )
-                {
-                    try
+                    if ( object instanceof Instance )
                     {
-                        object = this.getModules( classLoader ).createObject( instance, classLoader );
-
-                        if ( object != null )
+                        synchronized ( object )
                         {
-                            object = this.createProxy( instance, object, classLoader );
-                        }
-
-                        created = true;
-                    }
-                    finally
-                    {
-                        synchronized ( scope )
-                        {
-                            if ( created && object != null )
+                            synchronized ( scope )
                             {
-                                final Object o = scope.putObject( instance.getIdentifier(), object );
+                                object = scope.getObject( instance.getIdentifier() );
 
-                                if ( o != instance )
+                                if ( object instanceof Instance )
                                 {
-                                    scope.putObject( instance.getIdentifier(), o );
-                                    throw new AssertionError( getScopeContentionFailure(
+                                    throw new ObjectManagementException( getDependencyCycleMessage(
                                         Locale.getDefault(), instance.getIdentifier() ) );
 
                                 }
                             }
-                            else
+                        }
+                    }
+
+                    if ( !created )
+                    {
+                        try
+                        {
+                            object = this.getModules( classLoader ).createObject( instance, classLoader );
+
+                            if ( object != null )
                             {
-                                scope.removeObject( instance.getIdentifier() );
+                                object = this.createProxy( instance, object, classLoader );
+                            }
+
+                            created = true;
+                        }
+                        finally
+                        {
+                            synchronized ( scope )
+                            {
+                                if ( created && object != null )
+                                {
+                                    final Object o = scope.putObject( instance.getIdentifier(), object );
+
+                                    if ( o != instance )
+                                    {
+                                        scope.putObject( instance.getIdentifier(), o );
+                                        throw new AssertionError( getScopeContentionFailure(
+                                            Locale.getDefault(), instance.getIdentifier() ) );
+
+                                    }
+                                }
+                                else
+                                {
+                                    scope.removeObject( instance.getIdentifier() );
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        else
-        {
-            object = this.getModules( classLoader ).createObject( instance, classLoader );
-
-            if ( object != null )
+            else
             {
-                object = this.createProxy( instance, object, classLoader );
-            }
-        }
+                object = this.getModules( classLoader ).createObject( instance, classLoader );
 
-        return object;
+                if ( object != null )
+                {
+                    object = this.createProxy( instance, object, classLoader );
+                }
+            }
+
+            return object;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -2276,12 +2327,9 @@ public class DefaultObjectManager implements ObjectManager
      * @return An object located at {@code location} or {@code null}, if no such object is found.
      *
      * @throws NullPointerException if {@code specification}, {@code location} or {@code classLoader} is {@code null}.
-     * @throws InstantiationException if instantiating a locator fails.
-     * @throws ClassNotFoundException if the class of {@code specification} is not found.
-     * @throws IOException if locating the object fails.
+     * @throws ObjectManagementException if getting an object fails.
      */
     public <T> T getObject( final Class<T> specification, final URI location, final ClassLoader classLoader )
-        throws InstantiationException, ClassNotFoundException, IOException
     {
         if ( specification == null )
         {
@@ -2296,21 +2344,28 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "classLoader" );
         }
 
-        T object = null;
-        final Locator locator = this.getLocator( location, classLoader );
-
-        if ( locator != null )
+        try
         {
-            object = locator.getObject( specification, location );
+            T object = null;
+            final Locator locator = this.getLocator( location, classLoader );
+
+            if ( locator != null )
+            {
+                object = locator.getObject( specification, location );
+            }
+            else if ( this.isLoggable( Level.WARNING ) )
+            {
+                this.log( classLoader, Level.WARNING, getMissingLocatorMessage(
+                    Locale.getDefault(), location.getScheme() ), null );
+
+            }
+
+            return object;
         }
-        else if ( this.isLoggable( Level.WARNING ) )
+        catch ( final IOException e )
         {
-            this.log( classLoader, Level.WARNING, getMissingLocatorMessage(
-                Locale.getDefault(), location.getScheme() ), null );
-
+            throw new ObjectManagementException( getMessage( e ), e );
         }
-
-        return object;
     }
 
     /**
@@ -2323,11 +2378,11 @@ public class DefaultObjectManager implements ObjectManager
      * implementation is found.
      *
      * @throws NullPointerException if {@code classLoader} or {@code identifier} is {@code null}.
-     * @throws InstantiationException if instantiating a scope fails.
+     * @throws ObjectManagementException if getting the scope implementation fails.
      *
-     * @see #getDefaultScope(java.lang.String)
+     * @see #getDefaultScope(org.jomc.model.Modules, java.lang.String)
      */
-    public Scope getScope( final String identifier, final ClassLoader classLoader ) throws InstantiationException
+    public Scope getScope( final String identifier, final ClassLoader classLoader )
     {
         if ( classLoader == null )
         {
@@ -2338,88 +2393,99 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "identifier" );
         }
 
-        final ClassLoader scopesLoader = this.getDefaultClassLoader( classLoader );
-
-        synchronized ( this.scopes )
+        try
         {
-            Map<String, Scope> cachedScopes = this.scopes.get( scopesLoader );
-            if ( cachedScopes == null )
+            final ClassLoader scopesLoader = this.getDefaultClassLoader( classLoader );
+
+            synchronized ( this.scopes )
             {
-                cachedScopes = new HashMap<String, Scope>();
-                this.scopes.put( scopesLoader, cachedScopes );
-            }
-
-            Scope scope = cachedScopes.get( identifier );
-
-            if ( scope == null )
-            {
-                // Bootstrap scope loading.
-                final Modules model = this.getModules( classLoader );
-                final Specification scopeSpecification = model.getSpecification( Scope.class );
-
-                if ( scopeSpecification != null )
+                Map<String, Scope> cachedScopes = this.scopes.get( scopesLoader );
+                if ( cachedScopes == null )
                 {
-                    final Implementations implementations =
-                        model.getImplementations( scopeSpecification.getIdentifier() );
+                    cachedScopes = new HashMap<String, Scope>();
+                    this.scopes.put( scopesLoader, cachedScopes );
+                }
 
-                    if ( implementations != null )
+                Scope scope = cachedScopes.get( identifier );
+
+                if ( scope == null )
+                {
+                    // Bootstrap scope loading.
+                    final Modules model = this.getModules( classLoader );
+                    final Specification scopeSpecification = model.getSpecification( Scope.class );
+
+                    if ( scopeSpecification != null )
                     {
-                        for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
+                        final Implementations implementations =
+                            model.getImplementations( scopeSpecification.getIdentifier() );
+
+                        if ( implementations != null )
                         {
-                            final Implementation impl = implementations.getImplementation().get( i );
-
-                            if ( identifier.equals( impl.getName() ) )
+                            for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
                             {
-                                final Instance instance = model.getInstance( impl.getIdentifier() );
+                                final Implementation impl = implementations.getImplementation().get( i );
 
-                                if ( instance != null )
+                                if ( identifier.equals( impl.getName() ) )
                                 {
-                                    scope = (Scope) model.createObject( instance, classLoader );
-                                    cachedScopes.put( identifier, scope );
-                                    if ( this.isLoggable( Level.CONFIG ) )
+                                    final Instance instance = model.getInstance( impl.getIdentifier() );
+
+                                    if ( instance != null )
                                     {
-                                        this.log( classLoader, Level.CONFIG, getScopeInfoMessage(
-                                            Locale.getDefault(), impl.getIdentifier(), identifier,
-                                            this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
+                                        scope = (Scope) model.createObject( instance, classLoader );
+                                        cachedScopes.put( identifier, scope );
+                                        if ( this.isLoggable( Level.CONFIG ) )
+                                        {
+                                            this.log( classLoader, Level.CONFIG, getScopeInfoMessage(
+                                                Locale.getDefault(), impl.getIdentifier(), identifier,
+                                                this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
+
+                                        }
+                                        break;
+                                    }
+                                    else if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
+                                            Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                                     }
-                                    break;
-                                }
-                                else if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                        Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
-
                                 }
                             }
                         }
                     }
-                }
-                else if ( this.isLoggable( Level.WARNING ) )
-                {
-                    this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
-                        Locale.getDefault(), Scope.class.getName() ), null );
-
-                }
-
-                if ( scope == null )
-                {
-                    scope = this.getDefaultScope( model, identifier );
-                    if ( scope != null )
+                    else if ( this.isLoggable( Level.WARNING ) )
                     {
-                        cachedScopes.put( identifier, scope );
-                        if ( this.isLoggable( Level.CONFIG ) )
-                        {
-                            this.log( classLoader, Level.CONFIG, getDefaultScopeInfoMessage(
-                                Locale.getDefault(), identifier,
-                                this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
+                        this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
+                            Locale.getDefault(), Scope.class.getName() ), null );
 
+                    }
+
+                    if ( scope == null )
+                    {
+                        scope = this.getDefaultScope( model, identifier );
+                        if ( scope != null )
+                        {
+                            cachedScopes.put( identifier, scope );
+                            if ( this.isLoggable( Level.CONFIG ) )
+                            {
+                                this.log( classLoader, Level.CONFIG, getDefaultScopeInfoMessage(
+                                    Locale.getDefault(), identifier,
+                                    this.getClassLoaderInfo( classLoader, scopesLoader ) ), null );
+
+                            }
                         }
                     }
                 }
-            }
 
-            return scope;
+                return scope;
+            }
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
         }
     }
 
@@ -2466,6 +2532,7 @@ public class DefaultObjectManager implements ObjectManager
      * is available.
      *
      * @throws NullPointerException if {@code model} or {@code identifier} is {@code null}.
+     * @throws ObjectManagementException if getting a new default scope implementation instance fails.
      *
      * @see #getScope(java.lang.String, java.lang.ClassLoader)
      */
@@ -2480,14 +2547,22 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "identifier" );
         }
 
-        final Scope defaultScope = this.getDefaultScope( identifier );
-
-        if ( defaultScope != null )
+        try
         {
-            model.getInstance( defaultScope );
-        }
+            Scope defaultScope = null;
 
-        return defaultScope;
+            if ( identifier.equals( SINGLETON_SCOPE_IDENTIFIER ) )
+            {
+                defaultScope = new DefaultScope( new HashMap<String, Object>() );
+                model.getInstance( defaultScope );
+            }
+
+            return defaultScope;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -2500,11 +2575,11 @@ public class DefaultObjectManager implements ObjectManager
      * available.
      *
      * @throws NullPointerException if {@code classLoader} or {@code location} is {@code null}.
-     * @throws InstantiationException if instantiating a locator fails.
+     * @throws ObjectManagementException if getting a locator fails.
      *
-     * @see #getDefaultLocator(java.net.URI)
+     * @see #getDefaultLocator(org.jomc.model.Modules, java.net.URI)
      */
-    public Locator getLocator( final URI location, final ClassLoader classLoader ) throws InstantiationException
+    public Locator getLocator( final URI location, final ClassLoader classLoader )
     {
         if ( classLoader == null )
         {
@@ -2515,98 +2590,109 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "location" );
         }
 
-        final String scheme = location.getScheme();
-
-        if ( scheme != null )
+        try
         {
-            final ClassLoader locatorsLoader = this.getDefaultClassLoader( classLoader );
+            final String scheme = location.getScheme();
 
-            synchronized ( this.locators )
+            if ( scheme != null )
             {
-                Map<String, Locator> cachedLocators = this.locators.get( locatorsLoader );
-                if ( cachedLocators == null )
+                final ClassLoader locatorsLoader = this.getDefaultClassLoader( classLoader );
+
+                synchronized ( this.locators )
                 {
-                    cachedLocators = new HashMap<String, Locator>();
-                    this.locators.put( locatorsLoader, cachedLocators );
-                }
-
-                Locator locator = cachedLocators.get( scheme );
-
-                if ( locator == null )
-                {
-                    // Bootstrap locator loading.
-                    final Modules model = this.getModules( classLoader );
-                    final Specification locatorSpecification = model.getSpecification( Locator.class );
-
-                    if ( locatorSpecification != null )
+                    Map<String, Locator> cachedLocators = this.locators.get( locatorsLoader );
+                    if ( cachedLocators == null )
                     {
-                        final Implementations implementations =
-                            model.getImplementations( locatorSpecification.getIdentifier() );
+                        cachedLocators = new HashMap<String, Locator>();
+                        this.locators.put( locatorsLoader, cachedLocators );
+                    }
 
-                        if ( implementations != null )
+                    Locator locator = cachedLocators.get( scheme );
+
+                    if ( locator == null )
+                    {
+                        // Bootstrap locator loading.
+                        final Modules model = this.getModules( classLoader );
+                        final Specification locatorSpecification = model.getSpecification( Locator.class );
+
+                        if ( locatorSpecification != null )
                         {
-                            for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
+                            final Implementations implementations =
+                                model.getImplementations( locatorSpecification.getIdentifier() );
+
+                            if ( implementations != null )
                             {
-                                final Implementation impl = implementations.getImplementation().get( i );
-
-                                if ( scheme.equals( impl.getName() ) )
+                                for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
                                 {
-                                    final Instance instance = model.getInstance( impl.getIdentifier() );
+                                    final Implementation impl = implementations.getImplementation().get( i );
 
-                                    if ( instance != null )
+                                    if ( scheme.equals( impl.getName() ) )
                                     {
-                                        locator = (Locator) model.createObject( instance, classLoader );
-                                        cachedLocators.put( scheme, locator );
+                                        final Instance instance = model.getInstance( impl.getIdentifier() );
 
-                                        if ( this.isLoggable( Level.CONFIG ) )
+                                        if ( instance != null )
                                         {
-                                            this.log( classLoader, Level.CONFIG, getLocatorInfoMessage(
-                                                Locale.getDefault(), impl.getIdentifier(), scheme,
-                                                this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
+                                            locator = (Locator) model.createObject( instance, classLoader );
+                                            cachedLocators.put( scheme, locator );
+
+                                            if ( this.isLoggable( Level.CONFIG ) )
+                                            {
+                                                this.log( classLoader, Level.CONFIG, getLocatorInfoMessage(
+                                                    Locale.getDefault(), impl.getIdentifier(), scheme,
+                                                    this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
+
+                                            }
+
+                                            break;
+                                        }
+                                        else if ( this.isLoggable( Level.WARNING ) )
+                                        {
+                                            this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
+                                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
 
                                         }
-
-                                        break;
-                                    }
-                                    else if ( this.isLoggable( Level.WARNING ) )
-                                    {
-                                        this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                            Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
-
                                     }
                                 }
                             }
                         }
-                    }
-                    else if ( this.isLoggable( Level.WARNING ) )
-                    {
-                        this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
-                            Locale.getDefault(), Locator.class.getName() ), null );
-
-                    }
-
-                    if ( locator == null )
-                    {
-                        locator = this.getDefaultLocator( model, location );
-                        if ( locator != null )
+                        else if ( this.isLoggable( Level.WARNING ) )
                         {
-                            cachedLocators.put( scheme, locator );
-                            if ( this.isLoggable( Level.CONFIG ) )
-                            {
-                                this.log( classLoader, Level.CONFIG, getDefaultLocatorInfoMessage(
-                                    Locale.getDefault(), scheme,
-                                    this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
+                            this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
+                                Locale.getDefault(), Locator.class.getName() ), null );
 
+                        }
+
+                        if ( locator == null )
+                        {
+                            locator = this.getDefaultLocator( model, location );
+                            if ( locator != null )
+                            {
+                                cachedLocators.put( scheme, locator );
+                                if ( this.isLoggable( Level.CONFIG ) )
+                                {
+                                    this.log( classLoader, Level.CONFIG, getDefaultLocatorInfoMessage(
+                                        Locale.getDefault(), scheme,
+                                        this.getClassLoaderInfo( classLoader, locatorsLoader ) ), null );
+
+                                }
                             }
                         }
                     }
+
+                    return locator;
                 }
-
-                return locator;
             }
-        }
 
-        return null;
+            return null;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -2653,6 +2739,7 @@ public class DefaultObjectManager implements ObjectManager
      * is available.
      *
      * @throws NullPointerException if {@code model} or {@code location} is {@code null}.
+     * @throws ObjectManagementException if getting a new default locator implementation instance fails.
      *
      * @see #getLocator(java.net.URI, java.lang.ClassLoader)
      *
@@ -2669,13 +2756,23 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "location" );
         }
 
-        final Locator locator = this.getDefaultLocator( location );
-        if ( locator != null )
+        try
         {
-            model.getInstance( locator );
-        }
+            Locator locator = null;
+            final DefaultLocator defaultLocator = new DefaultLocator();
 
-        return locator;
+            if ( defaultLocator.isLocationSupported( location ) )
+            {
+                locator = defaultLocator;
+                model.getInstance( locator );
+            }
+
+            return locator;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -2686,93 +2783,104 @@ public class DefaultObjectManager implements ObjectManager
      * @return The invoker of the given class loader.
      *
      * @throws NullPointerException if {@code classLoader} is {@code null}.
-     * @throws InstantiationException if instantiating a new invoker fails.
+     * @throws ObjectManagementException if getting the invoker fails.
      *
-     * @see #getDefaultInvoker()
+     * @see #getDefaultInvoker(org.jomc.model.Modules)
      */
-    public Invoker getInvoker( final ClassLoader classLoader ) throws InstantiationException
+    public Invoker getInvoker( final ClassLoader classLoader )
     {
         if ( classLoader == null )
         {
             throw new NullPointerException( "classLoader" );
         }
 
-        final ClassLoader invokersLoader = this.getDefaultClassLoader( classLoader );
-
-        synchronized ( this.invokers )
+        try
         {
-            Invoker invoker = this.invokers.get( invokersLoader );
+            final ClassLoader invokersLoader = this.getDefaultClassLoader( classLoader );
 
-            if ( invoker == null )
+            synchronized ( this.invokers )
             {
-                final Modules model = this.getModules( classLoader );
-                final Specification invokerSpecification = model.getSpecification( Invoker.class );
-
-                if ( invokerSpecification != null )
-                {
-                    final Implementations implementations =
-                        model.getImplementations( invokerSpecification.getIdentifier() );
-
-                    if ( implementations != null && !implementations.getImplementation().isEmpty() )
-                    {
-                        for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
-                        {
-                            final Implementation impl = implementations.getImplementation().get( i );
-
-                            if ( invoker == null )
-                            {
-                                final Instance invokerInstance = model.getInstance( impl.getIdentifier() );
-
-                                if ( invokerInstance != null )
-                                {
-                                    invoker = (Invoker) model.createObject( invokerInstance, classLoader );
-                                    this.invokers.put( invokersLoader, invoker );
-
-                                    if ( this.isLoggable( Level.CONFIG ) )
-                                    {
-                                        this.log( classLoader, Level.CONFIG, getInvokerInfoMessage(
-                                            Locale.getDefault(), impl.getIdentifier(),
-                                            this.getClassLoaderInfo( classLoader, invokersLoader ) ), null );
-
-                                    }
-                                }
-                                else if ( this.isLoggable( Level.WARNING ) )
-                                {
-                                    this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                        Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
-
-                                }
-                            }
-                            else if ( this.isLoggable( Level.CONFIG ) )
-                            {
-                                this.log( classLoader, Level.CONFIG, getIgnoredInvokerMessage(
-                                    Locale.getDefault(), impl.getIdentifier() ), null );
-
-                            }
-                        }
-                    }
-                }
-                else if ( this.isLoggable( Level.WARNING ) )
-                {
-                    this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
-                        Locale.getDefault(), Invoker.class.getName() ), null );
-
-                }
+                Invoker invoker = this.invokers.get( invokersLoader );
 
                 if ( invoker == null )
                 {
-                    invoker = this.getDefaultInvoker( model );
-                    this.invokers.put( invokersLoader, invoker );
-                    if ( this.isLoggable( Level.CONFIG ) )
+                    final Modules model = this.getModules( classLoader );
+                    final Specification invokerSpecification = model.getSpecification( Invoker.class );
+
+                    if ( invokerSpecification != null )
                     {
-                        this.log( classLoader, Level.CONFIG, getDefaultInvokerInfoMessage(
-                            Locale.getDefault(), this.getClassLoaderInfo( classLoader, invokersLoader ) ), null );
+                        final Implementations implementations =
+                            model.getImplementations( invokerSpecification.getIdentifier() );
+
+                        if ( implementations != null && !implementations.getImplementation().isEmpty() )
+                        {
+                            for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
+                            {
+                                final Implementation impl = implementations.getImplementation().get( i );
+
+                                if ( invoker == null )
+                                {
+                                    final Instance invokerInstance = model.getInstance( impl.getIdentifier() );
+
+                                    if ( invokerInstance != null )
+                                    {
+                                        invoker = (Invoker) model.createObject( invokerInstance, classLoader );
+                                        this.invokers.put( invokersLoader, invoker );
+
+                                        if ( this.isLoggable( Level.CONFIG ) )
+                                        {
+                                            this.log( classLoader, Level.CONFIG, getInvokerInfoMessage(
+                                                Locale.getDefault(), impl.getIdentifier(),
+                                                this.getClassLoaderInfo( classLoader, invokersLoader ) ), null );
+
+                                        }
+                                    }
+                                    else if ( this.isLoggable( Level.WARNING ) )
+                                    {
+                                        this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
+                                            Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
+
+                                    }
+                                }
+                                else if ( this.isLoggable( Level.CONFIG ) )
+                                {
+                                    this.log( classLoader, Level.CONFIG, getIgnoredInvokerMessage(
+                                        Locale.getDefault(), impl.getIdentifier() ), null );
+
+                                }
+                            }
+                        }
+                    }
+                    else if ( this.isLoggable( Level.WARNING ) )
+                    {
+                        this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
+                            Locale.getDefault(), Invoker.class.getName() ), null );
 
                     }
-                }
-            }
 
-            return invoker;
+                    if ( invoker == null )
+                    {
+                        invoker = this.getDefaultInvoker( model );
+                        this.invokers.put( invokersLoader, invoker );
+                        if ( this.isLoggable( Level.CONFIG ) )
+                        {
+                            this.log( classLoader, Level.CONFIG, getDefaultInvokerInfoMessage(
+                                Locale.getDefault(), this.getClassLoaderInfo( classLoader, invokersLoader ) ), null );
+
+                        }
+                    }
+                }
+
+                return invoker;
+            }
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
         }
     }
 
@@ -2802,6 +2910,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return A new default invoker implementation instance.
      *
      * @throws NullPointerException if {@code model} is {@code null}.
+     * @throws ObjectManagementException if getting a new default invoker implementation instance fails.
      *
      * @see #getInvoker(java.lang.ClassLoader)
      *
@@ -2814,9 +2923,16 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Invoker defaultInvoker = this.getDefaultInvoker();
-        model.getInstance( defaultInvoker );
-        return defaultInvoker;
+        try
+        {
+            final Invoker defaultInvoker = new DefaultInvoker();
+            model.getInstance( defaultInvoker );
+            return defaultInvoker;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
@@ -2858,14 +2974,14 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @throws NullPointerException if {@code classLoader} {@code object}, {@code instance} or {@code method} is
      * {@code null}.
-     * @throws InstantiationException if instantiating a new invocation fails.
+     * @throws ObjectManagementException if getting an invocation fails.
      *
-     * @see #getDefaultInvocation()
+     * @see #getDefaultInvocation(org.jomc.model.Modules)
      *
      * @since 1.1
      */
     public Invocation getInvocation( final ClassLoader classLoader, final Object object, final Instance instance,
-                                     final Method method, final Object[] arguments ) throws InstantiationException
+                                     final Method method, final Object[] arguments )
     {
         if ( classLoader == null )
         {
@@ -2884,64 +3000,75 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "method" );
         }
 
-        Invocation invocation = null;
-        final Modules model = this.getModules( classLoader );
-        final Specification invocationSpecification = model.getSpecification( Invocation.class );
-
-        if ( invocationSpecification != null )
+        try
         {
-            final Implementations implementations =
-                model.getImplementations( invocationSpecification.getIdentifier() );
+            Invocation invocation = null;
+            final Modules model = this.getModules( classLoader );
+            final Specification invocationSpecification = model.getSpecification( Invocation.class );
 
-            if ( implementations != null && !implementations.getImplementation().isEmpty() )
+            if ( invocationSpecification != null )
             {
-                for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
+                final Implementations implementations =
+                    model.getImplementations( invocationSpecification.getIdentifier() );
+
+                if ( implementations != null && !implementations.getImplementation().isEmpty() )
                 {
-                    final Implementation impl = implementations.getImplementation().get( i );
-
-                    if ( invocation == null )
+                    for ( int i = 0, s0 = implementations.getImplementation().size(); i < s0; i++ )
                     {
-                        final Instance invocationInstance = model.getInstance( impl.getIdentifier() );
+                        final Implementation impl = implementations.getImplementation().get( i );
 
-                        if ( invocationInstance != null )
+                        if ( invocation == null )
                         {
-                            invocation = (Invocation) model.createObject( invocationInstance, classLoader );
+                            final Instance invocationInstance = model.getInstance( impl.getIdentifier() );
+
+                            if ( invocationInstance != null )
+                            {
+                                invocation = (Invocation) model.createObject( invocationInstance, classLoader );
+                            }
+                            else if ( this.isLoggable( Level.WARNING ) )
+                            {
+                                this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
+                                    Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
+
+                            }
                         }
-                        else if ( this.isLoggable( Level.WARNING ) )
+                        else if ( this.isLoggable( Level.CONFIG ) )
                         {
-                            this.log( classLoader, Level.WARNING, getMissingInstanceMessage(
-                                Locale.getDefault(), impl.getIdentifier(), impl.getName() ), null );
+                            this.log( classLoader, Level.CONFIG, getIgnoredInvocationMessage(
+                                Locale.getDefault(), impl.getIdentifier() ), null );
 
                         }
-                    }
-                    else if ( this.isLoggable( Level.CONFIG ) )
-                    {
-                        this.log( classLoader, Level.CONFIG, getIgnoredInvocationMessage(
-                            Locale.getDefault(), impl.getIdentifier() ), null );
-
                     }
                 }
             }
+            else if ( this.isLoggable( Level.WARNING ) )
+            {
+                this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
+                    Locale.getDefault(), Invocation.class.getName() ), null );
+
+            }
+
+            if ( invocation == null )
+            {
+                invocation = this.getDefaultInvocation( model );
+            }
+
+            invocation.getContext().put( DefaultInvocation.OBJECT_KEY, object );
+            invocation.getContext().put( DefaultInvocation.METHOD_KEY, method );
+            invocation.getContext().put( DefaultInvocation.ARGUMENTS_KEY, arguments );
+            invocation.getContext().put( DefaultInvocation.INSTANCE_KEY, instance );
+            invocation.getContext().put( DefaultInvocation.MODULES_KEY, model );
+            invocation.getContext().put( DefaultInvocation.CLASSLOADER_KEY, classLoader );
+            return invocation;
         }
-        else if ( this.isLoggable( Level.WARNING ) )
+        catch ( final ModelObjectException e )
         {
-            this.log( classLoader, Level.WARNING, getMissingSpecificationMessage(
-                Locale.getDefault(), Invocation.class.getName() ), null );
-
+            throw new ObjectManagementException( getMessage( e ), e );
         }
-
-        if ( invocation == null )
+        catch ( final InstantiationException e )
         {
-            invocation = this.getDefaultInvocation( model );
+            throw new ObjectManagementException( getMessage( e ), e );
         }
-
-        invocation.getContext().put( DefaultInvocation.OBJECT_KEY, object );
-        invocation.getContext().put( DefaultInvocation.METHOD_KEY, method );
-        invocation.getContext().put( DefaultInvocation.ARGUMENTS_KEY, arguments );
-        invocation.getContext().put( DefaultInvocation.INSTANCE_KEY, instance );
-        invocation.getContext().put( DefaultInvocation.MODULES_KEY, model );
-        invocation.getContext().put( DefaultInvocation.CLASSLOADER_KEY, classLoader );
-        return invocation;
     }
 
     /**
@@ -2970,8 +3097,9 @@ public class DefaultObjectManager implements ObjectManager
      * @return A new default invocation implementation instance.
      *
      * @throws NullPointerException if {@code model} is {@code null}.
+     * @throws ObjectManagementException if getting a new default invocation implementation instance fails.
      *
-     * @see #getInvocation(java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
+     * @see #getInvocation(java.lang.ClassLoader, java.lang.Object, org.jomc.model.Instance, java.lang.reflect.Method, java.lang.Object[])
      *
      * @since 1.2
      */
@@ -2982,114 +3110,128 @@ public class DefaultObjectManager implements ObjectManager
             throw new NullPointerException( "model" );
         }
 
-        final Invocation defaultInvocation = this.getDefaultInvocation();
-        model.getInstance( defaultInvocation );
-        return defaultInvocation;
+        try
+        {
+            final Invocation defaultInvocation = new DefaultInvocation();
+            model.getInstance( defaultInvocation );
+            return defaultInvocation;
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
     }
 
     /**
      * Initializes the instance.
      * <p>This method is called once on first usage of a new instance.</p>
      *
-     * @throws InstantiationException if initialization fails.
+     * @throws ObjectManagementException if initialization fails.
      */
-    public synchronized void initialize() throws InstantiationException
+    public synchronized void initialize()
     {
-        if ( !this.initialized )
+        try
         {
-            try
+            if ( !this.initialized )
             {
-                final long t0 = System.currentTimeMillis();
-                this.initialized = true;
-
-                this.listeners.clear();
-                this.modules.clear();
-                this.invokers.clear();
-                this.locators.clear();
-                this.scopes.clear();
-
-                final ClassLoader classLoader = this.getDefaultClassLoader( this.getClass() );
-                final List<LogRecord> bootstrapLogRecords = new ArrayList<LogRecord>( 1024 );
-                final List<Listener> bootstrapListeners = new ArrayList<Listener>( 1 );
-                bootstrapListeners.add( new Listener()
+                try
                 {
+                    final long t0 = System.currentTimeMillis();
+                    this.initialized = true;
 
-                    public void onLog( final Level level, final String message, final Throwable throwable )
+                    this.listeners.clear();
+                    this.modules.clear();
+                    this.invokers.clear();
+                    this.locators.clear();
+                    this.scopes.clear();
+
+                    final ClassLoader classLoader = this.getDefaultClassLoader( this.getClass() );
+                    final List<LogRecord> bootstrapLogRecords = new ArrayList<LogRecord>( 1024 );
+                    final List<Listener> bootstrapListeners = new ArrayList<Listener>( 1 );
+                    bootstrapListeners.add( new Listener()
                     {
-                        final LogRecord r = new LogRecord( level, message );
-                        r.setThrown( throwable );
 
-                        bootstrapLogRecords.add( r );
-                    }
+                        public void onLog( final Level level, final String message, final Throwable throwable )
+                        {
+                            final LogRecord r = new LogRecord( level, message );
+                            r.setThrown( throwable );
 
-                } );
+                            bootstrapLogRecords.add( r );
+                        }
 
-                this.listeners.put( this.getDefaultClassLoader( classLoader ),
-                                    Collections.unmodifiableList( bootstrapListeners ) );
+                    } );
 
-                final Modules model = this.getModules( classLoader );
-                final Specification objectManager = model.getSpecification( ObjectManager.class );
-                if ( objectManager == null )
-                {
-                    throw new InstantiationException( getMissingSpecificationMessage(
-                        Locale.getDefault(), ObjectManager.class.getName() ) );
+                    this.listeners.put( this.getDefaultClassLoader( classLoader ),
+                                        Collections.unmodifiableList( bootstrapListeners ) );
 
-                }
-
-                final Implementation thisImplementation = model.getImplementation( this.getClass() );
-                if ( thisImplementation == null )
-                {
-                    throw new InstantiationException( getMissingImplementationMessage(
-                        Locale.getDefault(), objectManager.getIdentifier(), this.getClass().getName() ) );
-
-                }
-
-                final Instance thisInstance = model.getInstance( this );
-                if ( thisInstance == null )
-                {
-                    throw new InstantiationException( getMissingInstanceMessage(
-                        Locale.getDefault(), objectManager.getIdentifier(), thisImplementation.getName() ) );
-
-                }
-
-                if ( objectManager.getScope() != null )
-                {
-                    final Scope scope = this.getScope( objectManager.getScope(), classLoader );
-                    if ( scope == null )
+                    final Modules model = this.getModules( classLoader );
+                    final Specification objectManager = model.getSpecification( ObjectManager.class );
+                    if ( objectManager == null )
                     {
-                        throw new InstantiationException( getMissingScopeMessage(
-                            Locale.getDefault(), objectManager.getScope() ) );
+                        throw new InstantiationException( getMissingSpecificationMessage(
+                            Locale.getDefault(), ObjectManager.class.getName() ) );
 
                     }
 
-                    scope.putObject( thisInstance.getIdentifier(), this );
+                    final Implementation thisImplementation = model.getImplementation( this.getClass() );
+                    if ( thisImplementation == null )
+                    {
+                        throw new InstantiationException( getMissingImplementationMessage(
+                            Locale.getDefault(), objectManager.getIdentifier(), this.getClass().getName() ) );
+
+                    }
+
+                    final Instance thisInstance = model.getInstance( this );
+                    if ( thisInstance == null )
+                    {
+                        throw new InstantiationException( getMissingInstanceMessage(
+                            Locale.getDefault(), objectManager.getIdentifier(), thisImplementation.getName() ) );
+
+                    }
+
+                    if ( objectManager.getScope() != null )
+                    {
+                        final Scope scope = this.getScope( objectManager.getScope(), classLoader );
+                        if ( scope == null )
+                        {
+                            throw new InstantiationException( getMissingScopeMessage(
+                                Locale.getDefault(), objectManager.getScope() ) );
+
+                        }
+
+                        scope.putObject( thisInstance.getIdentifier(), this );
+                    }
+
+                    if ( this.isLoggable( Level.FINE ) )
+                    {
+                        this.log( Level.FINE, getImplementationInfoMessage(
+                            Locale.getDefault(), Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+
+                    }
+
+                    this.listeners.clear();
+
+                    for ( LogRecord r : bootstrapLogRecords )
+                    {
+                        this.log( classLoader, r.getLevel(), r.getMessage(), r.getThrown() );
+                    }
                 }
-
-                if ( this.isLoggable( Level.FINE ) )
+                catch ( final InstantiationException e )
                 {
-                    this.log( Level.FINE, getImplementationInfoMessage(
-                        Locale.getDefault(), Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+                    this.listeners.clear();
+                    this.modules.clear();
+                    this.invokers.clear();
+                    this.locators.clear();
+                    this.scopes.clear();
+                    this.initialized = false;
 
-                }
-
-                this.listeners.clear();
-
-                for ( LogRecord r : bootstrapLogRecords )
-                {
-                    this.log( classLoader, r.getLevel(), r.getMessage(), r.getThrown() );
+                    throw new ObjectManagementException( getMessage( e ), e );
                 }
             }
-            catch ( final InstantiationException e )
-            {
-                this.listeners.clear();
-                this.modules.clear();
-                this.invokers.clear();
-                this.locators.clear();
-                this.scopes.clear();
-                this.initialized = false;
-
-                throw (InstantiationException) new InstantiationException( getMessage( e ) ).initCause( e );
-            }
+        }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
         }
     }
 
@@ -3102,10 +3244,9 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return A new proxy object for {@code object}.
      *
-     * @throws InstantiationException if creating a proxy object fails.
+     * @throws ObjectManagementException if creating a proxy object fails.
      */
     private Object createProxy( final Instance instance, final Object object, final ClassLoader classLoader )
-        throws InstantiationException
     {
         try
         {
@@ -3149,68 +3290,76 @@ public class DefaultObjectManager implements ObjectManager
                 proxyObject = proxyClassConstructor.newInstance( new Object[]
                     {
                         new InvocationHandler()
+                    {
+
+                        private final Invoker invoker = getInvoker( classLoader );
+
+                        public Object invoke( final Object proxy, final Method method, final Object[] args )
+                            throws Throwable
                         {
-
-                            private final Invoker invoker = getInvoker( classLoader );
-
-                            public Object invoke( final Object proxy, final Method method, final Object[] args )
-                                throws Throwable
+                            if ( args != null )
                             {
-                                if ( args != null )
+                                Object[] clonedArgs = args;
+
+                                for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
                                 {
-                                    Object[] clonedArgs = args;
-
-                                    for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
+                                    if ( clonedArgs[i] == proxy )
                                     {
-                                        if ( clonedArgs[i] == proxy )
+                                        if ( clonedArgs == args )
                                         {
-                                            if ( clonedArgs == args )
-                                            {
-                                                clonedArgs = clonedArgs.clone();
-                                            }
-
-                                            clonedArgs[i] = object;
+                                            clonedArgs = clonedArgs.clone();
                                         }
+
+                                        clonedArgs[i] = object;
                                     }
-
-                                    return this.invoker.invoke( getInvocation(
-                                        classLoader, object, instance, method, clonedArgs ) );
-
                                 }
 
                                 return this.invoker.invoke( getInvocation(
-                                    classLoader, object, instance, method, null ) );
+                                    classLoader, object, instance, method, clonedArgs ) );
 
                             }
 
+                            return this.invoker.invoke( getInvocation(
+                                classLoader, object, instance, method, null ) );
+
                         }
+
+                    }
                     } );
 
             }
 
             return proxyObject;
         }
+        catch ( final ModelObjectException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
         catch ( final ClassNotFoundException e )
         {
-            throw (InstantiationException) new InstantiationException( getMessage( e ) ).initCause( e );
+            throw new ObjectManagementException( getMessage( e ), e );
         }
         catch ( final NoSuchMethodException e )
         {
-            throw new AssertionError( e );
+            throw new ObjectManagementException( getMessage( e ), e );
         }
         catch ( final IllegalAccessException e )
         {
-            throw new AssertionError( e );
+            throw new ObjectManagementException( getMessage( e ), e );
+        }
+        catch ( final InstantiationException e )
+        {
+            throw new ObjectManagementException( getMessage( e ), e );
         }
         catch ( final InvocationTargetException e )
         {
-            throw new AssertionError( e );
+            throw new ObjectManagementException( getMessage( e ), e );
         }
     }
 
     private void logModulesReport( final Modules mods, final ClassLoader classLoader )
     {
-        final StringBuilder modulesInfo = new StringBuilder();
+        final StringBuilder modulesInfo = new StringBuilder( 8192 );
 
         this.log( classLoader, Level.FINEST, getModulesReportMessage( Locale.getDefault() ), null );
 
@@ -3368,7 +3517,7 @@ public class DefaultObjectManager implements ObjectManager
                             {
                                 modulesInfo.append( "|JavaValue:" ).append( p.getJavaValue( classLoader ) );
                             }
-                            catch ( final PropertyException e )
+                            catch ( final ModelObjectException e )
                             {
                                 modulesInfo.append( "|JavaValue:" ).append( e );
                             }
@@ -3507,7 +3656,7 @@ public class DefaultObjectManager implements ObjectManager
     // SECTION-START[Messages]
     // <editor-fold defaultstate="collapsed" desc=" Generated Messages ">
     /**
-     * Gets the text of the {@code <creatingModulesInfo>} message.
+     * Gets the text of the {@code <Creating Modules Info>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3516,7 +3665,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <creatingModulesInfo>} message for {@code locale}.
+     * @return The text of the {@code <Creating Modules Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3528,7 +3677,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "creatingModulesInfo" ), classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Creating Modules Info" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3577,7 +3726,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultImplementationName>} message.
+     * Gets the text of the {@code <Default Implementation Name>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3585,7 +3734,7 @@ public class DefaultObjectManager implements ObjectManager
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <defaultImplementationName>} message for {@code locale}.
+     * @return The text of the {@code <Default Implementation Name>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3597,7 +3746,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultImplementationName" ), (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Implementation Name" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3646,7 +3795,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultInvokerInfoMessage>} message.
+     * Gets the text of the {@code <Default Invoker Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3655,7 +3804,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <defaultInvokerInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Default Invoker Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3667,7 +3816,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultInvokerInfoMessage" ), classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Invoker Info Message" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3716,7 +3865,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultListenerInfo>} message.
+     * Gets the text of the {@code <Default Listener Info>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3725,7 +3874,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <defaultListenerInfo>} message for {@code locale}.
+     * @return The text of the {@code <Default Listener Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3737,7 +3886,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultListenerInfo" ), classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Listener Info" ), classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3786,7 +3935,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultLocatorInfoMessage>} message.
+     * Gets the text of the {@code <Default Locator Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3796,7 +3945,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <defaultLocatorInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Default Locator Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3808,7 +3957,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLocatorInfoMessage" ), schemeInfo, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Locator Info Message" ), schemeInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3857,7 +4006,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultLogLevelInfoMessage>} message.
+     * Gets the text of the {@code <Default Log Level Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3866,7 +4015,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param logLevel Format argument.
-     * @return The text of the {@code <defaultLogLevelInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Default Log Level Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3878,7 +4027,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultLogLevelInfoMessage" ), logLevel, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Log Level Info Message" ), logLevel, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3927,7 +4076,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModelIdentifierInfo>} message.
+     * Gets the text of the {@code <Default Model Identifier Info>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -3936,7 +4085,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code <defaultModelIdentifierInfo>} message for {@code locale}.
+     * @return The text of the {@code <Default Model Identifier Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -3948,7 +4097,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelIdentifierInfo" ), defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Model Identifier Info" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -3997,7 +4146,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModelObjectClasspahResolutionEnabledInfo>} message.
+     * Gets the text of the {@code <Default Model Object Classpah Resolution Enabled Info>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4006,7 +4155,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code <defaultModelObjectClasspahResolutionEnabledInfo>} message for {@code locale}.
+     * @return The text of the {@code <Default Model Object Classpah Resolution Enabled Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4018,7 +4167,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelObjectClasspahResolutionEnabledInfo" ), defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Model Object Classpah Resolution Enabled Info" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4067,7 +4216,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModelProcessingEnabledInfo>} message.
+     * Gets the text of the {@code <Default Model Processing Enabled Info>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4076,7 +4225,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param defaultValue Format argument.
-     * @return The text of the {@code <defaultModelProcessingEnabledInfo>} message for {@code locale}.
+     * @return The text of the {@code <Default Model Processing Enabled Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4088,7 +4237,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModelProcessingEnabledInfo" ), defaultValue, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Model Processing Enabled Info" ), defaultValue, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4137,7 +4286,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModuleName>} message.
+     * Gets the text of the {@code <Default Module Name>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4145,7 +4294,7 @@ public class DefaultObjectManager implements ObjectManager
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <defaultModuleName>} message for {@code locale}.
+     * @return The text of the {@code <Default Module Name>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4157,7 +4306,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModuleName" ), (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Module Name" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4206,7 +4355,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModulesVendor>} message.
+     * Gets the text of the {@code <Default Modules Vendor>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4214,7 +4363,7 @@ public class DefaultObjectManager implements ObjectManager
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <defaultModulesVendor>} message for {@code locale}.
+     * @return The text of the {@code <Default Modules Vendor>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4226,7 +4375,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesVendor" ), (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Modules Vendor" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4275,7 +4424,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModulesVersion>} message.
+     * Gets the text of the {@code <Default Modules Version>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4283,7 +4432,7 @@ public class DefaultObjectManager implements ObjectManager
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <defaultModulesVersion>} message for {@code locale}.
+     * @return The text of the {@code <Default Modules Version>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4295,7 +4444,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesVersion" ), (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Modules Version" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4344,7 +4493,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultModulesWarning>} message.
+     * Gets the text of the {@code <Default Modules Warning>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4354,7 +4503,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param modelInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <defaultModulesWarning>} message for {@code locale}.
+     * @return The text of the {@code <Default Modules Warning>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4366,7 +4515,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultModulesWarning" ), modelInfo, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Modules Warning" ), modelInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4415,7 +4564,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <defaultScopeInfoMessage>} message.
+     * Gets the text of the {@code <Default Scope Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4425,7 +4574,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <defaultScopeInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Default Scope Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4437,7 +4586,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "defaultScopeInfoMessage" ), scopeIdentifier, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Default Scope Info Message" ), scopeIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4486,7 +4635,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <dependencyCycleMessage>} message.
+     * Gets the text of the {@code <Dependency Cycle Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4495,7 +4644,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code <dependencyCycleMessage>} message for {@code locale}.
+     * @return The text of the {@code <Dependency Cycle Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4507,7 +4656,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "dependencyCycleMessage" ), implementationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Dependency Cycle Message" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4556,7 +4705,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <ignoredInvocationMessage>} message.
+     * Gets the text of the {@code <Ignored Invocation Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4565,7 +4714,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code <ignoredInvocationMessage>} message for {@code locale}.
+     * @return The text of the {@code <Ignored Invocation Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4577,7 +4726,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvocationMessage" ), implementationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Ignored Invocation Message" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4626,7 +4775,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <ignoredInvokerMessage>} message.
+     * Gets the text of the {@code <Ignored Invoker Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4635,7 +4784,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @return The text of the {@code <ignoredInvokerMessage>} message for {@code locale}.
+     * @return The text of the {@code <Ignored Invoker Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4647,7 +4796,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "ignoredInvokerMessage" ), implementationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Ignored Invoker Message" ), implementationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4696,7 +4845,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <illegalArraySpecificationMessage>} message.
+     * Gets the text of the {@code <Illegal Array Specification Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4706,7 +4855,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code <illegalArraySpecificationMessage>} message for {@code locale}.
+     * @return The text of the {@code <Illegal Array Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4718,7 +4867,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalArraySpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Illegal Array Specification Message" ), specificationIdentifier, specificationMultiplicity, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4767,7 +4916,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <illegalObjectSpecificationMessage>} message.
+     * Gets the text of the {@code <Illegal Object Specification Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4777,7 +4926,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param specificationMultiplicity Format argument.
-     * @return The text of the {@code <illegalObjectSpecificationMessage>} message for {@code locale}.
+     * @return The text of the {@code <Illegal Object Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4789,7 +4938,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "illegalObjectSpecificationMessage" ), specificationIdentifier, specificationMultiplicity, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Illegal Object Specification Message" ), specificationIdentifier, specificationMultiplicity, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4838,7 +4987,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <implementationInfoMessage>} message.
+     * Gets the text of the {@code <Implementation Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4847,7 +4996,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param initializationMillis Format argument.
-     * @return The text of the {@code <implementationInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Implementation Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -4859,7 +5008,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "implementationInfoMessage" ), initializationMillis, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Implementation Info Message" ), initializationMillis, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4908,7 +5057,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <invokerInfoMessage>} message.
+     * Gets the text of the {@code <Invoker Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4917,20 +5066,20 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <invokerInfoMessage>} message for {@code locale}.
+     * @param classloaderInfo Format argument.
+     * @return The text of the {@code <Invoker Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
-    private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
+    private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classloaderInfo )
     {
         java.io.BufferedReader reader = null;
         boolean suppressExceptionOnClose = true;
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "invokerInfoMessage" ), implementationIdentifier, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Invoker Info Message" ), implementationIdentifier, classloaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -4979,7 +5128,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <listenerInfoMessage>} message.
+     * Gets the text of the {@code <Listener Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -4989,7 +5138,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <listenerInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Listener Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5001,7 +5150,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "listenerInfoMessage" ), implementationIdentifier, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Listener Info Message" ), implementationIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5050,7 +5199,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <locatorInfoMessage>} message.
+     * Gets the text of the {@code <Locator Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5061,7 +5210,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param schemeInfo Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <locatorInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Locator Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5073,7 +5222,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "locatorInfoMessage" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Locator Info Message" ), implementationIdentifier, schemeInfo, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5122,7 +5271,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingDependencyMessage>} message.
+     * Gets the text of the {@code <Missing Dependency Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5132,7 +5281,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param dependencyName Format argument.
-     * @return The text of the {@code <missingDependencyMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Dependency Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5144,7 +5293,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingDependencyMessage" ), implementationIdentifier, dependencyName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Dependency Message" ), implementationIdentifier, dependencyName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5193,7 +5342,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingImplementationMessage>} message.
+     * Gets the text of the {@code <Missing Implementation Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5203,7 +5352,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code <missingImplementationMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Implementation Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5215,7 +5364,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationMessage" ), specificationIdentifier, implementationName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Implementation Message" ), specificationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5264,7 +5413,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingImplementationsMessage>} message.
+     * Gets the text of the {@code <Missing Implementations Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5273,7 +5422,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code <missingImplementationsMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Implementations Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5285,7 +5434,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingImplementationsMessage" ), specificationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Implementations Message" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5334,7 +5483,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingInstanceMessage>} message.
+     * Gets the text of the {@code <Missing Instance Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5344,7 +5493,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code <missingInstanceMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Instance Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5356,7 +5505,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingInstanceMessage" ), implementationIdentifier, implementationName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Instance Message" ), implementationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5405,7 +5554,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingLocatorMessage>} message.
+     * Gets the text of the {@code <Missing Locator Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5414,7 +5563,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param locationInfo Format argument.
-     * @return The text of the {@code <missingLocatorMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Locator Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5426,7 +5575,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingLocatorMessage" ), locationInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Locator Message" ), locationInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5475,7 +5624,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingMessageMessage>} message.
+     * Gets the text of the {@code <Missing Message Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5485,7 +5634,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param messageName Format argument.
-     * @return The text of the {@code <missingMessageMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Message Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5497,7 +5646,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingMessageMessage" ), implementationIdentifier, messageName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Message Message" ), implementationIdentifier, messageName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5546,7 +5695,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingObjectInstanceMessage>} message.
+     * Gets the text of the {@code <Missing Object Instance Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5555,7 +5704,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param objectInfo Format argument.
-     * @return The text of the {@code <missingObjectInstanceMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Object Instance Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5567,7 +5716,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectInstanceMessage" ), objectInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Object Instance Message" ), objectInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5616,7 +5765,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingObjectMessage>} message.
+     * Gets the text of the {@code <Missing Object Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5626,7 +5775,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param implementationName Format argument.
-     * @return The text of the {@code <missingObjectMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Object Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5638,7 +5787,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingObjectMessage" ), implementationIdentifier, implementationName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Object Message" ), implementationIdentifier, implementationName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5687,7 +5836,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingPropertyMessage>} message.
+     * Gets the text of the {@code <Missing Property Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5697,7 +5846,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
      * @param propertyName Format argument.
-     * @return The text of the {@code <missingPropertyMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Property Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5709,7 +5858,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingPropertyMessage" ), implementationIdentifier, propertyName, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Property Message" ), implementationIdentifier, propertyName, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5758,7 +5907,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingScopeMessage>} message.
+     * Gets the text of the {@code <Missing Scope Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5767,7 +5916,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param scopeIdentifier Format argument.
-     * @return The text of the {@code <missingScopeMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Scope Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5779,7 +5928,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingScopeMessage" ), scopeIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Scope Message" ), scopeIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5828,7 +5977,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingSpecificationClassMessage>} message.
+     * Gets the text of the {@code <Missing Specification Class Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5837,7 +5986,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code <missingSpecificationClassMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Specification Class Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5849,7 +5998,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationClassMessage" ), specificationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Specification Class Message" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5898,7 +6047,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <missingSpecificationMessage>} message.
+     * Gets the text of the {@code <Missing Specification Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5907,7 +6056,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param specificationIdentifier Format argument.
-     * @return The text of the {@code <missingSpecificationMessage>} message for {@code locale}.
+     * @return The text of the {@code <Missing Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5919,7 +6068,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "missingSpecificationMessage" ), specificationIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Missing Specification Message" ), specificationIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -5968,7 +6117,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <modulesReportMessage>} message.
+     * Gets the text of the {@code <Modules Report Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -5976,7 +6125,7 @@ public class DefaultObjectManager implements ObjectManager
      *   <dt><b>Final:</b></dt><dd>No</dd>
      * </dl></p>
      * @param locale The locale of the message to return.
-     * @return The text of the {@code <modulesReportMessage>} message for {@code locale}.
+     * @return The text of the {@code <Modules Report Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -5988,7 +6137,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "modulesReportMessage" ), (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Modules Report Message" ), (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -6037,7 +6186,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <scopeContentionFailure>} message.
+     * Gets the text of the {@code <Scope Contention Failure>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -6046,7 +6195,7 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param objectIdentifier Format argument.
-     * @return The text of the {@code <scopeContentionFailure>} message for {@code locale}.
+     * @return The text of the {@code <Scope Contention Failure>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -6058,7 +6207,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeContentionFailure" ), objectIdentifier, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Scope Contention Failure" ), objectIdentifier, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -6107,7 +6256,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <scopeInfoMessage>} message.
+     * Gets the text of the {@code <Scope Info Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -6118,7 +6267,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param implementationIdentifier Format argument.
      * @param scopeIdentifier Format argument.
      * @param classLoaderInfo Format argument.
-     * @return The text of the {@code <scopeInfoMessage>} message for {@code locale}.
+     * @return The text of the {@code <Scope Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -6130,7 +6279,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "scopeInfoMessage" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Scope Info Message" ), implementationIdentifier, scopeIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
@@ -6179,7 +6328,7 @@ public class DefaultObjectManager implements ObjectManager
         }
     }
     /**
-     * Gets the text of the {@code <unexpectedDependencyObjectsMessage>} message.
+     * Gets the text of the {@code <Unexpected Dependency Objects Message>} message.
      * <p><dl>
      *   <dt><b>Languages:</b></dt>
      *     <dd>English (default)</dd>
@@ -6191,7 +6340,7 @@ public class DefaultObjectManager implements ObjectManager
      * @param dependencyName Format argument.
      * @param expectedNumber Format argument.
      * @param computedNumber Format argument.
-     * @return The text of the {@code <unexpectedDependencyObjectsMessage>} message for {@code locale}.
+     * @return The text of the {@code <Unexpected Dependency Objects Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
@@ -6203,7 +6352,7 @@ public class DefaultObjectManager implements ObjectManager
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org/jomc/ri/DefaultObjectManager", locale ).getString( "unexpectedDependencyObjectsMessage" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Unexpected Dependency Objects Message" ), implementationIdentifier, dependencyName, expectedNumber, computedNumber, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
