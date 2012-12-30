@@ -4886,20 +4886,20 @@ public class DefaultObjectManager implements ObjectManager
      * </dl></p>
      * @param locale The locale of the message to return.
      * @param implementationIdentifier Format argument.
-     * @param classloaderInfo Format argument.
+     * @param classLoaderInfo Format argument.
      * @return The text of the {@code <Invoker Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
-    private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classloaderInfo )
+    private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
         java.io.BufferedReader reader = null;
         boolean suppressExceptionOnClose = true;
 
         try
         {
-            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Invoker Info Message" ), implementationIdentifier, classloaderInfo, (Object) null );
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Invoker Info Message" ), implementationIdentifier, classLoaderInfo, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
