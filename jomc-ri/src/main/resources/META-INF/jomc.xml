@@ -173,7 +173,7 @@
           </template>
           <arguments>
             <argument index="0" name="Implementation Identifier"/>
-            <argument index="1" name="ClassLoader Info"/>
+            <argument index="1" name="Class Loader Info"/>
           </arguments>
         </message>
         <message name="Listener Info Message">
