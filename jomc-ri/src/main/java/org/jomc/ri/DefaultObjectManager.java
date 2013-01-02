@@ -3054,41 +3054,41 @@ public class DefaultObjectManager implements ObjectManager
                 proxyObject = proxyClassConstructor.newInstance( new Object[]
                     {
                         new InvocationHandler()
-                    {
-
-                        private final Invoker invoker = getInvoker( classLoader );
-
-                        public Object invoke( final Object proxy, final Method method, final Object[] args )
-                            throws Throwable
                         {
-                            if ( args != null )
+
+                            private final Invoker invoker = getInvoker( classLoader );
+
+                            public Object invoke( final Object proxy, final Method method, final Object[] args )
+                                throws Throwable
                             {
-                                Object[] clonedArgs = args;
-
-                                for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
+                                if ( args != null )
                                 {
-                                    if ( clonedArgs[i] == proxy )
-                                    {
-                                        if ( clonedArgs == args )
-                                        {
-                                            clonedArgs = clonedArgs.clone();
-                                        }
+                                    Object[] clonedArgs = args;
 
-                                        clonedArgs[i] = object;
+                                    for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
+                                    {
+                                        if ( clonedArgs[i] == proxy )
+                                        {
+                                            if ( clonedArgs == args )
+                                            {
+                                                clonedArgs = clonedArgs.clone();
+                                            }
+
+                                            clonedArgs[i] = object;
+                                        }
                                     }
+
+                                    return this.invoker.invoke( getInvocation(
+                                        classLoader, object, instance, method, clonedArgs ) );
+
                                 }
 
                                 return this.invoker.invoke( getInvocation(
-                                    classLoader, object, instance, method, clonedArgs ) );
+                                    classLoader, object, instance, method, null ) );
 
                             }
 
-                            return this.invoker.invoke( getInvocation(
-                                classLoader, object, instance, method, null ) );
-
                         }
-
-                    }
                     } );
 
             }

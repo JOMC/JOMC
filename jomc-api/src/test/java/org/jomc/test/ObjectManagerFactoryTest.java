@@ -71,17 +71,17 @@ public class ObjectManagerFactoryTest
 
     private static final String SYS_FACTORY_CLASSNAME = "org.jomc.ObjectManagerFactory";
 
-    private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
+    private static final String SYS_IMPL_CLASSNAME = "org.jomc.ObjectManager";
 
     @Test
     public final void testObjectManagerFactory() throws Exception
     {
         final String objectManagerFactory = System.getProperty( SYS_FACTORY_CLASSNAME );
-        final String objectManager = System.getProperty( SYS_IMPLEMENTATION_CLASSNAME );
+        final String objectManager = System.getProperty( SYS_IMPL_CLASSNAME );
         try
         {
             System.setProperty( SYS_FACTORY_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
-            System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
+            System.setProperty( SYS_IMPL_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
             assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
             assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
                         == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
@@ -103,11 +103,11 @@ public class ObjectManagerFactoryTest
             }
             if ( objectManager != null )
             {
-                System.setProperty( SYS_IMPLEMENTATION_CLASSNAME, objectManager );
+                System.setProperty( SYS_IMPL_CLASSNAME, objectManager );
             }
             else
             {
-                System.clearProperty( SYS_IMPLEMENTATION_CLASSNAME );
+                System.clearProperty( SYS_IMPL_CLASSNAME );
             }
         }
     }
