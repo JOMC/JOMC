@@ -59,7 +59,7 @@ import org.jomc.model.Dependency;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeDependency extends Dependency implements RuntimeModelObject
@@ -174,7 +174,7 @@ public class RuntimeDependency extends Dependency implements RuntimeModelObject
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeDependency} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.4-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.4-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
     public RuntimeDependency()
     {
         // SECTION-START[Default Constructor]
