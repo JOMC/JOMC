@@ -45,8 +45,8 @@ import java.util.logging.Level;
  * {@code ObjectManagementLister} logging to the console.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Object Management Listener</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Object Management Listener</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Object Management Listener</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Object Management Listener</dd>
  *   <dt><b>Specifications:</b></dt>
  *     <dd>org.jomc.spi.Listener @ 1.0</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>

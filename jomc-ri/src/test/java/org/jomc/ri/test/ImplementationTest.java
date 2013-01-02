@@ -45,14 +45,14 @@ import static org.junit.Assert.assertNull;
  * Implementation {@code <JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test>}.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Implementation Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Implementation Test</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Multiton Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Singleton Specification @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Specification Many @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Specification One @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Multiton Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Singleton Specification @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Specification Many @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Specification One @ 2.0-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

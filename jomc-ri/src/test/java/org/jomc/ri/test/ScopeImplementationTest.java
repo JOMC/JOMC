@@ -44,11 +44,11 @@ import static org.junit.Assert.assertNull;
  * Test implementation of the {@code ScopeTestSpecification}.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Scope Implementation Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Scope Implementation Test</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Scope Implementation Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Scope Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification Many @ 2.0-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification One &#8273; 1 @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 2.0-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 1 @ 2.0-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

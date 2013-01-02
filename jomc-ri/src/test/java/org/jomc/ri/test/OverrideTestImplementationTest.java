@@ -44,8 +44,8 @@ import static org.junit.Assert.assertEquals;
  * Override test cases.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation Tests</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Override Test Implementation Tests</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation Tests</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Override Test Implementation Tests</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
