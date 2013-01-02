@@ -43,7 +43,7 @@ import java.lang.*;
  * Specification {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Specification One>}.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Specification One</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Specification One</dd>
  *   <dt><b>Multiplicity:</b></dt><dd>One</dd>
  *   <dt><b>Scope:</b></dt><dd>None</dd>
  * </dl>

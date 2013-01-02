@@ -51,7 +51,7 @@ import org.jomc.spi.Locator;
  *
  * <dl>
  *   <dt><b>Identifier:</b></dt><dd>org.jomc.ri.DefaultLocator</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; DefaultLocator</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ DefaultLocator</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>

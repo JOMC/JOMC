@@ -44,11 +44,11 @@ import static org.junit.Assert.assertNull;
  * Test implementation with unsupported location.
  *
  * <dl>
- *   <dt><b>Identifier:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Location Implementation Test</dd>
- *   <dt><b>Name:</b></dt><dd>JOMC &#8273; RI &#8273; Tests &#8273; Location Implementation Test</dd>
+ *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
+ *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification Many @ 1.4-SNAPSHOT</dd>
- *     <dd>JOMC &#8273; RI &#8273; Tests &#8273; Test Scope Specification One &#8273; 2 @ 1.4-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 1.4-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2 @ 1.4-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
