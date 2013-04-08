@@ -70,7 +70,6 @@ import org.jomc.model.Module;
 import org.jomc.model.Modules;
 import org.jomc.model.Multiplicity;
 import org.jomc.model.Property;
-import org.jomc.model.PropertyException;
 import org.jomc.model.Specification;
 import org.jomc.model.SpecificationReference;
 import org.jomc.model.Specifications;
@@ -3288,44 +3287,44 @@ public class DefaultObjectManager implements ObjectManager
             if ( proxyClassConstructor != null )
             {
                 proxyObject = proxyClassConstructor.newInstance( new Object[]
+                {
+                    new InvocationHandler()
                     {
-                        new InvocationHandler()
+
+                        private final Invoker invoker = getInvoker( classLoader );
+
+                        public Object invoke( final Object proxy, final Method method, final Object[] args )
+                            throws Throwable
                         {
-
-                            private final Invoker invoker = getInvoker( classLoader );
-
-                            public Object invoke( final Object proxy, final Method method, final Object[] args )
-                                throws Throwable
+                            if ( args != null )
                             {
-                                if ( args != null )
+                                Object[] clonedArgs = args;
+
+                                for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
                                 {
-                                    Object[] clonedArgs = args;
-
-                                    for ( int i = 0, s0 = clonedArgs.length; i < s0; i++ )
+                                    if ( clonedArgs[i] == proxy )
                                     {
-                                        if ( clonedArgs[i] == proxy )
+                                        if ( clonedArgs == args )
                                         {
-                                            if ( clonedArgs == args )
-                                            {
-                                                clonedArgs = clonedArgs.clone();
-                                            }
-
-                                            clonedArgs[i] = object;
+                                            clonedArgs = clonedArgs.clone();
                                         }
+
+                                        clonedArgs[i] = object;
                                     }
-
-                                    return this.invoker.invoke( getInvocation(
-                                        classLoader, object, instance, method, clonedArgs ) );
-
                                 }
 
                                 return this.invoker.invoke( getInvocation(
-                                    classLoader, object, instance, method, null ) );
+                                    classLoader, object, instance, method, clonedArgs ) );
 
                             }
 
+                            return this.invoker.invoke( getInvocation(
+                                classLoader, object, instance, method, null ) );
+
                         }
-                    } );
+
+                    }
+                } );
 
             }
 
@@ -3619,7 +3618,12 @@ public class DefaultObjectManager implements ObjectManager
 
     private static String getMessage( final Throwable t )
     {
-        return t != null ? t.getMessage() != null ? t.getMessage() : getMessage( t.getCause() ) : null;
+        return t != null
+               ? t.getMessage() != null && t.getMessage().trim().length() > 0
+                 ? t.getMessage()
+                 : getMessage( t.getCause() )
+               : null;
+
     }
 
     private static Specification createDefaultSpecification( final Class<?> specification,
