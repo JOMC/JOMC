@@ -2232,7 +2232,7 @@
     <maven-install-plugin.artifact.version>2.4</maven-install-plugin.artifact.version>
     <maven-source-plugin.artifact.version>2.2.1</maven-source-plugin.artifact.version>
     <maven-scm-plugin.artifact.version>1.8.1</maven-scm-plugin.artifact.version>
-    <maven-changes-plugin.artifact.version>2.8</maven-changes-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MCHANGES-289 -->
+    <maven-changes-plugin.artifact.version>2.9</maven-changes-plugin.artifact.version>
     <maven-enforcer-plugin.artifact.version>1.2</maven-enforcer-plugin.artifact.version>
     <maven-project-info-reports-plugin.artifact.version>2.6</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.3</maven-jxr-plugin.artifact.version>
