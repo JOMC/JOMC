@@ -2215,7 +2215,7 @@
     <umlgraph.version>5.6</umlgraph.version>
     <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
     <jaxb2-basics.version>0.6.3</jaxb2-basics.version>
-    <jomc.build.version>1.8</jomc.build.version>
+    <jomc.build.version>1.9</jomc.build.version>
     <!-- Plugin versions. -->
     <maven-compiler-plugin.artifact.version>3.1</maven-compiler-plugin.artifact.version>
     <maven-site-plugin.artifact.version>3.1</maven-site-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSITE-665 -->
@@ -2237,7 +2237,7 @@
     <maven-project-info-reports-plugin.artifact.version>2.6</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.3</maven-jxr-plugin.artifact.version>
     <maven-pmd-plugin.artifact.version>3.0.1</maven-pmd-plugin.artifact.version>
-    <maven-checkstyle-plugin.artifact.version>2.9.1</maven-checkstyle-plugin.artifact.version>
+    <maven-checkstyle-plugin.artifact.version>2.10</maven-checkstyle-plugin.artifact.version>
     <wagon-maven-plugin.artifact.version>1.0-beta-4</wagon-maven-plugin.artifact.version>
     <javacc-maven-plugin.artifact.version>2.6</javacc-maven-plugin.artifact.version>
     <build-helper-maven-plugin.artifact.version>1.8</build-helper-maven-plugin.artifact.version>
