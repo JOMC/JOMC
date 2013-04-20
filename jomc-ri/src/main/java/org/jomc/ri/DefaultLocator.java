@@ -64,7 +64,7 @@ import org.jomc.spi.Locator;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
 // </editor-fold>
 // SECTION-END
 public class DefaultLocator implements Locator
@@ -222,7 +222,7 @@ public class DefaultLocator implements Locator
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code DefaultLocator} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
     public DefaultLocator()
     {
         // SECTION-START[Default Constructor]
@@ -252,7 +252,7 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
     private static String getIllegalObjectMessage( final java.util.Locale locale, final java.lang.String objectInfo, final java.lang.String classInfo )
     {
         java.io.BufferedReader reader = null;
@@ -322,7 +322,7 @@ public class DefaultLocator implements Locator
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings("unused")
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
     private static String getUnsupportedUriSchemeMessage( final java.util.Locale locale, final java.lang.String schemeInfo )
     {
         java.io.BufferedReader reader = null;
