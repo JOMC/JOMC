@@ -58,7 +58,7 @@ import static org.junit.Assert.assertEquals;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.5/jomc-tools-1.5" )
 // </editor-fold>
 // SECTION-END
 public class OverrideTestImplementationTest
@@ -119,7 +119,7 @@ public class OverrideTestImplementationTest
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code OverrideTestImplementationTest} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.5/jomc-tools-1.5" )
     public OverrideTestImplementationTest()
     {
         // SECTION-START[Default Constructor]
@@ -157,7 +157,7 @@ public class OverrideTestImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @SuppressWarnings("unused")
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5", comments = "See http://www.jomc.org/jomc/1.5/jomc-tools-1.5" )
     private org.jomc.ri.test.support.OverrideTestSpecification getOverrideTestSpecification()
     {
         final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Override Test Specification" );
