@@ -59,7 +59,7 @@ import org.jomc.model.MessageReference;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeMessageReference extends MessageReference implements RuntimeModelObject
@@ -130,7 +130,7 @@ public class RuntimeMessageReference extends MessageReference implements Runtime
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeMessageReference} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.5-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.4/jomc-tools-1.5-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
     public RuntimeMessageReference()
     {
         // SECTION-START[Default Constructor]
