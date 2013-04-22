@@ -37,7 +37,6 @@ package org.jomc.ri.model;
 
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Argument;
-import org.jomc.model.ArgumentType;
 import org.jomc.model.JavaTypeName;
 import org.jomc.model.ModelObjectException;
 
