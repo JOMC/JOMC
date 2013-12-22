@@ -79,7 +79,7 @@ public abstract class ObjectManagerFactory
      * <p>This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
      * class declaring a <blockquote>{@code public static ObjectManager getObjectManager( ClassLoader )}</blockquote>
      * method called by this method to get the instance to return.</p>
-     * <p><b>Note</b><br/>
+     * <p><b>Note:</b><br/>
      * The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
      * {@code ObjectManager} implementation.</p>
      *
