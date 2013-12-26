@@ -520,11 +520,11 @@ public class ToolsModelProvider implements ModelProvider
             throw new NullPointerException( "specification" );
         }
 
-        final Set<String> uniquenessWarnings = new HashSet<String>( 16 );
-        final Set<String> sectionNames = new HashSet<String>( 16 );
-        sectionNames.add( LICENSE_SECTION_NAME );
-        sectionNames.add( ANNOTATIONS_SECTION_NAME );
-        sectionNames.add( DOCUMENTATION_SECTION_NAME );
+        final Set<String> uniqueSectionIdentifiers = new HashSet<String>( 16 );
+        final Set<String> sectionIdentifiers = new HashSet<String>( 16 );
+        sectionIdentifiers.add( LICENSE_SECTION_NAME );
+        sectionIdentifiers.add( ANNOTATIONS_SECTION_NAME );
+        sectionIdentifiers.add( DOCUMENTATION_SECTION_NAME );
 
         final SourceFilesType sourceFilesType = new SourceFilesType();
         final SourceFileType sourceFileType = new SourceFileType();
@@ -573,7 +573,7 @@ public class ToolsModelProvider implements ModelProvider
 
             if ( javaTypeName != null )
             {
-                if ( !sectionNames.contains( javaTypeName.getName( false ) ) )
+                if ( sectionIdentifiers.add( javaTypeName.getName( false ) ) )
                 {
                     s = new SourceSectionType();
                     s.setName( javaTypeName.getName( false ) );
@@ -581,10 +581,9 @@ public class ToolsModelProvider implements ModelProvider
                     s.setEditable( true );
                     sourceFileType.getSourceSections().getSourceSection().add( s );
                 }
-                else if ( !uniquenessWarnings.contains( javaTypeName.getName( false ) ) )
+                else if ( uniqueSectionIdentifiers.add( javaTypeName.getName( false ) ) )
                 {
-                    uniquenessWarnings.add( javaTypeName.getName( false ) );
-                    context.log( Level.WARNING, getMessage( "specificationSectionNameUniqueness",
+                    context.log( Level.WARNING, getMessage( "specificationSectionIdentifierUniqueness",
                                                             specification.getIdentifier(),
                                                             sourceFileType.getIdentifier(),
                                                             javaTypeName.getName( false ) ),
@@ -628,16 +627,16 @@ public class ToolsModelProvider implements ModelProvider
             throw new NullPointerException( "implementation" );
         }
 
-        final Set<String> uniquenessWarnings = new HashSet<String>( 16 );
-        final ArrayList<String> sectionNames = new ArrayList<String>( 16 );
-        sectionNames.add( LICENSE_SECTION_NAME );
-        sectionNames.add( ANNOTATIONS_SECTION_NAME );
-        sectionNames.add( DOCUMENTATION_SECTION_NAME );
-        sectionNames.add( CONSTRUCTORS_SECTION_NAME );
-        sectionNames.add( DEFAULT_CONSTRUCTOR_SECTION_NAME );
-        sectionNames.add( DEPENDENCIES_SECTION_NAME );
-        sectionNames.add( PROPERTIES_SECTION_NAME );
-        sectionNames.add( MESSAGES_SECTION_NAME );
+        final Set<String> uniqueSectionIdentifiers = new HashSet<String>( 16 );
+        final ArrayList<String> sectionIdentifiers = new ArrayList<String>( 16 );
+        sectionIdentifiers.add( LICENSE_SECTION_NAME );
+        sectionIdentifiers.add( ANNOTATIONS_SECTION_NAME );
+        sectionIdentifiers.add( DOCUMENTATION_SECTION_NAME );
+        sectionIdentifiers.add( CONSTRUCTORS_SECTION_NAME );
+        sectionIdentifiers.add( DEFAULT_CONSTRUCTOR_SECTION_NAME );
+        sectionIdentifiers.add( DEPENDENCIES_SECTION_NAME );
+        sectionIdentifiers.add( PROPERTIES_SECTION_NAME );
+        sectionIdentifiers.add( MESSAGES_SECTION_NAME );
 
         final SourceFilesType sourceFilesType = new SourceFilesType();
         final SourceFileType sourceFileType = new SourceFileType();
@@ -687,7 +686,7 @@ public class ToolsModelProvider implements ModelProvider
 
         if ( specifications != null )
         {
-            sectionNames.ensureCapacity( sectionNames.size() + specifications.getSpecification().size() );
+            sectionIdentifiers.ensureCapacity( sectionIdentifiers.size() + specifications.getSpecification().size() );
 
             for ( final Specification specification : specifications.getSpecification() )
             {
@@ -697,9 +696,9 @@ public class ToolsModelProvider implements ModelProvider
 
                     if ( javaTypeName != null )
                     {
-                        if ( !sectionNames.contains( javaTypeName.getName( false ) ) )
+                        if ( !sectionIdentifiers.contains( javaTypeName.getName( false ) ) )
                         {
-                            sectionNames.add( javaTypeName.getName( false ) );
+                            sectionIdentifiers.add( javaTypeName.getName( false ) );
 
                             s = new SourceSectionType();
                             s.setName( javaTypeName.getName( false ) );
@@ -707,10 +706,9 @@ public class ToolsModelProvider implements ModelProvider
                             s.setEditable( true );
                             sourceFileType.getSourceSections().getSourceSection().add( s );
                         }
-                        else if ( !uniquenessWarnings.contains( javaTypeName.getName( false ) ) )
+                        else if ( uniqueSectionIdentifiers.add( javaTypeName.getName( false ) ) )
                         {
-                            uniquenessWarnings.add( javaTypeName.getName( false ) );
-                            context.log( Level.WARNING, getMessage( "implementationSectionNameUniqueness",
+                            context.log( Level.WARNING, getMessage( "implementationSectionIdentifierUniqueness",
                                                                     implementation.getIdentifier(),
                                                                     sourceFileType.getIdentifier(),
                                                                     javaTypeName.getName( false ) ),
@@ -732,18 +730,19 @@ public class ToolsModelProvider implements ModelProvider
 
             if ( javaTypeName != null )
             {
-                if ( !sectionNames.contains( javaTypeName.getName( false ) ) )
+                if ( !sectionIdentifiers.contains( javaTypeName.getName( false ) ) )
                 {
+                    sectionIdentifiers.add( javaTypeName.getName( false ) );
+
                     s = new SourceSectionType();
                     s.setName( javaTypeName.getName( false ) );
                     s.setIndentationLevel( 1 );
                     s.setEditable( true );
                     sourceFileType.getSourceSections().getSourceSection().add( s );
                 }
-                else if ( !uniquenessWarnings.contains( javaTypeName.getName( false ) ) )
+                else if ( uniqueSectionIdentifiers.contains( javaTypeName.getName( false ) ) )
                 {
-                    uniquenessWarnings.add( javaTypeName.getName( false ) );
-                    context.log( Level.WARNING, getMessage( "implementationSectionNameUniqueness",
+                    context.log( Level.WARNING, getMessage( "implementationSectionIdentifierUniqueness",
                                                             implementation.getIdentifier(),
                                                             sourceFileType.getIdentifier(),
                                                             javaTypeName.getName( false ) ),
