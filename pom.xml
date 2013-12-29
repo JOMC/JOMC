@@ -148,12 +148,12 @@
                       <report>license</report>
                     </reports>
                   </reportSet>
-                  <!-- reportSet> http://jira.codehaus.org/browse/MPIR-229
+                  <reportSet>
                     <id>default-modules</id>
                     <reports>
                       <report>modules</report>
                     </reports>
-                  </reportSet -->
+                  </reportSet>
                   <reportSet>
                     <id>default-plugins</id>
                     <reports>
@@ -886,6 +886,7 @@
           <configuration>
             <fail>false</fail>
             <rules>
+              <dependencyConvergence/>
               <requireJavaVersion>
                 <version>[1.7.0,)</version>
               </requireJavaVersion>
@@ -893,7 +894,6 @@
                 <version>[3.0.4],[3.0.5]</version>
               </requireMavenVersion>
               <requireNoRepositories />
-              <requireUpperBoundDeps/>
             </rules>
           </configuration>
         </plugin>
