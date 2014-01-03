@@ -886,7 +886,6 @@
           <configuration>
             <fail>false</fail>
             <rules>
-              <dependencyConvergence/>
               <requireJavaVersion>
                 <version>[1.7.0,)</version>
               </requireJavaVersion>
@@ -1246,6 +1245,11 @@
         <version>2.0</version>
       </dependency>
       <dependency>
+        <groupId>org.apache.maven</groupId>
+        <artifactId>maven-model</artifactId>
+        <version>2.0</version>
+      </dependency>
+      <dependency>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
         <version>${maven-shade-plugin.artifact.version}</version>
@@ -1270,7 +1274,7 @@
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
-        <version>1.8.4</version>
+        <version>1.8.4</version> <!-- See https://issues.apache.org/bugzilla/show_bug.cgi?id=54843 -->
       </dependency>
 
       <!-- JAXB -->
