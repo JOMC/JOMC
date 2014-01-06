@@ -2273,6 +2273,8 @@
     <maven.javadoc.additionalJOption>-J-client -J-Xms32m -J-Xmx32m -J-Xss2m -J-Dfile.encoding=${file.encoding}</maven.javadoc.additionalJOption>
     <maven.surefire.argLine>-client -Xms32m -Xmx32m -Xss2m -Dfile.encoding=${file.encoding}</maven.surefire.argLine>
     <mojo.findbugs.jvmArgs>-client -Xms32m -Xmx32m -Xss2m -Dfile.encoding=${file.encoding}</mojo.findbugs.jvmArgs>
+    <!-- IDE specific. -->
+    <netbeans.compile.on.save>none</netbeans.compile.on.save>
     <!-- Parent -->
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
