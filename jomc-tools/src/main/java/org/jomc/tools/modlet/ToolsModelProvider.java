@@ -714,6 +714,7 @@ public class ToolsModelProvider implements ModelProvider
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code specification} is {@code null}.
      *
+     * @see #getDefaultSourceFilesType(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Specification)
      * @see SourceFileType#getLocation()
      * @see Specification#getJavaTypeName()
      * @since 1.6
@@ -764,6 +765,7 @@ public class ToolsModelProvider implements ModelProvider
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code implementation} is {@code null}.
      *
+     * @see #getDefaultSourceFilesType(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Implementation)
      * @see SourceFileType#getLocation()
      * @see Implementation#getJavaTypeName()
      * @since 1.6
@@ -814,6 +816,7 @@ public class ToolsModelProvider implements ModelProvider
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code specification} is {@code null}.
      *
+     * @see #getDefaultSourceFilesType(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Specification)
      * @see SourceSectionType#getName()
      * @see Specification#getJavaTypeName()
      * @since 1.6
@@ -866,6 +869,7 @@ public class ToolsModelProvider implements ModelProvider
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code implementation} is {@code null}.
      *
+     * @see #getDefaultSourceFilesType(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Implementation)
      * @see SourceSectionType#getName()
      * @see Implementation#getJavaTypeName()
      * @since 1.6
@@ -915,9 +919,13 @@ public class ToolsModelProvider implements ModelProvider
      * @return A new default source files model for {@code specification}.
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code specification} is {@code null}.
+     *
+     * @see #getDefaultSourceFileLocation(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Specification)
+     * @see #getDefaultSourceSectionName(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Specification)
+     * @since 1.6
      */
-    private SourceFilesType getDefaultSourceFilesType( final ModelContext context, final Modules modules,
-                                                       final Specification specification )
+    protected SourceFilesType getDefaultSourceFilesType( final ModelContext context, final Modules modules,
+                                                         final Specification specification )
     {
         if ( context == null )
         {
@@ -1031,9 +1039,13 @@ public class ToolsModelProvider implements ModelProvider
      * @return A new default source files model for {@code implementation}.
      *
      * @throws NullPointerExeption if {@code context}, {@code modules} or {@code implementation} is {@code null}.
+     *
+     * @see #getDefaultSourceFileLocation(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Implementation)
+     * @see #getDefaultSourceSectionName(org.jomc.modlet.ModelContext, org.jomc.model.Modules, org.jomc.model.Implementation)
+     * @since 1.6
      */
-    private SourceFilesType getDefaultSourceFilesType( final ModelContext context, final Modules modules,
-                                                       final Implementation implementation )
+    protected SourceFilesType getDefaultSourceFilesType( final ModelContext context, final Modules modules,
+                                                         final Implementation implementation )
     {
         if ( context == null )
         {
