@@ -1167,6 +1167,10 @@
                 <value>false</value>
                 <type>java.lang.Boolean</type>
               </templateParameter>
+              <templateParameter>
+                <key>with-suppress-warnings</key>
+                <value>{"unused", "PMD.UnnecessaryFullyQualifiedName"}</value>
+              </templateParameter>
             </templateParameters>
           </configuration>
         </plugin>
