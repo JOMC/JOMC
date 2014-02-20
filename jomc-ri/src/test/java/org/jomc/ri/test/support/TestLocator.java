@@ -55,13 +55,13 @@ import org.jomc.ri.DefaultLocator;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.6-SNAPSHOT
+ * @version 1.7-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class TestLocator
@@ -92,7 +92,7 @@ public class TestLocator
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code TestLocator} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
     public TestLocator()
     {
         // SECTION-START[Default Constructor]

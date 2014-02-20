@@ -47,21 +47,21 @@ import static org.junit.Assert.assertNull;
  *   <dt><b>Identifier:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
  *   <dt><b>Name:</b></dt><dd>JOMC ⁑ RI ⁑ Tests ⁑ Location Implementation Test</dd>
  *   <dt><b>Specifications:</b></dt>
- *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 1.6-SNAPSHOT</dd>
- *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2 @ 1.6-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many @ 1.7-SNAPSHOT</dd>
+ *     <dd>JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2 @ 1.7-SNAPSHOT</dd>
  *   <dt><b>Abstract:</b></dt><dd>No</dd>
  *   <dt><b>Final:</b></dt><dd>No</dd>
  *   <dt><b>Stateless:</b></dt><dd>No</dd>
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.6-SNAPSHOT
+ * @version 1.7-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class LocationImplementationTest
@@ -83,7 +83,7 @@ public class LocationImplementationTest
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code LocationImplementationTest} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
     public LocationImplementationTest()
     {
         // SECTION-START[Default Constructor]
@@ -97,7 +97,7 @@ public class LocationImplementationTest
     /**
      * Gets the {@code <Test Scope Specification Many>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many>} specification at specification level 1.6-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification Many>} specification at specification level 1.7-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * <dl>
@@ -108,7 +108,7 @@ public class LocationImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification[] getTestScopeSpecificationMany()
     {
         return (org.jomc.ri.test.support.TestSpecification[]) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Test Scope Specification Many" );
@@ -116,7 +116,7 @@ public class LocationImplementationTest
     /**
      * Gets the {@code <Test Scope Specification One>} dependency.
      * <p>
-     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2>} specification at specification level 1.6-SNAPSHOT.
+     *   This method returns any available object of the {@code <JOMC ⁑ RI ⁑ Tests ⁑ Test Scope Specification One ⁑ 2>} specification at specification level 1.7-SNAPSHOT.
      *   That specification applies to {@code <DOES_NOT_EXIST>} scope. The does_not_exist object is returned whenever requested.
      * </p>
      * <dl>
@@ -127,7 +127,7 @@ public class LocationImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.6-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.6/jomc-tools-1.6-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
     private org.jomc.ri.test.support.TestSpecification getTestScopeSpecificationOne()
     {
         return (org.jomc.ri.test.support.TestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Test Scope Specification One" );
