@@ -36,7 +36,7 @@
   <artifactId>jomc-parent</artifactId>
   <packaging>pom</packaging>
   <name>JOMC</name>
-  <version>1.6-SNAPSHOT</version>
+  <version>1.6</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>${jomc.artifacts.url}</url>
   <inceptionYear>2005</inceptionYear>
@@ -65,9 +65,9 @@
     <url>http://www.jomc.org/trac</url>
   </issueManagement>
   <scm>
-    <connection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/branches/jomc-1.x</connection>
-    <developerConnection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/branches/jomc-1.x</developerConnection>
-    <url>http://svn.jomc.org/jomc/branches/jomc-1.x</url>
+    <connection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/tags/jomc-parent-1.6</connection>
+    <developerConnection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/tags/jomc-parent-1.6</developerConnection>
+    <url>http://svn.jomc.org/jomc/tags/jomc-parent-1.6</url>
   </scm>
   <build>
     <extensions>
@@ -2283,16 +2283,16 @@
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc.base.version>1.6</jomc.base.version>
-    <jomc-util.artifact.version>1.6-SNAPSHOT</jomc-util.artifact.version>
-    <jomc-modlet.artifact.version>1.6-SNAPSHOT</jomc-modlet.artifact.version>
-    <jomc-model.artifact.version>1.6-SNAPSHOT</jomc-model.artifact.version>
-    <jomc-tools.artifact.version>1.6-SNAPSHOT</jomc-tools.artifact.version>
-    <maven-jomc-plugin.artifact.version>1.6-SNAPSHOT</maven-jomc-plugin.artifact.version>
-    <jomc-ant-tasks.artifact.version>1.6-SNAPSHOT</jomc-ant-tasks.artifact.version>
-    <jomc-api.artifact.version>1.6-SNAPSHOT</jomc-api.artifact.version>
-    <jomc-spi.artifact.version>1.6-SNAPSHOT</jomc-spi.artifact.version>
-    <jomc-ri.artifact.version>1.6-SNAPSHOT</jomc-ri.artifact.version>
-    <jomc-cli.artifact.version>1.6-SNAPSHOT</jomc-cli.artifact.version>
+    <jomc-util.artifact.version>1.6</jomc-util.artifact.version>
+    <jomc-modlet.artifact.version>1.6</jomc-modlet.artifact.version>
+    <jomc-model.artifact.version>1.6</jomc-model.artifact.version>
+    <jomc-tools.artifact.version>1.6</jomc-tools.artifact.version>
+    <maven-jomc-plugin.artifact.version>1.6</maven-jomc-plugin.artifact.version>
+    <jomc-ant-tasks.artifact.version>1.6</jomc-ant-tasks.artifact.version>
+    <jomc-api.artifact.version>1.6</jomc-api.artifact.version>
+    <jomc-spi.artifact.version>1.6</jomc-spi.artifact.version>
+    <jomc-ri.artifact.version>1.6</jomc-ri.artifact.version>
+    <jomc-cli.artifact.version>1.6</jomc-cli.artifact.version>
     <jomc.frs.distribution.id>frs.jomc.org</jomc.frs.distribution.id>
     <jomc.frs.distribution.url>dav:http://frs.jomc.org/</jomc.frs.distribution.url>
     <jomc.xml.distribution.id>xml.jomc.org</jomc.xml.distribution.id>
