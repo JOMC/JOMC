@@ -84,6 +84,8 @@ import org.jomc.modlet.ModelContext;
 import org.jomc.modlet.ModelContextFactory;
 import org.jomc.modlet.ModelException;
 import org.jomc.modlet.ModelValidationReport;
+import org.jomc.modlet.Modlet;
+import org.jomc.modlet.Modlets;
 import org.jomc.tools.ClassFileProcessor;
 import org.jomc.tools.JomcTool;
 import org.jomc.tools.ResourceFileProcessor;
@@ -604,6 +606,24 @@ public abstract class AbstractJomcMojo extends AbstractMojo
     private boolean javaValidationEnabled;
 
     /**
+     * Names of modlets to exclude.
+     *
+     * @parameter expression="${jomc.modletExcludes}"
+     *
+     * @since 1.6
+     */
+    private List<String> modletExcludes;
+
+    /**
+     * Names of modlets to include.
+     *
+     * @parameter expression="${jomc.modletIncludes}"
+     *
+     * @since 1.6
+     */
+    private List<String> modletIncludes;
+
+    /**
      * The Maven project of the instance.
      *
      * @parameter expression="${project}"
@@ -708,7 +728,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
     {
         if ( resources != null )
         {
-            for ( ResourceType r : resources )
+            for ( final ResourceType r : resources )
             {
                 if ( r.getLocation() == null )
                 {
@@ -781,8 +801,8 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 final File flagFile =
                     new File( this.getSessionDirectory(),
                               ArtifactUtils.versionlessKey( this.getMavenProject().getArtifact() ).hashCode()
-                              + "-" + this.getGoal()
-                              + "-" + this.getMavenSession().getStartTime().getTime() + ".flg" );
+                                  + "-" + this.getGoal()
+                                  + "-" + this.getMavenSession().getStartTime().getTime() + ".flg" );
 
                 if ( !this.getSessionDirectory().exists() && !this.getSessionDirectory().mkdirs() )
                 {
@@ -1012,7 +1032,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
             final Set<String> mainClasspathElements = this.getMainClasspathElements();
             final Set<URI> uris = new HashSet<URI>( mainClasspathElements.size() );
 
-            for ( String element : mainClasspathElements )
+            for ( final String element : mainClasspathElements )
             {
                 final URI uri = new File( element ).toURI();
                 if ( !uris.contains( uri ) )
@@ -1028,7 +1048,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             int i = 0;
             final URL[] urls = new URL[ uris.size() ];
-            for ( URI uri : uris )
+            for ( final URI uri : uris )
             {
                 urls[i++] = uri.toURL();
 
@@ -1060,7 +1080,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
             final Set<String> testClasspathElements = this.getTestClasspathElements();
             final Set<URI> uris = new HashSet<URI>( testClasspathElements.size() );
 
-            for ( String element : testClasspathElements )
+            for ( final String element : testClasspathElements )
             {
                 final URI uri = new File( element ).toURI();
                 if ( !uris.contains( uri ) )
@@ -1076,7 +1096,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             int i = 0;
             final URL[] urls = new URL[ uris.size() ];
-            for ( URI uri : uris )
+            for ( final URI uri : uris )
             {
                 urls[i++] = uri.toURL();
 
@@ -1128,7 +1148,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.FINER ) )
                 {
                     this.log( Level.FINER, Messages.getMessage(
-                        "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
+                              "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
 
                 }
 
@@ -1159,7 +1179,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.FINER ) )
                 {
                     this.log( Level.FINER, Messages.getMessage(
-                        "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
+                              "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
 
                 }
 
@@ -1207,7 +1227,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.FINER ) )
                 {
                     this.log( Level.FINER, Messages.getMessage(
-                        "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
+                              "ignoringPluginArtifact", a.toString(), pluginArtifact.toString() ), null );
 
                 }
 
@@ -1872,14 +1892,14 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
                 transformer.setErrorListener( errorListener );
 
-                for ( Map.Entry<Object, Object> e : System.getProperties().entrySet() )
+                for ( final Map.Entry<Object, Object> e : System.getProperties().entrySet() )
                 {
                     transformer.setParameter( e.getKey().toString(), e.getValue() );
                 }
 
                 if ( this.getMavenProject().getProperties() != null )
                 {
-                    for ( Map.Entry<Object, Object> e : this.getMavenProject().getProperties().entrySet() )
+                    for ( final Map.Entry<Object, Object> e : this.getMavenProject().getProperties().entrySet() )
                     {
                         transformer.setParameter( e.getKey().toString(), e.getValue() );
                     }
@@ -1889,8 +1909,8 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 {
                     for ( int i = 0, s0 = this.transformationParameterResources.size(); i < s0; i++ )
                     {
-                        for ( Map.Entry<Object, Object> e :
-                              this.getProperties( this.transformationParameterResources.get( i ) ).entrySet() )
+                        for ( final Map.Entry<Object, Object> e : this.getProperties(
+                            this.transformationParameterResources.get( i ) ).entrySet() )
                         {
                             transformer.setParameter( e.getKey().toString(), e.getValue() );
                         }
@@ -1899,7 +1919,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
                 if ( this.transformationParameters != null )
                 {
-                    for ( TransformationParameter e : this.transformationParameters )
+                    for ( final TransformationParameter e : this.transformationParameters )
                     {
                         transformer.setParameter( e.getKey(), e.getObject() );
                     }
@@ -1907,7 +1927,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
                 if ( this.transformationOutputProperties != null )
                 {
-                    for ( TransformationOutputProperty e : this.transformationOutputProperties )
+                    for ( final TransformationOutputProperty e : this.transformationOutputProperties )
                     {
                         transformer.setOutputProperty( e.getKey(), e.getValue() );
                     }
@@ -1915,19 +1935,19 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
                 for ( int i = 0, s0 = resource.getTransformationParameterResources().size(); i < s0; i++ )
                 {
-                    for ( Map.Entry<Object, Object> e :
-                          this.getProperties( resource.getTransformationParameterResources().get( i ) ).entrySet() )
+                    for ( final Map.Entry<Object, Object> e : this.getProperties(
+                        resource.getTransformationParameterResources().get( i ) ).entrySet() )
                     {
                         transformer.setParameter( e.getKey().toString(), e.getValue() );
                     }
                 }
 
-                for ( TransformationParameter e : resource.getTransformationParameters() )
+                for ( final TransformationParameter e : resource.getTransformationParameters() )
                 {
                     transformer.setParameter( e.getKey(), e.getObject() );
                 }
 
-                for ( TransformationOutputProperty e : resource.getTransformationOutputProperties() )
+                for ( final TransformationOutputProperty e : resource.getTransformationOutputProperties() )
                 {
                     transformer.setOutputProperty( e.getKey(), e.getValue() );
                 }
@@ -1940,7 +1960,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "transformerNotFound", resource.getLocation() ), null );
+                              "transformerNotFound", resource.getLocation() ), null );
 
                 }
             }
@@ -1983,7 +2003,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "failedLoadingTransformer", url.toExternalForm(), m ), e );
+                              "failedLoadingTransformer", url.toExternalForm(), m ), e );
 
                 }
             }
@@ -2004,7 +2024,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "failedLoadingTransformer", url.toExternalForm(), m ), e );
+                              "failedLoadingTransformer", url.toExternalForm(), m ), e );
 
                 }
             }
@@ -2096,7 +2116,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "propertiesNotFound", propertiesResourceType.getLocation() ), null );
+                              "propertiesNotFound", propertiesResourceType.getLocation() ), null );
 
                 }
             }
@@ -2119,7 +2139,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "failedLoadingProperties", url.toExternalForm(), m ), e );
+                              "failedLoadingProperties", url.toExternalForm(), m ), e );
 
                 }
             }
@@ -2140,7 +2160,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 if ( this.isLoggable( Level.WARNING ) )
                 {
                     this.log( Level.WARNING, Messages.getMessage(
-                        "failedLoadingProperties", url.toExternalForm(), m ), e );
+                              "failedLoadingProperties", url.toExternalForm(), m ), e );
 
                 }
             }
@@ -2333,7 +2353,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 this.logSeparator();
                 Marshaller marshaller = null;
 
-                for ( ModelValidationReport.Detail detail : report.getDetails() )
+                for ( final ModelValidationReport.Detail detail : report.getDetails() )
                 {
                     this.log( detail.getLevel(), "o " + detail.getMessage(), null );
 
@@ -2529,7 +2549,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             if ( this.modelContextAttributes != null )
             {
-                for ( ModelContextAttribute e : this.modelContextAttributes )
+                for ( final ModelContextAttribute e : this.modelContextAttributes )
                 {
                     final Object object = e.getObject();
 
@@ -2543,8 +2563,45 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                     }
                 }
             }
+
+            if ( ( this.modletIncludes != null && !this.modletIncludes.isEmpty() )
+                     || ( this.modletExcludes != null && !this.modletExcludes.isEmpty() ) )
+            {
+                final Modlets modlets = context.getModlets().clone();
+
+                for ( final Iterator<Modlet> it = modlets.getModlet().iterator(); it.hasNext(); )
+                {
+                    final Modlet modlet = it.next();
+
+                    if ( this.modletIncludes != null
+                             && !this.modletIncludes.isEmpty()
+                             && !this.modletIncludes.contains( modlet.getName() ) )
+                    {
+                        it.remove();
+                        this.log( Level.INFO, Messages.getMessage( "excludingModlet", modlet.getName() ), null );
+                        continue;
+                    }
+
+                    if ( this.modletExcludes != null
+                             && !this.modletExcludes.isEmpty()
+                             && this.modletExcludes.contains( modlet.getName() ) )
+                    {
+                        it.remove();
+                        this.log( Level.INFO, Messages.getMessage( "excludingModlet", modlet.getName() ), null );
+                        continue;
+                    }
+
+                    this.log( Level.INFO, Messages.getMessage( "includingModlet", modlet.getName() ), null );
+                }
+
+                context.setModlets( modlets );
+            }
         }
         catch ( final InstantiationException e )
+        {
+            throw new MojoExecutionException( Messages.getMessage( e ), e );
+        }
+        catch ( final ModelException e )
         {
             throw new MojoExecutionException( Messages.getMessage( e ), e );
         }
@@ -2641,8 +2698,8 @@ public abstract class AbstractJomcMojo extends AbstractMojo
             {
                 for ( int i = 0, s0 = this.velocityPropertyResources.size(); i < s0; i++ )
                 {
-                    for ( Map.Entry<Object, Object> e :
-                          this.getProperties( this.velocityPropertyResources.get( i ) ).entrySet() )
+                    for ( final Map.Entry<Object, Object> e : this.getProperties(
+                        this.velocityPropertyResources.get( i ) ).entrySet() )
                     {
                         if ( e.getValue() != null )
                         {
@@ -2658,7 +2715,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             if ( this.velocityProperties != null )
             {
-                for ( VelocityProperty e : this.velocityProperties )
+                for ( final VelocityProperty e : this.velocityProperties )
                 {
                     final Object object = e.getObject();
 
@@ -2673,14 +2730,14 @@ public abstract class AbstractJomcMojo extends AbstractMojo
                 }
             }
 
-            for ( Map.Entry<Object, Object> e : System.getProperties().entrySet() )
+            for ( final Map.Entry<Object, Object> e : System.getProperties().entrySet() )
             {
                 tool.getTemplateParameters().put( e.getKey().toString(), e.getValue() );
             }
 
             if ( this.getMavenProject().getProperties() != null )
             {
-                for ( Map.Entry<Object, Object> e : System.getProperties().entrySet() )
+                for ( final Map.Entry<Object, Object> e : System.getProperties().entrySet() )
                 {
                     tool.getTemplateParameters().put( e.getKey().toString(), e.getValue() );
                 }
@@ -2690,8 +2747,8 @@ public abstract class AbstractJomcMojo extends AbstractMojo
             {
                 for ( int i = 0, s0 = this.templateParameterResources.size(); i < s0; i++ )
                 {
-                    for ( Map.Entry<Object, Object> e :
-                          this.getProperties( this.templateParameterResources.get( i ) ).entrySet() )
+                    for ( final Map.Entry<Object, Object> e : this.getProperties(
+                        this.templateParameterResources.get( i ) ).entrySet() )
                     {
                         if ( e.getValue() != null )
                         {
@@ -2707,7 +2764,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
 
             if ( this.templateParameters != null )
             {
-                for ( TemplateParameter e : this.templateParameters )
+                for ( final TemplateParameter e : this.templateParameters )
                 {
                     final Object object = e.getObject();
 
@@ -2750,10 +2807,10 @@ public abstract class AbstractJomcMojo extends AbstractMojo
             final Artifact pluginArtifact = this.pluginArtifacts.get( i );
 
             if ( pluginArtifact.getGroupId().equals( a.getGroupId() )
-                 && pluginArtifact.getArtifactId().equals( a.getArtifactId() )
-                 && ( pluginArtifact.hasClassifier()
-                      ? pluginArtifact.getClassifier().equals( a.getClassifier() )
-                      : !a.hasClassifier() ) )
+                     && pluginArtifact.getArtifactId().equals( a.getArtifactId() )
+                     && ( pluginArtifact.hasClassifier()
+                          ? pluginArtifact.getClassifier().equals( a.getClassifier() )
+                          : !a.hasClassifier() ) )
             {
                 return pluginArtifact;
             }
