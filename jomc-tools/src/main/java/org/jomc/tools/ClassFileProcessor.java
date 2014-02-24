@@ -71,6 +71,7 @@ import org.jomc.model.Implementations;
 import org.jomc.model.Message;
 import org.jomc.model.Messages;
 import org.jomc.model.ModelObject;
+import org.jomc.model.ModelObjectException;
 import org.jomc.model.Module;
 import org.jomc.model.ObjectFactory;
 import org.jomc.model.Properties;
@@ -267,7 +268,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                     && this.getModules().getSpecification( specification.getIdentifier() ) != null )
             {
                 final Marshaller m = context.createMarshaller( this.getModel().getIdentifier() );
                 m.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -318,7 +319,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 final Marshaller m = context.createMarshaller( this.getModel().getIdentifier() );
                 m.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -364,10 +365,10 @@ public class ClassFileProcessor extends JomcTool
         }
 
         if ( this.getModules() != null
-             && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
         {
             this.setClassfileAttribute( javaClass, Specification.class.getName(), this.encodeModelObject(
-                marshaller, new ObjectFactory().createSpecification( specification ) ) );
+                                        marshaller, new ObjectFactory().createSpecification( specification ) ) );
 
         }
         else if ( this.isLoggable( Level.WARNING ) )
@@ -403,7 +404,7 @@ public class ClassFileProcessor extends JomcTool
         }
 
         if ( this.getModules() != null
-             && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
         {
             final ObjectFactory of = new ObjectFactory();
 
@@ -464,16 +465,16 @@ public class ClassFileProcessor extends JomcTool
             }
 
             this.setClassfileAttribute( javaClass, Dependencies.class.getName(), this.encodeModelObject(
-                marshaller, of.createDependencies( dependencies ) ) );
+                                        marshaller, of.createDependencies( dependencies ) ) );
 
             this.setClassfileAttribute( javaClass, Properties.class.getName(), this.encodeModelObject(
-                marshaller, of.createProperties( properties ) ) );
+                                        marshaller, of.createProperties( properties ) ) );
 
             this.setClassfileAttribute( javaClass, Messages.class.getName(), this.encodeModelObject(
-                marshaller, of.createMessages( messages ) ) );
+                                        marshaller, of.createMessages( messages ) ) );
 
             this.setClassfileAttribute( javaClass, Specifications.class.getName(), this.encodeModelObject(
-                marshaller, of.createSpecifications( specifications ) ) );
+                                        marshaller, of.createSpecifications( specifications ) ) );
 
         }
         else if ( this.isLoggable( Level.WARNING ) )
@@ -610,7 +611,7 @@ public class ClassFileProcessor extends JomcTool
             ModelValidationReport report = null;
 
             if ( this.getModules() != null
-                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                     && this.getModules().getSpecification( specification.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 u.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -661,7 +662,7 @@ public class ClassFileProcessor extends JomcTool
             ModelValidationReport report = null;
 
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 u.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -827,7 +828,7 @@ public class ClassFileProcessor extends JomcTool
             ModelValidationReport report = null;
 
             if ( this.getModules() != null
-                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                     && this.getModules().getSpecification( specification.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 u.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -885,7 +886,7 @@ public class ClassFileProcessor extends JomcTool
             ModelValidationReport report = null;
 
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 u.setSchema( context.createSchema( this.getModel().getIdentifier() ) );
@@ -953,33 +954,34 @@ public class ClassFileProcessor extends JomcTool
                 {
                     report.getDetails().add( new ModelValidationReport.Detail(
                         "CLASS_ILLEGAL_SPECIFICATION_MULTIPLICITY", Level.SEVERE, getMessage(
-                        "illegalMultiplicity", specification.getIdentifier(), specification.getMultiplicity().value(),
-                        decoded.getMultiplicity().value() ),
+                            "illegalMultiplicity", specification.getIdentifier(),
+                            specification.getMultiplicity().value(),
+                            decoded.getMultiplicity().value() ),
                         new ObjectFactory().createSpecification( specification ) ) );
 
                 }
 
                 if ( decoded.getScope() == null
-                     ? specification.getScope() != null
-                     : !decoded.getScope().equals( specification.getScope() ) )
+                         ? specification.getScope() != null
+                         : !decoded.getScope().equals( specification.getScope() ) )
                 {
                     report.getDetails().add( new ModelValidationReport.Detail(
                         "CLASS_ILLEGAL_SPECIFICATION_SCOPE", Level.SEVERE, getMessage(
-                        "illegalScope", specification.getIdentifier(),
-                        specification.getScope() == null ? "Multiton" : specification.getScope(),
-                        decoded.getScope() == null ? "Multiton" : decoded.getScope() ),
+                            "illegalScope", specification.getIdentifier(),
+                            specification.getScope() == null ? "Multiton" : specification.getScope(),
+                            decoded.getScope() == null ? "Multiton" : decoded.getScope() ),
                         new ObjectFactory().createSpecification( specification ) ) );
 
                 }
 
                 if ( decoded.getClazz() == null
-                     ? specification.getClazz() != null
-                     : !decoded.getClazz().equals( specification.getClazz() ) )
+                         ? specification.getClazz() != null
+                         : !decoded.getClazz().equals( specification.getClazz() ) )
                 {
                     report.getDetails().add( new ModelValidationReport.Detail(
                         "CLASS_ILLEGAL_SPECIFICATION_CLASS", Level.SEVERE, getMessage(
-                        "illegalSpecificationClass", decoded.getIdentifier(),
-                        specification.getClazz(), decoded.getClazz() ),
+                            "illegalSpecificationClass", decoded.getIdentifier(),
+                            specification.getClazz(), decoded.getClazz() ),
                         new ObjectFactory().createSpecification( specification ) ) );
 
                 }
@@ -1033,7 +1035,7 @@ public class ClassFileProcessor extends JomcTool
             ModelValidationReport report = null;
 
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 report = new ModelValidationReport();
                 Dependencies dependencies = this.getModules().getDependencies( implementation.getIdentifier() );
@@ -1100,23 +1102,23 @@ public class ClassFileProcessor extends JomcTool
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_IMPLEMENTATION_DEPENDENCY", Level.SEVERE, getMessage(
-                                "missingDependency", implementation.getIdentifier(), decodedDependency.getName() ),
+                                    "missingDependency", implementation.getIdentifier(), decodedDependency.getName() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
                         else if ( decodedDependency.getImplementationName() != null
-                                  && dependency.getImplementationName() == null )
+                                      && dependency.getImplementationName() == null )
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_DEPENDENCY_IMPLEMENTATION_NAME", Level.SEVERE, getMessage(
-                                "missingDependencyImplementationName", implementation.getIdentifier(),
-                                decodedDependency.getName() ),
+                                    "missingDependencyImplementationName", implementation.getIdentifier(),
+                                    decodedDependency.getName() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
 
                         if ( s != null && s.getVersion() != null && decodedDependency.getVersion() != null
-                             && VersionParser.compare( decodedDependency.getVersion(), s.getVersion() ) > 0 )
+                                 && VersionParser.compare( decodedDependency.getVersion(), s.getVersion() ) > 0 )
                         {
                             final Module moduleOfSpecification =
                                 this.getModules().getModuleOfSpecification( s.getIdentifier() );
@@ -1126,11 +1128,11 @@ public class ClassFileProcessor extends JomcTool
 
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_INCOMPATIBLE_IMPLEMENTATION_DEPENDENCY", Level.SEVERE, getMessage(
-                                "incompatibleDependency", javaClass.getClassName(),
-                                moduleOfImplementation == null ? "<>" : moduleOfImplementation.getName(),
-                                s.getIdentifier(),
-                                moduleOfSpecification == null ? "<>" : moduleOfSpecification.getName(),
-                                decodedDependency.getVersion(), s.getVersion() ),
+                                    "incompatibleDependency", javaClass.getClassName(),
+                                    moduleOfImplementation == null ? "<>" : moduleOfImplementation.getName(),
+                                    s.getIdentifier(),
+                                    moduleOfSpecification == null ? "<>" : moduleOfSpecification.getName(),
+                                    decodedDependency.getVersion(), s.getVersion() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
@@ -1154,19 +1156,19 @@ public class ClassFileProcessor extends JomcTool
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_IMPLEMENTATION_PROPERTY", Level.SEVERE, getMessage(
-                                "missingProperty", implementation.getIdentifier(), decodedProperty.getName() ),
+                                    "missingProperty", implementation.getIdentifier(), decodedProperty.getName() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
                         else if ( decodedProperty.getType() == null
-                                  ? property.getType() != null
-                                  : !decodedProperty.getType().equals( property.getType() ) )
+                                      ? property.getType() != null
+                                      : !decodedProperty.getType().equals( property.getType() ) )
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_ILLEGAL_IMPLEMENTATION_PROPERTY", Level.SEVERE, getMessage(
-                                "illegalPropertyType", implementation.getIdentifier(), decodedProperty.getName(),
-                                property.getType() == null ? "<>" : property.getType(),
-                                decodedProperty.getType() == null ? "<>" : decodedProperty.getType() ),
+                                    "illegalPropertyType", implementation.getIdentifier(), decodedProperty.getName(),
+                                    property.getType() == null ? "<>" : property.getType(),
+                                    decodedProperty.getType() == null ? "<>" : decodedProperty.getType() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
@@ -1190,7 +1192,7 @@ public class ClassFileProcessor extends JomcTool
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_IMPLEMENTATION_MESSAGE", Level.SEVERE, getMessage(
-                                "missingMessage", implementation.getIdentifier(), decodedMessage.getName() ),
+                                    "missingMessage", implementation.getIdentifier(), decodedMessage.getName() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
@@ -1215,8 +1217,8 @@ public class ClassFileProcessor extends JomcTool
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_SPECIFICATION", Level.SEVERE, getMessage(
-                                "missingSpecification", implementation.getIdentifier(),
-                                decodedSpecification.getIdentifier() ),
+                                    "missingSpecification", implementation.getIdentifier(),
+                                    decodedSpecification.getIdentifier() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
@@ -1226,35 +1228,36 @@ public class ClassFileProcessor extends JomcTool
                             {
                                 report.getDetails().add( new ModelValidationReport.Detail(
                                     "CLASS_ILLEGAL_SPECIFICATION_MULTIPLICITY", Level.SEVERE, getMessage(
-                                    "illegalMultiplicity", specification.getIdentifier(),
-                                    specification.getMultiplicity().value(),
-                                    decodedSpecification.getMultiplicity().value() ),
+                                        "illegalMultiplicity", specification.getIdentifier(),
+                                        specification.getMultiplicity().value(),
+                                        decodedSpecification.getMultiplicity().value() ),
                                     new ObjectFactory().createImplementation( implementation ) ) );
 
                             }
 
                             if ( decodedSpecification.getScope() == null
-                                 ? specification.getScope() != null
-                                 : !decodedSpecification.getScope().equals( specification.getScope() ) )
+                                     ? specification.getScope() != null
+                                     : !decodedSpecification.getScope().equals( specification.getScope() ) )
                             {
                                 report.getDetails().add( new ModelValidationReport.Detail(
                                     "CLASS_ILLEGAL_SPECIFICATION_SCOPE", Level.SEVERE, getMessage(
-                                    "illegalScope", decodedSpecification.getIdentifier(),
-                                    specification.getScope() == null ? "Multiton" : specification.getScope(),
-                                    decodedSpecification.getScope() == null ? "Multiton"
-                                    : decodedSpecification.getScope() ),
+                                        "illegalScope", decodedSpecification.getIdentifier(),
+                                        specification.getScope() == null ? "Multiton" : specification.getScope(),
+                                        decodedSpecification.getScope() == null
+                                            ? "Multiton"
+                                            : decodedSpecification.getScope() ),
                                     new ObjectFactory().createImplementation( implementation ) ) );
 
                             }
 
                             if ( decodedSpecification.getClazz() == null
-                                 ? specification.getClazz() != null
-                                 : !decodedSpecification.getClazz().equals( specification.getClazz() ) )
+                                     ? specification.getClazz() != null
+                                     : !decodedSpecification.getClazz().equals( specification.getClazz() ) )
                             {
                                 report.getDetails().add( new ModelValidationReport.Detail(
                                     "CLASS_ILLEGAL_SPECIFICATION_CLASS", Level.SEVERE, getMessage(
-                                    "illegalSpecificationClass", decodedSpecification.getIdentifier(),
-                                    specification.getClazz(), decodedSpecification.getClazz() ),
+                                        "illegalSpecificationClass", decodedSpecification.getIdentifier(),
+                                        specification.getClazz(), decodedSpecification.getClazz() ),
                                     new ObjectFactory().createImplementation( implementation ) ) );
 
                             }
@@ -1271,14 +1274,14 @@ public class ClassFileProcessor extends JomcTool
                         {
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_MISSING_SPECIFICATION", Level.SEVERE, getMessage(
-                                "missingSpecification", implementation.getIdentifier(),
-                                decodedReference.getIdentifier() ),
+                                    "missingSpecification", implementation.getIdentifier(),
+                                    decodedReference.getIdentifier() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
                         else if ( decodedReference.getVersion() != null && specification.getVersion() != null
-                                  && VersionParser.compare( decodedReference.getVersion(),
-                                                            specification.getVersion() ) != 0 )
+                                      && VersionParser.compare( decodedReference.getVersion(),
+                                                                specification.getVersion() ) != 0 )
                         {
                             final Module moduleOfSpecification =
                                 this.getModules().getModuleOfSpecification( decodedReference.getIdentifier() );
@@ -1288,11 +1291,11 @@ public class ClassFileProcessor extends JomcTool
 
                             report.getDetails().add( new ModelValidationReport.Detail(
                                 "CLASS_INCOMPATIBLE_IMPLEMENTATION", Level.SEVERE, getMessage(
-                                "incompatibleImplementation", javaClass.getClassName(),
-                                moduleOfImplementation == null ? "<>" : moduleOfImplementation.getName(),
-                                specification.getIdentifier(),
-                                moduleOfSpecification == null ? "<>" : moduleOfSpecification.getName(),
-                                decodedReference.getVersion(), specification.getVersion() ),
+                                    "incompatibleImplementation", javaClass.getClassName(),
+                                    moduleOfImplementation == null ? "<>" : moduleOfImplementation.getName(),
+                                    specification.getIdentifier(),
+                                    moduleOfSpecification == null ? "<>" : moduleOfSpecification.getName(),
+                                    decodedReference.getVersion(), specification.getVersion() ),
                                 new ObjectFactory().createImplementation( implementation ) ) );
 
                         }
@@ -1492,7 +1495,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                     && this.getModules().getSpecification( specification.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 final Marshaller m = context.createMarshaller( this.getModel().getIdentifier() );
@@ -1556,7 +1559,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 final Unmarshaller u = context.createUnmarshaller( this.getModel().getIdentifier() );
                 final Marshaller m = context.createMarshaller( this.getModel().getIdentifier() );
@@ -1619,7 +1622,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                     && this.getModules().getSpecification( specification.getIdentifier() ) != null )
             {
                 Specification decodedSpecification = null;
                 final ObjectFactory objectFactory = new ObjectFactory();
@@ -1640,7 +1643,7 @@ public class ClassFileProcessor extends JomcTool
                         transformers.get( i ).transform( source, result );
 
                         if ( result.getResult() instanceof JAXBElement<?>
-                             && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Specification )
+                                 && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Specification )
                         {
                             decodedSpecification = (Specification) ( (JAXBElement<?>) result.getResult() ).getValue();
                         }
@@ -1653,7 +1656,8 @@ public class ClassFileProcessor extends JomcTool
                     }
 
                     this.setClassfileAttribute( javaClass, Specification.class.getName(), this.encodeModelObject(
-                        marshaller, objectFactory.createSpecification( decodedSpecification ) ) );
+                                                marshaller,
+                                                objectFactory.createSpecification( decodedSpecification ) ) );
 
                 }
             }
@@ -1727,7 +1731,7 @@ public class ClassFileProcessor extends JomcTool
         try
         {
             if ( this.getModules() != null
-                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                     && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
             {
                 Dependencies decodedDependencies = null;
                 byte[] bytes = this.getClassfileAttribute( javaClass, Dependencies.class.getName() );
@@ -1771,7 +1775,7 @@ public class ClassFileProcessor extends JomcTool
                         transformer.transform( source, result );
 
                         if ( result.getResult() instanceof JAXBElement<?>
-                             && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Dependencies )
+                                 && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Dependencies )
                         {
                             decodedDependencies = (Dependencies) ( (JAXBElement<?>) result.getResult() ).getValue();
                         }
@@ -1790,7 +1794,7 @@ public class ClassFileProcessor extends JomcTool
                         transformer.transform( source, result );
 
                         if ( result.getResult() instanceof JAXBElement<?>
-                             && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Messages )
+                                 && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Messages )
                         {
                             decodedMessages = (Messages) ( (JAXBElement<?>) result.getResult() ).getValue();
                         }
@@ -1804,12 +1808,14 @@ public class ClassFileProcessor extends JomcTool
 
                     if ( decodedProperties != null )
                     {
-                        final JAXBSource source = new JAXBSource( marshaller, of.createProperties( decodedProperties ) );
+                        final JAXBSource source =
+                            new JAXBSource( marshaller, of.createProperties( decodedProperties ) );
+
                         final JAXBResult result = new JAXBResult( unmarshaller );
                         transformer.transform( source, result );
 
                         if ( result.getResult() instanceof JAXBElement<?>
-                             && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Properties )
+                                 && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Properties )
                         {
                             decodedProperties = (Properties) ( (JAXBElement<?>) result.getResult() ).getValue();
                         }
@@ -1830,7 +1836,7 @@ public class ClassFileProcessor extends JomcTool
                         transformer.transform( source, result );
 
                         if ( result.getResult() instanceof JAXBElement<?>
-                             && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Specifications )
+                                 && ( (JAXBElement<?>) result.getResult() ).getValue() instanceof Specifications )
                         {
                             decodedSpecifications = (Specifications) ( (JAXBElement<?>) result.getResult() ).getValue();
                         }
@@ -1846,28 +1852,28 @@ public class ClassFileProcessor extends JomcTool
                 if ( decodedDependencies != null )
                 {
                     this.setClassfileAttribute( javaClass, Dependencies.class.getName(), this.encodeModelObject(
-                        marshaller, of.createDependencies( decodedDependencies ) ) );
+                                                marshaller, of.createDependencies( decodedDependencies ) ) );
 
                 }
 
                 if ( decodedMessages != null )
                 {
                     this.setClassfileAttribute( javaClass, Messages.class.getName(), this.encodeModelObject(
-                        marshaller, of.createMessages( decodedMessages ) ) );
+                                                marshaller, of.createMessages( decodedMessages ) ) );
 
                 }
 
                 if ( decodedProperties != null )
                 {
                     this.setClassfileAttribute( javaClass, Properties.class.getName(), this.encodeModelObject(
-                        marshaller, of.createProperties( decodedProperties ) ) );
+                                                marshaller, of.createProperties( decodedProperties ) ) );
 
                 }
 
                 if ( decodedSpecifications != null )
                 {
                     this.setClassfileAttribute( javaClass, Specifications.class.getName(), this.encodeModelObject(
-                        marshaller, of.createSpecifications( decodedSpecifications ) ) );
+                                                marshaller, of.createSpecifications( decodedSpecifications ) ) );
 
                 }
             }
@@ -1968,13 +1974,13 @@ public class ClassFileProcessor extends JomcTool
         final byte[] attributeData = data != null ? data : NO_BYTES;
 
         /*
-         The JavaTM Virtual Machine Specification - Second Edition - Chapter 4.1
-
-         A Java virtual machine implementation is required to silently ignore any
-         or all attributes in the attributes table of a ClassFile structure that
-         it does not recognize. Attributes not defined in this specification are
-         not allowed to affect the semantics of the class file, but only to
-         provide additional descriptive information (§4.7.1).
+         * The JavaTM Virtual Machine Specification - Second Edition - Chapter 4.1
+         *
+         * A Java virtual machine implementation is required to silently ignore any
+         * or all attributes in the attributes table of a ClassFile structure that
+         * it does not recognize. Attributes not defined in this specification are
+         * not allowed to affect the semantics of the class file, but only to
+         * provide additional descriptive information (§4.7.1).
          */
         Attribute[] attributes = clazz.getAttributes();
 
@@ -2118,7 +2124,8 @@ public class ClassFileProcessor extends JomcTool
     }
 
     private void commitModelObjects( final Specifications specifications, final Implementations implementations,
-                                     final Marshaller marshaller, final File classesDirectory ) throws IOException
+                                     final Marshaller marshaller, final File classesDirectory )
+        throws IOException, ModelObjectException
     {
         if ( specifications != null )
         {
@@ -2138,11 +2145,13 @@ public class ClassFileProcessor extends JomcTool
     }
 
     private void commitModelObjects( final Specification specification, final Marshaller marshaller,
-                                     final File classesDirectory ) throws IOException
+                                     final File classesDirectory ) throws IOException, ModelObjectException
     {
-        if ( specification.isClassDeclaration() )
+        if ( specification.isClassDeclaration() && specification.getJavaTypeName() != null )
         {
-            final String classLocation = specification.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                specification.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2170,11 +2179,13 @@ public class ClassFileProcessor extends JomcTool
     }
 
     private void commitModelObjects( final Implementation implementation, final Marshaller marshaller,
-                                     final File classesDirectory ) throws IOException
+                                     final File classesDirectory ) throws IOException, ModelObjectException
     {
-        if ( implementation.isClassDeclaration() )
+        if ( implementation.isClassDeclaration() && implementation.getJavaTypeName() != null )
         {
-            final String classLocation = implementation.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                implementation.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2204,7 +2215,7 @@ public class ClassFileProcessor extends JomcTool
     private ModelValidationReport validateModelObjects( final Specifications specifications,
                                                         final Implementations implementations,
                                                         final Unmarshaller unmarshaller, final File classesDirectory )
-        throws IOException
+        throws IOException, ModelObjectException
     {
         final ModelValidationReport report = new ModelValidationReport();
 
@@ -2235,13 +2246,16 @@ public class ClassFileProcessor extends JomcTool
 
     private ModelValidationReport validateModelObjects( final Specification specification,
                                                         final Unmarshaller unmarshaller,
-                                                        final File classesDirectory ) throws IOException
+                                                        final File classesDirectory )
+        throws IOException, ModelObjectException
     {
         final ModelValidationReport report = new ModelValidationReport();
 
-        if ( specification.isClassDeclaration() )
+        if ( specification.isClassDeclaration() && specification.getJavaTypeName() != null )
         {
-            final String classLocation = specification.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                specification.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2274,13 +2288,16 @@ public class ClassFileProcessor extends JomcTool
 
     private ModelValidationReport validateModelObjects( final Implementation implementation,
                                                         final Unmarshaller unmarshaller,
-                                                        final File classesDirectory ) throws IOException
+                                                        final File classesDirectory )
+        throws IOException, ModelObjectException
     {
         final ModelValidationReport report = new ModelValidationReport();
 
-        if ( implementation.isClassDeclaration() )
+        if ( implementation.isClassDeclaration() && implementation.getJavaTypeName() != null )
         {
-            final String classLocation = implementation.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                implementation.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2349,9 +2366,10 @@ public class ClassFileProcessor extends JomcTool
     {
         final ModelValidationReport report = new ModelValidationReport();
 
-        if ( specification.isClassDeclaration() )
+        if ( specification.isClassDeclaration() && specification.getJavaTypeName() != null )
         {
-            final String classLocation = specification.getClazz().replace( '.', '/' ) + ".class";
+            final String classLocation =
+                specification.getJavaTypeName().getClassName().replace( '.', '/' ) + ".class";
 
             final URL classUrl = context.findResource( classLocation );
 
@@ -2411,10 +2429,9 @@ public class ClassFileProcessor extends JomcTool
     {
         final ModelValidationReport report = new ModelValidationReport();
 
-        if ( implementation.isClassDeclaration() )
+        if ( implementation.isClassDeclaration() && implementation.getJavaTypeName() != null )
         {
-            final String classLocation = implementation.getClazz().replace( '.', '/' ) + ".class";
-
+            final String classLocation = implementation.getJavaTypeName().getClassName().replace( '.', '/' ) + ".class";
             final URL classUrl = context.findResource( classLocation );
 
             if ( classUrl == null )
@@ -2470,7 +2487,7 @@ public class ClassFileProcessor extends JomcTool
     private void transformModelObjects( final Specifications specifications, final Implementations implementations,
                                         final Unmarshaller unmarshaller, final Marshaller marshaller,
                                         final File classesDirectory, final List<Transformer> transformers )
-        throws IOException
+        throws IOException, ModelObjectException
     {
         if ( specifications != null )
         {
@@ -2495,11 +2512,13 @@ public class ClassFileProcessor extends JomcTool
 
     private void transformModelObjects( final Specification specification, final Marshaller marshaller,
                                         final Unmarshaller unmarshaller, final File classesDirectory,
-                                        final List<Transformer> transformers ) throws IOException
+                                        final List<Transformer> transformers ) throws IOException, ModelObjectException
     {
-        if ( specification.isClassDeclaration() )
+        if ( specification.isClassDeclaration() && specification.getJavaTypeName() != null )
         {
-            final String classLocation = specification.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                specification.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2528,11 +2547,13 @@ public class ClassFileProcessor extends JomcTool
 
     private void transformModelObjects( final Implementation implementation, final Marshaller marshaller,
                                         final Unmarshaller unmarshaller, final File classesDirectory,
-                                        final List<Transformer> transformers ) throws IOException
+                                        final List<Transformer> transformers ) throws IOException, ModelObjectException
     {
-        if ( implementation.isClassDeclaration() )
+        if ( implementation.isClassDeclaration() && implementation.getJavaTypeName() != null )
         {
-            final String classLocation = implementation.getClazz().replace( '.', File.separatorChar ) + ".class";
+            final String classLocation =
+                implementation.getJavaTypeName().getClassName().replace( '.', File.separatorChar ) + ".class";
+
             final File classFile = new File( classesDirectory, classLocation );
 
             if ( !classesDirectory.isDirectory() )
@@ -2688,10 +2709,10 @@ public class ClassFileProcessor extends JomcTool
     private static String getMessage( final Throwable t )
     {
         return t != null
-               ? t.getMessage() != null && t.getMessage().trim().length() > 0
-                 ? t.getMessage()
-                 : getMessage( t.getCause() )
-               : null;
+                   ? t.getMessage() != null && t.getMessage().trim().length() > 0
+                         ? t.getMessage()
+                         : getMessage( t.getCause() )
+                   : null;
 
     }
 
