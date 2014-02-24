@@ -1120,33 +1120,47 @@
           <version>${maven-jomc-plugin.artifact.version}</version>
           <executions>
             <execution>
-              <id>default-main</id>
+              <id>default-process-resources</id>
               <goals>
                 <goal>manage-main-sources</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>default-process-classes</id>
+              <goals>
                 <goal>commit-main-classes</goal>
                 <goal>validate-main-classes</goal>
               </goals>
+              <configuration>
+                <modletExcludes>
+                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                </modletExcludes>
+              </configuration>
             </execution>
             <execution>
-              <id>default-attach-main-module</id>
-              <phase>prepare-package</phase>
+              <id>default-process-test-resources</id>
               <goals>
-                <goal>attach-main-module</goal>
+                <goal>manage-test-sources</goal>
               </goals>
             </execution>
             <execution>
-              <id>default-test</id>
+              <id>default-process-test-classes</id>
               <goals>
-                <goal>manage-test-sources</goal>
                 <goal>commit-test-classes</goal>
                 <goal>validate-test-classes</goal>
                 <goal>validate-test-model</goal>
               </goals>
+              <configuration>
+                <modletExcludes>
+                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                </modletExcludes>
+              </configuration>
             </execution>
             <execution>
-              <id>default-attach-test-module</id>
+              <id>default-prepare-package</id>
               <phase>prepare-package</phase>
               <goals>
+                <goal>attach-main-module</goal>
                 <goal>attach-test-module</goal>
               </goals>
             </execution>

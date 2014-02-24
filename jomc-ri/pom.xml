@@ -61,7 +61,7 @@
           <artifactId>maven-jomc-plugin</artifactId>
           <executions>
             <execution>
-              <id>default-main</id>
+              <id>default-process-resources</id>
               <goals>
                 <goal>write-main-resources</goal>
               </goals>
