@@ -2028,21 +2028,16 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the parent class loader of a given class loader recursively.
-     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
-     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
-     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
-     * current class loader's parent class loader is equal to the name returned by method
-     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
-     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
-     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
+     * Gets the root class loader of a given class loader recursively.
+     * <p>
+     * This method recursively finds the root class loader of a given class loader. That class loader is either the
+     * class loader for which a call to the {@code getParent()} method returns {@code null} or the class loader whose
+     * class name is equal to the name returned by method {@code getBootstrapClassLoaderClassName()}.
      *
-     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
+     * @param classLoader The class loader whose root class loader to return or {@code null} to return a
      * {@code ClassLoader} instance representing the platform's bootstrap class loader.
      *
-     * @return The parent class loader of {@code classLoader}.
-     *
-     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     * @return The root class loader of {@code classLoader}.
      *
      * @see #getBootstrapClassLoaderClassName()
      * @see ClassLoader#getParent()
@@ -3417,21 +3412,17 @@ public class DefaultObjectManager implements ObjectManager
     }
 
     /**
-     * Gets the parent class loader of a given class loader recursively.
-     * <p>This method recursively finds the parent class loader of the given class loader. Recursion stops at the
-     * platform's bootstrap class loader. That class loader is detected when either the current class loader has no
-     * parent (a call to the {@code getParent()} method returns {@code null}) or when the class name of the
-     * current class loader's parent class loader is equal to the name returned by method
-     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
-     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
-     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.</p>
+     * Gets the root class loader of a given class loader recursively.
+     * <p>
+     * This method recursively finds the root class loader of a given class loader. That class loader is either the
+     * class loader in the class loader hierarchy for which a call to the {@code getParent()} method returns
+     * {@code null} or the class loader whose class name is equal to the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}.
      *
-     * @param classLoader The class loader whose parent class loader to return or {@code null} to return a
+     * @param classLoader The class loader whose root class loader to return or {@code null} to return a
      * {@code ClassLoader} instance representing the platform's bootstrap class loader.
      *
-     * @return The parent class loader of {@code classLoader}.
-     *
-     * @throws NullPointerException if {@code classLoader} is {@code null}.
+     * @return The root class loader of {@code classLoader}.
      *
      * @see #getBootstrapClassLoaderClassName()
      * @see ClassLoader#getParent()
