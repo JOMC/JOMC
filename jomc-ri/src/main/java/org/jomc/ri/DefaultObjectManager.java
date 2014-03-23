@@ -2069,7 +2069,7 @@ public class DefaultObjectManager implements ObjectManager
             if ( loader == null )
             {
                 if ( classLoader.getParent() != null
-                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                     && !classLoader.getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
                 {
                     loader = this.getDefaultClassLoader( classLoader.getParent() );
                 }
@@ -3456,7 +3456,7 @@ public class DefaultObjectManager implements ObjectManager
             if ( loader == null )
             {
                 if ( classLoader.getParent() != null
-                     && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                     && !classLoader.getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
                 {
                     loader = getClassLoader( classLoader.getParent() );
                 }
