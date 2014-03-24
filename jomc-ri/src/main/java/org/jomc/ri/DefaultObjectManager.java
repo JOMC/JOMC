@@ -991,6 +991,14 @@ public class DefaultObjectManager implements ObjectManager
     private static volatile boolean bootstrapClassLoaderClassNameInitialized;
 
     /**
+     * Name of the root class loader class.
+     * @since 1.7
+     */
+    private static volatile String rootClassLoaderClassName;
+
+    private static volatile boolean rootClassLoaderClassNameInitialized;
+
+    /**
      * Identifier of the model to search for modules by default.
      * @since 1.1
      */
@@ -1729,7 +1737,8 @@ public class DefaultObjectManager implements ObjectManager
      *
      * @return The name of the platform's bootstrap class loader class or {@code null}.
      *
-     * @see #getClassLoader(java.lang.ClassLoader)
+     * @see #setBootstrapClassLoaderClassName(java.lang.String)
+     * @see #getDefaultClassLoader(java.lang.ClassLoader)
      */
     public static String getBootstrapClassLoaderClassName()
     {
@@ -1755,6 +1764,46 @@ public class DefaultObjectManager implements ObjectManager
     {
         bootstrapClassLoaderClassName = value;
         bootstrapClassLoaderClassNameInitialized = false;
+    }
+
+    /**
+     * Gets the name of the root class loader class.
+     * <p>
+     * The name of the root class loader class is controlled by system property
+     * {@code org.jomc.ri.DefaultObjectManager.rootClassLoaderClassName} holding the name of the root class loader
+     * class.
+     *
+     * @return The name of the root class loader class or {@code null}.
+     *
+     * @see #setRootClassLoaderClassName(java.lang.String)
+     * @see #getDefaultClassLoader(java.lang.ClassLoader)
+     * @since 1.7
+     */
+    public static String getRootClassLoaderClassName()
+    {
+        if ( rootClassLoaderClassName == null && !rootClassLoaderClassNameInitialized )
+        {
+            rootClassLoaderClassName =
+                System.getProperty( "org.jomc.ri.DefaultObjectManager.rootClassLoaderClassName" );
+
+            rootClassLoaderClassNameInitialized = true;
+        }
+
+        return rootClassLoaderClassName;
+    }
+
+    /**
+     * Sets the name of the root class loader class.
+     *
+     * @param value The new name of the root class loader class or {@code null}.
+     *
+     * @see #getRootClassLoaderClassName()
+     * @since 1.7
+     */
+    public static void setRootClassLoaderClassName( final String value )
+    {
+        rootClassLoaderClassName = value;
+        rootClassLoaderClassNameInitialized = false;
     }
 
     /**
@@ -2030,9 +2079,14 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the root class loader of a given class loader recursively.
      * <p>
-     * This method recursively finds the root class loader of a given class loader. That class loader is either the
-     * class loader for which a call to the {@code getParent()} method returns {@code null} or the class loader whose
-     * class name is equal to the name returned by method {@code getBootstrapClassLoaderClassName()}.
+     * This method recursively finds the root class loader of the given class loader. Recursion stops at the
+     * platform's bootstrap class loader or at the class loader whose class name equals the name returned by method
+     * {@code getRootClassLoaderClassName()}. The platform's bootstrap class loader is detected when either the current
+     * class loader has no parent (a call to the {@code getParent()} method returns {@code null}) or when the class name
+     * of the current class loader's parent class loader equals the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
+     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
+     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.
      *
      * @param classLoader The class loader whose root class loader to return or {@code null} to return a
      * {@code ClassLoader} instance representing the platform's bootstrap class loader.
@@ -2040,6 +2094,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The root class loader of {@code classLoader}.
      *
      * @see #getBootstrapClassLoaderClassName()
+     * @see #getRootClassLoaderClassName()
      * @see ClassLoader#getParent()
      *
      * @since 1.1
@@ -2064,7 +2119,8 @@ public class DefaultObjectManager implements ObjectManager
             if ( loader == null )
             {
                 if ( classLoader.getParent() != null
-                     && !classLoader.getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                         && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() )
+                         && !classLoader.getClass().getName().equals( getRootClassLoaderClassName() ) )
                 {
                     loader = this.getDefaultClassLoader( classLoader.getParent() );
                 }
@@ -3414,10 +3470,14 @@ public class DefaultObjectManager implements ObjectManager
     /**
      * Gets the root class loader of a given class loader recursively.
      * <p>
-     * This method recursively finds the root class loader of a given class loader. That class loader is either the
-     * class loader in the class loader hierarchy for which a call to the {@code getParent()} method returns
-     * {@code null} or the class loader whose class name is equal to the name returned by method
-     * {@code getBootstrapClassLoaderClassName()}.
+     * This method recursively finds the root class loader of the given class loader. Recursion stops at the
+     * platform's bootstrap class loader or at the class loader whose class name equals the name returned by method
+     * {@code getRootClassLoaderClassName()}. The platform's bootstrap class loader is detected when either the current
+     * class loader has no parent (a call to the {@code getParent()} method returns {@code null}) or when the class name
+     * of the current class loader's parent class loader equals the name returned by method
+     * {@code getBootstrapClassLoaderClassName()}. Configuration of the name of the platform's bootstrap class loader
+     * class is needed when the platform's {@code getParent()} method of the {@code ClassLoader} class does not return
+     * {@code null} to indicate the bootstrap class loader but instead returns an instance of {@code ClassLoader}.
      *
      * @param classLoader The class loader whose root class loader to return or {@code null} to return a
      * {@code ClassLoader} instance representing the platform's bootstrap class loader.
@@ -3425,6 +3485,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The root class loader of {@code classLoader}.
      *
      * @see #getBootstrapClassLoaderClassName()
+     * @see #getRootClassLoaderClassName()
      * @see ClassLoader#getParent()
      */
     private static ClassLoader getClassLoader( final ClassLoader classLoader )
@@ -3447,7 +3508,8 @@ public class DefaultObjectManager implements ObjectManager
             if ( loader == null )
             {
                 if ( classLoader.getParent() != null
-                     && !classLoader.getClass().getName().equals( getBootstrapClassLoaderClassName() ) )
+                         && !classLoader.getParent().getClass().getName().equals( getBootstrapClassLoaderClassName() )
+                         && !classLoader.getClass().getName().equals( getRootClassLoaderClassName() ) )
                 {
                     loader = getClassLoader( classLoader.getParent() );
                 }
