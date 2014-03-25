@@ -428,6 +428,15 @@
             <argument index="0" name="Object Identifier"/>
           </arguments>
         </message>
+        <message name="Runtime Model Report">
+          <template defaultLanguage="en">
+            <text language="en">Creating runtime model in {0,number}ms.</text>
+            <text language="de">Laufzeitmodell in {0,number}ms erstellt.</text>
+          </template>
+          <arguments>
+            <argument index="0" type="Number" name="Millis"/>
+          </arguments>
+        </message>
       </messages>
     </implementation>
     <!-- *********************************************************************************************************** -->

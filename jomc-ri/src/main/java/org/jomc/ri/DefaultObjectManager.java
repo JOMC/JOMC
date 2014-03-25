@@ -1941,11 +1941,20 @@ public class DefaultObjectManager implements ObjectManager
                         this.objects.put( objectsLoader, objectMap );
                     }
 
+                    final long t0 = System.currentTimeMillis();
                     cachedModules = this.getRuntimeModules( cachedModules, objectMap );
 
                     if ( cachedModules instanceof RuntimeModelObject )
                     {
                         ( (RuntimeModelObject) cachedModules ).clear();
+                    }
+
+                    if ( this.isLoggable( Level.FINE ) )
+                    {
+                        this.log( Level.FINE,
+                                  getRuntimeModelReport( Locale.getDefault(), System.currentTimeMillis() - t0 ),
+                                  null );
+
                     }
                 }
 
@@ -6195,6 +6204,76 @@ public class DefaultObjectManager implements ObjectManager
         try
         {
             final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Modules Report Message" ), (Object) null );
+            final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
+            reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
+            final String lineSeparator = System.getProperty( "line.separator", "\n" );
+
+            String line;
+            while ( ( line = reader.readLine() ) != null )
+            {
+                builder.append( lineSeparator ).append( line );
+            }
+
+            suppressExceptionOnClose = false;
+            return builder.length() > 0 ? builder.substring( lineSeparator.length() ) : "";
+        }
+        catch( final java.lang.ClassCastException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.lang.IllegalArgumentException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.util.MissingResourceException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        catch( final java.io.IOException e )
+        {
+            throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+        }
+        finally
+        {
+            try
+            {
+                if( reader != null )
+                {
+                    reader.close();
+                }
+            }
+            catch( final java.io.IOException e )
+            {
+                if( !suppressExceptionOnClose )
+                {
+                    throw new org.jomc.ObjectManagementException( e.getMessage(), e );
+                }
+            }
+        }
+    }
+    /**
+     * Gets the text of the {@code <Runtime Model Report>} message.
+     * <p><dl>
+     *   <dt><b>Languages:</b></dt>
+     *     <dd>English (default)</dd>
+     *     <dd>Deutsch</dd>
+     *   <dt><b>Final:</b></dt><dd>No</dd>
+     * </dl></p>
+     * @param locale The locale of the message to return.
+     * @param millis Format argument.
+     * @return The text of the {@code <Runtime Model Report>} message for {@code locale}.
+     * @throws org.jomc.ObjectManagementException if getting the message instance fails.
+     */
+    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
+    private static String getRuntimeModelReport( final java.util.Locale locale, final java.lang.Number millis )
+    {
+        java.io.BufferedReader reader = null;
+        boolean suppressExceptionOnClose = true;
+
+        try
+        {
+            final String message = java.text.MessageFormat.format( java.util.ResourceBundle.getBundle( "org.jomc.ri.DefaultObjectManager", locale ).getString( "Runtime Model Report" ), millis, (Object) null );
             final java.lang.StringBuilder builder = new java.lang.StringBuilder( message.length() );
             reader = new java.io.BufferedReader( new java.io.StringReader( message ) );
             final String lineSeparator = System.getProperty( "line.separator", "\n" );
