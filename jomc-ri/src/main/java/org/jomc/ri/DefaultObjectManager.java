@@ -1949,13 +1949,10 @@ public class DefaultObjectManager implements ObjectManager
                         ( (RuntimeModelObject) cachedModules ).clear();
                     }
 
-                    if ( this.isLoggable( Level.FINE ) )
-                    {
-                        this.log( Level.FINE,
-                                  getRuntimeModelReport( Locale.getDefault(), System.currentTimeMillis() - t0 ),
-                                  null );
+                    logRecords.add( new LogRecord( Level.FINE,
+                                                   getRuntimeModelReport( Locale.getDefault(),
+                                                                          System.currentTimeMillis() - t0 ) ) );
 
-                    }
                 }
 
                 this.modules.put( classLoader, cachedModules );
@@ -6265,7 +6262,7 @@ public class DefaultObjectManager implements ObjectManager
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
     @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.7-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.7/jomc-tools-1.7-SNAPSHOT" )
     private static String getRuntimeModelReport( final java.util.Locale locale, final java.lang.Number millis )
     {
         java.io.BufferedReader reader = null;
