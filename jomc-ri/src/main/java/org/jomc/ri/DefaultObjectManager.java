@@ -1930,13 +1930,10 @@ public class DefaultObjectManager implements ObjectManager
                         ( (RuntimeModelObject) cachedModules ).clear();
                     }
 
-                    if ( this.isLoggable( Level.FINE ) )
-                    {
-                        this.log( Level.FINE,
-                                  getRuntimeModelReport( Locale.getDefault(), System.currentTimeMillis() - t0 ),
-                                  null );
+                    logRecords.add( new LogRecord( Level.FINE,
+                                                   getRuntimeModelReport( Locale.getDefault(),
+                                                                          System.currentTimeMillis() - t0 ) ) );
 
-                    }
                 }
 
                 this.modules.put( classLoader, cachedModules );
