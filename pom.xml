@@ -90,7 +90,9 @@
           <version>${maven-site-plugin.artifact.version}</version>
           <dependencies>
             <dependency>
-              <!-- See http://jira.codehaus.org/browse/MSITE-724 -->
+              <!--
+              https://jira.codehaus.org/browse/MSITE-724
+              -->
               <groupId>org.apache.maven</groupId>
               <artifactId>maven-archiver</artifactId>
               <version>2.5</version>
@@ -903,11 +905,13 @@
                 <version>[1.7.0,)</version>
               </requireJavaVersion>
               <requireMavenVersion>
-                <version>[3.0.4],[3.0.5],[3.1.0-alpha-1],[3.1.0],[3.1.1],[3.2.1],[3.2.2]</version>
+                <version>[3.0.4],[3.0.5],[3.1.0-alpha-1],[3.1.0],[3.1.1],[3.2.1],[3.2.2],[3.2.3]</version>
               </requireMavenVersion>
               <requireNoRepositories />
               <enforceBytecodeVersion>
-                <!-- See http://jira.codehaus.org/browse/MOJO-2037 -->
+                <!--
+                https://jira.codehaus.org/browse/MOJO-2037
+                -->
                 <maxJdkVersion>${maven.compiler.target}</maxJdkVersion>
               </enforceBytecodeVersion>
             </rules>
@@ -916,7 +920,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>${maven-project-info-reports-plugin.artifact.version}</version> <!-- See http://jira.codehaus.org/browse/MPIR-238 -->
+          <!--
+          https://jira.codehaus.org/browse/MPIR-238
+          -->
+          <version>${maven-project-info-reports-plugin.artifact.version}</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -934,7 +941,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>${maven-checkstyle-plugin.artifact.version}</version> <!-- See http://sourceforge.net/tracker/?func=detail&aid=3486876&group_id=29721&atid=397078 -->
+          <!--
+          http://sourceforge.net/tracker/?func=detail&aid=3486876&group_id=29721&atid=397078
+          -->
+          <version>${maven-checkstyle-plugin.artifact.version}</version>
           <configuration>
             <configLocation>org/jomc/build/resources/checkstyle.xml</configLocation>
             <enableRulesSummary>false</enableRulesSummary>
@@ -1309,7 +1319,10 @@
       <dependency>
         <groupId>org.apache.ant</groupId>
         <artifactId>ant</artifactId>
-        <version>1.8.4</version> <!-- See https://issues.apache.org/bugzilla/show_bug.cgi?id=54843 -->
+        <!--
+        https://issues.apache.org/bugzilla/show_bug.cgi?id=54843
+        -->
+        <version>1.8.4</version>
       </dependency>
 
       <!-- JAXB -->
@@ -1339,13 +1352,19 @@
         <groupId>javax.annotation</groupId>
         <artifactId>jsr250-api</artifactId>
         <version>1.0</version>
-        <optional>true</optional> <!-- See http://jira.codehaus.org/browse/MNG-5227 -->
+        <!--
+        https://jira.codehaus.org/browse/MNG-5227
+        -->
+        <optional>true</optional>
       </dependency>
       <dependency>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-annotations</artifactId>
         <version>${animal-sniffer.version}</version>
-        <optional>true</optional> <!-- See http://jira.codehaus.org/browse/MNG-5227 -->
+        <!--
+        https://jira.codehaus.org/browse/MNG-5227
+        -->
+        <optional>true</optional>
       </dependency>
 
       <!-- Test -->
@@ -1976,28 +1995,6 @@
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-site-plugin</artifactId>
-              <dependencies>
-                <dependency>
-                  <groupId>org.apache.maven.wagon</groupId>
-                  <artifactId>wagon-ssh</artifactId>
-                  <version>${wagon.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.wagon</groupId>
-                  <artifactId>wagon-webdav-jackrabbit</artifactId>
-                  <version>${wagon.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>jcl-over-slf4j</artifactId>
-                  <version>${slf4j.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-simple</artifactId>
-                  <version>${slf4j.version}</version>
-                </dependency>
-              </dependencies>
               <executions>
                 <execution>
                   <id>default-attach-descriptor</id>
@@ -2007,32 +2004,6 @@
                   </goals>
                 </execution>
               </executions>
-            </plugin>
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>wagon-maven-plugin</artifactId>
-              <dependencies>
-                <dependency>
-                  <groupId>org.apache.maven.wagon</groupId>
-                  <artifactId>wagon-ssh</artifactId>
-                  <version>${wagon.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.apache.maven.wagon</groupId>
-                  <artifactId>wagon-webdav-jackrabbit</artifactId>
-                  <version>${wagon.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>jcl-over-slf4j</artifactId>
-                  <version>${slf4j.version}</version>
-                </dependency>
-                <dependency>
-                  <groupId>org.slf4j</groupId>
-                  <artifactId>slf4j-simple</artifactId>
-                  <version>${slf4j.version}</version>
-                </dependency>
-              </dependencies>
             </plugin>
           </plugins>
         </pluginManagement>
@@ -2248,17 +2219,25 @@
     <!-- Artifact versions. -->
     <animal-sniffer.version>1.11</animal-sniffer.version>
     <surefire.version>2.17</surefire.version>
-    <plugintools.version>2.9</plugintools.version> <!-- See http://jira.codehaus.org/browse/MNG-3762 -->
+    <!--
+    https://jira.codehaus.org/browse/MNG-3762
+    -->
+    <plugintools.version>2.9</plugintools.version>
     <plexuscontainers.version>1.5.5</plexuscontainers.version>
-    <wagon.version>2.6</wagon.version>
-    <slf4j.version>1.7.7</slf4j.version>
     <umlgraph.version>5.6.6</umlgraph.version>
     <cc-xjc-plugin.version>2.0.1</cc-xjc-plugin.version>
     <jaxb2-basics.version>0.6.5</jaxb2-basics.version>
     <jomc.build.version>1.9</jomc.build.version>
     <!-- Plugin versions. -->
-    <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MCOMPILER-187 / https://jira.codehaus.org/browse/MCOMPILER-205 -->
-    <maven-site-plugin.artifact.version>3.4</maven-site-plugin.artifact.version> <!-- See http://jira.codehaus.org/browse/MSITE-724 -->
+    <!--
+    https://jira.codehaus.org/browse/MCOMPILER-187
+    https://jira.codehaus.org/browse/MCOMPILER-205
+    -->
+    <maven-compiler-plugin.artifact.version>2.5.1</maven-compiler-plugin.artifact.version>
+    <!--
+    https://jira.codehaus.org/browse/MSITE-724
+    -->
+    <maven-site-plugin.artifact.version>3.4</maven-site-plugin.artifact.version>
     <maven-resources-plugin.artifact.version>2.6</maven-resources-plugin.artifact.version>
     <maven-release-plugin.artifact.version>2.5</maven-release-plugin.artifact.version>
     <maven-jar-plugin.artifact.version>2.5</maven-jar-plugin.artifact.version>
@@ -2271,24 +2250,30 @@
     <maven-dependency-plugin.artifact.version>2.8</maven-dependency-plugin.artifact.version>
     <maven-install-plugin.artifact.version>2.5.1</maven-install-plugin.artifact.version>
     <maven-source-plugin.artifact.version>2.3</maven-source-plugin.artifact.version>
-    <maven-scm-plugin.artifact.version>1.9</maven-scm-plugin.artifact.version>
+    <maven-scm-plugin.artifact.version>1.9.1</maven-scm-plugin.artifact.version>
     <maven-changes-plugin.artifact.version>2.10</maven-changes-plugin.artifact.version>
     <maven-enforcer-plugin.artifact.version>1.3.1</maven-enforcer-plugin.artifact.version>
     <maven-project-info-reports-plugin.artifact.version>2.7</maven-project-info-reports-plugin.artifact.version>
     <maven-jxr-plugin.artifact.version>2.4</maven-jxr-plugin.artifact.version>
-    <maven-pmd-plugin.artifact.version>3.1</maven-pmd-plugin.artifact.version>
+    <maven-pmd-plugin.artifact.version>3.2</maven-pmd-plugin.artifact.version>
     <maven-checkstyle-plugin.artifact.version>2.12.1</maven-checkstyle-plugin.artifact.version>
     <wagon-maven-plugin.artifact.version>1.0-beta-5</wagon-maven-plugin.artifact.version>
     <javacc-maven-plugin.artifact.version>2.6</javacc-maven-plugin.artifact.version>
     <build-helper-maven-plugin.artifact.version>1.9</build-helper-maven-plugin.artifact.version>
     <xml-maven-plugin.artifact.version>1.0</xml-maven-plugin.artifact.version>
     <clirr-maven-plugin.artifact.version>2.6.1</clirr-maven-plugin.artifact.version>
-    <findbugs-maven-plugin.artifact.version>2.5.4</findbugs-maven-plugin.artifact.version>
+    <findbugs-maven-plugin.artifact.version>3.0.0</findbugs-maven-plugin.artifact.version>
     <emma-maven-plugin.artifact.version>1.0-alpha-3</emma-maven-plugin.artifact.version>
-    <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version> <!-- http://jira.codehaus.org/browse/MTAGLIST-59 -->
-    <maven-jaxb21-plugin.artifact.version>0.8.3</maven-jaxb21-plugin.artifact.version> <!-- https://java.net/jira/browse/MAVEN_JAXB2_PLUGIN-91 -->
+    <!--
+    https://jira.codehaus.org/browse/MTAGLIST-59
+    -->
+    <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
+    <!--
+    https://java.net/jira/browse/MAVEN_JAXB2_PLUGIN-91
+    -->
+    <maven-jaxb21-plugin.artifact.version>0.8.3</maven-jaxb21-plugin.artifact.version>
     <maven-shade-plugin.artifact.version>2.3</maven-shade-plugin.artifact.version>
-    <maven-assembly-plugin.artifact.version>2.4</maven-assembly-plugin.artifact.version>
+    <maven-assembly-plugin.artifact.version>2.4.1</maven-assembly-plugin.artifact.version>
     <!-- Plugin parameters. -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
