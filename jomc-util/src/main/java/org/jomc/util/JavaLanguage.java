@@ -1,5 +1,5 @@
 /*
- *   Copyright (C) Christian Schulte, 2012-262
+ *   Copyright (C) Christian Schulte, 2012-253
  *   All rights reserved.
  *
  *   Redistribution and use in source and binary forms, with or without
@@ -28,7 +28,7 @@
  *   $JOMC$
  *
  */
-package org.jomc.model.test;
+package org.jomc.util;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -167,6 +167,59 @@ class JavaLanguage
         KEYWORDS.add( "void" );
         KEYWORDS.add( "volatile" );
         KEYWORDS.add( "while" );
+    }
+
+    /**
+     * Tests whether a given string is case-insensitively equal to a Java keyword.
+     *
+     * @param s The string to test.
+     *
+     * @return {@code true}, if {@code s} is case-insensitively equal to a Java keyword; {@code false}, if not.
+     */
+    static boolean isKeyword( final String s )
+    {
+        for ( final String keyword : KEYWORDS )
+        {
+            if ( keyword.equalsIgnoreCase( s ) )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Tests whether a given string is case-insensitively equal to a Java boolean literal.
+     *
+     * @param s The string to test.
+     *
+     * @return {@code true}, if {@code s} is case-insensitively equal to a Java boolean literal; {@code false}, if not.
+     */
+    static boolean isBooleanLiteral( final String s )
+    {
+        for ( final String literal : BOOLEAN_LITERALS )
+        {
+            if ( literal.equalsIgnoreCase( s ) )
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Tests whether a given string is case-insensitively equal to the Java {@code null} literal.
+     *
+     * @param s The string to test.
+     *
+     * @return {@code true}, if {@code s} is case-insensitively equal to the Java ·{@code null} literal; {@code false},
+     * if not.
+     */
+    static boolean isNullLiteral( final String s )
+    {
+        return NULL_LITERAL.equalsIgnoreCase( s );
     }
 
 }

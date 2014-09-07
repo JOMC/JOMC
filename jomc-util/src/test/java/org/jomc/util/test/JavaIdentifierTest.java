@@ -28,18 +28,20 @@
  *   $JOMC$
  *
  */
-package org.jomc.model.test;
+package org.jomc.util.test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
-import org.jomc.model.JavaIdentifier;
+import org.jomc.util.JavaIdentifier;
 import org.junit.Test;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.CAMEL_CASE;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.CONSTANT_NAME_CONVENTION;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.LOWER_CASE;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.METHOD_NAME_CONVENTION;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.UPPER_CASE;
-import static org.jomc.model.JavaIdentifier.NormalizationMode.VARIABLE_NAME_CONVENTION;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.CAMEL_CASE;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.CONSTANT_NAME_CONVENTION;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.LOWER_CASE;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.METHOD_NAME_CONVENTION;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.UPPER_CASE;
+import static org.jomc.util.JavaIdentifier.NormalizationMode.VARIABLE_NAME_CONVENTION;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -55,7 +57,7 @@ public class JavaIdentifierTest
 {
 
     /** Constant to prefix relative resource names with. */
-    private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/model/test/";
+    private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/util/test/";
 
     /** Creates a new {@code JavaIdentifierTest} instance. */
     public JavaIdentifierTest()
@@ -512,6 +514,27 @@ public class JavaIdentifierTest
     }
 
     @Test
+    public final void Serializable() throws Exception
+    {
+        ObjectOutputStream out = null;
+
+        try
+        {
+            out = new ObjectOutputStream( new ByteArrayOutputStream() );
+            out.writeObject( JavaIdentifier.valueOf( "Java" ) );
+            out.close();
+            out = null;
+        }
+        finally
+        {
+            if ( out != null )
+            {
+                out.close();
+            }
+        }
+    }
+
+    @Test
     public final void Deserializable() throws Exception
     {
         ObjectInputStream in = null;
@@ -524,10 +547,15 @@ public class JavaIdentifierTest
             final JavaIdentifier javaIdentifier = (JavaIdentifier) in.readObject();
             assertEquals( "Java", javaIdentifier.toString() );
             System.out.println( javaIdentifier );
+            in.close();
+            in = null;
         }
         finally
         {
-            in.close();
+            if ( in != null )
+            {
+                in.close();
+            }
         }
     }
 

@@ -28,7 +28,7 @@
  *   $JOMC$
  *
  */
-package org.jomc.model;
+package org.jomc.util;
 
 import java.io.Serializable;
 import java.lang.ref.Reference;
@@ -123,7 +123,7 @@ public final class JavaIdentifier implements CharSequence, Serializable
     private static volatile Reference<Map<CacheKey, JavaIdentifier>> cache;
 
     /** Serial version UID for backwards compatibility with 1.4.x object streams. */
-    private static final long serialVersionUID = 7600377999055800720L;
+    private static final long serialVersionUID = 4709865082153487123L;
 
     /** Underscore character. */
     private static final int UNDERSCORE_CODEPOINT = Character.codePointAt( "_", 0 );

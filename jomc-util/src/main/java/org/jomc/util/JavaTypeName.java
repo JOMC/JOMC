@@ -28,7 +28,7 @@
  *   $JOMC$
  *
  */
-package org.jomc.model;
+package org.jomc.util;
 
 import java.io.Serializable;
 import java.lang.ref.Reference;
@@ -96,7 +96,7 @@ public final class JavaTypeName implements Serializable
         private transient String cachedString;
 
         /** Serial version UID for backwards compatibility with 1.4.x object streams. */
-        private static final long serialVersionUID = -6515267147665760819L;
+        private static final long serialVersionUID = -7156583150485877558L;
 
         /** Create a new {@code Argument} instance. */
         private Argument()
@@ -318,7 +318,7 @@ public final class JavaTypeName implements Serializable
     private static final Map<String, String> CLASSNAME_ENCODINGS = new HashMap<String, String>( 8 );
 
     /** Serial version UID for backwards compatibility with 1.4.x object streams. */
-    private static final long serialVersionUID = -4258949347035910249L;
+    private static final long serialVersionUID = -8036939895620840533L;
 
     static
     {

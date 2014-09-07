@@ -28,11 +28,13 @@
  *   $JOMC$
  *
  */
-package org.jomc.model.test;
+package org.jomc.util.test;
 
+import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
-import org.jomc.model.JavaTypeName;
+import org.jomc.util.JavaTypeName;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -51,7 +53,7 @@ public class JavaTypeNameTest
 {
 
     /** Constant to prefix relative resource names with. */
-    private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/model/test/";
+    private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/util/test/";
 
     /** Creates a new {@code JavaTypeNameTest} instance. */
     public JavaTypeNameTest()
@@ -585,6 +587,27 @@ public class JavaTypeNameTest
     }
 
     @Test
+    public final void Serializable() throws Exception
+    {
+        ObjectOutputStream out = null;
+
+        try
+        {
+            out = new ObjectOutputStream( new ByteArrayOutputStream() );
+            out.writeObject( JavaTypeName.valueOf( "Java<Java>" ) );
+            out.close();
+            out = null;
+        }
+        finally
+        {
+            if ( out != null )
+            {
+                out.close();
+            }
+        }
+    }
+
+    @Test
     public final void Deserializable() throws Exception
     {
         ObjectInputStream in = null;
@@ -599,10 +622,15 @@ public class JavaTypeNameTest
             assertEquals( 1, javaTypeName.getArguments().size() );
             assertEquals( "Java", javaTypeName.getArguments().get( 0 ).getTypeName().getName( true ) );
             System.out.println( javaTypeName );
+            in.close();
+            in = null;
         }
         finally
         {
-            in.close();
+            if ( in != null )
+            {
+                in.close();
+            }
         }
 
         try
@@ -613,10 +641,15 @@ public class JavaTypeNameTest
             final JavaTypeName.Argument javaTypeNameArgument = (JavaTypeName.Argument) in.readObject();
             assertEquals( "Java", javaTypeNameArgument.getTypeName().getName( true ) );
             System.out.println( javaTypeNameArgument );
+            in.close();
+            in = null;
         }
         finally
         {
-            in.close();
+            if ( in != null )
+            {
+                in.close();
+            }
         }
     }
 
