@@ -44,7 +44,7 @@
     <href>http://www.jomc.org</href>
   </bannerLeft>
   <poweredBy>
-    <logo name="SCHULTE.IT" href="http://www.schulte.it" img="http://www.schulte.it/resources/schulte.it.png"/>
+    <logo name="Christian Schulte" href="http://www.schulte.it" img="http://www.schulte.it/resources/schulte.it.png"/>
   </poweredBy>
   <googleAdSenseClient>ca-pub-2363332114228707</googleAdSenseClient>
   <googleAdSenseSlot>0169973943</googleAdSenseSlot>
@@ -59,6 +59,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-23230934-1', 'jomc.org');
+ga('require', 'displayfeatures');
 ga('send', 'pageview');
 ]]>
       </script>
