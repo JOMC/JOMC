@@ -2277,7 +2277,10 @@
     <taglist-maven-plugin.artifact.version>2.4</taglist-maven-plugin.artifact.version>
     <maven-jaxb21-plugin.artifact.version>0.11.0</maven-jaxb21-plugin.artifact.version>
     <maven-shade-plugin.artifact.version>2.3</maven-shade-plugin.artifact.version>
-    <maven-assembly-plugin.artifact.version>2.5.1</maven-assembly-plugin.artifact.version>
+    <!--
+    https://jira.codehaus.org/browse/MASSEMBLY-733
+    -->
+    <maven-assembly-plugin.artifact.version>2.4.1</maven-assembly-plugin.artifact.version>
     <!-- Plugin parameters. -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
