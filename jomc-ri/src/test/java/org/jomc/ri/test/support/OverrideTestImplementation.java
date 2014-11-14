@@ -112,7 +112,7 @@ public class OverrideTestImplementation
      * @return The {@code <Dependency Impl>} dependency.
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
     private org.jomc.ri.test.support.OverrideTestSpecification getDependencyImpl()
     {
@@ -132,7 +132,7 @@ public class OverrideTestImplementation
      * @return The value of the {@code <Property Impl>} property.
      * @throws org.jomc.ObjectManagementException if getting the property instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
     private java.lang.String getPropertyImpl()
     {
@@ -155,7 +155,7 @@ public class OverrideTestImplementation
      * @return The text of the {@code <Message Impl>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
     private String getMessageImpl( final java.util.Locale locale )
     {
