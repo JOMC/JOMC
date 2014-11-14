@@ -3551,7 +3551,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Creating Modules Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getCreatingModulesInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
@@ -3620,7 +3620,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Implementation Name>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultImplementationName( final java.util.Locale locale )
     {
@@ -3690,7 +3690,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Invoker Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultInvokerInfoMessage( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
@@ -3760,7 +3760,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Listener Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultListenerInfo( final java.util.Locale locale, final java.lang.String classLoaderInfo )
     {
@@ -3831,7 +3831,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Locator Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultLocatorInfoMessage( final java.util.Locale locale, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
@@ -3901,7 +3901,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Log Level Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultLogLevelInfoMessage( final java.util.Locale locale, final java.lang.String logLevel )
     {
@@ -3971,7 +3971,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Model Identifier Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModelIdentifierInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
@@ -4041,7 +4041,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Model Object Classpah Resolution Enabled Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModelObjectClasspahResolutionEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
@@ -4111,7 +4111,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Model Processing Enabled Info>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModelProcessingEnabledInfo( final java.util.Locale locale, final java.lang.String defaultValue )
     {
@@ -4180,7 +4180,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Module Name>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModuleName( final java.util.Locale locale )
     {
@@ -4249,7 +4249,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Modules Vendor>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModulesVendor( final java.util.Locale locale )
     {
@@ -4318,7 +4318,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Modules Version>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModulesVersion( final java.util.Locale locale )
     {
@@ -4389,7 +4389,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Modules Warning>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultModulesWarning( final java.util.Locale locale, final java.lang.String modelInfo, final java.lang.String classLoaderInfo )
     {
@@ -4460,7 +4460,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Default Scope Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDefaultScopeInfoMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
@@ -4530,7 +4530,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Dependency Cycle Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getDependencyCycleMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
@@ -4600,7 +4600,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Ignored Invocation Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getIgnoredInvocationMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
@@ -4670,7 +4670,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Ignored Invoker Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getIgnoredInvokerMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier )
     {
@@ -4741,7 +4741,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Illegal Array Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getIllegalArraySpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
@@ -4812,7 +4812,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Illegal Object Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getIllegalObjectSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String specificationMultiplicity )
     {
@@ -4882,7 +4882,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Implementation Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getImplementationInfoMessage( final java.util.Locale locale, final java.lang.Number initializationMillis )
     {
@@ -4953,7 +4953,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Invoker Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getInvokerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
@@ -5024,7 +5024,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Listener Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getListenerInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String classLoaderInfo )
     {
@@ -5096,7 +5096,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Locator Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getLocatorInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String schemeInfo, final java.lang.String classLoaderInfo )
     {
@@ -5167,7 +5167,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Dependency Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingDependencyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName )
     {
@@ -5238,7 +5238,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Implementation Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingImplementationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier, final java.lang.String implementationName )
     {
@@ -5308,7 +5308,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Implementations Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingImplementationsMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
@@ -5379,7 +5379,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Instance Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingInstanceMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
@@ -5449,7 +5449,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Locator Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingLocatorMessage( final java.util.Locale locale, final java.lang.String locationInfo )
     {
@@ -5520,7 +5520,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Message Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingMessageMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String messageName )
     {
@@ -5590,7 +5590,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Object Instance Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingObjectInstanceMessage( final java.util.Locale locale, final java.lang.String objectInfo )
     {
@@ -5661,7 +5661,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Object Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingObjectMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String implementationName )
     {
@@ -5732,7 +5732,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Property Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingPropertyMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String propertyName )
     {
@@ -5802,7 +5802,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Scope Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingScopeMessage( final java.util.Locale locale, final java.lang.String scopeIdentifier )
     {
@@ -5872,7 +5872,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Specification Class Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingSpecificationClassMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
@@ -5942,7 +5942,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Missing Specification Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getMissingSpecificationMessage( final java.util.Locale locale, final java.lang.String specificationIdentifier )
     {
@@ -6011,7 +6011,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Modules Report Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getModulesReportMessage( final java.util.Locale locale )
     {
@@ -6081,7 +6081,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Runtime Model Report>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getRuntimeModelReport( final java.util.Locale locale, final java.lang.Number millis )
     {
@@ -6151,7 +6151,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Scope Contention Failure>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getScopeContentionFailure( final java.util.Locale locale, final java.lang.String objectIdentifier )
     {
@@ -6223,7 +6223,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Scope Info Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getScopeInfoMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String scopeIdentifier, final java.lang.String classLoaderInfo )
     {
@@ -6296,7 +6296,7 @@ public class DefaultObjectManager implements ObjectManager
      * @return The text of the {@code <Unexpected Dependency Objects Message>} message for {@code locale}.
      * @throws org.jomc.ObjectManagementException if getting the message instance fails.
      */
-    @SuppressWarnings({"unused", "PMD.UnnecessaryFullyQualifiedName"})
+    @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
     @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc/2.0/jomc-tools-2.0-SNAPSHOT" )
     private static String getUnexpectedDependencyObjectsMessage( final java.util.Locale locale, final java.lang.String implementationIdentifier, final java.lang.String dependencyName, final java.lang.Number expectedNumber, final java.lang.Number computedNumber )
     {
