@@ -1214,7 +1214,7 @@
               </templateParameter>
               <templateParameter>
                 <key>with-suppress-warnings</key>
-                <value>{"unused", "PMD.UnnecessaryFullyQualifiedName"}</value>
+                <value>{"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"}</value>
               </templateParameter>
             </templateParameters>
           </configuration>
