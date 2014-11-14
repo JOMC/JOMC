@@ -83,6 +83,13 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>${maven-compiler-plugin.artifact.version}</version>
+          <configuration>
+            <!--
+            https://issues.apache.org/jira/browse/MPOM-63
+            -->
+            <source>${maven.compiler.source}</source>
+            <target>${maven.compiler.target}</target>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -2241,7 +2248,10 @@
     <maven-gpg-plugin.artifact.version>1.5</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.3.2</maven-jarsigner-plugin.artifact.version>
     <maven-remote-resources-plugin.artifact.version>1.5</maven-remote-resources-plugin.artifact.version>
-    <maven-javadoc-plugin.artifact.version>2.10.1</maven-javadoc-plugin.artifact.version>
+    <!--
+    https://jira.codehaus.org/browse/MJAVADOC-414
+    -->
+    <maven-javadoc-plugin.artifact.version>2.9.1</maven-javadoc-plugin.artifact.version>
     <maven-clean-plugin.artifact.version>2.6</maven-clean-plugin.artifact.version>
     <maven-deploy-plugin.artifact.version>2.8.2</maven-deploy-plugin.artifact.version>
     <maven-dependency-plugin.artifact.version>2.9</maven-dependency-plugin.artifact.version>
