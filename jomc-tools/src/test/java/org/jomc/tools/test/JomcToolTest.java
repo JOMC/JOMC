@@ -332,7 +332,7 @@ public class JomcToolTest
         try
         {
             DefaultModelProvider.setDefaultModuleLocation( this.getClass().getPackage().getName().replace( '.', '/' )
-                                                           + "/jomc.xml" );
+                                                               + "/jomc.xml" );
 
             Model m = this.getModelContext().findModel( ModelObject.MODEL_PUBLIC_ID );
 
