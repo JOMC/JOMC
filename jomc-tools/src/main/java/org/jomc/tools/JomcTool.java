@@ -723,8 +723,6 @@ public class JomcTool
      *
      * @since 1.2
      *
-     * @see Implementation#getJavaTypeNames(org.jomc.model.Modules)
-     *
      * @deprecated As of JOMC 1.4, please use method {@link Modules#getImplementedJavaTypeNames(java.lang.String)}.
      * This method will be removed in JOMC 2.0.
      */
@@ -1022,9 +1020,6 @@ public class JomcTool
      *
      * @throws NullPointerException if {@code dependency} is {@code null}.
      * @throws ModelObjectException if compiling the name of the referenced type to a {@code JavaTypeName} fails.
-     *
-     * @see Dependency#getJavaTypeName(org.jomc.model.Modules)
-     * @see JavaTypeName#getName(boolean)
      *
      * @deprecated As of JOMC 1.4, please use method {@link Modules#getDependencyJavaTypeName(java.lang.String, java.lang.String)}.
      * This method will be removed in JOMC 2.0.
