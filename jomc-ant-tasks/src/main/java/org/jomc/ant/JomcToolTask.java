@@ -731,6 +731,7 @@ public class JomcToolTask extends JomcModelTask
 
     /** {@inheritDoc} */
     @Override
+    @SuppressWarnings( "deprecation" )
     public void postExecuteTask() throws BuildException
     {
         JomcTool.setDefaultTemplateProfile( null );
@@ -746,6 +747,7 @@ public class JomcToolTask extends JomcModelTask
      * @throws NullPointerException if {@code tool} is {@code null}.
      * @throws BuildException if configuring {@code tool} fails.
      */
+    @SuppressWarnings( "deprecation" )
     public void configureJomcTool( final JomcTool tool ) throws BuildException
     {
         if ( tool == null )
