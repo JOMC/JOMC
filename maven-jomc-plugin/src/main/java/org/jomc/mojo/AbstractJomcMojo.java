@@ -666,6 +666,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
      * @see #isExecutionPermitted()
      * @see #executeTool()
      */
+    @SuppressWarnings( "deprecation" )
     public void execute() throws MojoExecutionException, MojoFailureException
     {
         this.assertValidParameters();
@@ -3193,6 +3194,7 @@ public abstract class AbstractJomcMojo extends AbstractMojo
      * @throws NullPointerException if {@code context} of {@code tool} is {@code null}.
      * @throws MojoExecutionException if configuring {@code tool} fails.
      */
+    @SuppressWarnings( "deprecation" )
     protected void setupJomcTool( final ModelContext context, final JomcTool tool ) throws MojoExecutionException
     {
         if ( context == null )
