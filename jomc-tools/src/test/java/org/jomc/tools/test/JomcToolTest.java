@@ -1465,6 +1465,7 @@ public class JomcToolTest
     }
 
     @Test
+    @SuppressWarnings( "deprecation" )
     public final void testParentTemplateProfile() throws Exception
     {
         final File templateLocation = this.getNextOutputDirectory();
