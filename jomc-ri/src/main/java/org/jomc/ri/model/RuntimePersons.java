@@ -60,7 +60,7 @@ import org.jomc.model.Persons;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class RuntimePersons extends Persons implements RuntimeModelObject
@@ -161,7 +161,7 @@ public class RuntimePersons extends Persons implements RuntimeModelObject
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimePersons} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
     public RuntimePersons()
     {
         // SECTION-START[Default Constructor]
