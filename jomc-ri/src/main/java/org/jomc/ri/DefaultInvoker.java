@@ -60,7 +60,7 @@ import org.jomc.spi.Invoker;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
 // </editor-fold>
 // SECTION-END
 public class DefaultInvoker implements Invoker
@@ -273,7 +273,7 @@ public class DefaultInvoker implements Invoker
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code DefaultInvoker} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
     public DefaultInvoker()
     {
         // SECTION-START[Default Constructor]

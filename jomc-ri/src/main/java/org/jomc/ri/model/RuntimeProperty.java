@@ -65,7 +65,7 @@ import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
 // </editor-fold>
 // SECTION-END
 public class RuntimeProperty extends Property implements RuntimeModelObject
@@ -195,7 +195,7 @@ public class RuntimeProperty extends Property implements RuntimeModelObject
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code RuntimeProperty} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8-SNAPSHOT" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
     public RuntimeProperty()
     {
         // SECTION-START[Default Constructor]
