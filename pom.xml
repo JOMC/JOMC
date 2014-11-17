@@ -2016,6 +2016,17 @@
                 </execution>
               </executions>
             </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>wagon-maven-plugin</artifactId>
+              <dependencies>
+                <dependency>
+                  <groupId>org.apache.maven.wagon</groupId>
+                  <artifactId>wagon-webdav-jackrabbit</artifactId>
+                  <version>1.0</version>
+                </dependency>
+              </dependencies>
+            </plugin>
           </plugins>
         </pluginManagement>
         <plugins>
