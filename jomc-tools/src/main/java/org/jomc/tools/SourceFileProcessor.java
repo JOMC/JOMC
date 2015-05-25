@@ -63,7 +63,8 @@ import org.jomc.util.TrailingWhitespaceEditor;
 /**
  * Processes source code files.
  *
- * <p><b>Use Cases:</b><br/><ul>
+ * <p>
+ * <b>Use Cases:</b><br/><ul>
  * <li>{@link #manageSourceFiles(File) }</li>
  * <li>{@link #manageSourceFiles(Module, File) }</li>
  * <li>{@link #manageSourceFiles(Specification, File) }</li>
@@ -76,14 +77,20 @@ import org.jomc.util.TrailingWhitespaceEditor;
 public class SourceFileProcessor extends JomcTool
 {
 
-    /** The source file editor of the instance. */
+    /**
+     * The source file editor of the instance.
+     */
     private SourceFileProcessor.SourceFileEditor sourceFileEditor;
 
-    /** Source files model. */
+    /**
+     * Source files model.
+     */
     @Deprecated
     private SourceFilesType sourceFilesType;
 
-    /** Creates a new {@code SourceFileProcessor} instance. */
+    /**
+     * Creates a new {@code SourceFileProcessor} instance.
+     */
     public SourceFileProcessor()
     {
         super();
@@ -107,8 +114,10 @@ public class SourceFileProcessor extends JomcTool
 
     /**
      * Gets the source files model of the instance.
-     * <p>This accessor method returns a reference to the live object, not a snapshot. Therefore any modification you
-     * make to the returned object will be present inside the object. This is why there is no {@code set} method.</p>
+     * <p>
+     * This accessor method returns a reference to the live object, not a snapshot. Therefore any modification you
+     * make to the returned object will be present inside the object. This is why there is no {@code set} method.
+     * </p>
      *
      * @return The source files model of the instance.
      *
@@ -153,7 +162,7 @@ public class SourceFileProcessor extends JomcTool
         SourceFileType sourceFileType = null;
 
         if ( this.getModules() != null
-             && this.getModules().getSpecification( specification.getIdentifier() ) != null )
+                 && this.getModules().getSpecification( specification.getIdentifier() ) != null )
         {
             sourceFileType = this.getSourceFilesType().getSourceFile( specification.getIdentifier() );
 
@@ -237,7 +246,7 @@ public class SourceFileProcessor extends JomcTool
         SourceFileType sourceFileType = null;
 
         if ( this.getModules() != null
-             && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
+                 && this.getModules().getImplementation( implementation.getIdentifier() ) != null )
         {
             sourceFileType = this.getSourceFilesType().getSourceFile( implementation.getIdentifier() );
 
@@ -611,23 +620,35 @@ public class SourceFileProcessor extends JomcTool
     public class SourceFileEditor extends SectionEditor
     {
 
-        /** {@code Specification} of the instance or {@code null}. */
+        /**
+         * {@code Specification} of the instance or {@code null}.
+         */
         private Specification specification;
 
-        /** {@code Implementation} of the instance or {@code null}. */
+        /**
+         * {@code Implementation} of the instance or {@code null}.
+         */
         private Implementation implementation;
 
-        /** The source code file to edit. */
+        /**
+         * The source code file to edit.
+         */
         private SourceFileType sourceFileType;
 
-        /** The {@code VelocityContext} of the instance. */
+        /**
+         * The {@code VelocityContext} of the instance.
+         */
         private VelocityContext velocityContext;
 
-        /** List of sections added to the input. */
+        /**
+         * List of sections added to the input.
+         */
         @Deprecated
         private List<Section> addedSections;
 
-        /** List of sections without corresponding model entry. */
+        /**
+         * List of sections without corresponding model entry.
+         */
         @Deprecated
         private List<Section> unknownSections;
 
@@ -933,9 +954,11 @@ public class SourceFileProcessor extends JomcTool
 
         /**
          * Gets a list of sections added to the input.
-         * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you
+         * <p>
+         * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you
          * make to the returned list will be present inside the object. This is why there is no {@code set} method
-         * for the added sections property.</p>
+         * for the added sections property.
+         * </p>
          *
          * @return A list of sections added to the input.
          *
@@ -954,9 +977,11 @@ public class SourceFileProcessor extends JomcTool
 
         /**
          * Gets a list of sections without corresponding model entry.
-         * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you
+         * <p>
+         * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you
          * make to the returned list will be present inside the object. This is why there is no {@code set} method
-         * for the unknown sections property.</p>
+         * for the unknown sections property.
+         * </p>
          *
          * @return A list of sections without corresponding model entry.
          *
@@ -1005,7 +1030,7 @@ public class SourceFileProcessor extends JomcTool
          * @return A new velocity context used for merging templates.
          *
          * @throws IOException if creating a new context instance fails.
-         * 
+         *
          * @deprecated As of JOMC 1.2, deprecated without replacement. This method will be removed in version 2.0.
          */
         @Deprecated
@@ -1033,8 +1058,10 @@ public class SourceFileProcessor extends JomcTool
 
         /**
          * {@inheritDoc}
-         * <p>This method creates any sections declared in the model of the source file as returned by method
-         * {@code getSourceFileType} prior to rendering the output of the editor.</p>
+         * <p>
+         * This method creates any sections declared in the model of the source file as returned by method
+         * {@code getSourceFileType} prior to rendering the output of the editor.
+         * </p>
          *
          * @param section The section to start rendering the editor's output with.
          *
@@ -1058,9 +1085,11 @@ public class SourceFileProcessor extends JomcTool
 
         /**
          * {@inheritDoc}
-         * <p>This method searches the model of the source file for a section matching {@code s} and updates properties
+         * <p>
+         * This method searches the model of the source file for a section matching {@code s} and updates properties
          * {@code headContent} and {@code tailContent} of {@code s} according to the templates declared in the model
-         * as returned by method {@code getSourceFileType}.</p>
+         * as returned by method {@code getSourceFileType}.
+         * </p>
          *
          * @param s The section to edit.
          */

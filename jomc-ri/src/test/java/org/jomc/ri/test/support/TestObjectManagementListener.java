@@ -55,13 +55,13 @@ import java.util.logging.Level;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.8
+ * @version 1.9-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class TestObjectManagementListener
@@ -70,10 +70,14 @@ public class TestObjectManagementListener
 {
     // SECTION-START[TestObjectManagementListener]
 
-    /** The {@code OutputStream} to stream to. */
+    /**
+     * The {@code OutputStream} to stream to.
+     */
     private OutputStream outputStream;
 
-    /** The {@code PrintWriter} events are printed with. */
+    /**
+     * The {@code PrintWriter} events are printed with.
+     */
     private PrintWriter printWriter;
 
     /**
@@ -148,7 +152,7 @@ public class TestObjectManagementListener
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code TestObjectManagementListener} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
     public TestObjectManagementListener()
     {
         // SECTION-START[Default Constructor]
@@ -163,4 +167,5 @@ public class TestObjectManagementListener
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

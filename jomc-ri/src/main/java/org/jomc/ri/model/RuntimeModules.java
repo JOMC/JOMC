@@ -83,75 +83,111 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 {
     // SECTION-START[RuntimeModules]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Module> modulesByNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specifications> specificationsCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementations> implementationsCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Module> moduleBySpecificationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Module> moduleByImplementationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specification> specificationByIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specification> specificationByClassNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specifications> specificationsByImplemenationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationByIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationByClassNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationByObjectClassNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationBySpecificationAndNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Dependencies> dependenciesByImplementationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Properties> propertiesByImplementationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Properties> specifiedPropertiesByImplementationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Messages> messagesByImplementationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementations> implementationsBySpecificationIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, List<Object>> anyObjectsByImplemenationIdentifierCache = createMap();
 
@@ -205,11 +241,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets a module for a given name from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param name The name of the module to return.
      *
@@ -245,11 +285,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all specifications of the list of modules.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return All specifications or {@code null}, if no specifications are found.
      *
@@ -281,11 +325,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all specifications of the list of modules.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return All specifications or {@code null}, if no specifications are found.
      *
@@ -317,11 +365,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets the module declaring a given specification from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the specification whose declaring module to return.
      *
@@ -358,11 +410,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets the module declaring a given implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation whose declaring module to return.
      *
@@ -399,11 +455,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets a specification for a given identifier from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the specification to return.
      *
@@ -440,11 +500,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets a specification for a given class from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The class of the specification to return.
      *
@@ -482,11 +546,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all specifications an implementation implements from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to get all implemented specifications of.
      *
@@ -531,11 +599,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets an implementation for a given identifier from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to return.
      *
@@ -572,11 +644,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets an implementation for a given class from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The class of the implementation to return.
      *
@@ -614,11 +690,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets an implementation for a given object from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param object The object of the implementation to return.
      *
@@ -655,11 +735,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets an implementation for a given name implementing a given specification from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the specification to return an implementation of.
      * @param name The name of the implementation to return.
@@ -702,11 +786,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all dependencies of an implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to get all dependencies of.
      *
@@ -751,11 +839,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all properties of an implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to get all properties of.
      *
@@ -800,11 +892,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all properties specified for an implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to return specified properties of.
      *
@@ -848,11 +944,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all messages of an implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to get all messages of.
      *
@@ -897,11 +997,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets all implementations implementing a given specification from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the specification to return all implementations of.
      *
@@ -944,11 +1048,15 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
 
     /**
      * Gets any objects of an implementation from the list of modules.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to get any objects of.
      *
@@ -1382,7 +1490,7 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
     {
         synchronized ( map )
         {
-            for ( Map.Entry<?, ?> e : map.entrySet() )
+            for ( final Map.Entry<?, ?> e : map.entrySet() )
             {
                 if ( e.getValue() instanceof RuntimeModelObject )
                 {
@@ -1411,4 +1519,5 @@ public class RuntimeModules extends Modules implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

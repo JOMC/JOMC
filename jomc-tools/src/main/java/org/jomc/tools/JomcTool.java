@@ -106,11 +106,15 @@ import org.jomc.modlet.Model;
 public class JomcTool
 {
 
-    /** Listener interface. */
+    /**
+     * Listener interface.
+     */
     public abstract static class Listener
     {
 
-        /** Creates a new {@code Listener} instance. */
+        /**
+         * Creates a new {@code Listener} instance.
+         */
         public Listener()
         {
             super();
@@ -135,124 +139,169 @@ public class JomcTool
 
     }
 
-    /** Empty byte array. */
+    /**
+     * Empty byte array.
+     */
     private static final byte[] NO_BYTES =
     {
     };
 
-    /** The prefix of the template location. */
+    /**
+     * The prefix of the template location.
+     */
     private static final String TEMPLATE_PREFIX =
         JomcTool.class.getPackage().getName().replace( '.', '/' ) + "/templates/";
 
-    /** Constant for the default template profile. */
+    /**
+     * Constant for the default template profile.
+     */
     private static final String DEFAULT_TEMPLATE_PROFILE = "jomc-java";
 
     /**
      * Constant for the name of the template profile property specifying a parent template profile name.
+     *
      * @since 1.3
      */
     private static final String PARENT_TEMPLATE_PROFILE_PROPERTY_NAME = "parent-template-profile";
 
     /**
      * Constant for the name of the template profile property specifying the template encoding.
+     *
      * @since 1.3
      */
     private static final String TEMPLATE_ENCODING_PROFILE_PROPERTY_NAME = "template-encoding";
 
     /**
      * The default encoding to use for reading templates.
+     *
      * @since 1.3
      */
     private String defaultTemplateEncoding;
 
-    /** The default template profile. */
+    /**
+     * The default template profile.
+     */
     private static volatile String defaultTemplateProfile;
 
     /**
      * The log level events are logged at by default.
+     *
      * @see #getDefaultLogLevel()
      */
     private static final Level DEFAULT_LOG_LEVEL = Level.WARNING;
 
-    /** The default log level. */
+    /**
+     * The default log level.
+     */
     private static volatile Level defaultLogLevel;
 
-    /** The model of the instance. */
+    /**
+     * The model of the instance.
+     */
     private Model model;
 
-    /** The {@code VelocityEngine} of the instance. */
+    /**
+     * The {@code VelocityEngine} of the instance.
+     */
     private VelocityEngine velocityEngine;
 
     /**
      * Flag indicating the default {@code VelocityEngine}.
+     *
      * @since 1.2.4
      */
     private boolean defaultVelocityEngine;
 
     /**
      * The location to search for templates in addition to searching the class path.
+     *
      * @since 1.2
      */
     private URL templateLocation;
 
-    /** The encoding to use for reading files. */
+    /**
+     * The encoding to use for reading files.
+     */
     private String inputEncoding;
 
-    /** The encoding to use for writing files. */
+    /**
+     * The encoding to use for writing files.
+     */
     private String outputEncoding;
 
     /**
      * The template parameters.
+     *
      * @since 1.2
      */
     private Map<String, Object> templateParameters;
 
-    /** The template profile of the instance. */
+    /**
+     * The template profile of the instance.
+     */
     private String templateProfile;
 
-    /** The indentation string of the instance. */
+    /**
+     * The indentation string of the instance.
+     */
     private String indentation;
 
-    /** The line separator of the instance. */
+    /**
+     * The line separator of the instance.
+     */
     private String lineSeparator;
 
-    /** The listeners of the instance. */
+    /**
+     * The listeners of the instance.
+     */
     private List<Listener> listeners;
 
-    /** The log level of the instance. */
+    /**
+     * The log level of the instance.
+     */
     private Level logLevel;
 
     /**
      * The locale of the instance.
+     *
      * @since 1.2
      */
     private Locale locale;
 
-    /** Cached indentation strings. */
+    /**
+     * Cached indentation strings.
+     */
     private volatile Reference<Map<String, String>> indentationCache;
 
     /**
      * Cached templates.
+     *
      * @since 1.3
      */
     private volatile Reference<Map<String, TemplateData>> templateCache;
 
     /**
      * Cached template profile context properties.
+     *
      * @since 1.3
      */
     private volatile Reference<Map<String, java.util.Properties>> templateProfileContextPropertiesCache;
 
     /**
      * Cached template profile properties.
+     *
      * @since 1.3
      */
     private volatile Reference<Map<String, java.util.Properties>> templateProfilePropertiesCache;
 
-    /** Cached Java keywords. */
+    /**
+     * Cached Java keywords.
+     */
     private volatile Reference<Set<String>> javaKeywordsCache;
 
-    /** Creates a new {@code JomcTool} instance. */
+    /**
+     * Creates a new {@code JomcTool} instance.
+     */
     public JomcTool()
     {
         super();
@@ -289,8 +338,8 @@ public class JomcTool
         this.locale = tool.locale;
         this.templateParameters =
             tool.templateParameters != null
-            ? Collections.synchronizedMap( new HashMap<String, Object>( tool.templateParameters ) )
-            : null;
+                ? Collections.synchronizedMap( new HashMap<String, Object>( tool.templateParameters ) )
+                : null;
 
         this.templateLocation =
             tool.templateLocation != null ? new URL( tool.templateLocation.toExternalForm() ) : null;
@@ -299,9 +348,11 @@ public class JomcTool
 
     /**
      * Gets the list of registered listeners.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
      * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * listeners property.</p>
+     * listeners property.
+     * </p>
      *
      * @return The list of registered listeners.
      *
@@ -319,9 +370,11 @@ public class JomcTool
 
     /**
      * Gets the default log level events are logged at.
-     * <p>The default log level is controlled by system property {@code org.jomc.tools.JomcTool.defaultLogLevel} holding
+     * <p>
+     * The default log level is controlled by system property {@code org.jomc.tools.JomcTool.defaultLogLevel} holding
      * the log level to log events at by default. If that property is not set, the {@code WARNING} default is
-     * returned.</p>
+     * returned.
+     * </p>
      *
      * @return The log level events are logged at by default.
      *
@@ -533,7 +586,7 @@ public class JomcTool
         String javaPackageName = null;
 
         if ( this.getModules() != null
-             && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
+                 && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
         {
             final JavaTypeName javaTypeName = s.getJavaTypeName();
             javaPackageName = javaTypeName != null ? javaTypeName.getPackageName() : null;
@@ -579,7 +632,7 @@ public class JomcTool
         String typeName = null;
 
         if ( this.getModules() != null
-             && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
+                 && ( s = this.getModules().getSpecification( reference.getIdentifier() ) ) != null )
         {
             final JavaTypeName javaTypeName = s.getJavaTypeName();
             typeName = javaTypeName != null ? javaTypeName.getName( qualified ) : null;
@@ -1039,7 +1092,7 @@ public class JomcTool
         try
         {
             if ( this.getModules() != null
-                 && ( s = this.getModules().getSpecification( dependency.getIdentifier() ) ) != null )
+                     && ( s = this.getModules().getSpecification( dependency.getIdentifier() ) ) != null )
             {
                 if ( s.getClazz() != null )
                 {
@@ -1646,7 +1699,7 @@ public class JomcTool
                     if ( Character.isJavaIdentifierStart( c ) )
                     {
                         builder.append( uc ? charString.toUpperCase( this.getLocale() )
-                                        : charString.toLowerCase( this.getLocale() ) );
+                                            : charString.toLowerCase( this.getLocale() ) );
 
                         uc = false;
                     }
@@ -2494,7 +2547,9 @@ public class JomcTool
     {
         if ( this.velocityEngine == null )
         {
-            /** {@code LogChute} logging to the listeners of the tool. */
+            /**
+             * {@code LogChute} logging to the listeners of the tool.
+             */
             class JomcLogChute implements LogChute
             {
 
@@ -2623,9 +2678,11 @@ public class JomcTool
 
     /**
      * Gets the template parameters of the instance.
-     * <p>This accessor method returns a reference to the live map, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live map, not a snapshot. Therefore any modification you make
      * to the returned map will be present inside the object. This is why there is no {@code set} method for the
-     * template parameters property.</p>
+     * template parameters property.
+     * </p>
      *
      * @return The template parameters of the instance.
      *
@@ -2857,8 +2914,10 @@ public class JomcTool
 
     /**
      * Gets the default template profile.
-     * <p>The default template profile is the implicit parent profile of any template profile not specifying a parent
-     * template profile.</p>
+     * <p>
+     * The default template profile is the implicit parent profile of any template profile not specifying a parent
+     * template profile.
+     * </p>
      *
      * @return The default template profile.
      *
@@ -2969,7 +3028,7 @@ public class JomcTool
         }
 
         return parentTemplateProfile != null ? parentTemplateProfile
-               : tp.equals( this.getDefaultTemplateProfile() ) ? null : this.getDefaultTemplateProfile();
+                   : tp.equals( this.getDefaultTemplateProfile() ) ? null : this.getDefaultTemplateProfile();
 
     }
 
@@ -3130,13 +3189,14 @@ public class JomcTool
 
     /**
      * Gets a velocity template for a given name.
-     * <p>This method searches templates at the following locations recursively in the shown order stopping whenever
+     * <p>
+     * This method searches templates at the following locations recursively in the shown order stopping whenever
      * a matching template is found.
      * <ol>
-     *  <li><code>org/jomc/tools/templates/{@link #getTemplateProfile() profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
-     *  <li><code>org/jomc/tools/templates/{@link #getParentTemplateProfile(java.lang.String) parent profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
-     *  <li><code>org/jomc/tools/templates/{@link #getTemplateProfile() profile}/<i>templateName</i></code></li>
-     *  <li><code>org/jomc/tools/templates/{@link #getParentTemplateProfile(java.lang.String) parent profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
+     * <li><code>org/jomc/tools/templates/{@link #getTemplateProfile() profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
+     * <li><code>org/jomc/tools/templates/{@link #getParentTemplateProfile(java.lang.String) parent profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
+     * <li><code>org/jomc/tools/templates/{@link #getTemplateProfile() profile}/<i>templateName</i></code></li>
+     * <li><code>org/jomc/tools/templates/{@link #getParentTemplateProfile(java.lang.String) parent profile}/{@link #getLocale() language}/<i>templateName</i></code></li>
      * </ol></p>
      *
      * @param templateName The name of the template to get.
@@ -3228,7 +3288,7 @@ public class JomcTool
         throws IOException
     {
         Map<String, java.util.Properties> map = this.templateProfileContextPropertiesCache == null
-                                                ? null : this.templateProfileContextPropertiesCache.get();
+                                                    ? null : this.templateProfileContextPropertiesCache.get();
 
         if ( map == null )
         {
@@ -3247,7 +3307,7 @@ public class JomcTool
             profileProperties = new java.util.Properties();
 
             final String resourceName = TEMPLATE_PREFIX + profileName + ( language == null ? "" : "/" + language )
-                                        + "/context.properties";
+                                            + "/context.properties";
 
             try
             {
@@ -3410,7 +3470,7 @@ public class JomcTool
     private java.util.Properties getTemplateProfileProperties( final String profileName ) throws IOException
     {
         Map<String, java.util.Properties> map = this.templateProfilePropertiesCache == null
-                                                ? null : this.templateProfilePropertiesCache.get();
+                                                    ? null : this.templateProfilePropertiesCache.get();
 
         if ( map == null )
         {
@@ -3555,10 +3615,10 @@ public class JomcTool
         if ( tp != null )
         {
             final String key = this.getLocale() + "|" + this.getTemplateProfile() + "|"
-                               + this.getDefaultTemplateProfile() + "|" + tn;
+                                   + this.getDefaultTemplateProfile() + "|" + tn;
 
             Map<String, TemplateData> map = this.templateCache == null
-                                            ? null : this.templateCache.get();
+                                                ? null : this.templateCache.get();
 
             if ( map == null )
             {
@@ -3637,14 +3697,16 @@ public class JomcTool
     private static String getMessage( final Throwable t )
     {
         return t != null
-               ? t.getMessage() != null && t.getMessage().trim().length() > 0
-                 ? t.getMessage()
-                 : getMessage( t.getCause() )
-               : null;
+                   ? t.getMessage() != null && t.getMessage().trim().length() > 0
+                         ? t.getMessage()
+                         : getMessage( t.getCause() )
+                   : null;
 
     }
 
-    /** @since 1.3 */
+    /**
+     * @since 1.3
+     */
     private static class TemplateData
     {
 

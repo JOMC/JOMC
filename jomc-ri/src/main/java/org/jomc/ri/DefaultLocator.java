@@ -71,19 +71,27 @@ public class DefaultLocator implements Locator
 {
     // SECTION-START[DefaultLocator]
 
-    /** Constant for the {@code 'jndi'} URI scheme. */
+    /**
+     * Constant for the {@code 'jndi'} URI scheme.
+     */
     private static final String JNDI_URI_SCHEME = "jndi";
 
-    /** Constant for the {@code 'jndi+rmi'} URI scheme. */
+    /**
+     * Constant for the {@code 'jndi+rmi'} URI scheme.
+     */
     private static final String JNDI_RMI_URI_SCHEME = "jndi+rmi";
 
-    /** URI schemes supported by this {@code Locator} implementation. */
+    /**
+     * URI schemes supported by this {@code Locator} implementation.
+     */
     private static final String[] SUPPORTED_URI_SCHEMES =
     {
         JNDI_URI_SCHEME, JNDI_RMI_URI_SCHEME
     };
 
-    /** The JNDI context of the instance. */
+    /**
+     * The JNDI context of the instance.
+     */
     private Context jndiContext;
 
     /**
@@ -211,10 +219,10 @@ public class DefaultLocator implements Locator
     private static String getMessage( final Throwable t )
     {
         return t != null
-               ? t.getMessage() != null && t.getMessage().trim().length() > 0
-                 ? t.getMessage()
-                 : getMessage( t.getCause() )
-               : null;
+                   ? t.getMessage() != null && t.getMessage().trim().length() > 0
+                         ? t.getMessage()
+                         : getMessage( t.getCause() )
+                   : null;
 
     }
 
@@ -380,4 +388,5 @@ public class DefaultLocator implements Locator
     }
     // </editor-fold>
     // SECTION-END
+
 }

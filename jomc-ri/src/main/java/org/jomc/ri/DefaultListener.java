@@ -71,20 +71,28 @@ public class DefaultListener implements Listener
 {
     // SECTION-START[DefaultListener]
 
-    /** Constant holding the platforms line separator. */
+    /**
+     * Constant holding the platforms line separator.
+     */
     private static final String LINE_SEPARATOR = System.getProperty( "line.separator", "\n" );
 
-    /** Flag indicating the listener is enabled by default. */
+    /**
+     * Flag indicating the listener is enabled by default.
+     */
     private static volatile Boolean defaultEnabled;
 
-    /** Flag indicating the listener is enabled. */
+    /**
+     * Flag indicating the listener is enabled.
+     */
     private Boolean enabled;
 
     /**
      * Gets a flag indicating the listener is enabled by default.
-     * <p>The default enabled flag is controlled by system property
+     * <p>
+     * The default enabled flag is controlled by system property
      * {@code org.jomc.ri.DefaultListener.defaultEnabled} holding a value indicating the listener is enabled by default.
-     * If that property is not set, the {@code true} default is returned.</p>
+     * If that property is not set, the {@code true} default is returned.
+     * </p>
      *
      * @return {@code true}, if the listener is enabled by default; {@code false}, if the listener is disabled by
      * default.
@@ -147,9 +155,11 @@ public class DefaultListener implements Listener
 
     /**
      * Gets called on logging.
-     * <p>This method prints messages to the "standard" system streams. Messages with a level greater than
+     * <p>
+     * This method prints messages to the "standard" system streams. Messages with a level greater than
      * {@code WARNING} are printed to the system error stream. All other messages are printed to the system output
-     * stream.</p>
+     * stream.
+     * </p>
      *
      * @param level The level of the event.
      * @param message The message of the event or {@code null}.
@@ -254,4 +264,5 @@ public class DefaultListener implements Listener
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

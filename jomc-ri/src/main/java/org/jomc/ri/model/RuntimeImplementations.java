@@ -72,19 +72,27 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
 {
     // SECTION-START[RuntimeImplementations]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationsByIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationsByClassCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Implementation> implementationsByNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, ImplementationReference> referencesByIdentifierCache = createMap();
 
@@ -114,11 +122,15 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
 
     /**
      * Gets an implementation for a given identifier from the list of implementations.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the implementation to return.
      *
@@ -154,11 +166,15 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
 
     /**
      * Gets an implementation for a given class from the list of implementations.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The class of the implementation to return.
      *
@@ -196,11 +212,15 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
 
     /**
      * Gets an implementation for a given name from the list of implementations.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param name The name of the implementation to return.
      *
@@ -236,11 +256,15 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
 
     /**
      * Gets an implementation reference for a given identifier from the list of references.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param implementation The identifier of the reference to return.
      *
@@ -407,4 +431,5 @@ public class RuntimeImplementations extends Implementations implements RuntimeMo
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

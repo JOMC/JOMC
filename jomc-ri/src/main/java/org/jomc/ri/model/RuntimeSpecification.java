@@ -75,7 +75,9 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
 {
     // SECTION-START[RuntimeSpecification]
 
-    /** Java type name. */
+    /**
+     * Java type name.
+     */
     @XmlTransient
     private volatile JavaTypeName javaTypeName;
 
@@ -106,11 +108,15 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
 
     /**
      * Gets the Java class of the specification for a given class loader.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
-     * internal cache with the state of the class loader, should the state of the class loader change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * internal cache with the state of the class loader, should the state of the class loader change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java class from or {@code null}, to get the Java class from the
      * platform's bootstrap class loader.
@@ -167,11 +173,15 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
 
     /**
      * Gets the Java type name of the type referenced by the specification.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The Java type name of the type referenced by the specification or {@code null}, if the specification does
      * not reference a type.
@@ -263,4 +273,5 @@ public class RuntimeSpecification extends Specification implements RuntimeModelO
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

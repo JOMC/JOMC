@@ -144,4 +144,5 @@ public class RuntimeAuthor extends Author implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

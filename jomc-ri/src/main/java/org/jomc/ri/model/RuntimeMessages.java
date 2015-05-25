@@ -71,11 +71,15 @@ public class RuntimeMessages extends Messages implements RuntimeModelObject
 {
     // SECTION-START[RuntimeMessages]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Message> messagesByNameCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, MessageReference> referencesByNameCache = createMap();
 
@@ -105,11 +109,15 @@ public class RuntimeMessages extends Messages implements RuntimeModelObject
 
     /**
      * Gets a message for a given name from the list of messages.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param name The name of the message to return.
      *
@@ -145,11 +153,15 @@ public class RuntimeMessages extends Messages implements RuntimeModelObject
 
     /**
      * Gets a message reference for a given name from the list of references.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param name The name of the message reference to return.
      *
@@ -288,6 +300,7 @@ public class RuntimeMessages extends Messages implements RuntimeModelObject
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
@@ -307,4 +320,5 @@ public class RuntimeMessages extends Messages implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

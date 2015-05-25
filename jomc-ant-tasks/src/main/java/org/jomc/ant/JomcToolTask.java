@@ -63,58 +63,94 @@ import org.jomc.tools.JomcTool;
 public class JomcToolTask extends JomcModelTask
 {
 
-    /** The default encoding to use for reading templates. */
+    /**
+     * The default encoding to use for reading templates.
+     */
     private String defaultTemplateEncoding;
 
-    /** The default template profile to use when accessing templates. */
+    /**
+     * The default template profile to use when accessing templates.
+     */
     private String defaultTemplateProfile;
 
-    /** The encoding to use for reading files. */
+    /**
+     * The encoding to use for reading files.
+     */
     private String inputEncoding;
 
-    /** The encoding to use for writing files. */
+    /**
+     * The encoding to use for writing files.
+     */
     private String outputEncoding;
 
-    /** The encoding to use for reading templates. */
+    /**
+     * The encoding to use for reading templates.
+     */
     private String templateEncoding;
 
-    /** Additional location to search for templates. */
+    /**
+     * Additional location to search for templates.
+     */
     private String templateLocation;
 
-    /** The template profile to use when accessing templates. */
+    /**
+     * The template profile to use when accessing templates.
+     */
     private String templateProfile;
 
-    /** The indentation string ('\t' for tab). */
+    /**
+     * The indentation string ('\t' for tab).
+     */
     private String indentation;
 
-    /** The line separator ('\r\n' for DOS, '\r' for Mac, '\n' for Unix). */
+    /**
+     * The line separator ('\r\n' for DOS, '\r' for Mac, '\n' for Unix).
+     */
     private String lineSeparator;
 
-    /** The locale. */
+    /**
+     * The locale.
+     */
     private LocaleType locale;
 
-    /** The identifier of a specification to process. */
+    /**
+     * The identifier of a specification to process.
+     */
     private String specification;
 
-    /** The identifier of an implementation to process. */
+    /**
+     * The identifier of an implementation to process.
+     */
     private String implementation;
 
-    /** The name of a module to process. */
+    /**
+     * The name of a module to process.
+     */
     private String module;
 
-    /** The Velocity runtime properties. */
+    /**
+     * The Velocity runtime properties.
+     */
     private List<KeyValueType> velocityProperties;
 
-    /** The Velocity runtime property resources. */
+    /**
+     * The Velocity runtime property resources.
+     */
     private List<PropertiesResourceType> velocityPropertyResources;
 
-    /** The template parameters. */
+    /**
+     * The template parameters.
+     */
     private List<KeyValueType> templateParameters;
 
-    /** The template parameter resources. */
+    /**
+     * The template parameter resources.
+     */
     private List<PropertiesResourceType> templateParameterResources;
 
-    /** Creates a new {@code JomcToolTask} instance. */
+    /**
+     * Creates a new {@code JomcToolTask} instance.
+     */
     public JomcToolTask()
     {
         super();
@@ -583,9 +619,11 @@ public class JomcToolTask extends JomcModelTask
 
     /**
      * Gets the Velocity runtime properties to apply.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
      * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * velocity properties property.</p>
+     * velocity properties property.
+     * </p>
      *
      * @return The Velocity runtime properties to apply.
      *
@@ -617,9 +655,11 @@ public class JomcToolTask extends JomcModelTask
 
     /**
      * Gets the Velocity runtime property resources to apply.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
      * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * velocity property resources property.</p>
+     * velocity property resources property.
+     * </p>
      *
      * @return The Velocity runtime property resources to apply.
      *
@@ -651,9 +691,11 @@ public class JomcToolTask extends JomcModelTask
 
     /**
      * Gets the template parameters to apply.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
      * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * template parameters property.</p>
+     * template parameters property.
+     * </p>
      *
      * @return The template parameters to apply.
      *
@@ -685,9 +727,11 @@ public class JomcToolTask extends JomcModelTask
 
     /**
      * Gets the template parameter resources to apply.
-     * <p>This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
+     * <p>
+     * This accessor method returns a reference to the live list, not a snapshot. Therefore any modification you make
      * to the returned list will be present inside the object. This is why there is no {@code set} method for the
-     * template parameter resources property.</p>
+     * template parameter resources property.
+     * </p>
      *
      * @return The template parameter resources to apply.
      *
@@ -717,7 +761,9 @@ public class JomcToolTask extends JomcModelTask
         return templateParameterResource;
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void preExecuteTask() throws BuildException
     {
@@ -729,7 +775,9 @@ public class JomcToolTask extends JomcModelTask
         this.assertLocationsNotNull( this.getVelocityPropertyResources() );
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     @SuppressWarnings( "deprecation" )
     public void postExecuteTask() throws BuildException
@@ -806,8 +854,8 @@ public class JomcToolTask extends JomcModelTask
 
             for ( int i = 0, s0 = this.getVelocityPropertyResources().size(); i < s0; i++ )
             {
-                for ( Map.Entry<Object, Object> e :
-                      this.getProperties( this.getVelocityPropertyResources().get( i ) ).entrySet() )
+                for ( final Map.Entry<Object, Object> e
+                          : this.getProperties( this.getVelocityPropertyResources().get( i ) ).entrySet() )
                 {
                     if ( e.getValue() != null )
                     {
@@ -835,7 +883,7 @@ public class JomcToolTask extends JomcModelTask
                 }
             }
 
-            for ( Map.Entry<Object, Object> e : System.getProperties().entrySet() )
+            for ( final Map.Entry<Object, Object> e : System.getProperties().entrySet() )
             {
                 tool.getTemplateParameters().put( e.getKey().toString(), e.getValue() );
             }
@@ -849,8 +897,8 @@ public class JomcToolTask extends JomcModelTask
 
             for ( int i = 0, s0 = this.getTemplateParameterResources().size(); i < s0; i++ )
             {
-                for ( Map.Entry<Object, Object> e :
-                      this.getProperties( this.getTemplateParameterResources().get( i ) ).entrySet() )
+                for ( final Map.Entry<Object, Object> e
+                          : this.getProperties( this.getTemplateParameterResources().get( i ) ).entrySet() )
                 {
                     if ( e.getValue() != null )
                     {
@@ -905,7 +953,9 @@ public class JomcToolTask extends JomcModelTask
         }
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public JomcToolTask clone()
     {
@@ -921,7 +971,7 @@ public class JomcToolTask extends JomcModelTask
             clone.velocityPropertyResources =
                 new ArrayList<PropertiesResourceType>( this.velocityPropertyResources.size() );
 
-            for ( PropertiesResourceType e : this.velocityPropertyResources )
+            for ( final PropertiesResourceType e : this.velocityPropertyResources )
             {
                 clone.velocityPropertyResources.add( e.clone() );
             }
@@ -931,7 +981,7 @@ public class JomcToolTask extends JomcModelTask
         {
             clone.velocityProperties = new ArrayList<KeyValueType>( this.velocityProperties.size() );
 
-            for ( KeyValueType e : this.velocityProperties )
+            for ( final KeyValueType e : this.velocityProperties )
             {
                 clone.velocityProperties.add( e.clone() );
             }
@@ -942,7 +992,7 @@ public class JomcToolTask extends JomcModelTask
             clone.velocityPropertyResources =
                 new ArrayList<PropertiesResourceType>( this.velocityPropertyResources.size() );
 
-            for ( PropertiesResourceType e : this.velocityPropertyResources )
+            for ( final PropertiesResourceType e : this.velocityPropertyResources )
             {
                 clone.velocityPropertyResources.add( e.clone() );
             }
@@ -952,7 +1002,7 @@ public class JomcToolTask extends JomcModelTask
         {
             clone.templateParameters = new ArrayList<KeyValueType>( this.templateParameters.size() );
 
-            for ( KeyValueType e : this.templateParameters )
+            for ( final KeyValueType e : this.templateParameters )
             {
                 clone.templateParameters.add( e.clone() );
             }
@@ -963,7 +1013,7 @@ public class JomcToolTask extends JomcModelTask
             clone.templateParameterResources =
                 new ArrayList<PropertiesResourceType>( this.templateParameterResources.size() );
 
-            for ( PropertiesResourceType e : this.templateParameterResources )
+            for ( final PropertiesResourceType e : this.templateParameterResources )
             {
                 clone.templateParameterResources.add( e.clone() );
             }

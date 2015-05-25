@@ -35,8 +35,6 @@
 // SECTION-END
 package org.jomc.ri.test.support;
 
-import java.lang.*;
-
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**
@@ -49,7 +47,7 @@ import java.lang.*;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.8
+ * @version 1.9-SNAPSHOT
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(TestSpecificationOne.class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(TestSpecificationOne.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
@@ -58,7 +56,7 @@ import java.lang.*;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public interface TestSpecificationOne

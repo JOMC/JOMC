@@ -72,7 +72,9 @@ public class RuntimeProperty extends Property implements RuntimeModelObject
 {
     // SECTION-START[RuntimeProperty]
 
-    /** Java values by class loader cache.*/
+    /**
+     * Java values by class loader cache.
+     */
     @XmlTransient
     private final Map<ClassLoader, Object> javaValuesByClassLoaderCache =
         new WeakIdentityHashMap<ClassLoader, Object>();
@@ -100,11 +102,15 @@ public class RuntimeProperty extends Property implements RuntimeModelObject
 
     /**
      * Gets the Java value of the property.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param classLoader The class loader to use for getting the Java value; {@code null} to use the platform's
      * bootstrap class loader.
@@ -210,4 +216,5 @@ public class RuntimeProperty extends Property implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

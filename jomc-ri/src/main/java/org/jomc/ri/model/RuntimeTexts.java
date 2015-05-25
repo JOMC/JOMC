@@ -71,11 +71,15 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
 {
     // SECTION-START[RuntimeTexts]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Text> textsByLanguageCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<Locale, Text> textsByLocaleCache = createMap();
 
@@ -94,11 +98,15 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
 
     /**
      * Gets a text for a given language from the list of texts.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param language The language of the text to return.
      *
@@ -135,11 +143,15 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
 
     /**
      * Gets a text for a given language from the list of texts.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param locale The locale of the text to return.
      *
@@ -229,6 +241,7 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
@@ -248,4 +261,5 @@ public class RuntimeTexts extends Texts implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

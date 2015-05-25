@@ -56,13 +56,13 @@ import static org.junit.Assert.assertTrue;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.8
+ * @version 1.9-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class ObjectManagerFactoryTest
@@ -84,11 +84,11 @@ public class ObjectManagerFactoryTest
             System.setProperty( SYS_IMPL_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
             assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
             assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
-                        == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+                            == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
 
             assertNotNull( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
             assertFalse( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() )
-                         == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+                             == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
 
         }
         finally
@@ -111,11 +111,12 @@ public class ObjectManagerFactoryTest
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code ObjectManagerFactoryTest} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
     public ObjectManagerFactoryTest()
     {
         // SECTION-START[Default Constructor]
@@ -130,4 +131,5 @@ public class ObjectManagerFactoryTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

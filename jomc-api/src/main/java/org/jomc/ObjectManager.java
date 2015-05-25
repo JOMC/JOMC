@@ -67,11 +67,13 @@ public interface ObjectManager
 
     /**
      * Gets an instance of an implementation of a specification.
-     * <p><b>Note:</b><br/>
+     * <p>
+     * <b>Note:</b><br/>
      * Implementations must use the class loader associated with the given class as returned by method
      * {@link Class#getClassLoader() specification.getClassLoader()} for loading classes. Only if that method returns
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
-     * loader is recommended.</p>
+     * loader is recommended.
+     * </p>
      *
      * @param <T> The type of the instance.
      * @param specification The specification class to return an implementation instance of.
@@ -87,11 +89,13 @@ public interface ObjectManager
 
     /**
      * Gets an instance of an implementation of a specification.
-     * <p><b>Note:</b><br/>
+     * <p>
+     * <b>Note:</b><br/>
      * Implementations must use the class loader associated with the given class as returned by method
      * {@link Class#getClassLoader() specification.getClassLoader()} for loading classes. Only if that method returns
      * {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap class
-     * loader is recommended.</p>
+     * loader is recommended.
+     * </p>
      *
      * @param <T> The type of the instance.
      * @param specification The specification class to return an implementation instance of.
@@ -108,11 +112,13 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a dependency of an object.
-     * <p><b>Note:</b><br/>
+     * <p>
+     * <b>Note:</b><br/>
      * Implementations must use the class loader associated with the class of the given object as returned by method
      * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
-     * class loader is recommended.</p>
+     * class loader is recommended.
+     * </p>
      *
      * @param object The object to return a dependency instance of.
      * @param dependencyName The name of the dependency of {@code object} to return an instance of.
@@ -128,11 +134,13 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a property of an object.
-     * <p><b>Note:</b><br/>
+     * <p>
+     * <b>Note:</b><br/>
      * Implementations must use the class loader associated with the class of the given object as returned by method
      * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
-     * class loader is recommended.</p>
+     * class loader is recommended.
+     * </p>
      *
      * @param object The object to return a property instance of.
      * @param propertyName The name of the property of {@code object} to return an instance of.
@@ -148,11 +156,13 @@ public interface ObjectManager
 
     /**
      * Gets an instance of a message of an object.
-     * <p><b>Note:</b><br/>
+     * <p>
+     * <b>Note:</b><br/>
      * Implementations must use the class loader associated with the class of the given object as returned by method
      * {@link Class#getClassLoader() object.getClass().getClassLoader()} for loading classes. Only if that method
      * returns {@code null}, indicating the class has been loaded by the bootstrap class loader, use of the bootstrap
-     * class loader is recommended.</p>
+     * class loader is recommended.
+     * </p>
      *
      * @param object The object to return a message instance of.
      * @param messageName The name of the message of {@code object} to return an instance of.

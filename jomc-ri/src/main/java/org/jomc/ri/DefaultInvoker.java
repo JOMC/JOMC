@@ -69,12 +69,14 @@ public class DefaultInvoker implements Invoker
 
     /**
      * Performs a method invocation on an object.
-     * <p>This method first passes the given invocation to the {@code preInvoke} method. If the result property of the
+     * <p>
+     * This method first passes the given invocation to the {@code preInvoke} method. If the result property of the
      * invocation returned by the {@code preInvoke} method is an instance of {@code Throwable}, that instance will be
      * thrown; otherwise the invocation returned by the {@code preInvoke} method is performed and then passed to the
      * {@code postInvoke} method. If the result property of the invocation returned from the {@code postInvoke} method
      * is an instance of {@code Throwable}, that instance will be thrown; otherwise the value of the result property is
-     * returned by this method.</p>
+     * returned by this method.
+     * </p>
      *
      * @param invocation The invocation to perform.
      *
@@ -195,12 +197,14 @@ public class DefaultInvoker implements Invoker
 
     /**
      * Called before an invocation is performed.
-     * <p>Overriding classes may use this method to perform any kind of operation prior to an invocation and to create
+     * <p>
+     * Overriding classes may use this method to perform any kind of operation prior to an invocation and to create
      * custom invocation instances. If an overriding class wishes to throw an exception, it may do so by setting the
      * result property of the returned invocation to an instance of {@code Throwable} thrown as the result of the
      * invocation. If an overriding class wishes to provide a custom {@code Invocation} class, it may do so by returning
      * a different instance from this method. By default, this method does nothing and returns the given invocation
-     * unchanged.</p>
+     * unchanged.
+     * </p>
      *
      * @param invocation The invocation about to be performed.
      *
@@ -220,12 +224,14 @@ public class DefaultInvoker implements Invoker
 
     /**
      * Called after an invocation has been performed.
-     * <p>Overriding classes may use this method to perform any kind of operation after an invocation has been
+     * <p>
+     * Overriding classes may use this method to perform any kind of operation after an invocation has been
      * performed and to maintain custom invocation instances. If an overriding class wishes to throw an exception, it
      * may do so by setting the result property of the returned invocation to an instance of {@code Throwable} thrown as
      * the result of the invocation. Since the result property of the given invocation already holds the result of the
      * invocation (which may already be an instance of {@code Throwable}), care must be taken when updating that result.
-     * By default, this method does nothing and returns the given invocation unchanged.</p>
+     * By default, this method does nothing and returns the given invocation unchanged.
+     * </p>
      *
      * @param invocation The performed invocation.
      *
@@ -245,11 +251,13 @@ public class DefaultInvoker implements Invoker
 
     /**
      * Called whenever an exception has been caught.
-     * <p>Overriding classes may use this method for handling exceptions. By default, this method updates the result of
+     * <p>
+     * Overriding classes may use this method for handling exceptions. By default, this method updates the result of
      * the given invocation with the given throwable. If that throwable is an instance of
      * {@code InvocationTargetException}, this method updates the result with the value of that exception's target
      * exception. If the result of the given invocation already is an instance of {@code Throwable}, this method does
-     * not update the result.</p>
+     * not update the result.
+     * </p>
      *
      * @param invocation The invocation to update.
      * @param t The throwable to update {@code invocation} with.
@@ -259,7 +267,7 @@ public class DefaultInvoker implements Invoker
         if ( invocation != null && !( invocation.getResult() instanceof Throwable ) )
         {
             if ( t instanceof InvocationTargetException
-                 && ( (InvocationTargetException) t ).getTargetException() != null )
+                     && ( (InvocationTargetException) t ).getTargetException() != null )
             {
                 invocation.setResult( ( (InvocationTargetException) t ).getTargetException() );
                 return;
@@ -288,4 +296,5 @@ public class DefaultInvoker implements Invoker
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

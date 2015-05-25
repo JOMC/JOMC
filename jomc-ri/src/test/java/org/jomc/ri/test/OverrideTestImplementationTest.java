@@ -52,13 +52,13 @@ import static org.junit.Assert.assertEquals;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.8
+ * @version 1.9-SNAPSHOT
  */
 // </editor-fold>
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public class OverrideTestImplementationTest
@@ -74,19 +74,19 @@ public class OverrideTestImplementationTest
         assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getProperty() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getProperty() );
         assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
-            getProperty() );
+                      getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getProperty() );
 
         assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getProperty() );
+                      getDependency().getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getProperty() );
 
         assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getDependency().getProperty() );
+                      getDependency().getDependency().getProperty() );
 
     }
 
@@ -99,19 +99,19 @@ public class OverrideTestImplementationTest
         assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getMessage() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getMessage() );
         assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
-            getMessage() );
+                      getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getMessage() );
 
         assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getMessage() );
+                      getDependency().getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getMessage() );
 
         assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getDependency().getMessage() );
+                      getDependency().getDependency().getMessage() );
 
     }
 
@@ -119,7 +119,7 @@ public class OverrideTestImplementationTest
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
     /** Creates a new {@code OverrideTestImplementationTest} instance. */
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
     public OverrideTestImplementationTest()
     {
         // SECTION-START[Default Constructor]
@@ -157,7 +157,7 @@ public class OverrideTestImplementationTest
      * @throws org.jomc.ObjectManagementException if getting the dependency instance fails.
      */
     @SuppressWarnings({"unchecked", "unused", "PMD.UnnecessaryFullyQualifiedName"})
-    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.8", comments = "See http://www.jomc.org/jomc/1.8/jomc-tools-1.8" )
+    @javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
     private org.jomc.ri.test.support.OverrideTestSpecification getOverrideTestSpecification()
     {
         final org.jomc.ri.test.support.OverrideTestSpecification _d = (org.jomc.ri.test.support.OverrideTestSpecification) org.jomc.ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ).getDependency( this, "Override Test Specification" );
@@ -170,4 +170,5 @@ public class OverrideTestImplementationTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

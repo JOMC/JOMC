@@ -69,7 +69,9 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
 {
     // SECTION-START[RuntimeArgument]
 
-    /** Java type name. */
+    /**
+     * Java type name.
+     */
     @XmlTransient
     private volatile JavaTypeName javaTypeName;
 
@@ -96,11 +98,15 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
 
     /**
      * Gets the Java type name of the type referenced by the argument.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The Java type name of the type referenced by the argument or {@code null}, if the argument does not
      * reference a type.
@@ -181,4 +187,5 @@ public class RuntimeArgument extends Argument implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }
