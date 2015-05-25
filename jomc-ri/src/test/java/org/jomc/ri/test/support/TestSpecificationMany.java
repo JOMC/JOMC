@@ -35,8 +35,6 @@
 // SECTION-END
 package org.jomc.ri.test.support;
 
-import java.lang.*;
-
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">
 /**

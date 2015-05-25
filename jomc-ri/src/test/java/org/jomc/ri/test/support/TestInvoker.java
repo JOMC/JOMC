@@ -90,7 +90,7 @@ public class TestInvoker extends DefaultInvoker
 
         if ( invocation.getArguments() != null )
         {
-            for ( Iterator it = Arrays.asList( invocation.getArguments() ).iterator(); it.hasNext(); )
+            for ( final Iterator it = Arrays.asList( invocation.getArguments() ).iterator(); it.hasNext(); )
             {
                 b.append( it.next() );
                 if ( it.hasNext() )
@@ -124,4 +124,5 @@ public class TestInvoker extends DefaultInvoker
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

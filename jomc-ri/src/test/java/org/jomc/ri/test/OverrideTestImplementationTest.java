@@ -74,19 +74,19 @@ public class OverrideTestImplementationTest
         assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getProperty() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getProperty() );
         assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
-            getProperty() );
+                      getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getProperty() );
 
         assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getProperty() );
+                      getDependency().getProperty() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getProperty() );
 
         assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getDependency().getProperty() );
+                      getDependency().getDependency().getProperty() );
 
     }
 
@@ -99,19 +99,19 @@ public class OverrideTestImplementationTest
         assertEquals( "Recursion 1", this.getOverrideTestSpecification().getDependency().getMessage() );
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getMessage() );
         assertEquals( "Recursion 2", this.getOverrideTestSpecification().getDependency().getDependency().
-            getMessage() );
+                      getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getMessage() );
 
         assertEquals( "Recursion 3", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getMessage() );
+                      getDependency().getMessage() );
 
         System.out.println( this.getOverrideTestSpecification().getDependency().getDependency().getDependency().
             getDependency().getMessage() );
 
         assertEquals( "Recursion 4", this.getOverrideTestSpecification().getDependency().getDependency().
-            getDependency().getDependency().getMessage() );
+                      getDependency().getDependency().getMessage() );
 
     }
 
@@ -170,4 +170,5 @@ public class OverrideTestImplementationTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

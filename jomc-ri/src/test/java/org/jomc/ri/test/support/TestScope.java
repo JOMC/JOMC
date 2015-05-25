@@ -68,6 +68,7 @@ public class TestScope
     implements
     org.jomc.spi.Scope
 {
+
     // SECTION-START[Scope]
     // SECTION-END
     // SECTION-START[TestScope]
@@ -90,4 +91,5 @@ public class TestScope
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

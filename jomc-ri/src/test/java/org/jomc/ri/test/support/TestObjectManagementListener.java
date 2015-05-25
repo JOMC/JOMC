@@ -70,10 +70,14 @@ public class TestObjectManagementListener
 {
     // SECTION-START[TestObjectManagementListener]
 
-    /** The {@code OutputStream} to stream to. */
+    /**
+     * The {@code OutputStream} to stream to.
+     */
     private OutputStream outputStream;
 
-    /** The {@code PrintWriter} events are printed with. */
+    /**
+     * The {@code PrintWriter} events are printed with.
+     */
     private PrintWriter printWriter;
 
     /**
@@ -163,4 +167,5 @@ public class TestObjectManagementListener
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

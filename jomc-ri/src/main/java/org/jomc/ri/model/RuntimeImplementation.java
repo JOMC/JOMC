@@ -76,10 +76,14 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 {
     // SECTION-START[RuntimeImplementation]
 
-    /** Cached location URI. */
+    /**
+     * Cached location URI.
+     */
     private volatile URI locationUri;
 
-    /** Java type name. */
+    /**
+     * Java type name.
+     */
     @XmlTransient
     private volatile JavaTypeName javaTypeName;
 
@@ -126,11 +130,15 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 
     /**
      * Gets the location URI used for locating instances of this implementation.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The location URI used for locating instances of this implementation or {@code null}, if instances of this
      * implementation do not need to be located.
@@ -153,11 +161,15 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 
     /**
      * Gets the Java class of the implementation for a given class loader.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
-     * internal cache with the state of the class loader, should the state of the class loader change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * internal cache with the state of the class loader, should the state of the class loader change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java class from or {@code null}, to get the Java class from the
      * platform's bootstrap class loader.
@@ -214,11 +226,15 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
 
     /**
      * Gets the Java type name of the type referenced by the implementation.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The Java type name of the type referenced by the implementation or {@code null}, if the implementation
      * does not reference a type.
@@ -355,4 +371,5 @@ public class RuntimeImplementation extends Implementation implements RuntimeMode
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

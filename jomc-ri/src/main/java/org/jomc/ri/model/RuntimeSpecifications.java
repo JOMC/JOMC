@@ -35,7 +35,6 @@
 // SECTION-END
 package org.jomc.ri.model;
 
-import java.text.ParseException;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.ModelObjectException;
@@ -73,15 +72,21 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
 {
     // SECTION-START[RuntimeSpecifications]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specification> specificationsByIdentifierCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Specification> specificationsByClassCache = createMap();
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, SpecificationReference> referencesByIdentifierCache = createMap();
 
@@ -111,11 +116,15 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
 
     /**
      * Gets a specification for a given identifier from the list of specifications.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the specification to return.
      *
@@ -151,11 +160,15 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
 
     /**
      * Gets a specification for a given class from the list of specifications.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The class of the specification to return.
      *
@@ -193,11 +206,15 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
 
     /**
      * Gets a specification reference for a given identifier from the list of references.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param specification The identifier of the reference to return.
      *
@@ -340,6 +357,7 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
@@ -359,4 +377,5 @@ public class RuntimeSpecifications extends Specifications implements RuntimeMode
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

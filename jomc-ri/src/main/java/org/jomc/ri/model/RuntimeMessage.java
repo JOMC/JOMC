@@ -72,7 +72,9 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
 {
     // SECTION-START[RuntimeMessage]
 
-    /** Java messages by locale cache.*/
+    /**
+     * Java messages by locale cache.
+     */
     @XmlTransient
     private final Map<Locale, MessageFormat> javaMessagesByLocaleCache = createMap();
 
@@ -107,11 +109,15 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
 
     /**
      * Gets a Java {@code MessageFormat} instance for a given locale.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param locale The locale to get a Java {@code MessageFormat} instance for.
      *
@@ -230,4 +236,5 @@ public class RuntimeMessage extends Message implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

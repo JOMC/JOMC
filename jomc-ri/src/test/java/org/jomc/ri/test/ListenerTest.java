@@ -69,7 +69,9 @@ public class ListenerTest
 {
     // SECTION-START[ListenerTest]
 
-    /** The {@code Listener} instance tests are performed with. */
+    /**
+     * The {@code Listener} instance tests are performed with.
+     */
     private Listener listener;
 
     /**
@@ -137,4 +139,5 @@ public class ListenerTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

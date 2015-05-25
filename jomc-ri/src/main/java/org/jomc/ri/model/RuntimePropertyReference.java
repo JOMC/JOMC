@@ -145,4 +145,5 @@ public class RuntimePropertyReference extends PropertyReference implements Runti
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

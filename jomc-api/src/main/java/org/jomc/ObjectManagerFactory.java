@@ -62,26 +62,38 @@ public abstract class ObjectManagerFactory
 {
     // SECTION-START[ObjectManagerFactory]
 
-    /** Constant for the name of the class providing the default {@code getObjectManager()} method. */
+    /**
+     * Constant for the name of the class providing the default {@code getObjectManager()} method.
+     */
     private static final String DEFAULT_FACTORY_CLASSNAME = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the name of the class providing the default {@code ObjectManager} implementation. */
+    /**
+     * Constant for the name of the class providing the default {@code ObjectManager} implementation.
+     */
     private static final String DEFAULT_IMPLEMENTATION_CLASSNAME = "org.jomc.ri.DefaultObjectManager";
 
-    /** Constant for the name of the system property holding the {@code getObjectManager()} method's class name. */
+    /**
+     * Constant for the name of the system property holding the {@code getObjectManager()} method's class name.
+     */
     private static final String SYS_FACTORY_CLASSNAME = "org.jomc.ObjectManagerFactory";
 
-    /** Constant for the name of the system property holding the {@code ObjectManager} implementation class name. */
+    /**
+     * Constant for the name of the system property holding the {@code ObjectManager} implementation class name.
+     */
     private static final String SYS_IMPLEMENTATION_CLASSNAME = "org.jomc.ObjectManager";
 
     /**
      * Gets the {@code ObjectManager} singleton instance.
-     * <p>This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
+     * <p>
+     * This method is controlled by system property {@code org.jomc.ObjectManagerFactory} providing the name of a
      * class declaring a <blockquote>{@code public static ObjectManager getObjectManager( ClassLoader )}</blockquote>
-     * method called by this method to get the instance to return.</p>
-     * <p><b>Note:</b><br/>
+     * method called by this method to get the instance to return.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>
      * The {@code newObjectManager} method should be used by {@code getObjectManager} implementors to retrieve a new
-     * {@code ObjectManager} implementation.</p>
+     * {@code ObjectManager} implementation.
+     * </p>
      *
      * @param classLoader The class loader to use for getting the singleton instance; {@code null} to use the platform's
      * bootstrap class loader.
@@ -109,9 +121,11 @@ public abstract class ObjectManagerFactory
 
     /**
      * Creates a new {@code ObjectManager} instance.
-     * <p>The object manager implementation returned by this method is controlled by system property
+     * <p>
+     * The object manager implementation returned by this method is controlled by system property
      * {@code org.jomc.ObjectManager} providing the name of the {@code ObjectManager} implementation class to return
-     * a new instance of.</p>
+     * a new instance of.
+     * </p>
      *
      * @param classLoader The class loader to use for creating the instance; {@code null} to use the platform's
      * bootstrap class loader.
@@ -138,10 +152,10 @@ public abstract class ObjectManagerFactory
     private static String getMessage( final Throwable t )
     {
         return t != null
-               ? t.getMessage() != null && t.getMessage().trim().length() > 0
-                 ? t.getMessage()
-                 : getMessage( t.getCause() )
-               : null;
+                   ? t.getMessage() != null && t.getMessage().trim().length() > 0
+                         ? t.getMessage()
+                         : getMessage( t.getCause() )
+                   : null;
 
     }
 
@@ -164,4 +178,5 @@ public abstract class ObjectManagerFactory
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

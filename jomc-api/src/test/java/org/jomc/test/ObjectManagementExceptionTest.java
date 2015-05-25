@@ -67,7 +67,9 @@ public class ObjectManagementExceptionTest
 {
     // SECTION-START[ObjectManagementExceptionTest]
 
-    /** Constant to prefix relative resource names with. */
+    /**
+     * Constant to prefix relative resource names with.
+     */
     private static final String ABSOLUTE_RESOURCE_NAME_PREFIX = "/org/jomc/test/";
 
     @Test
@@ -123,4 +125,5 @@ public class ObjectManagementExceptionTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

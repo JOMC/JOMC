@@ -107,4 +107,5 @@ public class RuntimeText extends Text implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

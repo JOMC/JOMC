@@ -79,36 +79,50 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 {
     // SECTION-START[RuntimeInstance]
 
-    /** Classes by class loader any instance cache. */
+    /**
+     * Classes by class loader any instance cache.
+     */
     @XmlTransient
     static final Map<ClassLoader, Map<String, Reference<Class<?>[]>>> classesByClassLoaderAndInstanceCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>[]>>>();
 
-    /** Constructors by class loader any instance cache. */
+    /**
+     * Constructors by class loader any instance cache.
+     */
     @XmlTransient
     static final Map<ClassLoader, Map<String, Reference<Constructor<?>>>> constructorsByClassLoaderAndInstanceCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Constructor<?>>>>();
 
-    /** Methods by class loader any instance cache. */
+    /**
+     * Methods by class loader any instance cache.
+     */
     @XmlTransient
     static final Map<ClassLoader, Map<String, Reference<Method>>> methodsByClassLoaderAndInstanceCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Method>>>();
 
-    /** Assignable flags by class loader any instance cache. */
+    /**
+     * Assignable flags by class loader any instance cache.
+     */
     @XmlTransient
     static final Map<ClassLoader, Map<String, Boolean>> assignableFlagsByClassLoaderAndInstanceCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Boolean>>();
 
-    /** Proxy classes by class loader any instance cache. */
+    /**
+     * Proxy classes by class loader any instance cache.
+     */
     @XmlTransient
     static final Map<ClassLoader, Map<String, Reference<Class<?>>>> proxyClassesByClassLoaderAndInstanceCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>>>>();
 
-    /** Method name. */
+    /**
+     * Method name.
+     */
     @XmlTransient
     private volatile String javaClassFactoryMethodName;
 
-    /** Java type name. */
+    /**
+     * Java type name.
+     */
     @XmlTransient
     private volatile JavaTypeName javaTypeName;
 
@@ -151,11 +165,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java class of the instance for a given class loader.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
-     * internal cache with the state of the class loader, should the state of the class loader change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * internal cache with the state of the class loader, should the state of the class loader change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java class from or {@code null}, to get the Java class from the
      * platform's bootstrap class loader.
@@ -212,12 +230,16 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java classes of all specifications of the instance for a given class loader.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
      * internal cache with the state of the instance and class loader, should the state of the instance or class loader
-     * change.</p>
+     * change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java classes from or {@code null}, to get the Java classes from
      * the platform's bootstrap class loader.
@@ -271,12 +293,16 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java constructor to use for creating objects of the instance.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
      * internal cache with the state of the instance and class loader, should the state of the instance or class loader
-     * change.</p>
+     * change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java class from or {@code null}, to get the Java class from the
      * platform's bootstrap class loader.
@@ -330,11 +356,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the name of the Java method to use for creating objects of the instance.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The name of the Java method to use for creating objects of the instance or {@code null}, if no such
      * method name is supported.
@@ -357,12 +387,16 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java method to use for creating objects of the instance.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
      * internal cache with the state of the instance and class loader, should the state of the instance or class loader
-     * change.</p>
+     * change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java class from or {@code null}, to get the Java class from the
      * platform's bootstrap class loader.
@@ -418,12 +452,16 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
     /**
      * Gets a flag indicating the Java class of the instance is assignable to all Java classes of all specifications of
      * the instance.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
      * internal cache with the state of the instance and class loader, should the state of the instance or class loader
-     * change.</p>
+     * change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java classes from or {@code null}, to get the Java classes from
      * the platform's bootstrap class loader.
@@ -473,12 +511,16 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java proxy class for a given class loader.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code RuntimeModelObjects.clear()} must be used to synchronize the state of the
      * internal cache with the state of the instance and class loader, should the state of the instance or class loader
-     * change.</p>
+     * change.
+     * </p>
      *
      * @param classLoader The class loader to get the Java proxy class for.
      *
@@ -531,11 +573,15 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
 
     /**
      * Gets the Java type name of the type referenced by the instance.
-     * <p>This method queries an internal cache for a result object to return. If no cached result object is available,
+     * <p>
+     * This method queries an internal cache for a result object to return. If no cached result object is available,
      * this method queries the super-class for a result object to return and caches the outcome of that query for use on
-     * successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @return The Java type name of the type referenced by the instance or {@code null}, if the instance does not
      * reference a type.
@@ -661,4 +707,5 @@ public class RuntimeInstance extends Instance implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

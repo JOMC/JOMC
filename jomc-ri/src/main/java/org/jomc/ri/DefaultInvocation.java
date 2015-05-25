@@ -69,28 +69,44 @@ public class DefaultInvocation implements Invocation
 {
     // SECTION-START[DefaultInvocation]
 
-    /** Constant for the context key of the {@code Object} of this invocation. */
+    /**
+     * Constant for the context key of the {@code Object} of this invocation.
+     */
     public static final String OBJECT_KEY = "org.jomc.spi.Invocation.object";
 
-    /** Constant for the context key of the {@code Method} of this invocation. */
+    /**
+     * Constant for the context key of the {@code Method} of this invocation.
+     */
     public static final String METHOD_KEY = "org.jomc.spi.Invocation.method";
 
-    /** Constant for the context key of the {@code Object[]} arguments of this invocation. */
+    /**
+     * Constant for the context key of the {@code Object[]} arguments of this invocation.
+     */
     public static final String ARGUMENTS_KEY = "org.jomc.spi.Invocation.arguments";
 
-    /** Constant for the context key of the result {@code Object} of this invocation. */
+    /**
+     * Constant for the context key of the result {@code Object} of this invocation.
+     */
     public static final String RESULT_KEY = "org.jomc.spi.Invocation.result";
 
-    /** Constant for the context key of the {@code Instance} corresponding to the object of this invocation. */
+    /**
+     * Constant for the context key of the {@code Instance} corresponding to the object of this invocation.
+     */
     public static final String INSTANCE_KEY = "org.jomc.spi.Invocation.instance";
 
-    /** Constant for the context key of the {@code Modules} corresponding to the object of this invocation. */
+    /**
+     * Constant for the context key of the {@code Modules} corresponding to the object of this invocation.
+     */
     public static final String MODULES_KEY = "org.jomc.spi.Invocation.modules";
 
-    /** Constant for the context key of the {@code ClassLoader} corresponding to the modules of this invocation. */
+    /**
+     * Constant for the context key of the {@code ClassLoader} corresponding to the modules of this invocation.
+     */
     public static final String CLASSLOADER_KEY = "org.jomc.spi.Invocation.classLoader";
 
-    /** The context of this invocation. */
+    /**
+     * The context of this invocation.
+     */
     private Map context;
 
     /**
@@ -202,4 +218,5 @@ public class DefaultInvocation implements Invocation
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

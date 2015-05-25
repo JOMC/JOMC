@@ -84,11 +84,11 @@ public class ObjectManagerFactoryTest
             System.setProperty( SYS_IMPL_CLASSNAME, UnsupportedOperationExceptionObjectManager.class.getName() );
             assertNotNull( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
             assertTrue( ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() )
-                        == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
+                            == ObjectManagerFactory.getObjectManager( this.getClass().getClassLoader() ) );
 
             assertNotNull( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
             assertFalse( ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() )
-                         == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
+                             == ObjectManagerFactory.newObjectManager( this.getClass().getClassLoader() ) );
 
         }
         finally
@@ -111,6 +111,7 @@ public class ObjectManagerFactoryTest
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
@@ -130,4 +131,5 @@ public class ObjectManagerFactoryTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

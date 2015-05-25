@@ -67,14 +67,18 @@ public class DefaultListenerTest extends ListenerTest
 {
     // SECTION-START[DefaultListenerTest]
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public DefaultListener getListener()
     {
         return (DefaultListener) super.getListener();
     }
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected DefaultListener newListener()
     {
@@ -126,4 +130,5 @@ public class DefaultListenerTest extends ListenerTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

@@ -80,7 +80,9 @@ public class DefaultObjectManagerTest
 {
     // SECTION-START[DefaultObjectManagerTest]
 
-    /** The {@code DefaultObjectManager} tests are performed with. */
+    /**
+     * The {@code DefaultObjectManager} tests are performed with.
+     */
     private DefaultObjectManager objectManager;
 
     /**
@@ -479,4 +481,5 @@ public class DefaultObjectManagerTest
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

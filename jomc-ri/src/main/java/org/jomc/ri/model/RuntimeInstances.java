@@ -70,7 +70,9 @@ public class RuntimeInstances extends Instances implements RuntimeModelObject
 {
     // SECTION-START[RuntimeInstances]
 
-    /** Cache map. */
+    /**
+     * Cache map.
+     */
     @XmlTransient
     private transient final Map<String, Instance> instancesByIdentifierCache = createMap();
 
@@ -99,11 +101,15 @@ public class RuntimeInstances extends Instances implements RuntimeModelObject
 
     /**
      * Gets an instance for a given identifier from the list of instances.
-     * <p>This method queries an internal cache for a result object to return for the given argument values. If no
+     * <p>
+     * This method queries an internal cache for a result object to return for the given argument values. If no
      * cached result object is available, this method queries the super-class for a result object to return and caches
-     * the outcome of that query for use on successive calls.</p>
-     * <p><b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
-     * state of the instance, should the state of the instance change.</p>
+     * the outcome of that query for use on successive calls.
+     * </p>
+     * <p>
+     * <b>Note:</b><br/>Method {@code clear()} must be used to synchronize the state of the internal cache with the
+     * state of the instance, should the state of the instance change.
+     * </p>
      *
      * @param identifier The identifier of the instance to return.
      *
@@ -209,6 +215,7 @@ public class RuntimeInstances extends Instances implements RuntimeModelObject
             }
         }
     }
+
     // SECTION-END
     // SECTION-START[Constructors]
     // <editor-fold defaultstate="collapsed" desc=" Generated Constructors ">
@@ -228,4 +235,5 @@ public class RuntimeInstances extends Instances implements RuntimeModelObject
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

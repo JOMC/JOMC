@@ -65,7 +65,9 @@ public class DefaultScope implements Scope
 {
     // SECTION-START[DefaultScope]
 
-    /** Objects of the scope. */
+    /**
+     * Objects of the scope.
+     */
     private Map<String, Object> objects;
 
     /**
@@ -132,4 +134,5 @@ public class DefaultScope implements Scope
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }

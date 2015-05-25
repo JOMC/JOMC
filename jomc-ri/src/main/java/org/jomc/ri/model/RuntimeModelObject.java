@@ -63,10 +63,14 @@ public interface RuntimeModelObject
 {
     // SECTION-START[RuntimeModelObject]
 
-    /** Handles shared runtime state. */
+    /**
+     * Handles shared runtime state.
+     */
     void gc();
 
-    /**  Clears shared runtime state. */
+    /**
+     * Clears shared runtime state.
+     */
     void clear();
 
     // SECTION-END

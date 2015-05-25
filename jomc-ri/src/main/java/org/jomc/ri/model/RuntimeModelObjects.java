@@ -92,14 +92,20 @@ public class RuntimeModelObjects
 {
     // SECTION-START[RuntimeModelObjects]
 
-    /** Classes by class loader any name cache. */
+    /**
+     * Classes by class loader any name cache.
+     */
     static final Map<ClassLoader, Map<String, Reference<Class<?>>>> classesByClassLoaderAndNameCache =
         new WeakIdentityHashMap<ClassLoader, Map<String, Reference<Class<?>>>>();
 
-    /** Singleton instance. */
+    /**
+     * Singleton instance.
+     */
     private static final RuntimeModelObjects instance = new RuntimeModelObjects();
 
-    /** Cache key for the bootstrap class loader. */
+    /**
+     * Cache key for the bootstrap class loader.
+     */
     static final ClassLoader BOOTSTRAP_CLASSLOADER_KEY = new ClassLoader()
     {
     };
@@ -414,7 +420,9 @@ public class RuntimeModelObjects
         return new RuntimeMessageReference( o );
     }
 
-    /** Handles shared runtime state. */
+    /**
+     * Handles shared runtime state.
+     */
     public void gc()
     {
         synchronized ( classesByClassLoaderAndNameCache )
@@ -443,7 +451,9 @@ public class RuntimeModelObjects
         }
     }
 
-    /**  Clears shared runtime state. */
+    /**
+     * Clears shared runtime state.
+     */
     public void clear()
     {
         synchronized ( classesByClassLoaderAndNameCache )
@@ -504,4 +514,5 @@ public class RuntimeModelObjects
     // SECTION-END
     // SECTION-START[Messages]
     // SECTION-END
+
 }
