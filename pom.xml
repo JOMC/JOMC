@@ -2338,7 +2338,7 @@
     <!-- Parent -->
     <jomc.api.version>1.0</jomc.api.version>
     <jomc.spi.version>1.0</jomc.spi.version>
-    <jomc.base.version>1.9</jomc.base.version>
+    <jomc.base.version>1.10</jomc.base.version>
     <jomc-util.artifact.version>1.10-SNAPSHOT</jomc-util.artifact.version>
     <jomc-modlet.artifact.version>1.10-SNAPSHOT</jomc-modlet.artifact.version>
     <jomc-model.artifact.version>1.10-SNAPSHOT</jomc-model.artifact.version>

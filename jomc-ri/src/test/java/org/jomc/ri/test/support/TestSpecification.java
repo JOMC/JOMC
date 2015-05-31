@@ -47,7 +47,7 @@ package org.jomc.ri.test.support;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.9-SNAPSHOT
+ * @version 1.10-SNAPSHOT
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(TestSpecification[].class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(TestSpecification.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
@@ -56,7 +56,7 @@ package org.jomc.ri.test.support;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.9-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.9/jomc-tools-1.9-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 1.10-SNAPSHOT", comments = "See http://www.jomc.org/jomc/1.10/jomc-tools-1.10-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public interface TestSpecification
