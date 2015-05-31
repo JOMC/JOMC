@@ -235,6 +235,8 @@
                   <detectOfflineLinks>false</detectOfflineLinks>
                   <detectLinks>true</detectLinks>
                   <validateLinks>true</validateLinks>
+                  <minmemory>${maven.javadoc.minmemory}</minmemory>
+                  <maxmemory>${maven.javadoc.maxmemory}</maxmemory>
                   <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
                   <docletArtifact>
                     <groupId>org.umlgraph</groupId>
@@ -253,7 +255,10 @@
                       <version>${plexuscontainers.version}</version>
                     </tagletArtifact>
                   </tagletArtifacts>
-                  <additionalJOption>${maven.javadoc.additionalJOption}</additionalJOption>
+                  <additionalJOptions>
+                    <additionalJOption>-J-client</additionalJOption>
+                    <additionalJOption>-J-Dfile.encoding=${file.encoding}</additionalJOption>
+                  </additionalJOptions>
                   <additionalparam>-inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10 -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected</additionalparam>
                   <groups>
                     <group>
@@ -757,6 +762,8 @@
                 <packages>org.jomc.cli.test*:org.jomc.cli.commands.test*</packages>
               </group>
             </groups>
+            <minmemory>${maven.javadoc.minmemory}</minmemory>
+            <maxmemory>${maven.javadoc.maxmemory}</maxmemory>
             <doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
             <docletArtifact>
               <groupId>org.umlgraph</groupId>
@@ -775,7 +782,10 @@
                 <version>${plexuscontainers.version}</version>
               </tagletArtifact>
             </tagletArtifacts>
-            <additionalJOption>${maven.javadoc.additionalJOption}</additionalJOption>
+            <additionalJOptions>
+              <additionalJOption>-J-client</additionalJOption>
+              <additionalJOption>-J-Dfile.encoding=${file.encoding}</additionalJOption>
+            </additionalJOptions>
             <additionalparam>-inferrel -inferdep -hide java.* -collpackages java.util.* -qualify -postfixpackage -nodefontsize 10 -nodefontpackagesize 8 -outputencoding ${project.reporting.outputEncoding} -inferdepvis protected</additionalparam>
             <archive>
               <index>true</index>
@@ -2261,10 +2271,7 @@
     <maven-gpg-plugin.artifact.version>1.6</maven-gpg-plugin.artifact.version>
     <maven-jarsigner-plugin.artifact.version>1.4</maven-jarsigner-plugin.artifact.version>
     <maven-remote-resources-plugin.artifact.version>1.5</maven-remote-resources-plugin.artifact.version>
-    <!--
-    https://issues.apache.org/jira/browse/MJAVADOC-429
-    -->
-    <maven-javadoc-plugin.artifact.version>2.9.1</maven-javadoc-plugin.artifact.version>
+    <maven-javadoc-plugin.artifact.version>2.10.3</maven-javadoc-plugin.artifact.version>
     <maven-clean-plugin.artifact.version>2.6.1</maven-clean-plugin.artifact.version>
     <maven-deploy-plugin.artifact.version>2.8.2</maven-deploy-plugin.artifact.version>
     <maven-dependency-plugin.artifact.version>2.10</maven-dependency-plugin.artifact.version>
@@ -2319,7 +2326,9 @@
     <maven.compiler.source>1.5</maven.compiler.source>
     <maven.compiler.target>1.5</maven.compiler.target>
     <maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
-    <maven.javadoc.additionalJOption>-J-client -J-Xms32m -J-Xmx32m -J-Xss2m -J-Dfile.encoding=${file.encoding}</maven.javadoc.additionalJOption>
+    <maven.javadoc.memory>32m</maven.javadoc.memory>
+    <maven.javadoc.minmemory>${maven.javadoc.memory}</maven.javadoc.minmemory>
+    <maven.javadoc.maxmemory>${maven.javadoc.memory}</maven.javadoc.maxmemory>
     <maven.surefire.argLine>-client -Xms32m -Xmx32m -Xss2m -Dfile.encoding=${file.encoding}</maven.surefire.argLine>
     <!-- Updated by JaCoCo plugin. Potentionally conflicts with other plugins using that same propery. -->
     <argLine>${maven.surefire.argLine}</argLine>
