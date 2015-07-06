@@ -260,9 +260,7 @@ public class KeyValueType implements Cloneable
 
                     if ( javaClass == null )
                     {
-                        throw (InstantiationException) new InstantiationException(
-                            Messages.getMessage( "classNotFound", this.getType() ) );
-
+                        throw new InstantiationException( Messages.getMessage( "classNotFound", this.getType() ) );
                     }
 
                     try
@@ -294,9 +292,7 @@ public class KeyValueType implements Cloneable
 
                 if ( javaClass == null )
                 {
-                    throw (InstantiationException) new InstantiationException(
-                        Messages.getMessage( "classNotFound", this.getType() ) );
-
+                    throw new InstantiationException( Messages.getMessage( "classNotFound", this.getType() ) );
                 }
 
                 o = javaClass.newInstance();
