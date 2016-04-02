@@ -159,8 +159,8 @@
         </message>
         <message name="Implementation Info Message">
           <template defaultLanguage="en">
-            <text language="en">DefaultObjectManager ${project.version} (${build.date}) initialized in {0,number}ms.</text>
-            <text language="de">DefaultObjectManager ${project.version} (${build.date}) in {0,number}ms initialisiert.</text>
+            <text language="en">DefaultObjectManager ${project.version} (${build.date}) initialized in {0,number}ns.</text>
+            <text language="de">DefaultObjectManager ${project.version} (${build.date}) in {0,number}ns initialisiert.</text>
           </template>
           <arguments>
             <argument index="0" type="Number" name="Initialization Millis"/>
@@ -430,8 +430,8 @@
         </message>
         <message name="Runtime Model Report">
           <template defaultLanguage="en">
-            <text language="en">Creating runtime model in {0,number}ms.</text>
-            <text language="de">Laufzeitmodell in {0,number}ms erstellt.</text>
+            <text language="en">Creating runtime model in {0,number}ns.</text>
+            <text language="de">Laufzeitmodell in {0,number}ns erstellt.</text>
           </template>
           <arguments>
             <argument index="0" type="Number" name="Millis"/>

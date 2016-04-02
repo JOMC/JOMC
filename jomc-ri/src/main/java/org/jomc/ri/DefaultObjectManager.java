@@ -1973,7 +1973,7 @@ public class DefaultObjectManager implements ObjectManager
                         this.objects.put( objectsLoader, objectMap );
                     }
 
-                    final long t0 = System.currentTimeMillis();
+                    final long t0 = System.nanoTime();
                     cachedModules = this.getRuntimeModules( cachedModules, objectMap );
 
                     if ( cachedModules instanceof RuntimeModelObject )
@@ -1983,7 +1983,7 @@ public class DefaultObjectManager implements ObjectManager
 
                     logRecords.add( new LogRecord( Level.FINE,
                                                    getRuntimeModelReport( Locale.getDefault(),
-                                                                          System.currentTimeMillis() - t0 ) ) );
+                                                                          System.nanoTime() - t0 ) ) );
 
                 }
 
@@ -3010,7 +3010,7 @@ public class DefaultObjectManager implements ObjectManager
             {
                 try
                 {
-                    final long t0 = System.currentTimeMillis();
+                    final long t0 = System.nanoTime();
                     this.initialized = true;
 
                     this.listeners.clear();
@@ -3078,8 +3078,8 @@ public class DefaultObjectManager implements ObjectManager
 
                     if ( this.isLoggable( Level.FINE ) )
                     {
-                        this.log( Level.FINE, getImplementationInfoMessage(
-                                  Locale.getDefault(), Long.valueOf( System.currentTimeMillis() - t0 ) ), null );
+                        this.log( Level.FINE, getImplementationInfoMessage( Locale.getDefault(),
+                                                                            System.nanoTime() - t0 ), null );
 
                     }
 
