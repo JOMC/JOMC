@@ -257,17 +257,17 @@ public class ImplementationTest
 
         for ( int i = NUM_RUNS - 1; i >= 0; i-- )
         {
-            final long t0 = System.currentTimeMillis();
+            final long t0 = System.nanoTime();
 
             for ( long l = NUM_REQUESTS - 1; l >= 0; l-- )
             {
                 runnable.run();
             }
 
-            t += ( System.currentTimeMillis() - t0 );
+            t += ( System.nanoTime() - t0 );
         }
 
-        System.out.println( NUM_REQUESTS + " * '" + identifier + "': ~" + ( t / NUM_RUNS ) + "ms." );
+        System.out.println( NUM_REQUESTS + " * '" + identifier + "': ~" + ( t / NUM_RUNS ) + "ns." );
     }
 
     // SECTION-END
