@@ -209,9 +209,8 @@ public class DefaultLocator implements Locator
         catch ( final ClassCastException e )
         {
             // JDK: As of JDK 6, "new IOException( message, cause )".
-            throw (IOException) new IOException( getIllegalObjectMessage(
-                Locale.getDefault(), object != null ? object.toString() : null,
-                specification.getName() ) ).initCause( e );
+            throw (IOException) new IOException( getIllegalObjectMessage( Locale.getDefault(), object.toString(),
+                                                                          specification.getName() ) ).initCause( e );
 
         }
     }
