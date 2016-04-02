@@ -64,6 +64,10 @@
     <system>Trac</system>
     <url>http://www.jomc.org/trac</url>
   </issueManagement>
+  <ciManagement>
+    <system>Travis CI</system>
+    <url>https://travis-ci.org/JOMC</url>
+  </ciManagement>
   <scm>
     <connection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/trunk</connection>
     <developerConnection>scm:svn:http://svn.jomc.org/svnroot/jomc/jomc/trunk</developerConnection>
