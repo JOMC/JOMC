@@ -34,7 +34,7 @@
   <parent>
     <groupId>org.jomc</groupId>
     <artifactId>jomc-pom</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-parent</artifactId>
@@ -45,9 +45,9 @@
   <url>${jomc.base.url}/${jomc.site.location}</url>
   <inceptionYear>2005</inceptionYear>
   <scm>
-    <connection>${jomc.scm.connection}</connection>
-    <developerConnection>${jomc.scm.developerConnection}</developerConnection>
-    <url>${jomc.scm.url}</url>
+    <connection>${jomc.scm.connection}/branches/jomc-1.x</connection>
+    <developerConnection>${jomc.scm.developerConnection}/branches/jomc-1.x</developerConnection>
+    <url>${jomc.scm.url}/branches/jomc-1.x</url>
   </scm>
   <build>
     <pluginManagement>
@@ -887,7 +887,7 @@
     <jomc-ri.artifact.version>1.10-SNAPSHOT</jomc-ri.artifact.version>
     <jomc-cli.artifact.version>1.10-SNAPSHOT</jomc-cli.artifact.version>
     <!-- Parent. -->
-    <jomc.scm.location>jomc/branches/jomc-1.x</jomc.scm.location>
+    <jomc.scm.location>jomc</jomc.scm.location>
     <jomc.site.location>jomc/1.10-SNAPSHOT</jomc.site.location>
     <jomc.trac.query>order=id&amp;version=1.10-SNAPSHOT&amp;component=JOMC|${project.name}</jomc.trac.query>
   </properties>
