@@ -1,5 +1,0 @@
-// SECTION-START[Unmatched]
-
-// SECTION-START[Matched]
-
-// SECTION-END

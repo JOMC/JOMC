@@ -42,7 +42,7 @@ import java.util.Map;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Implementation;
 import org.jomc.model.ModelObjectException;
-import org.jomc.util.JavaTypeName;
+import org.jomc.jls.JavaTypeName;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
 import static org.jomc.ri.model.RuntimeModelObjects.classesByClassLoaderAndNameCache;
 import static org.jomc.ri.model.RuntimeModelObjects.createMap;

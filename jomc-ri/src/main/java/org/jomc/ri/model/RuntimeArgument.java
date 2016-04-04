@@ -38,7 +38,7 @@ package org.jomc.ri.model;
 import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Argument;
 import org.jomc.model.ModelObjectException;
-import org.jomc.util.JavaTypeName;
+import org.jomc.jls.JavaTypeName;
 
 // SECTION-START[Documentation]
 // <editor-fold defaultstate="collapsed" desc=" Generated Documentation ">

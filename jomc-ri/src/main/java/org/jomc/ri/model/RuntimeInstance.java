@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlTransient;
 import org.jomc.model.Instance;
 import org.jomc.model.ModelObjectException;
 import org.jomc.model.Specification;
-import org.jomc.util.JavaTypeName;
+import org.jomc.jls.JavaTypeName;
 import org.jomc.util.WeakIdentityHashMap;
 import static org.jomc.ri.model.RuntimeModelObjects.BOOTSTRAP_CLASSLOADER_KEY;
 import static org.jomc.ri.model.RuntimeModelObjects.classesByClassLoaderAndNameCache;

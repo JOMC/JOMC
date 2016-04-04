@@ -33,37 +33,7 @@
 <project xmlns="http://maven.apache.org/DECORATION/1.3.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.3.0 http://maven.apache.org/xsd/decoration-1.3.0.xsd">
-  <skin>
-    <groupId>org.apache.maven.skins</groupId>
-    <artifactId>maven-fluido-skin</artifactId>
-    <version>1.4</version>
-  </skin>
-  <bannerLeft>
-    <name>JOMC</name>
-    <src>http://www.jomc.org/jomc.org.png</src>
-    <href>http://www.jomc.org</href>
-  </bannerLeft>
-  <poweredBy>
-    <logo name="Christian Schulte" href="http://www.schulte.it" img="http://www.schulte.it/resources/schulte.it.png"/>
-  </poweredBy>
-  <googleAdSenseClient>ca-pub-2363332114228707</googleAdSenseClient>
-  <googleAdSenseSlot>0169973943</googleAdSenseSlot>
-  <googleAnalyticsAccountId>UA-23230934-1</googleAnalyticsAccountId>
   <body>
-    <head>
-      <script>
-<![CDATA[
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', 'UA-23230934-1', 'jomc.org');
-ga('require', 'displayfeatures');
-ga('send', 'pageview');
-]]>
-      </script>
-    </head>
     <menu name="JOMC" inherit="top">
       <item name="Home" href="${project.url}/index.html"/>
       <item name="Download" href="http://www.jomc.org/project/files"/>
@@ -72,15 +42,12 @@ ga('send', 'pageview');
     <menu name="Modules">
       <item name="API" href="${project.url}/jomc-api/index.html"/>
       <item name="SPI" href="${project.url}/jomc-spi/index.html"/>
-      <item name="Utilities" href="${project.url}/jomc-util/index.html"/>
-      <item name="Modlet" href="${project.url}/jomc-modlet/index.html"/>
-      <item name="Model" href="${project.url}/jomc-model/index.html"/>
       <item name="RI" href="${project.url}/jomc-ri/index.html"/>
+      <item name="Model" href="${project.url}/jomc-model/index.html"/>
       <item name="Tools" href="${project.url}/jomc-tools/index.html"/>
       <item name="Ant Tasks" href="${project.url}/jomc-ant-tasks/index.html"/>
       <item name="Maven Plugin" href="${project.url}/maven-jomc-plugin/index.html"/>
       <item name="CLI" href="${project.url}/jomc-cli/index.html"/>
     </menu>
-    <menu ref="reports" inherit="bottom"/>
   </body>
 </project>
