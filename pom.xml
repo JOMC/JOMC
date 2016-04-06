@@ -141,7 +141,6 @@
     </pluginManagement>
   </build>
   <modules>
-    <module>jomc-model</module>
     <module>jomc-tools</module>
     <module>maven-jomc-plugin</module>
     <module>jomc-ant-tasks</module>
@@ -878,7 +877,7 @@
     <jomc.spi.version>1.0</jomc.spi.version>
     <jomc-util.artifact.version>1.9</jomc-util.artifact.version>
     <jomc-modlet.artifact.version>1.9</jomc-modlet.artifact.version>
-    <jomc-model.artifact.version>1.10-SNAPSHOT</jomc-model.artifact.version>
+    <jomc-model.artifact.version>1.9</jomc-model.artifact.version>
     <jomc-tools.artifact.version>1.10-SNAPSHOT</jomc-tools.artifact.version>
     <maven-jomc-plugin.artifact.version>1.10-SNAPSHOT</maven-jomc-plugin.artifact.version>
     <jomc-ant-tasks.artifact.version>1.10-SNAPSHOT</jomc-ant-tasks.artifact.version>
