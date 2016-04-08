@@ -42,12 +42,6 @@
     <menu name="Modules">
       <item name="API" href="${project.url}/jomc-api/index.html"/>
       <item name="SPI" href="${project.url}/jomc-spi/index.html"/>
-      <item name="RI" href="${project.url}/jomc-ri/index.html"/>
-      <item name="Model" href="${project.url}/jomc-model/index.html"/>
-      <item name="Tools" href="${project.url}/jomc-tools/index.html"/>
-      <item name="Ant Tasks" href="${project.url}/jomc-ant-tasks/index.html"/>
-      <item name="Maven Plugin" href="${project.url}/maven-jomc-plugin/index.html"/>
-      <item name="CLI" href="${project.url}/jomc-cli/index.html"/>
     </menu>
   </body>
 </project>

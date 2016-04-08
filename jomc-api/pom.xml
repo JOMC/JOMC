@@ -94,54 +94,5 @@
         </dependency>
       </dependencies>
     </profile>
-    <profile>
-      <id>jomc-ci</id>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-scm-plugin</artifactId>
-              <executions>
-                <execution>
-                  <id>default-generate-resources</id>
-                  <phase>generate-resources</phase>
-                  <goals>
-                    <goal>update</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-process-resources</id>
-                  <phase>process-resources</phase>
-                  <goals>
-                    <goal>checkin</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-generate-test-resources</id>
-                  <phase>generate-test-resources</phase>
-                  <goals>
-                    <goal>update</goal>
-                  </goals>
-                </execution>
-                <execution>
-                  <id>default-process-test-resources</id>
-                  <phase>process-test-resources</phase>
-                  <goals>
-                    <goal>checkin</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-scm-plugin</artifactId>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
   </profiles>
 </project>
