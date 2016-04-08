@@ -141,6 +141,9 @@
     </pluginManagement>
   </build>
   <modules>
+    <module>jomc-tools</module>
+    <module>maven-jomc-plugin</module>
+    <module>jomc-ant-tasks</module>
     <module>jomc-api</module>
     <module>jomc-spi</module>
     <module>jomc-ri</module>
