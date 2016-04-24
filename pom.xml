@@ -34,7 +34,7 @@
   <parent>
     <groupId>org.jomc</groupId>
     <artifactId>jomc-pom</artifactId>
-    <version>1.2</version>
+    <version>1.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jomc-parent</artifactId>
@@ -54,14 +54,19 @@
       <plugins>
         <plugin>
           <groupId>org.jomc</groupId>
-          <artifactId>maven-jomc-plugin</artifactId>
+          <artifactId>jomc-maven-plugin</artifactId>
           <version>2.0-SNAPSHOT</version>
           <executions>
             <execution>
               <id>default-process-resources</id>
               <goals>
                 <goal>manage-main-sources</goal>
+                <goal>write-main-resources</goal>
               </goals>
+              <configuration>
+                <templateProfile>jomc-java-bundles</templateProfile>
+                <resourceBundleDefaultLanguage>en</resourceBundleDefaultLanguage>
+              </configuration>
             </execution>
             <execution>
               <id>default-process-classes</id>
@@ -71,7 +76,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
@@ -90,7 +95,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
@@ -104,7 +109,6 @@
             </execution>
           </executions>
           <configuration>
-            <testModuleName>${project.name} ⁑ Tests</testModuleName>
             <templateParameters>
               <templateParameter>
                 <key>with-project-name</key>
@@ -128,6 +132,12 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.jomc</groupId>
+        <artifactId>jomc-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
   </build>
   <modules>
     <module>jomc-api</module>
