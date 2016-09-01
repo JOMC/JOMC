@@ -55,7 +55,7 @@
         <plugin>
           <groupId>org.jomc</groupId>
           <artifactId>maven-jomc-plugin</artifactId>
-          <version>1.9</version>
+          <version>1.10-SNAPSHOT</version>
           <executions>
             <execution>
               <id>default-process-resources</id>
