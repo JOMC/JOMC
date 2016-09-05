@@ -54,7 +54,7 @@ import org.jomc.ObjectManager;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.10-SNAPSHOT
+ * @version 1.10
  */
 // </editor-fold>
 // SECTION-END

@@ -40,14 +40,14 @@
   <artifactId>jomc-parent</artifactId>
   <packaging>pom</packaging>
   <name>JOMC</name>
-  <version>1.10-SNAPSHOT</version>
+  <version>1.10</version>
   <description>JOMC is an object management and configuration application programming interface with corresponding reference implementation and tools for managing object management and configuration code. This is the parent module of the JOMC artifacts.</description>
   <url>${jomc.base.url}/${jomc.site.location}</url>
   <inceptionYear>2005</inceptionYear>
   <scm>
-    <connection>${jomc.scm.connection}/branches/jomc-1.x</connection>
-    <developerConnection>${jomc.scm.developerConnection}/branches/jomc-1.x</developerConnection>
-    <url>${jomc.scm.url}/branches/jomc-1.x</url>
+    <connection>${jomc.scm.connection}/tags/jomc-parent-1.10</connection>
+    <developerConnection>${jomc.scm.developerConnection}/tags/jomc-parent-1.10</developerConnection>
+    <url>${jomc.scm.url}/tags/jomc-parent-1.10</url>
   </scm>
   <build>
     <pluginManagement>
