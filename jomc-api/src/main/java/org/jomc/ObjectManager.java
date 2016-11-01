@@ -49,7 +49,7 @@ import java.util.Locale;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.0
+ * @version 1.0.0
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(ObjectManager.class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(ObjectManager.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
@@ -58,7 +58,7 @@ import java.util.Locale;
 // SECTION-END
 // SECTION-START[Annotations]
 // <editor-fold defaultstate="collapsed" desc=" Generated Annotations ">
-@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0-SNAPSHOT" )
+@javax.annotation.Generated( value = "org.jomc.tools.SourceFileProcessor 2.0.0-SNAPSHOT", comments = "See http://www.jomc.org/jomc-tools/2.0.0-SNAPSHOT" )
 // </editor-fold>
 // SECTION-END
 public interface ObjectManager
