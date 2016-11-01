@@ -50,7 +50,7 @@ import java.net.URI;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.0
+ * @version 1.0.0
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(Locator[].class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(Locator.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory

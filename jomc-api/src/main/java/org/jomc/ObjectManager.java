@@ -49,7 +49,7 @@ import java.util.Locale;
  * </dl>
  *
  * @author <a href="mailto:cs@schulte.it">Christian Schulte</a> 1.0
- * @version 1.0
+ * @version 1.0.0
  * @see org.jomc.ObjectManager#getObject(java.lang.Class) getObject(ObjectManager.class)
  * @see org.jomc.ObjectManager#getObject(java.lang.Class,java.lang.String) getObject(ObjectManager.class, "<i>implementation name</i>")
  * @see org.jomc.ObjectManagerFactory
