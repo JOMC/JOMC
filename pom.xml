@@ -55,7 +55,7 @@
         <plugin>
           <groupId>org.jomc</groupId>
           <artifactId>maven-jomc-plugin</artifactId>
-          <version>1.10</version>
+          <version>1.11.0-SNAPSHOT</version>
           <executions>
             <execution>
               <id>default-process-resources</id>
@@ -71,7 +71,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
@@ -90,7 +90,7 @@
               </goals>
               <configuration>
                 <modletExcludes>
-                  <modletExclude>JOMC ⁑ Tools</modletExclude>
+                  <modletExclude>JOMC Tools ⁑ Modlet</modletExclude>
                 </modletExcludes>
               </configuration>
             </execution>
